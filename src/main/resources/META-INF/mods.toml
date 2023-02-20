@@ -21,7 +21,7 @@ modId = "createcasing" #mandatory
 # see the associated build.gradle script for how to populate this completely automatically during a build
 version = "1.0" #mandatory
 # A display name for the mod
-displayName = "CreateCasing" #mandatory
+displayName = "Create : Encased" #mandatory
 # A URL to query for updates for this mod. See the JSON update specification <here>
 #updateJSONURL="http://myurl.me/" #optional
 # A URL for the "homepage" for this mod, displayed in the mod UI
