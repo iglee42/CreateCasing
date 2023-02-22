@@ -33,6 +33,7 @@ public class ModBlocks {
     //public static final RegistryObject<Block> RAILWAY_ENCASED_SHAFT = BLOCKS.register("railway_encased_shaft", ()->new PublicEncasedShaftBlock(BlockBehaviour.Properties.copy(AllBlocks.ANDESITE_ENCASED_SHAFT.get()),AllBlocks.RAILWAY_CASING));
     //public static final RegistryObject<Block> COPPER_ENCASED_SHAFT = BLOCKS.register("copper_encased_shaft", ()->new PublicEncasedShaftBlock(BlockBehaviour.Properties.copy(AllBlocks.ANDESITE_ENCASED_SHAFT.get()),AllBlocks.COPPER_CASING));
 
+    //SHAFTS
     public static final BlockEntry<PublicEncasedShaftBlock> RAILWAY_ENCASED_SHAFT =
             REGISTRATE.block("railway_encased_shaft", (p)->new PublicEncasedShaftBlock(p,AllBlocks.RAILWAY_CASING))
                     .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
@@ -45,6 +46,20 @@ public class ModBlocks {
                     .transform(BuilderTransformers.encasedShaft("copper", () -> AllSpriteShifts.COPPER_CASING))
                     .transform(axeOrPickaxe())
                     .register();
+    public static final BlockEntry<PublicEncasedShaftBlock> SHADOW_ENCASED_SHAFT =
+            REGISTRATE.block("shadow_steel_encased_shaft", (p)->new PublicEncasedShaftBlock(p,AllBlocks.SHADOW_STEEL_CASING))
+                    .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+                    .transform(BuilderTransformers.encasedShaft("shadow_steel", () -> AllSpriteShifts.SHADOW_STEEL_CASING))
+                    .transform(axeOrPickaxe())
+                    .register();
+    public static final BlockEntry<PublicEncasedShaftBlock> REFINED_RADIANCE_ENCASED_SHAFT =
+            REGISTRATE.block("refined_radiance_encased_shaft", (p)->new PublicEncasedShaftBlock(p,AllBlocks.REFINED_RADIANCE_CASING))
+                    .properties(p -> p.color(MaterialColor.TERRACOTTA_BROWN))
+                    .transform(BuilderTransformers.encasedShaft("refined_radiance", () -> AllSpriteShifts.REFINED_RADIANCE_CASING))
+                    .transform(axeOrPickaxe())
+                    .register();
+
+    //COGWHEELS
     public static final BlockEntry<PublicEncasedCogWheelBlock> RAILWAY_ENCASED_COGWHEEL = REGISTRATE
             .block("railway_encased_cogwheel", p -> new PublicEncasedCogWheelBlock(false, p,AllBlocks.RAILWAY_CASING))
             .properties(p -> p.color(MaterialColor.PODZOL))
@@ -63,6 +78,27 @@ public class ModBlocks {
                             ModSprites.COPPER_ENCASED_COGWHEEL_OTHERSIDE))))
             .transform(axeOrPickaxe())
             .register();
+    public static final BlockEntry<PublicEncasedCogWheelBlock> SHADOW_ENCASED_COGWHEEL = REGISTRATE
+            .block("shadow_steel_encased_cogwheel", p -> new PublicEncasedCogWheelBlock(false, p,AllBlocks.SHADOW_STEEL_CASING))
+            .properties(p -> p.color(MaterialColor.PODZOL))
+            .transform(BuilderTransformers.encasedCogwheel("shadow_steel", () -> AllSpriteShifts.SHADOW_STEEL_CASING))
+            .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCogCTBehaviour(AllSpriteShifts.SHADOW_STEEL_CASING,
+                    Couple.create(ModSprites.SHADOW_ENCASED_COGWHEEL_SIDE,
+                            ModSprites.SHADOW_ENCASED_COGWHEEL_OTHERSIDE))))
+            .transform(axeOrPickaxe())
+            .register();
+    public static final BlockEntry<PublicEncasedCogWheelBlock> RADIANCE_ENCASED_COGWHEEL = REGISTRATE
+            .block("refined_radiance_encased_cogwheel", p -> new PublicEncasedCogWheelBlock(false, p,AllBlocks.REFINED_RADIANCE_CASING))
+            .properties(p -> p.color(MaterialColor.PODZOL))
+            .transform(BuilderTransformers.encasedCogwheel("refined_radiance", () -> AllSpriteShifts.REFINED_RADIANCE_CASING))
+            .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCogCTBehaviour(AllSpriteShifts.REFINED_RADIANCE_CASING,
+                    Couple.create(ModSprites.RADIANCE_ENCASED_COGWHEEL_SIDE,
+                            ModSprites.RADIANCE_ENCASED_COGWHEEL_OTHERSIDE))))
+            .transform(axeOrPickaxe())
+            .register();
+
+
+    //LARGE COGWHEELS
 
     public static final BlockEntry<PublicEncasedCogWheelBlock> RAILWAY_ENCASED_COGWHEEL_LARGE = REGISTRATE
             .block("railway_encased_large_cogwheel", p -> new PublicEncasedCogWheelBlock(true, p,AllBlocks.RAILWAY_CASING))
@@ -76,6 +112,20 @@ public class ModBlocks {
             .transform(BuilderTransformers.encasedLargeCogwheel("copper", () -> AllSpriteShifts.COPPER_CASING))
             .transform(axeOrPickaxe())
             .register();
+    public static final BlockEntry<PublicEncasedCogWheelBlock> SHADOW_ENCASED_COGWHEEL_LARGE = REGISTRATE
+            .block("shadow_steel_encased_large_cogwheel", p -> new PublicEncasedCogWheelBlock(true, p,AllBlocks.SHADOW_STEEL_CASING))
+            .properties(p -> p.color(MaterialColor.PODZOL))
+            .transform(BuilderTransformers.encasedLargeCogwheel("shadow_steel", () -> AllSpriteShifts.SHADOW_STEEL_CASING))
+            .transform(axeOrPickaxe())
+            .register();
+    public static final BlockEntry<PublicEncasedCogWheelBlock> RADIANCE_ENCASED_COGWHEEL_LARGE = REGISTRATE
+            .block("refined_radiance_encased_large_cogwheel", p -> new PublicEncasedCogWheelBlock(true, p,AllBlocks.REFINED_RADIANCE_CASING))
+            .properties(p -> p.color(MaterialColor.PODZOL))
+            .transform(BuilderTransformers.encasedLargeCogwheel("refined_radiance", () -> AllSpriteShifts.REFINED_RADIANCE_CASING))
+            .transform(axeOrPickaxe())
+            .register();
+
+    //PIPES
 
     public static final BlockEntry<PublicEncasedPipeBlock> ENCASED_ANDESITE_FLUID_PIPE =
             REGISTRATE.block("andesite_encased_fluid_pipe", PublicEncasedPipeBlock::new)
@@ -112,6 +162,33 @@ public class ModBlocks {
                     .blockstate(BlockStateGen.encasedPipe())
                     .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(AllSpriteShifts.RAILWAY_CASING)))
                     .onRegister(CreateRegistrate.casingConnectivity((block, cc) -> cc.make(block, AllSpriteShifts.RAILWAY_CASING,
+                            (s, f) -> !s.getValue(EncasedPipeBlock.FACING_TO_PROPERTY_MAP.get(f)))))
+                    .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::new))
+                    .loot((p, b) -> p.dropOther(b, AllBlocks.FLUID_PIPE.get()))
+                    .register();
+
+    public static final BlockEntry<PublicEncasedPipeBlock> ENCASED_SHADOW_FLUID_PIPE =
+            REGISTRATE.block("shadow_steel_encased_fluid_pipe", PublicEncasedPipeBlock::new)
+                    .initialProperties(SharedProperties::copperMetal)
+                    .properties(p -> p.color(MaterialColor.TERRACOTTA_LIGHT_GRAY))
+                    .properties(BlockBehaviour.Properties::noOcclusion)
+                    .transform(axeOrPickaxe())
+                    .blockstate(BlockStateGen.encasedPipe())
+                    .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(AllSpriteShifts.SHADOW_STEEL_CASING)))
+                    .onRegister(CreateRegistrate.casingConnectivity((block, cc) -> cc.make(block, AllSpriteShifts.SHADOW_STEEL_CASING,
+                            (s, f) -> !s.getValue(EncasedPipeBlock.FACING_TO_PROPERTY_MAP.get(f)))))
+                    .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::new))
+                    .loot((p, b) -> p.dropOther(b, AllBlocks.FLUID_PIPE.get()))
+                    .register();
+    public static final BlockEntry<PublicEncasedPipeBlock> ENCASED_RADIANCE_FLUID_PIPE =
+            REGISTRATE.block("refined_radiance_encased_fluid_pipe", PublicEncasedPipeBlock::new)
+                    .initialProperties(SharedProperties::copperMetal)
+                    .properties(p -> p.color(MaterialColor.TERRACOTTA_LIGHT_GRAY))
+                    .properties(BlockBehaviour.Properties::noOcclusion)
+                    .transform(axeOrPickaxe())
+                    .blockstate(BlockStateGen.encasedPipe())
+                    .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(AllSpriteShifts.REFINED_RADIANCE_CASING)))
+                    .onRegister(CreateRegistrate.casingConnectivity((block, cc) -> cc.make(block, AllSpriteShifts.REFINED_RADIANCE_CASING,
                             (s, f) -> !s.getValue(EncasedPipeBlock.FACING_TO_PROPERTY_MAP.get(f)))))
                     .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::new))
                     .loot((p, b) -> p.dropOther(b, AllBlocks.FLUID_PIPE.get()))

@@ -1,0 +1,56 @@
+{
+  "variants": {
+    "axis=x,bottom_shaft=false,top_shaft=false": {
+      "model": "createcasing:block/encased_cogwheel/shadow/base",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,bottom_shaft=false,top_shaft=false": {
+      "model": "createcasing:block/encased_cogwheel/shadow/base"
+    },
+    "axis=z,bottom_shaft=false,top_shaft=false": {
+      "model": "createcasing:block/encased_cogwheel/shadow/base",
+      "x": 90,
+      "y": 180
+    },
+    "axis=x,bottom_shaft=true,top_shaft=false": {
+      "model": "createcasing:block/encased_cogwheel/shadow/bottom",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,bottom_shaft=true,top_shaft=false": {
+      "model": "createcasing:block/encased_cogwheel/shadow/bottom"
+    },
+    "axis=z,bottom_shaft=true,top_shaft=false": {
+      "model": "createcasing:block/encased_cogwheel/shadow/bottom",
+      "x": 90,
+      "y": 180
+    },
+    "axis=x,bottom_shaft=false,top_shaft=true": {
+      "model": "createcasing:block/encased_cogwheel/shadow/top",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,bottom_shaft=false,top_shaft=true": {
+      "model": "createcasing:block/encased_cogwheel/shadow/top"
+    },
+    "axis=z,bottom_shaft=false,top_shaft=true": {
+      "model": "createcasing:block/encased_cogwheel/shadow/top",
+      "x": 90,
+      "y": 180
+    },
+    "axis=x,bottom_shaft=true,top_shaft=true": {
+      "model": "createcasing:block/encased_cogwheel/shadow/top_bottom",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,bottom_shaft=true,top_shaft=true": {
+      "model": "createcasing:block/encased_cogwheel/shadow/top_bottom"
+    },
+    "axis=z,bottom_shaft=true,top_shaft=true": {
+      "model": "createcasing:block/encased_cogwheel/shadow/top_bottom",
+      "x": 90,
+      "y": 180
+    }
+  }
+}

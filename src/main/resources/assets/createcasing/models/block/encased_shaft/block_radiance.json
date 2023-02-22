@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/encased_shaft/block",
+  "textures": {
+    "casing": "create:block/refined_radiance_casing",
+    "opening": "createcasing:block/radiance_gearbox"
+  }
+}

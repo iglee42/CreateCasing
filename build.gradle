@@ -16,7 +16,7 @@ plugins {
 apply plugin: 'org.spongepowered.mixin'
 
 group = 'fr.iglee42'
-version = '1.0'
+version = '1.18.2-1.1'
 
 java {
     archivesBaseName = 'CreateCasing'
@@ -165,6 +165,7 @@ dependencies {
 
     implementation fg.deobf("curse.maven:create-328085:4371807")
     implementation fg.deobf("curse.maven:flywheel-486392:4174748")
+    runtimeOnly fg.deobf("curse.maven:jei-238222:4352925")
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency

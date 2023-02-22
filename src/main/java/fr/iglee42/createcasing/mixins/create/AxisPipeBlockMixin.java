@@ -51,6 +51,10 @@ public abstract class AxisPipeBlockMixin {
                 newState = ModBlocks.ENCASED_BRASS_FLUID_PIPE.getDefaultState();
             } else if (AllBlocks.RAILWAY_CASING.get().equals(block)) {
                 newState = ModBlocks.ENCASED_RAILWAY_FLUID_PIPE.getDefaultState();
+            } else if (AllBlocks.SHADOW_STEEL_CASING.get().equals(block)) {
+               newState = ModBlocks.ENCASED_SHADOW_FLUID_PIPE.getDefaultState();
+            } else if (AllBlocks.REFINED_RADIANCE_CASING.get().equals(block)) {
+                newState = ModBlocks.ENCASED_RADIANCE_FLUID_PIPE.getDefaultState();
             }
             Direction[] var8 = Iterate.directionsInAxis(this.getAxis(state));
             int var9 = var8.length;

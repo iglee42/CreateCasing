@@ -44,6 +44,10 @@ public class FluidPipeBlockMixin {
                 world.setBlockAndUpdate(pos, EncasedPipeBlock.transferSixWayProperties(state, ModBlocks.ENCASED_BRASS_FLUID_PIPE.getDefaultState()));
             } else if (AllBlocks.RAILWAY_CASING.get().equals(block)) {
                 world.setBlockAndUpdate(pos, EncasedPipeBlock.transferSixWayProperties(state, ModBlocks.ENCASED_RAILWAY_FLUID_PIPE.getDefaultState()));
+            } else if (AllBlocks.SHADOW_STEEL_CASING.get().equals(block)) {
+                world.setBlockAndUpdate(pos, EncasedPipeBlock.transferSixWayProperties(state, ModBlocks.ENCASED_SHADOW_FLUID_PIPE.getDefaultState()));
+            } else if (AllBlocks.REFINED_RADIANCE_CASING.get().equals(block)) {
+                world.setBlockAndUpdate(pos, EncasedPipeBlock.transferSixWayProperties(state, ModBlocks.ENCASED_RADIANCE_FLUID_PIPE.getDefaultState()));
             }
             FluidTransportBehaviour.loadFlows(world, pos);
             return InteractionResult.SUCCESS;
