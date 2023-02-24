@@ -6,6 +6,7 @@ import com.simibubi.create.content.contraptions.base.KineticTileEntity;
 import com.simibubi.create.content.contraptions.relays.elementary.CogWheelBlock;
 import com.simibubi.create.content.contraptions.relays.encased.EncasedCogwheelBlock;
 import com.simibubi.create.foundation.utility.Iterate;
+import fr.iglee42.createcasing.compatibility.CreateCrystalClearCompatibility;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -38,6 +39,7 @@ public abstract class CogWheelBlockMixin {
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult ray){
         if (!player.isShiftKeyDown() && player.mayBuild()) {
             ItemStack heldItem = player.getItemInHand(hand);
+            if (CreateCrystalClearCompatibility.checkCogs(isLargeCog(),heldItem,world,pos,state)) return InteractionResult.SUCCESS;
             List<EncasedCogwheelBlock> largesCogs = new ArrayList<>();
             ForgeRegistries.BLOCKS.getKeys().stream().filter(r->ForgeRegistries.BLOCKS.getValue(r) instanceof EncasedCogwheelBlock ecb && ecb.isLargeCog()).forEach(r->largesCogs.add((EncasedCogwheelBlock) ForgeRegistries.BLOCKS.getValue(r)));
             List<EncasedCogwheelBlock> smallCogs = new ArrayList<>();

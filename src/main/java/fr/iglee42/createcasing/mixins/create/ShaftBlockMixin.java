@@ -8,6 +8,7 @@ import com.simibubi.create.content.contraptions.relays.encased.EncasedShaftBlock
 import com.simibubi.create.content.curiosities.girder.GirderEncasedShaftBlock;
 import com.simibubi.create.foundation.utility.placement.IPlacementHelper;
 import com.simibubi.create.foundation.utility.placement.PlacementHelpers;
+import fr.iglee42.createcasing.compatibility.CreateCrystalClearCompatibility;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -41,6 +42,7 @@ public class ShaftBlockMixin {
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult ray) {
         if (!player.isShiftKeyDown() && player.mayBuild()) {
             ItemStack heldItem = player.getItemInHand(hand);
+            if (CreateCrystalClearCompatibility.checkShaft(heldItem,world,pos,state)) return InteractionResult.SUCCESS;
             List<EncasedShaftBlock> shafts = new ArrayList<>();
             ForgeRegistries.BLOCKS.getKeys().stream().filter(r-> ForgeRegistries.BLOCKS.getValue(r) instanceof EncasedShaftBlock).forEach(r->shafts.add((EncasedShaftBlock) ForgeRegistries.BLOCKS.getValue(r)));
             EncasedShaftBlock[] var8 = shafts.toArray(new EncasedShaftBlock[]{});

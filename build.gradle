@@ -165,6 +165,7 @@ dependencies {
 
     implementation fg.deobf("curse.maven:create-328085:4371807")
     implementation fg.deobf("curse.maven:flywheel-486392:4174748")
+    implementation fg.deobf("curse.maven:create-crystal-clear-669724:4192943")
     runtimeOnly fg.deobf("curse.maven:jei-238222:4352925")
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
