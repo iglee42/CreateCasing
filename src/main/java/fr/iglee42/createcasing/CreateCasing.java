@@ -1,10 +1,15 @@
 package fr.iglee42.createcasing;
 
 import com.mojang.logging.LogUtils;
-import com.simibubi.create.AllTileEntities;
+import com.rabbitminers.extendedgears.ExtendedGears;
 import com.simibubi.create.foundation.data.CreateRegistrate;
+import fr.iglee42.createcasing.compatibility.createcrystalclear.CreateCrystalClearCompatibility;
+import fr.iglee42.createcasing.compatibility.createextendedcogs.CreateExtendedCogwheelsCompat;
+import net.minecraft.core.Registry;
+import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -21,9 +26,15 @@ public class CreateCasing {
 
     public CreateCasing() {
         REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
+        ExtendedGears.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, () -> {
+            if (CreateExtendedCogwheelsCompat.isModLoaded()) CreateExtendedCogwheelsCompat.register();
+        });
+        CreateExtendedCogwheelsCompat.REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
 
         ModBlocks.register();
         ModTiles.register();
+
+        if (CreateCrystalClearCompatibility.isModLoaded()) CreateCrystalClearCompatibility.register();
 
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
@@ -37,5 +48,6 @@ public class CreateCasing {
 
     private void setup(final FMLCommonSetupEvent event) {
     }
+
 
 }

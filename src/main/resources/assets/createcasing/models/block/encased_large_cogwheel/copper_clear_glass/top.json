@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/encased_large_cogwheel/block_top",
+  "textures": {
+    "casing": "create_crystal_clear:block/copper_clear_glass_casing",
+    "1": "create:block/copper_casing",
+    "3": "createcasing:block/copper_gearbox",
+    "side": "createcasing:block/copper_encased_cogwheel_side_connected"
+  }
+}

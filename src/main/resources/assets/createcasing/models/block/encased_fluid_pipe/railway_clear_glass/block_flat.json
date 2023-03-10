@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/encased_fluid_pipe/block_flat",
+  "textures": {
+    "0": "create_crystal_clear:block/train_clear_glass_casing",
+    "particle": "create_crystal_clear:block/train_clear_glass_casing"
+  }
+}

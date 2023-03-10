@@ -10,7 +10,9 @@
     "create.FluidPipeBlockMixin",
     "create.FluidTransportBehaviourMixin",
     "create.ShaftBlockMixin",
-    "create.StandardPipeFluidTransportBehaviourMixin"
+    "create.StandardPipeFluidTransportBehaviourMixin",
+    "extendedgears.MetalCogWheelMixin",
+    "minecraft.BlockEntityTypeMixin"
   ],
   "client": [
   ],
