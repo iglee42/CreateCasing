@@ -35,7 +35,7 @@ public class StandardPipeFluidTransportBehaviourMixin extends FluidTransportBeha
     @Inject(method = "getRenderedRimAttachment",at = @At("HEAD"),cancellable = true)
     public void getRenderedRimAttachment(BlockAndTintGetter world, BlockPos pos, BlockState state, Direction direction, CallbackInfoReturnable<AttachmentTypes> cir) {
         FluidTransportBehaviour.AttachmentTypes attachment = super.getRenderedRimAttachment(world, pos, state, direction);
-        BlockPos offsetPos = pos.relative(direction);
+        BlockPos offsetPos = pos.relative(direction,1);
         BlockState otherState = world.getBlockState(offsetPos);
         if (attachment == FluidTransportBehaviour.AttachmentTypes.RIM && !FluidPipeBlock.isPipe(otherState) && !AllBlocks.MECHANICAL_PUMP.has(otherState) && !(otherState.getBlock() instanceof EncasedPipeBlock)) {
             FluidTransportBehaviour pipeBehaviour = TileEntityBehaviour.get(world, offsetPos, FluidTransportBehaviour.TYPE);

@@ -33,7 +33,7 @@ public abstract class FluidTransportBehaviourMixin {
         if (!this.canHaveFlowToward(state, direction)) {
             cir.setReturnValue(FluidTransportBehaviour.AttachmentTypes.NONE);
         } else {
-            BlockPos offsetPos = pos.relative(direction);
+            BlockPos offsetPos = pos.relative(direction,1);
             BlockState facingState = world.getBlockState(offsetPos);
             if (facingState.getBlock() instanceof PumpBlock && facingState.getValue(PumpBlock.FACING) == direction.getOpposite()) {
                 cir.setReturnValue(FluidTransportBehaviour.AttachmentTypes.NONE);

@@ -56,10 +56,10 @@ public abstract class CogWheelBlockMixin {
                     Direction[] var14 = Iterate.directionsInAxis(state.getValue(AXIS));
 
                     for (Direction d : var14) {
-                        BlockState adjacentState = world.getBlockState(pos.relative(d));
+                        BlockState adjacentState = world.getBlockState(pos.relative(d,1));
                         if (adjacentState.getBlock() instanceof IRotate) {
                             IRotate def = (IRotate) adjacentState.getBlock();
-                            if (def.hasShaftTowards(world, pos.relative(d), adjacentState, d.getOpposite())) {
+                            if (def.hasShaftTowards(world, pos.relative(d,1), adjacentState, d.getOpposite())) {
                                 encasedState = encasedState.cycle(d.getAxisDirection() == Direction.AxisDirection.POSITIVE ? EncasedCogwheelBlock.TOP_SHAFT : EncasedCogwheelBlock.BOTTOM_SHAFT);
                             }
                         }
@@ -86,10 +86,10 @@ public abstract class CogWheelBlockMixin {
                             Direction[] var14 = Iterate.directionsInAxis(state.getValue(AXIS));
 
                             for (Direction d : var14) {
-                                BlockState adjacentState = world.getBlockState(pos.relative(d));
+                                BlockState adjacentState = world.getBlockState(pos.relative(d,1));
                                 if (adjacentState.getBlock() instanceof IRotate) {
                                     IRotate def = (IRotate) adjacentState.getBlock();
-                                    if (def.hasShaftTowards(world, pos.relative(d), adjacentState, d.getOpposite())) {
+                                    if (def.hasShaftTowards(world, pos.relative(d,1), adjacentState, d.getOpposite())) {
                                         encasedState = encasedState.cycle(d.getAxisDirection() == Direction.AxisDirection.POSITIVE ? EncasedCogwheelBlock.TOP_SHAFT : EncasedCogwheelBlock.BOTTOM_SHAFT);
                                     }
                                 }
@@ -108,10 +108,10 @@ public abstract class CogWheelBlockMixin {
                     Direction[] var14 = Iterate.directionsInAxis(state.getValue(AXIS));
 
                     for (Direction d : var14) {
-                        BlockState adjacentState = world.getBlockState(pos.relative(d));
+                        BlockState adjacentState = world.getBlockState(pos.relative(d,1));
                         if (adjacentState.getBlock() instanceof IRotate) {
                             IRotate def = (IRotate) adjacentState.getBlock();
-                            if (def.hasShaftTowards(world, pos.relative(d), adjacentState, d.getOpposite())) {
+                            if (def.hasShaftTowards(world, pos.relative(d,1), adjacentState, d.getOpposite())) {
                                 encasedState = encasedState.cycle(d.getAxisDirection() == Direction.AxisDirection.POSITIVE ? EncasedCogwheelBlock.TOP_SHAFT : EncasedCogwheelBlock.BOTTOM_SHAFT);
                             }
                         }
@@ -138,10 +138,10 @@ public abstract class CogWheelBlockMixin {
                             Direction[] var14 = Iterate.directionsInAxis(state.getValue(AXIS));
 
                             for (Direction d : var14) {
-                                BlockState adjacentState = world.getBlockState(pos.relative(d));
+                                BlockState adjacentState = world.getBlockState(pos.relative(d,1));
                                 if (adjacentState.getBlock() instanceof IRotate) {
                                     IRotate def = (IRotate) adjacentState.getBlock();
-                                    if (def.hasShaftTowards(world, pos.relative(d), adjacentState, d.getOpposite())) {
+                                    if (def.hasShaftTowards(world, pos.relative(d,1), adjacentState, d.getOpposite())) {
                                         encasedState = encasedState.cycle(d.getAxisDirection() == Direction.AxisDirection.POSITIVE ? EncasedCogwheelBlock.TOP_SHAFT : EncasedCogwheelBlock.BOTTOM_SHAFT);
                                     }
                                 }

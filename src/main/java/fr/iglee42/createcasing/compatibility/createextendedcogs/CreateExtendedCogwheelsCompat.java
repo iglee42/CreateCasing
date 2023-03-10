@@ -47,7 +47,7 @@ public class CreateExtendedCogwheelsCompat {
     public static void register() {
         forCogs(r-> {
             MetalCogWheel cog = (MetalCogWheel) ExtendedGears.registrate().get(r.getPath(),Registry.BLOCK_REGISTRY).get();
-            String name = getCogName(cog.getRegistryName().getPath().toString());
+            String name = getCogName(r.getPath().toString());
             Create.REGISTRATE.getAll(Registry.BLOCK_REGISTRY).stream().filter(b -> b.get() instanceof CasingBlock).forEach(b -> {
                 BlockEntry<? extends Block> block = ((BlockEntry<?>) b);
                 REGISTRATE.block(b.getId().getPath().replace("_casing","") + "_"  +(cog.isLargeCog() ? "large_" : "") + name+"_encased_cogwheel", p -> new CustomCogwheelCompat(cog.isLargeCog(), p, (BlockEntry<CasingBlock>) block,cog))
