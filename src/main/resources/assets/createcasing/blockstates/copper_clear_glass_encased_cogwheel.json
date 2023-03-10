@@ -1,0 +1,56 @@
+{
+  "variants": {
+    "axis=x,bottom_shaft=false,top_shaft=false": {
+      "model": "createcasing:block/encased_cogwheel/copper_clear_glass/base",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,bottom_shaft=false,top_shaft=false": {
+      "model": "createcasing:block/encased_cogwheel/copper_clear_glass/base"
+    },
+    "axis=z,bottom_shaft=false,top_shaft=false": {
+      "model": "createcasing:block/encased_cogwheel/copper_clear_glass/base",
+      "x": 90,
+      "y": 180
+    },
+    "axis=x,bottom_shaft=true,top_shaft=false": {
+      "model": "createcasing:block/encased_cogwheel/copper_clear_glass/bottom",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,bottom_shaft=true,top_shaft=false": {
+      "model": "createcasing:block/encased_cogwheel/copper_clear_glass/bottom"
+    },
+    "axis=z,bottom_shaft=true,top_shaft=false": {
+      "model": "createcasing:block/encased_cogwheel/copper_clear_glass/bottom",
+      "x": 90,
+      "y": 180
+    },
+    "axis=x,bottom_shaft=false,top_shaft=true": {
+      "model": "createcasing:block/encased_cogwheel/copper_clear_glass/top",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,bottom_shaft=false,top_shaft=true": {
+      "model": "createcasing:block/encased_cogwheel/copper_clear_glass/top"
+    },
+    "axis=z,bottom_shaft=false,top_shaft=true": {
+      "model": "createcasing:block/encased_cogwheel/copper_clear_glass/top",
+      "x": 90,
+      "y": 180
+    },
+    "axis=x,bottom_shaft=true,top_shaft=true": {
+      "model": "createcasing:block/encased_cogwheel/copper_clear_glass/top_bottom",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,bottom_shaft=true,top_shaft=true": {
+      "model": "createcasing:block/encased_cogwheel/copper_clear_glass/top_bottom"
+    },
+    "axis=z,bottom_shaft=true,top_shaft=true": {
+      "model": "createcasing:block/encased_cogwheel/copper_clear_glass/top_bottom",
+      "x": 90,
+      "y": 180
+    }
+  }
+}

@@ -10,10 +10,11 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraftforge.registries.ForgeRegistries;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Overwrite;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = FluidTransportBehaviour.class, remap = false)
 public abstract class FluidTransportBehaviourMixin {
@@ -27,20 +28,20 @@ public abstract class FluidTransportBehaviourMixin {
      * @author Iglee42
      * @reason Adapt for all Encased Fluid Pipe
      */
-    @Overwrite
-    public FluidTransportBehaviour.AttachmentTypes getRenderedRimAttachment(BlockAndTintGetter world, BlockPos pos, BlockState state, Direction direction) {
+    @Inject(method = "getRenderedRimAttachment",at = @At("HEAD"),cancellable = true)
+    public void getRenderedRimAttachment(BlockAndTintGetter world, BlockPos pos, BlockState state, Direction direction, CallbackInfoReturnable<FluidTransportBehaviour.AttachmentTypes> cir) {
         if (!this.canHaveFlowToward(state, direction)) {
-            return FluidTransportBehaviour.AttachmentTypes.NONE;
+            cir.setReturnValue(FluidTransportBehaviour.AttachmentTypes.NONE);
         } else {
             BlockPos offsetPos = pos.relative(direction);
             BlockState facingState = world.getBlockState(offsetPos);
             if (facingState.getBlock() instanceof PumpBlock && facingState.getValue(PumpBlock.FACING) == direction.getOpposite()) {
-                return FluidTransportBehaviour.AttachmentTypes.NONE;
+                cir.setReturnValue(FluidTransportBehaviour.AttachmentTypes.NONE);
             } else if (facingState.getBlock() instanceof EncasedPipeBlock &&
                     (Boolean)facingState.getValue((Property) EncasedPipeBlock.FACING_TO_PROPERTY_MAP.get(direction.getOpposite()))) {
-                return FluidTransportBehaviour.AttachmentTypes.RIM;
+                cir.setReturnValue(FluidTransportBehaviour.AttachmentTypes.RIM);
             } else {
-                return FluidPropagator.hasFluidCapability(world, offsetPos, direction.getOpposite()) && !AllBlocks.HOSE_PULLEY.has(facingState) ? FluidTransportBehaviour.AttachmentTypes.DRAIN : FluidTransportBehaviour.AttachmentTypes.RIM;
+                cir.setReturnValue(FluidPropagator.hasFluidCapability(world, offsetPos, direction.getOpposite()) && !AllBlocks.HOSE_PULLEY.has(facingState) ? FluidTransportBehaviour.AttachmentTypes.DRAIN : FluidTransportBehaviour.AttachmentTypes.RIM);
             }
         }
     }

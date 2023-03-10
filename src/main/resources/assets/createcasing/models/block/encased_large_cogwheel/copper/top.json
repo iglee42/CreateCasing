@@ -3,6 +3,7 @@
   "textures": {
     "casing": "create:block/copper_casing",
     "1": "create:block/copper_casing",
+    "3": "createcasing:block/copper_gearbox",
     "side": "createcasing:block/copper_encased_cogwheel_side_connected"
   }
 }

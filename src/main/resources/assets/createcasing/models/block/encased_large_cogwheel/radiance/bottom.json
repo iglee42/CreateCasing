@@ -1,8 +1,0 @@
-{
-  "parent": "create:block/encased_large_cogwheel/block_bottom",
-  "textures": {
-    "casing": "create:block/refined_radiance_casing",
-    "1": "create:block/refined_radiance_casing",
-    "side": "createcasing:block/radiance_encased_cogwheel_side_connected"
-  }
-}

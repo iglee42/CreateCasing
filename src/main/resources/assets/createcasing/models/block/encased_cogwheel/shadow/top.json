@@ -1,8 +1,0 @@
-{
-  "parent": "create:block/encased_cogwheel/block_top",
-  "textures": {
-    "casing": "create:block/shadow_steel_casing",
-    "1": "create:block/shadow_steel_casing",
-    "side": "createcasing:block/shadow_encased_cogwheel_side"
-  }
-}
