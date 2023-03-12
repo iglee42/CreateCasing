@@ -26,7 +26,7 @@ public class CreateCasing {
 
     public CreateCasing() {
         REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
-        ExtendedGears.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, () -> {
+        if (CreateExtendedCogwheelsCompat.isModLoaded())ExtendedGears.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, () -> {
             if (CreateExtendedCogwheelsCompat.isModLoaded()) CreateExtendedCogwheelsCompat.register();
         });
         CreateExtendedCogwheelsCompat.REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
