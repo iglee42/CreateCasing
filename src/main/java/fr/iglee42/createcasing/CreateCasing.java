@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.RegistryEvent;
+import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -26,15 +27,17 @@ public class CreateCasing {
 
     public CreateCasing() {
         REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
-        if (CreateExtendedCogwheelsCompat.isModLoaded())ExtendedGears.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, () -> {
-            if (CreateExtendedCogwheelsCompat.isModLoaded()) CreateExtendedCogwheelsCompat.register();
+        if (ModList.get().isLoaded("extendedgears"))ExtendedGears.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, () -> {
+            if (CreateExtendedCogwheelsCompat.isModLoaded()){
+                CreateExtendedCogwheelsCompat.REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
+                CreateExtendedCogwheelsCompat.register();
+            }
         });
-        CreateExtendedCogwheelsCompat.REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
 
         ModBlocks.register();
         ModTiles.register();
 
-        if (CreateCrystalClearCompatibility.isModLoaded()) CreateCrystalClearCompatibility.register();
+        if (ModList.get().isLoaded("create_crystal_clear")) CreateCrystalClearCompatibility.register();
 
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
@@ -47,6 +50,10 @@ public class CreateCasing {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
+    }
+
+    public static boolean isCrystalClearLoaded(){
+        return ModList.get().isLoaded("create_crystal_clear");
     }
 
 

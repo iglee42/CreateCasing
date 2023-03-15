@@ -57,7 +57,7 @@ public class CreateExtendedCogwheelsCompat {
                         .transform(axeOrPickaxe())
                         .register();
             });
-           /*if (CreateCrystalClearCompatibility.isModLoaded()) {
+           /*if (CreateCasing.isCrystalClearLoaded()) {
                 Create_Crystal_Clear.registrate().getAll(Registry.BLOCK_REGISTRY).stream().filter(b -> b != null && b.get() instanceof GlassCasing).forEach(b -> {
                     BlockEntry<? extends Block> block = ((BlockEntry<?>) b);
                     REGISTRATE.block(b.getId().getPath().replace("_casing", "") + "_" + (cog.isLargeCog() ? "large_" : "") + name + "_encased_cogwheel", p -> new CustomGlassCogwheelCompat(cog.isLargeCog(), p, (BlockEntry<GlassCasing>) block, cog))

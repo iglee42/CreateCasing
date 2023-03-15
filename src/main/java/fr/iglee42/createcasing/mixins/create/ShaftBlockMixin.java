@@ -4,6 +4,7 @@ import com.cyvack.create_crystal_clear.blocks.glass_encased_shaft.GlassEncasedSh
 import com.simibubi.create.content.contraptions.base.KineticTileEntity;
 import com.simibubi.create.content.contraptions.relays.elementary.ShaftBlock;
 import com.simibubi.create.content.contraptions.relays.encased.EncasedShaftBlock;
+import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.compatibility.createcrystalclear.CreateCrystalClearCompatibility;
 import fr.iglee42.createcasing.compatibility.createcrystalclear.GlassEncasedShaftBlockCompat;
 import net.minecraft.core.BlockPos;
@@ -25,7 +26,7 @@ import java.util.List;
 
 import static com.simibubi.create.content.contraptions.base.RotatedPillarKineticBlock.AXIS;
 
-@Mixin(value = ShaftBlock.class,priority = 2000,remap = false)
+@Mixin(value = ShaftBlock.class,priority = 2000)
 public class ShaftBlockMixin {
 
     /**
@@ -46,22 +47,9 @@ public class ShaftBlockMixin {
                         KineticTileEntity.switchToBlockState(world, pos, s.defaultBlockState().setValue(AXIS, state.getValue(AXIS)));
                         cir.setReturnValue(InteractionResult.SUCCESS);
                     });
-            List<GlassEncasedShaftBlock> glassShafts = new ArrayList<>(){
-                {
-                    if (CreateCrystalClearCompatibility.isModLoaded()) {
-                        add(CreateCrystalClearCompatibility.COPPER_GLASS_ENCASED_SHAFT.get());
-                        add(CreateCrystalClearCompatibility.COPPER_CLEAR_GLASS_ENCASED_SHAFT.get());
-                    }
-                }
-            };
-            glassShafts.stream().filter(s->s.getCasing().isIn(heldItem))
-                    .findFirst().ifPresent(s->{
-                        if (world.isClientSide) {
-                            cir.setReturnValue(InteractionResult.SUCCESS);
-                        }
-                        KineticTileEntity.switchToBlockState(world, pos, s.defaultBlockState().setValue(AXIS, state.getValue(AXIS)));
-                        cir.setReturnValue(InteractionResult.SUCCESS);
-                    });
+            if (CreateCasing.isCrystalClearLoaded()) {
+                if (CreateCrystalClearCompatibility.checkShaft(world,heldItem,pos,state)) cir.setReturnValue(InteractionResult.SUCCESS);
+            }
         }
     }
 
