@@ -8,8 +8,10 @@ import com.simibubi.create.content.contraptions.fluids.pipes.AxisPipeBlock;
 import com.simibubi.create.content.contraptions.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.contraptions.relays.encased.EncasedShaftBlock;
 import com.simibubi.create.foundation.utility.Iterate;
+import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.ModBlocks;
 import fr.iglee42.createcasing.changeAcces.PublicEncasedPipeBlock;
+import fr.iglee42.createcasing.compatibility.createcrystalclear.CreateCrystalClearCompatibility;
 import fr.iglee42.createcasing.compatibility.createcrystalclear.GlassEncasedPipeBlockCompat;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -35,7 +37,7 @@ import java.util.List;
 
 import static com.simibubi.create.content.contraptions.base.RotatedPillarKineticBlock.AXIS;
 
-@Mixin(value = AxisPipeBlock.class,remap = false)
+@Mixin(value = AxisPipeBlock.class)
 public abstract class AxisPipeBlockMixin {
     
     @Shadow
@@ -68,25 +70,10 @@ public abstract class AxisPipeBlockMixin {
                         FluidTransportBehaviour.loadFlows(world, pos);
                         cir.setReturnValue(InteractionResult.SUCCESS);
                     });
-        List<GlassEncasedPipeBlockCompat> glassPipes = new ArrayList<>();
-        ForgeRegistries.BLOCKS.getKeys().stream().filter(r -> ForgeRegistries.BLOCKS.getValue(r) instanceof GlassEncasedPipeBlockCompat).forEach(r -> glassPipes.add((GlassEncasedPipeBlockCompat) ForgeRegistries.BLOCKS.getValue(r)));
-        glassPipes.stream().filter(p->p.getCasing().isIn(heldItem))
-                .findFirst().ifPresent(s->{
-                    if (world.isClientSide) {
-                        cir.setReturnValue(InteractionResult.SUCCESS);
-                    }
-                    BlockState newState = s.defaultBlockState();
-                    Direction[] var8 = Iterate.directionsInAxis(this.getAxis(state));
-
-                    for (Direction d : var8) {
-                        newState = newState.setValue(EncasedPipeBlock.FACING_TO_PROPERTY_MAP.get(d), true);
-                    }
-
-                    FluidTransportBehaviour.cacheFlows(world, pos);
-                    world.setBlockAndUpdate(pos, newState);
-                    FluidTransportBehaviour.loadFlows(world, pos);
-                    cir.setReturnValue(InteractionResult.SUCCESS);
-                });
+        if (CreateCasing.isCrystalClearLoaded()) {
+            if (CreateCrystalClearCompatibility.checkAxisPipes(world, pos, heldItem, this.getAxis(state)))
+                cir.setReturnValue(InteractionResult.SUCCESS);
+        }
     }
 
 

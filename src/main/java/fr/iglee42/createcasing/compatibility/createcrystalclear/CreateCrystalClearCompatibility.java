@@ -7,7 +7,9 @@ import com.cyvack.create_crystal_clear.blocks.glass_encased_cogwheel.GlassEncase
 import com.cyvack.create_crystal_clear.blocks.glass_encased_shaft.GlassEncasedShaftBlock;
 import com.cyvack.create_crystal_clear.data_gen.BlockBuilders;
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.content.contraptions.base.IRotate;
 import com.simibubi.create.content.contraptions.base.KineticTileEntity;
+import com.simibubi.create.content.contraptions.fluids.FluidTransportBehaviour;
 import com.simibubi.create.content.contraptions.fluids.PipeAttachmentModel;
 import com.simibubi.create.content.contraptions.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.contraptions.fluids.pipes.FluidPipeTileEntity;
@@ -16,19 +18,32 @@ import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.data.BlockStateGen;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.utility.Couple;
+import com.simibubi.create.foundation.utility.Iterate;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import fr.iglee42.createcasing.changeAcces.PublicSimpleKinecticTileEntity;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.registries.ForgeRegistries;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 import static com.cyvack.create_crystal_clear.data_gen.BlockBuilders.glassEncasedShaftBuilder;
+import static com.simibubi.create.content.contraptions.base.RotatedPillarKineticBlock.AXIS;
 import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
 import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
+import static fr.iglee42.createcasing.CreateCasing.isCrystalClearLoaded;
 
 
 public class CreateCrystalClearCompatibility {
@@ -118,6 +133,111 @@ public class CreateCrystalClearCompatibility {
                         .transform(BlockBuilders.glassencasedLargeCogwheel(casingType, clear,
                                 () -> ModSpriteShifts.omni(name+"_glass_casing")))
                         .register();
+    }
+    public static boolean checkCogs(boolean isLarge,Level world,ItemStack heldItem,BlockPos pos, BlockState state){
+        AtomicBoolean out = new AtomicBoolean(false);
+        if (ModList.get().isLoaded("create_crystal_clear")){
+            List<GlassEncasedCogwheel> glassCogs = new ArrayList<>(){
+                {
+                    if (isLarge) {
+                        add(CreateCrystalClearCompatibility.COPPER_GLASS_ENCASED_LARGE_COGWHEEL.get());
+                        add(CreateCrystalClearCompatibility.COPPER_CLEAR_GLASS_ENCASED_LARGE_COGWHEEL.get());
+                    } else {
+                        add(CreateCrystalClearCompatibility.COPPER_GLASS_ENCASED_COGWHEEL.get());
+                        add(CreateCrystalClearCompatibility.COPPER_CLEAR_GLASS_ENCASED_COGWHEEL.get());
+                    }
+                }
+            };
+            glassCogs.stream().filter(s->s.getCasing().isIn(heldItem))
+                    .findFirst().ifPresent(s->{
+                        if (!world.isClientSide) {
+                            BlockState encasedState = s.defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+                            Direction[] var14 = Iterate.directionsInAxis(state.getValue(AXIS));
+
+                            for (Direction d : var14) {
+                                BlockState adjacentState = world.getBlockState(pos.relative(d,1));
+                                if (adjacentState.getBlock() instanceof IRotate) {
+                                    IRotate def = (IRotate) adjacentState.getBlock();
+                                    if (def.hasShaftTowards(world, pos.relative(d,1), adjacentState, d.getOpposite())) {
+                                        encasedState = encasedState.cycle(d.getAxisDirection() == Direction.AxisDirection.POSITIVE ? EncasedCogwheelBlock.TOP_SHAFT : EncasedCogwheelBlock.BOTTOM_SHAFT);
+                                    }
+                                }
+                            }
+
+                            KineticTileEntity.switchToBlockState(world, pos, encasedState);
+                        }
+                        out.set(true);
+                    });
+        }
+        return out.get();
+    }
+
+    public static boolean checkAxisPipes(Level world, BlockPos pos, ItemStack heldItem, Direction.Axis axis) {
+        AtomicBoolean out = new AtomicBoolean(false);
+        if (isCrystalClearLoaded()) {
+            List<GlassEncasedPipeBlockCompat> glassPipes = new ArrayList<>();
+            ForgeRegistries.BLOCKS.getKeys().stream().filter(r -> ForgeRegistries.BLOCKS.getValue(r) instanceof GlassEncasedPipeBlockCompat).forEach(r -> glassPipes.add((GlassEncasedPipeBlockCompat) ForgeRegistries.BLOCKS.getValue(r)));
+            glassPipes.stream().filter(p -> p.getCasing().isIn(heldItem))
+                    .findFirst().ifPresent(s -> {
+                        if (!world.isClientSide) {
+                            BlockState newState = s.defaultBlockState();
+                            Direction[] var8 = Iterate.directionsInAxis(axis);
+
+                            for (Direction d : var8) {
+                                newState = newState.setValue(EncasedPipeBlock.FACING_TO_PROPERTY_MAP.get(d), true);
+                            }
+
+                            FluidTransportBehaviour.cacheFlows(world, pos);
+                            world.setBlockAndUpdate(pos, newState);
+                            FluidTransportBehaviour.loadFlows(world, pos);
+                        }
+
+                        out.set(true);
+                    });
+        }
+        return out.get();
+    }
+
+    public static boolean checkPipes(Level world,ItemStack heldItem,BlockPos pos, BlockState state) {
+        AtomicBoolean out = new AtomicBoolean(false);
+        if (isCrystalClearLoaded()){
+            List<GlassEncasedPipeBlockCompat> glassPipes = new ArrayList<>();
+            ForgeRegistries.BLOCKS.getKeys().stream().filter(r -> ForgeRegistries.BLOCKS.getValue(r) instanceof GlassEncasedPipeBlockCompat).forEach(r -> glassPipes.add((GlassEncasedPipeBlockCompat) ForgeRegistries.BLOCKS.getValue(r)));
+            glassPipes.stream().filter(p->p.getCasing().isIn(heldItem))
+                    .findFirst().ifPresent(s->{
+                        if (!world.isClientSide) {
+                            FluidTransportBehaviour.cacheFlows(world, pos);
+                            world.setBlockAndUpdate(pos, EncasedPipeBlock.transferSixWayProperties(state, s.defaultBlockState()));
+                            FluidTransportBehaviour.loadFlows(world, pos);
+                        }
+
+                        out.set(true);
+                    });
+        }
+        return out.get();
+    }
+
+
+    public static boolean checkShaft(Level world, ItemStack heldItem, BlockPos pos, BlockState state) {
+        AtomicBoolean out = new AtomicBoolean(false);
+        if (isCrystalClearLoaded()){
+            List<GlassEncasedShaftBlock> glassShafts = new ArrayList<>(){
+                {
+                    if (isCrystalClearLoaded()) {
+                        add(CreateCrystalClearCompatibility.COPPER_GLASS_ENCASED_SHAFT.get());
+                        add(CreateCrystalClearCompatibility.COPPER_CLEAR_GLASS_ENCASED_SHAFT.get());
+                    }
+                }
+            };
+            glassShafts.stream().filter(s->s.getCasing().isIn(heldItem))
+                    .findFirst().ifPresent(s->{
+                        if (!world.isClientSide) {
+                            KineticTileEntity.switchToBlockState(world, pos, s.defaultBlockState().setValue(AXIS, state.getValue(AXIS)));
+                        }
+                        out.set(true);
+                    });
+        }
+        return out.get();
     }
 
 

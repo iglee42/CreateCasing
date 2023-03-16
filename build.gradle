@@ -17,7 +17,7 @@ apply plugin: 'org.spongepowered.mixin'
 
 group = 'fr.iglee42'
 
-version = '1.19.2-1.1'
+version = '1.19.2-1.1.1'
 
 java {
     archivesBaseName = 'CreateCasing'
@@ -64,6 +64,9 @@ minecraft {
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
             property 'forge.enabledGameTestNamespaces', 'CreateCasing'
 
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
             mods {
                 createcasing {
                     source sourceSets.main
@@ -79,6 +82,9 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             property 'forge.enabledGameTestNamespaces', 'CreateCasing'
+
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             mods {
                 createcasing {
@@ -99,6 +105,9 @@ minecraft {
 
             property 'forge.enabledGameTestNamespaces', 'CreateCasing'
 
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+
             mods {
                 createcasing {
                     source sourceSets.main
@@ -112,6 +121,9 @@ minecraft {
             property 'forge.logging.markers', 'REGISTRIES'
 
             property 'forge.logging.console.level', 'debug'
+
+            property 'mixin.env.remapRefMap', 'true'
+            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             args '--mod', 'createcasing', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
@@ -162,12 +174,14 @@ dependencies {
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
     minecraft 'net.minecraftforge:forge:1.19.2-43.2.4'
 
-    compileOnly fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
+    implementation fg.deobf("com.simibubi.create:create-${mc_version}:${create_version}:slim") { transitive = false }
+    implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${mc_version}:${flywheel_version}")
+    implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
 
-    implementation fg.deobf("curse.maven:create-328085:4371809")
-    implementation fg.deobf("curse.maven:flywheel-486392:4341471")
-    implementation fg.deobf("curse.maven:create-crystal-clear-669724:4226036")
-    implementation fg.deobf("curse.maven:create-extended-cogs-739973:4303812")
+    //implementation fg.deobf("curse.maven:create-328085:4371809")
+    //implementation fg.deobf("curse.maven:flywheel-486392:4341471")
+    compileOnly fg.deobf("curse.maven:create-crystal-clear-669724:4226036")
+    compileOnly fg.deobf("curse.maven:create-extended-cogs-739973:4303812")
     runtimeOnly fg.deobf("curse.maven:jei-238222:4405346")
 
     // Real mod deobf dependency examples - these get remapped to your current mappings

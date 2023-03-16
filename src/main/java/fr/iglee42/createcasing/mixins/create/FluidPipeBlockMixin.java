@@ -3,7 +3,9 @@ package fr.iglee42.createcasing.mixins.create;
 import com.simibubi.create.content.contraptions.fluids.FluidTransportBehaviour;
 import com.simibubi.create.content.contraptions.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.contraptions.fluids.pipes.FluidPipeBlock;
+import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.changeAcces.PublicEncasedPipeBlock;
+import fr.iglee42.createcasing.compatibility.createcrystalclear.CreateCrystalClearCompatibility;
 import fr.iglee42.createcasing.compatibility.createcrystalclear.GlassEncasedPipeBlockCompat;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
@@ -22,7 +24,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import java.util.ArrayList;
 import java.util.List;
 
-@Mixin(FluidPipeBlock.class)
+@Mixin(value = FluidPipeBlock.class)
 public class FluidPipeBlockMixin {
 
 
@@ -46,18 +48,10 @@ public class FluidPipeBlockMixin {
                     FluidTransportBehaviour.loadFlows(world, pos);
                     cir.setReturnValue(InteractionResult.SUCCESS);
                 });
-        List<GlassEncasedPipeBlockCompat> glassPipes = new ArrayList<>();
-        ForgeRegistries.BLOCKS.getKeys().stream().filter(r -> ForgeRegistries.BLOCKS.getValue(r) instanceof GlassEncasedPipeBlockCompat).forEach(r -> glassPipes.add((GlassEncasedPipeBlockCompat) ForgeRegistries.BLOCKS.getValue(r)));
-        glassPipes.stream().filter(p->p.getCasing().isIn(heldItem))
-                .findFirst().ifPresent(s->{
-                    if (world.isClientSide) {
-                        cir.setReturnValue(InteractionResult.SUCCESS);
-                    }
-                    FluidTransportBehaviour.cacheFlows(world, pos);
-                    world.setBlockAndUpdate(pos, EncasedPipeBlock.transferSixWayProperties(state, s.defaultBlockState()));
-                    FluidTransportBehaviour.loadFlows(world, pos);
-                    cir.setReturnValue(InteractionResult.SUCCESS);
-                });
+        if (CreateCasing.isCrystalClearLoaded()) {
+            if (CreateCrystalClearCompatibility.checkPipes(world, heldItem, pos, state))
+                cir.setReturnValue(InteractionResult.SUCCESS);
+        }
     }
 
 }

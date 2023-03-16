@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(targets = "com.simibubi.create.content.contraptions.fluids.pipes.FluidPipeTileEntity$StandardPipeFluidTransportBehaviour", remap = false)
+@Mixin(targets = "com.simibubi.create.content.contraptions.fluids.pipes.FluidPipeTileEntity$StandardPipeFluidTransportBehaviour",remap = false)
 public class StandardPipeFluidTransportBehaviourMixin extends FluidTransportBehaviour{
 
     public StandardPipeFluidTransportBehaviourMixin(SmartTileEntity te) {
