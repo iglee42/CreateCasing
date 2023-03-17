@@ -27,6 +27,8 @@ If applicable, add screenshots to help explain your problem.
  - OS: [e.g. Windows]
  - Minecraft Version [e.g. 1.19.2]
  - Forge Version [e.g. 40.2.1]
+ - Create Version [e.g. 0.5.0.i]
+ - Flywheel Version [e.g. 0.6.8.a]
  - Mod Version [e.g. 1.0]
  - Other Mods
 
