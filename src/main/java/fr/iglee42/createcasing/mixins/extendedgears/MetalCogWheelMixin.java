@@ -5,6 +5,8 @@ import com.simibubi.create.content.contraptions.base.IRotate;
 import com.simibubi.create.content.contraptions.base.KineticTileEntity;
 import com.simibubi.create.content.contraptions.relays.encased.EncasedCogwheelBlock;
 import com.simibubi.create.foundation.utility.Iterate;
+import fr.iglee42.createcasing.CreateCasing;
+import fr.iglee42.createcasing.compatibility.createcrystalclear.CreateCrystalClearCompatibility;
 import fr.iglee42.createcasing.compatibility.createextendedcogs.CustomCogwheelCompat;
 import fr.iglee42.createcasing.compatibility.createextendedcogs.CustomGlassCogwheelCompat;
 import net.minecraft.core.BlockPos;
@@ -57,29 +59,31 @@ public class MetalCogWheelMixin {
                 KineticTileEntity.switchToBlockState(world, pos, encasedState);
                 cir.setReturnValue(InteractionResult.SUCCESS);
             });
-            List<CustomGlassCogwheelCompat> glassCogs = new ArrayList<>();
-            ForgeRegistries.BLOCKS.getKeys().stream().filter(r -> ForgeRegistries.BLOCKS.getValue(r) instanceof CustomGlassCogwheelCompat).forEach(r -> glassCogs.add((CustomGlassCogwheelCompat) ForgeRegistries.BLOCKS.getValue(r)));
-            glassCogs.stream().filter(c->c.getCogwheel() == state.getBlock() && ((MetalCogWheel)state.getBlock()).isLargeCog() == c.isLargeCog() && c.getCasing().isIn(heldItem)).findFirst().ifPresent(encasedCog->{
-                if (world.isClientSide) {
-                    cir.setReturnValue(InteractionResult.SUCCESS);
-                }
+            if (CreateCasing.isCrystalClearLoaded()){
+                //if (CreateCrystalClearCompatibility.checkCustomCogs()) cir.setReturnValue(InteractionResult.SUCCESS);
+                /*List<CustomGlassCogwheelCompat> glassCogs = new ArrayList<>();
+                ForgeRegistries.BLOCKS.getKeys().stream().filter(r -> ForgeRegistries.BLOCKS.getValue(r) instanceof CustomGlassCogwheelCompat).forEach(r -> glassCogs.add((CustomGlassCogwheelCompat) ForgeRegistries.BLOCKS.getValue(r)));
+                glassCogs.stream().filter(c->c.getCogwheel() == state.getBlock() && ((MetalCogWheel)state.getBlock()).isLargeCog() == c.isLargeCog() && c.getCasing().isIn(heldItem)).findFirst().ifPresent(encasedCog->{
+                    if (world.isClientSide) {
+                        cir.setReturnValue(InteractionResult.SUCCESS);
+                    }
 
-                BlockState encasedState = encasedCog.defaultBlockState().setValue(AXIS, state.getValue(AXIS));
-                Direction[] var14 = Iterate.directionsInAxis(state.getValue(AXIS));
+                    BlockState encasedState = encasedCog.defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+                    Direction[] var14 = Iterate.directionsInAxis(state.getValue(AXIS));
 
-                for (Direction d : var14) {
-                    BlockState adjacentState = world.getBlockState(pos.relative(d));
-                    if (adjacentState.getBlock() instanceof IRotate) {
-                        IRotate def = (IRotate) adjacentState.getBlock();
-                        if (def.hasShaftTowards(world, pos.relative(d), adjacentState, d.getOpposite())) {
-                            encasedState = encasedState.cycle(d.getAxisDirection() == Direction.AxisDirection.POSITIVE ? EncasedCogwheelBlock.TOP_SHAFT : EncasedCogwheelBlock.BOTTOM_SHAFT);
+                    for (Direction d : var14) {
+                        BlockState adjacentState = world.getBlockState(pos.relative(d));
+                        if (adjacentState.getBlock() instanceof IRotate) {
+                            IRotate def = (IRotate) adjacentState.getBlock();
+                            if (def.hasShaftTowards(world, pos.relative(d), adjacentState, d.getOpposite())) {
+                                encasedState = encasedState.cycle(d.getAxisDirection() == Direction.AxisDirection.POSITIVE ? EncasedCogwheelBlock.TOP_SHAFT : EncasedCogwheelBlock.BOTTOM_SHAFT);
+                            }
                         }
                     }
-                }
 
-                KineticTileEntity.switchToBlockState(world, pos, encasedState);
-                cir.setReturnValue(InteractionResult.SUCCESS);
-            });
+                    KineticTileEntity.switchToBlockState(world, pos, encasedState);
+                    cir.setReturnValue(InteractionResult.SUCCESS);*/
+            }
         }
     }
 }
