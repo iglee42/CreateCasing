@@ -5,6 +5,8 @@ import com.simibubi.create.content.contraptions.base.IRotate;
 import com.simibubi.create.content.contraptions.base.KineticTileEntity;
 import com.simibubi.create.content.contraptions.relays.encased.EncasedCogwheelBlock;
 import com.simibubi.create.foundation.utility.Iterate;
+import fr.iglee42.createcasing.CreateCasing;
+import fr.iglee42.createcasing.compatibility.createcrystalclear.CreateCrystalClearCompatibility;
 import fr.iglee42.createcasing.compatibility.createextendedcogs.CustomCogwheelCompat;
 import fr.iglee42.createcasing.compatibility.createextendedcogs.CustomGlassCogwheelCompat;
 import net.minecraft.core.BlockPos;
@@ -57,7 +59,10 @@ public class MetalCogWheelMixin {
                 KineticTileEntity.switchToBlockState(world, pos, encasedState);
                 cir.setReturnValue(InteractionResult.SUCCESS);
             });
-            List<CustomGlassCogwheelCompat> glassCogs = new ArrayList<>();
+            if (CreateCasing.isCrystalClearLoaded()){
+                //if (CreateCrystalClearCompatibility.checkCustomCogs()) cir.setReturnValue(InteractionResult.SUCCESS);
+            }
+            /*List<CustomGlassCogwheelCompat> glassCogs = new ArrayList<>();
             ForgeRegistries.BLOCKS.getKeys().stream().filter(r -> ForgeRegistries.BLOCKS.getValue(r) instanceof CustomGlassCogwheelCompat).forEach(r -> glassCogs.add((CustomGlassCogwheelCompat) ForgeRegistries.BLOCKS.getValue(r)));
             glassCogs.stream().filter(c->c.getCogwheel() == state.getBlock() && ((MetalCogWheel)state.getBlock()).isLargeCog() == c.isLargeCog() && c.getCasing().isIn(heldItem)).findFirst().ifPresent(encasedCog->{
                 if (world.isClientSide) {
@@ -79,7 +84,7 @@ public class MetalCogWheelMixin {
 
                 KineticTileEntity.switchToBlockState(world, pos, encasedState);
                 cir.setReturnValue(InteractionResult.SUCCESS);
-            });
+            });*/
         }
     }
 }
