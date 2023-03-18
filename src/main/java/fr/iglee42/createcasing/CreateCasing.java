@@ -25,12 +25,14 @@ public class CreateCasing {
 
     public CreateCasing() {
         REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
-        if (ModList.get().isLoaded("extendedgears"))ExtendedGears.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, () -> {
-            if (CreateExtendedCogwheelsCompat.isModLoaded()){
-                CreateExtendedCogwheelsCompat.REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
-                CreateExtendedCogwheelsCompat.register();
-            }
-        });
+        if (ModList.get().isLoaded("extendedgears")) {
+            CreateExtendedCogwheelsCompat.REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
+            ExtendedGears.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, () -> {
+                if (ModList.get().isLoaded("extendedgears")) {
+                    CreateExtendedCogwheelsCompat.register();
+                }
+            });
+        }
 
         ModBlocks.register();
         ModTiles.register();
