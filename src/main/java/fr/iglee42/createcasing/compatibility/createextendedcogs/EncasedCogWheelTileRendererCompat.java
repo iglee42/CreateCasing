@@ -3,7 +3,6 @@ package fr.iglee42.createcasing.compatibility.createextendedcogs;
 import com.jozufozu.flywheel.backend.Backend;
 import com.jozufozu.flywheel.core.PartialModel;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.rabbitminers.extendedgears.basecog.ICustomCogWheel;
 import com.simibubi.create.AllBlockPartials;
 import com.simibubi.create.content.contraptions.base.IRotate;
 import com.simibubi.create.content.contraptions.base.KineticTileEntity;
@@ -53,7 +52,7 @@ public class EncasedCogWheelTileRendererCompat extends KineticTileEntityRenderer
 
     @Override
     protected SuperByteBuffer getRotatedModel(KineticTileEntity te, BlockState state) {
-        PartialModel model = ICustomCogWheel.getPartialModelType(te.getBlockState());
+        PartialModel model = ((CustomCogwheelCompat)state.getBlock()).getPartialModelType();
         return CachedBufferer.partialFacingVertical(model == null ? AllBlockPartials.SHAFTLESS_COGWHEEL : model, state, Direction.fromAxisAndDirection((Direction.Axis)state.getValue(EncasedCogwheelBlock.AXIS), AxisDirection.POSITIVE));
     }
 }

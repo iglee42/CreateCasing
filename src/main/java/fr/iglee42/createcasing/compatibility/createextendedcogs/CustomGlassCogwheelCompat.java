@@ -2,12 +2,11 @@ package fr.iglee42.createcasing.compatibility.createextendedcogs;
 
 import com.cyvack.create_crystal_clear.blocks.glass_casings.GlassCasing;
 import com.jozufozu.flywheel.core.PartialModel;
-import com.rabbitminers.extendedgears.basecog.ICustomCogWheel;
-import com.rabbitminers.extendedgears.basecog.MetalCogWheel;
-import com.simibubi.create.content.contraptions.base.CasingBlock;
+import com.rabbitminers.extendedgears.base.data.ICogwheelMaterial;
+import com.rabbitminers.extendedgears.cogwheels.CustomCogwheelBlock;
+import com.rabbitminers.extendedgears.cogwheels.ICustomCogwheel;
 import com.simibubi.create.content.contraptions.base.KineticTileEntity;
 import com.simibubi.create.content.contraptions.relays.elementary.SimpleKineticTileEntity;
-import com.simibubi.create.content.contraptions.relays.encased.EncasedCogwheelBlock;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import fr.iglee42.createcasing.compatibility.createcrystalclear.GlassEncasedCogwheelBlockCompat;
 import net.minecraft.core.Direction;
@@ -17,13 +16,18 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class CustomGlassCogwheelCompat extends GlassEncasedCogwheelBlockCompat implements ICustomCogWheel {
+public class CustomGlassCogwheelCompat extends GlassEncasedCogwheelBlockCompat implements ICustomCogwheel {
 
-    private final MetalCogWheel cogwheel;
+    private final CustomCogwheelBlock cogwheel;
 
-    public CustomGlassCogwheelCompat(boolean large, Properties properties, BlockEntry<GlassCasing> casing, MetalCogWheel cogwheel) {
+    public CustomGlassCogwheelCompat(boolean large, Properties properties, BlockEntry<GlassCasing> casing, CustomCogwheelBlock cogwheel) {
         super(large, properties, casing);
         this.cogwheel = cogwheel;
+    }
+
+    @Override
+    public ICogwheelMaterial getMaterial() {
+        return cogwheel.getMaterial();
     }
 
     @Override
@@ -44,7 +48,7 @@ public class CustomGlassCogwheelCompat extends GlassEncasedCogwheelBlockCompat i
         return InteractionResult.SUCCESS;
     }
 
-    public MetalCogWheel getCogwheel() {
+    public CustomCogwheelBlock getCogwheel() {
         return cogwheel;
     }
 }

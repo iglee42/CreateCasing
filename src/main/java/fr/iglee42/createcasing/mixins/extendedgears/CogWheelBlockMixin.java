@@ -1,14 +1,12 @@
 package fr.iglee42.createcasing.mixins.extendedgears;
 
-import com.rabbitminers.extendedgears.basecog.MetalCogWheel;
 import com.simibubi.create.content.contraptions.base.IRotate;
 import com.simibubi.create.content.contraptions.base.KineticTileEntity;
+import com.simibubi.create.content.contraptions.relays.elementary.CogWheelBlock;
 import com.simibubi.create.content.contraptions.relays.encased.EncasedCogwheelBlock;
 import com.simibubi.create.foundation.utility.Iterate;
 import fr.iglee42.createcasing.CreateCasing;
-import fr.iglee42.createcasing.compatibility.createcrystalclear.CreateCrystalClearCompatibility;
 import fr.iglee42.createcasing.compatibility.createextendedcogs.CustomCogwheelCompat;
-import fr.iglee42.createcasing.compatibility.createextendedcogs.CustomGlassCogwheelCompat;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -29,16 +27,16 @@ import java.util.List;
 
 import static com.simibubi.create.content.contraptions.base.RotatedPillarKineticBlock.AXIS;
 
-@Mixin(MetalCogWheel.class)
-public class MetalCogWheelMixin {
+@Mixin(CogWheelBlock.class)
+public class CogWheelBlockMixin {
 
     @Inject(method = "use",at = @At("HEAD"),cancellable = true)
     private void use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult ray, CallbackInfoReturnable<InteractionResult> cir) {
-        if (!player.isShiftKeyDown() && player.mayBuild()) {
+        if (!player.isShiftKeyDown() && player.mayBuild() && CreateCasing.isExtendedCogsLoaded()) {
             ItemStack heldItem = player.getItemInHand(hand);
             List<CustomCogwheelCompat> cogs = new ArrayList<>();
             ForgeRegistries.BLOCKS.getKeys().stream().filter(r -> ForgeRegistries.BLOCKS.getValue(r) instanceof CustomCogwheelCompat).forEach(r -> cogs.add((CustomCogwheelCompat) ForgeRegistries.BLOCKS.getValue(r)));
-            cogs.stream().filter(c->c.getCogwheel() == state.getBlock() && ((MetalCogWheel)state.getBlock()).isLargeCog() == c.isLargeCog() && c.getCasing().isIn(heldItem)).findFirst().ifPresent(encasedCog->{
+            cogs.stream().filter(c->(c.getCogwheel() == state.getBlock() || c.getHalfCog() == state.getBlock() || c.getShaftlessCog() == state.getBlock()) && ((CogWheelBlock)state.getBlock()).isLargeCog() == c.isLargeCog() && c.getCasing().isIn(heldItem)).findFirst().ifPresent(encasedCog->{
                 if (world.isClientSide) {
                     cir.setReturnValue(InteractionResult.SUCCESS);
                 }

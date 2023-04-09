@@ -13,19 +13,19 @@ import com.jozufozu.flywheel.core.materials.FlatLit;
 import com.jozufozu.flywheel.util.transform.TransformStack;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.rabbitminers.extendedgears.basecog.ICustomCogWheel;
 import com.simibubi.create.AllBlockPartials;
 import com.simibubi.create.content.contraptions.base.IRotate;
 import com.simibubi.create.content.contraptions.base.KineticTileEntity;
 import com.simibubi.create.content.contraptions.base.KineticTileInstance;
 import com.simibubi.create.content.contraptions.base.flwdata.RotatingData;
 import com.simibubi.create.foundation.utility.Iterate;
-import java.util.Optional;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.AxisDirection;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+
+import java.util.Optional;
 
 public class EncasedCogWheelTileInstanceCompat extends KineticTileInstance<KineticTileEntity> {
     protected RotatingData rotatingModel;
@@ -90,7 +90,7 @@ public class EncasedCogWheelTileInstanceCompat extends KineticTileInstance<Kinet
     protected Instancer<RotatingData> getCogModel() {
         BlockState referenceState = ((KineticTileEntity)this.blockEntity).getBlockState();
         Direction facing = Direction.fromAxisAndDirection((Direction.Axis)referenceState.getValue(BlockStateProperties.AXIS), AxisDirection.POSITIVE);
-        PartialModel partial = ICustomCogWheel.getPartialModelType(referenceState);
+        PartialModel partial = ((CustomCogwheelCompat)referenceState.getBlock()).getPartialModelType();
         if (partial == null){
             partial = AllBlockPartials.SHAFTLESS_COGWHEEL;
         }
