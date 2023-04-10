@@ -2,7 +2,6 @@ package fr.iglee42.createcasing;
 
 import com.mojang.logging.LogUtils;
 import com.rabbitminers.extendedgears.ExtendedCogwheels;
-import com.rabbitminers.extendedgears.ExtendedGears;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import fr.iglee42.createcasing.compatibility.createcrystalclear.CreateCrystalClearCompatibility;
 import fr.iglee42.createcasing.compatibility.createextendedcogs.CreateExtendedCogwheelsCompat;

@@ -30,7 +30,7 @@ import java.util.List;
 
 import static com.simibubi.create.content.contraptions.base.RotatedPillarKineticBlock.AXIS;
 
-@Mixin(value = CogWheelBlock.class,priority = 2000)
+@Mixin(value = CogWheelBlock.class,priority = 2000, remap = false)
 public abstract class CogWheelBlockMixin {
 
     @Shadow public abstract boolean isLargeCog();
