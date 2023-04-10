@@ -48,9 +48,9 @@ public abstract class CogWheelBlockMixin {
                     cir.setReturnValue(InteractionResult.SUCCESS);
             }
             List<EncasedCogwheelBlock> largesCogs = new ArrayList<>();
-            ForgeRegistries.BLOCKS.getKeys().stream().filter(r->ForgeRegistries.BLOCKS.getValue(r) instanceof EncasedCogwheelBlock ecb && ecb.isLargeCog()).forEach(r->largesCogs.add((EncasedCogwheelBlock) ForgeRegistries.BLOCKS.getValue(r)));
+            ForgeRegistries.BLOCKS.getKeys().stream().filter(r-> r.getNamespace().equals(CreateCasing.MODID) && ForgeRegistries.BLOCKS.getValue(r) instanceof EncasedCogwheelBlock ecb && ecb.isLargeCog()).forEach(r->largesCogs.add((EncasedCogwheelBlock) ForgeRegistries.BLOCKS.getValue(r)));
             List<EncasedCogwheelBlock> smallCogs = new ArrayList<>();
-            ForgeRegistries.BLOCKS.getKeys().stream().filter(r->ForgeRegistries.BLOCKS.getValue(r) instanceof EncasedCogwheelBlock ecb && ecb.isSmallCog()).forEach(r->smallCogs.add((EncasedCogwheelBlock) ForgeRegistries.BLOCKS.getValue(r)));
+            ForgeRegistries.BLOCKS.getKeys().stream().filter(r-> r.getNamespace().equals(CreateCasing.MODID) && ForgeRegistries.BLOCKS.getValue(r) instanceof EncasedCogwheelBlock ecb && ecb.isSmallCog()).forEach(r->smallCogs.add((EncasedCogwheelBlock) ForgeRegistries.BLOCKS.getValue(r)));
             if (isLargeCog()){
                 largesCogs.stream().filter(c->c.getCasing().isIn(heldItem)).findFirst().ifPresent(encasedCog->{
                     if (world.isClientSide) {

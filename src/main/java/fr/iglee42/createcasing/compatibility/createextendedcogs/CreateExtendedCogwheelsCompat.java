@@ -1,18 +1,16 @@
 package fr.iglee42.createcasing.compatibility.createextendedcogs;
 
-import com.cyvack.create_crystal_clear.Create_Crystal_Clear;
-import com.cyvack.create_crystal_clear.blocks.glass_casings.GlassCasing;
-import com.rabbitminers.extendedgears.ExtendedGears;
-import com.rabbitminers.extendedgears.basecog.MetalCogWheel;
-import com.rabbitminers.extendedgears.tileentities.CogWheelKineticTileEntity;
+import com.rabbitminers.extendedgears.ExtendedCogwheels;
+import com.rabbitminers.extendedgears.cogwheels.CustomCogwheelBlock;
+import com.rabbitminers.extendedgears.cogwheels.CustomCogwheelTileEntity;
+import com.rabbitminers.extendedgears.cogwheels.HalfShaftCogwheelBlock;
+import com.rabbitminers.extendedgears.cogwheels.ShaftlessCogwheelBlock;
 import com.simibubi.create.Create;
 import com.simibubi.create.content.contraptions.base.CasingBlock;
-import com.simibubi.create.content.contraptions.relays.encased.EncasedCogInstance;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
-import fr.iglee42.createcasing.compatibility.createcrystalclear.CreateCrystalClearCompatibility;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -34,7 +32,7 @@ public class CreateExtendedCogwheelsCompat {
 
     public static boolean isModLoaded(){return ModList.get().isLoaded("extendedgears");}
 
-    public static BlockEntityEntry<CogWheelKineticTileEntity> COGWHEEL = REGISTRATE.tileEntity("extended_cogs_tile", CogWheelKineticTileEntity::new)
+    public static BlockEntityEntry<CustomCogwheelTileEntity> COGWHEEL = REGISTRATE.tileEntity("extended_cogs_tile", CustomCogwheelTileEntity::new)
             .instance(() -> EncasedCogWheelTileInstanceCompat::new, false)
             .renderer(() -> EncasedCogWheelTileRendererCompat::new)
             .register();
@@ -46,11 +44,13 @@ public class CreateExtendedCogwheelsCompat {
 
     public static void register() {
         forCogs(r-> {
-            MetalCogWheel cog = (MetalCogWheel) ExtendedGears.registrate().get(r.getPath(),Registry.BLOCK_REGISTRY).get();
+            CustomCogwheelBlock cog = (CustomCogwheelBlock) ExtendedCogwheels.registrate().get(r.getPath(),Registry.BLOCK_REGISTRY).get();
+            HalfShaftCogwheelBlock half = (HalfShaftCogwheelBlock) ExtendedCogwheels.registrate().get((cog.isLargeCog() ? "large_" : "") +"half_shaft_"+cog.getMaterial().asId() + "_cogwheel",Registry.BLOCK_REGISTRY).get();
+            ShaftlessCogwheelBlock shaftless = (ShaftlessCogwheelBlock) ExtendedCogwheels.registrate().get((cog.isLargeCog() ? "large_" : "") +"shaftless_"+cog.getMaterial().asId() + "_cogwheel",Registry.BLOCK_REGISTRY).get();
             String name = getCogName(r.getPath().toString());
             Create.REGISTRATE.getAll(Registry.BLOCK_REGISTRY).stream().filter(b -> b.get() instanceof CasingBlock).forEach(b -> {
                 BlockEntry<? extends Block> block = ((BlockEntry<?>) b);
-                REGISTRATE.block(b.getId().getPath().replace("_casing","") + "_"  +(cog.isLargeCog() ? "large_" : "") + name+"_encased_cogwheel", p -> new CustomCogwheelCompat(cog.isLargeCog(), p, (BlockEntry<CasingBlock>) block,cog))
+                REGISTRATE.block(b.getId().getPath().replace("_casing","") + "_"  +(cog.isLargeCog() ? "large_" : "") + name+"_encased_cogwheel", p -> new CustomCogwheelCompat(cog.isLargeCog(), p, (BlockEntry<CasingBlock>) block,cog,half,shaftless))
                         .properties(p -> p.color(MaterialColor.PODZOL))
                         .properties(BlockBehaviour.Properties::noOcclusion)
                         .addLayer(()-> RenderType::cutoutMipped)
@@ -77,7 +77,7 @@ public class CreateExtendedCogwheelsCompat {
 
     private static void forCogs(Consumer<ResourceLocation> forEach) {
         List<ResourceLocation> cogwheels = new ArrayList<>();
-        ExtendedGears.registrate().getAll(Registry.BLOCK_REGISTRY).stream().filter(b->b.getId().getPath().endsWith("_cogwheel")).forEach(b-> cogwheels.add(b.getId()));
-        cogwheels.stream().filter(r->ExtendedGears.registrate().get(r.getPath(),Registry.BLOCK_REGISTRY)!= null).forEach(forEach);
+        ExtendedCogwheels.registrate().getAll(Registry.BLOCK_REGISTRY).stream().filter(b->b.getId().getPath().endsWith("_cogwheel") && !b.getId().getPath().contains("shaftless_") && !b.getId().getPath().contains("half_shaft_")).forEach(b-> cogwheels.add(b.getId()));
+        cogwheels.stream().filter(r->ExtendedCogwheels.registrate().get(r.getPath(),Registry.BLOCK_REGISTRY)!= null).forEach(forEach);
     }
 }
