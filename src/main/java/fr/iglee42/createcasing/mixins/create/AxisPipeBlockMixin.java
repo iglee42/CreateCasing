@@ -37,7 +37,7 @@ import java.util.List;
 
 import static com.simibubi.create.content.contraptions.base.RotatedPillarKineticBlock.AXIS;
 
-@Mixin(value = AxisPipeBlock.class,remap = false)
+@Mixin(value = AxisPipeBlock.class)
 public abstract class AxisPipeBlockMixin {
     
     @Shadow
