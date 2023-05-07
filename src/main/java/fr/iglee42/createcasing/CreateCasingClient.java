@@ -8,7 +8,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 public class CreateCasingClient {
 
     public static void onCtorClient(IEventBus modEventBus, IEventBus forgeEventBus) {
-        CreateExtendedCogwheelsPartials.init();
+        if (CreateCasing.isExtendedCogsLoaded())CreateExtendedCogwheelsPartials.init();
 
         forgeEventBus.addListener(CreateClient::clientInit);
 
