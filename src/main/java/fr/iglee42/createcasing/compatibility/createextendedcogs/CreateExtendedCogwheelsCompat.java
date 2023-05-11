@@ -1,5 +1,7 @@
 package fr.iglee42.createcasing.compatibility.createextendedcogs;
 
+import com.cyvack.create_crystal_clear.Create_Crystal_Clear;
+import com.cyvack.create_crystal_clear.blocks.glass_casings.GlassCasing;
 import com.rabbitminers.extendedgears.ExtendedCogwheels;
 import com.rabbitminers.extendedgears.cogwheels.CustomCogwheelBlock;
 import com.rabbitminers.extendedgears.cogwheels.CustomCogwheelTileEntity;
@@ -17,6 +19,7 @@ import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import fr.iglee42.createcasing.CreateCasing;
+import fr.iglee42.createcasing.compatibility.createcrystalclear.CreateCrystalClearCompatibility;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -70,25 +73,14 @@ public class CreateExtendedCogwheelsCompat {
                         .transform(axeOrPickaxe())
                         .register();
             });
-           /*if (CreateCasing.isCrystalClearLoaded()) {
-                Create_Crystal_Clear.registrate().getAll(Registry.BLOCK_REGISTRY).stream().filter(b -> b != null && b.get() instanceof GlassCasing).forEach(b -> {
-                    BlockEntry<? extends Block> block = ((BlockEntry<?>) b);
-                    REGISTRATE.block(b.getId().getPath().replace("_casing", "") + "_" + (cog.isLargeCog() ? "large_" : "") + name + "_encased_cogwheel", p -> new CustomGlassCogwheelCompat(cog.isLargeCog(), p, (BlockEntry<GlassCasing>) block, cog))
-                            .properties(p -> p.color(MaterialColor.PODZOL))
-                            .properties(BlockBehaviour.Properties::noOcclusion)
-                            .addLayer(() -> RenderType::cutoutMipped)
-                            .transform(axeOrPickaxe())
-                            .register();
-                });
-            }*/
         });
     }
 
-    private static String getCogName(String name) {
+    public static String getCogName(String name) {
         return name.replace("large_","").replace("_cogwheel","");
     }
 
-    private static void forCogs(Consumer<ResourceLocation> forEach) {
+    public static void forCogs(Consumer<ResourceLocation> forEach) {
         List<ResourceLocation> cogwheels = new ArrayList<>();
         ExtendedCogwheels.registrate().getAll(Registry.BLOCK_REGISTRY).stream().filter(b->b.getId().getPath().endsWith("_cogwheel") && !b.getId().getPath().contains("shaftless_") && !b.getId().getPath().contains("half_shaft_")).forEach(b-> cogwheels.add(b.getId()));
         cogwheels.stream().filter(r->ExtendedCogwheels.registrate().get(r.getPath(),Registry.BLOCK_REGISTRY)!= null).forEach(forEach);
@@ -121,29 +113,7 @@ public class CreateExtendedCogwheelsCompat {
             out.set(true);
         });
         if (CreateCasing.isCrystalClearLoaded()){
-            //if (CreateCrystalClearCompatibility.checkCustomCogs()) cir.setReturnValue(InteractionResult.SUCCESS);
-                /*List<CustomGlassCogwheelCompat> glassCogs = new ArrayList<>();
-                ForgeRegistries.BLOCKS.getKeys().stream().filter(r -> ForgeRegistries.BLOCKS.getValue(r) instanceof CustomGlassCogwheelCompat).forEach(r -> glassCogs.add((CustomGlassCogwheelCompat) ForgeRegistries.BLOCKS.getValue(r)));
-                glassCogs.stream().filter(c->c.getCogwheel() == state.getBlock() && ((MetalCogWheel)state.getBlock()).isLargeCog() == c.isLargeCog() && c.getCasing().isIn(heldItem)).findFirst().ifPresent(encasedCog->{
-                    if (world.isClientSide) {
-                        cir.setReturnValue(InteractionResult.SUCCESS);
-                    }
-
-                    BlockState encasedState = encasedCog.defaultBlockState().setValue(AXIS, state.getValue(AXIS));
-                    Direction[] var14 = Iterate.directionsInAxis(state.getValue(AXIS));
-
-                    for (Direction d : var14) {
-                        BlockState adjacentState = world.getBlockState(pos.relative(d));
-                        if (adjacentState.getBlock() instanceof IRotate) {
-                            IRotate def = (IRotate) adjacentState.getBlock();
-                            if (def.hasShaftTowards(world, pos.relative(d), adjacentState, d.getOpposite())) {
-                                encasedState = encasedState.cycle(d.getAxisDirection() == Direction.AxisDirection.POSITIVE ? EncasedCogwheelBlock.TOP_SHAFT : EncasedCogwheelBlock.BOTTOM_SHAFT);
-                            }
-                        }
-                    }
-
-                    KineticTileEntity.switchToBlockState(world, pos, encasedState);
-                    cir.setReturnValue(InteractionResult.SUCCESS);*/
+            if (CreateCrystalClearCompatibility.checkExtendedCogs(world,state,pos,heldItem)) out.set(true);
         }
         return out.get();
     }

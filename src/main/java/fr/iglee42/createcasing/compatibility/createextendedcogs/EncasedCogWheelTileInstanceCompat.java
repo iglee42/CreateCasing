@@ -13,6 +13,7 @@ import com.jozufozu.flywheel.core.materials.FlatLit;
 import com.jozufozu.flywheel.util.transform.TransformStack;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
+import com.rabbitminers.extendedgears.cogwheels.ICustomCogwheel;
 import com.simibubi.create.AllBlockPartials;
 import com.simibubi.create.content.contraptions.base.IRotate;
 import com.simibubi.create.content.contraptions.base.KineticTileEntity;
@@ -90,7 +91,7 @@ public class EncasedCogWheelTileInstanceCompat extends KineticTileInstance<Kinet
     protected Instancer<RotatingData> getCogModel() {
         BlockState referenceState = ((KineticTileEntity)this.blockEntity).getBlockState();
         Direction facing = Direction.fromAxisAndDirection((Direction.Axis)referenceState.getValue(BlockStateProperties.AXIS), AxisDirection.POSITIVE);
-        PartialModel partial = ((CustomCogwheelCompat)referenceState.getBlock()).getPartialModelType();
+        PartialModel partial = ((ICustomCogwheel)referenceState.getBlock()).getPartialModelType();
         if (partial == null){
             partial = AllBlockPartials.SHAFTLESS_COGWHEEL;
         }
