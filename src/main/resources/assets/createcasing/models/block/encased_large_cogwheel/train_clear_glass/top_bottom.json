@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/encased_large_cogwheel/block_top_bottom",
+  "textures": {
+    "casing": "create_crystal_clear:block/train_clear_glass_casing",
+    "1": "create_crystal_clear:block/train_clear_glass_casing",
+    "4": "createcasing:block/railway_gearbox",
+    "side": "createcasing:block/railway_encased_cogwheel_side_connected"
+  }
+}

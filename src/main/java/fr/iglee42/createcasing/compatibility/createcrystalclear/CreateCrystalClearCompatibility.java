@@ -1,11 +1,16 @@
 package fr.iglee42.createcasing.compatibility.createcrystalclear;
 
+import com.cyvack.create_crystal_clear.Create_Crystal_Clear;
 import com.cyvack.create_crystal_clear.blocks.ModBlocks;
 import com.cyvack.create_crystal_clear.blocks.ModSpriteShifts;
 import com.cyvack.create_crystal_clear.blocks.glass_casings.GlassCasing;
 import com.cyvack.create_crystal_clear.blocks.glass_encased_cogwheel.GlassEncasedCogwheel;
 import com.cyvack.create_crystal_clear.blocks.glass_encased_shaft.GlassEncasedShaftBlock;
 import com.cyvack.create_crystal_clear.data_gen.BlockBuilders;
+import com.rabbitminers.extendedgears.ExtendedCogwheels;
+import com.rabbitminers.extendedgears.cogwheels.CustomCogwheelBlock;
+import com.rabbitminers.extendedgears.cogwheels.HalfShaftCogwheelBlock;
+import com.rabbitminers.extendedgears.cogwheels.ShaftlessCogwheelBlock;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.contraptions.base.IRotate;
 import com.simibubi.create.content.contraptions.base.KineticTileEntity;
@@ -13,6 +18,7 @@ import com.simibubi.create.content.contraptions.fluids.FluidTransportBehaviour;
 import com.simibubi.create.content.contraptions.fluids.PipeAttachmentModel;
 import com.simibubi.create.content.contraptions.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.contraptions.fluids.pipes.FluidPipeTileEntity;
+import com.simibubi.create.content.contraptions.relays.elementary.CogWheelBlock;
 import com.simibubi.create.content.contraptions.relays.encased.*;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.data.BlockStateGen;
@@ -23,11 +29,16 @@ import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import fr.iglee42.createcasing.changeAcces.PublicSimpleKinecticTileEntity;
+import fr.iglee42.createcasing.compatibility.createextendedcogs.CreateExtendedCogwheelsCompat;
+import fr.iglee42.createcasing.compatibility.createextendedcogs.CustomCogwheelCompat;
+import fr.iglee42.createcasing.compatibility.createextendedcogs.CustomGlassCogwheelCompat;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.Registry;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -108,7 +119,8 @@ public class CreateCrystalClearCompatibility {
         return ModList.get().isLoaded("create_crystal_clear");
     }
 
-    public static void register() {}
+    public static void register() {
+    }
 
     public static BlockEntry<GlassEncasedShaftBlock> glassEncasedShaft(String casingType, Boolean clear, NonNullFunction<BlockBehaviour.Properties, GlassEncasedShaftBlock> factory) {
         String name = clear ? casingType + "_clear" : casingType;
@@ -242,6 +254,32 @@ public class CreateCrystalClearCompatibility {
 
 
 
+    public static boolean checkExtendedCogs(Level world, BlockState state, BlockPos pos, ItemStack heldItem) {
+        AtomicBoolean out = new AtomicBoolean(false);
+        List<CustomGlassCogwheelCompat> cogs = new ArrayList<>();
+        ForgeRegistries.BLOCKS.getKeys().stream().filter(r -> ForgeRegistries.BLOCKS.getValue(r) instanceof CustomGlassCogwheelCompat).forEach(r -> cogs.add((CustomGlassCogwheelCompat) ForgeRegistries.BLOCKS.getValue(r)));
+        cogs.stream().filter(c->(c.getCogwheel() == state.getBlock() || c.getHalfCog() == state.getBlock() || c.getShaftlessCog() == state.getBlock()) && ((CogWheelBlock)state.getBlock()).isLargeCog() == c.isLargeCog() && c.getCasing().isIn(heldItem)).findFirst().ifPresent(encasedCog->{
+            if (world.isClientSide) {
+                out.set(true);
+                return;
+            }
 
+            BlockState encasedState = encasedCog.defaultBlockState().setValue(AXIS, state.getValue(AXIS));
+            Direction[] var14 = Iterate.directionsInAxis(state.getValue(AXIS));
 
+            for (Direction d : var14) {
+                BlockState adjacentState = world.getBlockState(pos.relative(d,1));
+                if (adjacentState.getBlock() instanceof IRotate) {
+                    IRotate def = (IRotate) adjacentState.getBlock();
+                    if (def.hasShaftTowards(world, pos.relative(d,1), adjacentState, d.getOpposite())) {
+                        encasedState = encasedState.cycle(d.getAxisDirection() == Direction.AxisDirection.POSITIVE ? EncasedCogwheelBlock.TOP_SHAFT : EncasedCogwheelBlock.BOTTOM_SHAFT);
+                    }
+                }
+            }
+
+            KineticTileEntity.switchToBlockState(world, pos, encasedState);
+            out.set(true);
+        });
+        return out.get();
+    }
 }

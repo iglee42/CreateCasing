@@ -17,7 +17,7 @@ apply plugin: 'org.spongepowered.mixin'
 
 group = 'fr.iglee42'
 
-version = '1.19.2-1.1.2-hotfix-2'
+version = '1.19.2-1.2'
 
 java {
     archivesBaseName = 'CreateCasing'
@@ -180,8 +180,8 @@ dependencies {
 
     //implementation fg.deobf("curse.maven:create-328085:4371809")
     //implementation fg.deobf("curse.maven:flywheel-486392:4341471")
-    compileOnly fg.deobf("curse.maven:create-crystal-clear-669724:${crystal_clear_file}")
-    compileOnly fg.deobf("curse.maven:create-extended-cogs-739973:${extended_cogwheels_file}")
+    implementation fg.deobf("curse.maven:create-crystal-clear-669724:${crystal_clear_file}")
+    implementation fg.deobf("curse.maven:create-extended-cogs-739973:${extended_cogwheels_file}")
     runtimeOnly fg.deobf("curse.maven:jei-238222:${jei_file}")
 
 

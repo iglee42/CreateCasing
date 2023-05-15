@@ -1,8 +1,10 @@
 package fr.iglee42.createcasing;
 
+import com.cyvack.create_crystal_clear.Create_Crystal_Clear;
 import com.mojang.logging.LogUtils;
 import com.rabbitminers.extendedgears.ExtendedCogwheels;
 import com.simibubi.create.foundation.data.CreateRegistrate;
+import fr.iglee42.createcasing.compatibility.CreateCrystalExtendedCompat;
 import fr.iglee42.createcasing.compatibility.createcrystalclear.CreateCrystalClearCompatibility;
 import fr.iglee42.createcasing.compatibility.createextendedcogs.CreateExtendedCogwheelsCompat;
 import net.minecraft.core.Registry;
@@ -34,6 +36,7 @@ public class CreateCasing {
         if (isExtendedCogsLoaded())CreateExtendedCogwheelsCompat.REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
 
         if (isExtendedCogsLoaded()) ExtendedCogwheels.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, CreateExtendedCogwheelsCompat::register);
+        if (isCrystalClearLoaded() && isExtendedCogsLoaded()) Create_Crystal_Clear.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, CreateCrystalExtendedCompat::registerCogs);
 
         ModBlocks.register();
         ModTiles.register();
