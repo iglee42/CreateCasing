@@ -7,6 +7,8 @@ import com.rabbitminers.extendedgears.ExtendedCogwheels;
 import com.rabbitminers.extendedgears.cogwheels.CustomCogwheelBlock;
 import com.rabbitminers.extendedgears.cogwheels.HalfShaftCogwheelBlock;
 import com.rabbitminers.extendedgears.cogwheels.ShaftlessCogwheelBlock;
+import com.simibubi.create.AllBlocks;
+import com.simibubi.create.Create;
 import com.simibubi.create.CreateClient;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -17,6 +19,8 @@ import fr.iglee42.createcasing.compatibility.createextendedcogs.CustomGlassCogwh
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MaterialColor;
@@ -40,6 +44,10 @@ public class CreateCasing {
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
+    public static final CreativeModeTab TAB = new CreativeModeTab(MODID) {
+        @Override
+        public ItemStack makeIcon() {return ModBlocks.BRASS_GEARBOX.asStack();}
+    };
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MODID);
 
     public CreateCasing() {
@@ -53,9 +61,10 @@ public class CreateCasing {
         if (isCrystalClearLoaded() && isExtendedCogsLoaded()) Create_Crystal_Clear.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, CreateCrystalExtendedCompat::registerCogs);
 
         ModBlocks.register();
+        ModItems.register();
         ModTiles.register();
 
-        if (ModList.get().isLoaded("create_crystal_clear")) CreateCrystalClearCompatibility.register();
+        if (isCrystalClearLoaded()) CreateCrystalClearCompatibility.register();
 
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> CreateCasingClient.onCtorClient(modEventBus, forgeEventBus));
 
