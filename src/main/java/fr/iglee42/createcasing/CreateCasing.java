@@ -1,11 +1,8 @@
 package fr.iglee42.createcasing;
 
 import com.mojang.logging.LogUtils;
-import com.rabbitminers.extendedgears.ExtendedCogwheels;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import fr.iglee42.createcasing.compatibility.createcrystalclear.CreateCrystalClearCompatibility;
-import fr.iglee42.createcasing.compatibility.createextendedcogs.CreateExtendedCogwheelsCompat;
-import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
