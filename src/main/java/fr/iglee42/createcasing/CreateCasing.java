@@ -35,7 +35,7 @@ public class CreateCasing {
         ModBlocks.register();
         ModBlockEntities.register();
 
-        //if (isCrystalClearLoaded()) CreateCrystalClearCompatibility.register();
+        if (isCrystalClearLoaded()) CreateCrystalClearCompatibility.register();
 
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> CreateCasingClient.onCtorClient(modEventBus, forgeEventBus));
 
