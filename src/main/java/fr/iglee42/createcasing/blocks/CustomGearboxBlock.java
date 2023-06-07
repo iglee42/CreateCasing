@@ -1,10 +1,10 @@
 package fr.iglee42.createcasing.blocks;
 
-import com.simibubi.create.content.contraptions.base.RotatedPillarKineticBlock;
-import com.simibubi.create.content.contraptions.relays.gearbox.GearboxTileEntity;
-import com.simibubi.create.foundation.block.ITE;
+import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
+import com.simibubi.create.content.kinetics.gearbox.GearboxBlockEntity;
+import com.simibubi.create.foundation.block.IBE;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import fr.iglee42.createcasing.ModTiles;
+import fr.iglee42.createcasing.ModBlockEntities;
 import fr.iglee42.createcasing.items.CustomVerticalGearboxItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -27,7 +27,7 @@ import java.util.List;
 /*
 This class is a copy from the original class GearboxBlock
  */
-public class CustomGearboxBlock extends RotatedPillarKineticBlock implements ITE<GearboxTileEntity> {
+public class CustomGearboxBlock extends RotatedPillarKineticBlock implements IBE<GearboxBlockEntity> {
 
 	private final ItemEntry<CustomVerticalGearboxItem> verticalItem;
 
@@ -36,8 +36,8 @@ public class CustomGearboxBlock extends RotatedPillarKineticBlock implements ITE
 		this.verticalItem = verticalItem;
 	}
 
-	public BlockEntityType<? extends GearboxTileEntity> getTileEntityType() {
-		return ModTiles.GEARBOX.get();
+	public BlockEntityType<? extends GearboxBlockEntity> getBlockEntityType() {
+		return ModBlockEntities.GEARBOX.get();
 	}
 
 	@Override
@@ -80,8 +80,8 @@ public class CustomGearboxBlock extends RotatedPillarKineticBlock implements ITE
 	}
 
 	@Override
-	public Class<GearboxTileEntity> getTileEntityClass() {
-		return GearboxTileEntity.class;
+	public Class<GearboxBlockEntity> getBlockEntityClass() {
+		return GearboxBlockEntity.class;
 	}
 
 }

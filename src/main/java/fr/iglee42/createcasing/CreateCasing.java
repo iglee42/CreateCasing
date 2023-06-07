@@ -1,25 +1,20 @@
 package fr.iglee42.createcasing;
 
 import com.mojang.logging.LogUtils;
-import com.rabbitminers.extendedgears.ExtendedCogwheels;
-import com.simibubi.create.CreateClient;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import fr.iglee42.createcasing.compatibility.createcrystalclear.CreateCrystalClearCompatibility;
-import fr.iglee42.createcasing.compatibility.createextendedcogs.CreateExtendedCogwheelsCompat;
-import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
-
-import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
 
 @Mod(CreateCasing.MODID)
 public class CreateCasing {

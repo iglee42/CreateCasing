@@ -2,27 +2,36 @@ package fr.iglee42.createcasing;
 
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllSpriteShifts;
-import com.simibubi.create.content.contraptions.base.CasingBlock;
-import com.simibubi.create.content.contraptions.fluids.PipeAttachmentModel;
-import com.simibubi.create.content.contraptions.fluids.pipes.EncasedPipeBlock;
-import com.simibubi.create.content.contraptions.relays.encased.EncasedCTBehaviour;
-import com.simibubi.create.content.contraptions.relays.encased.EncasedCogCTBehaviour;
+import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
+import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
+import com.simibubi.create.content.fluids.PipeAttachmentModel;
+import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
+import com.simibubi.create.content.kinetics.BlockStressDefaults;
+import com.simibubi.create.content.kinetics.gearbox.GearboxBlock;
+import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogCTBehaviour;
+import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
-import com.simibubi.create.foundation.data.BlockStateGen;
-import com.simibubi.create.foundation.data.BuilderTransformers;
-import com.simibubi.create.foundation.data.CreateRegistrate;
-import com.simibubi.create.foundation.data.SharedProperties;
+import com.simibubi.create.foundation.data.*;
 import com.simibubi.create.foundation.utility.Couple;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import fr.iglee42.createcasing.changeAcces.PublicEncasedCogWheelBlock;
+import com.tterrag.registrate.util.entry.ItemEntry;
+import fr.iglee42.createcasing.blocks.CustomGearboxBlock;
+import fr.iglee42.createcasing.blocks.CustomMixerBlock;
+import fr.iglee42.createcasing.changeAcces.PublicEncasedCogwheelBlock;
 import fr.iglee42.createcasing.changeAcces.PublicEncasedPipeBlock;
 import fr.iglee42.createcasing.changeAcces.PublicEncasedShaftBlock;
+import fr.iglee42.createcasing.items.CustomVerticalGearboxItem;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.function.Supplier;
+
+import static com.simibubi.create.foundation.data.BlockStateGen.axisBlock;
+import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
 import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 

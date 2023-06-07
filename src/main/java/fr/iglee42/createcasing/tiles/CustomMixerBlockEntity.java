@@ -1,28 +1,23 @@
 package fr.iglee42.createcasing.tiles;
 
-import java.util.List;
-import java.util.Optional;
-
 import com.simibubi.create.AllRecipeTypes;
 import com.simibubi.create.AllSoundEvents;
-import com.simibubi.create.content.contraptions.components.mixer.MixingRecipe;
-import com.simibubi.create.content.contraptions.components.press.MechanicalPressTileEntity;
-import com.simibubi.create.content.contraptions.fluids.FluidFX;
-import com.simibubi.create.content.contraptions.fluids.recipe.PotionMixingRecipes;
-import com.simibubi.create.content.contraptions.processing.BasinOperatingTileEntity;
-import com.simibubi.create.content.contraptions.processing.BasinTileEntity;
-import com.simibubi.create.content.contraptions.processing.ProcessingRecipe;
+import com.simibubi.create.content.fluids.FluidFX;
+import com.simibubi.create.content.fluids.potion.PotionMixingRecipes;
+import com.simibubi.create.content.kinetics.mixer.MixingRecipe;
+import com.simibubi.create.content.kinetics.press.MechanicalPressBlockEntity;
+import com.simibubi.create.content.processing.basin.BasinBlockEntity;
+import com.simibubi.create.content.processing.basin.BasinOperatingBlockEntity;
+import com.simibubi.create.content.processing.recipe.ProcessingRecipe;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import com.simibubi.create.foundation.advancement.CreateAdvancement;
-import com.simibubi.create.foundation.config.AllConfigs;
+import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
+import com.simibubi.create.foundation.blockEntity.behaviour.fluid.SmartFluidTankBehaviour;
 import com.simibubi.create.foundation.item.SmartInventory;
-import com.simibubi.create.foundation.tileEntity.TileEntityBehaviour;
-import com.simibubi.create.foundation.tileEntity.behaviour.fluid.SmartFluidTankBehaviour;
-import com.simibubi.create.foundation.tileEntity.behaviour.fluid.SmartFluidTankBehaviour.TankSegment;
 import com.simibubi.create.foundation.utility.AnimationTickHolder;
 import com.simibubi.create.foundation.utility.Couple;
 import com.simibubi.create.foundation.utility.VecHelper;
-
+import com.simibubi.create.infrastructure.config.AllConfigs;
 import fr.iglee42.createcasing.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction.Axis;
@@ -47,7 +42,10 @@ import net.minecraftforge.common.crafting.IShapedRecipe;
 import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
-public class CustomMixerTileEntity extends BasinOperatingTileEntity {
+import java.util.List;
+import java.util.Optional;
+
+public class CustomMixerBlockEntity extends BasinOperatingBlockEntity {
 
 	private static final Object shapelessOrMixingRecipesKey = new Object();
 
@@ -55,7 +53,7 @@ public class CustomMixerTileEntity extends BasinOperatingTileEntity {
 	public int processingTicks;
 	public boolean running;
 
-	public CustomMixerTileEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
+	public CustomMixerBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
 		super(type, pos, state);
 	}
 
@@ -95,7 +93,7 @@ public class CustomMixerTileEntity extends BasinOperatingTileEntity {
 	}
 
 	@Override
-	public void addBehaviours(List<TileEntityBehaviour> behaviours) {
+	public void addBehaviours(List<BlockEntityBehaviour> behaviours) {
 		super.addBehaviours(behaviours);
 		registerAwardables(behaviours, AllAdvancements.MIXER);
 	}
@@ -149,7 +147,7 @@ public class CustomMixerTileEntity extends BasinOperatingTileEntity {
 
 					processingTicks = Mth.clamp((Mth.log2((int) (512 / speed))) * Mth.ceil(recipeSpeed * 15) + 1, 1, 512);
 
-					Optional<BasinTileEntity> basin = getBasin();
+					Optional<BasinBlockEntity> basin = getBasin();
 					if (basin.isPresent()) {
 						Couple<SmartFluidTankBehaviour> tanks = basin.get()
 							.getTanks();
@@ -185,7 +183,7 @@ public class CustomMixerTileEntity extends BasinOperatingTileEntity {
 	}
 
 	public void renderParticles() {
-		Optional<BasinTileEntity> basin = getBasin();
+		Optional<BasinBlockEntity> basin = getBasin();
 		if (!basin.isPresent() || level == null)
 			return;
 
@@ -204,7 +202,7 @@ public class CustomMixerTileEntity extends BasinOperatingTileEntity {
 			.getTanks()) {
 			if (behaviour == null)
 				continue;
-			for (TankSegment tankSegment : behaviour.getTanks()) {
+			for (SmartFluidTankBehaviour.TankSegment tankSegment : behaviour.getTanks()) {
 				if (tankSegment.isEmpty(0))
 					continue;
 				spillParticle(FluidFX.getFluidParticle(tankSegment.getRenderedFluid()));
@@ -227,14 +225,14 @@ public class CustomMixerTileEntity extends BasinOperatingTileEntity {
 	protected List<Recipe<?>> getMatchingRecipes() {
 		List<Recipe<?>> matchingRecipes = super.getMatchingRecipes();
 
-		if (!AllConfigs.SERVER.recipes.allowBrewingInMixer.get())
+		if (!AllConfigs.server().recipes.allowBrewingInMixer.get())
 			return matchingRecipes;
 		
-		Optional<BasinTileEntity> basin = getBasin();
+		Optional<BasinBlockEntity> basin = getBasin();
 		if (!basin.isPresent())
 			return matchingRecipes;
 		
-		BasinTileEntity basinTileEntity = basin.get();
+		BasinBlockEntity basinTileEntity = basin.get();
 		if (basin.isEmpty())
 			return matchingRecipes;
 		
@@ -263,9 +261,9 @@ public class CustomMixerTileEntity extends BasinOperatingTileEntity {
 	@Override
 	protected <C extends Container> boolean matchStaticFilters(Recipe<C> r) {
 		return ((r instanceof CraftingRecipe && !(r instanceof IShapedRecipe<?>)
-				 && AllConfigs.SERVER.recipes.allowShapelessInMixer.get() && r.getIngredients()
+				 && AllConfigs.server().recipes.allowShapelessInMixer.get() && r.getIngredients()
 				.size() > 1
-				 && !MechanicalPressTileEntity.canCompress(r)) && !AllRecipeTypes.shouldIgnoreInAutomation(r)
+				 && !MechanicalPressBlockEntity.canCompress(r)) && !AllRecipeTypes.shouldIgnoreInAutomation(r)
 			|| r.getType() == AllRecipeTypes.MIXING.getType());
 	}
 

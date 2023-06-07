@@ -2,11 +2,12 @@ package fr.iglee42.createcasing.blocks;
 
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllShapes;
-import com.simibubi.create.content.contraptions.base.KineticBlock;
-import com.simibubi.create.content.contraptions.relays.elementary.ICogWheel;
-import com.simibubi.create.foundation.block.ITE;
-import fr.iglee42.createcasing.ModTiles;
-import fr.iglee42.createcasing.tiles.CustomMixerTileEntity;
+import com.simibubi.create.content.kinetics.base.IRotate;
+import com.simibubi.create.content.kinetics.base.KineticBlock;
+import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
+import com.simibubi.create.foundation.block.IBE;
+import fr.iglee42.createcasing.ModBlockEntities;
+import fr.iglee42.createcasing.tiles.CustomMixerBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
@@ -19,7 +20,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class CustomMixerBlock extends KineticBlock implements ITE<CustomMixerTileEntity>, ICogWheel {
+public class CustomMixerBlock extends KineticBlock implements IBE<CustomMixerBlockEntity>, ICogWheel {
 
     public CustomMixerBlock(Properties properties) {
         super(properties);
@@ -60,18 +61,18 @@ public class CustomMixerBlock extends KineticBlock implements ITE<CustomMixerTil
     }
 
     @Override
-    public SpeedLevel getMinimumRequiredSpeedLevel() {
-        return SpeedLevel.MEDIUM;
+    public IRotate.SpeedLevel getMinimumRequiredSpeedLevel() {
+        return IRotate.SpeedLevel.MEDIUM;
     }
 
     @Override
-    public Class<CustomMixerTileEntity> getTileEntityClass() {
-        return CustomMixerTileEntity.class;
+    public Class<CustomMixerBlockEntity> getBlockEntityClass() {
+        return CustomMixerBlockEntity.class;
     }
 
     @Override
-    public BlockEntityType<? extends CustomMixerTileEntity> getTileEntityType() {
-        return ModTiles.MIXER.get();
+    public BlockEntityType<? extends CustomMixerBlockEntity> getBlockEntityType() {
+        return ModBlockEntities.MIXER.get();
     }
 
     @Override

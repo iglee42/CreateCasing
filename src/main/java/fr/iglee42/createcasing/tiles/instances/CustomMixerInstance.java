@@ -4,32 +4,31 @@ import com.jozufozu.flywheel.api.Instancer;
 import com.jozufozu.flywheel.api.MaterialManager;
 import com.jozufozu.flywheel.api.instance.DynamicInstance;
 import com.jozufozu.flywheel.core.materials.oriented.OrientedData;
-import com.simibubi.create.AllBlockPartials;
-import com.simibubi.create.content.contraptions.base.flwdata.RotatingData;
-import com.simibubi.create.content.contraptions.relays.encased.EncasedCogInstance;
+import com.simibubi.create.AllPartialModels;
+import com.simibubi.create.content.kinetics.base.flwdata.RotatingData;
+import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogInstance;
 import com.simibubi.create.foundation.render.AllMaterialSpecs;
 import com.simibubi.create.foundation.utility.AnimationTickHolder;
-
-import fr.iglee42.createcasing.tiles.CustomMixerTileEntity;
+import fr.iglee42.createcasing.tiles.CustomMixerBlockEntity;
 import net.minecraft.core.Direction;
 
 public class CustomMixerInstance extends EncasedCogInstance implements DynamicInstance {
 
 	private final RotatingData mixerHead;
 	private final OrientedData mixerPole;
-	private final CustomMixerTileEntity mixer;
+	private final CustomMixerBlockEntity mixer;
 
-	public CustomMixerInstance(MaterialManager dispatcher, CustomMixerTileEntity tile) {
+	public CustomMixerInstance(MaterialManager dispatcher, CustomMixerBlockEntity tile) {
 		super(dispatcher, tile, false);
 		this.mixer = tile;
 
-		mixerHead = getRotatingMaterial().getModel(AllBlockPartials.MECHANICAL_MIXER_HEAD, blockState)
+		mixerHead = getRotatingMaterial().getModel(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState)
 				.createInstance();
 
 		mixerHead.setRotationAxis(Direction.Axis.Y);
 
 		mixerPole = getOrientedMaterial()
-				.getModel(AllBlockPartials.MECHANICAL_MIXER_POLE, blockState)
+				.getModel(AllPartialModels.MECHANICAL_MIXER_POLE, blockState)
 				.createInstance();
 
 
@@ -43,7 +42,7 @@ public class CustomMixerInstance extends EncasedCogInstance implements DynamicIn
 	protected Instancer<RotatingData> getCogModel() {
 		return materialManager.defaultSolid()
 			.material(AllMaterialSpecs.ROTATING)
-			.getModel(AllBlockPartials.SHAFTLESS_COGWHEEL, blockEntity.getBlockState());
+			.getModel(AllPartialModels.SHAFTLESS_COGWHEEL, blockEntity.getBlockState());
 	}
 
 	@Override
