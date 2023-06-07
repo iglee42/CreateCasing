@@ -17,7 +17,7 @@ apply plugin: 'org.spongepowered.mixin'
 
 group = 'fr.iglee42'
 
-version = '1.18.2-1.1.2-hotfix-1'
+version = '1.18.2-1.2.1'
 
 java {
     archivesBaseName = 'CreateCasing'
@@ -172,7 +172,7 @@ dependencies {
     // Specify the version of Minecraft to use. If this is any group other than 'net.minecraft' it is assumed
     // that the dep is a ForgeGradle 'patcher' dependency, and its patches will be applied.
     // The userdev artifact is a special name and will get all sorts of transformations applied to it.
-    minecraft 'net.minecraftforge:forge:1.18.2-40.2.1'
+    minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
     implementation fg.deobf("com.simibubi.create:create-${mc_version}:${create_version}:slim") { transitive = false }
     implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${mc_version}:${flywheel_version}")
@@ -180,7 +180,7 @@ dependencies {
 
     //implementation fg.deobf("curse.maven:create-328085:4371807")
     //implementation fg.deobf("curse.maven:flywheel-486392:4174748")
-    compileOnly fg.deobf("curse.maven:create-crystal-clear-669724:${crystal_clear_file}")
+    implementation fg.deobf("curse.maven:create-crystal-clear-669724:${crystal_clear_file}")
     compileOnly fg.deobf("curse.maven:create-extended-cogs-739973:${extended_cogwheels_file}")
     runtimeOnly fg.deobf("curse.maven:jei-238222:${jei_file}")
 

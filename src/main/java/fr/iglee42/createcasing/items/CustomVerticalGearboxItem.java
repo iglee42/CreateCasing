@@ -1,11 +1,7 @@
 package fr.iglee42.createcasing.items;
 
-import java.util.Map;
-
-import com.simibubi.create.AllBlocks;
-import com.simibubi.create.content.contraptions.base.IRotate;
+import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.foundation.utility.Iterate;
-
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
@@ -19,6 +15,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+
+import java.util.Map;
 
 public class CustomVerticalGearboxItem extends BlockItem {
 

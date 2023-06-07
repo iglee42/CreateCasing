@@ -3,43 +3,43 @@ package fr.iglee42.createcasing.tiles.renderers;
 import com.jozufozu.flywheel.backend.Backend;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
-import com.simibubi.create.AllBlockPartials;
-import com.simibubi.create.content.contraptions.base.KineticTileEntity;
-import com.simibubi.create.content.contraptions.base.KineticTileEntityRenderer;
+import com.simibubi.create.AllPartialModels;
+import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
+import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.foundation.render.CachedBufferer;
 import com.simibubi.create.foundation.render.SuperByteBuffer;
 import com.simibubi.create.foundation.utility.AnimationTickHolder;
-
-import fr.iglee42.createcasing.tiles.CustomMixerTileEntity;
+import fr.iglee42.createcasing.tiles.CustomMixerBlockEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class CustomMixerRenderer extends KineticTileEntityRenderer {
+public class CustomMixerRenderer extends KineticBlockEntityRenderer {
 
 	public CustomMixerRenderer(BlockEntityRendererProvider.Context context) {
 		super(context);
 	}
 
 	@Override
-	public boolean shouldRenderOffScreen(KineticTileEntity te) {
+	public boolean shouldRenderOffScreen(BlockEntity be) {
 		return true;
 	}
 
 	@Override
-	protected void renderSafe(KineticTileEntity te, float partialTicks, PoseStack ms, MultiBufferSource buffer,
+	protected void renderSafe(KineticBlockEntity te, float partialTicks, PoseStack ms, MultiBufferSource buffer,
 		int light, int overlay) {
 
 		if (Backend.canUseInstancing(te.getLevel())) return;
 
 		BlockState blockState = te.getBlockState();
-		CustomMixerTileEntity mixer = (CustomMixerTileEntity) te;
+		CustomMixerBlockEntity mixer = (CustomMixerBlockEntity) te;
 
 		VertexConsumer vb = buffer.getBuffer(RenderType.solid());
 
-		SuperByteBuffer superBuffer = CachedBufferer.partial(AllBlockPartials.SHAFTLESS_COGWHEEL, blockState);
+		SuperByteBuffer superBuffer = CachedBufferer.partial(AllPartialModels.SHAFTLESS_COGWHEEL, blockState);
 		standardKineticRotationTransform(superBuffer, te, light).renderInto(ms, vb);
 
 		float renderedHeadOffset = mixer.getRenderedHeadOffset(partialTicks);
@@ -47,12 +47,12 @@ public class CustomMixerRenderer extends KineticTileEntityRenderer {
 		float time = AnimationTickHolder.getRenderTime(te.getLevel());
 		float angle = ((time * speed * 6 / 10f) % 360) / 180 * (float) Math.PI;
 
-		SuperByteBuffer poleRender = CachedBufferer.partial(AllBlockPartials.MECHANICAL_MIXER_POLE, blockState);
+		SuperByteBuffer poleRender = CachedBufferer.partial(AllPartialModels.MECHANICAL_MIXER_POLE, blockState);
 		poleRender.translate(0, -renderedHeadOffset, 0)
 				.light(light)
 				.renderInto(ms, vb);
 
-		SuperByteBuffer headRender = CachedBufferer.partial(AllBlockPartials.MECHANICAL_MIXER_HEAD, blockState);
+		SuperByteBuffer headRender = CachedBufferer.partial(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState);
 		headRender.rotateCentered(Direction.UP, angle)
 				.translate(0, -renderedHeadOffset, 0)
 				.light(light)

@@ -1,41 +1,20 @@
 package fr.iglee42.createcasing;
 
-import com.cyvack.create_crystal_clear.Create_Crystal_Clear;
-import com.cyvack.create_crystal_clear.blocks.glass_casings.GlassCasing;
 import com.mojang.logging.LogUtils;
-import com.rabbitminers.extendedgears.ExtendedCogwheels;
-import com.rabbitminers.extendedgears.cogwheels.CustomCogwheelBlock;
-import com.rabbitminers.extendedgears.cogwheels.HalfShaftCogwheelBlock;
-import com.rabbitminers.extendedgears.cogwheels.ShaftlessCogwheelBlock;
-import com.simibubi.create.AllBlocks;
-import com.simibubi.create.Create;
-import com.simibubi.create.CreateClient;
 import com.simibubi.create.foundation.data.CreateRegistrate;
-import com.tterrag.registrate.util.entry.BlockEntry;
-import fr.iglee42.createcasing.compatibility.CreateCrystalExtendedCompat;
 import fr.iglee42.createcasing.compatibility.createcrystalclear.CreateCrystalClearCompatibility;
-import fr.iglee42.createcasing.compatibility.createextendedcogs.CreateExtendedCogwheelsCompat;
-import fr.iglee42.createcasing.compatibility.createextendedcogs.CustomGlassCogwheelCompat;
-import net.minecraft.client.renderer.RenderType;
-import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
-
-import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
 
 @Mod(CreateCasing.MODID)
 public class CreateCasing {
@@ -55,14 +34,12 @@ public class CreateCasing {
                 .getModEventBus();
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
         REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
-        if (isExtendedCogsLoaded())CreateExtendedCogwheelsCompat.REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
+        //if (isExtendedCogsLoaded())CreateExtendedCogwheelsCompat.REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
 
-        if (isExtendedCogsLoaded()) ExtendedCogwheels.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, CreateExtendedCogwheelsCompat::register);
-        if (isCrystalClearLoaded() && isExtendedCogsLoaded()) Create_Crystal_Clear.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, CreateCrystalExtendedCompat::registerCogs);
+        //if (isExtendedCogsLoaded()) ExtendedCogwheels.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, CreateExtendedCogwheelsCompat::register);
 
         ModBlocks.register();
-        ModItems.register();
-        ModTiles.register();
+        ModBlockEntities.register();
 
         if (isCrystalClearLoaded()) CreateCrystalClearCompatibility.register();
 
