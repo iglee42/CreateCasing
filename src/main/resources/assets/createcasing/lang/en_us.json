@@ -1,0 +1,9 @@
+{
+  "block.createcasing.brass_gearbox": "Brass Gearbox",
+  "block.createcasing.copper_gearbox": "Copper Gearbox",
+  "block.createcasing.railway_gearbox": "Train Gearbox",
+
+  "item.createcasing.vertical_brass_gearbox": "Brass Vertical Gearbox",
+  "item.createcasing.vertical_copper_gearbox": "Copper Vertical Gearbox",
+  "item.createcasing.vertical_railway_gearbox": "Train Vertical Gearbox"
+}
