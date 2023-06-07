@@ -1,5 +1,6 @@
-package fr.iglee42.createcasing.changeAcces;
+package fr.iglee42.createcasing.compatibility.createcrystalclear;
 
+import com.cyvack.create_crystal_clear.blocks.glass_casings.GlassCasing;
 import com.simibubi.create.content.contraptions.base.CasingBlock;
 import com.simibubi.create.content.contraptions.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.contraptions.fluids.pipes.FluidPipeTileEntity;
@@ -11,21 +12,21 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 /*
 This class allow to use the constructore of EncasedPipeBlock from the create code
  */
-public class PublicEncasedPipeBlock extends EncasedPipeBlock {
+public class GlassEncasedPipeBlockCompat extends EncasedPipeBlock {
 
-	private BlockEntry<CasingBlock> casing;
+	private BlockEntry<GlassCasing> casing;
 
-	public PublicEncasedPipeBlock(Properties properties, BlockEntry<CasingBlock> casing) {
+	public GlassEncasedPipeBlockCompat(Properties properties, BlockEntry<GlassCasing> casing) {
 		super(properties);
 		this.casing = casing;
 	}
 
-	public BlockEntry<CasingBlock> getCasing() {
+	public BlockEntry<GlassCasing> getCasing() {
 		return this.casing;
 	}
 
 	@Override
 	public BlockEntityType<? extends FluidPipeTileEntity> getTileEntityType() {
-		return ModTiles.ENCASED_FLUID_PIPE.get();
+		return CreateCrystalClearCompatibility.GLASS_PIPE_TILE.get();
 	}
 }
