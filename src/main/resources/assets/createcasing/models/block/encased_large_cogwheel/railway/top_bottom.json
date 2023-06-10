@@ -3,7 +3,7 @@
   "textures": {
     "casing": "create:block/railway_casing",
     "1": "create:block/railway_casing",
-    "3": "createcasing:block/railway_gearbox",
+    "4": "createcasing:block/railway_gearbox",
     "side": "createcasing:block/railway_encased_cogwheel_side_connected"
   }
 }
