@@ -3,7 +3,7 @@
   "textures": {
     "casing": "create_crystal_clear:block/steel_glass_casing",
     "1": "create_crystal_clear:block/steel_glass_casing",
-    "3": "create_crystal_clear:block/steel_gearbox",
+    "4": "create_crystal_clear:block/steel_gearbox",
     "side": "createcasing:block/steel_encased_cogwheel_side_connected"
   }
 }

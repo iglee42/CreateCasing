@@ -3,7 +3,7 @@
   "textures": {
     "casing": "create:block/shadow_steel_casing",
     "1": "create:block/shadow_steel_casing",
-    "3": "createcasing:block/shadow_gearbox",
+    "4": "createcasing:block/shadow_gearbox",
     "side": "createcasing:block/shadow_encased_cogwheel_side_connected"
   }
 }
