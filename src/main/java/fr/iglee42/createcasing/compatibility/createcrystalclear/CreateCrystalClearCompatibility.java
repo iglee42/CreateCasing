@@ -14,9 +14,7 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.simibubi.create.foundation.utility.Couple;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import fr.iglee42.createcasing.changeAcces.PublicEncasedCogwheelBlock;
 import fr.iglee42.createcasing.changeAcces.PublicEncasedPipeBlock;
-import fr.iglee42.createcasing.changeAcces.PublicEncasedShaftBlock;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -31,13 +29,13 @@ import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 
 public class CreateCrystalClearCompatibility {
 
-    public static final BlockEntry<PublicEncasedShaftBlock> COPPER_GLASS_ENCASED_SHAFT = glassEncasedShaft("copper", false, () -> CCBlocks.GLASS_CASINGS.getCasing("copper"));
-    public static final BlockEntry<PublicEncasedShaftBlock> COPPER_CLEAR_GLASS_ENCASED_SHAFT = glassEncasedShaft("copper", true, () -> CCBlocks.CLEAR_GLASS.getCasing("copper"));
+    public static final BlockEntry<PublicGlassEncasedShaftBlock> COPPER_GLASS_ENCASED_SHAFT = glassEncasedShaft("copper", false, () -> CCBlocks.GLASS_CASINGS.getCasing("copper"));
+    public static final BlockEntry<PublicGlassEncasedShaftBlock> COPPER_CLEAR_GLASS_ENCASED_SHAFT = glassEncasedShaft("copper", true, () -> CCBlocks.CLEAR_GLASS.getCasing("copper"));
 
-    public static final BlockEntry<PublicEncasedCogwheelBlock> COPPER_GLASS_ENCASED_COGWHEEL = glassEncasedCogwheel("copper", false, false, () -> CCBlocks.GLASS_CASINGS.getCasing("copper"));
-    public static final BlockEntry<PublicEncasedCogwheelBlock> COPPER_CLEAR_GLASS_ENCASED_COGWHEEL = glassEncasedCogwheel("copper", false, true, () -> CCBlocks.CLEAR_GLASS.getCasing("copper"));
-    public static final BlockEntry<PublicEncasedCogwheelBlock> COPPER_GLASS_ENCASED_LARGE_COGWHEEL = glassEncasedCogwheel("copper", true, false, () -> CCBlocks.GLASS_CASINGS.getCasing("copper"));
-    public static final BlockEntry<PublicEncasedCogwheelBlock> COPPER_CLEAR_GLASS_ENCASED_LARGE_COGWHEEL = glassEncasedCogwheel("copper", true, true, () -> CCBlocks.CLEAR_GLASS.getCasing("copper"));
+    public static final BlockEntry<PublicGlassEncasedCogwheelBlock> COPPER_GLASS_ENCASED_COGWHEEL = glassEncasedCogwheel("copper", false, false, () -> CCBlocks.GLASS_CASINGS.getCasing("copper"));
+    public static final BlockEntry<PublicGlassEncasedCogwheelBlock> COPPER_CLEAR_GLASS_ENCASED_COGWHEEL = glassEncasedCogwheel("copper", false, true, () -> CCBlocks.CLEAR_GLASS.getCasing("copper"));
+    public static final BlockEntry<PublicGlassEncasedCogwheelBlock> COPPER_GLASS_ENCASED_LARGE_COGWHEEL = glassEncasedCogwheel("copper", true, false, () -> CCBlocks.GLASS_CASINGS.getCasing("copper"));
+    public static final BlockEntry<PublicGlassEncasedCogwheelBlock> COPPER_CLEAR_GLASS_ENCASED_LARGE_COGWHEEL = glassEncasedCogwheel("copper", true, true, () -> CCBlocks.CLEAR_GLASS.getCasing("copper"));
 
     //public static final BlockEntry<PublicEncasedPipeBlock> ANDESITE_GLASS_ENCASED_PIPE = createPipe("andesite", false, () -> CCBlocks.GLASS_CASINGS.getCasing("andesite"));
     //public static final BlockEntry<PublicEncasedPipeBlock> ANDESITE_CLEAR_GLASS_ENCASED_PIPE = createPipe("andesite", true, () -> CCBlocks.CLEAR_GLASS.getCasing("andesite"));
@@ -52,9 +50,9 @@ public class CreateCrystalClearCompatibility {
     public static void register() {
     }
 
-    public static BlockEntry<PublicEncasedShaftBlock> glassEncasedShaft(String casingType, Boolean clear, Supplier<Block> casing) {
+    public static BlockEntry<PublicGlassEncasedShaftBlock> glassEncasedShaft(String casingType, Boolean clear, Supplier<Block> casing) {
         String name = clear ? casingType + "_clear" : casingType;
-        return REGISTRATE.block(name + "_glass_encased_shaft", p -> new PublicEncasedShaftBlock(p, casing))
+        return REGISTRATE.block(name + "_glass_encased_shaft", p -> new PublicGlassEncasedShaftBlock(p, casing))
                 .properties(p -> BlockBehaviour.Properties.copy(Blocks.GLASS))
                 .transform(BuilderTransformers.encasedShaft(name + "_glass_casing", () -> CCSpriteShifts.omni(name + "_glass_casing")))
                 .transform(EncasingRegistry.addVariantTo(AllBlocks.SHAFT))
@@ -63,11 +61,11 @@ public class CreateCrystalClearCompatibility {
                 .register();
     }
 
-    public static BlockEntry<PublicEncasedCogwheelBlock> glassEncasedCogwheel(String casingType, Boolean large, Boolean clear, Supplier<Block> casing) {
+    public static BlockEntry<PublicGlassEncasedCogwheelBlock> glassEncasedCogwheel(String casingType, Boolean large, Boolean clear, Supplier<Block> casing) {
         String name = clear ? casingType + "_clear" : casingType;
         return !large ?
                 //small cog
-                REGISTRATE.block(name + "_glass_encased_cogwheel", p -> new PublicEncasedCogwheelBlock(p, false, casing))
+                REGISTRATE.block(name + "_glass_encased_cogwheel", p -> new PublicGlassEncasedCogwheelBlock(p, false, casing))
                         .properties(p -> BlockBehaviour.Properties.copy(Blocks.GLASS))
                         .transform(BuilderTransformers.encasedCogwheel(name + "_glass_casing", () -> CCSpriteShifts.omni(name + "_glass_casing")))
                         .transform(EncasingRegistry.addVariantTo(AllBlocks.COGWHEEL))
@@ -78,7 +76,7 @@ public class CreateCrystalClearCompatibility {
                         .addLayer(() -> RenderType::cutout)
                         .register() :
                 //Large Cog
-                REGISTRATE.block(name + "_glass_encased_large_cogwheel", p -> new PublicEncasedCogwheelBlock(p, true, casing))
+                REGISTRATE.block(name + "_glass_encased_large_cogwheel", p -> new PublicGlassEncasedCogwheelBlock(p, true, casing))
                         .properties(p -> BlockBehaviour.Properties.copy(Blocks.GLASS))
                         .transform(BuilderTransformers.encasedLargeCogwheel(name + "_glass_casing", () -> CCSpriteShifts.omni(name + "_glass_casing")))
                         .transform(EncasingRegistry.addVariantTo(AllBlocks.LARGE_COGWHEEL))
