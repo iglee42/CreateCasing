@@ -1,0 +1,46 @@
+{
+  "itemGroup.createcasing": "Create Encased",
+
+  "block.createcasing.brass_gearbox": "Brass Gearbox",
+  "block.createcasing.copper_gearbox": "Copper Gearbox",
+  "block.createcasing.railway_gearbox": "Train Gearbox",
+  "block.createcasing.brass_mixer": "Brass Mixer",
+  "block.createcasing.copper_mixer": "Copper Mixer",
+  "block.createcasing.railway_mixer": "Train Mixer",
+  "block.createcasing.brass_press": "Brass Press",
+  "block.createcasing.copper_press": "Copper Press",
+  "block.createcasing.railway_press": "Train Press",
+
+  "block.createcasing.brass_mixer.tooltip": "BRASS MIXER",
+  "block.createcasing.brass_mixer.tooltip.summary" : "Mixe _2x faster_ if the recipe has _only items_ than a normal mixer but _consumes_ more than a little _more stress_",
+  "block.createcasing.copper_mixer.tooltip": "COPPER MIXER",
+  "block.createcasing.copper_mixer.tooltip.summary" : "Mixe _2x faster_ if the recipe has _only fluids_ or if the recipe is a _potion recipe_ than a normal mixer but _consumes_ more than a little _more stress_",
+  "block.createcasing.railway_mixer.tooltip": "RAILWAY MIXER",
+  "block.createcasing.railway_mixer.tooltip.summary" : "Mixe _2x faster_ than a normal mixer but _consumes_ more than a little _more stress_",
+
+
+
+  "item.createcasing.vertical_brass_gearbox": "Brass Vertical Gearbox",
+  "item.createcasing.vertical_copper_gearbox": "Copper Vertical Gearbox",
+  "item.createcasing.vertical_railway_gearbox": "Train Vertical Gearbox",
+  "item.createcasing.press_plate": "Press Plate",
+
+  "createcasing.ponder.tag.encased_blocks": "Create : Encased",
+  "createcasing.ponder.tag.encased_blocks.description": "Components which added by Create Encased",
+
+  "createcasing.ponder.gearbox.header": "Relaying rotational force using Gearboxes",
+  "createcasing.ponder.gearbox.text_1": "Jumping between axes of rotation can get bulky quickly",
+  "createcasing.ponder.gearbox.text_2": "A gearbox is the more compact equivalent of this setup",
+  "createcasing.ponder.gearbox.text_3": "Shafts around corners rotate in mirrored directions",
+  "createcasing.ponder.gearbox.text_4": "Straight connections will be reversed",
+  "createcasing.ponder.mechanical_mixer.header": "Processing Items with the Mechanical Mixer",
+  "createcasing.ponder.mechanical_mixer.text_1": "With a Mixer and Basin, some Crafting Recipes can be automated",
+  "createcasing.ponder.mechanical_mixer.text_2": "Available recipes include any Shapeless Crafting Recipe, plus a couple extra ones",
+  "createcasing.ponder.mechanical_mixer.text_3": "Some of those recipes may require the heat of a Blaze Burner",
+  "createcasing.ponder.mechanical_mixer.text_4": "The filter slot can be used in case two recipes are conflicting.",
+  "createcasing.ponder.mechanical_press.header": "Processing Items with the Mechanical Press",
+  "createcasing.ponder.mechanical_press.text_1": "The Mechanical Press can process items provided beneath it",
+  "createcasing.ponder.mechanical_press.text_2": "The Input items can be dropped or placed on a Depot under the Press",
+  "createcasing.ponder.mechanical_press.text_3": "When items are provided on a belt...",
+  "createcasing.ponder.mechanical_press.text_4": "The Press will hold and process them automatically"
+}

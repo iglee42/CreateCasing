@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "createcasing:block/brass_press/block"
+    },
+    "facing=south": {
+      "model": "createcasing:block/brass_press/block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "createcasing:block/brass_press/block",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "createcasing:block/brass_press/block",
+      "y": 90
+    }
+  }
+}

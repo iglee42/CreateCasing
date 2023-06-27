@@ -1,0 +1,20 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "createcasing:block/railway_gearbox/block",
+      "x": 90,
+      "y": 90,
+      "uvlock": true
+    },
+    "axis=y": {
+      "model": "createcasing:block/railway_gearbox/block",
+      "uvlock": true
+    },
+    "axis=z": {
+      "model": "createcasing:block/railway_gearbox/block",
+      "x": 90,
+      "y": 180,
+      "uvlock": true
+    }
+  }
+}

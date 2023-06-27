@@ -2,6 +2,7 @@ package fr.iglee42.createcasing.compatibility.createcrystalclear;
 
 import com.cyvack.create_crystal_clear.content.blocks.GlassEncasedCogwheel;
 import com.cyvack.create_crystal_clear.index.GlassUtil;
+import com.mojang.logging.LogUtils;
 import fr.iglee42.createcasing.changeAcces.PublicEncasedCogwheelBlock;
 import fr.iglee42.createcasing.changeAcces.PublicEncasedShaftBlock;
 import net.minecraft.core.Direction;
@@ -18,8 +19,8 @@ public class PublicGlassEncasedCogwheelBlock extends PublicEncasedCogwheelBlock 
         super(properties, large, casing);
     }
 
-    @Override
+    @OnlyIn(Dist.CLIENT)
     public boolean skipRendering(BlockState pState, BlockState pAdjacentBlockState, Direction pDirection) {
-        return pAdjacentBlockState.getBlock() instanceof GlassEncasedCogwheel || pAdjacentBlockState.getBlock() instanceof PublicEncasedCogwheelBlock;
+        return pAdjacentBlockState.getBlock() instanceof GlassEncasedCogwheel || pAdjacentBlockState.getBlock() instanceof PublicEncasedCogwheelBlock || pAdjacentBlockState.getBlock() instanceof PublicGlassEncasedCogwheelBlock;
     }
 }

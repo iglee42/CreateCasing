@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "createcasing:block/railway_press/block"
+    },
+    "facing=south": {
+      "model": "createcasing:block/railway_press/block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "createcasing:block/railway_press/block",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "createcasing:block/railway_press/block",
+      "y": 90
+    }
+  }
+}

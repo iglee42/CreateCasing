@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "createcasing:block/copper_mixer/block"
+    }
+  }
+}
