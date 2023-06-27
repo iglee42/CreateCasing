@@ -1,4 +1,4 @@
-package fr.iglee42.createcasing;
+package fr.iglee42.createcasing.registries;
 
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllSpriteShifts;
@@ -12,16 +12,20 @@ import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogCTBeh
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.data.*;
+import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.utility.Couple;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.blocks.CustomGearboxBlock;
 import fr.iglee42.createcasing.blocks.CustomMixerBlock;
+import fr.iglee42.createcasing.blocks.CustomPressBlock;
 import fr.iglee42.createcasing.changeAcces.PublicEncasedCogwheelBlock;
 import fr.iglee42.createcasing.changeAcces.PublicEncasedPipeBlock;
 import fr.iglee42.createcasing.changeAcces.PublicEncasedShaftBlock;
 import fr.iglee42.createcasing.items.CustomVerticalGearboxItem;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.Registry;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MaterialColor;
@@ -37,7 +41,7 @@ import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 
 public class ModBlocks {
 
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS,CreateCasing.MODID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, CreateCasing.MODID);
 
 
 
@@ -78,6 +82,10 @@ public class ModBlocks {
     public static final BlockEntry<CustomMixerBlock> BRASS_MIXER = createMixer("brass");
     public static final BlockEntry<CustomMixerBlock> COPPER_MIXER = createMixer("copper");
     public static final BlockEntry<CustomMixerBlock> RAILWAY_MIXER = createMixer("railway");
+
+    public static final BlockEntry<CustomPressBlock> BRASS_PRESS = createPress("brass");
+    public static final BlockEntry<CustomPressBlock> COPPER_PRESS = createPress("copper");
+    public static final BlockEntry<CustomPressBlock> RAILWAY_PRESS = createPress("railway");
 
 
     //METHODS
@@ -151,7 +159,20 @@ public class ModBlocks {
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
                 .addLayer(() -> RenderType::cutoutMipped)
-                .transform(BlockStressDefaults.setImpact(4.0))
+                .transform(BlockStressDefaults.setImpact(6.0))
+                .item(AssemblyOperatorBlockItem::new)
+                .transform(customItemModel())
+                .register();
+    }
+
+    public static BlockEntry<CustomPressBlock> createPress(String name){
+        return REGISTRATE.block(name+"_press", CustomPressBlock::new)
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.color(MaterialColor.PODZOL))
+                .properties(BlockBehaviour.Properties::noOcclusion)
+                .transform(axeOrPickaxe())
+                .blockstate(BlockStateGen.horizontalBlockProvider(true))
+                .transform(BlockStressDefaults.setImpact(8.0))
                 .item(AssemblyOperatorBlockItem::new)
                 .transform(customItemModel())
                 .register();

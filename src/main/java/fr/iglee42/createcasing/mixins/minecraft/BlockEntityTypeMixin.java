@@ -1,6 +1,6 @@
 package fr.iglee42.createcasing.mixins.minecraft;
 
-import fr.iglee42.createcasing.ModBlockEntities;
+import fr.iglee42.createcasing.registries.ModBlockEntities;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;

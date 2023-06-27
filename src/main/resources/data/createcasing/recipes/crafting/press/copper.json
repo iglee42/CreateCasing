@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "C",
+    "I"
+  ],
+  "key": {
+    "C": {
+      "item": "create:copper_casing"
+    },
+    "S": {
+      "item": "create:shaft"
+    },
+    "I": {
+      "item": "createcasing:press_plate"
+    }
+  },
+  "result": {
+    "item": "createcasing:copper_press"
+  }
+}

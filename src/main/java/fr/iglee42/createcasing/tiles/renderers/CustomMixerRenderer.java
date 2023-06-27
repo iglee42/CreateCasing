@@ -9,6 +9,7 @@ import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.foundation.render.CachedBufferer;
 import com.simibubi.create.foundation.render.SuperByteBuffer;
 import com.simibubi.create.foundation.utility.AnimationTickHolder;
+import fr.iglee42.createcasing.registries.ModPartialModels;
 import fr.iglee42.createcasing.tiles.CustomMixerBlockEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -48,15 +49,31 @@ public class CustomMixerRenderer extends KineticBlockEntityRenderer {
 		float angle = ((time * speed * 6 / 10f) % 360) / 180 * (float) Math.PI;
 
 		SuperByteBuffer poleRender = CachedBufferer.partial(AllPartialModels.MECHANICAL_MIXER_POLE, blockState);
+		SuperByteBuffer headRender = CachedBufferer.partial(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState);
+		switch (te.getBlockState().getBlock().getRegistryName().getPath().replace("_mixer","").toLowerCase()) {
+			case "brass" -> {
+				poleRender = CachedBufferer.partial(ModPartialModels.BRASS_MIXER_POLE, blockState);
+				headRender = CachedBufferer.partial(ModPartialModels.BRASS_MIXER_HEAD, blockState);
+			}
+			case "copper" -> {
+				poleRender = CachedBufferer.partial(ModPartialModels.COPPER_MIXER_POLE, blockState);
+				headRender = CachedBufferer.partial(ModPartialModels.COPPER_MIXER_HEAD, blockState);
+			}
+			case "railway" -> {
+				poleRender = CachedBufferer.partial(ModPartialModels.RAILWAY_MIXER_POLE, blockState);
+				headRender = CachedBufferer.partial(ModPartialModels.RAILWAY_MIXER_HEAD, blockState);
+			}
+		}
+
 		poleRender.translate(0, -renderedHeadOffset, 0)
 				.light(light)
 				.renderInto(ms, vb);
+		VertexConsumer vbCutout = buffer.getBuffer(RenderType.cutoutMipped());
 
-		SuperByteBuffer headRender = CachedBufferer.partial(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState);
 		headRender.rotateCentered(Direction.UP, angle)
 				.translate(0, -renderedHeadOffset, 0)
 				.light(light)
-				.renderInto(ms, vb);
+				.renderInto(ms, vbCutout);
 	}
 
 }

@@ -4,7 +4,7 @@ import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlockEntity;
 import com.simibubi.create.foundation.block.IBE;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import fr.iglee42.createcasing.ModBlockEntities;
+import fr.iglee42.createcasing.registries.ModBlockEntities;
 import fr.iglee42.createcasing.items.CustomVerticalGearboxItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;

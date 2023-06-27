@@ -1,4 +1,4 @@
-package fr.iglee42.createcasing;
+package fr.iglee42.createcasing.registries;
 
 import com.simibubi.create.Create;
 import com.simibubi.create.foundation.block.connected.AllCTTypes;
@@ -7,6 +7,7 @@ import com.simibubi.create.foundation.block.connected.CTSpriteShifter;
 import com.simibubi.create.foundation.block.connected.CTType;
 import com.simibubi.create.foundation.block.render.SpriteShiftEntry;
 import com.simibubi.create.foundation.block.render.SpriteShifter;
+import fr.iglee42.createcasing.CreateCasing;
 
 
 public class ModSprites {

@@ -2,7 +2,13 @@ package fr.iglee42.createcasing;
 
 import com.mojang.logging.LogUtils;
 import com.simibubi.create.foundation.data.CreateRegistrate;
+import com.simibubi.create.foundation.item.ItemDescription;
+import com.simibubi.create.foundation.item.KineticStats;
+import com.simibubi.create.foundation.item.TooltipHelper;
+import com.simibubi.create.foundation.item.TooltipModifier;
 import fr.iglee42.createcasing.compatibility.createcrystalclear.CreateCrystalClearCompatibility;
+import fr.iglee42.createcasing.registries.ModBlockEntities;
+import fr.iglee42.createcasing.registries.ModBlocks;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -27,8 +33,14 @@ public class CreateCasing {
         @Override
         public ItemStack makeIcon() {return ModBlocks.BRASS_GEARBOX.asStack();}
     };
+
+
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MODID);
 
+    static {
+        REGISTRATE.setTooltipModifierFactory(item -> new ItemDescription.Modifier(item, TooltipHelper.Palette.STANDARD_CREATE)
+                .andThen(TooltipModifier.mapNull(KineticStats.create(item))));
+    }
     public CreateCasing() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get()
                 .getModEventBus();

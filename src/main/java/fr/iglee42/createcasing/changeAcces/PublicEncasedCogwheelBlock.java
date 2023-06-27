@@ -2,7 +2,7 @@ package fr.iglee42.createcasing.changeAcces;
 
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogwheelBlock;
-import fr.iglee42.createcasing.ModBlockEntities;
+import fr.iglee42.createcasing.registries.ModBlockEntities;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 

@@ -2,7 +2,7 @@ package fr.iglee42.createcasing.changeAcces;
 
 import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.fluids.pipes.FluidPipeBlockEntity;
-import fr.iglee42.createcasing.ModBlockEntities;
+import fr.iglee42.createcasing.registries.ModBlockEntities;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 

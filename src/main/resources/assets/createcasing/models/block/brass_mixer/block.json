@@ -4,9 +4,9 @@
 	"ambientocclusion": false,
 	"textures": {
 		"2": "block/spruce_log_top",
-		"4": "create:block/mixer_base_side",
-		"11": "create:block/mechanical_press_top",
-		"particle": "create:block/mixer_base_side"
+		"4": "createcasing:block/brass_mixer_side",
+		"11": "createcasing:block/brass_press_top",
+		"particle": "createcasing:block/brass_mixer_side"
 	},
 	"elements": [
 		{

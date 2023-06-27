@@ -1,5 +1,7 @@
-package fr.iglee42.createcasing;
+package fr.iglee42.createcasing.registries;
 
+import com.simibubi.create.AllBlocks;
+import com.simibubi.create.Create;
 import com.simibubi.create.content.fluids.pipes.FluidPipeBlockEntity;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.base.ShaftInstance;
@@ -7,13 +9,16 @@ import com.simibubi.create.content.kinetics.base.ShaftRenderer;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlockEntity;
 import com.simibubi.create.content.kinetics.gearbox.GearboxInstance;
 import com.simibubi.create.content.kinetics.gearbox.GearboxRenderer;
+import com.simibubi.create.content.kinetics.press.MechanicalPressBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogInstance;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import fr.iglee42.createcasing.tiles.CustomMixerBlockEntity;
 import fr.iglee42.createcasing.tiles.instances.CustomMixerInstance;
+import fr.iglee42.createcasing.tiles.instances.CustomPressInstance;
 import fr.iglee42.createcasing.tiles.renderers.CustomMixerRenderer;
+import fr.iglee42.createcasing.tiles.renderers.CustomPressRenderer;
 
 import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 
@@ -56,6 +61,13 @@ public class ModBlockEntities {
             .instance(() -> CustomMixerInstance::new)
             .validBlocks(ModBlocks.BRASS_MIXER,ModBlocks.COPPER_MIXER,ModBlocks.RAILWAY_MIXER)
             .renderer(() -> CustomMixerRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<MechanicalPressBlockEntity> PRESS = Create.REGISTRATE
+            .blockEntity("custom_press", MechanicalPressBlockEntity::new)
+            .instance(() -> CustomPressInstance::new)
+            .validBlocks(ModBlocks.BRASS_PRESS,ModBlocks.COPPER_PRESS,ModBlocks.RAILWAY_PRESS)
+            .renderer(() -> CustomPressRenderer::new)
             .register();
 
     public static void register() {}

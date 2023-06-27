@@ -1,0 +1,14 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "tag": "forge:storage_blocks/iron"
+    }
+  ],
+  "results": [
+    {
+      "item": "createcasing:press_plate"
+    }
+  ]
+
+}

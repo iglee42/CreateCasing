@@ -1,8 +1,10 @@
-package fr.iglee42.createcasing;
+package fr.iglee42.createcasing.registries;
 
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.items.CustomVerticalGearboxItem;
+import net.minecraft.world.item.Item;
 
 import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 
@@ -27,6 +29,9 @@ public class ModItems {
                     .model(AssetLookup.customBlockItemModel("railway_gearbox", "item_vertical"))
                     .register();
 
+    public static final ItemEntry<Item> PRESS_PLATE =
+            REGISTRATE.item("press_plate",Item::new)
+                    .register();
 
     public static void register(){}
 }

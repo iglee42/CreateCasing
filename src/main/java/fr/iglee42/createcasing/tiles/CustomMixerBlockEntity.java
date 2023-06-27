@@ -18,7 +18,7 @@ import com.simibubi.create.foundation.utility.AnimationTickHolder;
 import com.simibubi.create.foundation.utility.Couple;
 import com.simibubi.create.foundation.utility.VecHelper;
 import com.simibubi.create.infrastructure.config.AllConfigs;
-import fr.iglee42.createcasing.ModBlocks;
+import fr.iglee42.createcasing.registries.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction.Axis;
 import net.minecraft.core.particles.ItemParticleOption;
@@ -163,7 +163,7 @@ public class CustomMixerBlockEntity extends BasinOperatingBlockEntity {
 					processingTicks--;
 					if (ModBlocks.BRASS_MIXER.has(getBlockState())&& ((ProcessingRecipe<?>)currentRecipe).getFluidIngredients().isEmpty()){
 						processingTicks--;
-					} else if (ModBlocks.COPPER_MIXER.has(getBlockState())&& ((ProcessingRecipe<?>)currentRecipe).getIngredients().isEmpty()){
+					} else if (ModBlocks.COPPER_MIXER.has(getBlockState())&& (((ProcessingRecipe<?>)currentRecipe).getIngredients().isEmpty() || currentRecipe.getId().getPath().contains("potion_mixing"))){
 						processingTicks--;
 					} else if (ModBlocks.RAILWAY_MIXER.has(getBlockState())){
 						processingTicks--;
@@ -317,5 +317,4 @@ public class CustomMixerBlockEntity extends BasinOperatingBlockEntity {
 		if (runningTicks == 20)
 			AllSoundEvents.MIXING.playAt(level, worldPosition, .75f, 1, true);
 	}
-
 }
