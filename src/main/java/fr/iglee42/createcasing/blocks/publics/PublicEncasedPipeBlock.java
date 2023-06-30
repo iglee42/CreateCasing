@@ -1,4 +1,4 @@
-package fr.iglee42.createcasing.changeAcces;
+package fr.iglee42.createcasing.blocks.publics;
 
 import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.fluids.pipes.FluidPipeBlockEntity;

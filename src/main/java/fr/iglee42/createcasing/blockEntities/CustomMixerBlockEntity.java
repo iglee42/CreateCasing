@@ -1,4 +1,4 @@
-package fr.iglee42.createcasing.tiles;
+package fr.iglee42.createcasing.blockEntities;
 
 import com.simibubi.create.AllRecipeTypes;
 import com.simibubi.create.AllSoundEvents;

@@ -1,4 +1,4 @@
-package fr.iglee42.createcasing.tiles.instances;
+package fr.iglee42.createcasing.blockEntities.instances;
 
 import com.jozufozu.flywheel.api.Instancer;
 import com.jozufozu.flywheel.api.MaterialManager;
@@ -10,7 +10,7 @@ import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogInsta
 import com.simibubi.create.foundation.render.AllMaterialSpecs;
 import com.simibubi.create.foundation.utility.AnimationTickHolder;
 import fr.iglee42.createcasing.registries.ModPartialModels;
-import fr.iglee42.createcasing.tiles.CustomMixerBlockEntity;
+import fr.iglee42.createcasing.blockEntities.CustomMixerBlockEntity;
 import net.minecraft.core.Direction;
 
 public class CustomMixerInstance extends EncasedCogInstance implements DynamicInstance {

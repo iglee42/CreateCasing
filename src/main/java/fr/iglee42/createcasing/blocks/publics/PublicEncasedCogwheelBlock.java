@@ -1,4 +1,4 @@
-package fr.iglee42.createcasing.changeAcces;
+package fr.iglee42.createcasing.blocks.publics;
 
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogwheelBlock;

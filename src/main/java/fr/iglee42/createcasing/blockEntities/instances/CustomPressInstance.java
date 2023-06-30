@@ -1,4 +1,4 @@
-package fr.iglee42.createcasing.tiles.instances;
+package fr.iglee42.createcasing.blockEntities.instances;
 
 import com.jozufozu.flywheel.api.MaterialManager;
 import com.jozufozu.flywheel.api.instance.DynamicInstance;

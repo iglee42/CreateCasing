@@ -1,4 +1,4 @@
-package fr.iglee42.createcasing.blocks;
+package fr.iglee42.createcasing.blocks.customs;
 
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllShapes;
