@@ -6,7 +6,7 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
-import fr.iglee42.createcasing.compatibility.createcrystalclear.CreateCrystalClearCompatibility;
+import fr.iglee42.createcasing.compat.createcrystalclear.CreateCrystalClearCompatibility;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
 import fr.iglee42.createcasing.registries.ModBlocks;
 import net.minecraft.resources.ResourceLocation;

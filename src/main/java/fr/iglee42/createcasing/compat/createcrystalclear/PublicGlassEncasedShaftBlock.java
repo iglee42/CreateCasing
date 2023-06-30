@@ -1,7 +1,7 @@
-package fr.iglee42.createcasing.compatibility.createcrystalclear;
+package fr.iglee42.createcasing.compat.createcrystalclear;
 
 import com.cyvack.create_crystal_clear.index.GlassUtil;
-import fr.iglee42.createcasing.changeAcces.PublicEncasedShaftBlock;
+import fr.iglee42.createcasing.blocks.publics.PublicEncasedShaftBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;

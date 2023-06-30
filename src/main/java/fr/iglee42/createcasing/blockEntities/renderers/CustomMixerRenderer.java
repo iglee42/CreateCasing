@@ -1,4 +1,4 @@
-package fr.iglee42.createcasing.tiles.renderers;
+package fr.iglee42.createcasing.blockEntities.renderers;
 
 import com.jozufozu.flywheel.backend.Backend;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -10,7 +10,7 @@ import com.simibubi.create.foundation.render.CachedBufferer;
 import com.simibubi.create.foundation.render.SuperByteBuffer;
 import com.simibubi.create.foundation.utility.AnimationTickHolder;
 import fr.iglee42.createcasing.registries.ModPartialModels;
-import fr.iglee42.createcasing.tiles.CustomMixerBlockEntity;
+import fr.iglee42.createcasing.blockEntities.CustomMixerBlockEntity;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;

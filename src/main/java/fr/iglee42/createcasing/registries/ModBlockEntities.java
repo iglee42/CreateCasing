@@ -1,6 +1,5 @@
 package fr.iglee42.createcasing.registries;
 
-import com.simibubi.create.AllBlocks;
 import com.simibubi.create.Create;
 import com.simibubi.create.content.fluids.pipes.FluidPipeBlockEntity;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
@@ -14,11 +13,11 @@ import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntit
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogInstance;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
-import fr.iglee42.createcasing.tiles.CustomMixerBlockEntity;
-import fr.iglee42.createcasing.tiles.instances.CustomMixerInstance;
-import fr.iglee42.createcasing.tiles.instances.CustomPressInstance;
-import fr.iglee42.createcasing.tiles.renderers.CustomMixerRenderer;
-import fr.iglee42.createcasing.tiles.renderers.CustomPressRenderer;
+import fr.iglee42.createcasing.blockEntities.CustomMixerBlockEntity;
+import fr.iglee42.createcasing.blockEntities.instances.CustomMixerInstance;
+import fr.iglee42.createcasing.blockEntities.instances.CustomPressInstance;
+import fr.iglee42.createcasing.blockEntities.renderers.CustomMixerRenderer;
+import fr.iglee42.createcasing.blockEntities.renderers.CustomPressRenderer;
 
 import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 

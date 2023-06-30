@@ -1,10 +1,7 @@
-package fr.iglee42.createcasing.compatibility.createcrystalclear;
+package fr.iglee42.createcasing.compat.createcrystalclear;
 
 import com.cyvack.create_crystal_clear.content.blocks.GlassEncasedCogwheel;
-import com.cyvack.create_crystal_clear.index.GlassUtil;
-import com.mojang.logging.LogUtils;
-import fr.iglee42.createcasing.changeAcces.PublicEncasedCogwheelBlock;
-import fr.iglee42.createcasing.changeAcces.PublicEncasedShaftBlock;
+import fr.iglee42.createcasing.blocks.publics.PublicEncasedCogwheelBlock;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;

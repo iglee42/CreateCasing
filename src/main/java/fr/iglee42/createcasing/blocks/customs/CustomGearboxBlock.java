@@ -1,4 +1,4 @@
-package fr.iglee42.createcasing.blocks;
+package fr.iglee42.createcasing.blocks.customs;
 
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlockEntity;

@@ -1,4 +1,4 @@
-package fr.iglee42.createcasing.tiles.renderers;
+package fr.iglee42.createcasing.blockEntities.renderers;
 
 import com.jozufozu.flywheel.backend.Backend;
 import com.mojang.blaze3d.vertex.PoseStack;

@@ -1,4 +1,4 @@
-package fr.iglee42.createcasing.compatibility.createcrystalclear;
+package fr.iglee42.createcasing.compat.createcrystalclear;
 
 import com.cyvack.create_crystal_clear.index.CCBlocks;
 import com.cyvack.create_crystal_clear.index.CCSpriteShifts;
@@ -14,7 +14,7 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.simibubi.create.foundation.utility.Couple;
 import com.tterrag.registrate.util.entry.BlockEntry;
-import fr.iglee42.createcasing.changeAcces.PublicEncasedPipeBlock;
+import fr.iglee42.createcasing.blocks.publics.PublicEncasedPipeBlock;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
