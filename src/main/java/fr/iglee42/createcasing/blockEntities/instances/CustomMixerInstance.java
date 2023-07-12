@@ -16,22 +16,20 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 public class CustomMixerInstance extends EncasedCogInstance implements DynamicInstance {
 
-	private final RotatingData mixerHead;
-	private final OrientedData mixerPole;
+	private RotatingData mixerHead;
+	private OrientedData mixerPole;
+
 	private final CustomMixerBlockEntity mixer;
 
 	public CustomMixerInstance(MaterialManager dispatcher, CustomMixerBlockEntity tile) {
 		super(dispatcher, tile, false);
 		this.mixer = tile;
 
-		RotatingData mixerHead = materialManager.defaultCutout()
-				.material(AllMaterialSpecs.ROTATING).getModel(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState)
-				.createInstance();
+		RotatingData mixerHead = null;
 
 
-		OrientedData mixerPole = getOrientedMaterial()
-				.getModel(AllPartialModels.MECHANICAL_MIXER_POLE, blockState)
-				.createInstance();
+		OrientedData mixerPole = null;
+
 
 		switch (ForgeRegistries.BLOCKS.getKey(tile.getBlockState().getBlock()).getPath().replace("_mixer","").toLowerCase()) {
 			case "brass" -> {
@@ -57,9 +55,9 @@ public class CustomMixerInstance extends EncasedCogInstance implements DynamicIn
             }
 		}
 
-		this.mixerHead =mixerHead;
-		this.mixerPole = mixerPole;
 
+		this.mixerHead = mixerHead;
+		this.mixerPole = mixerPole;
 
 
 		this.mixerHead.setRotationAxis(Direction.Axis.Y);
@@ -82,6 +80,11 @@ public class CustomMixerInstance extends EncasedCogInstance implements DynamicIn
 	public void beginFrame() {
 
 		float renderedHeadOffset = getRenderedHeadOffset();
+
+		if (mixerHead.skyLight == 0 || mixerPole.skyLight == 0) {
+			remove();
+			return;
+		}
 
 		transformPole(renderedHeadOffset);
 		transformHead(renderedHeadOffset);
