@@ -33,6 +33,7 @@ public class CustomMixerRenderer extends KineticBlockEntityRenderer {
 	protected void renderSafe(KineticBlockEntity te, float partialTicks, PoseStack ms, MultiBufferSource buffer,
 		int light, int overlay) {
 
+		if (light == 0) return;
 		if (Backend.canUseInstancing(te.getLevel())) return;
 
 		BlockState blockState = te.getBlockState();
@@ -49,7 +50,9 @@ public class CustomMixerRenderer extends KineticBlockEntityRenderer {
 		float angle = ((time * speed * 6 / 10f) % 360) / 180 * (float) Math.PI;
 
 		SuperByteBuffer poleRender = CachedBufferer.partial(AllPartialModels.MECHANICAL_MIXER_POLE, blockState);
+		SuperByteBuffer oldPoleRender = CachedBufferer.partial(AllPartialModels.MECHANICAL_MIXER_POLE, blockState);
 		SuperByteBuffer headRender = CachedBufferer.partial(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState);
+		SuperByteBuffer oldHeadRender = CachedBufferer.partial(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState);
 		switch (te.getBlockState().getBlock().getRegistryName().getPath().replace("_mixer","").toLowerCase()) {
 			case "brass" -> {
 				poleRender = CachedBufferer.partial(ModPartialModels.BRASS_MIXER_POLE, blockState);
@@ -64,6 +67,8 @@ public class CustomMixerRenderer extends KineticBlockEntityRenderer {
 				headRender = CachedBufferer.partial(ModPartialModels.RAILWAY_MIXER_HEAD, blockState);
 			}
 		}
+
+		if (poleRender == oldPoleRender ||  headRender == oldHeadRender) return;
 
 		poleRender.translate(0, -renderedHeadOffset, 0)
 				.light(light)
