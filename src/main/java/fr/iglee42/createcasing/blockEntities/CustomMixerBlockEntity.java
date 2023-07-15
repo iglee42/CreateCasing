@@ -18,6 +18,7 @@ import com.simibubi.create.foundation.utility.AnimationTickHolder;
 import com.simibubi.create.foundation.utility.Couple;
 import com.simibubi.create.foundation.utility.VecHelper;
 import com.simibubi.create.infrastructure.config.AllConfigs;
+import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.registries.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction.Axis;
@@ -161,12 +162,16 @@ public class CustomMixerBlockEntity extends BasinOperatingBlockEntity {
 
 				} else {
 					processingTicks--;
-					if (ModBlocks.BRASS_MIXER.has(getBlockState())&& ((ProcessingRecipe<?>)currentRecipe).getFluidIngredients().isEmpty()){
-						processingTicks--;
-					} else if (ModBlocks.COPPER_MIXER.has(getBlockState())&& (((ProcessingRecipe<?>)currentRecipe).getIngredients().isEmpty() || currentRecipe.getId().getPath().contains("potion_mixing"))){
-						processingTicks--;
-					} else if (ModBlocks.RAILWAY_MIXER.has(getBlockState())){
-						processingTicks--;
+					if (currentRecipe != null) {
+						if (ModConfigs.common().kinetics.shouldCustomMixerMixeFaster.get()) {
+							if (ModBlocks.BRASS_MIXER.has(getBlockState()) && ((ProcessingRecipe<?>) currentRecipe).getFluidIngredients().isEmpty()) {
+								processingTicks--;
+							} else if (ModBlocks.COPPER_MIXER.has(getBlockState()) && (((ProcessingRecipe<?>) currentRecipe).getIngredients().isEmpty() || currentRecipe.getId().getPath().contains("potion_mixing"))) {
+								processingTicks--;
+							} else if (ModBlocks.RAILWAY_MIXER.has(getBlockState())) {
+								processingTicks--;
+							}
+						}
 					}
 					if (processingTicks == 0) {
 						runningTicks++;
