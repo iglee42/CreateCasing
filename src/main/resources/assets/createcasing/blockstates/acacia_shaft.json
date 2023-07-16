@@ -1,0 +1,17 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "createcasing:block/wooden_shaft/acacia",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "createcasing:block/wooden_shaft/acacia"
+    },
+    "axis=z": {
+      "model": "createcasing:block/wooden_shaft/acacia",
+      "x": 90,
+      "y": 180
+    }
+  }
+}
