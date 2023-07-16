@@ -1,0 +1,24 @@
+{
+  "__comment": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
+  "parent": "block/block",
+  "textures": {
+    "particle": "createcasing:block/glass_shaft",
+    "0": "createcasing:block/glass_shaft",
+    "1": "createcasing:block/glass_shaft_top"
+  },
+  "elements": [
+    {
+      "name": "Axis",
+      "from": [ 6.0, 0.0, 6.0 ],
+      "to": [ 10.0, 16.0, 10.0 ],
+      "faces": {
+        "north": { "texture": "#0", "uv": [ 6.0, 0.0, 10.0, 16.0 ] },
+        "east": { "texture": "#0", "uv": [ 6.0, 0.0, 10.0, 16.0 ] },
+        "south": { "texture": "#0", "uv": [ 6.0, 0.0, 10.0, 16.0 ] },
+        "west": { "texture": "#0", "uv": [ 6.0, 0.0, 10.0, 16.0 ] },
+        "up": { "texture": "#1", "uv": [ 6.0, 6.0, 10.0, 10.0 ] },
+        "down": { "texture": "#1", "uv": [ 6.0, 6.0, 10.0, 10.0 ] }
+      }
+    }
+  ]
+}
