@@ -6,7 +6,9 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
+import com.simibubi.create.infrastructure.config.AllConfigs;
 import fr.iglee42.createcasing.compat.createcrystalclear.CreateCrystalClearCompatibility;
+import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
 import fr.iglee42.createcasing.registries.ModBlocks;
 import net.minecraft.resources.ResourceLocation;
@@ -17,6 +19,7 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -45,6 +48,9 @@ public class CreateCasing {
         IEventBus modEventBus = FMLJavaModLoadingContext.get()
                 .getModEventBus();
         IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
+
+        ModConfigs.register(ModLoadingContext.get());
+
         REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
         //if (isExtendedCogsLoaded())CreateExtendedCogwheelsCompat.REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
 
@@ -58,6 +64,7 @@ public class CreateCasing {
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> CreateCasingClient.onCtorClient(modEventBus, forgeEventBus));
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
+
 
         MinecraftForge.EVENT_BUS.register(this);
     }
