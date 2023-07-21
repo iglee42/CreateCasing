@@ -33,6 +33,7 @@ import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
@@ -164,7 +165,12 @@ public class CustomMixerBlockEntity extends BasinOperatingBlockEntity {
 					processingTicks--;
 					if (currentRecipe != null) {
 						if (ModConfigs.common().kinetics.shouldCustomMixerMixeFaster.get()) {
-							if (ModBlocks.BRASS_MIXER.has(getBlockState()) && ((ProcessingRecipe<?>) currentRecipe).getFluidIngredients().isEmpty()) {
+
+							if (currentRecipe instanceof ShapelessRecipe) {
+								if (ModBlocks.BRASS_GEARBOX.has(getBlockState()) || ModBlocks.RAILWAY_MIXER.has(getBlockState())) {
+									processingTicks--;
+								}
+							} else if (ModBlocks.BRASS_MIXER.has(getBlockState()) && ((ProcessingRecipe<?>) currentRecipe).getFluidIngredients().isEmpty()) {
 								processingTicks--;
 							} else if (ModBlocks.COPPER_MIXER.has(getBlockState()) && (((ProcessingRecipe<?>) currentRecipe).getIngredients().isEmpty() || currentRecipe.getId().getPath().contains("potion_mixing"))) {
 								processingTicks--;
