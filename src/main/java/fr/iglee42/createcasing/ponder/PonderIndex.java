@@ -39,6 +39,8 @@ public class PonderIndex {
 				.addStoryBoard("mechanical_press/pressing", ProcessingScenes::pressing)
 				.addStoryBoard("mechanical_press/compacting", ProcessingScenes::compacting);
 
+		HELPER.forComponents(ModBlocks.CREATIVE_COGWHEEL).addStoryBoard("creative_cogwheel",CustomPonderScenes::creativeCogwheel);
+
 
 	}
 

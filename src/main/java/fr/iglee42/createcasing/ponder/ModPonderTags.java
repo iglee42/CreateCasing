@@ -2,10 +2,11 @@ package fr.iglee42.createcasing.ponder;
 
 import com.simibubi.create.foundation.ponder.PonderRegistry;
 import com.simibubi.create.foundation.ponder.PonderTag;
+import com.simibubi.create.infrastructure.ponder.AllPonderTags;
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.registries.ModBlocks;
 
-public class ModPonderTags {
+public class ModPonderTags{
 
 	public static final PonderTag ENCASED_BLOCKS = create("encased_blocks").item(ModBlocks.BRASS_GEARBOX.get())
 			.defaultLang("Create : Encased", "Components which added by Create Encased")
@@ -20,6 +21,9 @@ public class ModPonderTags {
 	public static void register() {
 
 
+		PonderRegistry.TAGS.forTag(AllPonderTags.CREATIVE)
+						.add(ModBlocks.CREATIVE_COGWHEEL);
+
 		PonderRegistry.TAGS.forTag(ENCASED_BLOCKS)
 			.add(ModBlocks.BRASS_GEARBOX)
 			.add(ModBlocks.COPPER_GEARBOX)
@@ -29,7 +33,8 @@ public class ModPonderTags {
 			.add(ModBlocks.RAILWAY_MIXER)
 			.add(ModBlocks.BRASS_PRESS)
 			.add(ModBlocks.COPPER_PRESS)
-			.add(ModBlocks.RAILWAY_PRESS);
+			.add(ModBlocks.RAILWAY_PRESS)
+			.add(ModBlocks.CREATIVE_COGWHEEL);
 
 	}
 
