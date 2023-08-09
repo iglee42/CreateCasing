@@ -1,0 +1,9 @@
+{
+	"parent": "create:block/encased_shaft/item",
+	"textures": {
+		"1_0": "minecraft:block/stripped_warped_stem",
+		"1_1": "minecraft:block/stripped_warped_stem_top",
+		"casing": "create:block/railway_casing",
+		"opening": "createcasing:block/railway_gearbox"
+	}
+}
