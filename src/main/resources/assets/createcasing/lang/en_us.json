@@ -137,7 +137,7 @@
   "createcasing.ponder.mechanical_press_compacting.text_3": "Some of those recipes may require the heat of a Blaze Burner",
   "createcasing.ponder.mechanical_press_compacting.text_4": "The filter slot can be used in case two recipes are conflicting.",
 
-  "createcasing.ponder.creative_motor.header": "Generating Rotational Force using Creative Cogwheels",
-  "createcasing.ponder.creative_motor.text_1": "Creative Cogwheels are a compact and configurable source of Rotational Force",
-  "createcasing.ponder.creative_motor.text_2": "The generated speed can be configured on its input panels"
+  "createcasing.ponder.creative_cogwheel.header": "Generating Rotational Force using Creative Cogwheels",
+  "createcasing.ponder.creative_cogwheel.text_1": "Creative Cogwheels are a compact and configurable source of Rotational Force",
+  "createcasing.ponder.creative_cogwheel.text_2": "The generated speed can be configured on its input panels"
 }
