@@ -181,8 +181,10 @@ dependencies {
     //implementation fg.deobf("curse.maven:create-328085:4371807")
     //implementation fg.deobf("curse.maven:flywheel-486392:4174748")
     implementation fg.deobf("curse.maven:create-crystal-clear-669724:${crystal_clear_file}")
-    compileOnly fg.deobf("curse.maven:create-extended-cogs-739973:${extended_cogwheels_file}")
-    runtimeOnly fg.deobf("curse.maven:jei-238222:${jei_file}")
+    //compileOnly fg.deobf("curse.maven:create-extended-cogs-739973:${extended_cogwheels_file}")
+    runtimeOnly fg.deobf("curse.maven:roughly-enough-items-310111:${jei_file}")
+    runtimeOnly fg.deobf("curse.maven:architectury-api-419699:4521465")
+    runtimeOnly fg.deobf("curse.maven:cloth-config-348521:4633387")
 
     // Real mod deobf dependency examples - these get remapped to your current mappings
     // compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
