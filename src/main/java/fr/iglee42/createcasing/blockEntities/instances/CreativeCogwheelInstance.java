@@ -39,19 +39,6 @@ public class CreativeCogwheelInstance extends KineticBlockEntityInstance<Creativ
 	@Override
 	public void init() {
 		rotatingModel = setup(getCogModel().createInstance());
-
-		Block block = blockState.getBlock();
-		if (!(block instanceof IRotate))
-			return;
-
-		IRotate def = (IRotate) block;
-
-		for (Direction d : Iterate.directionsInAxis(axis)) {
-			if (!def.hasShaftTowards(blockEntity.getLevel(), blockEntity.getBlockPos(), blockState, d))
-				continue;
-			RotatingData data = setup(getRotatingMaterial().getModel(AllPartialModels.SHAFT_HALF, blockState, d)
-				.createInstance());
-		}
 	}
 
 	@Override
