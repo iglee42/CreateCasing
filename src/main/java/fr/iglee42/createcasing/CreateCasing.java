@@ -1,6 +1,7 @@
 package fr.iglee42.createcasing;
 
 import com.mojang.logging.LogUtils;
+import com.simibubi.create.AllBlocks;
 import com.simibubi.create.Create;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
@@ -12,13 +13,19 @@ import fr.iglee42.createcasing.compat.createcrystalclear.CreateCrystalClearCompa
 import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
 import fr.iglee42.createcasing.registries.ModBlocks;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -26,6 +33,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+
+import static com.simibubi.create.content.kinetics.base.HorizontalKineticBlock.HORIZONTAL_FACING;
 
 @Mod(CreateCasing.MODID)
 public class CreateCasing {
@@ -67,7 +76,7 @@ public class CreateCasing {
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> CreateCasingClient.onCtorClient(modEventBus, forgeEventBus));
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-
+        forgeEventBus.addListener(this::onPlayerInteract);
 
         MinecraftForge.EVENT_BUS.register(this);
     }
@@ -85,6 +94,28 @@ public class CreateCasing {
 
     public static boolean isCrystalClearLoaded(){
         return ModList.get().isLoaded("create_crystal_clear");
+    }
+
+    private void onPlayerInteract(PlayerInteractEvent.RightClickBlock event){
+        Level world = event.getPlayer().getLevel();
+        if (event.getItemStack().isEmpty()) return;
+        if (AllBlocks.MECHANICAL_PRESS.has(world.getBlockState(event.getPos()))){
+            BlockState blockState = world.getBlockState(event.getPos());
+            Direction facing = blockState.getValue(HORIZONTAL_FACING);
+            if (event.getItemStack().is(AllBlocks.BRASS_CASING.get().asItem())){
+                world.setBlockAndUpdate(event.getPos(), ModBlocks.BRASS_PRESS.getDefaultState().setValue(HORIZONTAL_FACING, facing));
+                event.setCancellationResult(InteractionResult.SUCCESS);
+                event.setCanceled(true);
+            } else if (event.getItemStack().is(AllBlocks.COPPER_CASING.get().asItem())){
+                world.setBlockAndUpdate(event.getPos(), ModBlocks.COPPER_PRESS.getDefaultState().setValue(HORIZONTAL_FACING, facing));
+                event.setCancellationResult(InteractionResult.SUCCESS);
+                event.setCanceled(true);
+            } else if (event.getItemStack().is(AllBlocks.RAILWAY_CASING.get().asItem())){
+                world.setBlockAndUpdate(event.getPos(), ModBlocks.RAILWAY_PRESS.getDefaultState().setValue(HORIZONTAL_FACING, facing));
+                event.setCancellationResult(InteractionResult.SUCCESS);
+                event.setCanceled(true);
+            }
+        }
     }
 
 
