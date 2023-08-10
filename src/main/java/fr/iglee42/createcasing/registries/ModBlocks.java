@@ -16,8 +16,10 @@ import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockMo
 import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogCTBehaviour;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
+import com.simibubi.create.foundation.block.connected.AllCTTypes;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.data.*;
+import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.utility.Couple;
 import com.simibubi.create.infrastructure.config.AllConfigs;
 import com.tterrag.registrate.util.entry.BlockEntry;
@@ -30,6 +32,7 @@ import fr.iglee42.createcasing.blocks.publics.PublicEncasedShaftBlock;
 import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.items.CustomVerticalGearboxItem;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.Registry;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -39,6 +42,7 @@ import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import static com.simibubi.create.foundation.data.BlockStateGen.axisBlock;
@@ -105,24 +109,27 @@ public class ModBlocks {
     public static final BlockEntry<WoodenShaftBlock> WARPED_SHAFT = createWoodenShaft("warped");
 
     public static final BlockEntry<GlassShaftBlock> GLASS_SHAFT = REGISTRATE.block("glass_shaft", GlassShaftBlock::new)
-            .properties(p -> BlockBehaviour.Properties.copy(Blocks.GLASS))
+            .initialProperties(() -> Blocks.GLASS)
+            .properties(BlockBehaviour.Properties::noOcclusion)
+            .addLayer(()->RenderType::cutoutMipped)
             .transform(BlockStressDefaults.setNoImpact())
             .transform(pickaxeOnly())
             .blockstate(BlockStateGen.axisBlockProvider(false))
             .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
             .simpleItem()
-            .addLayer(()->RenderType::cutout)
             .register();
 
     public static final BlockEntry<CreativeCogwheelBlock> CREATIVE_COGWHEEL =
             REGISTRATE.block("creative_cogwheel", CreativeCogwheelBlock::new)
                     .initialProperties(SharedProperties::stone)
                     .properties(p -> p.color(MaterialColor.COLOR_PURPLE))
+                    .properties(BlockBehaviour.Properties::noOcclusion)
                     .tag(AllTags.AllBlockTags.SAFE_NBT.tag)
                     .transform(pickaxeOnly())
                     .blockstate(new CreativeMotorGenerator()::generate)
                     .transform(BlockStressDefaults.setCapacity(16384.0))
                     .transform(BlockStressDefaults.setGeneratorSpeed(() -> Couple.create(0, 256)))
+                    .addLayer(()-> RenderType::cutoutMipped)
                     .item()
                     .properties(p -> p.rarity(Rarity.EPIC))
                     .transform(customItemModel())
@@ -200,6 +207,7 @@ public class ModBlocks {
                 .properties(BlockBehaviour.Properties::noOcclusion)
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
+                .onRegisterAfter(Registry.ITEM_REGISTRY, v -> ItemDescription.useKey(v, "block.createcasing."+name+"_mixer"))
                 .addLayer(() -> RenderType::cutoutMipped)
                 .transform(BlockStressDefaults.setImpact(6.0))
                 .item(AssemblyOperatorBlockItem::new)
@@ -211,6 +219,7 @@ public class ModBlocks {
                         .properties(BlockBehaviour.Properties::noOcclusion)
                         .transform(axeOrPickaxe())
                         .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
+                        .onRegisterAfter(Registry.ITEM_REGISTRY, v -> ItemDescription.useKey(v, "block.createcasing.custommixer"))
                         .addLayer(() -> RenderType::cutoutMipped)
                         .transform(BlockStressDefaults.setImpact(4.0))
                         .item(AssemblyOperatorBlockItem::new)
@@ -226,6 +235,7 @@ public class ModBlocks {
                 .transform(axeOrPickaxe())
                 .blockstate(BlockStateGen.horizontalBlockProvider(true))
                 .transform(BlockStressDefaults.setImpact(8.0))
+                .onRegisterAfter(Registry.ITEM_REGISTRY, v -> ItemDescription.useKey(v, "block.createcasing.custom_press"))
                 .item(AssemblyOperatorBlockItem::new)
                 .transform(customItemModel())
                 .register();
@@ -243,7 +253,26 @@ public class ModBlocks {
                 .register();
     }
 
-    public static void register() {}
+    public static void registerEncasedShafts() {
+        forEachShaft(shaft-> Create.REGISTRATE.getAll(Registry.BLOCK_REGISTRY).stream().filter(r->r.getId().getPath().endsWith("_casing")).forEach(c->{
+            String casing = c.getId().getPath().replace("_casing","");
+            try {
+                CTSpriteShiftEntry sprite = (CTSpriteShiftEntry) AllSpriteShifts.class.getField(c.getId().getPath().toUpperCase()).get(new CTSpriteShiftEntry(AllCTTypes.OMNIDIRECTIONAL));
+                REGISTRATE.block(casing + "_encased_" + shaft.getId().getPath(), p -> new CustomEncasedShaft(p, c, shaft))
+                        .properties(p -> p.color(MaterialColor.PODZOL))
+                        .transform(BuilderTransformers.encasedShaft(casing, () -> sprite))
+                        .transform(EncasingRegistry.addVariantTo(shaft))
+                        .transform(axeOrPickaxe())
+                        .register();
+            } catch (NoSuchFieldException | IllegalAccessException ex){
+                ex.printStackTrace();
+            }
+        }));
+    }
+
+    public static void register() {
+
+    }
 
     public static boolean isWoodenShaftHasState(BlockState state) {
         return OAK_SHAFT.has(state) ||
@@ -255,5 +284,17 @@ public class ModBlocks {
                 CRIMSON_SHAFT.has(state) ||
                 WARPED_SHAFT.has(state);
 
+    }
+
+    public static void forEachShaft(Consumer<BlockEntry<? extends ShaftBlock>> action){
+        action.accept(OAK_SHAFT);
+        action.accept(BIRCH_SHAFT);
+        action.accept(SPRUCE_SHAFT);
+        action.accept(JUNGLE_SHAFT);
+        action.accept(ACACIA_SHAFT);
+        action.accept(DARK_OAK_SHAFT);
+        action.accept(WARPED_SHAFT);
+        action.accept(CRIMSON_SHAFT);
+        action.accept(GLASS_SHAFT);
     }
 }
