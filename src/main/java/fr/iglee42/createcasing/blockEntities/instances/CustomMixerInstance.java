@@ -80,10 +80,10 @@ public class CustomMixerInstance extends EncasedCogInstance implements DynamicIn
 
 		float renderedHeadOffset = getRenderedHeadOffset();
 
-		if (mixerHead.skyLight == 0 || mixerPole.skyLight == 0) {
+		/*if (mixerHead.skyLight == 0 || mixerPole.skyLight == 0) {
 			remove();
 			return;
-		}
+		}*/
 
 		transformPole(renderedHeadOffset);
 		transformHead(renderedHeadOffset);
