@@ -17,10 +17,13 @@ public class WoodenShaftBlockEntity extends BracketedKineticBlockEntity {
     public void tick() {
         super.tick();
         if (ModConfigs.common().kinetics.shouldWoodenShaftBreak.get()) {
-            if ((getSpeed() > ModConfigs.common().kinetics.maxSpeedWoodenShaft.get() || getSpeed() < -ModConfigs.common().kinetics.maxSpeedWoodenShaft.get()) &&
-                    !(ModBlocks.isWoodenShaftHasState(getLevel().getBlockState(source)) ||
-                            (getLevel().getBlockState(source).getBlock() instanceof CustomEncasedShaft sh && ModBlocks.isWoodenShaftHasState(sh.getShaft().get().defaultBlockState())))) {
-                getLevel().destroyBlock(worldPosition, false);
+            if ((getSpeed() > ModConfigs.common().kinetics.maxSpeedWoodenShaft.get() || getSpeed() < -ModConfigs.common().kinetics.maxSpeedWoodenShaft.get())) {
+                if (source != null) {
+                    if (!(ModBlocks.isWoodenShaftHasState(getLevel().getBlockState(source))) || (getLevel().getBlockState(source).getBlock() instanceof CustomEncasedShaft sh && ModBlocks.isWoodenShaftHasState(sh.getShaft().get().defaultBlockState())))
+                        getLevel().destroyBlock(worldPosition, false);
+                } else {
+                    getLevel().destroyBlock(worldPosition, false);
+                }
             }
         }
 
