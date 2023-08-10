@@ -1,6 +1,7 @@
 package fr.iglee42.createcasing.blockEntities;
 
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntity;
+import fr.iglee42.createcasing.blocks.customs.CustomEncasedShaft;
 import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.registries.ModBlocks;
 import net.minecraft.core.BlockPos;
@@ -17,7 +18,7 @@ public class GlassShaftBlockEntity extends BracketedKineticBlockEntity {
         super.tick();
 
         if (ModConfigs.common().kinetics.shouldGlassShaftBreak.get()) {
-            if (isOverStressed() && !ModBlocks.GLASS_SHAFT.has(getLevel().getBlockState(source))) {
+            if (isOverStressed() && !(ModBlocks.GLASS_SHAFT.has(getLevel().getBlockState(source))) || (getLevel().getBlockState(source).getBlock() instanceof CustomEncasedShaft sh && ModBlocks.GLASS_SHAFT.has(sh.getShaft().get().defaultBlockState()))) {
                 getLevel().destroyBlock(worldPosition,false);
             }
         }
