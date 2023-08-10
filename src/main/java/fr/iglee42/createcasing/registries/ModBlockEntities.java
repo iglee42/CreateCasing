@@ -20,14 +20,10 @@ import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntit
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogInstance;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
-import fr.iglee42.createcasing.blockEntities.CreativeCogwheelBlockEntity;
-import fr.iglee42.createcasing.blockEntities.CustomMixerBlockEntity;
-import fr.iglee42.createcasing.blockEntities.GlassShaftBlockEntity;
-import fr.iglee42.createcasing.blockEntities.WoodenShaftBlockEntity;
-import fr.iglee42.createcasing.blockEntities.instances.CreativeCogwheelInstance;
-import fr.iglee42.createcasing.blockEntities.instances.CustomMixerInstance;
-import fr.iglee42.createcasing.blockEntities.instances.CustomPressInstance;
+import fr.iglee42.createcasing.blockEntities.*;
+import fr.iglee42.createcasing.blockEntities.instances.*;
 import fr.iglee42.createcasing.blockEntities.renderers.CreativeCogwheelRenderer;
+import fr.iglee42.createcasing.blockEntities.renderers.CustomEncasedShaftRenderer;
 import fr.iglee42.createcasing.blockEntities.renderers.CustomMixerRenderer;
 import fr.iglee42.createcasing.blockEntities.renderers.CustomPressRenderer;
 
@@ -100,6 +96,13 @@ public class ModBlockEntities {
             .instance(() -> CreativeCogwheelInstance::new, false)
             .validBlocks(ModBlocks.CREATIVE_COGWHEEL)
             .renderer(() -> CreativeCogwheelRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<CustomEncasedShaftBlockEntity> CUSTOM_ENCASED_SHAFT = REGISTRATE
+            .blockEntity("custom_encased_shaft", CustomEncasedShaftBlockEntity::new)
+            .instance(() -> CustomEncasedShaftInstance::new, false)
+            .validBlocks()
+            .renderer(() -> CustomEncasedShaftRenderer::new)
             .register();
 
     public static void register() {}
