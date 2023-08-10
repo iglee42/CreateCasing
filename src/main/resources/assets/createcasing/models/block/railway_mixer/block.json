@@ -3,7 +3,7 @@
 	"parent": "block/block",
 	"ambientocclusion": false,
 	"textures": {
-		"2": "block/spruce_log_top",
+		"2": "create:block/railway_casing",
 		"4": "createcasing:block/railway_mixer_side",
 		"11": "createcasing:block/railway_press_top",
 		"particle": "createcasing:block/railway_mixer_side"
