@@ -13,7 +13,7 @@
       "item": "create:shaft"
     },
     "I": {
-      "item": "createcasing:press_plate"
+      "tag": "forge:storage_blocks/iron"
     }
   },
   "result": {
