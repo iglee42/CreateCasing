@@ -18,8 +18,13 @@ public class GlassShaftBlockEntity extends BracketedKineticBlockEntity {
         super.tick();
 
         if (ModConfigs.common().kinetics.shouldGlassShaftBreak.get()) {
-            if (isOverStressed() && !(ModBlocks.GLASS_SHAFT.has(getLevel().getBlockState(source))) || (getLevel().getBlockState(source).getBlock() instanceof CustomEncasedShaft sh && ModBlocks.GLASS_SHAFT.has(sh.getShaft().get().defaultBlockState()))) {
-                getLevel().destroyBlock(worldPosition,false);
+            if (isOverStressed()) {
+                if (source != null){
+                    if (!(ModBlocks.GLASS_SHAFT.has(getLevel().getBlockState(source))) || (getLevel().getBlockState(source).getBlock() instanceof CustomEncasedShaft sh && ModBlocks.GLASS_SHAFT.has(sh.getShaft().get().defaultBlockState())))
+                        getLevel().destroyBlock(worldPosition,false);
+                } else {
+                    getLevel().destroyBlock(worldPosition, false);
+                }
             }
         }
 
