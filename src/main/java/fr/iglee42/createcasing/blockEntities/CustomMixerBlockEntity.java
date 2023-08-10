@@ -2,6 +2,7 @@ package fr.iglee42.createcasing.blockEntities;
 
 import com.simibubi.create.AllRecipeTypes;
 import com.simibubi.create.AllSoundEvents;
+import com.simibubi.create.content.equipment.goggles.IHaveGoggleInformation;
 import com.simibubi.create.content.fluids.FluidFX;
 import com.simibubi.create.content.fluids.potion.PotionMixingRecipes;
 import com.simibubi.create.content.kinetics.mixer.MixingRecipe;
@@ -14,18 +15,23 @@ import com.simibubi.create.foundation.advancement.CreateAdvancement;
 import com.simibubi.create.foundation.blockEntity.behaviour.BlockEntityBehaviour;
 import com.simibubi.create.foundation.blockEntity.behaviour.fluid.SmartFluidTankBehaviour;
 import com.simibubi.create.foundation.item.SmartInventory;
+import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.utility.AnimationTickHolder;
 import com.simibubi.create.foundation.utility.Couple;
+import com.simibubi.create.foundation.utility.Lang;
 import com.simibubi.create.foundation.utility.VecHelper;
 import com.simibubi.create.infrastructure.config.AllConfigs;
 import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.registries.ModBlocks;
+import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction.Axis;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
@@ -46,6 +52,8 @@ import net.minecraftforge.items.IItemHandler;
 
 import java.util.List;
 import java.util.Optional;
+
+import static com.simibubi.create.foundation.item.TooltipHelper.cutTextComponent;
 
 public class CustomMixerBlockEntity extends BasinOperatingBlockEntity {
 
@@ -123,6 +131,23 @@ public class CustomMixerBlockEntity extends BasinOperatingBlockEntity {
 	}
 
 	@Override
+	public boolean addToTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
+		super.addToTooltip(tooltip,isPlayerSneaking);
+		if (!ModConfigs.common().kinetics.shouldCustomMixerMixeFaster.get()) {
+			Component spacing = IHaveGoggleInformation.componentSpacing;
+			tooltip.add(spacing.plainCopy()
+					.append(new TranslatableComponent("tooltip.createcasing.mixermixenormaly.title"))
+					.withStyle(ChatFormatting.GOLD));
+			Component hint = new TranslatableComponent("tooltip.createcasing.mixermixenormaly");
+			List<Component> cutComponent = cutTextComponent(hint, TooltipHelper.Palette.GRAY_AND_WHITE);
+			for (Component component : cutComponent)
+				tooltip.add(spacing.plainCopy()
+						.append(component));
+		}
+		return true;
+	}
+
+	@Override
 	public void tick() {
 		super.tick();
 
@@ -166,15 +191,14 @@ public class CustomMixerBlockEntity extends BasinOperatingBlockEntity {
 					if (currentRecipe != null) {
 						if (ModConfigs.common().kinetics.shouldCustomMixerMixeFaster.get()) {
 
-							if (currentRecipe instanceof ShapelessRecipe) {
-								if (ModBlocks.BRASS_GEARBOX.has(getBlockState()) || ModBlocks.RAILWAY_MIXER.has(getBlockState())) {
+							if (ModBlocks.RAILWAY_MIXER.has(getBlockState())) {
+								processingTicks--;
+							} else if (ModBlocks.BRASS_MIXER.has(getBlockState())) {
+								if (currentRecipe instanceof ShapelessRecipe)
 									processingTicks--;
-								}
-							} else if (ModBlocks.BRASS_MIXER.has(getBlockState()) && ((ProcessingRecipe<?>) currentRecipe).getFluidIngredients().isEmpty()) {
-								processingTicks--;
+								else if (((ProcessingRecipe<?>) currentRecipe).getFluidIngredients().isEmpty())
+									processingTicks--;
 							} else if (ModBlocks.COPPER_MIXER.has(getBlockState()) && (((ProcessingRecipe<?>) currentRecipe).getIngredients().isEmpty() || currentRecipe.getId().getPath().contains("potion_mixing"))) {
-								processingTicks--;
-							} else if (ModBlocks.RAILWAY_MIXER.has(getBlockState())) {
 								processingTicks--;
 							}
 						}

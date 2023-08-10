@@ -34,7 +34,7 @@ public class CustomMixerRenderer extends KineticBlockEntityRenderer {
 	protected void renderSafe(KineticBlockEntity te, float partialTicks, PoseStack ms, MultiBufferSource buffer,
 		int light, int overlay) {
 
-		if (light == 0) return;
+		//if (light == 0) return;
 		if (Backend.canUseInstancing(te.getLevel())) return;
 
 		BlockState blockState = te.getBlockState();
