@@ -1,6 +1,7 @@
 package fr.iglee42.createcasing;
 
 import com.mojang.logging.LogUtils;
+import com.simibubi.create.Create;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
@@ -11,6 +12,7 @@ import fr.iglee42.createcasing.compat.createcrystalclear.CreateCrystalClearCompa
 import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
 import fr.iglee42.createcasing.registries.ModBlocks;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -52,6 +54,7 @@ public class CreateCasing {
         ModConfigs.register(ModLoadingContext.get());
 
         REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
+        Create.REGISTRATE.addRegisterCallback(Registry.BLOCK_REGISTRY,ModBlocks::registerEncasedShafts);
         //if (isExtendedCogsLoaded())CreateExtendedCogwheelsCompat.REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
 
         //if (isExtendedCogsLoaded()) ExtendedCogwheels.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, CreateExtendedCogwheelsCompat::register);
