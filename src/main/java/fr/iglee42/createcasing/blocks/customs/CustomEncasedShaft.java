@@ -24,7 +24,7 @@ public class CustomEncasedShaft extends EncasedShaftBlock {
 
     public CustomEncasedShaft(Properties properties, Supplier<Block> casing, Supplier<? extends Block> shaft) {
         super(properties, casing);
-        this.shaft = shaft.get().delegate;
+        this.shaft = shaft::get;
     }
 
     @Override
