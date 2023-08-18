@@ -116,6 +116,21 @@ public class CreateCasing {
                 event.setCanceled(true);
             }
         }
+         else if (AllBlocks.MECHANICAL_MIXER.has(world.getBlockState(event.getPos()))){
+            if (event.getItemStack().is(AllBlocks.BRASS_CASING.get().asItem())){
+                world.setBlockAndUpdate(event.getPos(), ModBlocks.BRASS_MIXER.getDefaultState());
+                event.setCancellationResult(InteractionResult.SUCCESS);
+                event.setCanceled(true);
+            } else if (event.getItemStack().is(AllBlocks.COPPER_CASING.get().asItem())){
+                world.setBlockAndUpdate(event.getPos(), ModBlocks.COPPER_MIXER.getDefaultState());
+                event.setCancellationResult(InteractionResult.SUCCESS);
+                event.setCanceled(true);
+            } else if (event.getItemStack().is(AllBlocks.RAILWAY_CASING.get().asItem())){
+                world.setBlockAndUpdate(event.getPos(), ModBlocks.RAILWAY_MIXER.getDefaultState());
+                event.setCancellationResult(InteractionResult.SUCCESS);
+                event.setCanceled(true);
+            }
+        }
     }
 
 
