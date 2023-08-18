@@ -97,7 +97,7 @@ public class CreateCasing {
     }
 
     private void onPlayerInteract(PlayerInteractEvent.RightClickBlock event){
-        Level world = event.getPlayer().getLevel();
+        Level world = event.getEntity().getLevel();
         if (event.getItemStack().isEmpty()) return;
         if (AllBlocks.MECHANICAL_PRESS.has(world.getBlockState(event.getPos()))){
             BlockState blockState = world.getBlockState(event.getPos());

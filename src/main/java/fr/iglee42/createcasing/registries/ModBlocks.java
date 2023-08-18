@@ -106,6 +106,7 @@ public class ModBlocks {
     public static final BlockEntry<WoodenShaftBlock> JUNGLE_SHAFT = createWoodenShaft("jungle");
     public static final BlockEntry<WoodenShaftBlock> ACACIA_SHAFT = createWoodenShaft("acacia");
     public static final BlockEntry<WoodenShaftBlock> DARK_OAK_SHAFT = createWoodenShaft("dark_oak");
+    public static final BlockEntry<WoodenShaftBlock> MANGROVE_SHAFT = createWoodenShaft("mangrove");
     public static final BlockEntry<WoodenShaftBlock> CRIMSON_SHAFT = createWoodenShaft("crimson");
     public static final BlockEntry<WoodenShaftBlock> WARPED_SHAFT = createWoodenShaft("warped");
 
@@ -202,7 +203,7 @@ public class ModBlocks {
     }
 
     public static BlockEntry<CustomMixerBlock> createMixer(String name){
-        return ModConfigs.common().kinetics.shouldCustomMixerMixeFaster.get() ? REGISTRATE.block(name+"_mixer", CustomMixerBlock::new)
+        return REGISTRATE.block(name+"_mixer", CustomMixerBlock::new)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.color(MaterialColor.STONE))
                 .properties(BlockBehaviour.Properties::noOcclusion)
@@ -213,19 +214,7 @@ public class ModBlocks {
                 .transform(BlockStressDefaults.setImpact(6.0))
                 .item(AssemblyOperatorBlockItem::new)
                 .transform(customItemModel())
-                .register() :
-                REGISTRATE.block(name+"_mixer", CustomMixerBlock::new)
-                        .initialProperties(SharedProperties::stone)
-                        .properties(p -> p.color(MaterialColor.STONE))
-                        .properties(BlockBehaviour.Properties::noOcclusion)
-                        .transform(axeOrPickaxe())
-                        .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-                        .onRegisterAfter(Registry.ITEM_REGISTRY, v -> ItemDescription.useKey(v, "block.createcasing.custommixer"))
-                        .addLayer(() -> RenderType::cutoutMipped)
-                        .transform(BlockStressDefaults.setImpact(4.0))
-                        .item(AssemblyOperatorBlockItem::new)
-                        .transform(customItemModel())
-                        .register();
+                .register();
     }
 
     public static BlockEntry<CustomPressBlock> createPress(String name){
@@ -282,6 +271,7 @@ public class ModBlocks {
                 JUNGLE_SHAFT.has(state) ||
                 ACACIA_SHAFT.has(state) ||
                 DARK_OAK_SHAFT.has(state) ||
+                MANGROVE_SHAFT.has(state) ||
                 CRIMSON_SHAFT.has(state) ||
                 WARPED_SHAFT.has(state);
 
@@ -294,6 +284,7 @@ public class ModBlocks {
         action.accept(JUNGLE_SHAFT);
         action.accept(ACACIA_SHAFT);
         action.accept(DARK_OAK_SHAFT);
+        action.accept(MANGROVE_SHAFT);
         action.accept(WARPED_SHAFT);
         action.accept(CRIMSON_SHAFT);
         action.accept(GLASS_SHAFT);
