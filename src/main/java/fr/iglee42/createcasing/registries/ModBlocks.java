@@ -36,8 +36,10 @@ import net.minecraft.core.Registry;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -47,8 +49,7 @@ import java.util.function.Supplier;
 
 import static com.simibubi.create.foundation.data.BlockStateGen.axisBlock;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
-import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
-import static com.simibubi.create.foundation.data.TagGen.pickaxeOnly;
+import static com.simibubi.create.foundation.data.TagGen.*;
 import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 
 public class ModBlocks {
@@ -109,11 +110,11 @@ public class ModBlocks {
     public static final BlockEntry<WoodenShaftBlock> WARPED_SHAFT = createWoodenShaft("warped");
 
     public static final BlockEntry<GlassShaftBlock> GLASS_SHAFT = REGISTRATE.block("glass_shaft", GlassShaftBlock::new)
-            .initialProperties(() -> Blocks.GLASS)
-            .properties(BlockBehaviour.Properties::noOcclusion)
-            .addLayer(()->RenderType::cutoutMipped)
+            .initialProperties(Material.GLASS)
+            .properties(p -> p.color(MaterialColor.NONE)
+                    .sound(SoundType.GLASS)
+                    .noOcclusion())
             .transform(BlockStressDefaults.setNoImpact())
-            .transform(pickaxeOnly())
             .blockstate(BlockStateGen.axisBlockProvider(false))
             .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
             .simpleItem()
@@ -246,7 +247,7 @@ public class ModBlocks {
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.color(MaterialColor.METAL))
                 .transform(BlockStressDefaults.setNoImpact())
-                .transform(pickaxeOnly())
+                .transform(axeOnly())
                 .blockstate(BlockStateGen.axisBlockProvider(false))
                 .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
                 .simpleItem()
