@@ -18,7 +18,6 @@ import com.simibubi.create.foundation.item.SmartInventory;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.utility.AnimationTickHolder;
 import com.simibubi.create.foundation.utility.Couple;
-import com.simibubi.create.foundation.utility.Lang;
 import com.simibubi.create.foundation.utility.VecHelper;
 import com.simibubi.create.infrastructure.config.AllConfigs;
 import fr.iglee42.createcasing.config.ModConfigs;
@@ -31,11 +30,11 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.Recipe;
@@ -136,9 +135,9 @@ public class CustomMixerBlockEntity extends BasinOperatingBlockEntity {
 		if (!ModConfigs.common().kinetics.shouldCustomMixerMixeFaster.get()) {
 			Component spacing = IHaveGoggleInformation.componentSpacing;
 			tooltip.add(spacing.plainCopy()
-					.append(new TranslatableComponent("tooltip.createcasing.mixermixenormaly.title"))
+					.append(Component.translatable("tooltip.createcasing.mixermixenormaly.title"))
 					.withStyle(ChatFormatting.GOLD));
-			Component hint = new TranslatableComponent("tooltip.createcasing.mixermixenormaly");
+			Component hint = Component.translatable("tooltip.createcasing.mixermixenormaly");
 			List<Component> cutComponent = cutTextComponent(hint, TooltipHelper.Palette.GRAY_AND_WHITE);
 			for (Component component : cutComponent)
 				tooltip.add(spacing.plainCopy()
@@ -246,7 +245,7 @@ public class CustomMixerBlockEntity extends BasinOperatingBlockEntity {
 	}
 
 	protected void spillParticle(ParticleOptions data) {
-		float angle = level.random.m_188501_() * 360;
+		float angle = level.random.nextFloat() * 360;
 		Vec3 offset = new Vec3(0, 0, 0.25f);
 		offset = VecHelper.rotate(offset, angle, Axis.Y);
 		Vec3 target = VecHelper.rotate(offset, getSpeed() > 0 ? 25 : -25, Axis.Y)
