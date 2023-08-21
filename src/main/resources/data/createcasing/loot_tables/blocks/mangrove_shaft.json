@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "create:fluid_pipe"
+          "name": "createcasing:mangrove_shaft"
         }
       ],
       "rolls": 1.0
