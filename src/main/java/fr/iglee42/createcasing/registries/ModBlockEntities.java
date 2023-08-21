@@ -80,7 +80,7 @@ public class ModBlockEntities {
     public static final BlockEntityEntry<WoodenShaftBlockEntity> WOODEN_SHAFT = REGISTRATE
             .blockEntity("wooden_shaft", WoodenShaftBlockEntity::new)
             .instance(() -> BracketedKineticBlockEntityInstance::new, false)
-            .validBlocks(ModBlocks.OAK_SHAFT,ModBlocks.SPRUCE_SHAFT,ModBlocks.BIRCH_SHAFT,ModBlocks.JUNGLE_SHAFT,ModBlocks.ACACIA_SHAFT,ModBlocks.DARK_OAK_SHAFT,ModBlocks.CRIMSON_SHAFT,ModBlocks.WARPED_SHAFT,ModBlocks.MANGROVE_SHAFT)
+            .validBlocks(ModBlocks.OAK_SHAFT,ModBlocks.SPRUCE_SHAFT,ModBlocks.BIRCH_SHAFT,ModBlocks.JUNGLE_SHAFT,ModBlocks.ACACIA_SHAFT,ModBlocks.DARK_OAK_SHAFT,ModBlocks.CRIMSON_SHAFT,ModBlocks.WARPED_SHAFT,ModBlocks.MANGROVE_SHAFT,ModBlocks.BAMBOO_SHAFT,ModBlocks.CHERRY_SHAFT)
             .renderer(() -> BracketedKineticBlockEntityRenderer::new)
             .register();
 
