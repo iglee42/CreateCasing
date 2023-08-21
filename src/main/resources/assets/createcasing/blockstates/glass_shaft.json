@@ -1,0 +1,17 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "createcasing:block/glass_shaft",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "createcasing:block/glass_shaft"
+    },
+    "axis=z": {
+      "model": "createcasing:block/glass_shaft",
+      "x": 90,
+      "y": 180
+    }
+  }
+}

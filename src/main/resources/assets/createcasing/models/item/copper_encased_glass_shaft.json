@@ -1,0 +1,9 @@
+{
+	"parent": "create:block/encased_shaft/item",
+	"textures": {
+		"1_0": "createcasing:block/glass_shaft",
+		"1_1": "createcasing:block/glass_shaft_top",
+		"casing": "create:block/copper_casing",
+		"opening": "createcasing:block/copper_gearbox"
+	}
+}

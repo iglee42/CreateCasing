@@ -1,0 +1,9 @@
+{
+	"parent": "create:block/encased_shaft/item",
+	"textures": {
+		"1_0": "minecraft:block/stripped_dark_oak_log",
+		"1_1": "minecraft:block/stripped_dark_oak_log_top",
+		"casing": "create:block/shadow_steel_casing",
+		"opening": "createcasing:block/shadow_gearbox"
+	}
+}

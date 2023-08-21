@@ -29,9 +29,5 @@ public class ModItems {
                     .model(AssetLookup.customBlockItemModel("railway_gearbox", "item_vertical"))
                     .register();
 
-    public static final ItemEntry<Item> PRESS_PLATE =
-            REGISTRATE.item("press_plate",Item::new)
-                    .register();
-
     public static void register(){}
 }

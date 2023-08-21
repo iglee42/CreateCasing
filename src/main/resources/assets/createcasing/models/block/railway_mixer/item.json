@@ -4,7 +4,7 @@
 	"ambientocclusion": false,
 	"texture_size": [32, 32],
 	"textures": {
-		"2": "block/spruce_log_top",
+		"2": "create:block/railway_casing",
 		"4": "createcasing:block/railway_mixer_side",
 		"6": "createcasing:block/railway_mixer_head",
 		"7": "create:block/waterwheel_metal",
