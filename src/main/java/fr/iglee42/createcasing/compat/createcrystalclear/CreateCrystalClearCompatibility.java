@@ -19,7 +19,7 @@ import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 
 import java.util.function.Supplier;
 
@@ -89,7 +89,7 @@ public class CreateCrystalClearCompatibility {
         String name = clear ? type + "_clear" : type;
         return REGISTRATE.block(name + "_glass_encased_fluid_pipe", p -> new PublicEncasedPipeBlock(p, casing))
                 .initialProperties(SharedProperties::copperMetal)
-                .properties(p -> p.color(MaterialColor.TERRACOTTA_LIGHT_GRAY))
+                .properties(p -> p.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY))
                 .properties(BlockBehaviour.Properties::noOcclusion)
                 .transform(axeOrPickaxe())
                 .blockstate(BlockStateGen.encasedPipe())

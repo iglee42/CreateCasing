@@ -12,7 +12,7 @@ import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 public class ModItems {
 
     static {
-        REGISTRATE.creativeModeTab(() -> CreateCasing.TAB);
+        REGISTRATE.useCreativeTab(ModCreativeModeTabs.MAIN_TAB);
     }
 
     public static final ItemEntry<CustomVerticalGearboxItem> VERTICAL_BRASS_GEARBOX =

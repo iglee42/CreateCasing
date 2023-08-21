@@ -34,7 +34,6 @@ import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.Container;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CraftingRecipe;
 import net.minecraft.world.item.crafting.Recipe;
@@ -45,8 +44,8 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.common.capabilities.ForgeCapabilities;
 import net.minecraftforge.common.crafting.IShapedRecipe;
-import net.minecraftforge.items.CapabilityItemHandler;
 import net.minecraftforge.items.IItemHandler;
 
 import java.util.List;
@@ -271,7 +270,7 @@ public class CustomMixerBlockEntity extends BasinOperatingBlockEntity {
 			return matchingRecipes;
 		
 		IItemHandler availableItems = basinTileEntity
-			.getCapability(CapabilityItemHandler.ITEM_HANDLER_CAPABILITY)
+			.getCapability(ForgeCapabilities.ITEM_HANDLER)
 			.orElse(null);
 		if (availableItems == null)
 			return matchingRecipes;

@@ -4,8 +4,7 @@ import com.jozufozu.flywheel.api.MaterialManager;
 import com.jozufozu.flywheel.api.instance.DynamicInstance;
 import com.jozufozu.flywheel.core.Materials;
 import com.jozufozu.flywheel.core.materials.oriented.OrientedData;
-import com.mojang.math.Quaternion;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.ShaftInstance;
 import com.simibubi.create.content.kinetics.press.MechanicalPressBlock;
@@ -13,6 +12,7 @@ import com.simibubi.create.content.kinetics.press.MechanicalPressBlockEntity;
 import com.simibubi.create.content.kinetics.press.PressingBehaviour;
 import com.simibubi.create.foundation.utility.AngleHelper;
 import com.simibubi.create.foundation.utility.AnimationTickHolder;
+import org.joml.Quaternionf;
 
 public class CustomPressInstance extends ShaftInstance<MechanicalPressBlockEntity> implements DynamicInstance {
 
@@ -26,7 +26,7 @@ public class CustomPressInstance extends ShaftInstance<MechanicalPressBlockEntit
 				.getModel(AllPartialModels.MECHANICAL_PRESS_HEAD, blockState)
 				.createInstance();
 
-		Quaternion q = Vector3f.YP
+		Quaternionf q = Axis.YP
 			.rotationDegrees(AngleHelper.horizontalAngle(blockState.getValue(MechanicalPressBlock.HORIZONTAL_FACING)));
 
 		pressHead.setRotation(q);

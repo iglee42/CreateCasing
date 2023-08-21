@@ -2,30 +2,27 @@ package fr.iglee42.createcasing;
 
 import com.mojang.logging.LogUtils;
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllCreativeModeTabs;
 import com.simibubi.create.Create;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
-import com.simibubi.create.infrastructure.config.AllConfigs;
-import fr.iglee42.createcasing.compat.createcrystalclear.CreateCrystalClearCompatibility;
 import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
 import fr.iglee42.createcasing.registries.ModBlocks;
+import fr.iglee42.createcasing.registries.ModCreativeModeTabs;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -43,12 +40,6 @@ public class CreateCasing {
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public static final CreativeModeTab TAB = new CreativeModeTab(MODID) {
-        @Override
-        public ItemStack makeIcon() {return ModBlocks.BRASS_GEARBOX.asStack();}
-    };
-
-
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MODID);
 
     static {
@@ -63,15 +54,16 @@ public class CreateCasing {
         ModConfigs.register(ModLoadingContext.get());
 
         REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
-        Create.REGISTRATE.addRegisterCallback(Registry.BLOCK_REGISTRY,ModBlocks::registerEncasedShafts);
+        Create.REGISTRATE.addRegisterCallback(Registries.BLOCK, ModBlocks::registerEncasedShafts);
         //if (isExtendedCogsLoaded())CreateExtendedCogwheelsCompat.REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
 
         //if (isExtendedCogsLoaded()) ExtendedCogwheels.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, CreateExtendedCogwheelsCompat::register);
 
         ModBlocks.register();
         ModBlockEntities.register();
+        ModCreativeModeTabs.register(modEventBus);
 
-        if (isCrystalClearLoaded()) CreateCrystalClearCompatibility.register();
+        //if (isCrystalClearLoaded()) CreateCrystalClearCompatibility.register();
 
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> CreateCasingClient.onCtorClient(modEventBus, forgeEventBus));
 
@@ -97,7 +89,7 @@ public class CreateCasing {
     }
 
     private void onPlayerInteract(PlayerInteractEvent.RightClickBlock event){
-        Level world = event.getEntity().getLevel();
+        Level world = event.getEntity().level();
         if (event.getItemStack().isEmpty()) return;
         if (AllBlocks.MECHANICAL_PRESS.has(world.getBlockState(event.getPos()))){
             BlockState blockState = world.getBlockState(event.getPos());

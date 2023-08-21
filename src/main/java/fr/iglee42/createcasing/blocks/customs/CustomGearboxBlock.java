@@ -18,6 +18,7 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.HitResult;
 
 import java.util.Arrays;
@@ -41,13 +42,7 @@ public class CustomGearboxBlock extends RotatedPillarKineticBlock implements IBE
 	}
 
 	@Override
-	public void fillItemCategory(CreativeModeTab group, NonNullList<ItemStack> items) {
-		super.fillItemCategory(group, items);
-		items.add(verticalItem.asStack());
-	}
-
-	@Override
-	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+	public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
 		if (state.getValue(AXIS).isVertical())
 			return super.getDrops(state, builder);
 		return Arrays.asList(new ItemStack(verticalItem.get()));

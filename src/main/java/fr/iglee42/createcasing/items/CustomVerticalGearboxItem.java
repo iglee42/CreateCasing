@@ -27,13 +27,8 @@ public class CustomVerticalGearboxItem extends BlockItem {
 
 	@Override
 	public String getDescriptionId() {
-		return "item.createcasing.vertical_"+ ForgeRegistries.BLOCKS.getKey(getBlock()).getPath();
+		return "item.createcasing.vertical_" + ForgeRegistries.BLOCKS.getKey(getBlock()).getPath();
 	}
-
-	@Override
-	public void fillItemCategory(CreativeModeTab p_150895_1_, NonNullList<ItemStack> p_150895_2_) {
-	}
-
 
 	@Override
 	public void registerBlocks(Map<Block, Item> p_195946_1_, Item p_195946_2_) {
