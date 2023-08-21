@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     "createcasing:railway_encased_shaft",
     "createcasing:copper_encased_shaft",
@@ -70,6 +69,12 @@
     "createcasing:shadow_steel_encased_dark_oak_shaft",
     "createcasing:refined_radiance_encased_dark_oak_shaft",
     "createcasing:railway_encased_dark_oak_shaft",
+    "createcasing:andesite_encased_mangrove_shaft",
+    "createcasing:brass_encased_mangrove_shaft",
+    "createcasing:copper_encased_mangrove_shaft",
+    "createcasing:shadow_steel_encased_mangrove_shaft",
+    "createcasing:refined_radiance_encased_mangrove_shaft",
+    "createcasing:railway_encased_mangrove_shaft",
     "createcasing:andesite_encased_warped_shaft",
     "createcasing:brass_encased_warped_shaft",
     "createcasing:copper_encased_warped_shaft",
