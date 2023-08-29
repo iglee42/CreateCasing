@@ -1,4 +1,5 @@
 {
+  "replace": false,
   "values": [
     "createcasing:railway_encased_shaft",
     "createcasing:copper_encased_shaft",
