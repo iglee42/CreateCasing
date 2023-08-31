@@ -66,6 +66,14 @@ public class CustomMixerRenderer extends KineticBlockEntityRenderer {
 				poleRender = CachedBufferer.partial(ModPartialModels.RAILWAY_MIXER_POLE, blockState);
 				headRender = CachedBufferer.partial(ModPartialModels.RAILWAY_MIXER_HEAD, blockState);
 			}
+			case "industrial_iron" -> {
+				poleRender = CachedBufferer.partial(ModPartialModels.INDUSTRIAL_IRON_MIXER_POLE, blockState);
+				headRender = CachedBufferer.partial(ModPartialModels.INDUSTRIAL_IRON_MIXER_HEAD, blockState);
+			}
+			default -> {
+				poleRender = CachedBufferer.partial(AllPartialModels.MECHANICAL_MIXER_POLE, blockState);
+				headRender = CachedBufferer.partial(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState);
+			}
 		}
 
 		if (poleRender == oldPoleRender ||  headRender == oldHeadRender) return;

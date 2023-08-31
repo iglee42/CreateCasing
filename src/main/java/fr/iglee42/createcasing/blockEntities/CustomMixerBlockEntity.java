@@ -134,16 +134,18 @@ public class CustomMixerBlockEntity extends BasinOperatingBlockEntity {
 	public boolean addToTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
 		super.addToTooltip(tooltip,isPlayerSneaking);
 		if (!ModConfigs.common().kinetics.shouldCustomMixerMixeFaster.get()) {
-			Component spacing = IHaveGoggleInformation.componentSpacing;
-			tooltip.add(spacing.plainCopy()
-					.append(new TranslatableComponent("tooltip.createcasing.mixermixenormaly.title"))
-					.withStyle(ChatFormatting.GOLD));
-			Component hint = new TranslatableComponent("tooltip.createcasing.mixermixenormaly");
-			List<Component> cutComponent = cutTextComponent(hint, TooltipHelper.Palette.GRAY_AND_WHITE);
-			for (Component component : cutComponent)
-				tooltip.add(spacing.plainCopy()
-						.append(component));
-		}
+            if (ModBlocks.BRASS_MIXER.has(getBlockState()) || ModBlocks.COPPER_MIXER.has(getBlockState()) || ModBlocks.RAILWAY_MIXER.has(getBlockState())) {
+                Component spacing = IHaveGoggleInformation.componentSpacing;
+                tooltip.add(spacing.plainCopy()
+                        .append(new TranslatableComponent("tooltip.createcasing.mixermixenormaly.title"))
+                        .withStyle(ChatFormatting.GOLD));
+                Component hint = new TranslatableComponent("tooltip.createcasing.mixermixenormaly");
+                List<Component> cutComponent = cutTextComponent(hint, TooltipHelper.Palette.GRAY_AND_WHITE);
+                for (Component component : cutComponent)
+                    tooltip.add(spacing.plainCopy()
+                            .append(component));
+            }
+        }
 		return true;
 	}
 
