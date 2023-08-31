@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "C",
+    "I"
+  ],
+  "key": {
+    "C": {
+      "item": "create:industrial_iron_block"
+    },
+    "S": {
+      "item": "create:cogwheel"
+    },
+    "I": {
+      "item": "create:whisk"
+    }
+  },
+  "result": {
+    "item": "createcasing:industrial_iron_mixer"
+  }
+}
