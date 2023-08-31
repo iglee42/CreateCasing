@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "C",
+    "I"
+  ],
+  "key": {
+    "C": {
+      "item": "create:industrial_iron_block"
+    },
+    "S": {
+      "item": "create:shaft"
+    },
+    "I": {
+      "tag": "forge:storage_blocks/iron"
+    }
+  },
+  "result": {
+    "item": "createcasing:industrial_iron_press"
+  }
+}
