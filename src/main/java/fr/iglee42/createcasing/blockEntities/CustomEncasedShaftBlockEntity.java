@@ -17,22 +17,29 @@ public class CustomEncasedShaftBlockEntity extends SimpleKineticBlockEntity {
     public void tick() {
         super.tick();
 
-        if (ModBlocks.GLASS_SHAFT.has(((CustomEncasedShaft)getBlockState().getBlock()).getShaft().get().defaultBlockState())) {
+        if (ModBlocks.GLASS_SHAFT.has(((CustomEncasedShaft) getBlockState().getBlock()).getShaft().get().defaultBlockState())) {
             if (ModConfigs.common().kinetics.shouldGlassShaftBreak.get()) {
-                if (isOverStressed() && !(ModBlocks.GLASS_SHAFT.has(getLevel().getBlockState(source))) || (getLevel().getBlockState(source).getBlock() instanceof CustomEncasedShaft sh && ModBlocks.GLASS_SHAFT.has(sh.getShaft().get().defaultBlockState()))) {
-                    getLevel().destroyBlock(worldPosition, false);
+                if (isOverStressed()) {
+                    if (source != null) {
+                        if (!(ModBlocks.GLASS_SHAFT.has(getLevel().getBlockState(source))) || (getLevel().getBlockState(source).getBlock() instanceof CustomEncasedShaft sh && ModBlocks.GLASS_SHAFT.has(sh.getShaft().get().defaultBlockState()))) {
+                            getLevel().destroyBlock(worldPosition, false);
+                        }
+                    } else getLevel().destroyBlock(worldPosition, false);
                 }
             }
         }
 
-        if (ModBlocks.isWoodenShaftHasState(((CustomEncasedShaft)getBlockState().getBlock()).getShaft().get().defaultBlockState())){
+        if (ModBlocks.isWoodenShaftHasState(((CustomEncasedShaft) getBlockState().getBlock()).getShaft().get().defaultBlockState())) {
             if (ModConfigs.common().kinetics.shouldWoodenShaftBreak.get()) {
-                if ((getSpeed() > ModConfigs.common().kinetics.maxSpeedWoodenShaft.get() || getSpeed() < -ModConfigs.common().kinetics.maxSpeedWoodenShaft.get()) &&
-                        !(ModBlocks.isWoodenShaftHasState(getLevel().getBlockState(source)) ||
-                                (getLevel().getBlockState(source).getBlock() instanceof CustomEncasedShaft sh && ModBlocks.isWoodenShaftHasState(sh.getShaft().get().defaultBlockState())))) {
-                    getLevel().destroyBlock(worldPosition, false);
-                }
+                if ((getSpeed() > ModConfigs.common().kinetics.maxSpeedWoodenShaft.get() || getSpeed() < -ModConfigs.common().kinetics.maxSpeedWoodenShaft.get()))
+                    if (source != null) {
+                        if (!(ModBlocks.isWoodenShaftHasState(getLevel().getBlockState(source))) || (getLevel().getBlockState(source).getBlock() instanceof CustomEncasedShaft sh && ModBlocks.isWoodenShaftHasState(sh.getShaft().get().defaultBlockState())))
+                            getLevel().destroyBlock(worldPosition, false);
+                    } else {
+                        getLevel().destroyBlock(worldPosition, false);
+                    }
             }
+
         }
     }
 }
