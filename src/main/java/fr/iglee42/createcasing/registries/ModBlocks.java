@@ -116,7 +116,7 @@ public class ModBlocks {
             .initialProperties(SharedProperties::copperMetal)
             .properties(p -> p.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY))
             .properties(BlockBehaviour.Properties::noOcclusion)
-            .transform(axeOrPickaxe())
+            .transform(pickaxeOnly())
             .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::new))
             .loot((p, b) -> p.dropOther(b, AllBlocks.FLUID_PIPE.get()))
             .transform(EncasingRegistry.addVariantTo(AllBlocks.FLUID_PIPE))
@@ -332,6 +332,7 @@ public class ModBlocks {
                             .transform(BuilderTransformers.encasedShaft(casing, () -> sprite))
                             .transform(EncasingRegistry.addVariantTo(shaft))
                             .transform(axeOrPickaxe())
+                            .loot((l,s)->l.dropOther(s,s.getShaft().get().asItem()))
                             .register();
                 } catch (NoSuchFieldException | IllegalAccessException ex) {
                     ex.printStackTrace();
@@ -343,6 +344,7 @@ public class ModBlocks {
                     .transform(encasedNoSpriteShaft("industrial_iron"))
                     .transform(EncasingRegistry.addVariantTo(shaft))
                     .transform(axeOrPickaxe())
+                    .loot((l,s)->l.dropOther(s,s.getShaft().get().asItem()))
                     .register();
 
         });
