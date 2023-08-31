@@ -1,0 +1,7 @@
+{
+	"parent": "create:block/encased_shaft/item",
+	"textures": {
+		"casing": "create:block/industrial_iron_block",
+		"opening": "createcasing:block/industrial_iron_gearbox"
+	}
+}
