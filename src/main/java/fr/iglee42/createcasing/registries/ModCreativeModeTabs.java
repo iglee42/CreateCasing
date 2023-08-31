@@ -62,7 +62,8 @@ public class ModCreativeModeTabs {
 			Map<ItemProviderEntry<?>, ItemProviderEntry<?>> simpleAfterOrderings = Map.of(
 					ModItems.VERTICAL_BRASS_GEARBOX, ModBlocks.BRASS_GEARBOX,
 					ModItems.VERTICAL_COPPER_GEARBOX, ModBlocks.COPPER_GEARBOX,
-					ModItems.VERTICAL_RAILWAY_GEARBOX, ModBlocks.RAILWAY_GEARBOX
+					ModItems.VERTICAL_RAILWAY_GEARBOX, ModBlocks.RAILWAY_GEARBOX,
+					ModItems.VERTICAL_INDUSTRIAL_IRON_GEARBOX, ModBlocks.INDUSTRIAL_IRON_GEARBOX
 			);
 
 			simpleBeforeOrderings.forEach((entry, otherEntry) -> {

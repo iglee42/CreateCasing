@@ -53,6 +53,20 @@ public class CustomMixerInstance extends EncasedCogInstance implements DynamicIn
                 mixerPole = getOrientedMaterial().getModel(ModPartialModels.RAILWAY_MIXER_POLE, blockState)
                         .createInstance();
             }
+			case "industrial_iron" ->{
+				mixerHead = materialManager.defaultCutout()
+						.material(AllMaterialSpecs.ROTATING).getModel(ModPartialModels.INDUSTRIAL_IRON_MIXER_HEAD, blockState)
+						.createInstance();
+				mixerPole = getOrientedMaterial().getModel(ModPartialModels.INDUSTRIAL_IRON_MIXER_POLE, blockState)
+						.createInstance();
+			}
+			default -> {
+				mixerHead = materialManager.defaultCutout()
+						.material(AllMaterialSpecs.ROTATING).getModel(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState)
+						.createInstance();
+				mixerPole = getOrientedMaterial().getModel(AllPartialModels.MECHANICAL_MIXER_POLE, blockState)
+						.createInstance();
+			}
 		}
 
 

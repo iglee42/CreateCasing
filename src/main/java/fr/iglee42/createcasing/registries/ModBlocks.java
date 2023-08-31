@@ -9,19 +9,23 @@ import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
 import com.simibubi.create.content.fluids.PipeAttachmentModel;
 import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
+import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlock;
 import com.simibubi.create.content.kinetics.motor.CreativeMotorGenerator;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockModel;
 import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogCTBehaviour;
+import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedShaftBlock;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.block.connected.AllCTTypes;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.data.*;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.utility.Couple;
+import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.blocks.customs.*;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedCogwheelBlock;
@@ -30,7 +34,9 @@ import fr.iglee42.createcasing.blocks.publics.PublicEncasedShaftBlock;
 import fr.iglee42.createcasing.items.CustomVerticalGearboxItem;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Rarity;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
@@ -40,6 +46,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.*;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -62,12 +69,26 @@ public class ModBlocks {
     public static final BlockEntry<PublicEncasedShaftBlock> COPPER_ENCASED_SHAFT = createShaft("copper",AllBlocks.COPPER_CASING::get, AllSpriteShifts.COPPER_CASING);
     public static final BlockEntry<PublicEncasedShaftBlock> SHADOW_ENCASED_SHAFT = createShaft("shadow_steel",AllBlocks.SHADOW_STEEL_CASING::get,AllSpriteShifts.SHADOW_STEEL_CASING);
     public static final BlockEntry<PublicEncasedShaftBlock> REFINED_RADIANCE_ENCASED_SHAFT = createShaft("refined_radiance",AllBlocks.REFINED_RADIANCE_CASING::get,AllSpriteShifts.REFINED_RADIANCE_CASING);
+    public static final BlockEntry<PublicEncasedShaftBlock> INDUSTRIAL_IRON_ENCASED_SHAFT = REGISTRATE.block("industrial_iron_encased_shaft", p -> new PublicEncasedShaftBlock(p, AllBlocks.INDUSTRIAL_IRON_BLOCK))
+            .properties(p -> p.mapColor(MapColor.PODZOL))
+            .transform(encasedNoSpriteShaft("industrial_iron"))
+            .transform(EncasingRegistry.addVariantTo(AllBlocks.SHAFT))
+            .transform(axeOrPickaxe())
+            .register();
 
     //COGWHEELS
     public static final BlockEntry<PublicEncasedCogwheelBlock> RAILWAY_ENCASED_COGWHEEL = createCogwheel("railway",AllBlocks.RAILWAY_CASING::get,AllSpriteShifts.RAILWAY_CASING,ModSprites.RAILWAY_ENCASED_COGWHEEL_SIDE,ModSprites.RAILWAY_ENCASED_COGWHEEL_OTHERSIDE);
     public static final BlockEntry<PublicEncasedCogwheelBlock> COPPER_ENCASED_COGWHEEL = createCogwheel("copper",AllBlocks.COPPER_CASING::get,AllSpriteShifts.COPPER_CASING,ModSprites.COPPER_ENCASED_COGWHEEL_SIDE,ModSprites.COPPER_ENCASED_COGWHEEL_OTHERSIDE);
     public static final BlockEntry<PublicEncasedCogwheelBlock> SHADOW_ENCASED_COGWHEEL = createCogwheel("shadow_steel",AllBlocks.SHADOW_STEEL_CASING::get,AllSpriteShifts.SHADOW_STEEL_CASING,ModSprites.SHADOW_ENCASED_COGWHEEL_SIDE,ModSprites.SHADOW_ENCASED_COGWHEEL_OTHERSIDE);
     public static final BlockEntry<PublicEncasedCogwheelBlock> RADIANCE_ENCASED_COGWHEEL = createCogwheel("refined_radiance",AllBlocks.REFINED_RADIANCE_CASING::get,AllSpriteShifts.REFINED_RADIANCE_CASING,ModSprites.RADIANCE_ENCASED_COGWHEEL_SIDE,ModSprites.RADIANCE_ENCASED_COGWHEEL_OTHERSIDE);
+    public static final BlockEntry<PublicEncasedCogwheelBlock> INDUSTRIAL_IRON_ENCASED_COGWHEEL =REGISTRATE.block("industrial_iron_encased_cogwheel", p -> new PublicEncasedCogwheelBlock(p, false, AllBlocks.INDUSTRIAL_IRON_BLOCK))
+            .properties(p -> p.mapColor(MapColor.PODZOL).noOcclusion())
+            .addLayer(() -> RenderType::cutoutMipped)
+            .transform(EncasingRegistry.addVariantTo(AllBlocks.COGWHEEL))
+            .transform(axeOrPickaxe())
+            .item()
+            .transform(customItemModel())
+            .register();;
 
     //LARGE COGWHEELS
 
@@ -75,6 +96,14 @@ public class ModBlocks {
     public static final BlockEntry<PublicEncasedCogwheelBlock> COPPER_ENCASED_COGWHEEL_LARGE = createLargeCogwheel("copper",AllBlocks.COPPER_CASING::get,AllSpriteShifts.COPPER_CASING);
     public static final BlockEntry<PublicEncasedCogwheelBlock> SHADOW_ENCASED_COGWHEEL_LARGE = createLargeCogwheel("shadow_steel",AllBlocks.SHADOW_STEEL_CASING::get,AllSpriteShifts.SHADOW_STEEL_CASING);
     public static final BlockEntry<PublicEncasedCogwheelBlock> RADIANCE_ENCASED_COGWHEEL_LARGE = createLargeCogwheel("refined_radiance",AllBlocks.REFINED_RADIANCE_CASING::get,AllSpriteShifts.REFINED_RADIANCE_CASING);
+    public static final BlockEntry<PublicEncasedCogwheelBlock> INDUSTRIAL_IRON_ENCASED_COGWHEEL_LARGE = REGISTRATE.block("industrial_iron_encased_large_cogwheel", p -> new PublicEncasedCogwheelBlock(p, true, AllBlocks.INDUSTRIAL_IRON_BLOCK))
+            .properties(p -> p.mapColor(MapColor.PODZOL).noOcclusion())
+            .addLayer(() -> RenderType::cutoutMipped)
+            .transform(EncasingRegistry.addVariantTo(AllBlocks.LARGE_COGWHEEL))
+            .transform(axeOrPickaxe())
+            .item()
+            .transform(customItemModel())
+            .register();
 
     //PIPES
 
@@ -83,18 +112,39 @@ public class ModBlocks {
     public static final BlockEntry<PublicEncasedPipeBlock> ENCASED_RAILWAY_FLUID_PIPE = createPipe("railway",AllBlocks.RAILWAY_CASING::get,AllSpriteShifts.RAILWAY_CASING);
     public static final BlockEntry<PublicEncasedPipeBlock> ENCASED_SHADOW_FLUID_PIPE = createPipe("shadow_steel",AllBlocks.SHADOW_STEEL_CASING::get,AllSpriteShifts.SHADOW_STEEL_CASING);
     public static final BlockEntry<PublicEncasedPipeBlock> ENCASED_RADIANCE_FLUID_PIPE = createPipe("refined_radiance",AllBlocks.REFINED_RADIANCE_CASING::get,AllSpriteShifts.REFINED_RADIANCE_CASING);
+    public static final BlockEntry<PublicEncasedPipeBlock> ENCASED_INDUSTRIAL_IRON_FLUID_PIPE = REGISTRATE.block("industrial_iron_encased_fluid_pipe", p -> new PublicEncasedPipeBlock(p, AllBlocks.INDUSTRIAL_IRON_BLOCK))
+            .initialProperties(SharedProperties::copperMetal)
+            .properties(p -> p.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY))
+            .properties(BlockBehaviour.Properties::noOcclusion)
+            .transform(axeOrPickaxe())
+            .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::new))
+            .loot((p, b) -> p.dropOther(b, AllBlocks.FLUID_PIPE.get()))
+            .transform(EncasingRegistry.addVariantTo(AllBlocks.FLUID_PIPE))
+            .register();
 
     public static final BlockEntry<CustomGearboxBlock> BRASS_GEARBOX = createGearbox("brass",AllSpriteShifts.BRASS_CASING,ModItems.VERTICAL_BRASS_GEARBOX);
     public static final BlockEntry<CustomGearboxBlock> COPPER_GEARBOX = createGearbox("copper",AllSpriteShifts.COPPER_CASING,ModItems.VERTICAL_COPPER_GEARBOX);
     public static final BlockEntry<CustomGearboxBlock> RAILWAY_GEARBOX = createGearbox("railway",AllSpriteShifts.RAILWAY_CASING,ModItems.VERTICAL_RAILWAY_GEARBOX);
+    public static final BlockEntry<CustomGearboxBlock> INDUSTRIAL_IRON_GEARBOX = REGISTRATE.block("industrial_iron_gearbox", (p)->new CustomGearboxBlock(p,ModItems.VERTICAL_INDUSTRIAL_IRON_GEARBOX))
+            .initialProperties(SharedProperties::stone)
+            .properties(BlockBehaviour.Properties::noOcclusion)
+            .properties(p -> p.mapColor(MapColor.PODZOL))
+            .transform(BlockStressDefaults.setNoImpact())
+            .transform(pickaxeOnly())
+            .blockstate((c, p) -> axisBlock(c, p, $ -> AssetLookup.partialBaseModel(c, p), true))
+            .item()
+            .transform(customItemModel())
+            .register();
 
     public static final BlockEntry<CustomMixerBlock> BRASS_MIXER = createMixer("brass");
     public static final BlockEntry<CustomMixerBlock> COPPER_MIXER = createMixer("copper");
     public static final BlockEntry<CustomMixerBlock> RAILWAY_MIXER = createMixer("railway");
+    public static final BlockEntry<CustomMixerBlock> INDUSTRIAL_IRON_MIXER = createMixer("industrial_iron");
 
     public static final BlockEntry<CustomPressBlock> BRASS_PRESS = createPress("brass");
     public static final BlockEntry<CustomPressBlock> COPPER_PRESS = createPress("copper");
     public static final BlockEntry<CustomPressBlock> RAILWAY_PRESS = createPress("railway");
+    public static final BlockEntry<CustomPressBlock> INDUSTRIAL_IRON_PRESS = createPress("industrial_iron");
 
     public static final BlockEntry<WoodenShaftBlock> OAK_SHAFT = createWoodenShaft("oak");
     public static final BlockEntry<WoodenShaftBlock> SPRUCE_SHAFT = createWoodenShaft("spruce");
@@ -135,6 +185,23 @@ public class ModBlocks {
                     .transform(customItemModel())
                     .register();
 
+
+    public static <B extends EncasedShaftBlock, P> NonNullUnaryOperator<BlockBuilder<B, P>> encasedNoSpriteShaft(String casing) {
+        return builder -> encasedBase(builder, AllBlocks.SHAFT::get)
+                .blockstate((c, p) -> axisBlock(c, p, blockState -> p.models()
+                        .getExistingFile(p.modLoc("block/encased_shaft/block_" + casing)), true))
+                .item()
+                .model(AssetLookup.customBlockItemModel("encased_shaft", "item_" + casing))
+                .build();
+    }
+
+    private static <B extends RotatedPillarKineticBlock, P> BlockBuilder<B, P> encasedBase(BlockBuilder<B, P> b,
+                                                                                           Supplier<ItemLike> drop) {
+        return b.initialProperties(SharedProperties::stone)
+                .properties(BlockBehaviour.Properties::noOcclusion)
+                .transform(BlockStressDefaults.setNoImpact())
+                .loot((p, lb) -> p.dropOther(lb, drop.get()));
+    }
 
 
     //METHODS
@@ -201,7 +268,7 @@ public class ModBlocks {
     }
 
     public static BlockEntry<CustomMixerBlock> createMixer(String name){
-        return REGISTRATE.block(name+"_mixer", CustomMixerBlock::new)
+        return Objects.equals(name, "brass") || Objects.equals(name, "copper") || Objects.equals(name, "railway") ? REGISTRATE.block(name+"_mixer", CustomMixerBlock::new)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.mapColor(MapColor.STONE))
                 .properties(BlockBehaviour.Properties::noOcclusion)
@@ -212,7 +279,20 @@ public class ModBlocks {
                 .transform(BlockStressDefaults.setImpact(6.0))
                 .item(AssemblyOperatorBlockItem::new)
                 .transform(customItemModel())
-                .register();
+                .register()
+        :
+                REGISTRATE.block(name+"_mixer", CustomMixerBlock::new)
+                        .initialProperties(SharedProperties::stone)
+                        .properties(p -> p.mapColor(MapColor.STONE))
+                        .properties(BlockBehaviour.Properties::noOcclusion)
+                        .transform(axeOrPickaxe())
+                        .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
+                        .onRegisterAfter(Registries.ITEM, v -> ItemDescription.useKey(v, "block.createcasing.custom_mixer"))
+                        .addLayer(() -> RenderType::cutoutMipped)
+                        .transform(BlockStressDefaults.setImpact(4.0))
+                        .item(AssemblyOperatorBlockItem::new)
+                        .transform(customItemModel())
+                        .register();
     }
 
     public static BlockEntry<CustomPressBlock> createPress(String name){
@@ -231,7 +311,7 @@ public class ModBlocks {
 
     public static BlockEntry<WoodenShaftBlock> createWoodenShaft(String name){
         return REGISTRATE.block(name+"_shaft", WoodenShaftBlock::new)
-                .initialProperties(SharedProperties::stone)
+                .initialProperties(SharedProperties::wooden)
                 .properties(p -> p.mapColor(MapColor.METAL))
                 .transform(BlockStressDefaults.setNoImpact())
                 .transform(axeOnly())
@@ -242,20 +322,30 @@ public class ModBlocks {
     }
 
     public static void registerEncasedShafts() {
-        forEachShaft(shaft-> Create.REGISTRATE.getAll(Registries.BLOCK).stream().filter(r->r.getId().getPath().endsWith("_casing")).forEach(c->{
-            String casing = c.getId().getPath().replace("_casing","");
-            try {
-                CTSpriteShiftEntry sprite = (CTSpriteShiftEntry) AllSpriteShifts.class.getField(c.getId().getPath().toUpperCase()).get(new CTSpriteShiftEntry(AllCTTypes.OMNIDIRECTIONAL));
-                REGISTRATE.block(casing + "_encased_" + shaft.getId().getPath(), p -> new CustomEncasedShaft(p, c, shaft))
-                        .properties(p -> p.mapColor(MapColor.PODZOL))
-                        .transform(BuilderTransformers.encasedShaft(casing, () -> sprite))
-                        .transform(EncasingRegistry.addVariantTo(shaft))
-                        .transform(axeOrPickaxe())
-                        .register();
-            } catch (NoSuchFieldException | IllegalAccessException ex){
-                ex.printStackTrace();
-            }
-        }));
+        forEachShaft(shaft-> {
+            Create.REGISTRATE.getAll(Registries.BLOCK).stream().filter(r->r.getId().getPath().endsWith("_casing")).forEach(c-> {
+                String casing = c.getId().getPath().replace("_casing", "");
+                try {
+                    CTSpriteShiftEntry sprite = (CTSpriteShiftEntry) AllSpriteShifts.class.getField(c.getId().getPath().toUpperCase()).get(new CTSpriteShiftEntry(AllCTTypes.OMNIDIRECTIONAL));
+                    REGISTRATE.block(casing + "_encased_" + shaft.getId().getPath(), p -> new CustomEncasedShaft(p, c, shaft))
+                            .properties(p -> p.mapColor(MapColor.PODZOL))
+                            .transform(BuilderTransformers.encasedShaft(casing, () -> sprite))
+                            .transform(EncasingRegistry.addVariantTo(shaft))
+                            .transform(axeOrPickaxe())
+                            .register();
+                } catch (NoSuchFieldException | IllegalAccessException ex) {
+                    ex.printStackTrace();
+                }
+            });
+
+            REGISTRATE.block("industrial_iron_encased_"+shaft.getId().getPath(), p -> new CustomEncasedShaft(p, AllBlocks.INDUSTRIAL_IRON_BLOCK,shaft))
+                    .properties(p -> p.mapColor(MapColor.PODZOL))
+                    .transform(encasedNoSpriteShaft("industrial_iron"))
+                    .transform(EncasingRegistry.addVariantTo(shaft))
+                    .transform(axeOrPickaxe())
+                    .register();
+
+        });
     }
 
     public static void register() {
@@ -263,6 +353,7 @@ public class ModBlocks {
     }
 
     public static boolean isWoodenShaftHasState(BlockState state) {
+
         return OAK_SHAFT.has(state) ||
                 SPRUCE_SHAFT.has(state) ||
                 BIRCH_SHAFT.has(state) ||
