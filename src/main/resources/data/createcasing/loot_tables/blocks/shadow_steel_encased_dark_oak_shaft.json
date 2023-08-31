@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "create:shaft"
+          "name": "createcasing:dark_oak_shaft"
         }
       ],
       "rolls": 1.0
