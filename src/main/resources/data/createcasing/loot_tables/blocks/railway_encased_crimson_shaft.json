@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "create:shaft"
+          "name": "createcasing:crimson_shaft"
         }
       ],
       "conditions": [
