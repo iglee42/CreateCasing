@@ -28,12 +28,15 @@ public class ModPonderTags{
 			.add(ModBlocks.BRASS_GEARBOX)
 			.add(ModBlocks.COPPER_GEARBOX)
 			.add(ModBlocks.RAILWAY_GEARBOX)
+			.add(ModBlocks.INDUSTRIAL_IRON_GEARBOX)
 			.add(ModBlocks.BRASS_MIXER)
 			.add(ModBlocks.COPPER_MIXER)
 			.add(ModBlocks.RAILWAY_MIXER)
+			.add(ModBlocks.INDUSTRIAL_IRON_MIXER)
 			.add(ModBlocks.BRASS_PRESS)
 			.add(ModBlocks.COPPER_PRESS)
 			.add(ModBlocks.RAILWAY_PRESS)
+			.add(ModBlocks.INDUSTRIAL_IRON_PRESS)
 			.add(ModBlocks.CREATIVE_COGWHEEL);
 
 	}

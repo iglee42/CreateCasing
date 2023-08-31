@@ -29,5 +29,10 @@ public class ModItems {
                     .model(AssetLookup.customBlockItemModel("railway_gearbox", "item_vertical"))
                     .register();
 
+    public static final ItemEntry<CustomVerticalGearboxItem> VERTICAL_INDUSTRIAL_IRON_GEARBOX =
+            REGISTRATE.item("vertical_industrial_iron_gearbox", (p)->new CustomVerticalGearboxItem(p,ModBlocks.INDUSTRIAL_IRON_GEARBOX.get()))
+                    .model(AssetLookup.customBlockItemModel("industrial_iron_gearbox", "item_vertical"))
+                    .register();
+
     public static void register(){}
 }
