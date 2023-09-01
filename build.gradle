@@ -15,6 +15,9 @@ plugins {
 
 apply plugin: 'org.spongepowered.mixin'
 
+apply plugin: 'maven-publish'
+
+
 group = 'fr.iglee42'
 
 version = '1.18.2-1.4'
@@ -220,4 +223,23 @@ jar.finalizedBy('reobfJar')
 
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
+}
+
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            artifact jar
+        }
+    }
+    repositories {
+        maven {
+            name = 'igleeRepo'
+            url = 'http://iglee.site:8080/releases'
+            allowInsecureProtocol = true
+            credentials {
+                username = System.getenv("MAVEN_USER")
+                password = System.getenv("MAVEN_PASS")
+            }
+        }
+    }
 }
