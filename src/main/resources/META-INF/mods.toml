@@ -44,7 +44,7 @@ modId = "forge" #mandatory
 # Does this dependency have to exist - if not, ordering below must be specified
 mandatory = true #mandatory
 # The version range of the dependency
-versionRange = "[47,)" #mandatory
+versionRange = "[43.2.4,)" #mandatory
 # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
 ordering = "NONE"
 # Side this dependency is applied on - BOTH, CLIENT or SERVER
@@ -53,13 +53,13 @@ side = "BOTH"
 modId = "create"
 mandatory = true
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
-versionRange = "[0.5.0i,)"
+versionRange = "[0.5.1.a,)"
 ordering = "AFTER"
 side = "BOTH"
 [[dependencies.createcasing]]
 modId = "create_crystal_clear"
 mandatory = false
 # This version range declares a minimum of the current minecraft version up to but not including the next major version
-versionRange = "[1.18.2-0.1,)"
+versionRange = "[1.19.2-0.1,)"
 ordering = "AFTER"
 side = "BOTH"
