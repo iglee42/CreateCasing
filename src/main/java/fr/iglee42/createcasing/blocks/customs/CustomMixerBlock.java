@@ -25,7 +25,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class CustomMixerBlock extends KineticBlock implements IBE<CustomMixerBlockEntity>, ICogWheel {
+public class    CustomMixerBlock extends KineticBlock implements IBE<CustomMixerBlockEntity>, ICogWheel {
 
     public CustomMixerBlock(Properties properties) {
         super(properties);
@@ -44,16 +44,20 @@ public class CustomMixerBlock extends KineticBlock implements IBE<CustomMixerBlo
             world.setBlockAndUpdate(blockPos, AllBlocks.MECHANICAL_MIXER.getDefaultState());
             return InteractionResult.SUCCESS;
         } else if (player.getItemInHand(hand).is(AllBlocks.BRASS_CASING.get().asItem())) {
-            if (ModBlocks.COPPER_MIXER.has(blockState) || ModBlocks.RAILWAY_MIXER.has(blockState))
+            if (ModBlocks.COPPER_MIXER.has(blockState) || ModBlocks.RAILWAY_MIXER.has(blockState)  || ModBlocks.INDUSTRIAL_IRON_MIXER.has(blockState))
                 world.setBlockAndUpdate(blockPos, ModBlocks.BRASS_MIXER.getDefaultState());
             return InteractionResult.SUCCESS;
         } else if (player.getItemInHand(hand).is(AllBlocks.COPPER_CASING.get().asItem())) {
-            if (ModBlocks.BRASS_MIXER.has(blockState)||ModBlocks.RAILWAY_MIXER.has(blockState))
+            if (ModBlocks.BRASS_MIXER.has(blockState)||ModBlocks.RAILWAY_MIXER.has(blockState)  || ModBlocks.INDUSTRIAL_IRON_MIXER.has(blockState) )
                 world.setBlockAndUpdate(blockPos, ModBlocks.COPPER_MIXER.getDefaultState());
             return InteractionResult.SUCCESS;
         } else if (player.getItemInHand(hand).is(AllBlocks.RAILWAY_CASING.get().asItem())) {
-            if (ModBlocks.BRASS_MIXER.has(blockState)||ModBlocks.COPPER_MIXER.has(blockState))
+            if (ModBlocks.BRASS_MIXER.has(blockState)||ModBlocks.COPPER_MIXER.has(blockState) || ModBlocks.INDUSTRIAL_IRON_MIXER.has(blockState))
                 world.setBlockAndUpdate(blockPos, ModBlocks.RAILWAY_MIXER.getDefaultState());
+            return InteractionResult.SUCCESS;
+        }else if (player.getItemInHand(hand).is(AllBlocks.INDUSTRIAL_IRON_BLOCK.get().asItem())) {
+            if (ModBlocks.BRASS_MIXER.has(blockState)||ModBlocks.COPPER_MIXER.has(blockState) || ModBlocks.RAILWAY_MIXER.has(blockState))
+                world.setBlockAndUpdate(blockPos, ModBlocks.INDUSTRIAL_IRON_MIXER.getDefaultState());
             return InteractionResult.SUCCESS;
         }
         return super.use(blockState, world, blockPos, player, hand, p_60508_);

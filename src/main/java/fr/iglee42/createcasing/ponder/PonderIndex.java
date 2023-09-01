@@ -31,11 +31,11 @@ public class PonderIndex {
 		// (!) Modifications inside storyboard methods only require re-opening the ui
 
 
-		HELPER.forComponents(ModBlocks.BRASS_GEARBOX,ModBlocks.COPPER_GEARBOX,ModBlocks.RAILWAY_GEARBOX, ModItems.VERTICAL_BRASS_GEARBOX,ModItems.VERTICAL_COPPER_GEARBOX,ModItems.VERTICAL_RAILWAY_GEARBOX)
+		HELPER.forComponents(ModBlocks.BRASS_GEARBOX,ModBlocks.COPPER_GEARBOX,ModBlocks.RAILWAY_GEARBOX,ModBlocks.INDUSTRIAL_IRON_GEARBOX, ModItems.VERTICAL_BRASS_GEARBOX,ModItems.VERTICAL_COPPER_GEARBOX,ModItems.VERTICAL_RAILWAY_GEARBOX,ModItems.VERTICAL_INDUSTRIAL_IRON_GEARBOX)
 				.addStoryBoard("gearbox", KineticsScenes::gearbox, AllPonderTags.KINETIC_RELAYS);
 
-		HELPER.forComponents(ModBlocks.BRASS_MIXER,ModBlocks.COPPER_MIXER,ModBlocks.RAILWAY_MIXER).addStoryBoard("mechanical_mixer/mixing", ProcessingScenes::mixing);
-		HELPER.forComponents(ModBlocks.BRASS_PRESS,ModBlocks.COPPER_PRESS,ModBlocks.RAILWAY_PRESS)
+		HELPER.forComponents(ModBlocks.BRASS_MIXER,ModBlocks.COPPER_MIXER,ModBlocks.RAILWAY_MIXER,ModBlocks.INDUSTRIAL_IRON_MIXER).addStoryBoard("mechanical_mixer/mixing", ProcessingScenes::mixing);
+		HELPER.forComponents(ModBlocks.BRASS_PRESS,ModBlocks.COPPER_PRESS,ModBlocks.RAILWAY_PRESS,ModBlocks.INDUSTRIAL_IRON_PRESS)
 				.addStoryBoard("mechanical_press/pressing", ProcessingScenes::pressing)
 				.addStoryBoard("mechanical_press/compacting", ProcessingScenes::compacting);
 

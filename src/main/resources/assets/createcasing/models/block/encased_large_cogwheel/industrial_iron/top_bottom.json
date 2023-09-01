@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/encased_large_cogwheel/block_top_bottom",
+  "textures": {
+    "casing": "create:block/industrial_iron_block",
+    "1": "create:block/industrial_iron_block",
+    "side": "createcasing:block/industrial_iron_encased_large_cogwheel_side"
+  }
+}

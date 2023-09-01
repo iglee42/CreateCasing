@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "CBC",
+    " C "
+  ],
+  "key": {
+    "C": {
+      "item": "create:cogwheel"
+    },
+    "B": {
+      "item": "create:industrial_iron_block"
+    }
+  },
+  "result": {
+    "item": "createcasing:industrial_iron_gearbox"
+  }
+}
