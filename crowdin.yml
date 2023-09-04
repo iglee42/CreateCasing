@@ -1,3 +1,0 @@
-files:
-  - source: /src/main/resources/assets/createcasing/lang/en_us.json
-    translation: /src/main/resources/assets/createcasing/lang/%locale_with_underscore%.json
