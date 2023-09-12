@@ -69,6 +69,10 @@ public class WoodenShaftBlock extends ShaftBlock {
             Direction.Axis axis = state.getValue(AXIS);
             world.setBlockAndUpdate(pos, ModBlocks.WARPED_SHAFT.getDefaultState().setValue(AXIS, axis));
             return InteractionResult.SUCCESS;
+        } else if (item.equals(Items.BLACKSTONE)) {
+            Direction.Axis axis = state.getValue(AXIS);
+            world.setBlockAndUpdate(pos, ModBlocks.MLDEG_SHAFT.getDefaultState().setValue(AXIS, axis));
+            return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;
     }
