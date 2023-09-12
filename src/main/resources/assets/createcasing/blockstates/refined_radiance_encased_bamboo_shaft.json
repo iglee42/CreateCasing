@@ -2,17 +2,17 @@
 {
   "variants": {
     "axis=x": {
-      "model": "createcasing:block/encased_shaft",
+      "model": "createcasing:block/encased_shaft/block_refined_radiance",
       "x": 90,
       "y": 90,
       "uvlock": true
     },
     "axis=y": {
-      "model": "createcasing:block/encased_shaft",
+      "model": "createcasing:block/encased_shaft/block_refined_radiance",
       "uvlock": true
     },
     "axis=z": {
-      "model": "createcasing:block/encased_shaft",
+      "model": "createcasing:block/encased_shaft/block_refined_radiance",
       "x": 90,
       "y": 180,
       "uvlock": true
