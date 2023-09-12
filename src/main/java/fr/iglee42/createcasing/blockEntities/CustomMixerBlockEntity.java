@@ -198,7 +198,7 @@ public class CustomMixerBlockEntity extends BasinOperatingBlockEntity {
 									processingTicks--;
 								else if (((ProcessingRecipe<?>) currentRecipe).getFluidIngredients().isEmpty())
 									processingTicks--;
-							} else if (ModBlocks.COPPER_MIXER.has(getBlockState()) && (((ProcessingRecipe<?>) currentRecipe).getIngredients().isEmpty() || currentRecipe.getId().getPath().contains("potion_mixing"))) {
+							} else if (ModBlocks.COPPER_MIXER.has(getBlockState()) && currentRecipe instanceof ProcessingRecipe<?> && (((ProcessingRecipe<?>) currentRecipe).getIngredients().isEmpty() || currentRecipe.getId().getPath().contains("potion_mixing"))) {
 								processingTicks--;
 							}
 						}
