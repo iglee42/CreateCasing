@@ -55,10 +55,6 @@ public class MetalShaftBlock extends ShaftBlock {
             Direction.Axis axis = state.getValue(AXIS);
             world.setBlockAndUpdate(pos, ModBlocks.DARK_OAK_SHAFT.getDefaultState().setValue(AXIS, axis));
             return InteractionResult.SUCCESS;
-        } else if (item.equals(Items.MANGROVE_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.MANGROVE_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
         } else if (item.equals(Items.CRIMSON_PLANKS)) {
             Direction.Axis axis = state.getValue(AXIS);
             world.setBlockAndUpdate(pos, ModBlocks.CRIMSON_SHAFT.getDefaultState().setValue(AXIS, axis));

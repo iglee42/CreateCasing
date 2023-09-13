@@ -16,6 +16,7 @@ import fr.iglee42.createcasing.registries.ModSounds;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -83,7 +84,7 @@ public class CreateCasing {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         forgeEventBus.addListener(this::onPlayerInteract);
 
-        modEventBus.addListener(ModSounds::register);
+        modEventBus.addGenericListener(SoundEvent.class,ModSounds::register);
 
 
         MinecraftForge.EVENT_BUS.register(this);

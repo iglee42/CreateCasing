@@ -4,8 +4,6 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.simibubi.create.Create;
 import fr.iglee42.createcasing.CreateCasing;
-import net.minecraft.core.Holder;
-import net.minecraft.core.Registry;
 import net.minecraft.core.Vec3i;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
@@ -14,8 +12,9 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.event.RegistryEvent;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegisterEvent;
+import net.minecraftforge.registries.IForgeRegistry;
 import net.minecraftforge.registries.RegistryObject;
 
 import java.util.ArrayList;
@@ -48,11 +47,10 @@ public class ModSounds {
             entry.prepare();
     }
 
-    public static void register(RegisterEvent event) {
-        event.register(Registry.SOUND_EVENT_REGISTRY, helper -> {
-            for (SoundEntry entry : ALL.values())
-                entry.register(helper);
-        });
+    public static void register(RegistryEvent.Register<SoundEvent> event) {
+        IForgeRegistry<SoundEvent> registry = event.getRegistry();
+        for (ModSounds.SoundEntry entry : ALL.values())
+            entry.register(registry);
     }
 
     public static JsonObject provideLangEntries() {
@@ -124,9 +122,6 @@ public class ModSounds {
             return playExisting(event, 1, 1);
         }
 
-        public SoundEntryBuilder playExisting(Holder<SoundEvent> event) {
-            return playExisting(event::get, 1, 1);
-        }
 
         public SoundEntry build() {
             SoundEntry entry =
@@ -154,7 +149,7 @@ public class ModSounds {
 
         public abstract void prepare();
 
-        public abstract void register(RegisterEvent.RegisterHelper<SoundEvent> registry);
+        public abstract void register(IForgeRegistry<SoundEvent> registry);
 
         public abstract void write(JsonObject json);
 
@@ -242,10 +237,10 @@ public class ModSounds {
         }
 
         @Override
-        public void register(RegisterEvent.RegisterHelper<SoundEvent> helper) {
+        public void register(IForgeRegistry<SoundEvent> helper) {
             for (WrappedSoundEntry.CompiledSoundEvent compiledEvent : compiledEvents) {
                 ResourceLocation location = compiledEvent.event().getId();
-                helper.register(location, new SoundEvent(location));
+                helper.register(new SoundEvent(location).setRegistryName(location));
             }
         }
 
@@ -319,9 +314,9 @@ public class ModSounds {
         }
 
         @Override
-        public void register(RegisterEvent.RegisterHelper<SoundEvent> helper) {
+        public void register(IForgeRegistry<SoundEvent> helper) {
             ResourceLocation location = event.getId();
-            helper.register(location, new SoundEvent(location));
+            helper.register(new SoundEvent(location).setRegistryName(location));
         }
 
         @Override
