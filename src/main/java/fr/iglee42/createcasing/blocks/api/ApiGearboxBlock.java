@@ -5,7 +5,6 @@ import com.simibubi.create.content.kinetics.gearbox.GearboxBlockEntity;
 import com.simibubi.create.foundation.block.IBE;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import fr.iglee42.createcasing.items.ApiVerticalGearboxItem;
-import fr.iglee42.createcasing.items.CustomVerticalGearboxItem;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
 import fr.iglee42.createcasing.utils.Deferred;
 import net.minecraft.core.BlockPos;
@@ -17,7 +16,7 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.storage.loot.LootParams;
+import net.minecraft.world.level.storage.loot.LootContext;
 import net.minecraft.world.phys.HitResult;
 
 import java.util.Arrays;
@@ -41,8 +40,9 @@ public class ApiGearboxBlock extends RotatedPillarKineticBlock implements IBE<Ge
 		return ModBlockEntities.API_GEARBOX.get();
 	}
 
+
 	@Override
-	public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
+	public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
 		if (state.getValue(AXIS).isVertical())
 			return super.getDrops(state, builder);
 		return Arrays.asList(new ItemStack(verticalItem.data.get()));

@@ -1,7 +1,6 @@
 package fr.iglee42.createcasing.api;
 
 import com.simibubi.create.AllBlocks;
-import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
 import com.simibubi.create.content.fluids.PipeAttachmentModel;
@@ -12,29 +11,23 @@ import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogCTBeh
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.data.*;
 import com.simibubi.create.foundation.utility.Couple;
-import com.tterrag.registrate.Registrate;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import fr.iglee42.createcasing.blocks.api.ApiGearboxBlock;
-import fr.iglee42.createcasing.blocks.customs.CustomGearboxBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedCogwheelBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedPipeBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedShaftBlock;
 import fr.iglee42.createcasing.items.ApiVerticalGearboxItem;
-import fr.iglee42.createcasing.items.CustomVerticalGearboxItem;
-import fr.iglee42.createcasing.registries.ModBlocks;
 import fr.iglee42.createcasing.utils.Deferred;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.MaterialColor;
 
 import java.util.function.Supplier;
 
 import static com.simibubi.create.foundation.data.BlockStateGen.axisBlock;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
-import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 
 /**
  * @author iglee42
@@ -54,7 +47,7 @@ public class CreateCasingApi {
      */
     public static BlockEntry<PublicEncasedShaftBlock> createEncasedShaft(CreateRegistrate registrate, String name, Supplier<Block> casing, CTSpriteShiftEntry connectedTexturesSprite){
         return registrate.block(name+"_encased_shaft", p -> new PublicEncasedShaftBlock(p, casing))
-                .properties(p -> p.mapColor(MapColor.PODZOL))
+                .properties(p -> p.color(MaterialColor.PODZOL))
                 .transform(BuilderTransformers.encasedShaft(name, () -> connectedTexturesSprite))
                 .transform(EncasingRegistry.addVariantTo(AllBlocks.SHAFT))
                 .transform(axeOrPickaxe())
@@ -76,7 +69,7 @@ public class CreateCasingApi {
      */
     public static BlockEntry<PublicEncasedCogwheelBlock> createEncasedCogwheel(CreateRegistrate registrate, String name, Supplier<Block> casing, CTSpriteShiftEntry connectedTexturesSprite,CTSpriteShiftEntry verticalCogwheelSide,CTSpriteShiftEntry horizontalCogwheelSide){
         return registrate.block(name+"_encased_cogwheel", p -> new PublicEncasedCogwheelBlock(p, false, casing))
-                .properties(p -> p.mapColor(MapColor.PODZOL))
+                .properties(p -> p.color(MaterialColor.PODZOL))
                 .transform(BuilderTransformers.encasedCogwheel(name, () -> connectedTexturesSprite))
                 .transform(EncasingRegistry.addVariantTo(AllBlocks.COGWHEEL))
                 .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCogCTBehaviour(connectedTexturesSprite,
@@ -98,7 +91,7 @@ public class CreateCasingApi {
      */
     public static BlockEntry<PublicEncasedCogwheelBlock> createEncasedLargeCogwheel(CreateRegistrate registrate, String name, Supplier<Block> casing, CTSpriteShiftEntry connectedTexturesSprite){
         return registrate.block(name+"_encased_large_cogwheel", p -> new PublicEncasedCogwheelBlock(p, true, casing))
-                .properties(p -> p.mapColor(MapColor.PODZOL))
+                .properties(p -> p.color(MaterialColor.PODZOL))
                 .transform(BuilderTransformers.encasedLargeCogwheel(name, () -> connectedTexturesSprite))
                 .transform(EncasingRegistry.addVariantTo(AllBlocks.LARGE_COGWHEEL))
                 .transform(axeOrPickaxe())
@@ -118,7 +111,7 @@ public class CreateCasingApi {
     public static BlockEntry<PublicEncasedPipeBlock> createEncasedPipe(CreateRegistrate registrate, String name, Supplier<Block> casing, CTSpriteShiftEntry connectedTexturesSprite){
         return registrate.block(name+"_encased_fluid_pipe", p -> new PublicEncasedPipeBlock(p, casing))
                 .initialProperties(SharedProperties::copperMetal)
-                .properties(p -> p.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY))
+                .properties(p -> p.color(MaterialColor.TERRACOTTA_LIGHT_GRAY))
                 .properties(BlockBehaviour.Properties::noOcclusion)
                 .transform(axeOrPickaxe())
                 .blockstate(BlockStateGen.encasedPipe())
@@ -146,7 +139,7 @@ public class CreateCasingApi {
         BlockEntry<ApiGearboxBlock> gearbox = registrate.block(name+"_gearbox",(p)-> new ApiGearboxBlock(p,itemEntryDeferred))
                 .initialProperties(SharedProperties::stone)
                 .properties(BlockBehaviour.Properties::noOcclusion)
-                .properties(p -> p.mapColor(MapColor.PODZOL))
+                .properties(p -> p.color(MaterialColor.PODZOL))
                 .transform(BlockStressDefaults.setNoImpact())
                 .transform(axeOrPickaxe())
                 .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(connectedTexturesSprite)))
