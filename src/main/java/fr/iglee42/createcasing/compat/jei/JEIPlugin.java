@@ -8,6 +8,7 @@ import mezz.jei.api.registration.IModIngredientRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,7 +24,7 @@ public class JEIPlugin implements IModPlugin {
     public void registerRecipes(IRecipeRegistration registration) {
         IModPlugin.super.registerRecipes(registration);
         List<ItemStack> stacks = new ArrayList<>();
-        CreateCasing.hidedItems.forEach(i->stacks.add(new ItemStack(i)));
+        CreateCasing.hidedItems.stream().filter(i->i != Items.AIR).forEach(i->stacks.add(new ItemStack(i)));
         registration.getIngredientManager().removeIngredientsAtRuntime(VanillaTypes.ITEM_STACK,stacks);
     }
 }
