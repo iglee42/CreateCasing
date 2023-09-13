@@ -8,24 +8,24 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
-import com.simibubi.create.infrastructure.config.AllConfigs;
 import fr.iglee42.createcasing.compat.createcrystalclear.CreateCrystalClearCompatibility;
 import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
 import fr.iglee42.createcasing.registries.ModBlocks;
+import fr.iglee42.createcasing.registries.ModSounds;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
@@ -33,6 +33,9 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static com.simibubi.create.content.kinetics.base.HorizontalKineticBlock.HORIZONTAL_FACING;
 
@@ -50,6 +53,7 @@ public class CreateCasing {
 
 
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MODID);
+    public static List<ItemLike> hidedItems = new ArrayList<>();
 
     static {
         REGISTRATE.setTooltipModifierFactory(item -> new ItemDescription.Modifier(item, TooltipHelper.Palette.STANDARD_CREATE)
@@ -68,6 +72,7 @@ public class CreateCasing {
 
         //if (isExtendedCogsLoaded()) ExtendedCogwheels.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, CreateExtendedCogwheelsCompat::register);
 
+        ModSounds.prepare();
         ModBlocks.register();
         ModBlockEntities.register();
 
@@ -78,6 +83,9 @@ public class CreateCasing {
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
         forgeEventBus.addListener(this::onPlayerInteract);
 
+        modEventBus.addListener(ModSounds::register);
+
+
         MinecraftForge.EVENT_BUS.register(this);
     }
 
@@ -87,6 +95,10 @@ public class CreateCasing {
 
     public static boolean isExtendedCogsLoaded() {
         return ModList.get().isLoaded("extendedgears");
+    }
+
+    public static void hideItem(ItemLike it){
+        hidedItems.add(it);
     }
 
     private void setup(final FMLCommonSetupEvent event) {

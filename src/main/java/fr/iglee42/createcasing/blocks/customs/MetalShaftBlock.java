@@ -2,7 +2,6 @@ package fr.iglee42.createcasing.blocks.customs;
 
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
-import fr.iglee42.createcasing.blockEntities.WoodenShaftBlockEntity;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
 import fr.iglee42.createcasing.registries.ModBlocks;
 import net.minecraft.core.BlockPos;
@@ -16,16 +15,15 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.common.Tags;
 
-public class WoodenShaftBlock extends ShaftBlock {
-    public WoodenShaftBlock(Properties properties) {
+public class MetalShaftBlock extends ShaftBlock {
+    public MetalShaftBlock(Properties properties) {
         super(properties);
     }
 
     @Override
     public BlockEntityType<? extends KineticBlockEntity> getBlockEntityType() {
-        return ModBlockEntities.WOODEN_SHAFT.get();
+        return ModBlockEntities.METAL_SHAFT.get();
     }
 
     @Override
@@ -69,11 +67,7 @@ public class WoodenShaftBlock extends ShaftBlock {
             Direction.Axis axis = state.getValue(AXIS);
             world.setBlockAndUpdate(pos, ModBlocks.WARPED_SHAFT.getDefaultState().setValue(AXIS, axis));
             return InteractionResult.SUCCESS;
-        }/* else if (item.equals(Items.BLACKSTONE)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.MLDEG_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        }*/
+        }
         return InteractionResult.PASS;
     }
 }

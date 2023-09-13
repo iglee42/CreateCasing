@@ -26,6 +26,7 @@ import fr.iglee42.createcasing.blockEntities.renderers.CreativeCogwheelRenderer;
 import fr.iglee42.createcasing.blockEntities.renderers.CustomEncasedShaftRenderer;
 import fr.iglee42.createcasing.blockEntities.renderers.CustomMixerRenderer;
 import fr.iglee42.createcasing.blockEntities.renderers.CustomPressRenderer;
+import fr.iglee42.createcasing.blocks.customs.MetalShaftBlock;
 
 import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 
@@ -91,6 +92,13 @@ public class ModBlockEntities {
             .renderer(() -> BracketedKineticBlockEntityRenderer::new)
             .register();
 
+    public static final BlockEntityEntry<MetalShaftBlockEntity> METAL_SHAFT = REGISTRATE
+            .blockEntity("metal_shaft", MetalShaftBlockEntity::new)
+            .instance(() -> BracketedKineticBlockEntityInstance::new, false)
+            .validBlocks()
+            .renderer(() -> BracketedKineticBlockEntityRenderer::new)
+            .register();
+
     public static final BlockEntityEntry<CreativeCogwheelBlockEntity> CREATIVE_COGWHEEL = REGISTRATE
             .blockEntity("creative_cogwheel", CreativeCogwheelBlockEntity::new)
             .instance(() -> CreativeCogwheelInstance::new, false)
@@ -103,6 +111,16 @@ public class ModBlockEntities {
             .instance(() -> CustomEncasedShaftInstance::new, false)
             .validBlocks()
             .renderer(() -> CustomEncasedShaftRenderer::new)
+            .register();
+
+    //API
+
+
+    public static final BlockEntityEntry<GearboxBlockEntity> API_GEARBOX = REGISTRATE
+            .blockEntity("api_gearbox", GearboxBlockEntity::new)
+            .instance(() -> GearboxInstance::new, false)
+            .validBlocks()
+            .renderer(() -> GearboxRenderer::new)
             .register();
 
     public static void register() {}

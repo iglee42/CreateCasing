@@ -37,6 +37,7 @@ import net.minecraft.core.Registry;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -162,6 +163,18 @@ public class ModBlocks {
             .simpleItem()
             .register();
 
+    /*public static final BlockEntry<MLDEGShaftBlock> MLDEG_SHAFT = REGISTRATE.block("mldeg_shaft", MLDEGShaftBlock::new)
+            .initialProperties(()-> Blocks.BLACKSTONE)
+            .properties(p -> p.color(MaterialColor.NONE)
+                    .sound(SoundType.STONE)
+                    .noOcclusion())
+            .transform(BlockStressDefaults.setNoImpact())
+            .blockstate(BlockStateGen.axisBlockProvider(false))
+            .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
+            .simpleItem()
+            //.onRegisterAfter(Registry.ITEM_REGISTRY, CreateCasing::hideItem)
+            .register();*/
+
     public static final BlockEntry<CreativeCogwheelBlock> CREATIVE_COGWHEEL =
             REGISTRATE.block("creative_cogwheel", CreativeCogwheelBlock::new)
                     .initialProperties(SharedProperties::stone)
@@ -204,6 +217,7 @@ public class ModBlocks {
                 .transform(BuilderTransformers.encasedShaft(name, () -> sprite))
                 .transform(EncasingRegistry.addVariantTo(AllBlocks.SHAFT))
                 .transform(axeOrPickaxe())
+                .onRegisterAfter(Registry.ITEM_REGISTRY, CreateCasing::hideItem)
                 .register();
     }
 
@@ -216,6 +230,7 @@ public class ModBlocks {
                         Couple.create(sideSprite,
                                 otherSideSprite))))
                 .transform(axeOrPickaxe())
+                .onRegisterAfter(Registry.ITEM_REGISTRY, CreateCasing::hideItem)
                 .register();
     }
 
@@ -225,6 +240,7 @@ public class ModBlocks {
                 .transform(BuilderTransformers.encasedLargeCogwheel(name, () -> sprite))
                 .transform(EncasingRegistry.addVariantTo(AllBlocks.LARGE_COGWHEEL))
                 .transform(axeOrPickaxe())
+                .onRegisterAfter(Registry.ITEM_REGISTRY, CreateCasing::hideItem)
                 .register();
     }
 
@@ -241,6 +257,7 @@ public class ModBlocks {
                 .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::new))
                 .loot((p, b) -> p.dropOther(b, AllBlocks.FLUID_PIPE.get()))
                 .transform(EncasingRegistry.addVariantTo(AllBlocks.FLUID_PIPE))
+                .onRegisterAfter(Registry.ITEM_REGISTRY, CreateCasing::hideItem)
                 .register();
     }
 
@@ -326,6 +343,7 @@ public class ModBlocks {
                             .transform(EncasingRegistry.addVariantTo(shaft))
                             .transform(axeOrPickaxe())
                             .loot((l,s)->l.dropOther(s,s.getShaft().get().asItem()))
+                            .onRegisterAfter(Registry.ITEM_REGISTRY, CreateCasing::hideItem)
                             .register();
                 } catch (NoSuchFieldException | IllegalAccessException ex) {
                     ex.printStackTrace();
@@ -337,6 +355,7 @@ public class ModBlocks {
                     .transform(EncasingRegistry.addVariantTo(shaft))
                     .transform(axeOrPickaxe())
                     .loot((l,s)->l.dropOther(s,s.getShaft().get().asItem()))
+                    .onRegisterAfter(Registry.ITEM_REGISTRY, CreateCasing::hideItem)
                     .register();
         });
     }
@@ -369,5 +388,6 @@ public class ModBlocks {
         action.accept(WARPED_SHAFT);
         action.accept(CRIMSON_SHAFT);
         action.accept(GLASS_SHAFT);
+        //action.accept(MLDEG_SHAFT);
     }
 }
