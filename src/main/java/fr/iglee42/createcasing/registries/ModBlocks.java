@@ -163,7 +163,7 @@ public class ModBlocks {
             .simpleItem()
             .register();
 
-    public static final BlockEntry<MLDEGShaftBlock> MLDEG_SHAFT = REGISTRATE.block("mldeg_shaft", MLDEGShaftBlock::new)
+    /*public static final BlockEntry<MLDEGShaftBlock> MLDEG_SHAFT = REGISTRATE.block("mldeg_shaft", MLDEGShaftBlock::new)
             .initialProperties(()-> Blocks.BLACKSTONE)
             .properties(p -> p.color(MaterialColor.NONE)
                     .sound(SoundType.STONE)
@@ -171,9 +171,9 @@ public class ModBlocks {
             .transform(BlockStressDefaults.setNoImpact())
             .blockstate(BlockStateGen.axisBlockProvider(false))
             .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
-            .onRegisterAfter(Registry.ITEM_REGISTRY, CreateCasing::hideItem)
             .simpleItem()
-            .register();
+            //.onRegisterAfter(Registry.ITEM_REGISTRY, CreateCasing::hideItem)
+            .register();*/
 
     public static final BlockEntry<CreativeCogwheelBlock> CREATIVE_COGWHEEL =
             REGISTRATE.block("creative_cogwheel", CreativeCogwheelBlock::new)
@@ -388,6 +388,6 @@ public class ModBlocks {
         action.accept(WARPED_SHAFT);
         action.accept(CRIMSON_SHAFT);
         action.accept(GLASS_SHAFT);
-        action.accept(MLDEG_SHAFT);
+        //action.accept(MLDEG_SHAFT);
     }
 }

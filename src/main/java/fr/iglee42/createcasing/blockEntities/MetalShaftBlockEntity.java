@@ -17,11 +17,11 @@ public class MetalShaftBlockEntity extends BracketedKineticBlockEntity {
     public void tick() {
         super.tick();
 
-        if (ModBlocks.MLDEG_SHAFT.has(getBlockState())){
+        /*if (ModBlocks.MLDEG_SHAFT.has(getBlockState())){
             if (getSpeed() == 256 || getSpeed() == -256){
                 if (lazyTickCounter % 60 == 0)ModSounds.MLDEG.playAt(level,worldPosition,0.25f,0.5f,false);
             }
-        }
+        }*/
 
     }
 

@@ -95,7 +95,7 @@ public class ModBlockEntities {
     public static final BlockEntityEntry<MetalShaftBlockEntity> METAL_SHAFT = REGISTRATE
             .blockEntity("metal_shaft", MetalShaftBlockEntity::new)
             .instance(() -> BracketedKineticBlockEntityInstance::new, false)
-            .validBlocks(ModBlocks.MLDEG_SHAFT)
+            .validBlocks()
             .renderer(() -> BracketedKineticBlockEntityRenderer::new)
             .register();
 
