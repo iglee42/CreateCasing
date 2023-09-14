@@ -1,12 +1,20 @@
 
 
-![CreateHosting](https://cdn.discordapp.com/attachments/785493649969381396/1151964355534016602/CREATE_ENCASED.png)
+<a align="center" href="https://www.curseforge.com/minecraft/mc-mods/create-encased/files"><img src="https://cf.way2muchnoise.eu/versions/829380.svg" alt="Supported Versions"></a>
+    <a href="https://www.curseforge.com/minecraft/mc-mods/create-encased"><img src="http://cf.way2muchnoise.eu/829380.svg" alt="CF"></a>
+    <a href="https://modrinth.com/mod/create-encased"><img src="https://img.shields.io/modrinth/dt/create-encased?logo=modrinth&label=&suffix=%20&style=flat&color=242629&labelColor=5ca424&logoColor=1c1c1c" alt="Modrinth"></a>
 
-<p>Curseforge page: <a href="https://www.curseforge.com/minecraft/mc-mods/create-encased">https://www.curseforge.com/minecraft/mc-mods/create-encased</a></p>
+<p>
+Create Encased is a little addon of Create Mod
+
+ <br></br>
+
+This addon allow to use all casing in shafts, cogwheels and pipes</p>
 
 
 ![Bisect hosting](https://www.bisecthosting.com/partners/custom-banners/04b018a6-2b05-42f7-bc73-448bb3ee940c.webp)
-for developper:
+
+<h3>for developper:</h3>
 ```groovy
 repositories {
     maven {
