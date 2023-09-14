@@ -33,7 +33,9 @@ repositories {
 ```groovy
 implementation fg.deobf("fr.iglee42:CreateCasing:${mc_version}-${create_encased_version}
 ```
-
+<h1 align="center">
 <a href="http://maven.iglee.fr/#/releases/fr/iglee42/CreateCasing">
         <img src="https://flat.badgen.net/maven/v/metadata-url/http/50.20.249.21:8080/releases/fr/iglee42/CreateCasing/maven-metadata.xml?color=cf9555&label=CreateEncased" alt="Create Encased Latest Version">
     </a>
+</h1>
+
