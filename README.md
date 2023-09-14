@@ -8,14 +8,9 @@
 <a  href="https://discord.gg/nFBAXfb"><img src="https://img.shields.io/discord/475580779565416451?color=5865f2&label=Discord&style=flat" alt="Discord"></a>
 </h1>
 
-<p align="center">
-Create Encased is an addon to the mod <a href="https://github.com/Creators-of-Create/Create/">Create</a>
-
-The addon allow to useall of the casing in shaft; cogwheels and pipes
-
-Original idea from <a href="https://www.youtube.com/MrMLDEG">MLDEG</a>
-
-</p>
+<p align="center">Create Encased is an addon to the mod <a href="https://github.com/Creators-of-Create/Create/">Create</a></p>
+<p align="center">The addon allow to useall of the casing in shaft; cogwheels and pipes</p>
+<p align="center">Original idea from <a href="https://www.youtube.com/MrMLDEG">MLDEG</a></p>
 
 <h1 align="center">
 <a href="https://bisecthosting.com/iglee"><img src="https://www.bisecthosting.com/partners/custom-banners/04b018a6-2b05-42f7-bc73-448bb3ee940c.webp" alt=""></a>
