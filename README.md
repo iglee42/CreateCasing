@@ -20,7 +20,8 @@ This addon allow to use all casing in shafts, cogwheels and pipes</p>
 </h1>
 
 <h3>for developper:</h3>
-```groovy
+```
+groovy
 repositories {
     maven {
         // Iglee's repo
