@@ -8,8 +8,8 @@
 <a  href="https://discord.gg/nFBAXfb"><img src="https://img.shields.io/discord/475580779565416451?color=5865f2&label=Discord&style=flat" alt="Discord"></a>
 </h1>
 
-<p>
-Create Encased is an addon to the mod Create
+<p align="center">
+Create Encased is an addon to the mod <a href="https://github.com/Creators-of-Create/Create/">Create</a>
 
 The addon allow to useall of the casing in shaft; cogwheels and pipes
 
