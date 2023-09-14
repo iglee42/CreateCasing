@@ -9,12 +9,14 @@
 </h1>
 
 <p>
-Create Encased is a little addon of Create Mod
+Create Encased is an addon to the mod Create
 
-This addon allow to use all casing in shafts, cogwheels and pipes</p>
+The addon allow to useall of the casing in shaft; cogwheels and pipes
 
+Original idea from <a href="https://www.youtube.com/MrMLDEG">MLDEG</a>
 
-<!-- ![Bisect hosting](https://www.bisecthosting.com/partners/custom-banners/04b018a6-2b05-42f7-bc73-448bb3ee940c.webp) -->
+</p>
+
 <h1 align="center">
 <a href="https://bisecthosting.com/iglee"><img src="https://www.bisecthosting.com/partners/custom-banners/04b018a6-2b05-42f7-bc73-448bb3ee940c.webp" alt=""></a>
 </h1>
