@@ -4,7 +4,7 @@
 
 <a align="center" href="https://www.curseforge.com/minecraft/mc-mods/create-encased/files"><img src="https://cf.way2muchnoise.eu/versions/829380.svg" alt="Supported Versions"></a>
     <a align="center" href="https://www.curseforge.com/minecraft/mc-mods/create-encased"><img src="http://cf.way2muchnoise.eu/829380.svg" alt="CF"></a>
-    <a align="center" href="https://modrinth.com/mod/create-encased"><img src="https://img.shields.io/modrinth/dt/create-encased?logo=modrinth&label=&suffix=%20&style=flat&color=242629&labelColor=5ca424&logoColor=1c1c1c" alt
+    <a align="center" href="https://modrinth.com/mod/create-encased"><img src="https://img.shields.io/modrinth/dt/create-encased?logo=modrinth&label=&suffix=%20&style=flat&color=242629&labelColor=5ca424&logoColor=1c1c1c" alt="Modrinth"></a> 
 
 <p>
 Create Encased is a little addon of Create Mod
