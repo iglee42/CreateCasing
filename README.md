@@ -21,10 +21,9 @@ Original idea from <a href="https://www.youtube.com/MrMLDEG">MLDEG</a>
 <a href="https://bisecthosting.com/iglee"><img src="https://www.bisecthosting.com/partners/custom-banners/04b018a6-2b05-42f7-bc73-448bb3ee940c.webp" alt=""></a>
 </h1>
 
-<h3>for developper:</h3>
+<h3>For developer:</h3>
 
-```
-groovy
+```groovy
 repositories {
     maven {
         // Iglee's repo
@@ -36,7 +35,7 @@ repositories {
 }
 ```
 
-```
+```groovy
 implementation fg.deobf("fr.iglee42:CreateCasing:${mc_version}-${create_encased_version}
 ```
 
