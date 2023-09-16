@@ -38,4 +38,4 @@ implementation fg.deobf("fr.iglee42:CreateCasing:${mc_version}-${create_encased_
     </a>
 </h1>
 
-<h6>Made by <a href="https://github.com/niouf07">Niouf</a></h6>
+<h6 align="center">Made by <a href="https://github.com/niouf07">Niouf</a></h6>
