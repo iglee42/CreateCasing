@@ -144,18 +144,18 @@
   "block.createcasing.copper_encased_mldeg_shaft": "Copper Encased Mldeg Shaft",
 
   "block.createcasing.custom_mixer.tooltip": "CUSTOM MIXER",
-  "block.createcasing.custom_mixer.tooltip.summary": "_Work_ like a _normal_ mixer",
+  "block.createcasing.custom_mixer.tooltip.summary": "_Works_ like a _normal_ mixer",
   "block.createcasing.brass_mixer.tooltip": "BRASS MIXER",
-  "block.createcasing.brass_mixer.tooltip.summary" : "Mixe _2x faster_ if the recipe has _only items_ but _consumes_ more than a little _more stress_ than a normal mixer ",
+  "block.createcasing.brass_mixer.tooltip.summary" : "Mixes _2x faster_ if the recipe _only uses items_, but _uses more stress_ than a normal mixer",
   "block.createcasing.copper_mixer.tooltip": "COPPER MIXER",
-  "block.createcasing.copper_mixer.tooltip.summary" : "Mixe _2x faster_ if the recipe has _only fluids_ or if the recipe is a _potion recipe_ but _consumes_ more than a little _more stress_ than a normal mixer",
+  "block.createcasing.copper_mixer.tooltip.summary" : "Mixes _2x faster_ if the recipe either _only uses fluids_ or is a _potion recipe_, but _uses more stress_ than a normal mixer",
   "block.createcasing.railway_mixer.tooltip": "RAILWAY MIXER",
-  "block.createcasing.railway_mixer.tooltip.summary" : "Mixe _2x faster_ but _consumes_ more than a little _more stress_ than a normal mixer",
+  "block.createcasing.railway_mixer.tooltip.summary" : "Mixes _2x faster_, but _uses more stress_ than a normal mixer",
   "tooltip.createcasing.mixermixenormaly.title": "Config Disabled : ",
-  "tooltip.createcasing.mixermixenormaly": "Warning, Custom Mixers work like a normal Mixer !",
+  "tooltip.createcasing.mixermixenormaly": "Warning: Custom Mixers work like a normal mixer!",
 
   "block.createcasing.custom_press.tooltip": "CUSTOM PRESS",
-  "block.createcasing.custom_press.tooltip.summary" : "_Work_ like a _normal_ press",
+  "block.createcasing.custom_press.tooltip.summary" : "_Works_ like a _normal_ press",
 
   "item.createcasing.vertical_brass_gearbox": "Brass Vertical Gearbox",
   "item.createcasing.vertical_copper_gearbox": "Copper Vertical Gearbox",
@@ -163,7 +163,7 @@
   "item.createcasing.vertical_railway_gearbox": "Train Vertical Gearbox",
 
   "createcasing.ponder.tag.encased_blocks": "Create : Encased",
-  "createcasing.ponder.tag.encased_blocks.description": "Components which added by Create Encased",
+  "createcasing.ponder.tag.encased_blocks.description": "Components added by Create Encased",
 
   "createcasing.ponder.gearbox.header": "Relaying rotational force using Gearboxes",
   "createcasing.ponder.gearbox.text_1": "Jumping between axes of rotation can get bulky quickly",
