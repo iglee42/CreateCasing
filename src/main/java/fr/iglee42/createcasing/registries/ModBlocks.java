@@ -58,7 +58,7 @@ import static net.minecraft.world.level.block.Blocks.GLASS;
 public class ModBlocks {
 
     static {
-        REGISTRATE.useCreativeTab(ModCreativeModeTabs.MAIN_TAB);
+        REGISTRATE.setCreativeTab(ModCreativeModeTabs.MAIN_TAB);
     }
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, CreateCasing.MODID);
