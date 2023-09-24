@@ -32,7 +32,7 @@ public class ModCreativeModeTabs {
 	public static final RegistryObject<CreativeModeTab> MAIN_TAB = TAB_REGISTER.register("tab",
 		() -> CreativeModeTab.builder()
 			.title(Component.translatable("itemGroup.createcasing"))
-			.withTabsBefore(AllCreativeModeTabs.MAIN_TAB.getKey())
+			.withTabsBefore(AllCreativeModeTabs.BASE_CREATIVE_TAB.getKey())
 			.icon(ModBlocks.BRASS_GEARBOX::asStack)
 				.displayItems(new RegistrateDisplayItemsGenerator())
 			.build());
