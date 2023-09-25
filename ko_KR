@@ -1,0 +1,1402 @@
+{
+  "\"itemGroup.createcasing\"": {
+    "identifier": "\"itemGroup.createcasing\"",
+    "source_string": "Create Encased",
+    "translation": "Create Encased",
+    "context": " -> itemGroup.createcasing",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.acacia_shaft\"": {
+    "identifier": "\"block.createcasing.acacia_shaft\"",
+    "source_string": "아카시아나무 축",
+    "translation": "아카시아나무 축",
+    "context": " -> block.createcasing.acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_acacia_shaft\"",
+    "source_string": "안산암 케이스를 씌운 아카시아나무 축",
+    "translation": "안산암 케이스를 씌운 아카시아나무 축",
+    "context": " -> block.createcasing.andesite_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_bamboo_shaft\"",
+    "source_string": "안산암 케이스를 씌운 대나무 축",
+    "translation": "안산암 케이스를 씌운 대나무 축",
+    "context": " -> block.createcasing.andesite_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_birch_shaft\"",
+    "source_string": "안산암 케이스를 씌운 자작나무 축",
+    "translation": "안산암 케이스를 씌운 자작나무 축",
+    "context": " -> block.createcasing.andesite_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_cherry_shaft\"",
+    "source_string": "안산암 케이스를 씌운 벚나무 축",
+    "translation": "안산암 케이스를 씌운 벚나무 축",
+    "context": " -> block.createcasing.andesite_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_crimson_shaft\"",
+    "source_string": "안산암 케이스를 씌운 진홍빛 축",
+    "translation": "안산암 케이스를 씌운 진홍빛 축",
+    "context": " -> block.createcasing.andesite_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_dark_oak_shaft\"",
+    "source_string": "안산암 케이스를 씌운 짙은 참나무 축",
+    "translation": "안산암 케이스를 씌운 짙은 참나무 축",
+    "context": " -> block.createcasing.andesite_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_glass_shaft\"",
+    "source_string": "안산암 케이스를 씌운 유리 축",
+    "translation": "안산암 케이스를 씌운 유리 축",
+    "context": " -> block.createcasing.andesite_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_jungle_shaft\"",
+    "source_string": "안산암 케이스를 씌운 정글나무 축",
+    "translation": "안산암 케이스를 씌운 정글나무 축",
+    "context": " -> block.createcasing.andesite_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_mangrove_shaft\"",
+    "source_string": "안산암 케이스를 씌운 맹그로브나무 축",
+    "translation": "안산암 케이스를 씌운 맹그로브나무 축",
+    "context": " -> block.createcasing.andesite_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_oak_shaft\"",
+    "source_string": "안산암 케이스를 씌운 참나무 축",
+    "translation": "안산암 케이스를 씌운 참나무 축",
+    "context": " -> block.createcasing.andesite_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_spruce_shaft\"",
+    "source_string": "안산암 케이스를 씌운 가문비나무 축",
+    "translation": "안산암 케이스를 씌운 가문비나무 축",
+    "context": " -> block.createcasing.andesite_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_warped_shaft\"",
+    "source_string": "안산암 케이스를 씌운 뒤틀린 축",
+    "translation": "안산암 케이스를 씌운 뒤틀린 축",
+    "context": " -> block.createcasing.andesite_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.bamboo_shaft\"",
+    "source_string": "대나무 축",
+    "translation": "대나무 축",
+    "context": " -> block.createcasing.bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.birch_shaft\"": {
+    "identifier": "\"block.createcasing.birch_shaft\"",
+    "source_string": "자작나무 축",
+    "translation": "자작나무 축",
+    "context": " -> block.createcasing.birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_acacia_shaft\"",
+    "source_string": "황동 케이스를 씌운 아카시아나무 축",
+    "translation": "황동 케이스를 씌운 아카시아나무 축",
+    "context": " -> block.createcasing.brass_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_bamboo_shaft\"",
+    "source_string": "황동 케이스를 씌운 대나무 축",
+    "translation": "황동 케이스를 씌운 대나무 축",
+    "context": " -> block.createcasing.brass_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_birch_shaft\"",
+    "source_string": "황동 케이스를 씌운 자작나무 축",
+    "translation": "황동 케이스를 씌운 자작나무 축",
+    "context": " -> block.createcasing.brass_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_cherry_shaft\"",
+    "source_string": "황동 케이스를 씌운 벚나무 축",
+    "translation": "황동 케이스를 씌운 벚나무 축",
+    "context": " -> block.createcasing.brass_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_crimson_shaft\"",
+    "source_string": "황동 케이스를 씌운 진홍빛 축",
+    "translation": "황동 케이스를 씌운 진홍빛 축",
+    "context": " -> block.createcasing.brass_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_dark_oak_shaft\"",
+    "source_string": "황동 케이스를 씌운 짙은 참나무 축",
+    "translation": "황동 케이스를 씌운 짙은 참나무 축",
+    "context": " -> block.createcasing.brass_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_glass_shaft\"",
+    "source_string": "황동 케이스를 씌운 유리 축",
+    "translation": "황동 케이스를 씌운 유리 축",
+    "context": " -> block.createcasing.brass_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_jungle_shaft\"",
+    "source_string": "황동 케이스를 씌운 정글나무 축",
+    "translation": "황동 케이스를 씌운 정글나무 축",
+    "context": " -> block.createcasing.brass_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_mangrove_shaft\"",
+    "source_string": "황동 케이스를 씌운 맹그로브나무 축",
+    "translation": "황동 케이스를 씌운 맹그로브나무 축",
+    "context": " -> block.createcasing.brass_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_oak_shaft\"",
+    "source_string": "황동 케이스를 씌운 참나무 축",
+    "translation": "황동 케이스를 씌운 참나무 축",
+    "context": " -> block.createcasing.brass_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_spruce_shaft\"",
+    "source_string": "황동 케이스를 씌운 가문비나무 축",
+    "translation": "황동 케이스를 씌운 가문비나무 축",
+    "context": " -> block.createcasing.brass_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_warped_shaft\"",
+    "source_string": "황동 케이스를 씌운 뒤틀린 축",
+    "translation": "황동 케이스를 씌운 뒤틀린 축",
+    "context": " -> block.createcasing.brass_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_gearbox\"": {
+    "identifier": "\"block.createcasing.brass_gearbox\"",
+    "source_string": "황동 기어박스",
+    "translation": "황동 기어박스",
+    "context": " -> block.createcasing.brass_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_mixer\"": {
+    "identifier": "\"block.createcasing.brass_mixer\"",
+    "source_string": "황동 믹서",
+    "translation": "황동 믹서",
+    "context": " -> block.createcasing.brass_mixer",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_press\"": {
+    "identifier": "\"block.createcasing.brass_press\"",
+    "source_string": "황동 압착기",
+    "translation": "황동 압착기",
+    "context": " -> block.createcasing.brass_press",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.cherry_shaft\"": {
+    "identifier": "\"block.createcasing.cherry_shaft\"",
+    "source_string": "벚나무 축",
+    "translation": "벚나무 축",
+    "context": " -> block.createcasing.cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_clear_glass_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_clear_glass_encased_cogwheel\"",
+    "source_string": "구리 투명 유리 케이스를 씌운 톱니바퀴",
+    "translation": "구리 투명 유리 케이스를 씌운 톱니바퀴",
+    "context": " -> block.createcasing.copper_clear_glass_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_clear_glass_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_clear_glass_encased_large_cogwheel\"",
+    "source_string": "구리 투명 유리 케이스를 씌운 큰 톱니바퀴",
+    "translation": "구리 투명 유리 케이스를 씌운 큰 톱니바퀴",
+    "context": " -> block.createcasing.copper_clear_glass_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_clear_glass_encased_shaft\"": {
+    "identifier": "\"block.createcasing.copper_clear_glass_encased_shaft\"",
+    "source_string": "구리 투명 유리 케이스를 씌운 축",
+    "translation": "구리 투명 유리 케이스를 씌운 축",
+    "context": " -> block.createcasing.copper_clear_glass_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_acacia_shaft\"",
+    "source_string": "구리 케이스를 씌운 아카시아나무 축",
+    "translation": "구리 케이스를 씌운 아카시아나무 축",
+    "context": " -> block.createcasing.copper_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_bamboo_shaft\"",
+    "source_string": "구리 케이스를 씌운 대나무 축",
+    "translation": "구리 케이스를 씌운 대나무 축",
+    "context": " -> block.createcasing.copper_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_birch_shaft\"",
+    "source_string": "구리 케이스를 씌운 자작나무 축",
+    "translation": "구리 케이스를 씌운 자작나무 축",
+    "context": " -> block.createcasing.copper_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_cherry_shaft\"",
+    "source_string": "구리 케이스를 씌운 벚나무 축",
+    "translation": "구리 케이스를 씌운 벚나무 축",
+    "context": " -> block.createcasing.copper_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_encased_cogwheel\"",
+    "source_string": "구리 케이스를 씌운 톱니바퀴",
+    "translation": "구리 케이스를 씌운 톱니바퀴",
+    "context": " -> block.createcasing.copper_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_crimson_shaft\"",
+    "source_string": "구리 케이스를 씌운 진홍빛 축",
+    "translation": "구리 케이스를 씌운 진홍빛 축",
+    "context": " -> block.createcasing.copper_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_dark_oak_shaft\"",
+    "source_string": "구리 케이스를 씌운 짙은 참나무 축",
+    "translation": "구리 케이스를 씌운 짙은 참나무 축",
+    "context": " -> block.createcasing.copper_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_glass_shaft\"",
+    "source_string": "구리 케이스를 씌운 유리 축",
+    "translation": "구리 케이스를 씌운 유리 축",
+    "context": " -> block.createcasing.copper_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_jungle_shaft\"",
+    "source_string": "구리 케이스를 씌운 정글나무 축",
+    "translation": "구리 케이스를 씌운 정글나무 축",
+    "context": " -> block.createcasing.copper_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_encased_large_cogwheel\"",
+    "source_string": "구리 케이스를 씌운 큰 톱니바퀴",
+    "translation": "구리 케이스를 씌운 큰 톱니바퀴",
+    "context": " -> block.createcasing.copper_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_mangrove_shaft\"",
+    "source_string": "구리 케이스를 씌운 맹그로브나무 축",
+    "translation": "구리 케이스를 씌운 맹그로브나무 축",
+    "context": " -> block.createcasing.copper_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_oak_shaft\"",
+    "source_string": "구리 케이스를 씌운 참나무 축",
+    "translation": "구리 케이스를 씌운 참나무 축",
+    "context": " -> block.createcasing.copper_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_shaft\"",
+    "source_string": "구리 케이스를 씌운 축",
+    "translation": "구리 케이스를 씌운 축",
+    "context": " -> block.createcasing.copper_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_spruce_shaft\"",
+    "source_string": "구리 케이스를 씌운 가문비나무 축",
+    "translation": "구리 케이스를 씌운 가문비나무 축",
+    "context": " -> block.createcasing.copper_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_warped_shaft\"",
+    "source_string": "구리 케이스를 씌운 뒤틀린 축",
+    "translation": "구리 케이스를 씌운 뒤틀린 축",
+    "context": " -> block.createcasing.copper_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_gearbox\"": {
+    "identifier": "\"block.createcasing.copper_gearbox\"",
+    "source_string": "구리 기어박스",
+    "translation": "구리 기어박스",
+    "context": " -> block.createcasing.copper_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_glass_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_glass_encased_cogwheel\"",
+    "source_string": "구리 유리 케이스를 씌운 톱니바퀴",
+    "translation": "구리 유리 케이스를 씌운 톱니바퀴",
+    "context": " -> block.createcasing.copper_glass_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_glass_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_glass_encased_large_cogwheel\"",
+    "source_string": "구리 유리 케이스를 씌운 큰 톱니바퀴",
+    "translation": "구리 유리 케이스를 씌운 큰 톱니바퀴",
+    "context": " -> block.createcasing.copper_glass_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_glass_encased_shaft\"": {
+    "identifier": "\"block.createcasing.copper_glass_encased_shaft\"",
+    "source_string": "구리 유리 케이스를 씌운 축",
+    "translation": "구리 유리 케이스를 씌운 축",
+    "context": " -> block.createcasing.copper_glass_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_mixer\"": {
+    "identifier": "\"block.createcasing.copper_mixer\"",
+    "source_string": "구리 믹서",
+    "translation": "구리 믹서",
+    "context": " -> block.createcasing.copper_mixer",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_press\"": {
+    "identifier": "\"block.createcasing.copper_press\"",
+    "source_string": "구리 압착기",
+    "translation": "구리 압착기",
+    "context": " -> block.createcasing.copper_press",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.creative_cogwheel\"": {
+    "identifier": "\"block.createcasing.creative_cogwheel\"",
+    "source_string": "크리에이티브 톱니바퀴",
+    "translation": "크리에이티브 톱니바퀴",
+    "context": " -> block.createcasing.creative_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.crimson_shaft\"": {
+    "identifier": "\"block.createcasing.crimson_shaft\"",
+    "source_string": "진홍빛 축",
+    "translation": "진홍빛 축",
+    "context": " -> block.createcasing.crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.dark_oak_shaft\"",
+    "source_string": "짙은 참나무 축",
+    "translation": "짙은 참나무 축",
+    "context": " -> block.createcasing.dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.glass_shaft\"": {
+    "identifier": "\"block.createcasing.glass_shaft\"",
+    "source_string": "유리 축",
+    "translation": "유리 축",
+    "context": " -> block.createcasing.glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_acacia_shaft\"",
+    "source_string": "산업용 철 케이스를 씌운 아카시아나무 축",
+    "translation": "산업용 철 케이스를 씌운 아카시아나무 축",
+    "context": " -> block.createcasing.industrial_iron_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_bamboo_shaft\"",
+    "source_string": "산업용 철 케이스를 씌운 대나무 축",
+    "translation": "산업용 철 케이스를 씌운 대나무 축",
+    "context": " -> block.createcasing.industrial_iron_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_birch_shaft\"",
+    "source_string": "산업용 철 케이스를 씌운 자작나무 축",
+    "translation": "산업용 철 케이스를 씌운 자작나무 축",
+    "context": " -> block.createcasing.industrial_iron_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_cherry_shaft\"",
+    "source_string": "산업용 철 케이스를 씌운 벚나무 축",
+    "translation": "산업용 철 케이스를 씌운 벚나무 축",
+    "context": " -> block.createcasing.industrial_iron_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_cogwheel\"",
+    "source_string": "산업용 철 케이스를 씌운 톱니바퀴",
+    "translation": "산업용 철 케이스를 씌운 톱니바퀴",
+    "context": " -> block.createcasing.industrial_iron_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_crimson_shaft\"",
+    "source_string": "산업용 철 케이스를 씌운 진홍빛 축",
+    "translation": "산업용 철 케이스를 씌운 진홍빛 축",
+    "context": " -> block.createcasing.industrial_iron_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_dark_oak_shaft\"",
+    "source_string": "산업용 철 케이스를 씌운 짙은 참나무 축",
+    "translation": "산업용 철 케이스를 씌운 짙은 참나무 축",
+    "context": " -> block.createcasing.industrial_iron_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_glass_shaft\"",
+    "source_string": "산업용 철 케이스를 씌운 유리 축",
+    "translation": "산업용 철 케이스를 씌운 유리 축",
+    "context": " -> block.createcasing.industrial_iron_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_jungle_shaft\"",
+    "source_string": "산업용 철 케이스를 씌운 정글 나무 축",
+    "translation": "산업용 철 케이스를 씌운 정글 나무 축",
+    "context": " -> block.createcasing.industrial_iron_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_large_cogwheel\"",
+    "source_string": "산업용 철 케이스를 씌운 큰 톱니바퀴",
+    "translation": "산업용 철 케이스를 씌운 큰 톱니바퀴",
+    "context": " -> block.createcasing.industrial_iron_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_mangrove_shaft\"",
+    "source_string": "산업용 철 케이스를 씌운 맹그로브나무 축",
+    "translation": "산업용 철 케이스를 씌운 맹그로브나무 축",
+    "context": " -> block.createcasing.industrial_iron_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_oak_shaft\"",
+    "source_string": "산업용 철 케이스를 씌운 참나무 축",
+    "translation": "산업용 철 케이스를 씌운 참나무 축",
+    "context": " -> block.createcasing.industrial_iron_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_shaft\"",
+    "source_string": "산업용 철 케이스를 씌운 축",
+    "translation": "산업용 철 케이스를 씌운 축",
+    "context": " -> block.createcasing.industrial_iron_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_spruce_shaft\"",
+    "source_string": "산업용 철 케이스를 씌운 가문비나무 축",
+    "translation": "산업용 철 케이스를 씌운 가문비나무 축",
+    "context": " -> block.createcasing.industrial_iron_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_warped_shaft\"",
+    "source_string": "산업용 철 케이스를 씌운 뒤틀린 축",
+    "translation": "산업용 철 케이스를 씌운 뒤틀린 축",
+    "context": " -> block.createcasing.industrial_iron_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_gearbox\"": {
+    "identifier": "\"block.createcasing.industrial_iron_gearbox\"",
+    "source_string": "산업용 철 기어박스",
+    "translation": "산업용 철 기어박스",
+    "context": " -> block.createcasing.industrial_iron_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_press\"": {
+    "identifier": "\"block.createcasing.industrial_iron_press\"",
+    "source_string": "산업용 철 압착기",
+    "translation": "산업용 철 압착기",
+    "context": " -> block.createcasing.industrial_iron_press",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_mixer\"": {
+    "identifier": "\"block.createcasing.industrial_iron_mixer\"",
+    "source_string": "산업용 철 믹서",
+    "translation": "산업용 철 믹서",
+    "context": " -> block.createcasing.industrial_iron_mixer",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.jungle_shaft\"": {
+    "identifier": "\"block.createcasing.jungle_shaft\"",
+    "source_string": "정글나무 축",
+    "translation": "정글나무 축",
+    "context": " -> block.createcasing.jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.mangrove_shaft\"",
+    "source_string": "맹그로브나무 축",
+    "translation": "맹그로브나무 축",
+    "context": " -> block.createcasing.mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.oak_shaft\"": {
+    "identifier": "\"block.createcasing.oak_shaft\"",
+    "source_string": "참나무 축",
+    "translation": "참나무 축",
+    "context": " -> block.createcasing.oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_acacia_shaft\"",
+    "source_string": "기차 케이스를 씌운 아카시아나무 축",
+    "translation": "기차 케이스를 씌운 아카시아나무 축",
+    "context": " -> block.createcasing.railway_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_bamboo_shaft\"",
+    "source_string": "기차 케이스를 씌운 대나무 축",
+    "translation": "기차 케이스를 씌운 대나무 축",
+    "context": " -> block.createcasing.railway_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_birch_shaft\"",
+    "source_string": "기차 케이스를 씌운 자작나무 축",
+    "translation": "기차 케이스를 씌운 자작나무 축",
+    "context": " -> block.createcasing.railway_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_cherry_shaft\"",
+    "source_string": "기차 케이스를 씌운 벚나무 축",
+    "translation": "기차 케이스를 씌운 벚나무 축",
+    "context": " -> block.createcasing.railway_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.railway_encased_cogwheel\"",
+    "source_string": "기차 케이스를 씌운 톱니바퀴",
+    "translation": "기차 케이스를 씌운 톱니바퀴",
+    "context": " -> block.createcasing.railway_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_crimson_shaft\"",
+    "source_string": "기차 케이스를 씌운 진홍빛 축",
+    "translation": "기차 케이스를 씌운 진홍빛 축",
+    "context": " -> block.createcasing.railway_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_dark_oak_shaft\"",
+    "source_string": "기차 케이스를 씌운 짙은 참나무 축",
+    "translation": "기차 케이스를 씌운 짙은 참나무 축",
+    "context": " -> block.createcasing.railway_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_glass_shaft\"",
+    "source_string": "기차 케이스를 씌운 유리 축",
+    "translation": "기차 케이스를 씌운 유리 축",
+    "context": " -> block.createcasing.railway_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_jungle_shaft\"",
+    "source_string": "기차 케이스를 씌운 정글나무 축",
+    "translation": "기차 케이스를 씌운 정글나무 축",
+    "context": " -> block.createcasing.railway_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.railway_encased_large_cogwheel\"",
+    "source_string": "기차 케이스를 씌운 큰 톱니바퀴",
+    "translation": "기차 케이스를 씌운 큰 톱니바퀴",
+    "context": " -> block.createcasing.railway_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_mangrove_shaft\"",
+    "source_string": "기차 케이스를 씌운 맹그로브나무 축",
+    "translation": "기차 케이스를 씌운 맹그로브나무 축",
+    "context": " -> block.createcasing.railway_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_oak_shaft\"",
+    "source_string": "기차 케이스를 씌운 참나무 축",
+    "translation": "기차 케이스를 씌운 참나무 축",
+    "context": " -> block.createcasing.railway_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_shaft\"",
+    "source_string": "기차 케이스를 씌운 축",
+    "translation": "기차 케이스를 씌운 축",
+    "context": " -> block.createcasing.railway_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_spruce_shaft\"",
+    "source_string": "기차 케이스를 씌운 가문비나무 축",
+    "translation": "기차 케이스를 씌운 가문비나무 축",
+    "context": " -> block.createcasing.railway_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_warped_shaft\"",
+    "source_string": "기차 케이스를 씌운 뒤틀린 축",
+    "translation": "기차 케이스를 씌운 뒤틀린 축",
+    "context": " -> block.createcasing.railway_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_gearbox\"": {
+    "identifier": "\"block.createcasing.railway_gearbox\"",
+    "source_string": "기차 기어박스",
+    "translation": "기차 기어박스",
+    "context": " -> block.createcasing.railway_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_mixer\"": {
+    "identifier": "\"block.createcasing.railway_mixer\"",
+    "source_string": "기차 믹서",
+    "translation": "기차 믹서",
+    "context": " -> block.createcasing.railway_mixer",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_press\"": {
+    "identifier": "\"block.createcasing.railway_press\"",
+    "source_string": "기차 압착기",
+    "translation": "기차 압착기",
+    "context": " -> block.createcasing.railway_press",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_acacia_shaft\"",
+    "source_string": "빛나는 케이스를 씌운 아카시아나무 축",
+    "translation": "빛나는 케이스를 씌운 아카시아나무 축",
+    "context": " -> block.createcasing.refined_radiance_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_bamboo_shaft\"",
+    "source_string": "빛나는 케이스를 씌운 대나무 축",
+    "translation": "빛나는 케이스를 씌운 대나무 축",
+    "context": " -> block.createcasing.refined_radiance_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_birch_shaft\"",
+    "source_string": "빛나는 케이스를 씌운 자작나무 축",
+    "translation": "빛나는 케이스를 씌운 자작나무 축",
+    "context": " -> block.createcasing.refined_radiance_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_cherry_shaft\"",
+    "source_string": "빛나는 케이스를 씌운 벚나무 축",
+    "translation": "빛나는 케이스를 씌운 벚나무 축",
+    "context": " -> block.createcasing.refined_radiance_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_cogwheel\"",
+    "source_string": "빛나는 케이스를 씌운 톱니바퀴",
+    "translation": "빛나는 케이스를 씌운 톱니바퀴",
+    "context": " -> block.createcasing.refined_radiance_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_crimson_shaft\"",
+    "source_string": "빛나는 케이스를 씌운 진홍빛 축",
+    "translation": "빛나는 케이스를 씌운 진홍빛 축",
+    "context": " -> block.createcasing.refined_radiance_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_dark_oak_shaft\"",
+    "source_string": "빛나는 케이스를 씌운 짙은 참나무 축",
+    "translation": "빛나는 케이스를 씌운 짙은 참나무 축",
+    "context": " -> block.createcasing.refined_radiance_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_glass_shaft\"",
+    "source_string": "빛나는 케이스를 씌운 유리 축",
+    "translation": "빛나는 케이스를 씌운 유리 축",
+    "context": " -> block.createcasing.refined_radiance_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_jungle_shaft\"",
+    "source_string": "빛나는 케이스를 씌운 정글나무 축",
+    "translation": "빛나는 케이스를 씌운 정글나무 축",
+    "context": " -> block.createcasing.refined_radiance_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_large_cogwheel\"",
+    "source_string": "빛나는 케이스를 씌운 큰 톱니바퀴",
+    "translation": "빛나는 케이스를 씌운 큰 톱니바퀴",
+    "context": " -> block.createcasing.refined_radiance_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_mangrove_shaft\"",
+    "source_string": "빛나는 케이스를 씌운 맹그로브나무 축",
+    "translation": "빛나는 케이스를 씌운 맹그로브나무 축",
+    "context": " -> block.createcasing.refined_radiance_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_oak_shaft\"",
+    "source_string": "빛나는 케이스를 씌운 참나무 축",
+    "translation": "빛나는 케이스를 씌운 참나무 축",
+    "context": " -> block.createcasing.refined_radiance_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_shaft\"",
+    "source_string": "빛나는 케이스를 씌운 축",
+    "translation": "빛나는 케이스를 씌운 축",
+    "context": " -> block.createcasing.refined_radiance_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_spruce_shaft\"",
+    "source_string": "빛나는 케이스를 씌운 가문비나무 축",
+    "translation": "빛나는 케이스를 씌운 가문비나무 축",
+    "context": " -> block.createcasing.refined_radiance_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_warped_shaft\"",
+    "source_string": "빛나는 케이스를 씌운 뒤틀린 축",
+    "translation": "빛나는 케이스를 씌운 뒤틀린 축",
+    "context": " -> block.createcasing.refined_radiance_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_acacia_shaft\"",
+    "source_string": "그림자 케이스를 씌운 아카시아나무 축",
+    "translation": "그림자 케이스를 씌운 아카시아나무 축",
+    "context": " -> block.createcasing.shadow_steel_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_bamboo_shaft\"",
+    "source_string": "그림자 케이스를 씌운 대나무 축",
+    "translation": "그림자 케이스를 씌운 대나무 축",
+    "context": " -> block.createcasing.shadow_steel_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_birch_shaft\"",
+    "source_string": "그림자 케이스를 씌운 자작나무 축",
+    "translation": "그림자 케이스를 씌운 자작나무 축",
+    "context": " -> block.createcasing.shadow_steel_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_cherry_shaft\"",
+    "source_string": "그림자 케이스를 씌운 벚나무 축",
+    "translation": "그림자 케이스를 씌운 벚나무 축",
+    "context": " -> block.createcasing.shadow_steel_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_cogwheel\"",
+    "source_string": "그림자 케이스를 씌운 톱니바퀴",
+    "translation": "그림자 케이스를 씌운 톱니바퀴",
+    "context": " -> block.createcasing.shadow_steel_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_crimson_shaft\"",
+    "source_string": "그림자 케이스를 씌운 진홍빛 축",
+    "translation": "그림자 케이스를 씌운 진홍빛 축",
+    "context": " -> block.createcasing.shadow_steel_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_dark_oak_shaft\"",
+    "source_string": "그림자 케이스를 씌운 짙은 참나무 축",
+    "translation": "그림자 케이스를 씌운 짙은 참나무 축",
+    "context": " -> block.createcasing.shadow_steel_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_glass_shaft\"",
+    "source_string": "그림자 케이스를 씌운 유리 축",
+    "translation": "그림자 케이스를 씌운 유리 축",
+    "context": " -> block.createcasing.shadow_steel_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_jungle_shaft\"",
+    "source_string": "그림자 케이스를 씌운 정글나무 축",
+    "translation": "그림자 케이스를 씌운 정글나무 축",
+    "context": " -> block.createcasing.shadow_steel_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_large_cogwheel\"",
+    "source_string": "그림자 케이스를 씌운 큰 톱니바퀴",
+    "translation": "그림자 케이스를 씌운 큰 톱니바퀴",
+    "context": " -> block.createcasing.shadow_steel_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_mangrove_shaft\"",
+    "source_string": "그림자 케이스를 씌운 맹그로브나무 축",
+    "translation": "그림자 케이스를 씌운 맹그로브나무 축",
+    "context": " -> block.createcasing.shadow_steel_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_oak_shaft\"",
+    "source_string": "그림자 케이스를 씌운 참나무 축",
+    "translation": "그림자 케이스를 씌운 참나무 축",
+    "context": " -> block.createcasing.shadow_steel_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_shaft\"",
+    "source_string": "그림자 케이스를 씌운 축",
+    "translation": "그림자 케이스를 씌운 축",
+    "context": " -> block.createcasing.shadow_steel_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_spruce_shaft\"",
+    "source_string": "그림자 케이스를 씌운 가문비나무 축",
+    "translation": "그림자 케이스를 씌운 가문비나무 축",
+    "context": " -> block.createcasing.shadow_steel_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_warped_shaft\"",
+    "source_string": "그림자 케이스를 씌운 뒤틀린 축",
+    "translation": "그림자 케이스를 씌운 뒤틀린 축",
+    "context": " -> block.createcasing.shadow_steel_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.spruce_shaft\"": {
+    "identifier": "\"block.createcasing.spruce_shaft\"",
+    "source_string": "가문비나무 축",
+    "translation": "가문비나무 축",
+    "context": " -> block.createcasing.spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.vertical_brass_gearbox\"": {
+    "identifier": "\"block.createcasing.vertical_brass_gearbox\"",
+    "source_string": "수직 황동 기어박스",
+    "translation": "수직 황동 기어박스",
+    "context": " -> block.createcasing.vertical_brass_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.vertical_copper_gearbox\"": {
+    "identifier": "\"block.createcasing.vertical_copper_gearbox\"",
+    "source_string": "수직 구리 기어박스",
+    "translation": "수직 구리 기어박스",
+    "context": " -> block.createcasing.vertical_copper_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.vertical_railway_gearbox\"": {
+    "identifier": "\"block.createcasing.vertical_railway_gearbox\"",
+    "source_string": "수직 기차 기어박스",
+    "translation": "수직 기차 기어박스",
+    "context": " -> block.createcasing.vertical_railway_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.warped_shaft\"": {
+    "identifier": "\"block.createcasing.warped_shaft\"",
+    "source_string": "뒤틀린 축",
+    "translation": "뒤틀린 축",
+    "context": " -> block.createcasing.warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.custom_mixer.tooltip\"": {
+    "identifier": "\"block.createcasing.custom_mixer.tooltip\"",
+    "source_string": "믹서",
+    "translation": "믹서",
+    "context": " -> block.createcasing.custom_mixer.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.custom_mixer.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.custom_mixer.tooltip.summary\"",
+    "source_string": "_일반_ 믹서와 _동일하게_ 작동합니다.",
+    "translation": "_일반_ 믹서와 _동일하게_ 작동합니다.",
+    "context": " -> block.createcasing.custom_mixer.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_mixer.tooltip\"": {
+    "identifier": "\"block.createcasing.brass_mixer.tooltip\"",
+    "source_string": "황동 믹서",
+    "translation": "황동 믹서",
+    "context": " -> block.createcasing.brass_mixer.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_mixer.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.brass_mixer.tooltip.summary\"",
+    "source_string": "_아이템만 사용_하는 제작법일 경우 일반 믹서보다 _2배 빠르지만_ 약간 _더 큰 피로도_를 부하합니다.",
+    "translation": "_아이템만 사용_하는 제작법일 경우 일반 믹서보다 _2배 빠르지만_ 약간 _더 큰 피로도_를 부하합니다.",
+    "context": " -> block.createcasing.brass_mixer.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_mixer.tooltip\"": {
+    "identifier": "\"block.createcasing.copper_mixer.tooltip\"",
+    "source_string": "구리 믹서",
+    "translation": "구리 믹서",
+    "context": " -> block.createcasing.copper_mixer.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_mixer.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.copper_mixer.tooltip.summary\"",
+    "source_string": "_유체만 사용_하는 제작법이거나 _물약 제조_일 경우 일반 믹서보다 _2배 빠르지만_ 약간 _더 큰 피로도_를 부하합니다.",
+    "translation": "_유체만 사용_하는 제작법이거나 _물약 제조_일 경우 일반 믹서보다 _2배 빠르지만_ 약간 _더 큰 피로도_를 부하합니다.",
+    "context": " -> block.createcasing.copper_mixer.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_mixer.tooltip\"": {
+    "identifier": "\"block.createcasing.railway_mixer.tooltip\"",
+    "source_string": "기차 믹서",
+    "translation": "기차 믹서",
+    "context": " -> block.createcasing.railway_mixer.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_mixer.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.railway_mixer.tooltip.summary\"",
+    "source_string": "일반 믹서보다 _2배 빠르지만_ 약간 _더 큰 피로도_를 부하합니다.",
+    "translation": "일반 믹서보다 _2배 빠르지만_ 약간 _더 큰 피로도_를 부하합니다.",
+    "context": " -> block.createcasing.railway_mixer.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"tooltip.createcasing.mixermixenormaly.title\"": {
+    "identifier": "\"tooltip.createcasing.mixermixenormaly.title\"",
+    "source_string": "설정 비활성화됨 : ",
+    "translation": "설정 비활성화됨 : ",
+    "context": " -> tooltip.createcasing.mixermixenormaly.title",
+    "labels": null,
+    "max_length": null
+  },
+  "\"tooltip.createcasing.mixermixenormaly\"": {
+    "identifier": "\"tooltip.createcasing.mixermixenormaly\"",
+    "source_string": "경고. 일반 믹서와 동일하게 작동합니다!",
+    "translation": "경고. 일반 믹서와 동일하게 작동합니다!",
+    "context": " -> tooltip.createcasing.mixermixenormaly",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.custom_press.tooltip\"": {
+    "identifier": "\"block.createcasing.custom_press.tooltip\"",
+    "source_string": "압착기",
+    "translation": "압착기",
+    "context": " -> block.createcasing.custom_press.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.custom_press.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.custom_press.tooltip.summary\"",
+    "source_string": "_일반_ 압착기와 _동일하게_ 작동합니다.",
+    "translation": "_일반_ 압착기와 _동일하게_ 작동합니다.",
+    "context": " -> block.createcasing.custom_press.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"item.createcasing.vertical_brass_gearbox\"": {
+    "identifier": "\"item.createcasing.vertical_brass_gearbox\"",
+    "source_string": "황동 수직 기어박스",
+    "translation": "황동 수직 기어박스",
+    "context": " -> item.createcasing.vertical_brass_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"item.createcasing.vertical_copper_gearbox\"": {
+    "identifier": "\"item.createcasing.vertical_copper_gearbox\"",
+    "source_string": "구리 수직 기어박스",
+    "translation": "구리 수직 기어박스",
+    "context": " -> item.createcasing.vertical_copper_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"item.createcasing.vertical_industrial_iron_gearbox\"": {
+    "identifier": "\"item.createcasing.vertical_industrial_iron_gearbox\"",
+    "source_string": "산업용 철 수직 기어박스",
+    "translation": "산업용 철 수직 기어박스",
+    "context": " -> item.createcasing.vertical_industrial_iron_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"item.createcasing.vertical_railway_gearbox\"": {
+    "identifier": "\"item.createcasing.vertical_railway_gearbox\"",
+    "source_string": "기차 수직 기어박스",
+    "translation": "기차 수직 기어박스",
+    "context": " -> item.createcasing.vertical_railway_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.tag.encased_blocks\"": {
+    "identifier": "\"createcasing.ponder.tag.encased_blocks\"",
+    "source_string": "Create : Encased",
+    "translation": "Create : Encased",
+    "context": " -> createcasing.ponder.tag.encased_blocks",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.tag.encased_blocks.description\"": {
+    "identifier": "\"createcasing.ponder.tag.encased_blocks.description\"",
+    "source_string": "Create Encased에서 추가한 장치입니다.",
+    "translation": "Create Encased에서 추가한 장치입니다.",
+    "context": " -> createcasing.ponder.tag.encased_blocks.description",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.header\"": {
+    "identifier": "\"createcasing.ponder.gearbox.header\"",
+    "source_string": "기어박스를 이용해 동력 전달하기",
+    "translation": "기어박스를 이용해 동력 전달하기",
+    "context": " -> createcasing.ponder.gearbox.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.text_1\"": {
+    "identifier": "\"createcasing.ponder.gearbox.text_1\"",
+    "source_string": "회전축을 변경하는 일은 보통 큰 일이 아닙니다.",
+    "translation": "회전축을 변경하는 일은 보통 큰 일이 아닙니다.",
+    "context": " -> createcasing.ponder.gearbox.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.text_2\"": {
+    "identifier": "\"createcasing.ponder.gearbox.text_2\"",
+    "source_string": "기어박스는 그런 일을 작게 해결해줍니다.",
+    "translation": "기어박스는 그런 일을 작게 해결해줍니다.",
+    "context": " -> createcasing.ponder.gearbox.text_2",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.text_3\"": {
+    "identifier": "\"createcasing.ponder.gearbox.text_3\"",
+    "source_string": "모서리 축들은 서로 다른 방향으로 돌아갑니다.",
+    "translation": "모서리 축들은 서로 다른 방향으로 돌아갑니다.",
+    "context": " -> createcasing.ponder.gearbox.text_3",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.text_4\"": {
+    "identifier": "\"createcasing.ponder.gearbox.text_4\"",
+    "source_string": "반대편 축은 거꾸로 돌아갑니다.",
+    "translation": "반대편 축은 거꾸로 돌아갑니다.",
+    "context": " -> createcasing.ponder.gearbox.text_4",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.header\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.header\"",
+    "source_string": "믹서로 아이템 가공하기",
+    "translation": "믹서로 아이템 가공하기",
+    "context": " -> createcasing.ponder.mechanical_mixer.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.text_1\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.text_1\"",
+    "source_string": "믹서와 대야를 이용해 몇몇 조합을 자동화할 수 있습니다.",
+    "translation": "믹서와 대야를 이용해 몇몇 조합을 자동화할 수 있습니다.",
+    "context": " -> createcasing.ponder.mechanical_mixer.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.text_2\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.text_2\"",
+    "source_string": "가능한 조합법은 어느 무형 조합법이나 가능하며, 모드에서 추가된 조합법도 있습니다.",
+    "translation": "가능한 조합법은 어느 무형 조합법이나 가능하며, 모드에서 추가된 조합법도 있습니다.",
+    "context": " -> createcasing.ponder.mechanical_mixer.text_2",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.text_3\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.text_3\"",
+    "source_string": "몇몇 조합법은 블레이즈 버너의 열을 요구합니다.",
+    "translation": "몇몇 조합법은 블레이즈 버너의 열을 요구합니다.",
+    "context": " -> createcasing.ponder.mechanical_mixer.text_3",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.text_4\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.text_4\"",
+    "source_string": "필터 슬롯을 이용해 조합법이 겹치는 것을 방지합니다.",
+    "translation": "필터 슬롯을 이용해 조합법이 겹치는 것을 방지합니다.",
+    "context": " -> createcasing.ponder.mechanical_mixer.text_4",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.header\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.header\"",
+    "source_string": "압착기로 아이템 가공하기",
+    "translation": "압착기로 아이템 가공하기",
+    "context": " -> createcasing.ponder.mechanical_press.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.text_1\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.text_1\"",
+    "source_string": "압착기는 아래에 놓인 아이템을 가공할 수 있습니다.",
+    "translation": "압착기는 아래에 놓인 아이템을 가공할 수 있습니다.",
+    "context": " -> createcasing.ponder.mechanical_press.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.text_2\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.text_2\"",
+    "source_string": "가공할 아이템은 압착기 아래에 떨구거나 아이템 거치대에 올려두어야 합니다.",
+    "translation": "가공할 아이템은 압착기 아래에 떨구거나 아이템 거치대에 올려두어야 합니다.",
+    "context": " -> createcasing.ponder.mechanical_press.text_2",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.text_3\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.text_3\"",
+    "source_string": "아이템이 벨트에 있으면...",
+    "translation": "아이템이 벨트에 있으면...",
+    "context": " -> createcasing.ponder.mechanical_press.text_3",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.text_4\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.text_4\"",
+    "source_string": "...압착기가 알아서 아이템 이동을 멈추고 가공합니다.",
+    "translation": "...압착기가 알아서 아이템 이동을 멈추고 가공합니다.",
+    "context": " -> createcasing.ponder.mechanical_press.text_4",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.header\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.header\"",
+    "source_string": "압착기로 아이템 압축하기",
+    "translation": "압착기로 아이템 압축하기",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.text_1\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.text_1\"",
+    "source_string": "대야와 함께 사용해서 아이템을 압축할 수 있습니다.",
+    "translation": "대야와 함께 사용해서 아이템을 압축할 수 있습니다.",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.text_2\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.text_2\"",
+    "source_string": "가능한 조합법은 2x2 / 3x3 조합법을 포함하고, 모드에서 추가된 조합법도 있습니다.",
+    "translation": "가능한 조합법은 2x2 / 3x3 조합법을 포함하고, 모드에서 추가된 조합법도 있습니다.",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.text_2",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.text_3\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.text_3\"",
+    "source_string": "대야와 함께 사용해서 아이템을 압축할 수 있습니다.",
+    "translation": "대야와 함께 사용해서 아이템을 압축할 수 있습니다.",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.text_3",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.text_4\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.text_4\"",
+    "source_string": "필터 슬롯을 이용해 조합법이 겹치는 것을 방지합니다.",
+    "translation": "필터 슬롯을 이용해 조합법이 겹치는 것을 방지합니다.",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.text_4",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.creative_cogwheel.header\"": {
+    "identifier": "\"createcasing.ponder.creative_cogwheel.header\"",
+    "source_string": "크리에이티브 톱니바퀴를 이용해 동력 생산하기",
+    "translation": "크리에이티브 톱니바퀴를 이용해 동력 생산하기",
+    "context": " -> createcasing.ponder.creative_cogwheel.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.creative_cogwheel.text_1\"": {
+    "identifier": "\"createcasing.ponder.creative_cogwheel.text_1\"",
+    "source_string": "크리에이티브 톱니바퀴는 동력을 쉽게 생산하고 조절합니다.",
+    "translation": "크리에이티브 톱니바퀴는 동력을 쉽게 생산하고 조절합니다.",
+    "context": " -> createcasing.ponder.creative_cogwheel.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.creative_cogwheel.text_2\"": {
+    "identifier": "\"createcasing.ponder.creative_cogwheel.text_2\"",
+    "source_string": "회전 속도는 입력 패널에서 구성할 수 있습니다.",
+    "translation": "회전 속도는 입력 패널에서 구성할 수 있습니다.",
+    "context": " -> createcasing.ponder.creative_cogwheel.text_2",
+    "labels": null,
+    "max_length": null
+  }
+}
