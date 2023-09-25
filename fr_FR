@@ -1,0 +1,1466 @@
+{
+  "\"itemGroup.createcasing\"": {
+    "identifier": "\"itemGroup.createcasing\"",
+    "source_string": "Create Encased",
+    "translation": "Create Encased",
+    "context": " -> itemGroup.createcasing",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.acacia_shaft\"": {
+    "identifier": "\"block.createcasing.acacia_shaft\"",
+    "source_string": "Acacia Shaft",
+    "translation": "Acacia Shaft",
+    "context": " -> block.createcasing.acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_acacia_shaft\"",
+    "source_string": "Andesite Encased Acacia Shaft",
+    "translation": "Andesite Encased Acacia Shaft",
+    "context": " -> block.createcasing.andesite_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_bamboo_shaft\"",
+    "source_string": "Andesite Encased Bamboo Shaft",
+    "translation": "Andesite Encased Bamboo Shaft",
+    "context": " -> block.createcasing.andesite_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_birch_shaft\"",
+    "source_string": "Andesite Encased Birch Shaft",
+    "translation": "Andesite Encased Birch Shaft",
+    "context": " -> block.createcasing.andesite_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_cherry_shaft\"",
+    "source_string": "Andesite Encased Cherry Shaft",
+    "translation": "Andesite Encased Cherry Shaft",
+    "context": " -> block.createcasing.andesite_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_crimson_shaft\"",
+    "source_string": "Andesite Encased Crimson Shaft",
+    "translation": "Andesite Encased Crimson Shaft",
+    "context": " -> block.createcasing.andesite_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_dark_oak_shaft\"",
+    "source_string": "Andesite Encased Dark Oak Shaft",
+    "translation": "Andesite Encased Dark Oak Shaft",
+    "context": " -> block.createcasing.andesite_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_glass_shaft\"",
+    "source_string": "Andesite Encased Glass Shaft",
+    "translation": "Andesite Encased Glass Shaft",
+    "context": " -> block.createcasing.andesite_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_jungle_shaft\"",
+    "source_string": "Andesite Encased Jungle Shaft",
+    "translation": "Andesite Encased Jungle Shaft",
+    "context": " -> block.createcasing.andesite_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_mangrove_shaft\"",
+    "source_string": "Andesite Encased Mangrove Shaft",
+    "translation": "Andesite Encased Mangrove Shaft",
+    "context": " -> block.createcasing.andesite_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_oak_shaft\"",
+    "source_string": "Andesite Encased Oak Shaft",
+    "translation": "Andesite Encased Oak Shaft",
+    "context": " -> block.createcasing.andesite_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_spruce_shaft\"",
+    "source_string": "Andesite Encased Spruce Shaft",
+    "translation": "Andesite Encased Spruce Shaft",
+    "context": " -> block.createcasing.andesite_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_warped_shaft\"",
+    "source_string": "Andesite Encased Warped Shaft",
+    "translation": "Andesite Encased Warped Shaft",
+    "context": " -> block.createcasing.andesite_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.bamboo_shaft\"",
+    "source_string": "Bamboo Shaft",
+    "translation": "Bamboo Shaft",
+    "context": " -> block.createcasing.bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.birch_shaft\"": {
+    "identifier": "\"block.createcasing.birch_shaft\"",
+    "source_string": "Birch Shaft",
+    "translation": "Birch Shaft",
+    "context": " -> block.createcasing.birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_acacia_shaft\"",
+    "source_string": "Brass Encased Acacia Shaft",
+    "translation": "Brass Encased Acacia Shaft",
+    "context": " -> block.createcasing.brass_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_bamboo_shaft\"",
+    "source_string": "Brass Encased Bamboo Shaft",
+    "translation": "Brass Encased Bamboo Shaft",
+    "context": " -> block.createcasing.brass_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_birch_shaft\"",
+    "source_string": "Brass Encased Birch Shaft",
+    "translation": "Brass Encased Birch Shaft",
+    "context": " -> block.createcasing.brass_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_cherry_shaft\"",
+    "source_string": "Brass Encased Cherry Shaft",
+    "translation": "Brass Encased Cherry Shaft",
+    "context": " -> block.createcasing.brass_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_crimson_shaft\"",
+    "source_string": "Brass Encased Crimson Shaft",
+    "translation": "Brass Encased Crimson Shaft",
+    "context": " -> block.createcasing.brass_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_dark_oak_shaft\"",
+    "source_string": "Brass Encased Dark Oak Shaft",
+    "translation": "Brass Encased Dark Oak Shaft",
+    "context": " -> block.createcasing.brass_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_glass_shaft\"",
+    "source_string": "Brass Encased Glass Shaft",
+    "translation": "Brass Encased Glass Shaft",
+    "context": " -> block.createcasing.brass_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_jungle_shaft\"",
+    "source_string": "Brass Encased Jungle Shaft",
+    "translation": "Brass Encased Jungle Shaft",
+    "context": " -> block.createcasing.brass_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_mangrove_shaft\"",
+    "source_string": "Brass Encased Mangrove Shaft",
+    "translation": "Brass Encased Mangrove Shaft",
+    "context": " -> block.createcasing.brass_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_oak_shaft\"",
+    "source_string": "Brass Encased Oak Shaft",
+    "translation": "Brass Encased Oak Shaft",
+    "context": " -> block.createcasing.brass_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_spruce_shaft\"",
+    "source_string": "Brass Encased Spruce Shaft",
+    "translation": "Brass Encased Spruce Shaft",
+    "context": " -> block.createcasing.brass_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_warped_shaft\"",
+    "source_string": "Brass Encased Warped Shaft",
+    "translation": "Brass Encased Warped Shaft",
+    "context": " -> block.createcasing.brass_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_gearbox\"": {
+    "identifier": "\"block.createcasing.brass_gearbox\"",
+    "source_string": "Brass Gearbox",
+    "translation": "Brass Gearbox",
+    "context": " -> block.createcasing.brass_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_mixer\"": {
+    "identifier": "\"block.createcasing.brass_mixer\"",
+    "source_string": "Brass Mixer",
+    "translation": "Brass Mixer",
+    "context": " -> block.createcasing.brass_mixer",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_press\"": {
+    "identifier": "\"block.createcasing.brass_press\"",
+    "source_string": "Brass Press",
+    "translation": "Brass Press",
+    "context": " -> block.createcasing.brass_press",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.cherry_shaft\"": {
+    "identifier": "\"block.createcasing.cherry_shaft\"",
+    "source_string": "Cherry Shaft",
+    "translation": "Cherry Shaft",
+    "context": " -> block.createcasing.cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_clear_glass_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_clear_glass_encased_cogwheel\"",
+    "source_string": "Copper Clear Glass Encased Cogwheel",
+    "translation": "Copper Clear Glass Encased Cogwheel",
+    "context": " -> block.createcasing.copper_clear_glass_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_clear_glass_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_clear_glass_encased_large_cogwheel\"",
+    "source_string": "Copper Clear Glass Encased Large Cogwheel",
+    "translation": "Copper Clear Glass Encased Large Cogwheel",
+    "context": " -> block.createcasing.copper_clear_glass_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_clear_glass_encased_shaft\"": {
+    "identifier": "\"block.createcasing.copper_clear_glass_encased_shaft\"",
+    "source_string": "Copper Clear Glass Encased Shaft",
+    "translation": "Copper Clear Glass Encased Shaft",
+    "context": " -> block.createcasing.copper_clear_glass_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_acacia_shaft\"",
+    "source_string": "Copper Encased Acacia Shaft",
+    "translation": "Copper Encased Acacia Shaft",
+    "context": " -> block.createcasing.copper_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_bamboo_shaft\"",
+    "source_string": "Copper Encased Bamboo Shaft",
+    "translation": "Copper Encased Bamboo Shaft",
+    "context": " -> block.createcasing.copper_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_birch_shaft\"",
+    "source_string": "Copper Encased Birch Shaft",
+    "translation": "Copper Encased Birch Shaft",
+    "context": " -> block.createcasing.copper_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_cherry_shaft\"",
+    "source_string": "Copper Encased Cherry Shaft",
+    "translation": "Copper Encased Cherry Shaft",
+    "context": " -> block.createcasing.copper_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_encased_cogwheel\"",
+    "source_string": "Copper Encased Cogwheel",
+    "translation": "Copper Encased Cogwheel",
+    "context": " -> block.createcasing.copper_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_crimson_shaft\"",
+    "source_string": "Copper Encased Crimson Shaft",
+    "translation": "Copper Encased Crimson Shaft",
+    "context": " -> block.createcasing.copper_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_dark_oak_shaft\"",
+    "source_string": "Copper Encased Dark Oak Shaft",
+    "translation": "Copper Encased Dark Oak Shaft",
+    "context": " -> block.createcasing.copper_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_glass_shaft\"",
+    "source_string": "Copper Encased Glass Shaft",
+    "translation": "Copper Encased Glass Shaft",
+    "context": " -> block.createcasing.copper_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_jungle_shaft\"",
+    "source_string": "Copper Encased Jungle Shaft",
+    "translation": "Copper Encased Jungle Shaft",
+    "context": " -> block.createcasing.copper_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_encased_large_cogwheel\"",
+    "source_string": "Copper Encased Large Cogwheel",
+    "translation": "Copper Encased Large Cogwheel",
+    "context": " -> block.createcasing.copper_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_mangrove_shaft\"",
+    "source_string": "Copper Encased Mangrove Shaft",
+    "translation": "Copper Encased Mangrove Shaft",
+    "context": " -> block.createcasing.copper_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_oak_shaft\"",
+    "source_string": "Copper Encased Oak Shaft",
+    "translation": "Copper Encased Oak Shaft",
+    "context": " -> block.createcasing.copper_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_shaft\"",
+    "source_string": "Copper Encased Shaft",
+    "translation": "Copper Encased Shaft",
+    "context": " -> block.createcasing.copper_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_spruce_shaft\"",
+    "source_string": "Copper Encased Spruce Shaft",
+    "translation": "Copper Encased Spruce Shaft",
+    "context": " -> block.createcasing.copper_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_warped_shaft\"",
+    "source_string": "Copper Encased Warped Shaft",
+    "translation": "Copper Encased Warped Shaft",
+    "context": " -> block.createcasing.copper_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_gearbox\"": {
+    "identifier": "\"block.createcasing.copper_gearbox\"",
+    "source_string": "Copper Gearbox",
+    "translation": "Copper Gearbox",
+    "context": " -> block.createcasing.copper_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_glass_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_glass_encased_cogwheel\"",
+    "source_string": "Copper Glass Encased Cogwheel",
+    "translation": "Copper Glass Encased Cogwheel",
+    "context": " -> block.createcasing.copper_glass_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_glass_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_glass_encased_large_cogwheel\"",
+    "source_string": "Copper Glass Encased Large Cogwheel",
+    "translation": "Copper Glass Encased Large Cogwheel",
+    "context": " -> block.createcasing.copper_glass_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_glass_encased_shaft\"": {
+    "identifier": "\"block.createcasing.copper_glass_encased_shaft\"",
+    "source_string": "Copper Glass Encased Shaft",
+    "translation": "Copper Glass Encased Shaft",
+    "context": " -> block.createcasing.copper_glass_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_mixer\"": {
+    "identifier": "\"block.createcasing.copper_mixer\"",
+    "source_string": "Copper Mixer",
+    "translation": "Copper Mixer",
+    "context": " -> block.createcasing.copper_mixer",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_press\"": {
+    "identifier": "\"block.createcasing.copper_press\"",
+    "source_string": "Copper Press",
+    "translation": "Copper Press",
+    "context": " -> block.createcasing.copper_press",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.creative_cogwheel\"": {
+    "identifier": "\"block.createcasing.creative_cogwheel\"",
+    "source_string": "Creative Cogwheel",
+    "translation": "Creative Cogwheel",
+    "context": " -> block.createcasing.creative_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.crimson_shaft\"": {
+    "identifier": "\"block.createcasing.crimson_shaft\"",
+    "source_string": "Crimson Shaft",
+    "translation": "Crimson Shaft",
+    "context": " -> block.createcasing.crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.dark_oak_shaft\"",
+    "source_string": "Dark Oak Shaft",
+    "translation": "Dark Oak Shaft",
+    "context": " -> block.createcasing.dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.glass_shaft\"": {
+    "identifier": "\"block.createcasing.glass_shaft\"",
+    "source_string": "Glass Shaft",
+    "translation": "Glass Shaft",
+    "context": " -> block.createcasing.glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_acacia_shaft\"",
+    "source_string": "Industrial Iron Encased Acacia Shaft",
+    "translation": "Industrial Iron Encased Acacia Shaft",
+    "context": " -> block.createcasing.industrial_iron_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_bamboo_shaft\"",
+    "source_string": "Industrial Iron Encased Bamboo Shaft",
+    "translation": "Industrial Iron Encased Bamboo Shaft",
+    "context": " -> block.createcasing.industrial_iron_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_birch_shaft\"",
+    "source_string": "Industrial Iron Encased Birch Shaft",
+    "translation": "Industrial Iron Encased Birch Shaft",
+    "context": " -> block.createcasing.industrial_iron_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_cherry_shaft\"",
+    "source_string": "Industrial Iron Encased Cherry Shaft",
+    "translation": "Industrial Iron Encased Cherry Shaft",
+    "context": " -> block.createcasing.industrial_iron_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_cogwheel\"",
+    "source_string": "Industrial Iron Encased Cogwheel",
+    "translation": "Industrial Iron Encased Cogwheel",
+    "context": " -> block.createcasing.industrial_iron_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_crimson_shaft\"",
+    "source_string": "Industrial Iron Encased Crimson Shaft",
+    "translation": "Industrial Iron Encased Crimson Shaft",
+    "context": " -> block.createcasing.industrial_iron_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_dark_oak_shaft\"",
+    "source_string": "Industrial Iron Encased Dark Oak Shaft",
+    "translation": "Industrial Iron Encased Dark Oak Shaft",
+    "context": " -> block.createcasing.industrial_iron_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_glass_shaft\"",
+    "source_string": "Industrial Iron Encased Glass Shaft",
+    "translation": "Industrial Iron Encased Glass Shaft",
+    "context": " -> block.createcasing.industrial_iron_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_jungle_shaft\"",
+    "source_string": "Industrial Iron Encased Jungle Shaft",
+    "translation": "Industrial Iron Encased Jungle Shaft",
+    "context": " -> block.createcasing.industrial_iron_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_large_cogwheel\"",
+    "source_string": "Industrial Iron Encased Large Cogwheel",
+    "translation": "Industrial Iron Encased Large Cogwheel",
+    "context": " -> block.createcasing.industrial_iron_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_mangrove_shaft\"",
+    "source_string": "Industrial Iron Encased Mangrove Shaft",
+    "translation": "Industrial Iron Encased Mangrove Shaft",
+    "context": " -> block.createcasing.industrial_iron_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_oak_shaft\"",
+    "source_string": "Industrial Iron Encased Oak Shaft",
+    "translation": "Industrial Iron Encased Oak Shaft",
+    "context": " -> block.createcasing.industrial_iron_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_shaft\"",
+    "source_string": "Industrial Iron Encased Shaft",
+    "translation": "Industrial Iron Encased Shaft",
+    "context": " -> block.createcasing.industrial_iron_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_spruce_shaft\"",
+    "source_string": "Industrial Iron Encased Spruce Shaft",
+    "translation": "Industrial Iron Encased Spruce Shaft",
+    "context": " -> block.createcasing.industrial_iron_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_warped_shaft\"",
+    "source_string": "Industrial Iron Encased Warped Shaft",
+    "translation": "Industrial Iron Encased Warped Shaft",
+    "context": " -> block.createcasing.industrial_iron_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_gearbox\"": {
+    "identifier": "\"block.createcasing.industrial_iron_gearbox\"",
+    "source_string": "Industrial Iron Gearbox",
+    "translation": "Industrial Iron Gearbox",
+    "context": " -> block.createcasing.industrial_iron_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_press\"": {
+    "identifier": "\"block.createcasing.industrial_iron_press\"",
+    "source_string": "Industrial Iron Press",
+    "translation": "Industrial Iron Press",
+    "context": " -> block.createcasing.industrial_iron_press",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_mixer\"": {
+    "identifier": "\"block.createcasing.industrial_iron_mixer\"",
+    "source_string": "Industrial Iron Mixer",
+    "translation": "Industrial Iron Mixer",
+    "context": " -> block.createcasing.industrial_iron_mixer",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.jungle_shaft\"": {
+    "identifier": "\"block.createcasing.jungle_shaft\"",
+    "source_string": "Jungle Shaft",
+    "translation": "Jungle Shaft",
+    "context": " -> block.createcasing.jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.mangrove_shaft\"",
+    "source_string": "Mangrove Shaft",
+    "translation": "Mangrove Shaft",
+    "context": " -> block.createcasing.mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.oak_shaft\"": {
+    "identifier": "\"block.createcasing.oak_shaft\"",
+    "source_string": "Oak Shaft",
+    "translation": "Oak Shaft",
+    "context": " -> block.createcasing.oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_acacia_shaft\"",
+    "source_string": "Railway Encased Acacia Shaft",
+    "translation": "Railway Encased Acacia Shaft",
+    "context": " -> block.createcasing.railway_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_bamboo_shaft\"",
+    "source_string": "Railway Encased Bamboo Shaft",
+    "translation": "Railway Encased Bamboo Shaft",
+    "context": " -> block.createcasing.railway_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_birch_shaft\"",
+    "source_string": "Railway Encased Birch Shaft",
+    "translation": "Railway Encased Birch Shaft",
+    "context": " -> block.createcasing.railway_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_cherry_shaft\"",
+    "source_string": "Railway Encased Cherry Shaft",
+    "translation": "Railway Encased Cherry Shaft",
+    "context": " -> block.createcasing.railway_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.railway_encased_cogwheel\"",
+    "source_string": "Railway Encased Cogwheel",
+    "translation": "Railway Encased Cogwheel",
+    "context": " -> block.createcasing.railway_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_crimson_shaft\"",
+    "source_string": "Railway Encased Crimson Shaft",
+    "translation": "Railway Encased Crimson Shaft",
+    "context": " -> block.createcasing.railway_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_dark_oak_shaft\"",
+    "source_string": "Railway Encased Dark Oak Shaft",
+    "translation": "Railway Encased Dark Oak Shaft",
+    "context": " -> block.createcasing.railway_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_glass_shaft\"",
+    "source_string": "Railway Encased Glass Shaft",
+    "translation": "Railway Encased Glass Shaft",
+    "context": " -> block.createcasing.railway_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_jungle_shaft\"",
+    "source_string": "Railway Encased Jungle Shaft",
+    "translation": "Railway Encased Jungle Shaft",
+    "context": " -> block.createcasing.railway_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.railway_encased_large_cogwheel\"",
+    "source_string": "Railway Encased Large Cogwheel",
+    "translation": "Railway Encased Large Cogwheel",
+    "context": " -> block.createcasing.railway_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_mangrove_shaft\"",
+    "source_string": "Railway Encased Mangrove Shaft",
+    "translation": "Railway Encased Mangrove Shaft",
+    "context": " -> block.createcasing.railway_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_oak_shaft\"",
+    "source_string": "Railway Encased Oak Shaft",
+    "translation": "Railway Encased Oak Shaft",
+    "context": " -> block.createcasing.railway_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_shaft\"",
+    "source_string": "Railway Encased Shaft",
+    "translation": "Railway Encased Shaft",
+    "context": " -> block.createcasing.railway_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_spruce_shaft\"",
+    "source_string": "Railway Encased Spruce Shaft",
+    "translation": "Railway Encased Spruce Shaft",
+    "context": " -> block.createcasing.railway_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_warped_shaft\"",
+    "source_string": "Railway Encased Warped Shaft",
+    "translation": "Railway Encased Warped Shaft",
+    "context": " -> block.createcasing.railway_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_gearbox\"": {
+    "identifier": "\"block.createcasing.railway_gearbox\"",
+    "source_string": "Railway Gearbox",
+    "translation": "Railway Gearbox",
+    "context": " -> block.createcasing.railway_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_mixer\"": {
+    "identifier": "\"block.createcasing.railway_mixer\"",
+    "source_string": "Railway Mixer",
+    "translation": "Railway Mixer",
+    "context": " -> block.createcasing.railway_mixer",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_press\"": {
+    "identifier": "\"block.createcasing.railway_press\"",
+    "source_string": "Railway Press",
+    "translation": "Railway Press",
+    "context": " -> block.createcasing.railway_press",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_acacia_shaft\"",
+    "source_string": "Refined Radiance Encased Acacia Shaft",
+    "translation": "Refined Radiance Encased Acacia Shaft",
+    "context": " -> block.createcasing.refined_radiance_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_bamboo_shaft\"",
+    "source_string": "Refined Radiance Encased Bamboo Shaft",
+    "translation": "Refined Radiance Encased Bamboo Shaft",
+    "context": " -> block.createcasing.refined_radiance_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_birch_shaft\"",
+    "source_string": "Refined Radiance Encased Birch Shaft",
+    "translation": "Refined Radiance Encased Birch Shaft",
+    "context": " -> block.createcasing.refined_radiance_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_cherry_shaft\"",
+    "source_string": "Refined Radiance Encased Cherry Shaft",
+    "translation": "Refined Radiance Encased Cherry Shaft",
+    "context": " -> block.createcasing.refined_radiance_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_cogwheel\"",
+    "source_string": "Refined Radiance Encased Cogwheel",
+    "translation": "Refined Radiance Encased Cogwheel",
+    "context": " -> block.createcasing.refined_radiance_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_crimson_shaft\"",
+    "source_string": "Refined Radiance Encased Crimson Shaft",
+    "translation": "Refined Radiance Encased Crimson Shaft",
+    "context": " -> block.createcasing.refined_radiance_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_dark_oak_shaft\"",
+    "source_string": "Refined Radiance Encased Dark Oak Shaft",
+    "translation": "Refined Radiance Encased Dark Oak Shaft",
+    "context": " -> block.createcasing.refined_radiance_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_glass_shaft\"",
+    "source_string": "Refined Radiance Encased Glass Shaft",
+    "translation": "Refined Radiance Encased Glass Shaft",
+    "context": " -> block.createcasing.refined_radiance_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_jungle_shaft\"",
+    "source_string": "Refined Radiance Encased Jungle Shaft",
+    "translation": "Refined Radiance Encased Jungle Shaft",
+    "context": " -> block.createcasing.refined_radiance_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_large_cogwheel\"",
+    "source_string": "Refined Radiance Encased Large Cogwheel",
+    "translation": "Refined Radiance Encased Large Cogwheel",
+    "context": " -> block.createcasing.refined_radiance_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_mangrove_shaft\"",
+    "source_string": "Refined Radiance Encased Mangrove Shaft",
+    "translation": "Refined Radiance Encased Mangrove Shaft",
+    "context": " -> block.createcasing.refined_radiance_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_oak_shaft\"",
+    "source_string": "Refined Radiance Encased Oak Shaft",
+    "translation": "Refined Radiance Encased Oak Shaft",
+    "context": " -> block.createcasing.refined_radiance_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_shaft\"",
+    "source_string": "Refined Radiance Encased Shaft",
+    "translation": "Refined Radiance Encased Shaft",
+    "context": " -> block.createcasing.refined_radiance_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_spruce_shaft\"",
+    "source_string": "Refined Radiance Encased Spruce Shaft",
+    "translation": "Refined Radiance Encased Spruce Shaft",
+    "context": " -> block.createcasing.refined_radiance_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_warped_shaft\"",
+    "source_string": "Refined Radiance Encased Warped Shaft",
+    "translation": "Refined Radiance Encased Warped Shaft",
+    "context": " -> block.createcasing.refined_radiance_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_acacia_shaft\"",
+    "source_string": "Shadow Steel Encased Acacia Shaft",
+    "translation": "Shadow Steel Encased Acacia Shaft",
+    "context": " -> block.createcasing.shadow_steel_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_bamboo_shaft\"",
+    "source_string": "Shadow Steel Encased Bamboo Shaft",
+    "translation": "Shadow Steel Encased Bamboo Shaft",
+    "context": " -> block.createcasing.shadow_steel_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_birch_shaft\"",
+    "source_string": "Shadow Steel Encased Birch Shaft",
+    "translation": "Shadow Steel Encased Birch Shaft",
+    "context": " -> block.createcasing.shadow_steel_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_cherry_shaft\"",
+    "source_string": "Shadow Steel Encased Cherry Shaft",
+    "translation": "Shadow Steel Encased Cherry Shaft",
+    "context": " -> block.createcasing.shadow_steel_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_cogwheel\"",
+    "source_string": "Shadow Steel Encased Cogwheel",
+    "translation": "Shadow Steel Encased Cogwheel",
+    "context": " -> block.createcasing.shadow_steel_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_crimson_shaft\"",
+    "source_string": "Shadow Steel Encased Crimson Shaft",
+    "translation": "Shadow Steel Encased Crimson Shaft",
+    "context": " -> block.createcasing.shadow_steel_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_dark_oak_shaft\"",
+    "source_string": "Shadow Steel Encased Dark Oak Shaft",
+    "translation": "Shadow Steel Encased Dark Oak Shaft",
+    "context": " -> block.createcasing.shadow_steel_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_glass_shaft\"",
+    "source_string": "Shadow Steel Encased Glass Shaft",
+    "translation": "Shadow Steel Encased Glass Shaft",
+    "context": " -> block.createcasing.shadow_steel_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_jungle_shaft\"",
+    "source_string": "Shadow Steel Encased Jungle Shaft",
+    "translation": "Shadow Steel Encased Jungle Shaft",
+    "context": " -> block.createcasing.shadow_steel_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_large_cogwheel\"",
+    "source_string": "Shadow Steel Encased Large Cogwheel",
+    "translation": "Shadow Steel Encased Large Cogwheel",
+    "context": " -> block.createcasing.shadow_steel_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_mangrove_shaft\"",
+    "source_string": "Shadow Steel Encased Mangrove Shaft",
+    "translation": "Shadow Steel Encased Mangrove Shaft",
+    "context": " -> block.createcasing.shadow_steel_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_oak_shaft\"",
+    "source_string": "Shadow Steel Encased Oak Shaft",
+    "translation": "Shadow Steel Encased Oak Shaft",
+    "context": " -> block.createcasing.shadow_steel_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_shaft\"",
+    "source_string": "Shadow Steel Encased Shaft",
+    "translation": "Shadow Steel Encased Shaft",
+    "context": " -> block.createcasing.shadow_steel_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_spruce_shaft\"",
+    "source_string": "Shadow Steel Encased Spruce Shaft",
+    "translation": "Shadow Steel Encased Spruce Shaft",
+    "context": " -> block.createcasing.shadow_steel_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_warped_shaft\"",
+    "source_string": "Shadow Steel Encased Warped Shaft",
+    "translation": "Shadow Steel Encased Warped Shaft",
+    "context": " -> block.createcasing.shadow_steel_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.spruce_shaft\"": {
+    "identifier": "\"block.createcasing.spruce_shaft\"",
+    "source_string": "Spruce Shaft",
+    "translation": "Spruce Shaft",
+    "context": " -> block.createcasing.spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.vertical_brass_gearbox\"": {
+    "identifier": "\"block.createcasing.vertical_brass_gearbox\"",
+    "source_string": "Vertical Brass Gearbox",
+    "translation": "Vertical Brass Gearbox",
+    "context": " -> block.createcasing.vertical_brass_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.vertical_copper_gearbox\"": {
+    "identifier": "\"block.createcasing.vertical_copper_gearbox\"",
+    "source_string": "Vertical Copper Gearbox",
+    "translation": "Vertical Copper Gearbox",
+    "context": " -> block.createcasing.vertical_copper_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.vertical_railway_gearbox\"": {
+    "identifier": "\"block.createcasing.vertical_railway_gearbox\"",
+    "source_string": "Vertical Railway Gearbox",
+    "translation": "Vertical Railway Gearbox",
+    "context": " -> block.createcasing.vertical_railway_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.warped_shaft\"": {
+    "identifier": "\"block.createcasing.warped_shaft\"",
+    "source_string": "Warped Shaft",
+    "translation": "Warped Shaft",
+    "context": " -> block.createcasing.warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.mldeg_shaft\"": {
+    "identifier": "\"block.createcasing.mldeg_shaft\"",
+    "source_string": "MLDEG Shaft",
+    "translation": "MLDEG Shaft",
+    "context": " -> block.createcasing.mldeg_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_mldeg_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_mldeg_shaft\"",
+    "source_string": "Andesite Encased Mldeg Shaft",
+    "translation": "Andesite Encased Mldeg Shaft",
+    "context": " -> block.createcasing.andesite_encased_mldeg_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_mldeg_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_mldeg_shaft\"",
+    "source_string": "Brass Encased Mldeg Shaft",
+    "translation": "Brass Encased Mldeg Shaft",
+    "context": " -> block.createcasing.brass_encased_mldeg_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_mldeg_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_mldeg_shaft\"",
+    "source_string": "Railway Encased Mldeg Shaft",
+    "translation": "Railway Encased Mldeg Shaft",
+    "context": " -> block.createcasing.railway_encased_mldeg_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_mldeg_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_mldeg_shaft\"",
+    "source_string": "Industrial Iron Encased Mldeg Shaft",
+    "translation": "Industrial Iron Encased Mldeg Shaft",
+    "context": " -> block.createcasing.industrial_iron_encased_mldeg_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_mldeg_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_mldeg_shaft\"",
+    "source_string": "Refined Radiance Encased Mldeg Shaft",
+    "translation": "Refined Radiance Encased Mldeg Shaft",
+    "context": " -> block.createcasing.refined_radiance_encased_mldeg_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_mldeg_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_mldeg_shaft\"",
+    "source_string": "Shadow Steel Encased Mldeg Shaft",
+    "translation": "Shadow Steel Encased Mldeg Shaft",
+    "context": " -> block.createcasing.shadow_steel_encased_mldeg_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_mldeg_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_mldeg_shaft\"",
+    "source_string": "Copper Encased Mldeg Shaft",
+    "translation": "Copper Encased Mldeg Shaft",
+    "context": " -> block.createcasing.copper_encased_mldeg_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.custom_mixer.tooltip\"": {
+    "identifier": "\"block.createcasing.custom_mixer.tooltip\"",
+    "source_string": "CUSTOM MIXER",
+    "translation": "CUSTOM MIXER",
+    "context": " -> block.createcasing.custom_mixer.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.custom_mixer.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.custom_mixer.tooltip.summary\"",
+    "source_string": "_Works_ like a _normal_ mixer",
+    "translation": "_Works_ like a _normal_ mixer",
+    "context": " -> block.createcasing.custom_mixer.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_mixer.tooltip\"": {
+    "identifier": "\"block.createcasing.brass_mixer.tooltip\"",
+    "source_string": "BRASS MIXER",
+    "translation": "BRASS MIXER",
+    "context": " -> block.createcasing.brass_mixer.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_mixer.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.brass_mixer.tooltip.summary\"",
+    "source_string": "Mixes _2x faster_ if the recipe _only uses items_, but _uses more stress_ than a normal mixer",
+    "translation": "Mixes _2x faster_ if the recipe _only uses items_, but _uses more stress_ than a normal mixer",
+    "context": " -> block.createcasing.brass_mixer.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_mixer.tooltip\"": {
+    "identifier": "\"block.createcasing.copper_mixer.tooltip\"",
+    "source_string": "COPPER MIXER",
+    "translation": "COPPER MIXER",
+    "context": " -> block.createcasing.copper_mixer.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_mixer.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.copper_mixer.tooltip.summary\"",
+    "source_string": "Mixes _2x faster_ if the recipe either _only uses fluids_ or is a _potion recipe_, but _uses more stress_ than a normal mixer",
+    "translation": "Mixes _2x faster_ if the recipe either _only uses fluids_ or is a _potion recipe_, but _uses more stress_ than a normal mixer",
+    "context": " -> block.createcasing.copper_mixer.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_mixer.tooltip\"": {
+    "identifier": "\"block.createcasing.railway_mixer.tooltip\"",
+    "source_string": "RAILWAY MIXER",
+    "translation": "RAILWAY MIXER",
+    "context": " -> block.createcasing.railway_mixer.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_mixer.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.railway_mixer.tooltip.summary\"",
+    "source_string": "Mixes _2x faster_, but _uses more stress_ than a normal mixer",
+    "translation": "Mixes _2x faster_, but _uses more stress_ than a normal mixer",
+    "context": " -> block.createcasing.railway_mixer.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"tooltip.createcasing.mixermixenormaly.title\"": {
+    "identifier": "\"tooltip.createcasing.mixermixenormaly.title\"",
+    "source_string": "Config Disabled : ",
+    "translation": "Config Disabled : ",
+    "context": " -> tooltip.createcasing.mixermixenormaly.title",
+    "labels": null,
+    "max_length": null
+  },
+  "\"tooltip.createcasing.mixermixenormaly\"": {
+    "identifier": "\"tooltip.createcasing.mixermixenormaly\"",
+    "source_string": "Warning: Custom Mixers work like a normal mixer!",
+    "translation": "Warning: Custom Mixers work like a normal mixer!",
+    "context": " -> tooltip.createcasing.mixermixenormaly",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.custom_press.tooltip\"": {
+    "identifier": "\"block.createcasing.custom_press.tooltip\"",
+    "source_string": "CUSTOM PRESS",
+    "translation": "CUSTOM PRESS",
+    "context": " -> block.createcasing.custom_press.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.custom_press.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.custom_press.tooltip.summary\"",
+    "source_string": "_Works_ like a _normal_ press",
+    "translation": "_Works_ like a _normal_ press",
+    "context": " -> block.createcasing.custom_press.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"item.createcasing.vertical_brass_gearbox\"": {
+    "identifier": "\"item.createcasing.vertical_brass_gearbox\"",
+    "source_string": "Brass Vertical Gearbox",
+    "translation": "Brass Vertical Gearbox",
+    "context": " -> item.createcasing.vertical_brass_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"item.createcasing.vertical_copper_gearbox\"": {
+    "identifier": "\"item.createcasing.vertical_copper_gearbox\"",
+    "source_string": "Copper Vertical Gearbox",
+    "translation": "Copper Vertical Gearbox",
+    "context": " -> item.createcasing.vertical_copper_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"item.createcasing.vertical_industrial_iron_gearbox\"": {
+    "identifier": "\"item.createcasing.vertical_industrial_iron_gearbox\"",
+    "source_string": "Industrial Iron Vertical Gearbox",
+    "translation": "Industrial Iron Vertical Gearbox",
+    "context": " -> item.createcasing.vertical_industrial_iron_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"item.createcasing.vertical_railway_gearbox\"": {
+    "identifier": "\"item.createcasing.vertical_railway_gearbox\"",
+    "source_string": "Train Vertical Gearbox",
+    "translation": "Train Vertical Gearbox",
+    "context": " -> item.createcasing.vertical_railway_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.tag.encased_blocks\"": {
+    "identifier": "\"createcasing.ponder.tag.encased_blocks\"",
+    "source_string": "Create : Encased",
+    "translation": "Create : Encased",
+    "context": " -> createcasing.ponder.tag.encased_blocks",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.tag.encased_blocks.description\"": {
+    "identifier": "\"createcasing.ponder.tag.encased_blocks.description\"",
+    "source_string": "Components added by Create Encased",
+    "translation": "Components added by Create Encased",
+    "context": " -> createcasing.ponder.tag.encased_blocks.description",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.header\"": {
+    "identifier": "\"createcasing.ponder.gearbox.header\"",
+    "source_string": "Relaying rotational force using Gearboxes",
+    "translation": "Relaying rotational force using Gearboxes",
+    "context": " -> createcasing.ponder.gearbox.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.text_1\"": {
+    "identifier": "\"createcasing.ponder.gearbox.text_1\"",
+    "source_string": "Jumping between axes of rotation can get bulky quickly",
+    "translation": "Jumping between axes of rotation can get bulky quickly",
+    "context": " -> createcasing.ponder.gearbox.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.text_2\"": {
+    "identifier": "\"createcasing.ponder.gearbox.text_2\"",
+    "source_string": "A gearbox is the more compact equivalent of this setup",
+    "translation": "A gearbox is the more compact equivalent of this setup",
+    "context": " -> createcasing.ponder.gearbox.text_2",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.text_3\"": {
+    "identifier": "\"createcasing.ponder.gearbox.text_3\"",
+    "source_string": "Shafts around corners rotate in mirrored directions",
+    "translation": "Shafts around corners rotate in mirrored directions",
+    "context": " -> createcasing.ponder.gearbox.text_3",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.text_4\"": {
+    "identifier": "\"createcasing.ponder.gearbox.text_4\"",
+    "source_string": "Straight connections will be reversed",
+    "translation": "Straight connections will be reversed",
+    "context": " -> createcasing.ponder.gearbox.text_4",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.header\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.header\"",
+    "source_string": "Processing Items with the Mechanical Mixer",
+    "translation": "Processing Items with the Mechanical Mixer",
+    "context": " -> createcasing.ponder.mechanical_mixer.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.text_1\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.text_1\"",
+    "source_string": "With a Mixer and Basin, some Crafting Recipes can be automated",
+    "translation": "With a Mixer and Basin, some Crafting Recipes can be automated",
+    "context": " -> createcasing.ponder.mechanical_mixer.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.text_2\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.text_2\"",
+    "source_string": "Available recipes include any Shapeless Crafting Recipe, plus a couple extra ones",
+    "translation": "Available recipes include any Shapeless Crafting Recipe, plus a couple extra ones",
+    "context": " -> createcasing.ponder.mechanical_mixer.text_2",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.text_3\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.text_3\"",
+    "source_string": "Some of those recipes may require the heat of a Blaze Burner",
+    "translation": "Some of those recipes may require the heat of a Blaze Burner",
+    "context": " -> createcasing.ponder.mechanical_mixer.text_3",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.text_4\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.text_4\"",
+    "source_string": "The filter slot can be used in case two recipes are conflicting.",
+    "translation": "The filter slot can be used in case two recipes are conflicting.",
+    "context": " -> createcasing.ponder.mechanical_mixer.text_4",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.header\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.header\"",
+    "source_string": "Processing Items with the Mechanical Press",
+    "translation": "Processing Items with the Mechanical Press",
+    "context": " -> createcasing.ponder.mechanical_press.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.text_1\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.text_1\"",
+    "source_string": "The Mechanical Press can process items provided beneath it",
+    "translation": "The Mechanical Press can process items provided beneath it",
+    "context": " -> createcasing.ponder.mechanical_press.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.text_2\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.text_2\"",
+    "source_string": "The Input items can be dropped or placed on a Depot under the Press",
+    "translation": "The Input items can be dropped or placed on a Depot under the Press",
+    "context": " -> createcasing.ponder.mechanical_press.text_2",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.text_3\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.text_3\"",
+    "source_string": "When items are provided on a belt...",
+    "translation": "When items are provided on a belt...",
+    "context": " -> createcasing.ponder.mechanical_press.text_3",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.text_4\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.text_4\"",
+    "source_string": "The Press will hold and process them automatically",
+    "translation": "The Press will hold and process them automatically",
+    "context": " -> createcasing.ponder.mechanical_press.text_4",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.header\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.header\"",
+    "source_string": "Compacting items with the Mechanical Press",
+    "translation": "Compacting items with the Mechanical Press",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.text_1\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.text_1\"",
+    "source_string": "Pressing items held in a Basin will cause them to be Compacted",
+    "translation": "Pressing items held in a Basin will cause them to be Compacted",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.text_2\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.text_2\"",
+    "source_string": "Compacting includes any filled 2x2 or 3x3 Crafting Recipe, plus a couple extra ones",
+    "translation": "Compacting includes any filled 2x2 or 3x3 Crafting Recipe, plus a couple extra ones",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.text_2",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.text_3\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.text_3\"",
+    "source_string": "Some of those recipes may require the heat of a Blaze Burner",
+    "translation": "Some of those recipes may require the heat of a Blaze Burner",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.text_3",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.text_4\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.text_4\"",
+    "source_string": "The filter slot can be used in case two recipes are conflicting.",
+    "translation": "The filter slot can be used in case two recipes are conflicting.",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.text_4",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.creative_cogwheel.header\"": {
+    "identifier": "\"createcasing.ponder.creative_cogwheel.header\"",
+    "source_string": "Generating Rotational Force using Creative Cogwheels",
+    "translation": "Generating Rotational Force using Creative Cogwheels",
+    "context": " -> createcasing.ponder.creative_cogwheel.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.creative_cogwheel.text_1\"": {
+    "identifier": "\"createcasing.ponder.creative_cogwheel.text_1\"",
+    "source_string": "Creative Cogwheels are a compact and configurable source of Rotational Force",
+    "translation": "Creative Cogwheels are a compact and configurable source of Rotational Force",
+    "context": " -> createcasing.ponder.creative_cogwheel.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.creative_cogwheel.text_2\"": {
+    "identifier": "\"createcasing.ponder.creative_cogwheel.text_2\"",
+    "source_string": "The generated speed can be configured on its input panels",
+    "translation": "The generated speed can be configured on its input panels",
+    "context": " -> createcasing.ponder.creative_cogwheel.text_2",
+    "labels": null,
+    "max_length": null
+  }
+}
