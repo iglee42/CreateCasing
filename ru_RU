@@ -1,0 +1,1402 @@
+{
+  "\"itemGroup.createcasing\"": {
+    "identifier": "\"itemGroup.createcasing\"",
+    "source_string": "Create Encased",
+    "translation": "Create Encased",
+    "context": " -> itemGroup.createcasing",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.acacia_shaft\"": {
+    "identifier": "\"block.createcasing.acacia_shaft\"",
+    "source_string": "Акациевый вал",
+    "translation": "Акациевый вал",
+    "context": " -> block.createcasing.acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_acacia_shaft\"",
+    "source_string": "Акациевый вал в андезитовом корпусе",
+    "translation": "Акациевый вал в андезитовом корпусе",
+    "context": " -> block.createcasing.andesite_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_bamboo_shaft\"",
+    "source_string": "Бамбуковый вал в андезитовом корпусе",
+    "translation": "Бамбуковый вал в андезитовом корпусе",
+    "context": " -> block.createcasing.andesite_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_birch_shaft\"",
+    "source_string": "Берёзовый вал в андезитовом корпусе",
+    "translation": "Берёзовый вал в андезитовом корпусе",
+    "context": " -> block.createcasing.andesite_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_cherry_shaft\"",
+    "source_string": "Вишнёвый вал в андезитовом корпусе",
+    "translation": "Вишнёвый вал в андезитовом корпусе",
+    "context": " -> block.createcasing.andesite_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_crimson_shaft\"",
+    "source_string": "Багровый вал в андезитовом корпусе",
+    "translation": "Багровый вал в андезитовом корпусе",
+    "context": " -> block.createcasing.andesite_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_dark_oak_shaft\"",
+    "source_string": "Вал из тёмного дуба в андезитовом корпусе",
+    "translation": "Вал из тёмного дуба в андезитовом корпусе",
+    "context": " -> block.createcasing.andesite_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_glass_shaft\"",
+    "source_string": "Стеклянный вал в андезитовом корпусе",
+    "translation": "Стеклянный вал в андезитовом корпусе",
+    "context": " -> block.createcasing.andesite_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_jungle_shaft\"",
+    "source_string": "Вал из тропического дерева в андезитовом корпусе",
+    "translation": "Вал из тропического дерева в андезитовом корпусе",
+    "context": " -> block.createcasing.andesite_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_mangrove_shaft\"",
+    "source_string": "Мангровый вал в андезитовом корпусе",
+    "translation": "Мангровый вал в андезитовом корпусе",
+    "context": " -> block.createcasing.andesite_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_oak_shaft\"",
+    "source_string": "Дубовый вал в андезитовом корпусе",
+    "translation": "Дубовый вал в андезитовом корпусе",
+    "context": " -> block.createcasing.andesite_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_spruce_shaft\"",
+    "source_string": "Еловый вал в андезитовом корпусе",
+    "translation": "Еловый вал в андезитовом корпусе",
+    "context": " -> block.createcasing.andesite_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_warped_shaft\"",
+    "source_string": "Искажённый вал в андезитовом корпусе",
+    "translation": "Искажённый вал в андезитовом корпусе",
+    "context": " -> block.createcasing.andesite_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.bamboo_shaft\"",
+    "source_string": "Бамбуковый вал",
+    "translation": "Бамбуковый вал",
+    "context": " -> block.createcasing.bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.birch_shaft\"": {
+    "identifier": "\"block.createcasing.birch_shaft\"",
+    "source_string": "Берёзовый вал",
+    "translation": "Берёзовый вал",
+    "context": " -> block.createcasing.birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_acacia_shaft\"",
+    "source_string": "Акациевый вал в латунном корпусе",
+    "translation": "Акациевый вал в латунном корпусе",
+    "context": " -> block.createcasing.brass_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_bamboo_shaft\"",
+    "source_string": "Бамбуковый вал в латунном корпусе",
+    "translation": "Бамбуковый вал в латунном корпусе",
+    "context": " -> block.createcasing.brass_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_birch_shaft\"",
+    "source_string": "Берёзовый вал в латунном корпусе",
+    "translation": "Берёзовый вал в латунном корпусе",
+    "context": " -> block.createcasing.brass_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_cherry_shaft\"",
+    "source_string": "Вишнёвый вал в латунном корпусе",
+    "translation": "Вишнёвый вал в латунном корпусе",
+    "context": " -> block.createcasing.brass_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_crimson_shaft\"",
+    "source_string": "Багровый вал в латунном корпусе",
+    "translation": "Багровый вал в латунном корпусе",
+    "context": " -> block.createcasing.brass_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_dark_oak_shaft\"",
+    "source_string": "Вал из тёмного дуба в латунном корпусе",
+    "translation": "Вал из тёмного дуба в латунном корпусе",
+    "context": " -> block.createcasing.brass_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_glass_shaft\"",
+    "source_string": "Стеклянный вал в латунном корпусе",
+    "translation": "Стеклянный вал в латунном корпусе",
+    "context": " -> block.createcasing.brass_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_jungle_shaft\"",
+    "source_string": "Вал из тропического дерева в латунном корпусе",
+    "translation": "Вал из тропического дерева в латунном корпусе",
+    "context": " -> block.createcasing.brass_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_mangrove_shaft\"",
+    "source_string": "Мангровый вал в латунном корпусе",
+    "translation": "Мангровый вал в латунном корпусе",
+    "context": " -> block.createcasing.brass_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_oak_shaft\"",
+    "source_string": "Дубовый вал в латунном корпусе",
+    "translation": "Дубовый вал в латунном корпусе",
+    "context": " -> block.createcasing.brass_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_spruce_shaft\"",
+    "source_string": "Еловый вал в латунном корпусе",
+    "translation": "Еловый вал в латунном корпусе",
+    "context": " -> block.createcasing.brass_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_warped_shaft\"",
+    "source_string": "Искажённый вал в латунном корпусе",
+    "translation": "Искажённый вал в латунном корпусе",
+    "context": " -> block.createcasing.brass_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_gearbox\"": {
+    "identifier": "\"block.createcasing.brass_gearbox\"",
+    "source_string": "Латунная коробка передач",
+    "translation": "Латунная коробка передач",
+    "context": " -> block.createcasing.brass_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_mixer\"": {
+    "identifier": "\"block.createcasing.brass_mixer\"",
+    "source_string": "Латунный смешиватель",
+    "translation": "Латунный смешиватель",
+    "context": " -> block.createcasing.brass_mixer",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_press\"": {
+    "identifier": "\"block.createcasing.brass_press\"",
+    "source_string": "Латунный пресс",
+    "translation": "Латунный пресс",
+    "context": " -> block.createcasing.brass_press",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.cherry_shaft\"": {
+    "identifier": "\"block.createcasing.cherry_shaft\"",
+    "source_string": "Вишнёвый вал",
+    "translation": "Вишнёвый вал",
+    "context": " -> block.createcasing.cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_clear_glass_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_clear_glass_encased_cogwheel\"",
+    "source_string": "Шестерня в чистом стеклянном медном корпусе",
+    "translation": "Шестерня в чистом стеклянном медном корпусе",
+    "context": " -> block.createcasing.copper_clear_glass_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_clear_glass_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_clear_glass_encased_large_cogwheel\"",
+    "source_string": "Большая шестерня в чистом стеклянном медном корпусе",
+    "translation": "Большая шестерня в чистом стеклянном медном корпусе",
+    "context": " -> block.createcasing.copper_clear_glass_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_clear_glass_encased_shaft\"": {
+    "identifier": "\"block.createcasing.copper_clear_glass_encased_shaft\"",
+    "source_string": "Вал в чистом стеклянном медном корпусе",
+    "translation": "Вал в чистом стеклянном медном корпусе",
+    "context": " -> block.createcasing.copper_clear_glass_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_acacia_shaft\"",
+    "source_string": "Акациевый вал в медном корпусе",
+    "translation": "Акациевый вал в медном корпусе",
+    "context": " -> block.createcasing.copper_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_bamboo_shaft\"",
+    "source_string": "Бамбуковый вал в медном корпусе",
+    "translation": "Бамбуковый вал в медном корпусе",
+    "context": " -> block.createcasing.copper_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_birch_shaft\"",
+    "source_string": "Берёзовый вал в медном корпусе",
+    "translation": "Берёзовый вал в медном корпусе",
+    "context": " -> block.createcasing.copper_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_cherry_shaft\"",
+    "source_string": "Вишнёвый вал в медном корпусе",
+    "translation": "Вишнёвый вал в медном корпусе",
+    "context": " -> block.createcasing.copper_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_encased_cogwheel\"",
+    "source_string": "Шестерня в медном корпусе",
+    "translation": "Шестерня в медном корпусе",
+    "context": " -> block.createcasing.copper_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_crimson_shaft\"",
+    "source_string": "Багровый вал в медном корпусе",
+    "translation": "Багровый вал в медном корпусе",
+    "context": " -> block.createcasing.copper_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_dark_oak_shaft\"",
+    "source_string": "Вал из тёмного дуба в медном корпусе",
+    "translation": "Вал из тёмного дуба в медном корпусе",
+    "context": " -> block.createcasing.copper_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_glass_shaft\"",
+    "source_string": "Стеклянный вал в медном корпусе",
+    "translation": "Стеклянный вал в медном корпусе",
+    "context": " -> block.createcasing.copper_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_jungle_shaft\"",
+    "source_string": "Вал из тропического дерева в медном корпусе",
+    "translation": "Вал из тропического дерева в медном корпусе",
+    "context": " -> block.createcasing.copper_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_encased_large_cogwheel\"",
+    "source_string": "Большая шестерня в медном корпусе",
+    "translation": "Большая шестерня в медном корпусе",
+    "context": " -> block.createcasing.copper_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_mangrove_shaft\"",
+    "source_string": "Мангровый вал в медном корпусе",
+    "translation": "Мангровый вал в медном корпусе",
+    "context": " -> block.createcasing.copper_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_oak_shaft\"",
+    "source_string": "Дубовый вал в медном корпусе",
+    "translation": "Дубовый вал в медном корпусе",
+    "context": " -> block.createcasing.copper_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_shaft\"",
+    "source_string": "Вал в медном корпусе",
+    "translation": "Вал в медном корпусе",
+    "context": " -> block.createcasing.copper_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_spruce_shaft\"",
+    "source_string": "Еловый вал в медном корпусе",
+    "translation": "Еловый вал в медном корпусе",
+    "context": " -> block.createcasing.copper_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_warped_shaft\"",
+    "source_string": "Искажённый вал в медном корпусе",
+    "translation": "Искажённый вал в медном корпусе",
+    "context": " -> block.createcasing.copper_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_gearbox\"": {
+    "identifier": "\"block.createcasing.copper_gearbox\"",
+    "source_string": "Медная коробка передач",
+    "translation": "Медная коробка передач",
+    "context": " -> block.createcasing.copper_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_glass_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_glass_encased_cogwheel\"",
+    "source_string": "Шестерня в чистом стеклянном медном корпусе",
+    "translation": "Шестерня в чистом стеклянном медном корпусе",
+    "context": " -> block.createcasing.copper_glass_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_glass_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_glass_encased_large_cogwheel\"",
+    "source_string": "Большая шестерня в чистом стеклянном медном корпусе",
+    "translation": "Большая шестерня в чистом стеклянном медном корпусе",
+    "context": " -> block.createcasing.copper_glass_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_glass_encased_shaft\"": {
+    "identifier": "\"block.createcasing.copper_glass_encased_shaft\"",
+    "source_string": "Вал в чистом стеклянном медном корпусе",
+    "translation": "Вал в чистом стеклянном медном корпусе",
+    "context": " -> block.createcasing.copper_glass_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_mixer\"": {
+    "identifier": "\"block.createcasing.copper_mixer\"",
+    "source_string": "Медный смешиватель",
+    "translation": "Медный смешиватель",
+    "context": " -> block.createcasing.copper_mixer",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_press\"": {
+    "identifier": "\"block.createcasing.copper_press\"",
+    "source_string": "Медный пресс",
+    "translation": "Медный пресс",
+    "context": " -> block.createcasing.copper_press",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.creative_cogwheel\"": {
+    "identifier": "\"block.createcasing.creative_cogwheel\"",
+    "source_string": "Творческая шестерня",
+    "translation": "Творческая шестерня",
+    "context": " -> block.createcasing.creative_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.crimson_shaft\"": {
+    "identifier": "\"block.createcasing.crimson_shaft\"",
+    "source_string": "Багровый вал",
+    "translation": "Багровый вал",
+    "context": " -> block.createcasing.crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.dark_oak_shaft\"",
+    "source_string": "Вал из тёмного дуба",
+    "translation": "Вал из тёмного дуба",
+    "context": " -> block.createcasing.dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.glass_shaft\"": {
+    "identifier": "\"block.createcasing.glass_shaft\"",
+    "source_string": "Стеклянный вал",
+    "translation": "Стеклянный вал",
+    "context": " -> block.createcasing.glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_acacia_shaft\"",
+    "source_string": "Акациевый вал в промышленном железе",
+    "translation": "Акациевый вал в промышленном железе",
+    "context": " -> block.createcasing.industrial_iron_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_bamboo_shaft\"",
+    "source_string": "Бамбуковый вал в промышленном железе",
+    "translation": "Бамбуковый вал в промышленном железе",
+    "context": " -> block.createcasing.industrial_iron_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_birch_shaft\"",
+    "source_string": "Берёзовый вал в промышленном железе",
+    "translation": "Берёзовый вал в промышленном железе",
+    "context": " -> block.createcasing.industrial_iron_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_cherry_shaft\"",
+    "source_string": "Вишнёвый вал в промышленном железе",
+    "translation": "Вишнёвый вал в промышленном железе",
+    "context": " -> block.createcasing.industrial_iron_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_cogwheel\"",
+    "source_string": "Шестерня в промышленном железе",
+    "translation": "Шестерня в промышленном железе",
+    "context": " -> block.createcasing.industrial_iron_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_crimson_shaft\"",
+    "source_string": "Багровый вал в промышленном железе",
+    "translation": "Багровый вал в промышленном железе",
+    "context": " -> block.createcasing.industrial_iron_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_dark_oak_shaft\"",
+    "source_string": "Вал из тёмного дуба в промышленном железе",
+    "translation": "Вал из тёмного дуба в промышленном железе",
+    "context": " -> block.createcasing.industrial_iron_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_glass_shaft\"",
+    "source_string": "Стеклянный вал в промышленном железе",
+    "translation": "Стеклянный вал в промышленном железе",
+    "context": " -> block.createcasing.industrial_iron_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_jungle_shaft\"",
+    "source_string": "Вал из тропического в промышленном железе",
+    "translation": "Вал из тропического в промышленном железе",
+    "context": " -> block.createcasing.industrial_iron_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_large_cogwheel\"",
+    "source_string": "Большая шестерня в промышленном железе",
+    "translation": "Большая шестерня в промышленном железе",
+    "context": " -> block.createcasing.industrial_iron_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_mangrove_shaft\"",
+    "source_string": "Мангровый вал в промышленном железе",
+    "translation": "Мангровый вал в промышленном железе",
+    "context": " -> block.createcasing.industrial_iron_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_oak_shaft\"",
+    "source_string": "Дубовый вал в промышленном железе",
+    "translation": "Дубовый вал в промышленном железе",
+    "context": " -> block.createcasing.industrial_iron_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_shaft\"",
+    "source_string": "Вал в промышленном железе",
+    "translation": "Вал в промышленном железе",
+    "context": " -> block.createcasing.industrial_iron_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_spruce_shaft\"",
+    "source_string": "Еловый вал в промышленном железе",
+    "translation": "Еловый вал в промышленном железе",
+    "context": " -> block.createcasing.industrial_iron_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_warped_shaft\"",
+    "source_string": "Искажённый вал в промышленном железе",
+    "translation": "Искажённый вал в промышленном железе",
+    "context": " -> block.createcasing.industrial_iron_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_gearbox\"": {
+    "identifier": "\"block.createcasing.industrial_iron_gearbox\"",
+    "source_string": "Промышленная коробка передач",
+    "translation": "Промышленная коробка передач",
+    "context": " -> block.createcasing.industrial_iron_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_press\"": {
+    "identifier": "\"block.createcasing.industrial_iron_press\"",
+    "source_string": "Промышленный пресс",
+    "translation": "Промышленный пресс",
+    "context": " -> block.createcasing.industrial_iron_press",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_mixer\"": {
+    "identifier": "\"block.createcasing.industrial_iron_mixer\"",
+    "source_string": "Промышленный смешиватель",
+    "translation": "Промышленный смешиватель",
+    "context": " -> block.createcasing.industrial_iron_mixer",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.jungle_shaft\"": {
+    "identifier": "\"block.createcasing.jungle_shaft\"",
+    "source_string": "Вал из тропического дерева",
+    "translation": "Вал из тропического дерева",
+    "context": " -> block.createcasing.jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.mangrove_shaft\"",
+    "source_string": "Мангровый вал",
+    "translation": "Мангровый вал",
+    "context": " -> block.createcasing.mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.oak_shaft\"": {
+    "identifier": "\"block.createcasing.oak_shaft\"",
+    "source_string": "Дубовый вал",
+    "translation": "Дубовый вал",
+    "context": " -> block.createcasing.oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_acacia_shaft\"",
+    "source_string": "Акациевый вал в железнодорожном корпусе",
+    "translation": "Акациевый вал в железнодорожном корпусе",
+    "context": " -> block.createcasing.railway_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_bamboo_shaft\"",
+    "source_string": "Бамбуковый вал в железнодорожном корпусе",
+    "translation": "Бамбуковый вал в железнодорожном корпусе",
+    "context": " -> block.createcasing.railway_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_birch_shaft\"",
+    "source_string": "Берёзовый вал в железнодорожном корпусе",
+    "translation": "Берёзовый вал в железнодорожном корпусе",
+    "context": " -> block.createcasing.railway_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_cherry_shaft\"",
+    "source_string": "Вишнёвый вал в железнодорожном корпусе",
+    "translation": "Вишнёвый вал в железнодорожном корпусе",
+    "context": " -> block.createcasing.railway_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.railway_encased_cogwheel\"",
+    "source_string": "Шестерня в железнодорожном корпусе",
+    "translation": "Шестерня в железнодорожном корпусе",
+    "context": " -> block.createcasing.railway_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_crimson_shaft\"",
+    "source_string": "Багровый вал в железнодорожном корпусе",
+    "translation": "Багровый вал в железнодорожном корпусе",
+    "context": " -> block.createcasing.railway_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_dark_oak_shaft\"",
+    "source_string": "Вал из тёмного дуба в железнодорожном корпусе",
+    "translation": "Вал из тёмного дуба в железнодорожном корпусе",
+    "context": " -> block.createcasing.railway_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_glass_shaft\"",
+    "source_string": "Стеклянный вал в железнодорожном корпусе",
+    "translation": "Стеклянный вал в железнодорожном корпусе",
+    "context": " -> block.createcasing.railway_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_jungle_shaft\"",
+    "source_string": "Вал из тропического дерева в железнодорожном корпусе",
+    "translation": "Вал из тропического дерева в железнодорожном корпусе",
+    "context": " -> block.createcasing.railway_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.railway_encased_large_cogwheel\"",
+    "source_string": "Большая шестерня в железнодорожном корпусе",
+    "translation": "Большая шестерня в железнодорожном корпусе",
+    "context": " -> block.createcasing.railway_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_mangrove_shaft\"",
+    "source_string": "Мангровый вал в железнодорожном корпусе",
+    "translation": "Мангровый вал в железнодорожном корпусе",
+    "context": " -> block.createcasing.railway_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_oak_shaft\"",
+    "source_string": "Дубовый вал в железнодорожном корпусе",
+    "translation": "Дубовый вал в железнодорожном корпусе",
+    "context": " -> block.createcasing.railway_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_shaft\"",
+    "source_string": "Вал в железнодорожном корпусе",
+    "translation": "Вал в железнодорожном корпусе",
+    "context": " -> block.createcasing.railway_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_spruce_shaft\"",
+    "source_string": "Еловый вал в железнодорожном корпусе",
+    "translation": "Еловый вал в железнодорожном корпусе",
+    "context": " -> block.createcasing.railway_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_warped_shaft\"",
+    "source_string": "Искажённый вал в железнодорожном корпусе",
+    "translation": "Искажённый вал в железнодорожном корпусе",
+    "context": " -> block.createcasing.railway_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_gearbox\"": {
+    "identifier": "\"block.createcasing.railway_gearbox\"",
+    "source_string": "Железнодорожная коробка передач",
+    "translation": "Железнодорожная коробка передач",
+    "context": " -> block.createcasing.railway_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_mixer\"": {
+    "identifier": "\"block.createcasing.railway_mixer\"",
+    "source_string": "Железнодорожный смешиватель",
+    "translation": "Железнодорожный смешиватель",
+    "context": " -> block.createcasing.railway_mixer",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_press\"": {
+    "identifier": "\"block.createcasing.railway_press\"",
+    "source_string": "Железнодорожный пресс",
+    "translation": "Железнодорожный пресс",
+    "context": " -> block.createcasing.railway_press",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_acacia_shaft\"",
+    "source_string": "Акациевый вал в сияющем корпусе",
+    "translation": "Акациевый вал в сияющем корпусе",
+    "context": " -> block.createcasing.refined_radiance_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_bamboo_shaft\"",
+    "source_string": "Бамбуковый вал в сияющем корпусе",
+    "translation": "Бамбуковый вал в сияющем корпусе",
+    "context": " -> block.createcasing.refined_radiance_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_birch_shaft\"",
+    "source_string": "Берёзовый вал в сияющем корпусе",
+    "translation": "Берёзовый вал в сияющем корпусе",
+    "context": " -> block.createcasing.refined_radiance_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_cherry_shaft\"",
+    "source_string": "Вишнёвый вал в сияющем корпусе",
+    "translation": "Вишнёвый вал в сияющем корпусе",
+    "context": " -> block.createcasing.refined_radiance_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_cogwheel\"",
+    "source_string": "Шестерня в сияющем корпусе",
+    "translation": "Шестерня в сияющем корпусе",
+    "context": " -> block.createcasing.refined_radiance_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_crimson_shaft\"",
+    "source_string": "Багровый вал в сияющем корпусе",
+    "translation": "Багровый вал в сияющем корпусе",
+    "context": " -> block.createcasing.refined_radiance_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_dark_oak_shaft\"",
+    "source_string": "Вал из тёмного дуба в сияющем корпусе",
+    "translation": "Вал из тёмного дуба в сияющем корпусе",
+    "context": " -> block.createcasing.refined_radiance_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_glass_shaft\"",
+    "source_string": "Стеклянный вал в сияющем корпусе",
+    "translation": "Стеклянный вал в сияющем корпусе",
+    "context": " -> block.createcasing.refined_radiance_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_jungle_shaft\"",
+    "source_string": "Вал из тропического дерева в сияющем корпусе",
+    "translation": "Вал из тропического дерева в сияющем корпусе",
+    "context": " -> block.createcasing.refined_radiance_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_large_cogwheel\"",
+    "source_string": "Большая шестерня в сияющем корпусе",
+    "translation": "Большая шестерня в сияющем корпусе",
+    "context": " -> block.createcasing.refined_radiance_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_mangrove_shaft\"",
+    "source_string": "Мангровый вал в сияющем корпусе",
+    "translation": "Мангровый вал в сияющем корпусе",
+    "context": " -> block.createcasing.refined_radiance_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_oak_shaft\"",
+    "source_string": "Дубовый вал в сияющем корпусе",
+    "translation": "Дубовый вал в сияющем корпусе",
+    "context": " -> block.createcasing.refined_radiance_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_shaft\"",
+    "source_string": "Вал в сияющем корпусе",
+    "translation": "Вал в сияющем корпусе",
+    "context": " -> block.createcasing.refined_radiance_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_spruce_shaft\"",
+    "source_string": "Еловый вал в сияющем корпусе",
+    "translation": "Еловый вал в сияющем корпусе",
+    "context": " -> block.createcasing.refined_radiance_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_warped_shaft\"",
+    "source_string": "Искажённый вал в сияющем корпусе",
+    "translation": "Искажённый вал в сияющем корпусе",
+    "context": " -> block.createcasing.refined_radiance_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_acacia_shaft\"",
+    "source_string": "Акациевый вал в теневом корпусе",
+    "translation": "Акациевый вал в теневом корпусе",
+    "context": " -> block.createcasing.shadow_steel_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_bamboo_shaft\"",
+    "source_string": "Бамбуковый вал в теневом корпусе",
+    "translation": "Бамбуковый вал в теневом корпусе",
+    "context": " -> block.createcasing.shadow_steel_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_birch_shaft\"",
+    "source_string": "Берёзовый вал в теневом корпусе",
+    "translation": "Берёзовый вал в теневом корпусе",
+    "context": " -> block.createcasing.shadow_steel_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_cogwheel\"",
+    "source_string": "Шестерня в теневом корпусе",
+    "translation": "Шестерня в теневом корпусе",
+    "context": " -> block.createcasing.shadow_steel_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_cherry_shaft\"",
+    "source_string": "Вишнёвый вал в теневом корпусе",
+    "translation": "Вишнёвый вал в теневом корпусе",
+    "context": " -> block.createcasing.shadow_steel_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_crimson_shaft\"",
+    "source_string": "Багровый вал в теневом корпусе",
+    "translation": "Багровый вал в теневом корпусе",
+    "context": " -> block.createcasing.shadow_steel_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_dark_oak_shaft\"",
+    "source_string": "Вал из тёмного дуба в теневом корпусе",
+    "translation": "Вал из тёмного дуба в теневом корпусе",
+    "context": " -> block.createcasing.shadow_steel_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_glass_shaft\"",
+    "source_string": "Стеклянный вал в теневом корпусе",
+    "translation": "Стеклянный вал в теневом корпусе",
+    "context": " -> block.createcasing.shadow_steel_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_jungle_shaft\"",
+    "source_string": "Вал из тропического дерева в теневом корпусе",
+    "translation": "Вал из тропического дерева в теневом корпусе",
+    "context": " -> block.createcasing.shadow_steel_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_large_cogwheel\"",
+    "source_string": "Большая шестерня в теневом корпусе",
+    "translation": "Большая шестерня в теневом корпусе",
+    "context": " -> block.createcasing.shadow_steel_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_mangrove_shaft\"",
+    "source_string": "Мангровый вал в теневом корпусе",
+    "translation": "Мангровый вал в теневом корпусе",
+    "context": " -> block.createcasing.shadow_steel_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_oak_shaft\"",
+    "source_string": "Дубовый вал в теневом корпусе",
+    "translation": "Дубовый вал в теневом корпусе",
+    "context": " -> block.createcasing.shadow_steel_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_shaft\"",
+    "source_string": "Вал в теневом корпусе",
+    "translation": "Вал в теневом корпусе",
+    "context": " -> block.createcasing.shadow_steel_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_spruce_shaft\"",
+    "source_string": "Еловый вал в теневом корпусе",
+    "translation": "Еловый вал в теневом корпусе",
+    "context": " -> block.createcasing.shadow_steel_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_warped_shaft\"",
+    "source_string": "Искажённый вал в теневом корпусе",
+    "translation": "Искажённый вал в теневом корпусе",
+    "context": " -> block.createcasing.shadow_steel_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.spruce_shaft\"": {
+    "identifier": "\"block.createcasing.spruce_shaft\"",
+    "source_string": "Еловый вал",
+    "translation": "Еловый вал",
+    "context": " -> block.createcasing.spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.vertical_brass_gearbox\"": {
+    "identifier": "\"block.createcasing.vertical_brass_gearbox\"",
+    "source_string": "Вертикальная латунная коробка передач",
+    "translation": "Вертикальная латунная коробка передач",
+    "context": " -> block.createcasing.vertical_brass_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.vertical_copper_gearbox\"": {
+    "identifier": "\"block.createcasing.vertical_copper_gearbox\"",
+    "source_string": "Вертикальная медная коробка передач",
+    "translation": "Вертикальная медная коробка передач",
+    "context": " -> block.createcasing.vertical_copper_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.vertical_railway_gearbox\"": {
+    "identifier": "\"block.createcasing.vertical_railway_gearbox\"",
+    "source_string": "Вертикальная железнодорожная коробка передач",
+    "translation": "Вертикальная железнодорожная коробка передач",
+    "context": " -> block.createcasing.vertical_railway_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.warped_shaft\"": {
+    "identifier": "\"block.createcasing.warped_shaft\"",
+    "source_string": "Искажённый вал",
+    "translation": "Искажённый вал",
+    "context": " -> block.createcasing.warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.custom_mixer.tooltip\"": {
+    "identifier": "\"block.createcasing.custom_mixer.tooltip\"",
+    "source_string": "КАСТОМНЫЙ СМЕШИВАТЕЛЬ",
+    "translation": "КАСТОМНЫЙ СМЕШИВАТЕЛЬ",
+    "context": " -> block.createcasing.custom_mixer.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.custom_mixer.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.custom_mixer.tooltip.summary\"",
+    "source_string": "_Работает_ как _обычный_ смешиватель",
+    "translation": "_Работает_ как _обычный_ смешиватель",
+    "context": " -> block.createcasing.custom_mixer.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_mixer.tooltip\"": {
+    "identifier": "\"block.createcasing.brass_mixer.tooltip\"",
+    "source_string": "ЛАТУННЫЙ СМЕШИВАТЕЛЬ",
+    "translation": "ЛАТУННЫЙ СМЕШИВАТЕЛЬ",
+    "context": " -> block.createcasing.brass_mixer.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_mixer.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.brass_mixer.tooltip.summary\"",
+    "source_string": "Смешивает _в 2 раза быстрее_, если в рецепте _только предметы_, но _потребляет_ в 1.5 раза больше энергии, чем обычный смешиватель",
+    "translation": "Смешивает _в 2 раза быстрее_, если в рецепте _только предметы_, но _потребляет_ в 1.5 раза больше энергии, чем обычный смешиватель",
+    "context": " -> block.createcasing.brass_mixer.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_mixer.tooltip\"": {
+    "identifier": "\"block.createcasing.copper_mixer.tooltip\"",
+    "source_string": "МЕДНЫЙ СМЕШИВАТЕЛЬ",
+    "translation": "МЕДНЫЙ СМЕШИВАТЕЛЬ",
+    "context": " -> block.createcasing.copper_mixer.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_mixer.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.copper_mixer.tooltip.summary\"",
+    "source_string": "Смешивает _в 2 раза быстрее_, если в рецепте _только жидкости_ или если это _рецепт зелья_, но _потребляет_ в 1.5 раза больше энергии, чем обычный смешиватель",
+    "translation": "Смешивает _в 2 раза быстрее_, если в рецепте _только жидкости_ или если это _рецепт зелья_, но _потребляет_ в 1.5 раза больше энергии, чем обычный смешиватель",
+    "context": " -> block.createcasing.copper_mixer.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_mixer.tooltip\"": {
+    "identifier": "\"block.createcasing.railway_mixer.tooltip\"",
+    "source_string": "ЖЕЛЕЗНОДОРОЖНЫЙ СМЕШИВАТЕЛЬ",
+    "translation": "ЖЕЛЕЗНОДОРОЖНЫЙ СМЕШИВАТЕЛЬ",
+    "context": " -> block.createcasing.railway_mixer.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_mixer.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.railway_mixer.tooltip.summary\"",
+    "source_string": "Смешивает _в 2 раза быстрее_, но _потребляет_ в 1.5 раза больше энергии, чем обычный смешиватель",
+    "translation": "Смешивает _в 2 раза быстрее_, но _потребляет_ в 1.5 раза больше энергии, чем обычный смешиватель",
+    "context": " -> block.createcasing.railway_mixer.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"tooltip.createcasing.mixermixenormaly.title\"": {
+    "identifier": "\"tooltip.createcasing.mixermixenormaly.title\"",
+    "source_string": "Конфиг отключён:",
+    "translation": "Конфиг отключён:",
+    "context": " -> tooltip.createcasing.mixermixenormaly.title",
+    "labels": null,
+    "max_length": null
+  },
+  "\"tooltip.createcasing.mixermixenormaly\"": {
+    "identifier": "\"tooltip.createcasing.mixermixenormaly\"",
+    "source_string": "Предупреждение, кастомные миксеры работают как обычный!",
+    "translation": "Предупреждение, кастомные миксеры работают как обычный!",
+    "context": " -> tooltip.createcasing.mixermixenormaly",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.custom_press.tooltip\"": {
+    "identifier": "\"block.createcasing.custom_press.tooltip\"",
+    "source_string": "КАСТОМНЫЙ ПРЕСС",
+    "translation": "КАСТОМНЫЙ ПРЕСС",
+    "context": " -> block.createcasing.custom_press.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.custom_press.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.custom_press.tooltip.summary\"",
+    "source_string": "_Работает_ как  _обычный_ пресс",
+    "translation": "_Работает_ как  _обычный_ пресс",
+    "context": " -> block.createcasing.custom_press.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"item.createcasing.vertical_brass_gearbox\"": {
+    "identifier": "\"item.createcasing.vertical_brass_gearbox\"",
+    "source_string": "Латунная вертикальная коробка передач",
+    "translation": "Латунная вертикальная коробка передач",
+    "context": " -> item.createcasing.vertical_brass_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"item.createcasing.vertical_copper_gearbox\"": {
+    "identifier": "\"item.createcasing.vertical_copper_gearbox\"",
+    "source_string": "Медная вертикальная коробка передач",
+    "translation": "Медная вертикальная коробка передач",
+    "context": " -> item.createcasing.vertical_copper_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"item.createcasing.vertical_industrial_iron_gearbox\"": {
+    "identifier": "\"item.createcasing.vertical_industrial_iron_gearbox\"",
+    "source_string": "Вертикальная промышленная коробка передач",
+    "translation": "Вертикальная промышленная коробка передач",
+    "context": " -> item.createcasing.vertical_industrial_iron_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"item.createcasing.vertical_railway_gearbox\"": {
+    "identifier": "\"item.createcasing.vertical_railway_gearbox\"",
+    "source_string": "Железнодорожная вертикальная коробка передач",
+    "translation": "Железнодорожная вертикальная коробка передач",
+    "context": " -> item.createcasing.vertical_railway_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.tag.encased_blocks\"": {
+    "identifier": "\"createcasing.ponder.tag.encased_blocks\"",
+    "source_string": "Create: Encased",
+    "translation": "Create: Encased",
+    "context": " -> createcasing.ponder.tag.encased_blocks",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.tag.encased_blocks.description\"": {
+    "identifier": "\"createcasing.ponder.tag.encased_blocks.description\"",
+    "source_string": "Компоненты, добавленные Create Encased",
+    "translation": "Компоненты, добавленные Create Encased",
+    "context": " -> createcasing.ponder.tag.encased_blocks.description",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.header\"": {
+    "identifier": "\"createcasing.ponder.gearbox.header\"",
+    "source_string": "Передачей силы вращения с помощью Коробок передач",
+    "translation": "Передачей силы вращения с помощью Коробок передач",
+    "context": " -> createcasing.ponder.gearbox.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.text_1\"": {
+    "identifier": "\"createcasing.ponder.gearbox.text_1\"",
+    "source_string": "Переходы между осями вращения могут быстро стать очень громоздкими",
+    "translation": "Переходы между осями вращения могут быстро стать очень громоздкими",
+    "context": " -> createcasing.ponder.gearbox.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.text_2\"": {
+    "identifier": "\"createcasing.ponder.gearbox.text_2\"",
+    "source_string": "Коробка Передач — это более компактный эквивалент этой установки",
+    "translation": "Коробка Передач — это более компактный эквивалент этой установки",
+    "context": " -> createcasing.ponder.gearbox.text_2",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.text_3\"": {
+    "identifier": "\"createcasing.ponder.gearbox.text_3\"",
+    "source_string": "Валы по углам поворачиваются в зеркальных направлениях",
+    "translation": "Валы по углам поворачиваются в зеркальных направлениях",
+    "context": " -> createcasing.ponder.gearbox.text_3",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.text_4\"": {
+    "identifier": "\"createcasing.ponder.gearbox.text_4\"",
+    "source_string": "Прямые соединения будут реверсированны",
+    "translation": "Прямые соединения будут реверсированны",
+    "context": " -> createcasing.ponder.gearbox.text_4",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.header\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.header\"",
+    "source_string": "Обработкой предметов Механическими смешивателями",
+    "translation": "Обработкой предметов Механическими смешивателями",
+    "context": " -> createcasing.ponder.mechanical_mixer.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.text_1\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.text_1\"",
+    "source_string": "С помощью Смешивателя и Чаши можно автоматизировать некоторые рецепты создания",
+    "translation": "С помощью Смешивателя и Чаши можно автоматизировать некоторые рецепты создания",
+    "context": " -> createcasing.ponder.mechanical_mixer.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.text_2\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.text_2\"",
+    "source_string": "Доступные рецепты включают бесформенное создание и автоматическую варку зелий",
+    "translation": "Доступные рецепты включают бесформенное создание и автоматическую варку зелий",
+    "context": " -> createcasing.ponder.mechanical_mixer.text_2",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.text_3\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.text_3\"",
+    "source_string": "Некоторым рецептам может потребоваться тепло от Горелки всполоха",
+    "translation": "Некоторым рецептам может потребоваться тепло от Горелки всполоха",
+    "context": " -> createcasing.ponder.mechanical_mixer.text_3",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.text_4\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.text_4\"",
+    "source_string": "Можно использовать слот для фильтра рецепта в случае конфликта двух рецептов",
+    "translation": "Можно использовать слот для фильтра рецепта в случае конфликта двух рецептов",
+    "context": " -> createcasing.ponder.mechanical_mixer.text_4",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.header\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.header\"",
+    "source_string": "Обработкой предметов Механическими прессами",
+    "translation": "Обработкой предметов Механическими прессами",
+    "context": " -> createcasing.ponder.mechanical_press.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.text_1\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.text_1\"",
+    "source_string": "Механический пресс может обрабатывать предметы под собой",
+    "translation": "Механический пресс может обрабатывать предметы под собой",
+    "context": " -> createcasing.ponder.mechanical_press.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.text_2\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.text_2\"",
+    "source_string": "Подаваемые предметы должны быть брошены или помещены на Депо под Пресс",
+    "translation": "Подаваемые предметы должны быть брошены или помещены на Депо под Пресс",
+    "context": " -> createcasing.ponder.mechanical_press.text_2",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.text_3\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.text_3\"",
+    "source_string": "Когда предметы подаются на конвейере...",
+    "translation": "Когда предметы подаются на конвейере...",
+    "context": " -> createcasing.ponder.mechanical_press.text_3",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.text_4\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.text_4\"",
+    "source_string": "...Пресс будет задерживать и прессовать их автоматически",
+    "translation": "...Пресс будет задерживать и прессовать их автоматически",
+    "context": " -> createcasing.ponder.mechanical_press.text_4",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.header\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.header\"",
+    "source_string": "Спрессовыванием и сжатием предметов механическим прессом",
+    "translation": "Спрессовыванием и сжатием предметов механическим прессом",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.text_1\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.text_1\"",
+    "source_string": "Спрессовывание предметов в чаше скомпонует их",
+    "translation": "Спрессовывание предметов в чаше скомпонует их",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.text_2\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.text_2\"",
+    "source_string": "Сжатие предметов и спрессовывание включают в себя любые заполненные 2x2 или 3x3 рецепты создания и некоторые другие",
+    "translation": "Сжатие предметов и спрессовывание включают в себя любые заполненные 2x2 или 3x3 рецепты создания и некоторые другие",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.text_2",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.text_3\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.text_3\"",
+    "source_string": "Некоторым рецептам может потребоваться тепло от горелки всполоха",
+    "translation": "Некоторым рецептам может потребоваться тепло от горелки всполоха",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.text_3",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.text_4\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.text_4\"",
+    "source_string": "Можно использовать слот для фильтра рецепта в случае конфликта двух рецептов",
+    "translation": "Можно использовать слот для фильтра рецепта в случае конфликта двух рецептов",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.text_4",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.creative_cogwheel.header\"": {
+    "identifier": "\"createcasing.ponder.creative_cogwheel.header\"",
+    "source_string": "Генерацией силы вращения творческими шестернями",
+    "translation": "Генерацией силы вращения творческими шестернями",
+    "context": " -> createcasing.ponder.creative_cogwheel.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.creative_cogwheel.text_1\"": {
+    "identifier": "\"createcasing.ponder.creative_cogwheel.text_1\"",
+    "source_string": "Творческие шестерни — это компактные и настраиваемые источники силы вращения",
+    "translation": "Творческие шестерни — это компактные и настраиваемые источники силы вращения",
+    "context": " -> createcasing.ponder.creative_cogwheel.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.creative_cogwheel.text_2\"": {
+    "identifier": "\"createcasing.ponder.creative_cogwheel.text_2\"",
+    "source_string": "Генерируемая скорость может быть настроена на панели параметров",
+    "translation": "Генерируемая скорость может быть настроена на панели параметров",
+    "context": " -> createcasing.ponder.creative_cogwheel.text_2",
+    "labels": null,
+    "max_length": null
+  }
+}
