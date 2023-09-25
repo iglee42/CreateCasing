@@ -20,7 +20,7 @@ apply plugin: 'maven-publish'
 
 group = 'fr.iglee42'
 
-version = '1.20.1-1.4.2'
+version = '1.20.1-1.4.2-fix1'
 
 java {
     archivesBaseName = 'CreateCasing'
