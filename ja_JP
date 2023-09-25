@@ -1,0 +1,1466 @@
+{
+  "\"itemGroup.createcasing\"": {
+    "identifier": "\"itemGroup.createcasing\"",
+    "source_string": "Create: Encased",
+    "translation": "Create: Encased",
+    "context": " -> itemGroup.createcasing",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.acacia_shaft\"": {
+    "identifier": "\"block.createcasing.acacia_shaft\"",
+    "source_string": "アカシアのシャフト",
+    "translation": "アカシアのシャフト",
+    "context": " -> block.createcasing.acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_acacia_shaft\"",
+    "source_string": "安山岩ケース入りアカシアのシャフト",
+    "translation": "安山岩ケース入りアカシアのシャフト",
+    "context": " -> block.createcasing.andesite_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_bamboo_shaft\"",
+    "source_string": "安山岩ケース入り竹のシャフト",
+    "translation": "安山岩ケース入り竹のシャフト",
+    "context": " -> block.createcasing.andesite_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_birch_shaft\"",
+    "source_string": "安山岩ケース入りシラカバのシャフト",
+    "translation": "安山岩ケース入りシラカバのシャフト",
+    "context": " -> block.createcasing.andesite_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_cherry_shaft\"",
+    "source_string": "安山岩ケース入りサクラのシャフト",
+    "translation": "安山岩ケース入りサクラのシャフト",
+    "context": " -> block.createcasing.andesite_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_crimson_shaft\"",
+    "source_string": "安山岩ケース入り真紅のシャフト",
+    "translation": "安山岩ケース入り真紅のシャフト",
+    "context": " -> block.createcasing.andesite_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_dark_oak_shaft\"",
+    "source_string": "安山岩ケース入りダークオークのシャフト",
+    "translation": "安山岩ケース入りダークオークのシャフト",
+    "context": " -> block.createcasing.andesite_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_glass_shaft\"",
+    "source_string": "安山岩ケース入りガラスのシャフト",
+    "translation": "安山岩ケース入りガラスのシャフト",
+    "context": " -> block.createcasing.andesite_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_jungle_shaft\"",
+    "source_string": "安山岩ケース入りジャングルのシャフト",
+    "translation": "安山岩ケース入りジャングルのシャフト",
+    "context": " -> block.createcasing.andesite_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_mangrove_shaft\"",
+    "source_string": "安山岩ケース入りマングローブのシャフト",
+    "translation": "安山岩ケース入りマングローブのシャフト",
+    "context": " -> block.createcasing.andesite_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_oak_shaft\"",
+    "source_string": "安山岩ケース入りオークのシャフト",
+    "translation": "安山岩ケース入りオークのシャフト",
+    "context": " -> block.createcasing.andesite_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_spruce_shaft\"",
+    "source_string": "安山岩ケース入りトウヒのシャフト",
+    "translation": "安山岩ケース入りトウヒのシャフト",
+    "context": " -> block.createcasing.andesite_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_warped_shaft\"",
+    "source_string": "安山岩ケース入り歪んだシャフト",
+    "translation": "安山岩ケース入り歪んだシャフト",
+    "context": " -> block.createcasing.andesite_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.bamboo_shaft\"",
+    "source_string": "竹のシャフト",
+    "translation": "竹のシャフト",
+    "context": " -> block.createcasing.bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.birch_shaft\"": {
+    "identifier": "\"block.createcasing.birch_shaft\"",
+    "source_string": "シラカバのシャフト",
+    "translation": "シラカバのシャフト",
+    "context": " -> block.createcasing.birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_acacia_shaft\"",
+    "source_string": "真鍮ケース入りアカシアのシャフト",
+    "translation": "真鍮ケース入りアカシアのシャフト",
+    "context": " -> block.createcasing.brass_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_bamboo_shaft\"",
+    "source_string": "真鍮ケース入り竹のシャフト",
+    "translation": "真鍮ケース入り竹のシャフト",
+    "context": " -> block.createcasing.brass_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_birch_shaft\"",
+    "source_string": "真鍮ケース入りシラカバのシャフト",
+    "translation": "真鍮ケース入りシラカバのシャフト",
+    "context": " -> block.createcasing.brass_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_cherry_shaft\"",
+    "source_string": "真鍮ケース入りサクラのシャフト",
+    "translation": "真鍮ケース入りサクラのシャフト",
+    "context": " -> block.createcasing.brass_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_crimson_shaft\"",
+    "source_string": "真鍮ケース入り真紅のシャフト",
+    "translation": "真鍮ケース入り真紅のシャフト",
+    "context": " -> block.createcasing.brass_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_dark_oak_shaft\"",
+    "source_string": "真鍮ケース入りダークオークのシャフト",
+    "translation": "真鍮ケース入りダークオークのシャフト",
+    "context": " -> block.createcasing.brass_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_glass_shaft\"",
+    "source_string": "真鍮ケース入りガラスのシャフト",
+    "translation": "真鍮ケース入りガラスのシャフト",
+    "context": " -> block.createcasing.brass_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_jungle_shaft\"",
+    "source_string": "真鍮ケース入りジャングルのシャフト",
+    "translation": "真鍮ケース入りジャングルのシャフト",
+    "context": " -> block.createcasing.brass_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_mangrove_shaft\"",
+    "source_string": "真鍮ケース入りマングローブのシャフト",
+    "translation": "真鍮ケース入りマングローブのシャフト",
+    "context": " -> block.createcasing.brass_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_oak_shaft\"",
+    "source_string": "真鍮ケース入りオークのシャフト",
+    "translation": "真鍮ケース入りオークのシャフト",
+    "context": " -> block.createcasing.brass_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_spruce_shaft\"",
+    "source_string": "真鍮ケース入りトウヒのシャフト",
+    "translation": "真鍮ケース入りトウヒのシャフト",
+    "context": " -> block.createcasing.brass_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_warped_shaft\"",
+    "source_string": "真鍮ケース入り歪んだシャフト",
+    "translation": "真鍮ケース入り歪んだシャフト",
+    "context": " -> block.createcasing.brass_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_gearbox\"": {
+    "identifier": "\"block.createcasing.brass_gearbox\"",
+    "source_string": "真鍮のギアボックス",
+    "translation": "真鍮のギアボックス",
+    "context": " -> block.createcasing.brass_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_mixer\"": {
+    "identifier": "\"block.createcasing.brass_mixer\"",
+    "source_string": "真鍮のミキサー",
+    "translation": "真鍮のミキサー",
+    "context": " -> block.createcasing.brass_mixer",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_press\"": {
+    "identifier": "\"block.createcasing.brass_press\"",
+    "source_string": "真鍮のプレス",
+    "translation": "真鍮のプレス",
+    "context": " -> block.createcasing.brass_press",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.cherry_shaft\"": {
+    "identifier": "\"block.createcasing.cherry_shaft\"",
+    "source_string": "サクラのシャフト",
+    "translation": "サクラのシャフト",
+    "context": " -> block.createcasing.cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_clear_glass_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_clear_glass_encased_cogwheel\"",
+    "source_string": "銅のクリアガラスケース入り歯車",
+    "translation": "銅のクリアガラスケース入り歯車",
+    "context": " -> block.createcasing.copper_clear_glass_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_clear_glass_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_clear_glass_encased_large_cogwheel\"",
+    "source_string": "銅のクリアガラスケース入り大きな歯車",
+    "translation": "銅のクリアガラスケース入り大きな歯車",
+    "context": " -> block.createcasing.copper_clear_glass_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_clear_glass_encased_shaft\"": {
+    "identifier": "\"block.createcasing.copper_clear_glass_encased_shaft\"",
+    "source_string": "銅のクリアガラスケース入りシャフト",
+    "translation": "銅のクリアガラスケース入りシャフト",
+    "context": " -> block.createcasing.copper_clear_glass_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_acacia_shaft\"",
+    "source_string": "銅ケース入りアカシアのシャフト",
+    "translation": "銅ケース入りアカシアのシャフト",
+    "context": " -> block.createcasing.copper_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_bamboo_shaft\"",
+    "source_string": "銅ケース入り竹のシャフト",
+    "translation": "銅ケース入り竹のシャフト",
+    "context": " -> block.createcasing.copper_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_birch_shaft\"",
+    "source_string": "銅ケース入りシラカバのシャフト",
+    "translation": "銅ケース入りシラカバのシャフト",
+    "context": " -> block.createcasing.copper_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_cherry_shaft\"",
+    "source_string": "銅ケース入りサクラのシャフト",
+    "translation": "銅ケース入りサクラのシャフト",
+    "context": " -> block.createcasing.copper_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_encased_cogwheel\"",
+    "source_string": "銅ケース入り歯車",
+    "translation": "銅ケース入り歯車",
+    "context": " -> block.createcasing.copper_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_crimson_shaft\"",
+    "source_string": "銅ケース入り真紅のシャフト",
+    "translation": "銅ケース入り真紅のシャフト",
+    "context": " -> block.createcasing.copper_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_dark_oak_shaft\"",
+    "source_string": "銅ケース入りダークオークのシャフト",
+    "translation": "銅ケース入りダークオークのシャフト",
+    "context": " -> block.createcasing.copper_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_glass_shaft\"",
+    "source_string": "銅ケース入りガラスのシャフト",
+    "translation": "銅ケース入りガラスのシャフト",
+    "context": " -> block.createcasing.copper_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_jungle_shaft\"",
+    "source_string": "銅ケース入りジャングルのシャフト",
+    "translation": "銅ケース入りジャングルのシャフト",
+    "context": " -> block.createcasing.copper_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_encased_large_cogwheel\"",
+    "source_string": "銅ケース入り大きな歯車",
+    "translation": "銅ケース入り大きな歯車",
+    "context": " -> block.createcasing.copper_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_mangrove_shaft\"",
+    "source_string": "銅ケース入りマングローブのシャフト",
+    "translation": "銅ケース入りマングローブのシャフト",
+    "context": " -> block.createcasing.copper_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_oak_shaft\"",
+    "source_string": "銅ケース入りオークのシャフト",
+    "translation": "銅ケース入りオークのシャフト",
+    "context": " -> block.createcasing.copper_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_shaft\"",
+    "source_string": "銅ケース入りシャフト",
+    "translation": "銅ケース入りシャフト",
+    "context": " -> block.createcasing.copper_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_spruce_shaft\"",
+    "source_string": "銅ケース入りトウヒのシャフト",
+    "translation": "銅ケース入りトウヒのシャフト",
+    "context": " -> block.createcasing.copper_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_warped_shaft\"",
+    "source_string": "銅ケース入り歪んだシャフト",
+    "translation": "銅ケース入り歪んだシャフト",
+    "context": " -> block.createcasing.copper_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_gearbox\"": {
+    "identifier": "\"block.createcasing.copper_gearbox\"",
+    "source_string": "銅のギアボックス",
+    "translation": "銅のギアボックス",
+    "context": " -> block.createcasing.copper_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_glass_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_glass_encased_cogwheel\"",
+    "source_string": "銅のガラスケース入り歯車",
+    "translation": "銅のガラスケース入り歯車",
+    "context": " -> block.createcasing.copper_glass_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_glass_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.copper_glass_encased_large_cogwheel\"",
+    "source_string": "銅のガラスケース入り大きな歯車",
+    "translation": "銅のガラスケース入り大きな歯車",
+    "context": " -> block.createcasing.copper_glass_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_glass_encased_shaft\"": {
+    "identifier": "\"block.createcasing.copper_glass_encased_shaft\"",
+    "source_string": "銅のガラスケース入りシャフト",
+    "translation": "銅のガラスケース入りシャフト",
+    "context": " -> block.createcasing.copper_glass_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_mixer\"": {
+    "identifier": "\"block.createcasing.copper_mixer\"",
+    "source_string": "銅のミキサー",
+    "translation": "銅のミキサー",
+    "context": " -> block.createcasing.copper_mixer",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_press\"": {
+    "identifier": "\"block.createcasing.copper_press\"",
+    "source_string": "銅のプレス",
+    "translation": "銅のプレス",
+    "context": " -> block.createcasing.copper_press",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.creative_cogwheel\"": {
+    "identifier": "\"block.createcasing.creative_cogwheel\"",
+    "source_string": "クリエイティブ歯車",
+    "translation": "クリエイティブ歯車",
+    "context": " -> block.createcasing.creative_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.crimson_shaft\"": {
+    "identifier": "\"block.createcasing.crimson_shaft\"",
+    "source_string": "真紅のシャフト",
+    "translation": "真紅のシャフト",
+    "context": " -> block.createcasing.crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.dark_oak_shaft\"",
+    "source_string": "ダークオークのシャフト",
+    "translation": "ダークオークのシャフト",
+    "context": " -> block.createcasing.dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.glass_shaft\"": {
+    "identifier": "\"block.createcasing.glass_shaft\"",
+    "source_string": "ガラスのシャフト",
+    "translation": "ガラスのシャフト",
+    "context": " -> block.createcasing.glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_acacia_shaft\"",
+    "source_string": "鋼材ケース入りアカシアのシャフト",
+    "translation": "鋼材ケース入りアカシアのシャフト",
+    "context": " -> block.createcasing.industrial_iron_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_bamboo_shaft\"",
+    "source_string": "鋼材ケース入り竹のシャフト",
+    "translation": "鋼材ケース入り竹のシャフト",
+    "context": " -> block.createcasing.industrial_iron_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_birch_shaft\"",
+    "source_string": "鋼材ケース入りシラカバのシャフト",
+    "translation": "鋼材ケース入りシラカバのシャフト",
+    "context": " -> block.createcasing.industrial_iron_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_cherry_shaft\"",
+    "source_string": "鋼材ケース入りサクラのシャフト",
+    "translation": "鋼材ケース入りサクラのシャフト",
+    "context": " -> block.createcasing.industrial_iron_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_cogwheel\"",
+    "source_string": "鋼材ケース入り歯車",
+    "translation": "鋼材ケース入り歯車",
+    "context": " -> block.createcasing.industrial_iron_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_crimson_shaft\"",
+    "source_string": "鋼材ケース入り真紅のシャフト",
+    "translation": "鋼材ケース入り真紅のシャフト",
+    "context": " -> block.createcasing.industrial_iron_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_dark_oak_shaft\"",
+    "source_string": "鋼材ケース入りダークオークのシャフト",
+    "translation": "鋼材ケース入りダークオークのシャフト",
+    "context": " -> block.createcasing.industrial_iron_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_glass_shaft\"",
+    "source_string": "鋼材ケース入りガラスのシャフト",
+    "translation": "鋼材ケース入りガラスのシャフト",
+    "context": " -> block.createcasing.industrial_iron_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_jungle_shaft\"",
+    "source_string": "鋼材ケース入りジャングルのシャフト",
+    "translation": "鋼材ケース入りジャングルのシャフト",
+    "context": " -> block.createcasing.industrial_iron_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_large_cogwheel\"",
+    "source_string": "鋼材ケース入り大きな歯車",
+    "translation": "鋼材ケース入り大きな歯車",
+    "context": " -> block.createcasing.industrial_iron_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_mangrove_shaft\"",
+    "source_string": "鋼材ケース入りマングローブのシャフト",
+    "translation": "鋼材ケース入りマングローブのシャフト",
+    "context": " -> block.createcasing.industrial_iron_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_oak_shaft\"",
+    "source_string": "鋼材ケース入りオークのシャフト",
+    "translation": "鋼材ケース入りオークのシャフト",
+    "context": " -> block.createcasing.industrial_iron_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_shaft\"",
+    "source_string": "鋼材ケース入りシャフト",
+    "translation": "鋼材ケース入りシャフト",
+    "context": " -> block.createcasing.industrial_iron_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_spruce_shaft\"",
+    "source_string": "鋼材ケース入りトウヒのシャフト",
+    "translation": "鋼材ケース入りトウヒのシャフト",
+    "context": " -> block.createcasing.industrial_iron_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_warped_shaft\"",
+    "source_string": "鋼材ケース入り歪んだシャフト",
+    "translation": "鋼材ケース入り歪んだシャフト",
+    "context": " -> block.createcasing.industrial_iron_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_gearbox\"": {
+    "identifier": "\"block.createcasing.industrial_iron_gearbox\"",
+    "source_string": "鋼材のギアボックス",
+    "translation": "鋼材のギアボックス",
+    "context": " -> block.createcasing.industrial_iron_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_press\"": {
+    "identifier": "\"block.createcasing.industrial_iron_press\"",
+    "source_string": "鋼材のプレス",
+    "translation": "鋼材のプレス",
+    "context": " -> block.createcasing.industrial_iron_press",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_mixer\"": {
+    "identifier": "\"block.createcasing.industrial_iron_mixer\"",
+    "source_string": "鋼材のミキサー",
+    "translation": "鋼材のミキサー",
+    "context": " -> block.createcasing.industrial_iron_mixer",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.jungle_shaft\"": {
+    "identifier": "\"block.createcasing.jungle_shaft\"",
+    "source_string": "ジャングルのシャフト",
+    "translation": "ジャングルのシャフト",
+    "context": " -> block.createcasing.jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.mangrove_shaft\"",
+    "source_string": "マングローブのシャフト",
+    "translation": "マングローブのシャフト",
+    "context": " -> block.createcasing.mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.oak_shaft\"": {
+    "identifier": "\"block.createcasing.oak_shaft\"",
+    "source_string": "オークのシャフト",
+    "translation": "オークのシャフト",
+    "context": " -> block.createcasing.oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_acacia_shaft\"",
+    "source_string": "鉄道用ケース入りアカシアのシャフト",
+    "translation": "鉄道用ケース入りアカシアのシャフト",
+    "context": " -> block.createcasing.railway_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_bamboo_shaft\"",
+    "source_string": "鉄道用ケース入り竹のシャフト",
+    "translation": "鉄道用ケース入り竹のシャフト",
+    "context": " -> block.createcasing.railway_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_birch_shaft\"",
+    "source_string": "鉄道用ケース入りシラカバのシャフト",
+    "translation": "鉄道用ケース入りシラカバのシャフト",
+    "context": " -> block.createcasing.railway_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_cherry_shaft\"",
+    "source_string": "鉄道用ケース入りサクラのシャフト",
+    "translation": "鉄道用ケース入りサクラのシャフト",
+    "context": " -> block.createcasing.railway_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.railway_encased_cogwheel\"",
+    "source_string": "鉄道用ケース入り歯車",
+    "translation": "鉄道用ケース入り歯車",
+    "context": " -> block.createcasing.railway_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_crimson_shaft\"",
+    "source_string": "鉄道用ケース入り真紅のシャフト",
+    "translation": "鉄道用ケース入り真紅のシャフト",
+    "context": " -> block.createcasing.railway_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_dark_oak_shaft\"",
+    "source_string": "鉄道用ケース入りダークオークのシャフト",
+    "translation": "鉄道用ケース入りダークオークのシャフト",
+    "context": " -> block.createcasing.railway_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_glass_shaft\"",
+    "source_string": "鉄道用ケース入りガラスのシャフト",
+    "translation": "鉄道用ケース入りガラスのシャフト",
+    "context": " -> block.createcasing.railway_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_jungle_shaft\"",
+    "source_string": "鉄道用ケース入りジャングルのシャフト",
+    "translation": "鉄道用ケース入りジャングルのシャフト",
+    "context": " -> block.createcasing.railway_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.railway_encased_large_cogwheel\"",
+    "source_string": "鉄道用ケース入り大きな歯車",
+    "translation": "鉄道用ケース入り大きな歯車",
+    "context": " -> block.createcasing.railway_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_mangrove_shaft\"",
+    "source_string": "鉄道用ケース入りマングローブのシャフト",
+    "translation": "鉄道用ケース入りマングローブのシャフト",
+    "context": " -> block.createcasing.railway_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_oak_shaft\"",
+    "source_string": "鉄道用ケース入りオークのシャフト",
+    "translation": "鉄道用ケース入りオークのシャフト",
+    "context": " -> block.createcasing.railway_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_shaft\"",
+    "source_string": "鉄道用ケース入りシャフト",
+    "translation": "鉄道用ケース入りシャフト",
+    "context": " -> block.createcasing.railway_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_spruce_shaft\"",
+    "source_string": "鉄道用ケース入りトウヒのシャフト",
+    "translation": "鉄道用ケース入りトウヒのシャフト",
+    "context": " -> block.createcasing.railway_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_warped_shaft\"",
+    "source_string": "鉄道用ケース入り歪んだシャフト",
+    "translation": "鉄道用ケース入り歪んだシャフト",
+    "context": " -> block.createcasing.railway_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_gearbox\"": {
+    "identifier": "\"block.createcasing.railway_gearbox\"",
+    "source_string": "鉄道用ギアボックス",
+    "translation": "鉄道用ギアボックス",
+    "context": " -> block.createcasing.railway_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_mixer\"": {
+    "identifier": "\"block.createcasing.railway_mixer\"",
+    "source_string": "鉄道用ミキサー",
+    "translation": "鉄道用ミキサー",
+    "context": " -> block.createcasing.railway_mixer",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_press\"": {
+    "identifier": "\"block.createcasing.railway_press\"",
+    "source_string": "鉄道用プレス",
+    "translation": "鉄道用プレス",
+    "context": " -> block.createcasing.railway_press",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_acacia_shaft\"",
+    "source_string": "光輝ケース入りアカシアのシャフト",
+    "translation": "光輝ケース入りアカシアのシャフト",
+    "context": " -> block.createcasing.refined_radiance_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_bamboo_shaft\"",
+    "source_string": "光輝ケース入り竹のシャフト",
+    "translation": "光輝ケース入り竹のシャフト",
+    "context": " -> block.createcasing.refined_radiance_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_birch_shaft\"",
+    "source_string": "光輝ケース入りシラカバのシャフト",
+    "translation": "光輝ケース入りシラカバのシャフト",
+    "context": " -> block.createcasing.refined_radiance_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_cherry_shaft\"",
+    "source_string": "光輝ケース入りサクラのシャフト",
+    "translation": "光輝ケース入りサクラのシャフト",
+    "context": " -> block.createcasing.refined_radiance_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_cogwheel\"",
+    "source_string": "光輝ケース入り歯車",
+    "translation": "光輝ケース入り歯車",
+    "context": " -> block.createcasing.refined_radiance_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_crimson_shaft\"",
+    "source_string": "光輝ケース入り真紅のシャフト",
+    "translation": "光輝ケース入り真紅のシャフト",
+    "context": " -> block.createcasing.refined_radiance_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_dark_oak_shaft\"",
+    "source_string": "光輝ケース入りダークオークのシャフト",
+    "translation": "光輝ケース入りダークオークのシャフト",
+    "context": " -> block.createcasing.refined_radiance_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_glass_shaft\"",
+    "source_string": "光輝ケース入りガラスのシャフト",
+    "translation": "光輝ケース入りガラスのシャフト",
+    "context": " -> block.createcasing.refined_radiance_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_jungle_shaft\"",
+    "source_string": "光輝ケース入りジャングルのシャフト",
+    "translation": "光輝ケース入りジャングルのシャフト",
+    "context": " -> block.createcasing.refined_radiance_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_large_cogwheel\"",
+    "source_string": "光輝ケース入り大きな歯車",
+    "translation": "光輝ケース入り大きな歯車",
+    "context": " -> block.createcasing.refined_radiance_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_mangrove_shaft\"",
+    "source_string": "光輝ケース入りマングローブのシャフト",
+    "translation": "光輝ケース入りマングローブのシャフト",
+    "context": " -> block.createcasing.refined_radiance_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_oak_shaft\"",
+    "source_string": "光輝ケース入りオークのシャフト",
+    "translation": "光輝ケース入りオークのシャフト",
+    "context": " -> block.createcasing.refined_radiance_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_shaft\"",
+    "source_string": "光輝ケース入りシャフト",
+    "translation": "光輝ケース入りシャフト",
+    "context": " -> block.createcasing.refined_radiance_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_spruce_shaft\"",
+    "source_string": "光輝ケース入りトウヒのシャフト",
+    "translation": "光輝ケース入りトウヒのシャフト",
+    "context": " -> block.createcasing.refined_radiance_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_warped_shaft\"",
+    "source_string": "光輝ケース入り歪んだシャフト",
+    "translation": "光輝ケース入り歪んだシャフト",
+    "context": " -> block.createcasing.refined_radiance_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_acacia_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_acacia_shaft\"",
+    "source_string": "シャドウケース入りアカシアのシャフト",
+    "translation": "シャドウケース入りアカシアのシャフト",
+    "context": " -> block.createcasing.shadow_steel_encased_acacia_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_bamboo_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_bamboo_shaft\"",
+    "source_string": "シャドウケース入り竹のシャフト",
+    "translation": "シャドウケース入り竹のシャフト",
+    "context": " -> block.createcasing.shadow_steel_encased_bamboo_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_birch_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_birch_shaft\"",
+    "source_string": "シャドウケース入りシラカバのシャフト",
+    "translation": "シャドウケース入りシラカバのシャフト",
+    "context": " -> block.createcasing.shadow_steel_encased_birch_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_cherry_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_cherry_shaft\"",
+    "source_string": "シャドウケース入りサクラのシャフト",
+    "translation": "シャドウケース入りサクラのシャフト",
+    "context": " -> block.createcasing.shadow_steel_encased_cherry_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_cogwheel\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_cogwheel\"",
+    "source_string": "シャドウケース入り歯車",
+    "translation": "シャドウケース入り歯車",
+    "context": " -> block.createcasing.shadow_steel_encased_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_crimson_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_crimson_shaft\"",
+    "source_string": "シャドウケース入り真紅のシャフト",
+    "translation": "シャドウケース入り真紅のシャフト",
+    "context": " -> block.createcasing.shadow_steel_encased_crimson_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_dark_oak_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_dark_oak_shaft\"",
+    "source_string": "シャドウケース入りダークオークのシャフト",
+    "translation": "シャドウケース入りダークオークのシャフト",
+    "context": " -> block.createcasing.shadow_steel_encased_dark_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_glass_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_glass_shaft\"",
+    "source_string": "シャドウケース入りガラスのシャフト",
+    "translation": "シャドウケース入りガラスのシャフト",
+    "context": " -> block.createcasing.shadow_steel_encased_glass_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_jungle_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_jungle_shaft\"",
+    "source_string": "シャドウケース入りジャングルのシャフト",
+    "translation": "シャドウケース入りジャングルのシャフト",
+    "context": " -> block.createcasing.shadow_steel_encased_jungle_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_large_cogwheel\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_large_cogwheel\"",
+    "source_string": "シャドウケース入り大きな歯車",
+    "translation": "シャドウケース入り大きな歯車",
+    "context": " -> block.createcasing.shadow_steel_encased_large_cogwheel",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_mangrove_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_mangrove_shaft\"",
+    "source_string": "シャドウケース入りマングローブのシャフト",
+    "translation": "シャドウケース入りマングローブのシャフト",
+    "context": " -> block.createcasing.shadow_steel_encased_mangrove_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_oak_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_oak_shaft\"",
+    "source_string": "シャドウケース入りオークのシャフト",
+    "translation": "シャドウケース入りオークのシャフト",
+    "context": " -> block.createcasing.shadow_steel_encased_oak_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_shaft\"",
+    "source_string": "シャドウケース入りシャフト",
+    "translation": "シャドウケース入りシャフト",
+    "context": " -> block.createcasing.shadow_steel_encased_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_spruce_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_spruce_shaft\"",
+    "source_string": "シャドウケース入りトウヒのシャフト",
+    "translation": "シャドウケース入りトウヒのシャフト",
+    "context": " -> block.createcasing.shadow_steel_encased_spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_warped_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_warped_shaft\"",
+    "source_string": "シャドウケース入り歪んだシャフト",
+    "translation": "シャドウケース入り歪んだシャフト",
+    "context": " -> block.createcasing.shadow_steel_encased_warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.spruce_shaft\"": {
+    "identifier": "\"block.createcasing.spruce_shaft\"",
+    "source_string": "トウヒのシャフト",
+    "translation": "トウヒのシャフト",
+    "context": " -> block.createcasing.spruce_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.vertical_brass_gearbox\"": {
+    "identifier": "\"block.createcasing.vertical_brass_gearbox\"",
+    "source_string": "垂直の真鍮のギアボックス",
+    "translation": "垂直の真鍮のギアボックス",
+    "context": " -> block.createcasing.vertical_brass_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.vertical_copper_gearbox\"": {
+    "identifier": "\"block.createcasing.vertical_copper_gearbox\"",
+    "source_string": "垂直の銅のギアボックス",
+    "translation": "垂直の銅のギアボックス",
+    "context": " -> block.createcasing.vertical_copper_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.vertical_railway_gearbox\"": {
+    "identifier": "\"block.createcasing.vertical_railway_gearbox\"",
+    "source_string": "垂直の鉄道用ギアボックス",
+    "translation": "垂直の鉄道用ギアボックス",
+    "context": " -> block.createcasing.vertical_railway_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.warped_shaft\"": {
+    "identifier": "\"block.createcasing.warped_shaft\"",
+    "source_string": "歪んだシャフト",
+    "translation": "歪んだシャフト",
+    "context": " -> block.createcasing.warped_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.mldeg_shaft\"": {
+    "identifier": "\"block.createcasing.mldeg_shaft\"",
+    "source_string": "MLDEGのシャフト",
+    "translation": "MLDEGのシャフト",
+    "context": " -> block.createcasing.mldeg_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.andesite_encased_mldeg_shaft\"": {
+    "identifier": "\"block.createcasing.andesite_encased_mldeg_shaft\"",
+    "source_string": "安山岩ケース入りMLDEGのシャフト",
+    "translation": "安山岩ケース入りMLDEGのシャフト",
+    "context": " -> block.createcasing.andesite_encased_mldeg_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_encased_mldeg_shaft\"": {
+    "identifier": "\"block.createcasing.brass_encased_mldeg_shaft\"",
+    "source_string": "真鍮ケース入りMLDEGのシャフト",
+    "translation": "真鍮ケース入りMLDEGのシャフト",
+    "context": " -> block.createcasing.brass_encased_mldeg_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_encased_mldeg_shaft\"": {
+    "identifier": "\"block.createcasing.railway_encased_mldeg_shaft\"",
+    "source_string": "鉄道用ケース入りMLDEGのシャフト",
+    "translation": "鉄道用ケース入りMLDEGのシャフト",
+    "context": " -> block.createcasing.railway_encased_mldeg_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.industrial_iron_encased_mldeg_shaft\"": {
+    "identifier": "\"block.createcasing.industrial_iron_encased_mldeg_shaft\"",
+    "source_string": "鋼材ケース入りMLDEGのシャフト",
+    "translation": "鋼材ケース入りMLDEGのシャフト",
+    "context": " -> block.createcasing.industrial_iron_encased_mldeg_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.refined_radiance_encased_mldeg_shaft\"": {
+    "identifier": "\"block.createcasing.refined_radiance_encased_mldeg_shaft\"",
+    "source_string": "光輝ケース入りMLDEGのシャフト",
+    "translation": "光輝ケース入りMLDEGのシャフト",
+    "context": " -> block.createcasing.refined_radiance_encased_mldeg_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.shadow_steel_encased_mldeg_shaft\"": {
+    "identifier": "\"block.createcasing.shadow_steel_encased_mldeg_shaft\"",
+    "source_string": "シャドウケース入りMLDEGのシャフト",
+    "translation": "シャドウケース入りMLDEGのシャフト",
+    "context": " -> block.createcasing.shadow_steel_encased_mldeg_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_encased_mldeg_shaft\"": {
+    "identifier": "\"block.createcasing.copper_encased_mldeg_shaft\"",
+    "source_string": "銅ケース入りMLDEGのシャフト",
+    "translation": "銅ケース入りMLDEGのシャフト",
+    "context": " -> block.createcasing.copper_encased_mldeg_shaft",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.custom_mixer.tooltip\"": {
+    "identifier": "\"block.createcasing.custom_mixer.tooltip\"",
+    "source_string": "CUSTOM MIXER",
+    "translation": "CUSTOM MIXER",
+    "context": " -> block.createcasing.custom_mixer.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.custom_mixer.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.custom_mixer.tooltip.summary\"",
+    "source_string": "_通常_のミキサーのように_動作_します。",
+    "translation": "_通常_のミキサーのように_動作_します。",
+    "context": " -> block.createcasing.custom_mixer.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_mixer.tooltip\"": {
+    "identifier": "\"block.createcasing.brass_mixer.tooltip\"",
+    "source_string": "BRASS MIXER",
+    "translation": "BRASS MIXER",
+    "context": " -> block.createcasing.brass_mixer.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.brass_mixer.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.brass_mixer.tooltip.summary\"",
+    "source_string": "_レシピが一種類のアイテムのみの場合_、通常のミキサーよりも_2倍速く加工_できますが、_より多くの回転力を使用します_。",
+    "translation": "_レシピが一種類のアイテムのみの場合_、通常のミキサーよりも_2倍速く加工_できますが、_より多くの回転力を使用します_。",
+    "context": " -> block.createcasing.brass_mixer.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_mixer.tooltip\"": {
+    "identifier": "\"block.createcasing.copper_mixer.tooltip\"",
+    "source_string": "COPPER MIXER",
+    "translation": "COPPER MIXER",
+    "context": " -> block.createcasing.copper_mixer.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.copper_mixer.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.copper_mixer.tooltip.summary\"",
+    "source_string": "_レシピが一種類の液体かポーションの場合_、通常のミキサーよりも_2倍速く加工_できますが、_より多くの回転力を使用します_。",
+    "translation": "_レシピが一種類の液体かポーションの場合_、通常のミキサーよりも_2倍速く加工_できますが、_より多くの回転力を使用します_。",
+    "context": " -> block.createcasing.copper_mixer.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_mixer.tooltip\"": {
+    "identifier": "\"block.createcasing.railway_mixer.tooltip\"",
+    "source_string": "RAILWAY MIXER",
+    "translation": "RAILWAY MIXER",
+    "context": " -> block.createcasing.railway_mixer.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.railway_mixer.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.railway_mixer.tooltip.summary\"",
+    "source_string": "通常のミキサーよりも_2倍速く加工_できますが、_より多くの回転力を使用します_。",
+    "translation": "通常のミキサーよりも_2倍速く加工_できますが、_より多くの回転力を使用します_。",
+    "context": " -> block.createcasing.railway_mixer.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"tooltip.createcasing.mixermixenormaly.title\"": {
+    "identifier": "\"tooltip.createcasing.mixermixenormaly.title\"",
+    "source_string": "設定が無効: ",
+    "translation": "設定が無効: ",
+    "context": " -> tooltip.createcasing.mixermixenormaly.title",
+    "labels": null,
+    "max_length": null
+  },
+  "\"tooltip.createcasing.mixermixenormaly\"": {
+    "identifier": "\"tooltip.createcasing.mixermixenormaly\"",
+    "source_string": "警告: カスタムミキサーは通常のミキサーのように動作します!",
+    "translation": "警告: カスタムミキサーは通常のミキサーのように動作します!",
+    "context": " -> tooltip.createcasing.mixermixenormaly",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.custom_press.tooltip\"": {
+    "identifier": "\"block.createcasing.custom_press.tooltip\"",
+    "source_string": "CUSTOM PRESS",
+    "translation": "CUSTOM PRESS",
+    "context": " -> block.createcasing.custom_press.tooltip",
+    "labels": null,
+    "max_length": null
+  },
+  "\"block.createcasing.custom_press.tooltip.summary\"": {
+    "identifier": "\"block.createcasing.custom_press.tooltip.summary\"",
+    "source_string": "通常のプレスのように動作します。",
+    "translation": "通常のプレスのように動作します。",
+    "context": " -> block.createcasing.custom_press.tooltip.summary",
+    "labels": null,
+    "max_length": null
+  },
+  "\"item.createcasing.vertical_brass_gearbox\"": {
+    "identifier": "\"item.createcasing.vertical_brass_gearbox\"",
+    "source_string": "真鍮の垂直ギアボックス",
+    "translation": "真鍮の垂直ギアボックス",
+    "context": " -> item.createcasing.vertical_brass_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"item.createcasing.vertical_copper_gearbox\"": {
+    "identifier": "\"item.createcasing.vertical_copper_gearbox\"",
+    "source_string": "銅の垂直ギアボックス",
+    "translation": "銅の垂直ギアボックス",
+    "context": " -> item.createcasing.vertical_copper_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"item.createcasing.vertical_industrial_iron_gearbox\"": {
+    "identifier": "\"item.createcasing.vertical_industrial_iron_gearbox\"",
+    "source_string": "鋼材の垂直ギアボックス",
+    "translation": "鋼材の垂直ギアボックス",
+    "context": " -> item.createcasing.vertical_industrial_iron_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"item.createcasing.vertical_railway_gearbox\"": {
+    "identifier": "\"item.createcasing.vertical_railway_gearbox\"",
+    "source_string": "鉄道用垂直ギアボックス",
+    "translation": "鉄道用垂直ギアボックス",
+    "context": " -> item.createcasing.vertical_railway_gearbox",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.tag.encased_blocks\"": {
+    "identifier": "\"createcasing.ponder.tag.encased_blocks\"",
+    "source_string": "Create: Encased",
+    "translation": "Create: Encased",
+    "context": " -> createcasing.ponder.tag.encased_blocks",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.tag.encased_blocks.description\"": {
+    "identifier": "\"createcasing.ponder.tag.encased_blocks.description\"",
+    "source_string": "Create: Encasedで追加されたコンポーネント",
+    "translation": "Create: Encasedで追加されたコンポーネント",
+    "context": " -> createcasing.ponder.tag.encased_blocks.description",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.header\"": {
+    "identifier": "\"createcasing.ponder.gearbox.header\"",
+    "source_string": "ギアボックスによる回転力の伝達",
+    "translation": "ギアボックスによる回転力の伝達",
+    "context": " -> createcasing.ponder.gearbox.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.text_1\"": {
+    "identifier": "\"createcasing.ponder.gearbox.text_1\"",
+    "source_string": "回転軸の向きを変えようとすると、すぐに機構がかさばってしまいます",
+    "translation": "回転軸の向きを変えようとすると、すぐに機構がかさばってしまいます",
+    "context": " -> createcasing.ponder.gearbox.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.text_2\"": {
+    "identifier": "\"createcasing.ponder.gearbox.text_2\"",
+    "source_string": "これをコンパクトにしたものがギアボックスです",
+    "translation": "これをコンパクトにしたものがギアボックスです",
+    "context": " -> createcasing.ponder.gearbox.text_2",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.text_3\"": {
+    "identifier": "\"createcasing.ponder.gearbox.text_3\"",
+    "source_string": "直角に曲げて伝達すると、鏡写しの方向に回転します",
+    "translation": "直角に曲げて伝達すると、鏡写しの方向に回転します",
+    "context": " -> createcasing.ponder.gearbox.text_3",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.gearbox.text_4\"": {
+    "identifier": "\"createcasing.ponder.gearbox.text_4\"",
+    "source_string": "まっすぐ伝達すると回転方向が逆になります",
+    "translation": "まっすぐ伝達すると回転方向が逆になります",
+    "context": " -> createcasing.ponder.gearbox.text_4",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.header\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.header\"",
+    "source_string": "メカニカルミキサーによるアイテム加工",
+    "translation": "メカニカルミキサーによるアイテム加工",
+    "context": " -> createcasing.ponder.mechanical_mixer.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.text_1\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.text_1\"",
+    "source_string": "ミキサーと鉢があれば、いくつかのクラフトレシピを自動化できます",
+    "translation": "ミキサーと鉢があれば、いくつかのクラフトレシピを自動化できます",
+    "context": " -> createcasing.ponder.mechanical_mixer.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.text_2\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.text_2\"",
+    "source_string": "自動化できるのは不定形レシピといくつかの追加レシピです",
+    "translation": "自動化できるのは不定形レシピといくつかの追加レシピです",
+    "context": " -> createcasing.ponder.mechanical_mixer.text_2",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.text_3\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.text_3\"",
+    "source_string": "レシピの中には、ブレイズバーナーの熱を必要とするものもあります",
+    "translation": "レシピの中には、ブレイズバーナーの熱を必要とするものもあります",
+    "context": " -> createcasing.ponder.mechanical_mixer.text_3",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_mixer.text_4\"": {
+    "identifier": "\"createcasing.ponder.mechanical_mixer.text_4\"",
+    "source_string": "フィルタースロットは、2つのレシピが競合するときに使えます",
+    "translation": "フィルタースロットは、2つのレシピが競合するときに使えます",
+    "context": " -> createcasing.ponder.mechanical_mixer.text_4",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.header\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.header\"",
+    "source_string": "メカニカルプレスによるアイテム加工",
+    "translation": "メカニカルプレスによるアイテム加工",
+    "context": " -> createcasing.ponder.mechanical_press.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.text_1\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.text_1\"",
+    "source_string": "メカニカルプレスは、その下に配置したアイテムを加工できます",
+    "translation": "メカニカルプレスは、その下に配置したアイテムを加工できます",
+    "context": " -> createcasing.ponder.mechanical_press.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.text_2\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.text_2\"",
+    "source_string": "加工するアイテムは下に落としたり、プレス機の下にあるデポに置いたりしてください",
+    "translation": "加工するアイテムは下に落としたり、プレス機の下にあるデポに置いたりしてください",
+    "context": " -> createcasing.ponder.mechanical_press.text_2",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.text_3\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.text_3\"",
+    "source_string": "アイテムがベルトで供給されると...",
+    "translation": "アイテムがベルトで供給されると...",
+    "context": " -> createcasing.ponder.mechanical_press.text_3",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press.text_4\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press.text_4\"",
+    "source_string": "...プレスが自動でアイテムを止め、加工します",
+    "translation": "...プレスが自動でアイテムを止め、加工します",
+    "context": " -> createcasing.ponder.mechanical_press.text_4",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.header\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.header\"",
+    "source_string": "メカニカルプレスでの圧縮加工",
+    "translation": "メカニカルプレスでの圧縮加工",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.text_1\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.text_1\"",
+    "source_string": "鉢に入れられたアイテムをプレスし、圧縮加工できます",
+    "translation": "鉢に入れられたアイテムをプレスし、圧縮加工できます",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.text_2\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.text_2\"",
+    "source_string": "圧縮加工には、2x2、3x3のクラフトレシピに加え、いくつかの追加レシピがあります",
+    "translation": "圧縮加工には、2x2、3x3のクラフトレシピに加え、いくつかの追加レシピがあります",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.text_2",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.text_3\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.text_3\"",
+    "source_string": "レシピの中には、ブレイズバーナーの熱を必要とするものもあります",
+    "translation": "レシピの中には、ブレイズバーナーの熱を必要とするものもあります",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.text_3",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.mechanical_press_compacting.text_4\"": {
+    "identifier": "\"createcasing.ponder.mechanical_press_compacting.text_4\"",
+    "source_string": "フィルタースロットは、2つのレシピが競合するときに使えます",
+    "translation": "フィルタースロットは、2つのレシピが競合するときに使えます",
+    "context": " -> createcasing.ponder.mechanical_press_compacting.text_4",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.creative_cogwheel.header\"": {
+    "identifier": "\"createcasing.ponder.creative_cogwheel.header\"",
+    "source_string": "クリエイティブ歯車による回転力の生成",
+    "translation": "クリエイティブ歯車による回転力の生成",
+    "context": " -> createcasing.ponder.creative_cogwheel.header",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.creative_cogwheel.text_1\"": {
+    "identifier": "\"createcasing.ponder.creative_cogwheel.text_1\"",
+    "source_string": "クリエイティブ歯車は、コンパクトで出力を調整できる原動機です",
+    "translation": "クリエイティブ歯車は、コンパクトで出力を調整できる原動機です",
+    "context": " -> createcasing.ponder.creative_cogwheel.text_1",
+    "labels": null,
+    "max_length": null
+  },
+  "\"createcasing.ponder.creative_cogwheel.text_2\"": {
+    "identifier": "\"createcasing.ponder.creative_cogwheel.text_2\"",
+    "source_string": "回転速度はパネルで設定できます",
+    "translation": "回転速度はパネルで設定できます",
+    "context": " -> createcasing.ponder.creative_cogwheel.text_2",
+    "labels": null,
+    "max_length": null
+  }
+}
