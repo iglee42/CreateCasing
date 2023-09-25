@@ -6,3 +6,5 @@ files:
         ja: ja_jp
         ko: ko_kr
         ru: ru_ru
+bundles:
+  - 1
