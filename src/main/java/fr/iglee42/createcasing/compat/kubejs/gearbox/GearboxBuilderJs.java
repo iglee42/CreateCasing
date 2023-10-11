@@ -2,7 +2,6 @@ package fr.iglee42.createcasing.compat.kubejs.gearbox;
 
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import dev.latvian.mods.kubejs.KubeJS;
-import dev.latvian.mods.kubejs.client.LangEventJS;
 import dev.latvian.mods.kubejs.generator.AssetJsonGenerator;
 import dev.latvian.mods.kubejs.typings.Info;
 import dev.latvian.mods.kubejs.util.UtilsJS;
@@ -10,6 +9,8 @@ import fr.iglee42.createcasing.api.CreateCasingApi;
 import fr.iglee42.createcasing.compat.kubejs.CreateCasingBuilderBaseJS;
 import fr.iglee42.createcasing.compat.kubejs.KubeJSCompatPlugin;
 import net.minecraft.resources.ResourceLocation;
+
+import java.util.Map;
 
 public class GearboxBuilderJs extends CreateCasingBuilderBaseJS {
 
@@ -88,9 +89,9 @@ public class GearboxBuilderJs extends CreateCasingBuilderBaseJS {
     }
 
     @Override
-    public void generateLang(LangEventJS lang) {
+    public void generateLang(Map<String, String> lang) {
         super.generateLang(lang);
-        lang.add("createcasing-kubejs","item.createcasing-kubejs.vertical_" + fullName, UtilsJS.snakeCaseToTitleCase("item.createcasing-kubejs.vertical_" + fullName));
+        lang.put("item.createcasing-kubejs.vertical_" + fullName, UtilsJS.snakeCaseToTitleCase("item.createcasing-kubejs.vertical_" + fullName));
     }
 
     @Info("Create the gearbox in the code")
