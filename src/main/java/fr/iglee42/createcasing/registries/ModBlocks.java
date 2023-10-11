@@ -16,7 +16,9 @@ import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockMo
 import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogCTBehaviour;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedShaftBlock;
+import com.simibubi.create.content.logistics.depot.DepotBlock;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
+import com.simibubi.create.content.redstone.displayLink.source.ItemNameDisplaySource;
 import com.simibubi.create.foundation.block.connected.AllCTTypes;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.data.*;
@@ -50,6 +52,7 @@ import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import static com.simibubi.create.content.redstone.displayLink.AllDisplayBehaviours.assignDataBehaviour;
 import static com.simibubi.create.foundation.data.BlockStateGen.axisBlock;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.*;
@@ -142,6 +145,11 @@ public class ModBlocks {
     public static final BlockEntry<CustomPressBlock> RAILWAY_PRESS = createPress("railway");
     public static final BlockEntry<CustomPressBlock> INDUSTRIAL_IRON_PRESS = createPress("industrial_iron");
 
+    public static final BlockEntry<CustomDepotBlock> BRASS_DEPOT = createDepot("brass");
+    public static final BlockEntry<CustomDepotBlock> COPPER_DEPOT = createDepot("copper");
+    public static final BlockEntry<CustomDepotBlock> RAILWAY_DEPOT = createDepot("railway");
+    public static final BlockEntry<CustomDepotBlock> INDUSTRIAL_IRON_DEPOT = createDepot("industrial_iron");
+
     public static final BlockEntry<WoodenShaftBlock> OAK_SHAFT = createWoodenShaft("oak");
     public static final BlockEntry<WoodenShaftBlock> SPRUCE_SHAFT = createWoodenShaft("spruce");
     public static final BlockEntry<WoodenShaftBlock> BIRCH_SHAFT = createWoodenShaft("birch");
@@ -163,9 +171,19 @@ public class ModBlocks {
             .simpleItem()
             .register();
 
+    public static final BlockEntry<BrassShaftBlock> BRASS_SHAFT = REGISTRATE.block("brass_shaft", BrassShaftBlock::new)
+            .initialProperties(SharedProperties::softMetal)
+            .properties(p -> p.color(MaterialColor.METAL))
+            .transform(BlockStressDefaults.setNoImpact())
+            .transform(axeOnly())
+            .blockstate(BlockStateGen.axisBlockProvider(false))
+            .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
+            .simpleItem()
+                .register();
+
     /*public static final BlockEntry<MLDEGShaftBlock> MLDEG_SHAFT = REGISTRATE.block("mldeg_shaft", MLDEGShaftBlock::new)
             .initialProperties(()-> Blocks.BLACKSTONE)
-            .properties(p -> p.color(MaterialColor.NONE)
+            .properties(p -> p.mapColor(MapColor.NONE)
                     .sound(SoundType.STONE)
                     .noOcclusion())
             .transform(BlockStressDefaults.setNoImpact())
@@ -211,7 +229,7 @@ public class ModBlocks {
 
 
     //METHODS
-    public static BlockEntry<PublicEncasedShaftBlock> createShaft(String name, Supplier<Block> casing, CTSpriteShiftEntry sprite){
+    private static BlockEntry<PublicEncasedShaftBlock> createShaft(String name, Supplier<Block> casing, CTSpriteShiftEntry sprite){
         return REGISTRATE.block(name+"_encased_shaft", p -> new PublicEncasedShaftBlock(p, casing))
                 .properties(p -> p.color(MaterialColor.PODZOL))
                 .transform(BuilderTransformers.encasedShaft(name, () -> sprite))
@@ -221,7 +239,7 @@ public class ModBlocks {
                 .register();
     }
 
-    public static BlockEntry<PublicEncasedCogwheelBlock> createCogwheel(String name, Supplier<Block> casing, CTSpriteShiftEntry sprite, CTSpriteShiftEntry sideSprite, CTSpriteShiftEntry otherSideSprite){
+    private static BlockEntry<PublicEncasedCogwheelBlock> createCogwheel(String name, Supplier<Block> casing, CTSpriteShiftEntry sprite, CTSpriteShiftEntry sideSprite, CTSpriteShiftEntry otherSideSprite){
         return REGISTRATE.block(name+"_encased_cogwheel", p -> new PublicEncasedCogwheelBlock(p, false, casing))
                 .properties(p -> p.color(MaterialColor.PODZOL))
                 .transform(BuilderTransformers.encasedCogwheel(name, () -> sprite))
@@ -234,7 +252,7 @@ public class ModBlocks {
                 .register();
     }
 
-    public static BlockEntry<PublicEncasedCogwheelBlock> createLargeCogwheel(String name, Supplier<Block> casing, CTSpriteShiftEntry sprite){
+    private static BlockEntry<PublicEncasedCogwheelBlock> createLargeCogwheel(String name, Supplier<Block> casing, CTSpriteShiftEntry sprite){
         return REGISTRATE.block(name+"_encased_large_cogwheel", p -> new PublicEncasedCogwheelBlock(p, true, casing))
                 .properties(p -> p.color(MaterialColor.PODZOL))
                 .transform(BuilderTransformers.encasedLargeCogwheel(name, () -> sprite))
@@ -261,7 +279,7 @@ public class ModBlocks {
                 .register();
     }
 
-    public static BlockEntry<CustomGearboxBlock> createGearbox(String name, CTSpriteShiftEntry sprite, ItemEntry<CustomVerticalGearboxItem> item){
+    private static BlockEntry<CustomGearboxBlock> createGearbox(String name, CTSpriteShiftEntry sprite, ItemEntry<CustomVerticalGearboxItem> item){
         return REGISTRATE.block(name+"_gearbox", (p)->new CustomGearboxBlock(p,item))
                 .initialProperties(SharedProperties::stone)
                 .properties(BlockBehaviour.Properties::noOcclusion)
@@ -277,7 +295,7 @@ public class ModBlocks {
                 .register();
     }
 
-    public static BlockEntry<CustomMixerBlock> createMixer(String name){
+    private static BlockEntry<CustomMixerBlock> createMixer(String name){
         return Objects.equals(name, "brass") || Objects.equals(name, "copper") || Objects.equals(name, "railway") ? REGISTRATE.block(name+"_mixer", CustomMixerBlock::new)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.color(MaterialColor.STONE))
@@ -305,7 +323,7 @@ public class ModBlocks {
                         .register();
     }
 
-    public static BlockEntry<CustomPressBlock> createPress(String name){
+    private static BlockEntry<CustomPressBlock> createPress(String name){
         return REGISTRATE.block(name+"_press", CustomPressBlock::new)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.color(MaterialColor.PODZOL))
@@ -319,7 +337,7 @@ public class ModBlocks {
                 .register();
     }
 
-    public static BlockEntry<WoodenShaftBlock> createWoodenShaft(String name){
+    private static BlockEntry<WoodenShaftBlock> createWoodenShaft(String name){
         return REGISTRATE.block(name+"_shaft", WoodenShaftBlock::new)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.color(MaterialColor.METAL))
@@ -328,6 +346,18 @@ public class ModBlocks {
                 .blockstate(BlockStateGen.axisBlockProvider(false))
                 .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
                 .simpleItem()
+                .register();
+    }
+
+    public static BlockEntry<CustomDepotBlock> createDepot(String name){
+        return REGISTRATE.block(name+"_depot", CustomDepotBlock::new)
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.color(MaterialColor.COLOR_GRAY))
+                .transform(axeOrPickaxe())
+                .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
+                .onRegister(assignDataBehaviour(new ItemNameDisplaySource(), "combine_item_names"))
+                .item()
+                .transform(customItemModel("_", "block"))
                 .register();
     }
 
