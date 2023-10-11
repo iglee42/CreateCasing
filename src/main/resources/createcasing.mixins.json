@@ -5,6 +5,7 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "createcasing.refmap.json",
   "mixins": [
+    "create.AssemblyOperatorBlockItemMixin",
     "minecraft.BlockEntityTypeMixin"
   ],
   "client": [

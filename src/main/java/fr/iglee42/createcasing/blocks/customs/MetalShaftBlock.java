@@ -2,8 +2,14 @@ package fr.iglee42.createcasing.blocks.customs;
 
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
+import com.simibubi.create.content.trains.station.AssemblyScreen;
+import com.simibubi.create.content.trains.station.StationScreen;
+import com.simibubi.create.foundation.gui.ScreenOpener;
+import fr.iglee42.createcasing.blockEntities.BrassShaftBlockEntity;
+import fr.iglee42.createcasing.blockEntities.MetalShaftBlockEntity;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
 import fr.iglee42.createcasing.registries.ModBlocks;
+import fr.iglee42.createcasing.screen.BrassShaftScreen;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -15,6 +21,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.fml.DistExecutor;
 
 public class MetalShaftBlock extends ShaftBlock {
     public MetalShaftBlock(Properties properties) {
@@ -26,56 +34,5 @@ public class MetalShaftBlock extends ShaftBlock {
         return ModBlockEntities.METAL_SHAFT.get();
     }
 
-    @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult ray) {
-        InteractionResult result = super.use(state, world, pos, player, hand, ray);
-        if (result != InteractionResult.PASS) return result;
-        Item item = player.getItemInHand(hand).getItem();
-        if (item.equals(Items.OAK_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.OAK_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        } else if (item.equals(Items.SPRUCE_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.SPRUCE_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        } else if (item.equals(Items.BIRCH_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.BIRCH_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        } else if (item.equals(Items.JUNGLE_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.JUNGLE_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        } else if (item.equals(Items.ACACIA_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.ACACIA_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        } else if (item.equals(Items.DARK_OAK_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.DARK_OAK_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        } else if (item.equals(Items.MANGROVE_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.MANGROVE_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        } else if (item.equals(Items.BAMBOO_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.BAMBOO_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        } else if (item.equals(Items.CHERRY_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.CHERRY_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        } else if (item.equals(Items.CRIMSON_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.CRIMSON_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        } else if (item.equals(Items.WARPED_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.WARPED_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        }
-        return InteractionResult.PASS;
-    }
+
 }

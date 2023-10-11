@@ -43,6 +43,7 @@ public class ApiGearboxBlock extends RotatedPillarKineticBlock implements IBE<Ge
 
 	@Override
 	public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
+		if (verticalItem == null) return super.getDrops(state, builder);
 		if (state.getValue(AXIS).isVertical())
 			return super.getDrops(state, builder);
 		return Arrays.asList(new ItemStack(verticalItem.data.get()));
@@ -51,6 +52,7 @@ public class ApiGearboxBlock extends RotatedPillarKineticBlock implements IBE<Ge
 	@Override
 	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos,
 									   Player player) {
+		if (verticalItem == null) return super.getCloneItemStack(state, target, world, pos, player);
 		if (state.getValue(AXIS).isVertical())
 			return super.getCloneItemStack(state, target, world, pos, player);
 		return new ItemStack(verticalItem.data.get());

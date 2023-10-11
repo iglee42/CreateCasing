@@ -1,24 +1,26 @@
 package fr.iglee42.createcasing.registries;
 
-import com.simibubi.create.AllBlocks;
 import com.simibubi.create.Create;
 import com.simibubi.create.content.fluids.pipes.FluidPipeBlockEntity;
-import com.simibubi.create.content.kinetics.base.HalfShaftInstance;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.base.ShaftInstance;
 import com.simibubi.create.content.kinetics.base.ShaftRenderer;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlockEntity;
 import com.simibubi.create.content.kinetics.gearbox.GearboxInstance;
 import com.simibubi.create.content.kinetics.gearbox.GearboxRenderer;
-import com.simibubi.create.content.kinetics.motor.CreativeMotorBlockEntity;
-import com.simibubi.create.content.kinetics.motor.CreativeMotorRenderer;
+import com.simibubi.create.content.kinetics.mixer.MechanicalMixerBlockEntity;
+import com.simibubi.create.content.kinetics.mixer.MechanicalMixerRenderer;
+import com.simibubi.create.content.kinetics.mixer.MixerInstance;
 import com.simibubi.create.content.kinetics.press.MechanicalPressBlockEntity;
-import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntityInstance;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogInstance;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogRenderer;
+import com.simibubi.create.content.kinetics.transmission.SplitShaftInstance;
+import com.simibubi.create.content.kinetics.transmission.SplitShaftRenderer;
+import com.simibubi.create.content.logistics.depot.DepotBlockEntity;
+import com.simibubi.create.content.logistics.depot.DepotRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import fr.iglee42.createcasing.blockEntities.*;
 import fr.iglee42.createcasing.blockEntities.instances.*;
@@ -26,7 +28,7 @@ import fr.iglee42.createcasing.blockEntities.renderers.CreativeCogwheelRenderer;
 import fr.iglee42.createcasing.blockEntities.renderers.CustomEncasedShaftRenderer;
 import fr.iglee42.createcasing.blockEntities.renderers.CustomMixerRenderer;
 import fr.iglee42.createcasing.blockEntities.renderers.CustomPressRenderer;
-import fr.iglee42.createcasing.blocks.customs.MetalShaftBlock;
+import fr.iglee42.createcasing.blockEntities.BrassShaftBlockEntity;
 
 import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 
@@ -78,6 +80,12 @@ public class ModBlockEntities {
             .renderer(() -> CustomPressRenderer::new)
             .register();
 
+    public static final BlockEntityEntry<DepotBlockEntity> DEPOT = REGISTRATE
+            .blockEntity("custom_depot", DepotBlockEntity::new)
+            .validBlocks(ModBlocks.BRASS_DEPOT,ModBlocks.COPPER_DEPOT,ModBlocks.RAILWAY_DEPOT,ModBlocks.INDUSTRIAL_IRON_DEPOT)
+            .renderer(() -> DepotRenderer::new)
+            .register();
+
     public static final BlockEntityEntry<WoodenShaftBlockEntity> WOODEN_SHAFT = REGISTRATE
             .blockEntity("wooden_shaft", WoodenShaftBlockEntity::new)
             .instance(() -> BracketedKineticBlockEntityInstance::new, false)
@@ -98,6 +106,13 @@ public class ModBlockEntities {
             .validBlocks(ModBlocks.MLDEG_SHAFT)
             .renderer(() -> BracketedKineticBlockEntityRenderer::new)
             .register();
+    public static final BlockEntityEntry<BrassShaftBlockEntity> BRASS_SHAFT = REGISTRATE
+            .blockEntity("brass_shaft", BrassShaftBlockEntity::new)
+            .instance(() -> BracketedKineticBlockEntityInstance::new, false)
+            .validBlocks(ModBlocks.BRASS_SHAFT)
+            .renderer(() -> BracketedKineticBlockEntityRenderer::new)
+            .register();
+
 
     public static final BlockEntityEntry<CreativeCogwheelBlockEntity> CREATIVE_COGWHEEL = REGISTRATE
             .blockEntity("creative_cogwheel", CreativeCogwheelBlockEntity::new)
@@ -122,6 +137,27 @@ public class ModBlockEntities {
             .validBlocks()
             .renderer(() -> GearboxRenderer::new)
             .register();
+
+    public static final BlockEntityEntry<DepotBlockEntity> API_DEPOT = REGISTRATE
+            .blockEntity("api_depot", DepotBlockEntity::new)
+            .validBlocks()
+            .renderer(() -> DepotRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<MechanicalMixerBlockEntity> API_MIXER = Create.REGISTRATE
+            .blockEntity("api_mixer", MechanicalMixerBlockEntity::new)
+            .instance(() -> MixerInstance::new)
+            .validBlocks()
+            .renderer(() -> MechanicalMixerRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<MechanicalPressBlockEntity> API_PRESS = REGISTRATE
+            .blockEntity("api_press", MechanicalPressBlockEntity::new)
+            .instance(() -> CustomPressInstance::new)
+            .validBlocks(ModBlocks.BRASS_PRESS,ModBlocks.COPPER_PRESS,ModBlocks.RAILWAY_PRESS,ModBlocks.INDUSTRIAL_IRON_PRESS)
+            .renderer(() -> CustomPressRenderer::new)
+            .register();
+
 
     public static void register() {}
 }

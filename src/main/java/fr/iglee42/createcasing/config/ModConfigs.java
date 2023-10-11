@@ -18,6 +18,8 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Supplier;
 
+import static com.simibubi.create.infrastructure.config.AllConfigs.server;
+
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class ModConfigs {
 
@@ -63,6 +65,10 @@ public class ModConfigs {
 
 		for (Entry<ModConfig.Type, ConfigBase> pair : CONFIGS.entrySet())
 			context.registerConfig(pair.getKey(), pair.getValue().specification);
+
+
+		//BlockStressValues.registerProvider(context.getActiveNamespace(), common().kinetics.stressValues);
+
 
 	}
 
