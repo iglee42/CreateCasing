@@ -1,53 +1,42 @@
 package fr.iglee42.createcasing.api;
 
-import com.mojang.logging.LogUtils;
 import com.simibubi.create.AllBlocks;
-import com.simibubi.create.AllSpriteShifts;
-import com.simibubi.create.Create;
-import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
 import com.simibubi.create.content.fluids.PipeAttachmentModel;
 import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlock;
-import com.simibubi.create.content.kinetics.press.MechanicalPressBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogCTBehaviour;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.content.redstone.displayLink.source.ItemNameDisplaySource;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.data.*;
-import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.utility.Couple;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.blocks.api.ApiDepotBlock;
 import fr.iglee42.createcasing.blocks.api.ApiGearboxBlock;
 import fr.iglee42.createcasing.blocks.api.ApiMixerBlock;
 import fr.iglee42.createcasing.blocks.api.ApiPressBlock;
-import fr.iglee42.createcasing.blocks.customs.CustomDepotBlock;
-import fr.iglee42.createcasing.blocks.customs.CustomGearboxBlock;
-import fr.iglee42.createcasing.blocks.customs.CustomMixerBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedCogwheelBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedPipeBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedShaftBlock;
 import fr.iglee42.createcasing.items.ApiVerticalGearboxItem;
+import fr.iglee42.createcasing.registries.ModBlocks;
 import fr.iglee42.createcasing.utils.Deferred;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MaterialColor;
 
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
 import static com.simibubi.create.foundation.data.BlockStateGen.axisBlock;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
-import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 
 /**
  * @author iglee42
@@ -161,7 +150,7 @@ public class CreateCasingApi {
             BlockEntry<ApiGearboxBlock> gearbox = registrate.block(name + "_gearbox", (p) -> new ApiGearboxBlock(p, itemEntryDeferred))
                     .initialProperties(SharedProperties::stone)
                     .properties(BlockBehaviour.Properties::noOcclusion)
-                    .properties(p -> p.mapColor(MapColor.PODZOL))
+                    .properties(p -> p.color(MaterialColor.PODZOL))
                     .transform(BlockStressDefaults.setNoImpact())
                     .transform(axeOrPickaxe())
                     .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(connectedTexturesSprite)))
@@ -179,7 +168,7 @@ public class CreateCasingApi {
             BlockEntry<ApiGearboxBlock> gearbox = registrate.block(name + "_gearbox", (p) -> new ApiGearboxBlock(p, null))
                     .initialProperties(SharedProperties::stone)
                     .properties(BlockBehaviour.Properties::noOcclusion)
-                    .properties(p -> p.mapColor(MapColor.PODZOL))
+                    .properties(p -> p.color(MaterialColor.PODZOL))
                     .transform(BlockStressDefaults.setNoImpact())
                     .transform(axeOrPickaxe())
                     .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(connectedTexturesSprite)))
@@ -196,7 +185,7 @@ public class CreateCasingApi {
     public static BlockEntry<ApiDepotBlock> createDepot(CreateRegistrate registrate, String name){
         return registrate.block(name+"_depot", ApiDepotBlock::new)
                 .initialProperties(SharedProperties::stone)
-                .properties(p -> p.mapColor(MapColor.COLOR_GRAY))
+                .properties(p -> p.color(MaterialColor.COLOR_GRAY))
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
                 .onRegister(assignDataBehaviour(new ItemNameDisplaySource(), "combine_item_names"))
@@ -209,7 +198,7 @@ public class CreateCasingApi {
     public static BlockEntry<ApiMixerBlock> createMixer(CreateRegistrate registrate, String name){
         return registrate.block(name+"_mixer", ApiMixerBlock::new)
                 .initialProperties(SharedProperties::stone)
-                .properties(p -> p.mapColor(MapColor.STONE))
+                .properties(p -> p.color(MaterialColor.STONE))
                 .properties(BlockBehaviour.Properties::noOcclusion)
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
@@ -222,7 +211,7 @@ public class CreateCasingApi {
     public static BlockEntry<ApiPressBlock> createPress(CreateRegistrate registrate, String name) {
         return registrate.block(name+"_press", ApiPressBlock::new)
                 .initialProperties(SharedProperties::stone)
-                .properties(p -> p.noOcclusion().mapColor(MapColor.PODZOL))
+                .properties(p -> p.noOcclusion().color(MaterialColor.PODZOL))
                 .transform(axeOrPickaxe())
                 .blockstate(BlockStateGen.horizontalBlockProvider(true))
                 .transform(BlockStressDefaults.setImpact(8.0))
