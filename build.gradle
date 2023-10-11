@@ -20,7 +20,7 @@ apply plugin: 'maven-publish'
 
 group = 'fr.iglee42'
 
-version = '1.19.2-1.4.2'
+version = '1.19.2-1.5.0'
 
 java {
     archivesBaseName = 'CreateCasing'
@@ -180,6 +180,14 @@ repositories {
         url = "https://modmaven.dev"
     }
     maven { url "https://maven.shedaniel.me/" }
+
+    maven {
+        // saps.dev Maven (KubeJS and Rhino)
+        url = "https://maven.saps.dev/releases"
+        content {
+            includeGroup "dev.latvian.mods"
+        }
+    }
 }
 
 dependencies {
@@ -210,6 +218,10 @@ dependencies {
     implementation fg.deobf("me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}")
     implementation fg.deobf("dev.architectury:architectury-forge:${architectury_version}")
 
+    //KUBEJS
+    implementation fg.deobf("dev.latvian.mods:kubejs-forge:${kubejs_version}")
+
+    implementation fg.deobf("dev.latvian.mods:rhino-forge:${rhino_version}")
 
 
     //MIXINS
@@ -246,7 +258,7 @@ publishing {
     repositories {
         maven {
             name = 'igleeRepo'
-            url = 'http://iglee.site:8080/releases'
+            url = 'http://50.20.249.21:8080/releases'
             allowInsecureProtocol = true
             credentials {
                 username = System.getenv("MAVEN_USER")
