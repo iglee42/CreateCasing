@@ -13,6 +13,9 @@ public class KubeJSCompatInit {
             CreateCasingEventsJS.CASING.post(new CasingEventJs());
             CreateCasingEventsJS.GEARBOX.post(new GearboxEventJs());
             CreateCasingEventsJS.ENCASED.post(new EncasedEventJs());
+            CreateCasingEventsJS.DEPOT.post(new EncasedEventJs());
+            CreateCasingEventsJS.MIXER.post(new EncasedEventJs());
+            CreateCasingEventsJS.PRESS.post(new EncasedEventJs());
         }
     }
 }
