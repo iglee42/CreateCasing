@@ -118,6 +118,11 @@
     "createcasing:shadow_steel_encased_glass_shaft",
     "createcasing:refined_radiance_encased_glass_shaft",
     "createcasing:railway_encased_glass_shaft",
-    "createcasing:industrial_iron_encased_glass_shaft"
+    "createcasing:industrial_iron_encased_glass_shaft",
+    "createcasing:brass_depot",
+    "createcasing:copper_depot",
+    "createcasing:railway_depot",
+    "createcasing:industrial_iron_depot",
+    "createcasing:brass_shaft"
   ]
 }
