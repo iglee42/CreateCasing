@@ -1,13 +1,10 @@
 package fr.iglee42.createcasing.compat.kubejs.encased;
 
-import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.data.BuilderTransformers;
 import dev.latvian.mods.kubejs.KubeJS;
-import dev.latvian.mods.kubejs.client.LangEventJS;
 import dev.latvian.mods.kubejs.generator.AssetJsonGenerator;
-import dev.latvian.mods.kubejs.typings.Info;
 import dev.latvian.mods.kubejs.util.UtilsJS;
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.api.CreateCasingApi;
@@ -16,17 +13,17 @@ import fr.iglee42.createcasing.compat.kubejs.CreateCasingBuilderBaseJS;
 import fr.iglee42.createcasing.compat.kubejs.CreateCasingUtilsJS;
 import fr.iglee42.createcasing.compat.kubejs.EncasedBlockJSEnum;
 import fr.iglee42.createcasing.compat.kubejs.KubeJSCompatPlugin;
-import fr.iglee42.createcasing.compat.kubejs.gearbox.GearboxBuilderJs;
-import fr.iglee42.createcasing.registries.ModBlocks;
-import net.minecraft.core.registries.Registries;
+import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.material.MaterialColor;
 
+import java.util.Arrays;
+import java.util.Map;
 import java.util.function.Supplier;
+import java.util.stream.Collectors;
 
 import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
-import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 
 public class EncasedBuilderJs extends CreateCasingBuilderBaseJS {
 
@@ -264,17 +261,16 @@ public class EncasedBuilderJs extends CreateCasingBuilderBaseJS {
     }
 
     @Override
-    public void generateLang(LangEventJS lang) {
+    public void generateLang(Map<String, String> lang) {
         if (encasedType == EncasedBlockJSEnum.CUSTOM_SHAFT) {
             CreateCasingApi.forCustomShafts(shaft->{
-                lang.add(KubeJSCompatPlugin.REGISTRATE.getModid(), "block."+KubeJSCompatPlugin.REGISTRATE.getModid() + "." + name+ "_encased_" + shaft.getId().getPath(),UtilsJS.snakeCaseToTitleCase(name+ "_encased_" + shaft.getId().getPath()));
+                lang.put("block."+KubeJSCompatPlugin.REGISTRATE.getModid() + "." + name+ "_encased_" + shaft.getId().getPath(), Arrays.stream((name+ "_encased_" + shaft.getId().getPath()).split("_")).map(UtilsJS::toTitleCase).collect(Collectors.joining(" ")));
             });
         } else {
             super.generateLang(lang);
         }
     }
 
-    @Info("Create the encased block in the code")
     public void build() {
         if (casing == null) throw new IllegalArgumentException("Missing .casing() argument !");
         switch (encasedType){
@@ -290,12 +286,12 @@ public class EncasedBuilderJs extends CreateCasingBuilderBaseJS {
             case PIPE -> CreateCasingApi.createEncasedPipe(KubeJSCompatPlugin.REGISTRATE,name,casing,connectedTexture);
             case CUSTOM_SHAFT -> CreateCasingApi.forCustomShafts(shaft -> {
                 KubeJSCompatPlugin.REGISTRATE.block(name + "_encased_" + shaft.getId().getPath(), p -> new CustomEncasedShaft(p, casing, shaft))
-                        .properties(p -> p.mapColor(MapColor.PODZOL))
+                        .properties(p -> p.color(MaterialColor.PODZOL))
                         .transform(BuilderTransformers.encasedShaft(name, () -> connectedTexture))
                         .transform(EncasingRegistry.addVariantTo(shaft))
                         .transform(axeOrPickaxe())
                         .loot((l,s)->l.dropOther(s,s.getShaft().get().asItem()))
-                        .onRegisterAfter(Registries.ITEM, CreateCasing::hideItem)
+                        .onRegisterAfter(Registry.ITEM_REGISTRY, CreateCasing::hideItem)
                         .register();
             });
         }

@@ -1,20 +1,15 @@
 package fr.iglee42.createcasing.compat.kubejs;
 
 
-import com.mojang.logging.LogUtils;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import dev.latvian.mods.kubejs.KubeJSPlugin;
-import dev.latvian.mods.kubejs.client.LangEventJS;
 import dev.latvian.mods.kubejs.generator.AssetJsonGenerator;
 import dev.latvian.mods.kubejs.generator.DataJsonGenerator;
-import dev.latvian.mods.kubejs.registry.RegistryInfo;
 import fr.iglee42.createcasing.CreateCasing;
-import fr.iglee42.createcasing.compat.kubejs.gearbox.GearboxBuilderJs;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
-import net.minecraftforge.registries.RegisterEvent;
+
+import java.util.Map;
 
 public class KubeJSCompatPlugin extends KubeJSPlugin {
 
@@ -32,13 +27,6 @@ public class KubeJSCompatPlugin extends KubeJSPlugin {
     }
 
     @Override
-    public void registerEvents() {
-        CreateCasingEventsJS.GROUP.register();
-
-        CreateCasing.LOGGER.info("KubeJS Events Registers");
-    }
-
-    @Override
     public void generateAssetJsons(AssetJsonGenerator generator) {
         CreateCasingBuilderBaseJS.BUILDERS.forEach(b->b.generateAssetJsons(generator));
     }
@@ -49,7 +37,7 @@ public class KubeJSCompatPlugin extends KubeJSPlugin {
     }
 
     @Override
-    public void generateLang(LangEventJS event) {
-        CreateCasingBuilderBaseJS.BUILDERS.forEach(b->b.generateLang(event));
+    public void generateLang(Map<String, String> lang) {
+        CreateCasingBuilderBaseJS.BUILDERS.forEach(b->b.generateLang(lang));
     }
 }

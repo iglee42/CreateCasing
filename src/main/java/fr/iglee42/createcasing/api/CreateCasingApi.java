@@ -1,6 +1,7 @@
 package fr.iglee42.createcasing.api;
 
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
 import com.simibubi.create.content.fluids.PipeAttachmentModel;
@@ -34,6 +35,7 @@ import net.minecraft.world.level.material.MaterialColor;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import static com.simibubi.create.content.redstone.displayLink.AllDisplayBehaviours.assignDataBehaviour;
 import static com.simibubi.create.foundation.data.BlockStateGen.axisBlock;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
@@ -43,6 +45,21 @@ import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
  */
 public class CreateCasingApi {
 
+    /**
+     * Create a custom casing
+     * <br>
+     * This method just register the block you need to make the blockstate & models (item & block)
+     * @param registrate The registrate of your mod (e.g. Create.REGISTRATE)
+     * @param name The name of the casing in your shaft (e.g. andesite)
+     * @param connectedTexturesSprite The sprite with the connected texture of your casing (e.g. AllSpriteShifts.ANDESITE_CASING)
+     * @return The Block Entry of the Casing
+     */
+    public static BlockEntry<CasingBlock> createCasing(CreateRegistrate registrate, String name, CTSpriteShiftEntry connectedTexturesSprite){
+        return registrate.block(name+"_casing", CasingBlock::new)
+                .properties(p -> p.color(MaterialColor.PODZOL))
+                .transform(BuilderTransformers.casing(() -> connectedTexturesSprite))
+                .register();
+    }
 
     /**
      * Create a custom encased shaft (normal shaft from Create)

@@ -2,7 +2,6 @@ package fr.iglee42.createcasing.compat.kubejs.mixer;
 
 import dev.latvian.mods.kubejs.KubeJS;
 import dev.latvian.mods.kubejs.generator.AssetJsonGenerator;
-import dev.latvian.mods.kubejs.typings.Info;
 import fr.iglee42.createcasing.api.CreateCasingApi;
 import fr.iglee42.createcasing.compat.kubejs.CreateCasingBuilderBaseJS;
 import fr.iglee42.createcasing.compat.kubejs.KubeJSCompatPlugin;
@@ -51,7 +50,7 @@ public class MixerBuilderJs extends CreateCasingBuilderBaseJS {
     @Override
     public void generateAssetJsons(AssetJsonGenerator generator) {
         generator.blockState(new ResourceLocation("createcasing-kubejs",fullName),(gen)->{
-            gen.simpleVariant("","createcasing-kubejs:block/"+fullName);
+            gen.variant("","createcasing-kubejs:block/"+fullName);
         });
         generator.blockModel(new ResourceLocation("createcasing-kubejs",fullName),mg->{
             mg.parent("createcasing:block/api/mixer/block");
@@ -67,7 +66,6 @@ public class MixerBuilderJs extends CreateCasingBuilderBaseJS {
         });
     }
 
-    @Info("Create the mixer in the code and return it")
     public void build() {
         CreateCasingApi.createMixer(KubeJSCompatPlugin.REGISTRATE,name);
     }

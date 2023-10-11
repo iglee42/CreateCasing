@@ -1,13 +1,15 @@
 package fr.iglee42.createcasing.compat.kubejs;
 
-import dev.latvian.mods.kubejs.client.LangEventJS;
 import dev.latvian.mods.kubejs.generator.AssetJsonGenerator;
 import dev.latvian.mods.kubejs.generator.DataJsonGenerator;
 import dev.latvian.mods.kubejs.util.UtilsJS;
 import dev.latvian.mods.rhino.util.HideFromJS;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 public abstract class CreateCasingBuilderBaseJS {
 
@@ -48,14 +50,14 @@ public abstract class CreateCasingBuilderBaseJS {
     }
 
     @HideFromJS
-    public void generateLang(LangEventJS lang) {
+    public void generateLang(Map<String, String> lang) {
         var dname = displayName;
 
         if (dname.isEmpty()) {
-            dname = UtilsJS.snakeCaseToTitleCase(fullName);
+            dname = (String) Arrays.stream(this.fullName.split("_")).map(UtilsJS::toTitleCase).collect(Collectors.joining(" "));
         }
 
-        lang.add("createcasing-kubejs", getBuilderTranslationKey(), dname);
+        lang.put(getBuilderTranslationKey(), dname);
     }
 
 

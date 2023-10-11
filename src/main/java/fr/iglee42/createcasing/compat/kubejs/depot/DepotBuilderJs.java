@@ -1,13 +1,8 @@
 package fr.iglee42.createcasing.compat.kubejs.depot;
 
-import com.simibubi.create.content.decoration.encasing.CasingBlock;
-import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
-import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.latvian.mods.kubejs.KubeJS;
 import dev.latvian.mods.kubejs.generator.AssetJsonGenerator;
-import dev.latvian.mods.kubejs.typings.Info;
 import fr.iglee42.createcasing.api.CreateCasingApi;
-import fr.iglee42.createcasing.blocks.api.ApiDepotBlock;
 import fr.iglee42.createcasing.compat.kubejs.CreateCasingBuilderBaseJS;
 import fr.iglee42.createcasing.compat.kubejs.KubeJSCompatPlugin;
 import net.minecraft.resources.ResourceLocation;
@@ -55,7 +50,7 @@ public class DepotBuilderJs extends CreateCasingBuilderBaseJS {
     @Override
     public void generateAssetJsons(AssetJsonGenerator generator) {
         generator.blockState(new ResourceLocation("createcasing-kubejs",fullName),(gen)->{
-            gen.simpleVariant("","createcasing-kubejs:block/"+fullName);
+            gen.variant("","createcasing-kubejs:block/"+fullName);
         });
         generator.blockModel(new ResourceLocation("createcasing-kubejs",fullName),mg->{
             mg.parent("createcasing:block/api/base_depot");
@@ -66,7 +61,6 @@ public class DepotBuilderJs extends CreateCasingBuilderBaseJS {
         generator.itemModel(new ResourceLocation("createcasing-kubejs", fullName),mg-> mg.parent("createcasing-kubejs:block/"+fullName));
     }
 
-    @Info("Create the depot in the code and return it")
     public void build() {
         CreateCasingApi.createDepot(KubeJSCompatPlugin.REGISTRATE,name);
     }

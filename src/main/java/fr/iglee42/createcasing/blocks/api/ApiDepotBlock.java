@@ -5,6 +5,7 @@ import fr.iglee42.createcasing.blocks.customs.CustomDepotBlock;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.BlockGetter;
@@ -27,7 +28,7 @@ public class ApiDepotBlock extends CustomDepotBlock {
     public void appendHoverText(ItemStack p_49816_, @Nullable BlockGetter p_49817_, List<Component> p_49818_, TooltipFlag p_49819_) {
         super.appendHoverText(p_49816_, p_49817_, p_49818_, p_49819_);
         if (getDescriptionId().contains("xii")){
-            p_49818_.add(Component.literal("Thanks to Delta Prime XII for top textures of depot").withStyle(ChatFormatting.GOLD));
+            p_49818_.add(new TextComponent("Thanks to Delta Prime XII for top textures of depot").withStyle(ChatFormatting.GOLD));
         }
     }
 }

@@ -13,6 +13,7 @@ import fr.iglee42.createcasing.compat.kubejs.KubeJSCompatInit;
 import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
 import fr.iglee42.createcasing.registries.ModBlocks;
+import fr.iglee42.createcasing.registries.ModPackets;
 import fr.iglee42.createcasing.registries.ModSounds;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;

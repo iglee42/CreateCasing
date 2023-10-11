@@ -5,8 +5,6 @@ import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import dev.latvian.mods.kubejs.KubeJS;
 import dev.latvian.mods.kubejs.generator.AssetJsonGenerator;
-import dev.latvian.mods.kubejs.typings.Info;
-import dev.latvian.mods.rhino.util.HideFromJS;
 import fr.iglee42.createcasing.api.CreateCasingApi;
 import fr.iglee42.createcasing.compat.kubejs.CreateCasingBuilderBaseJS;
 import fr.iglee42.createcasing.compat.kubejs.KubeJSCompatPlugin;
@@ -49,7 +47,7 @@ public class CasingBuilderJs extends CreateCasingBuilderBaseJS {
     @Override
     public void generateAssetJsons(AssetJsonGenerator generator) {
         generator.blockState(new ResourceLocation("createcasing-kubejs",fullName),(gen)->{
-            gen.simpleVariant("","createcasing-kubejs:block/"+fullName);
+            gen.variant("","createcasing-kubejs:block/"+fullName);
         });
         generator.blockModel(new ResourceLocation("createcasing-kubejs",fullName),mg->{
             mg.parent("minecraft:block/cube_all");
@@ -58,7 +56,6 @@ public class CasingBuilderJs extends CreateCasingBuilderBaseJS {
         generator.itemModel(new ResourceLocation("createcasing-kubejs", fullName),mg-> mg.parent("createcasing-kubejs:block/"+fullName));
     }
 
-    @Info("Create the casing in the code and return it")
     public BlockEntry<CasingBlock> build() {
        return CreateCasingApi.createCasing(KubeJSCompatPlugin.REGISTRATE,name,connectedTexture);
     }

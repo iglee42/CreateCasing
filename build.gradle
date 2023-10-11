@@ -184,9 +184,6 @@ repositories {
     maven {
         // saps.dev Maven (KubeJS and Rhino)
         url = "https://maven.saps.dev/releases"
-        content {
-            includeGroup "dev.latvian.mods"
-        }
     }
 }
 
@@ -213,13 +210,11 @@ dependencies {
     //runtimeOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-forge:${rei_version}")
     compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-api-forge:${rei_version}")
     compileOnly fg.deobf("me.shedaniel:RoughlyEnoughItems-default-plugin-forge:${rei_version}")
-
     implementation fg.deobf("me.shedaniel.cloth:cloth-config-forge:${cloth_config_version}")
     implementation fg.deobf("dev.architectury:architectury-forge:${architectury_version}")
 
     //KUBEJS
     implementation fg.deobf("dev.latvian.mods:kubejs-forge:${kubejs_version}")
-
     implementation fg.deobf("dev.latvian.mods:rhino-forge:${rhino_version}")
 
 
