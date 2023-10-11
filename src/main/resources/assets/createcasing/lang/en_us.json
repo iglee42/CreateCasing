@@ -16,6 +16,7 @@
   "block.createcasing.andesite_encased_warped_shaft": "Andesite Encased Warped Shaft",
   "block.createcasing.bamboo_shaft": "Bamboo Shaft",
   "block.createcasing.birch_shaft": "Birch Shaft",
+  "block.createcasing.brass_depot": "Brass Depot",
   "block.createcasing.brass_encased_acacia_shaft": "Brass Encased Acacia Shaft",
   "block.createcasing.brass_encased_bamboo_shaft": "Brass Encased Bamboo Shaft",
   "block.createcasing.brass_encased_birch_shaft": "Brass Encased Birch Shaft",
@@ -35,6 +36,7 @@
   "block.createcasing.copper_clear_glass_encased_cogwheel": "Copper Clear Glass Encased Cogwheel",
   "block.createcasing.copper_clear_glass_encased_large_cogwheel": "Copper Clear Glass Encased Large Cogwheel",
   "block.createcasing.copper_clear_glass_encased_shaft": "Copper Clear Glass Encased Shaft",
+  "block.createcasing.copper_depot": "Copper Depot",
   "block.createcasing.copper_encased_acacia_shaft": "Copper Encased Acacia Shaft",
   "block.createcasing.copper_encased_bamboo_shaft": "Copper Encased Bamboo Shaft",
   "block.createcasing.copper_encased_birch_shaft": "Copper Encased Birch Shaft",
@@ -60,6 +62,7 @@
   "block.createcasing.crimson_shaft": "Crimson Shaft",
   "block.createcasing.dark_oak_shaft": "Dark Oak Shaft",
   "block.createcasing.glass_shaft": "Glass Shaft",
+  "block.createcasing.industrial_iron_depot": "Industrial Iron Depot",
   "block.createcasing.industrial_iron_encased_acacia_shaft": "Industrial Iron Encased Acacia Shaft",
   "block.createcasing.industrial_iron_encased_bamboo_shaft": "Industrial Iron Encased Bamboo Shaft",
   "block.createcasing.industrial_iron_encased_birch_shaft": "Industrial Iron Encased Birch Shaft",
@@ -81,6 +84,7 @@
   "block.createcasing.jungle_shaft": "Jungle Shaft",
   "block.createcasing.mangrove_shaft": "Mangrove Shaft",
   "block.createcasing.oak_shaft": "Oak Shaft",
+  "block.createcasing.railway_depot": "Railway Depot",
   "block.createcasing.railway_encased_acacia_shaft": "Railway Encased Acacia Shaft",
   "block.createcasing.railway_encased_bamboo_shaft": "Railway Encased Bamboo Shaft",
   "block.createcasing.railway_encased_birch_shaft": "Railway Encased Birch Shaft",
@@ -142,6 +146,13 @@
   "block.createcasing.refined_radiance_encased_mldeg_shaft": "Refined Radiance Encased Mldeg Shaft",
   "block.createcasing.shadow_steel_encased_mldeg_shaft": "Shadow Steel Encased Mldeg Shaft",
   "block.createcasing.copper_encased_mldeg_shaft": "Copper Encased Mldeg Shaft",
+  "block.createcasing.brass_shaft": "Brass Shaft",
+
+  "block.createcasing.brass_shaft.tooltip": "BRASS SHAFT",
+  "block.createcasing.brass_shaft.tooltip.summary" : "_Stop_ when the _stress_ is _upper_ than the _configured stress_. Can be _restarted_ with _redstone_ signal. It doesn't restart automatically",
+  "block.createcasing.brass_shaft.tooltip.condition1": "When R-Clicked",
+  "block.createcasing.brass_shaft.tooltip.behaviour1": "Opens the configuration screen",
+
 
   "block.createcasing.custom_mixer.tooltip": "CUSTOM MIXER",
   "block.createcasing.custom_mixer.tooltip.summary": "_Works_ like a _normal_ mixer",
@@ -153,6 +164,8 @@
   "block.createcasing.railway_mixer.tooltip.summary" : "Mixes _2x faster_, but _uses more stress_ than a normal mixer",
   "tooltip.createcasing.mixermixenormaly.title": "Config Disabled : ",
   "tooltip.createcasing.mixermixenormaly": "Warning: Custom Mixers work like a normal mixer!",
+
+  "tooltip.createcasing.brass_shaft_max_stress": "Stress to stop",
 
   "block.createcasing.custom_press.tooltip": "CUSTOM PRESS",
   "block.createcasing.custom_press.tooltip.summary" : "_Works_ like a _normal_ press",
@@ -188,5 +201,11 @@
 
   "createcasing.ponder.creative_cogwheel.header": "Generating Rotational Force using Creative Cogwheels",
   "createcasing.ponder.creative_cogwheel.text_1": "Creative Cogwheels are a compact and configurable source of Rotational Force",
-  "createcasing.ponder.creative_cogwheel.text_2": "The generated speed can be configured on its input panels"
+  "createcasing.ponder.creative_cogwheel.text_2": "The generated speed can be configured on its input panels",
+
+  "createcasing.ponder.depot.header": "Using Depots",
+  "createcasing.ponder.depot.text_1": "Depots can serve as 'stationary' belt elements",
+  "createcasing.ponder.depot.text_2": "Right-Click to manually place or remove Items from it",
+  "createcasing.ponder.depot.text_3": "Just like Mechanical Belts, it can provide items to processing",
+  "createcasing.ponder.depot.text_4": "...as well as provide Items to Mechanical Arms"
 }

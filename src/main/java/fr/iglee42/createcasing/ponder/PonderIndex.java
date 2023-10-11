@@ -41,6 +41,9 @@ public class PonderIndex {
 
 		HELPER.forComponents(ModBlocks.CREATIVE_COGWHEEL).addStoryBoard("creative_cogwheel",CustomPonderScenes::creativeCogwheel);
 
+		HELPER.forComponents(ModBlocks.BRASS_DEPOT,ModBlocks.COPPER_DEPOT,ModBlocks.RAILWAY_DEPOT,ModBlocks.INDUSTRIAL_IRON_DEPOT).addStoryBoard("depot", BeltScenes::depot);
+
+
 
 	}
 
