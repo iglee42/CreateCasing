@@ -9,6 +9,7 @@ import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
 import fr.iglee42.createcasing.compat.createcrystalclear.CreateCrystalClearCompatibility;
+import fr.iglee42.createcasing.compat.kubejs.KubeJSCompatInit;
 import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
 import fr.iglee42.createcasing.registries.ModBlocks;
@@ -45,7 +46,7 @@ public class CreateCasing {
 
     public static final String MODID = "createcasing";
 
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
 
     public static final CreativeModeTab TAB = new CreativeModeTab(MODID) {
         @Override
@@ -76,13 +77,18 @@ public class CreateCasing {
         ModSounds.prepare();
         ModBlocks.register();
         ModBlockEntities.register();
+        ModPackets.registerPackets();
+
+        if (ModList.get().isLoaded("kubejs")) {
+            KubeJSCompatInit.init();
+        }
 
         if (isCrystalClearLoaded()) CreateCrystalClearCompatibility.register();
 
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> CreateCasingClient.onCtorClient(modEventBus, forgeEventBus));
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        forgeEventBus.addListener(this::onPlayerInteract);
+        forgeEventBus.addListener(this::onPlayerRightClickOnBlock);
 
         modEventBus.addGenericListener(SoundEvent.class,ModSounds::register);
 
@@ -109,7 +115,7 @@ public class CreateCasing {
         return ModList.get().isLoaded("create_crystal_clear");
     }
 
-    private void onPlayerInteract(PlayerInteractEvent.RightClickBlock event){
+    private void onPlayerRightClickOnBlock(PlayerInteractEvent.RightClickBlock event){
         Level world = event.getPlayer().getLevel();
         if (event.getItemStack().isEmpty()) return;
         if (AllBlocks.MECHANICAL_PRESS.has(world.getBlockState(event.getPos()))){
