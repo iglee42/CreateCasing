@@ -1,30 +1,41 @@
 package fr.iglee42.createcasing.api;
 
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
 import com.simibubi.create.content.fluids.PipeAttachmentModel;
 import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlock;
+import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogCTBehaviour;
+import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
+import com.simibubi.create.content.redstone.displayLink.source.ItemNameDisplaySource;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.data.*;
 import com.simibubi.create.foundation.utility.Couple;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
+import fr.iglee42.createcasing.blocks.api.ApiDepotBlock;
 import fr.iglee42.createcasing.blocks.api.ApiGearboxBlock;
+import fr.iglee42.createcasing.blocks.api.ApiMixerBlock;
+import fr.iglee42.createcasing.blocks.api.ApiPressBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedCogwheelBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedPipeBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedShaftBlock;
 import fr.iglee42.createcasing.items.ApiVerticalGearboxItem;
+import fr.iglee42.createcasing.registries.ModBlocks;
 import fr.iglee42.createcasing.utils.Deferred;
+import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MaterialColor;
 
+import java.util.function.Consumer;
 import java.util.function.Supplier;
 
+import static com.simibubi.create.content.redstone.displayLink.AllDisplayBehaviours.assignDataBehaviour;
 import static com.simibubi.create.foundation.data.BlockStateGen.axisBlock;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
@@ -34,6 +45,21 @@ import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
  */
 public class CreateCasingApi {
 
+    /**
+     * Create a custom casing
+     * <br>
+     * This method just register the block you need to make the blockstate & models (item & block)
+     * @param registrate The registrate of your mod (e.g. Create.REGISTRATE)
+     * @param name The name of the casing in your shaft (e.g. andesite)
+     * @param connectedTexturesSprite The sprite with the connected texture of your casing (e.g. AllSpriteShifts.ANDESITE_CASING)
+     * @return The Block Entry of the Casing
+     */
+    public static BlockEntry<CasingBlock> createCasing(CreateRegistrate registrate, String name, CTSpriteShiftEntry connectedTexturesSprite){
+        return registrate.block(name+"_casing", CasingBlock::new)
+                .properties(p -> p.color(MaterialColor.PODZOL))
+                .transform(BuilderTransformers.casing(() -> connectedTexturesSprite))
+                .register();
+    }
 
     /**
      * Create a custom encased shaft (normal shaft from Create)
@@ -132,27 +158,89 @@ public class CreateCasingApi {
      * @param registrate The registrate of your mod (e.g. Create.REGISTRATE)
      * @param name The name of the casing in your shaft (e.g. andesite)
      * @param connectedTexturesSprite The sprite with the connected texture of your casing (e.g. AllSpriteShifts.ANDESITE_CASING)
+     * @param shouldGenerateVerticalItem The method should generate a vertical item for the gearbox
      * @return The Block Entry of the Encased Pipe
      */
-    public static BlockEntry<ApiGearboxBlock> createGearbox(CreateRegistrate registrate,String name,CTSpriteShiftEntry connectedTexturesSprite){
-        Deferred<ItemEntry<ApiVerticalGearboxItem>> itemEntryDeferred = new Deferred<>();
-        BlockEntry<ApiGearboxBlock> gearbox = registrate.block(name+"_gearbox",(p)-> new ApiGearboxBlock(p,itemEntryDeferred))
+    public static BlockEntry<ApiGearboxBlock> createGearbox(CreateRegistrate registrate,String name,CTSpriteShiftEntry connectedTexturesSprite,boolean shouldGenerateVerticalItem){
+        if (shouldGenerateVerticalItem) {
+            Deferred<ItemEntry<ApiVerticalGearboxItem>> itemEntryDeferred = new Deferred<>();
+            BlockEntry<ApiGearboxBlock> gearbox = registrate.block(name + "_gearbox", (p) -> new ApiGearboxBlock(p, itemEntryDeferred))
+                    .initialProperties(SharedProperties::stone)
+                    .properties(BlockBehaviour.Properties::noOcclusion)
+                    .properties(p -> p.color(MaterialColor.PODZOL))
+                    .transform(BlockStressDefaults.setNoImpact())
+                    .transform(axeOrPickaxe())
+                    .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(connectedTexturesSprite)))
+                    .onRegister(CreateRegistrate.casingConnectivity((block, cc) -> cc.make(block, connectedTexturesSprite,
+                            (s, f) -> f.getAxis() == s.getValue(GearboxBlock.AXIS))))
+                    .blockstate((c, p) -> axisBlock(c, p, $ -> AssetLookup.partialBaseModel(c, p), true))
+                    .item()
+                    .transform(customItemModel())
+                    .register();
+            itemEntryDeferred.set(registrate.item("vertical_" + name + "_gearbox", (p) -> new ApiVerticalGearboxItem(p, gearbox.get()))
+                    .model(AssetLookup.customBlockItemModel(name + "_gearbox", "item_vertical"))
+                    .register());
+            return gearbox;
+        } else {
+            BlockEntry<ApiGearboxBlock> gearbox = registrate.block(name + "_gearbox", (p) -> new ApiGearboxBlock(p, null))
+                    .initialProperties(SharedProperties::stone)
+                    .properties(BlockBehaviour.Properties::noOcclusion)
+                    .properties(p -> p.color(MaterialColor.PODZOL))
+                    .transform(BlockStressDefaults.setNoImpact())
+                    .transform(axeOrPickaxe())
+                    .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(connectedTexturesSprite)))
+                    .onRegister(CreateRegistrate.casingConnectivity((block, cc) -> cc.make(block, connectedTexturesSprite,
+                            (s, f) -> f.getAxis() == s.getValue(GearboxBlock.AXIS))))
+                    .blockstate((c, p) -> axisBlock(c, p, $ -> AssetLookup.partialBaseModel(c, p), true))
+                    .item()
+                    .transform(customItemModel())
+                    .register();
+            return gearbox;
+        }
+    }
+
+    public static BlockEntry<ApiDepotBlock> createDepot(CreateRegistrate registrate, String name){
+        return registrate.block(name+"_depot", ApiDepotBlock::new)
                 .initialProperties(SharedProperties::stone)
-                .properties(BlockBehaviour.Properties::noOcclusion)
-                .properties(p -> p.color(MaterialColor.PODZOL))
-                .transform(BlockStressDefaults.setNoImpact())
+                .properties(p -> p.color(MaterialColor.COLOR_GRAY))
                 .transform(axeOrPickaxe())
-                .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(connectedTexturesSprite)))
-                .onRegister(CreateRegistrate.casingConnectivity((block, cc) -> cc.make(block, connectedTexturesSprite,
-                        (s, f) -> f.getAxis() == s.getValue(GearboxBlock.AXIS))))
-                .blockstate((c, p) -> axisBlock(c, p, $ -> AssetLookup.partialBaseModel(c, p), true))
+                .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
+                .onRegister(assignDataBehaviour(new ItemNameDisplaySource(), "combine_item_names"))
                 .item()
+                .transform(customItemModel("_", "block"))
+                .register();
+    }
+
+
+    public static BlockEntry<ApiMixerBlock> createMixer(CreateRegistrate registrate, String name){
+        return registrate.block(name+"_mixer", ApiMixerBlock::new)
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.color(MaterialColor.STONE))
+                .properties(BlockBehaviour.Properties::noOcclusion)
+                .transform(axeOrPickaxe())
+                .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
+                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(BlockStressDefaults.setImpact(4.0))
+                .item(AssemblyOperatorBlockItem::new)
                 .transform(customItemModel())
                 .register();
-        itemEntryDeferred.set(registrate.item("vertical_"+name+"_gearbox", (p)->new ApiVerticalGearboxItem(p, gearbox.get()))
-                .model(AssetLookup.customBlockItemModel(name + "_gearbox", "item_vertical"))
-                .register());
-        return gearbox;
+    }
+    public static BlockEntry<ApiPressBlock> createPress(CreateRegistrate registrate, String name) {
+        return registrate.block(name+"_press", ApiPressBlock::new)
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.noOcclusion().color(MaterialColor.PODZOL))
+                .transform(axeOrPickaxe())
+                .blockstate(BlockStateGen.horizontalBlockProvider(true))
+                .transform(BlockStressDefaults.setImpact(8.0))
+                .item(AssemblyOperatorBlockItem::new)
+                .transform(customItemModel())
+                .register();
+    }
+
+
+
+    public static void forCustomShafts(Consumer<BlockEntry<? extends ShaftBlock>> action) {
+        ModBlocks.forEachShaft(action);
     }
 
 

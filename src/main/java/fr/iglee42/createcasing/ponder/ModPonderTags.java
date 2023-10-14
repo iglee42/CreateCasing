@@ -37,7 +37,11 @@ public class ModPonderTags{
 			.add(ModBlocks.COPPER_PRESS)
 			.add(ModBlocks.RAILWAY_PRESS)
 			.add(ModBlocks.INDUSTRIAL_IRON_PRESS)
-			.add(ModBlocks.CREATIVE_COGWHEEL);
+			.add(ModBlocks.CREATIVE_COGWHEEL)
+			.add(ModBlocks.BRASS_DEPOT)
+			.add(ModBlocks.COPPER_DEPOT)
+			.add(ModBlocks.RAILWAY_DEPOT)
+			.add(ModBlocks.INDUSTRIAL_IRON_DEPOT);
 
 	}
 
