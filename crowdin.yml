@@ -1,2 +1,5 @@
 bundles:
   - 1
+files:
+  - source: /src/main/resources/assets/createcasing/lang/en_us.json
+    translation: /%original_path%/%locale_with_underscore%.json
