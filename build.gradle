@@ -20,7 +20,7 @@ apply plugin: 'maven-publish'
 
 group = 'fr.iglee42'
 
-version = '1.18.2-1.5.0'
+version = '1.18.2-1.5.0-ht1'
 
 java {
     archivesBaseName = 'CreateCasing'
@@ -252,7 +252,7 @@ publishing {
     repositories {
         maven {
             name = 'igleeRepo'
-            url = 'http://50.20.249.21:8080/releases'
+            url = "http://${System.getenv("MAVEN_IP")}/releases"
             allowInsecureProtocol = true
             credentials {
                 username = System.getenv("MAVEN_USER")

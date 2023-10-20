@@ -12,7 +12,10 @@ import fr.iglee42.createcasing.registries.ModGuiTextures;
 import fr.iglee42.createcasing.registries.ModPackets;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
+@OnlyIn(Dist.CLIENT)
 public class BrassShaftScreen extends AbstractSimiScreen {
 
     protected BrassShaftBlockEntity be;
