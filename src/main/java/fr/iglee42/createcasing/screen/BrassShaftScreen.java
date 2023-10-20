@@ -1,29 +1,20 @@
 package fr.iglee42.createcasing.screen;
 
-import com.jozufozu.flywheel.util.transform.TransformStack;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.simibubi.create.AllPackets;
-import com.simibubi.create.compat.Mods;
-import com.simibubi.create.content.equipment.zapper.ConfigureZapperPacket;
-import com.simibubi.create.content.redstone.thresholdSwitch.ConfigureThresholdSwitchPacket;
-import com.simibubi.create.content.trains.station.StationRenderer;
 import com.simibubi.create.foundation.gui.AbstractSimiScreen;
-import com.simibubi.create.foundation.gui.AllGuiTextures;
 import com.simibubi.create.foundation.gui.AllIcons;
 import com.simibubi.create.foundation.gui.element.GuiGameElement;
 import com.simibubi.create.foundation.gui.widget.*;
 import com.simibubi.create.foundation.utility.Components;
 import fr.iglee42.createcasing.blockEntities.BrassShaftBlockEntity;
-import fr.iglee42.createcasing.blockEntities.MetalShaftBlockEntity;
 import fr.iglee42.createcasing.packets.ConfigureBrassShaftPacket;
-import fr.iglee42.createcasing.registries.ModBlocks;
 import fr.iglee42.createcasing.registries.ModGuiTextures;
 import fr.iglee42.createcasing.registries.ModPackets;
 import net.minecraft.client.gui.GuiGraphics;
-import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
+@OnlyIn(Dist.CLIENT)
 public class BrassShaftScreen extends AbstractSimiScreen {
 
     protected BrassShaftBlockEntity be;
