@@ -6,6 +6,7 @@ import com.simibubi.create.foundation.gui.ScreenOpener;
 import fr.iglee42.createcasing.blockEntities.BrassShaftBlockEntity;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
 import fr.iglee42.createcasing.screen.BrassShaftScreen;
+import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -17,7 +18,9 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.fml.DistExecutor;
+import org.apache.commons.compress.archivers.sevenz.CLI;
 
 public class BrassShaftBlock extends MetalShaftBlock{
     public BrassShaftBlock(Properties properties) {
@@ -32,8 +35,15 @@ public class BrassShaftBlock extends MetalShaftBlock{
     @Override
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult ray) {
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT,
-                () -> () -> withBlockEntityDo(world, pos, be -> ScreenOpener.open(new BrassShaftScreen((BrassShaftBlockEntity) be))));
+                () -> () -> withBlockEntityDo(world, pos, be -> openScreen((BrassShaftBlockEntity) be,player)));
         return InteractionResult.SUCCESS;
+    }
+
+    @OnlyIn(Dist.CLIENT)
+    protected void openScreen(BrassShaftBlockEntity be,Player player){
+        if (!(player instanceof LocalPlayer))
+            return;
+        ScreenOpener.open(new BrassShaftScreen(be));
     }
 
     @Override

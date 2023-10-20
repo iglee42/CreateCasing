@@ -7,11 +7,15 @@ import com.simibubi.create.foundation.gui.element.GuiGameElement;
 import com.simibubi.create.foundation.gui.widget.*;
 import com.simibubi.create.foundation.utility.Components;
 import fr.iglee42.createcasing.blockEntities.BrassShaftBlockEntity;
+import fr.iglee42.createcasing.blockEntities.MetalShaftBlockEntity;
 import fr.iglee42.createcasing.packets.ConfigureBrassShaftPacket;
 import fr.iglee42.createcasing.registries.ModGuiTextures;
 import fr.iglee42.createcasing.registries.ModPackets;
 import net.minecraft.network.chat.Component;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
+@OnlyIn(Dist.CLIENT)
 public class BrassShaftScreen extends AbstractSimiScreen {
 
     protected BrassShaftBlockEntity be;
