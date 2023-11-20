@@ -1,6 +1,7 @@
 package fr.iglee42.createcasing.compat.kubejs;
 
 import dev.latvian.mods.kubejs.script.ScriptType;
+import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.compat.kubejs.casing.CasingEventJs;
 import fr.iglee42.createcasing.compat.kubejs.depot.DepotEventJs;
 import fr.iglee42.createcasing.compat.kubejs.encased.EncasedEventJs;
@@ -13,6 +14,7 @@ public class KubeJSCompatInit {
 
     public static void init(){
         if(ModList.get().isLoaded("kubejs")){
+            CreateCasing.LOGGER.info("Event posting...");
             new CasingEventJs().post(ScriptType.STARTUP,"createencased","casing");
             new GearboxEventJs().post(ScriptType.STARTUP,"createencased","gearbox");
             new EncasedEventJs().post(ScriptType.STARTUP,"createencased","encased");
