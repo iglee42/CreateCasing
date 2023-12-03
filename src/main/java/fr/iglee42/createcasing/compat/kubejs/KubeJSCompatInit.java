@@ -13,7 +13,8 @@ import net.minecraftforge.fml.ModList;
 public class KubeJSCompatInit {
 
     public static void init(){
-        if(ModList.get().isLoaded("kubejs")){
+        /*if(ModList.get().isLoaded("kubejs")){
+
             CreateCasing.LOGGER.info("Event posting...");
             CreateCasingEventsJS.CASING.post(ScriptType.STARTUP,new CasingEventJs());
             CreateCasingEventsJS.GEARBOX.post(ScriptType.STARTUP,new GearboxEventJs());
@@ -21,6 +22,6 @@ public class KubeJSCompatInit {
             CreateCasingEventsJS.DEPOT.post(ScriptType.STARTUP,new DepotEventJs());
             CreateCasingEventsJS.MIXER.post(ScriptType.STARTUP,new MixerEventJs());
             CreateCasingEventsJS.PRESS.post(ScriptType.STARTUP,new PressEventJs());
-        }
+        }*/
     }
 }

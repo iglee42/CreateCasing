@@ -27,15 +27,15 @@ public class KubeJSCompatPlugin extends KubeJSPlugin {
 
     @Override
     public void init() {
-        CreateCasing.LOGGER.info("KubeJs plugin Launch");
-        REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
+        /*CreateCasing.LOGGER.info("KubeJs plugin Launch");
+        REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());*/
     }
 
     @Override
     public void registerEvents() {
-        CreateCasingEventsJS.GROUP.register();
+        /*CreateCasingEventsJS.GROUP.register();
 
-        CreateCasing.LOGGER.info("KubeJS Events Registers");
+        CreateCasing.LOGGER.info("KubeJS Events Registers");*/
     }
 
     @Override
