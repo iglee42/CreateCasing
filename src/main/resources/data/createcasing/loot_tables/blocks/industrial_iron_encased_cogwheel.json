@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "createcasing:industrial_iron_encased_cogwheel"
+          "name": "create:cogwheel"
         }
       ],
       "rolls": 1.0
