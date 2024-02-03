@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "C",
+    "I"
+  ],
+  "key": {
+    "C": {
+      "item": "createcasing:creative_casing"
+    },
+    "S": {
+      "item": "create:shaft"
+    },
+    "I": {
+      "tag": "forge:storage_blocks/iron"
+    }
+  },
+  "result": {
+    "item": "createcasing:creative_press"
+  }
+}

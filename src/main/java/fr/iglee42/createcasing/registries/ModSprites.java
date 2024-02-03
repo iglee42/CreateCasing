@@ -20,6 +20,9 @@ public class ModSprites {
     public static final CTSpriteShiftEntry SHADOW_ENCASED_COGWHEEL_OTHERSIDE;
     public static final CTSpriteShiftEntry RADIANCE_ENCASED_COGWHEEL_SIDE;
     public static final CTSpriteShiftEntry RADIANCE_ENCASED_COGWHEEL_OTHERSIDE;
+    public static final CTSpriteShiftEntry CREATIVE_CASING;
+    public static final CTSpriteShiftEntry CREATIVE_ENCASED_COGWHEEL_SIDE;
+    public static final CTSpriteShiftEntry CREATIVE_ENCASED_COGWHEEL_OTHERSIDE;
 
     private static CTSpriteShiftEntry horizontal(String name) {
         return getCT(AllCTTypes.HORIZONTAL, name);
@@ -27,6 +30,9 @@ public class ModSprites {
 
     private static CTSpriteShiftEntry vertical(String name) {
         return getCT(AllCTTypes.VERTICAL, name);
+    }
+    private static CTSpriteShiftEntry omni(String name) {
+        return getCT(AllCTTypes.OMNIDIRECTIONAL, name);
     }
 
 
@@ -48,6 +54,9 @@ public class ModSprites {
         SHADOW_ENCASED_COGWHEEL_OTHERSIDE = horizontal("shadow_encased_cogwheel_side");
         RADIANCE_ENCASED_COGWHEEL_SIDE = vertical("radiance_encased_cogwheel_side");
         RADIANCE_ENCASED_COGWHEEL_OTHERSIDE = horizontal("radiance_encased_cogwheel_side");
+        CREATIVE_CASING = omni("creative_casing");
+        CREATIVE_ENCASED_COGWHEEL_SIDE = vertical("creative_encased_cogwheel_side");
+        CREATIVE_ENCASED_COGWHEEL_OTHERSIDE = horizontal("creative_encased_cogwheel_side");
     }
 
 }
