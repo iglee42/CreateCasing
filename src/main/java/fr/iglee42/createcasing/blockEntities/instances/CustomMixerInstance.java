@@ -27,7 +27,8 @@ public class CustomMixerInstance extends EncasedCogInstance implements DynamicIn
 		RotatingData mixerHead = null;
 
 
-		OrientedData mixerPole = null;
+		OrientedData mixerPole = getOrientedMaterial().getModel(AllPartialModels.MECHANICAL_MIXER_POLE, blockState)
+				.createInstance();;
 
 
 		switch (tile.getBlockState().getBlock().getRegistryName().getPath().replace("_mixer","").toLowerCase()) {
@@ -35,35 +36,25 @@ public class CustomMixerInstance extends EncasedCogInstance implements DynamicIn
 				mixerHead = materialManager.defaultCutout()
 						.material(AllMaterialSpecs.ROTATING).getModel(ModPartialModels.BRASS_MIXER_HEAD, blockState)
 						.createInstance();
-				mixerPole = getOrientedMaterial().getModel(ModPartialModels.BRASS_MIXER_POLE, blockState)
-						.createInstance();
 			}
             case "copper" -> {
 				mixerHead = materialManager.defaultCutout()
 						.material(AllMaterialSpecs.ROTATING).getModel(ModPartialModels.COPPER_MIXER_HEAD, blockState)
-						.createInstance();
-				mixerPole = getOrientedMaterial().getModel(ModPartialModels.COPPER_MIXER_POLE, blockState)
 						.createInstance();
 			}
             case "railway" -> {
                 mixerHead = materialManager.defaultCutout()
                         .material(AllMaterialSpecs.ROTATING).getModel(ModPartialModels.RAILWAY_MIXER_HEAD, blockState)
                         .createInstance();
-                mixerPole = getOrientedMaterial().getModel(ModPartialModels.RAILWAY_MIXER_POLE, blockState)
-                        .createInstance();
             }
 			case "industrial_iron" ->{
 				mixerHead = materialManager.defaultCutout()
 						.material(AllMaterialSpecs.ROTATING).getModel(ModPartialModels.INDUSTRIAL_IRON_MIXER_HEAD, blockState)
 						.createInstance();
-				mixerPole = getOrientedMaterial().getModel(ModPartialModels.INDUSTRIAL_IRON_MIXER_POLE, blockState)
-						.createInstance();
 			}
 			default -> {
 				mixerHead = materialManager.defaultCutout()
 						.material(AllMaterialSpecs.ROTATING).getModel(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState)
-						.createInstance();
-				mixerPole = getOrientedMaterial().getModel(AllPartialModels.MECHANICAL_MIXER_POLE, blockState)
 						.createInstance();
 			}
 		}

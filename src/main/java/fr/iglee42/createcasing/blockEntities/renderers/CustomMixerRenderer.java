@@ -50,33 +50,27 @@ public class CustomMixerRenderer extends KineticBlockEntityRenderer {
 		float angle = ((time * speed * 6 / 10f) % 360) / 180 * (float) Math.PI;
 
 		SuperByteBuffer poleRender = CachedBufferer.partial(AllPartialModels.MECHANICAL_MIXER_POLE, blockState);
-		SuperByteBuffer oldPoleRender = CachedBufferer.partial(AllPartialModels.MECHANICAL_MIXER_POLE, blockState);
 		SuperByteBuffer headRender = CachedBufferer.partial(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState);
 		SuperByteBuffer oldHeadRender = CachedBufferer.partial(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState);
 		switch (te.getBlockState().getBlock().getRegistryName().getPath().replace("_mixer","").toLowerCase()) {
 			case "brass" -> {
-				poleRender = CachedBufferer.partial(ModPartialModels.BRASS_MIXER_POLE, blockState);
 				headRender = CachedBufferer.partial(ModPartialModels.BRASS_MIXER_HEAD, blockState);
 			}
 			case "copper" -> {
-				poleRender = CachedBufferer.partial(ModPartialModels.COPPER_MIXER_POLE, blockState);
 				headRender = CachedBufferer.partial(ModPartialModels.COPPER_MIXER_HEAD, blockState);
 			}
 			case "railway" -> {
-				poleRender = CachedBufferer.partial(ModPartialModels.RAILWAY_MIXER_POLE, blockState);
 				headRender = CachedBufferer.partial(ModPartialModels.RAILWAY_MIXER_HEAD, blockState);
 			}
 			case "industrial_iron" -> {
-				poleRender = CachedBufferer.partial(ModPartialModels.INDUSTRIAL_IRON_MIXER_POLE, blockState);
 				headRender = CachedBufferer.partial(ModPartialModels.INDUSTRIAL_IRON_MIXER_HEAD, blockState);
 			}
 			default -> {
-				poleRender = CachedBufferer.partial(AllPartialModels.MECHANICAL_MIXER_POLE, blockState);
 				headRender = CachedBufferer.partial(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState);
 			}
 		}
 
-		if (poleRender == oldPoleRender ||  headRender == oldHeadRender) return;
+		if (headRender == oldHeadRender) return;
 
 		poleRender.translate(0, -renderedHeadOffset, 0)
 				.light(light)
