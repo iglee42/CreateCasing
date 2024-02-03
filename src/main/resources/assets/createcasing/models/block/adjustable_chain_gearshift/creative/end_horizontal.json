@@ -1,0 +1,6 @@
+{
+  "parent": "createcasing:block/encased_chain_drive/creative/end_horizontal",
+  "textures": {
+    "side": "createcasing:block/creative_adjustable_chain_gearshift"
+  }
+}

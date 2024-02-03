@@ -5,7 +5,10 @@
   "compatibilityLevel": "JAVA_17",
   "refmap": "createcasing.refmap.json",
   "mixins": [
+    "create.AllArmInteractionPointTypesMixin",
     "create.AssemblyOperatorBlockItemMixin",
+    "create.CreateJeiMixin",
+    "create.RotationPropagatorMixin",
     "minecraft.BlockEntityTypeMixin"
   ],
   "client": [
