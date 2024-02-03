@@ -7,6 +7,8 @@
   "mixins": [
     "create.AllArmInteractionPointTypesMixin",
     "create.AssemblyOperatorBlockItemMixin",
+    "create.CreateJeiMixin",
+    "create.RotationPropagatorMixin",
     "minecraft.BlockEntityTypeMixin"
   ],
   "client": [

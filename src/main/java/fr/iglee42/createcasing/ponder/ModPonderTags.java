@@ -3,8 +3,11 @@ package fr.iglee42.createcasing.ponder;
 import com.simibubi.create.foundation.ponder.PonderRegistry;
 import com.simibubi.create.foundation.ponder.PonderTag;
 import com.simibubi.create.infrastructure.ponder.AllPonderTags;
+import com.tterrag.registrate.util.entry.ItemProviderEntry;
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.registries.ModBlocks;
+
+import java.util.List;
 
 public class ModPonderTags{
 
@@ -24,24 +27,17 @@ public class ModPonderTags{
 		PonderRegistry.TAGS.forTag(AllPonderTags.CREATIVE)
 						.add(ModBlocks.CREATIVE_COGWHEEL);
 
-		PonderRegistry.TAGS.forTag(ENCASED_BLOCKS)
-			.add(ModBlocks.BRASS_GEARBOX)
-			.add(ModBlocks.COPPER_GEARBOX)
-			.add(ModBlocks.RAILWAY_GEARBOX)
-			.add(ModBlocks.INDUSTRIAL_IRON_GEARBOX)
-			.add(ModBlocks.BRASS_MIXER)
-			.add(ModBlocks.COPPER_MIXER)
-			.add(ModBlocks.RAILWAY_MIXER)
-			.add(ModBlocks.INDUSTRIAL_IRON_MIXER)
-			.add(ModBlocks.BRASS_PRESS)
-			.add(ModBlocks.COPPER_PRESS)
-			.add(ModBlocks.RAILWAY_PRESS)
-			.add(ModBlocks.INDUSTRIAL_IRON_PRESS)
-			.add(ModBlocks.CREATIVE_COGWHEEL)
-			.add(ModBlocks.BRASS_DEPOT)
-			.add(ModBlocks.COPPER_DEPOT)
-			.add(ModBlocks.RAILWAY_DEPOT)
-			.add(ModBlocks.INDUSTRIAL_IRON_DEPOT);
+		List<ItemProviderEntry<?>> entries = List.of(
+				ModBlocks.CREATIVE_COGWHEEL,
+				ModBlocks.BRASS_GEARBOX,ModBlocks.COPPER_GEARBOX,ModBlocks.RAILWAY_GEARBOX,ModBlocks.INDUSTRIAL_IRON_GEARBOX,ModBlocks.CREATIVE_GEARBOX,
+				ModBlocks.BRASS_MIXER,ModBlocks.COPPER_MIXER,ModBlocks.RAILWAY_MIXER,ModBlocks.INDUSTRIAL_IRON_MIXER,ModBlocks.CREATIVE_MIXER,
+				ModBlocks.BRASS_PRESS,ModBlocks.COPPER_PRESS,ModBlocks.RAILWAY_PRESS,ModBlocks.INDUSTRIAL_IRON_PRESS,ModBlocks.CREATIVE_PRESS,
+				ModBlocks.BRASS_DEPOT,ModBlocks.COPPER_DEPOT,ModBlocks.RAILWAY_DEPOT,ModBlocks.INDUSTRIAL_IRON_DEPOT,ModBlocks.CREATIVE_DEPOT,
+				ModBlocks.BRASS_CHAIN_DRIVE,ModBlocks.COPPER_CHAIN_DRIVE,ModBlocks.RAILWAY_CHAIN_DRIVE,ModBlocks.INDUSTRIAL_IRON_CHAIN_DRIVE,ModBlocks.CREATIVE_CHAIN_DRIVE,
+				ModBlocks.BRASS_CHAIN_GEARSHIFT,ModBlocks.COPPER_CHAIN_GEARSHIFT,ModBlocks.RAILWAY_CHAIN_GEARSHIFT,ModBlocks.INDUSTRIAL_IRON_CHAIN_GEARSHIFT,ModBlocks.CREATIVE_CHAIN_GEARSHIFT);
+
+		entries.forEach(e->PonderRegistry.TAGS.forTag(ENCASED_BLOCKS).add(e));
+
 
 	}
 
