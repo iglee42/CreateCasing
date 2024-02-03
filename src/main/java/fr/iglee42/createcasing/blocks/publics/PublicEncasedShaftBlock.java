@@ -15,7 +15,7 @@ import java.util.function.Supplier;
 /*
 This class allow to use the constructore of EncasedShaftBlock from the create code
  */
-public class PublicEncasedShaftBlock extends EncasedShaftBlock implements DontShowInCreativeTab {
+public class PublicEncasedShaftBlock extends EncasedShaftBlock /*implements DontShowInCreativeTab*/ {
 
 	public PublicEncasedShaftBlock(BlockBehaviour.Properties properties, Supplier<Block> casing) {
 		super(properties, casing);

@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 /*
 This class allow to use the constructore of EncasedCogWheelBlock from the create code
  */
-public class PublicEncasedCogwheelBlock extends EncasedCogwheelBlock implements DontShowInCreativeTab {
+public class PublicEncasedCogwheelBlock extends EncasedCogwheelBlock /*implements DontShowInCreativeTab*/ {
 
 	public PublicEncasedCogwheelBlock( Properties properties, boolean large,Supplier<Block> casing) {
 		super(properties, large, casing);

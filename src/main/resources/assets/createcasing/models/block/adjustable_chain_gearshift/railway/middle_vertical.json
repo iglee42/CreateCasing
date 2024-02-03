@@ -1,0 +1,6 @@
+{
+  "parent": "createcasing:block/encased_chain_drive/railway/middle_vertical",
+  "textures": {
+    "side": "createcasing:block/railway_adjustable_chain_gearshift"
+  }
+}

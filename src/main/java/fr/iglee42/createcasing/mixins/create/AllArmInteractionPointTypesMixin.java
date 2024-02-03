@@ -16,7 +16,7 @@ public class AllArmInteractionPointTypesMixin {
 
     @Inject(method = "canCreatePoint", at = @At("HEAD"), cancellable = true)
     private void inject(Level level, BlockPos pos, BlockState state, CallbackInfoReturnable<Boolean> cir){
-        if (ModBlocks.BRASS_DEPOT.has(state) || ModBlocks.COPPER_DEPOT.has(state) || ModBlocks.RAILWAY_DEPOT.has(state) || ModBlocks.INDUSTRIAL_IRON_DEPOT.has(state) || state.getBlock() instanceof ApiDepotBlock) cir.setReturnValue(true);
+        if (ModBlocks.BRASS_DEPOT.has(state) || ModBlocks.COPPER_DEPOT.has(state) || ModBlocks.RAILWAY_DEPOT.has(state) || ModBlocks.INDUSTRIAL_IRON_DEPOT.has(state) || ModBlocks.CREATIVE_DEPOT.has(state) || state.getBlock() instanceof ApiDepotBlock) cir.setReturnValue(true);
     }
 
 }

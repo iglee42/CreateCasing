@@ -129,6 +129,7 @@ run/
 /src/main/resources/assets/createcasing/blockstates/railway_encased_mldeg_shaft.json
 /src/main/resources/assets/createcasing/blockstates/refined_radiance_encased_mldeg_shaft.json
 /src/main/resources/assets/createcasing/blockstates/shadow_steel_encased_mldeg_shaft.json
+/src/main/resources/assets/createcasing/blockstates/creative_encased_mldeg_shaft.json
 /src/main/resources/assets/createcasing/textures/block/mldeg_shaft_top.png
 /src/main/resources/assets/createcasing/models/item/andesite_encased_mldeg_shaft.json
 /src/main/resources/assets/createcasing/models/item/brass_encased_mldeg_shaft.json
@@ -137,4 +138,5 @@ run/
 /src/main/resources/assets/createcasing/models/item/railway_encased_mldeg_shaft.json
 /src/main/resources/assets/createcasing/models/item/refined_radiance_encased_mldeg_shaft.json
 /src/main/resources/assets/createcasing/models/item/shadow_steel_encased_mldeg_shaft.json
+/src/main/resources/assets/createcasing/models/item/creative_encased_mldeg_shaft.json
 /src/main/resources/assets/createcasing/models/item/api/base_encased_mldeg_shaft.json
