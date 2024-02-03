@@ -1,0 +1,6 @@
+{
+  "parent": "createcasing:block/encased_chain_drive/brass/end_vertical",
+  "textures": {
+    "side": "createcasing:block/brass_adjustable_chain_gearshift_powered"
+  }
+}
