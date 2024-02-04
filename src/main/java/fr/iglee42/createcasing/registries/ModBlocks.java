@@ -63,11 +63,13 @@ import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 public class ModBlocks {
 
 
+    static {
+        REGISTRATE.creativeModeTab(() -> CreateCasing.TAB);
+    }
+
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, CreateCasing.MODID);
 
     public static final BlockEntry<CasingBlock> CREATIVE_CASING = createCasing("creative",AllSpriteShifts.CREATIVE_CASING);
-
-
     //SHAFTS
     public static final BlockEntry<PublicEncasedShaftBlock> RAILWAY_ENCASED_SHAFT = createShaft("railway",AllBlocks.RAILWAY_CASING::get,AllSpriteShifts.RAILWAY_CASING);
     public static final BlockEntry<PublicEncasedShaftBlock> COPPER_ENCASED_SHAFT = createShaft("copper",AllBlocks.COPPER_CASING::get, AllSpriteShifts.COPPER_CASING);
@@ -242,6 +244,15 @@ public class ModBlocks {
                     .register();
 
 
+    public static BlockEntry<CasingBlock> createCasing(String name, CTSpriteShiftEntry connectedTexturesSprite){
+        return REGISTRATE.block(name+"_casing", CasingBlock::new)
+                .initialProperties(SharedProperties::softMetal)
+                .properties(p -> p.color(MaterialColor.PODZOL))
+                .transform(BuilderTransformers.casing(() -> connectedTexturesSprite))
+                .properties(p->p.sound(SoundType.NETHERITE_BLOCK))
+                .simpleItem()
+                .register();
+    }
     public static <B extends EncasedShaftBlock, P> NonNullUnaryOperator<BlockBuilder<B, P>> encasedNoSpriteShaft(String casing) {
         return builder -> encasedBase(builder, AllBlocks.SHAFT::get)
                 .blockstate((c, p) -> axisBlock(c, p, blockState -> p.models()
@@ -258,13 +269,7 @@ public class ModBlocks {
                 .loot((p, lb) -> p.dropOther(lb, drop.get()));
     }
 
-    public static BlockEntry<CasingBlock> createCasing(String name, CTSpriteShiftEntry connectedTexturesSprite){
-        return REGISTRATE.block(name+"_casing", CasingBlock::new)
-                .properties(p -> p.color(MaterialColor.PODZOL))
-                .transform(BuilderTransformers.casing(() -> connectedTexturesSprite))
-                .simpleItem()
-                .register();
-    }
+
 
 
 

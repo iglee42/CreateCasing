@@ -11,7 +11,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "createcasing:cherry_shaft"
+          "name": "create:shaft"
         }
       ],
       "rolls": 1.0

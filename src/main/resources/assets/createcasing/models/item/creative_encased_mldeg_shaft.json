@@ -2,7 +2,7 @@
 	"parent": "create:block/encased_shaft/item",
 	"textures": {
 		"1_0": "createcasing:block/mldeg_shaft",
-		"1_1": "createcasing:block/mldeg_shaft_top",
+		"1_1": "createcasing:block/mldeg_shaft",
 		"casing": "create:block/creative_casing",
 		"opening": "createcasing:block/creative_gearbox"
 	}
