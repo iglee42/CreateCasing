@@ -1,0 +1,190 @@
+{
+  "variants": {
+    "axis=x,axis_along_first=false,part=end,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_horizontal"
+    },
+    "axis=x,axis_along_first=false,part=end,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_horizontal_powered"
+    },
+    "axis=x,axis_along_first=false,part=middle,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/middle_horizontal"
+    },
+    "axis=x,axis_along_first=false,part=middle,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/middle_horizontal_powered"
+    },
+    "axis=x,axis_along_first=false,part=none,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/single",
+      "y": 90
+    },
+    "axis=x,axis_along_first=false,part=none,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/single_powered",
+      "y": 90
+    },
+    "axis=x,axis_along_first=false,part=start,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_horizontal",
+      "x": 180
+    },
+    "axis=x,axis_along_first=false,part=start,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_horizontal_powered",
+      "x": 180
+    },
+    "axis=x,axis_along_first=true,part=end,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_horizontal",
+      "x": 90
+    },
+    "axis=x,axis_along_first=true,part=end,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_horizontal_powered",
+      "x": 90
+    },
+    "axis=x,axis_along_first=true,part=middle,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/middle_horizontal",
+      "x": 90
+    },
+    "axis=x,axis_along_first=true,part=middle,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/middle_horizontal_powered",
+      "x": 90
+    },
+    "axis=x,axis_along_first=true,part=none,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/single",
+      "y": 90
+    },
+    "axis=x,axis_along_first=true,part=none,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/single_powered",
+      "y": 90
+    },
+    "axis=x,axis_along_first=true,part=start,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_horizontal",
+      "x": 270
+    },
+    "axis=x,axis_along_first=true,part=start,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_horizontal_powered",
+      "x": 270
+    },
+    "axis=y,axis_along_first=false,part=end,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_vertical",
+      "y": 180
+    },
+    "axis=y,axis_along_first=false,part=end,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_vertical_powered",
+      "y": 180
+    },
+    "axis=y,axis_along_first=false,part=middle,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/middle_vertical"
+    },
+    "axis=y,axis_along_first=false,part=middle,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/middle_vertical_powered"
+    },
+    "axis=y,axis_along_first=false,part=none,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/single",
+      "x": 90
+    },
+    "axis=y,axis_along_first=false,part=none,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/single_powered",
+      "x": 90
+    },
+    "axis=y,axis_along_first=false,part=start,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_vertical"
+    },
+    "axis=y,axis_along_first=false,part=start,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_vertical_powered"
+    },
+    "axis=y,axis_along_first=true,part=end,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_vertical",
+      "y": 90
+    },
+    "axis=y,axis_along_first=true,part=end,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_vertical_powered",
+      "y": 90
+    },
+    "axis=y,axis_along_first=true,part=middle,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/middle_vertical",
+      "y": 90
+    },
+    "axis=y,axis_along_first=true,part=middle,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/middle_vertical_powered",
+      "y": 90
+    },
+    "axis=y,axis_along_first=true,part=none,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/single",
+      "x": 90
+    },
+    "axis=y,axis_along_first=true,part=none,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/single_powered",
+      "x": 90
+    },
+    "axis=y,axis_along_first=true,part=start,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_vertical",
+      "y": 270
+    },
+    "axis=y,axis_along_first=true,part=start,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_vertical_powered",
+      "y": 270
+    },
+    "axis=z,axis_along_first=false,part=end,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=z,axis_along_first=false,part=end,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_horizontal_powered",
+      "x": 90,
+      "y": 90
+    },
+    "axis=z,axis_along_first=false,part=middle,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/middle_horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis=z,axis_along_first=false,part=middle,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/middle_horizontal_powered",
+      "x": 90,
+      "y": 90
+    },
+    "axis=z,axis_along_first=false,part=none,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/single"
+    },
+    "axis=z,axis_along_first=false,part=none,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/single_powered"
+    },
+    "axis=z,axis_along_first=false,part=start,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_horizontal",
+      "x": 270,
+      "y": 90
+    },
+    "axis=z,axis_along_first=false,part=start,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_horizontal_powered",
+      "x": 270,
+      "y": 90
+    },
+    "axis=z,axis_along_first=true,part=end,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_horizontal",
+      "y": 270
+    },
+    "axis=z,axis_along_first=true,part=end,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_horizontal_powered",
+      "y": 270
+    },
+    "axis=z,axis_along_first=true,part=middle,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/middle_horizontal",
+      "y": 90
+    },
+    "axis=z,axis_along_first=true,part=middle,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/middle_horizontal_powered",
+      "y": 90
+    },
+    "axis=z,axis_along_first=true,part=none,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/single"
+    },
+    "axis=z,axis_along_first=true,part=none,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/single_powered"
+    },
+    "axis=z,axis_along_first=true,part=start,powered=false": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_horizontal",
+      "y": 90
+    },
+    "axis=z,axis_along_first=true,part=start,powered=true": {
+      "model": "createcasing:block/adjustable_chain_gearshift/industrial_iron/end_horizontal_powered",
+      "y": 90
+    }
+  }
+}

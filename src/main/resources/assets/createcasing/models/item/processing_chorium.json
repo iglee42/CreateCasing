@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "createcasing:item/chorium_ingot",
+    "layer1": "create:item/polished_rose_quartz "
+  }
+}

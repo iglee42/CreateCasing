@@ -49,7 +49,7 @@ public class ModCreativeModeTabs {
 	public static class RegistrateDisplayItemsGenerator implements CreativeModeTab.DisplayItemsGenerator {
 
 		private static boolean testExclusion(Item item) {
-			return item instanceof BlockItem ? !(((BlockItem) item).getBlock() instanceof DontShowInCreativeTab) : !(item instanceof DontShowInCreativeTab);
+			return (item instanceof BlockItem ? (((BlockItem) item).getBlock() instanceof DontShowInCreativeTab) : item instanceof DontShowInCreativeTab) || CreateCasing.hidedItems.stream().anyMatch(i-> i.asItem().equals(item));
 		}
 
 		private static List<RegistrateDisplayItemsGenerator.ItemOrdering> makeOrderings() {
@@ -63,6 +63,7 @@ public class ModCreativeModeTabs {
 					ModItems.VERTICAL_BRASS_GEARBOX, ModBlocks.BRASS_GEARBOX,
 					ModItems.VERTICAL_COPPER_GEARBOX, ModBlocks.COPPER_GEARBOX,
 					ModItems.VERTICAL_RAILWAY_GEARBOX, ModBlocks.RAILWAY_GEARBOX,
+					ModItems.VERTICAL_CREATIVE_GEARBOX, ModBlocks.CREATIVE_GEARBOX,
 					ModItems.VERTICAL_INDUSTRIAL_IRON_GEARBOX, ModBlocks.INDUSTRIAL_IRON_GEARBOX
 			);
 
@@ -145,7 +146,8 @@ public class ModCreativeModeTabs {
 				if (item == Items.AIR)
 					continue;
 				if (testExclusion(item))
-					items.add(item);
+					continue;
+				items.add(item);
 			}
 			items = new ReferenceArrayList<>(new ReferenceLinkedOpenHashSet<>(items));
 			return items;
@@ -165,7 +167,8 @@ public class ModCreativeModeTabs {
 				if (model.isGui3d() != special)
 					continue;
 				if (testExclusion(item))
-					items.add(item);
+					continue;
+				items.add(item);
 			}
 			return items;
 		}

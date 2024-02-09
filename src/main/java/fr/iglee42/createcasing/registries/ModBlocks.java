@@ -4,19 +4,21 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllSpriteShifts;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.Create;
+import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
 import com.simibubi.create.content.fluids.PipeAttachmentModel;
 import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
+import com.simibubi.create.content.kinetics.chainDrive.ChainDriveGenerator;
+import com.simibubi.create.content.kinetics.chainDrive.ChainGearshiftBlock;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlock;
 import com.simibubi.create.content.kinetics.motor.CreativeMotorGenerator;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockModel;
 import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogCTBehaviour;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedShaftBlock;
-import com.simibubi.create.content.logistics.depot.DepotBlock;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.content.redstone.displayLink.source.ItemNameDisplaySource;
 import com.simibubi.create.foundation.block.connected.AllCTTypes;
@@ -47,7 +49,7 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-import java.util.*;
+import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
@@ -66,16 +68,21 @@ public class ModBlocks {
 
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, CreateCasing.MODID);
 
+    public static final BlockEntry<CasingBlock> CREATIVE_CASING = createCasing("creative",AllSpriteShifts.CREATIVE_CASING);
+
+
     //SHAFTS
     public static final BlockEntry<PublicEncasedShaftBlock> RAILWAY_ENCASED_SHAFT = createShaft("railway",AllBlocks.RAILWAY_CASING::get,AllSpriteShifts.RAILWAY_CASING);
     public static final BlockEntry<PublicEncasedShaftBlock> COPPER_ENCASED_SHAFT = createShaft("copper",AllBlocks.COPPER_CASING::get, AllSpriteShifts.COPPER_CASING);
     public static final BlockEntry<PublicEncasedShaftBlock> SHADOW_ENCASED_SHAFT = createShaft("shadow_steel",AllBlocks.SHADOW_STEEL_CASING::get,AllSpriteShifts.SHADOW_STEEL_CASING);
     public static final BlockEntry<PublicEncasedShaftBlock> REFINED_RADIANCE_ENCASED_SHAFT = createShaft("refined_radiance",AllBlocks.REFINED_RADIANCE_CASING::get,AllSpriteShifts.REFINED_RADIANCE_CASING);
+    public static final BlockEntry<PublicEncasedShaftBlock> CREATIVE_ENCASED_SHAFT = createShaft("creative",ModBlocks.CREATIVE_CASING::get,AllSpriteShifts.CREATIVE_CASING);
     public static final BlockEntry<PublicEncasedShaftBlock> INDUSTRIAL_IRON_ENCASED_SHAFT = REGISTRATE.block("industrial_iron_encased_shaft", p -> new PublicEncasedShaftBlock(p, AllBlocks.INDUSTRIAL_IRON_BLOCK))
             .properties(p -> p.mapColor(MapColor.PODZOL))
             .transform(encasedNoSpriteShaft("industrial_iron"))
             .transform(EncasingRegistry.addVariantTo(AllBlocks.SHAFT))
-            .transform(axeOrPickaxe())
+            .transform(pickaxeOnly())
+            .onRegisterAfter(Registries.ITEM, CreateCasing::hideItem)
             .register();
 
     //COGWHEELS
@@ -83,13 +90,16 @@ public class ModBlocks {
     public static final BlockEntry<PublicEncasedCogwheelBlock> COPPER_ENCASED_COGWHEEL = createCogwheel("copper",AllBlocks.COPPER_CASING::get,AllSpriteShifts.COPPER_CASING,ModSprites.COPPER_ENCASED_COGWHEEL_SIDE,ModSprites.COPPER_ENCASED_COGWHEEL_OTHERSIDE);
     public static final BlockEntry<PublicEncasedCogwheelBlock> SHADOW_ENCASED_COGWHEEL = createCogwheel("shadow_steel",AllBlocks.SHADOW_STEEL_CASING::get,AllSpriteShifts.SHADOW_STEEL_CASING,ModSprites.SHADOW_ENCASED_COGWHEEL_SIDE,ModSprites.SHADOW_ENCASED_COGWHEEL_OTHERSIDE);
     public static final BlockEntry<PublicEncasedCogwheelBlock> RADIANCE_ENCASED_COGWHEEL = createCogwheel("refined_radiance",AllBlocks.REFINED_RADIANCE_CASING::get,AllSpriteShifts.REFINED_RADIANCE_CASING,ModSprites.RADIANCE_ENCASED_COGWHEEL_SIDE,ModSprites.RADIANCE_ENCASED_COGWHEEL_OTHERSIDE);
+    public static final BlockEntry<PublicEncasedCogwheelBlock> CREATIVE_ENCASED_COGWHEEL = createCogwheel("creative",ModBlocks.CREATIVE_CASING::get,AllSpriteShifts.REFINED_RADIANCE_CASING,ModSprites.CREATIVE_ENCASED_COGWHEEL_SIDE,ModSprites.CREATIVE_ENCASED_COGWHEEL_OTHERSIDE);
     public static final BlockEntry<PublicEncasedCogwheelBlock> INDUSTRIAL_IRON_ENCASED_COGWHEEL =REGISTRATE.block("industrial_iron_encased_cogwheel", p -> new PublicEncasedCogwheelBlock(p, false, AllBlocks.INDUSTRIAL_IRON_BLOCK))
+            .initialProperties(SharedProperties::stone)
             .properties(p -> p.mapColor(MapColor.PODZOL).noOcclusion())
             .addLayer(() -> RenderType::cutoutMipped)
             .transform(EncasingRegistry.addVariantTo(AllBlocks.COGWHEEL))
             .transform(axeOrPickaxe())
             .item()
             .transform(customItemModel())
+            .onRegisterAfter(Registries.ITEM, CreateCasing::hideItem)
             .register();;
 
     //LARGE COGWHEELS
@@ -98,13 +108,16 @@ public class ModBlocks {
     public static final BlockEntry<PublicEncasedCogwheelBlock> COPPER_ENCASED_COGWHEEL_LARGE = createLargeCogwheel("copper",AllBlocks.COPPER_CASING::get,AllSpriteShifts.COPPER_CASING);
     public static final BlockEntry<PublicEncasedCogwheelBlock> SHADOW_ENCASED_COGWHEEL_LARGE = createLargeCogwheel("shadow_steel",AllBlocks.SHADOW_STEEL_CASING::get,AllSpriteShifts.SHADOW_STEEL_CASING);
     public static final BlockEntry<PublicEncasedCogwheelBlock> RADIANCE_ENCASED_COGWHEEL_LARGE = createLargeCogwheel("refined_radiance",AllBlocks.REFINED_RADIANCE_CASING::get,AllSpriteShifts.REFINED_RADIANCE_CASING);
+    public static final BlockEntry<PublicEncasedCogwheelBlock> CREATIVE_ENCASED_COGWHEEL_LARGE = createLargeCogwheel("creative",ModBlocks.CREATIVE_CASING::get,AllSpriteShifts.CREATIVE_CASING);
     public static final BlockEntry<PublicEncasedCogwheelBlock> INDUSTRIAL_IRON_ENCASED_COGWHEEL_LARGE = REGISTRATE.block("industrial_iron_encased_large_cogwheel", p -> new PublicEncasedCogwheelBlock(p, true, AllBlocks.INDUSTRIAL_IRON_BLOCK))
+            .initialProperties(SharedProperties::stone)
             .properties(p -> p.mapColor(MapColor.PODZOL).noOcclusion())
             .addLayer(() -> RenderType::cutoutMipped)
             .transform(EncasingRegistry.addVariantTo(AllBlocks.LARGE_COGWHEEL))
             .transform(axeOrPickaxe())
             .item()
             .transform(customItemModel())
+            .onRegisterAfter(Registries.ITEM, CreateCasing::hideItem)
             .register();
 
     //PIPES
@@ -114,6 +127,7 @@ public class ModBlocks {
     public static final BlockEntry<PublicEncasedPipeBlock> ENCASED_RAILWAY_FLUID_PIPE = createPipe("railway",AllBlocks.RAILWAY_CASING::get,AllSpriteShifts.RAILWAY_CASING);
     public static final BlockEntry<PublicEncasedPipeBlock> ENCASED_SHADOW_FLUID_PIPE = createPipe("shadow_steel",AllBlocks.SHADOW_STEEL_CASING::get,AllSpriteShifts.SHADOW_STEEL_CASING);
     public static final BlockEntry<PublicEncasedPipeBlock> ENCASED_RADIANCE_FLUID_PIPE = createPipe("refined_radiance",AllBlocks.REFINED_RADIANCE_CASING::get,AllSpriteShifts.REFINED_RADIANCE_CASING);
+    public static final BlockEntry<PublicEncasedPipeBlock> ENCASED_CREATIVE_FLUID_PIPE = createPipe("creative",ModBlocks.CREATIVE_CASING::get,AllSpriteShifts.CREATIVE_CASING);
     public static final BlockEntry<PublicEncasedPipeBlock> ENCASED_INDUSTRIAL_IRON_FLUID_PIPE = REGISTRATE.block("industrial_iron_encased_fluid_pipe", p -> new PublicEncasedPipeBlock(p, AllBlocks.INDUSTRIAL_IRON_BLOCK))
             .initialProperties(SharedProperties::copperMetal)
             .properties(p -> p.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY))
@@ -122,11 +136,13 @@ public class ModBlocks {
             .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::new))
             .loot((p, b) -> p.dropOther(b, AllBlocks.FLUID_PIPE.get()))
             .transform(EncasingRegistry.addVariantTo(AllBlocks.FLUID_PIPE))
+            .onRegisterAfter(Registries.ITEM, CreateCasing::hideItem)
             .register();
 
     public static final BlockEntry<CustomGearboxBlock> BRASS_GEARBOX = createGearbox("brass",AllSpriteShifts.BRASS_CASING,ModItems.VERTICAL_BRASS_GEARBOX);
     public static final BlockEntry<CustomGearboxBlock> COPPER_GEARBOX = createGearbox("copper",AllSpriteShifts.COPPER_CASING,ModItems.VERTICAL_COPPER_GEARBOX);
     public static final BlockEntry<CustomGearboxBlock> RAILWAY_GEARBOX = createGearbox("railway",AllSpriteShifts.RAILWAY_CASING,ModItems.VERTICAL_RAILWAY_GEARBOX);
+    public static final BlockEntry<CustomGearboxBlock> CREATIVE_GEARBOX = createGearbox("creative",AllSpriteShifts.CREATIVE_CASING,ModItems.VERTICAL_CREATIVE_GEARBOX);
     public static final BlockEntry<CustomGearboxBlock> INDUSTRIAL_IRON_GEARBOX = REGISTRATE.block("industrial_iron_gearbox", (p)->new CustomGearboxBlock(p,ModItems.VERTICAL_INDUSTRIAL_IRON_GEARBOX))
             .initialProperties(SharedProperties::stone)
             .properties(BlockBehaviour.Properties::noOcclusion)
@@ -136,22 +152,38 @@ public class ModBlocks {
             .blockstate((c, p) -> axisBlock(c, p, $ -> AssetLookup.partialBaseModel(c, p), true))
             .item()
             .transform(customItemModel())
+            .onRegisterAfter(Registries.ITEM, CreateCasing::hideItem)
             .register();
 
     public static final BlockEntry<CustomMixerBlock> BRASS_MIXER = createMixer("brass");
     public static final BlockEntry<CustomMixerBlock> COPPER_MIXER = createMixer("copper");
     public static final BlockEntry<CustomMixerBlock> RAILWAY_MIXER = createMixer("railway");
+    public static final BlockEntry<CustomMixerBlock> CREATIVE_MIXER = createMixer("creative");
     public static final BlockEntry<CustomMixerBlock> INDUSTRIAL_IRON_MIXER = createMixer("industrial_iron");
 
     public static final BlockEntry<CustomPressBlock> BRASS_PRESS = createPress("brass");
     public static final BlockEntry<CustomPressBlock> COPPER_PRESS = createPress("copper");
     public static final BlockEntry<CustomPressBlock> RAILWAY_PRESS = createPress("railway");
+    public static final BlockEntry<CustomPressBlock> CREATIVE_PRESS = createPress("creative");
     public static final BlockEntry<CustomPressBlock> INDUSTRIAL_IRON_PRESS = createPress("industrial_iron");
 
     public static final BlockEntry<CustomDepotBlock> BRASS_DEPOT = createDepot("brass");
     public static final BlockEntry<CustomDepotBlock> COPPER_DEPOT = createDepot("copper");
     public static final BlockEntry<CustomDepotBlock> RAILWAY_DEPOT = createDepot("railway");
+    public static final BlockEntry<CustomDepotBlock> CREATIVE_DEPOT = createDepot("creative");
     public static final BlockEntry<CustomDepotBlock> INDUSTRIAL_IRON_DEPOT = createDepot("industrial_iron");
+
+    public static final BlockEntry<CustomChainDriveBlock> BRASS_CHAIN_DRIVE = createDrive("brass");
+    public static final BlockEntry<CustomChainDriveBlock> COPPER_CHAIN_DRIVE = createDrive("copper");
+    public static final BlockEntry<CustomChainDriveBlock> RAILWAY_CHAIN_DRIVE = createDrive("railway");
+    public static final BlockEntry<CustomChainDriveBlock> CREATIVE_CHAIN_DRIVE = createDrive("creative");
+    public static final BlockEntry<CustomChainDriveBlock> INDUSTRIAL_IRON_CHAIN_DRIVE = createDrive("industrial_iron");
+
+    public static final BlockEntry<CustomChainGearshiftBlock> BRASS_CHAIN_GEARSHIFT = createChainGearshift("brass");
+    public static final BlockEntry<CustomChainGearshiftBlock> COPPER_CHAIN_GEARSHIFT = createChainGearshift("copper");
+    public static final BlockEntry<CustomChainGearshiftBlock> RAILWAY_CHAIN_GEARSHIFT = createChainGearshift("railway");
+    public static final BlockEntry<CustomChainGearshiftBlock> CREATIVE_CHAIN_GEARSHIFT = createChainGearshift("creative");
+    public static final BlockEntry<CustomChainGearshiftBlock> INDUSTRIAL_IRON_CHAIN_GEARSHIFT = createChainGearshift("industrial_iron");
 
     public static final BlockEntry<WoodenShaftBlock> OAK_SHAFT = createWoodenShaft("oak");
     public static final BlockEntry<WoodenShaftBlock> SPRUCE_SHAFT = createWoodenShaft("spruce");
@@ -224,13 +256,22 @@ public class ModBlocks {
                 .build();
     }
 
-    private static <B extends RotatedPillarKineticBlock, P> BlockBuilder<B, P> encasedBase(BlockBuilder<B, P> b,
-                                                                                           Supplier<ItemLike> drop) {
+    private static <B extends RotatedPillarKineticBlock, P> BlockBuilder<B, P> encasedBase(BlockBuilder<B, P> b, Supplier<ItemLike> drop) {
         return b.initialProperties(SharedProperties::stone)
                 .properties(BlockBehaviour.Properties::noOcclusion)
                 .transform(BlockStressDefaults.setNoImpact())
                 .loot((p, lb) -> p.dropOther(lb, drop.get()));
     }
+
+    public static BlockEntry<CasingBlock> createCasing(String name, CTSpriteShiftEntry connectedTexturesSprite){
+        return REGISTRATE.block(name+"_casing", CasingBlock::new)
+                .properties(p -> p.mapColor(MapColor.PODZOL))
+                .transform(BuilderTransformers.casing(() -> connectedTexturesSprite))
+                .simpleItem()
+                .register();
+    }
+
+
 
 
     //METHODS
@@ -366,6 +407,42 @@ public class ModBlocks {
                 .register();
     }
 
+    public static BlockEntry<CustomChainDriveBlock> createDrive(String name){
+        return REGISTRATE.block(name+"_encased_chain_drive", p-> new CustomChainDriveBlock(p,name))
+                        .initialProperties(SharedProperties::stone)
+                        .properties(p -> p.noOcclusion().mapColor(MapColor.PODZOL))
+                        .transform(BlockStressDefaults.setNoImpact())
+                        .transform(axeOrPickaxe())
+                        .blockstate((c, p) -> new ChainDriveGenerator((state, suffix) -> p.models()
+                                .getExistingFile(p.modLoc("block/" + c.getName() + "/" + suffix))).generate(c, p))
+                        .item()
+                        .transform(customItemModel())
+                        .register();
+
+    }
+
+    public static BlockEntry<CustomChainGearshiftBlock> createChainGearshift(String name){
+        return REGISTRATE.block(name+ "_adjustable_chain_gearshift", p->new CustomChainGearshiftBlock(p,name))
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.noOcclusion().mapColor(MapColor.NETHER))
+                .transform(BlockStressDefaults.setNoImpact())
+                .transform(axeOrPickaxe())
+                .blockstate((c, p) -> new ChainDriveGenerator((state, suffix) -> {
+                    String powered = state.getValue(ChainGearshiftBlock.POWERED) ? "_powered" : "";
+                    return p.models()
+                            .withExistingParent(c.getName() + "_" + suffix + powered,
+                                    p.modLoc("block/encased_chain_drive/"+ name +"/"+ suffix))
+                            .texture("side", p.modLoc("block/" + c.getName() + powered));
+                }).generate(c, p))
+                .item()
+                .model((c, p) -> p.withExistingParent(c.getName(), p.modLoc("block/encased_chain_drive/"+name+"/item"))
+                        .texture("side", p.modLoc("block/" + c.getName())))
+                .build()
+                .register();
+    }
+
+
+
     public static void registerEncasedShafts() {
         forEachShaft(shaft-> {
             Create.REGISTRATE.getAll(Registries.BLOCK).stream().filter(r->r.getId().getPath().endsWith("_casing")).forEach(c-> {
@@ -384,6 +461,15 @@ public class ModBlocks {
                     ex.printStackTrace();
                 }
             });
+
+            REGISTRATE.block("creative_encased_"+shaft.getId().getPath(), p -> new CustomEncasedShaft(p, ModBlocks.CREATIVE_CASING::get,shaft))
+                    .properties(p -> p.mapColor(MapColor.PODZOL))
+                    .transform(BuilderTransformers.encasedShaft("creative", () -> AllSpriteShifts.CREATIVE_CASING))
+                    .transform(EncasingRegistry.addVariantTo(shaft))
+                    .transform(axeOrPickaxe())
+                    .loot((l,s)->l.dropOther(s,s.getShaft().get().asItem()))
+                    .onRegisterAfter(Registries.ITEM, CreateCasing::hideItem)
+                    .register();
 
             REGISTRATE.block("industrial_iron_encased_"+shaft.getId().getPath(), p -> new CustomEncasedShaft(p, AllBlocks.INDUSTRIAL_IRON_BLOCK,shaft))
                     .properties(p -> p.mapColor(MapColor.PODZOL))

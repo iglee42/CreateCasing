@@ -1,0 +1,64 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {
+    "item": "create:polished_rose_quartz"
+  },
+  "loops": 4,
+  "results": [
+    {
+      "item": "createcasing:chorium_ingot"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:filling",
+      "ingredients": [
+        {
+          "item": "createcasing:processing_chorium"
+        },
+        {
+          "amount": 500,
+          "fluid": "minecraft:lava",
+          "nbt": {}
+        }
+      ],
+      "results": [
+        {
+          "item": "createcasing:processing_chorium"
+        }
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients": [
+        {
+          "item": "createcasing:processing_chorium"
+        },
+        {
+          "item": "minecraft:popped_chorus_fruit"
+        }
+      ],
+      "results": [
+        {
+          "item": "createcasing:processing_chorium"
+        }
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients": [
+        {
+          "item": "createcasing:processing_chorium"
+        }
+      ],
+      "results": [
+        {
+          "item": "createcasing:processing_chorium"
+        }
+      ]
+    }
+  ],
+  "transitionalItem": {
+    "item": "createcasing:processing_chorium"
+  }
+}

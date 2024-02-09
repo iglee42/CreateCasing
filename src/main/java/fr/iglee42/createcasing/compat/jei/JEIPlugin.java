@@ -22,9 +22,12 @@ public class JEIPlugin implements IModPlugin {
 
     @Override
     public void registerRecipes(IRecipeRegistration registration) {
-        IModPlugin.super.registerRecipes(registration);
         List<ItemStack> stacks = new ArrayList<>();
-        CreateCasing.hidedItems.stream().filter(i->i != Items.AIR).forEach(i->stacks.add(new ItemStack(i)));
+        CreateCasing.hidedItems.stream().filter(i->i != Items.AIR).forEach(i->{
+            ItemStack stack = new ItemStack(i);
+            if (!stack.isEmpty())
+                stacks.add(stack);
+        });
         registration.getIngredientManager().removeIngredientsAtRuntime(VanillaTypes.ITEM_STACK,stacks);
     }
 }

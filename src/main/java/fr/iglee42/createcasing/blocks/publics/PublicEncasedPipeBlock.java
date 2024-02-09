@@ -14,7 +14,7 @@ import java.util.function.Supplier;
 /*
 This class allow to use the constructore of EncasedPipeBlock from the create code
  */
-public class PublicEncasedPipeBlock extends EncasedPipeBlock implements DontShowInCreativeTab {
+public class PublicEncasedPipeBlock extends EncasedPipeBlock /*implements DontShowInCreativeTab*/ {
 
 
 	public PublicEncasedPipeBlock(Properties properties, Supplier<Block> casing) {
