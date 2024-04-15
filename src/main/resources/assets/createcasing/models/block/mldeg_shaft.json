@@ -1,0 +1,23 @@
+{
+	"credit": "Model generated using MrCrayfish's Model Creator (http://mrcrayfish.com/modelcreator/)",
+	"parent": "block/block",
+	"textures": {
+		"2": "createcasing:block/mldeg_shaft",
+		"particle": "createcasing:block/mldeg_shaft"
+	},
+	"elements": [
+		{
+			"name": "Axis",
+			"from": [6, 0, 6],
+			"to": [10, 16, 10],
+			"faces": {
+				"north": {"uv": [4, 0, 12, 16], "texture": "#2"},
+				"east": {"uv": [4, 0, 12, 16], "texture": "#2"},
+				"south": {"uv": [4, 0, 12, 16], "texture": "#2"},
+				"west": {"uv": [4, 0, 12, 16], "texture": "#2"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#2"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#2"}
+			}
+		}
+	]
+}
