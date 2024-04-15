@@ -1,0 +1,21 @@
+
+{
+  "variants": {
+    "axis=x": {
+      "model": "createcasing:block/encased_shaft/block_railway",
+      "x": 90,
+      "y": 90,
+      "uvlock": true
+    },
+    "axis=y": {
+      "model": "createcasing:block/encased_shaft/block_railway",
+      "uvlock": true
+    },
+    "axis=z": {
+      "model": "createcasing:block/encased_shaft/block_railway",
+      "x": 90,
+      "y": 180,
+      "uvlock": true
+    }
+  }
+}
