@@ -8,7 +8,6 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
-import fr.iglee42.createcasing.compat.createcrystalclear.CreateCrystalClearCompatibility;
 import fr.iglee42.createcasing.compat.kubejs.KubeJSCompatInit;
 import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
@@ -83,7 +82,7 @@ public class CreateCasing {
             KubeJSCompatInit.init();
         }
 
-        if (isCrystalClearLoaded()) CreateCrystalClearCompatibility.register();
+        //if (isCrystalClearLoaded()) CreateCrystalClearCompatibility.register();
 
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> CreateCasingClient.onCtorClient(modEventBus, forgeEventBus));
 
@@ -100,9 +99,6 @@ public class CreateCasing {
         return new ResourceLocation(MODID, path);
     }
 
-    public static boolean isExtendedCogsLoaded() {
-        return ModList.get().isLoaded("extendedgears");
-    }
 
     public static void hideItem(ItemLike it){
         hidedItems.add(it);
@@ -111,9 +107,8 @@ public class CreateCasing {
     private void setup(final FMLCommonSetupEvent event) {
     }
 
-    public static boolean isCrystalClearLoaded(){
-        return ModList.get().isLoaded("create_crystal_clear");
-    }
+
+
 
     private void onPlayerRightClickOnBlock(PlayerInteractEvent.RightClickBlock event){
         Level world = event.getEntity().getLevel();
