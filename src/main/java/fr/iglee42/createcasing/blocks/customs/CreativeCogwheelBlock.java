@@ -77,4 +77,9 @@ public class CreativeCogwheelBlock extends RotatedPillarKineticBlock implements 
     public boolean isDedicatedCogWheel() {
         return true;
     }
+
+    @Override
+    public boolean isSmallCog() {
+        return true;
+    }
 }
