@@ -1,10 +1,10 @@
-package fr.iglee42.createcasing.blocks.api;
+package fr.iglee42.createcasing.api.blocks;
 
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlockEntity;
 import com.simibubi.create.foundation.block.IBE;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import fr.iglee42.createcasing.items.ApiVerticalGearboxItem;
+import fr.iglee42.createcasing.api.items.ApiVerticalGearboxItem;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
 import fr.iglee42.createcasing.utils.Deferred;
 import net.minecraft.core.BlockPos;
