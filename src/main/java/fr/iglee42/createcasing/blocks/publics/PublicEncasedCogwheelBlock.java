@@ -10,7 +10,7 @@ import java.util.function.Supplier;
 
 
 /*
-This class allow to use the constructore of EncasedCogWheelBlock from the create code
+This class allow to use the constructor of EncasedCogWheelBlock from the create code
  */
 public class PublicEncasedCogwheelBlock extends EncasedCogwheelBlock {
 
@@ -20,6 +20,6 @@ public class PublicEncasedCogwheelBlock extends EncasedCogwheelBlock {
 
 	@Override
 	public BlockEntityType<? extends SimpleKineticBlockEntity> getBlockEntityType() {
-		return this.isLargeCog() ? (BlockEntityType) ModBlockEntities.ENCASED_COGWHEEL_LARGE.get() : (BlockEntityType) ModBlockEntities.ENCASED_COGWHEEL.get();
+		return this.isLargeCog() ?  ModBlockEntities.ENCASED_COGWHEEL_LARGE.get() : ModBlockEntities.ENCASED_COGWHEEL.get();
 	}
 }
