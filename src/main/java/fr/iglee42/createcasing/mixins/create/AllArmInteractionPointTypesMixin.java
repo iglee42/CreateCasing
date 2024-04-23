@@ -1,7 +1,7 @@
 package fr.iglee42.createcasing.mixins.create;
 
 import com.simibubi.create.content.kinetics.mechanicalArm.AllArmInteractionPointTypes;
-import fr.iglee42.createcasing.blocks.api.ApiDepotBlock;
+import fr.iglee42.createcasing.api.blocks.ApiDepotBlock;
 import fr.iglee42.createcasing.registries.ModBlocks;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
