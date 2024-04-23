@@ -1,9 +1,6 @@
 package fr.iglee42.createcasing.api;
 
-import com.mojang.logging.LogUtils;
 import com.simibubi.create.AllBlocks;
-import com.simibubi.create.AllSpriteShifts;
-import com.simibubi.create.Create;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
@@ -11,36 +8,26 @@ import com.simibubi.create.content.fluids.PipeAttachmentModel;
 import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlock;
-import com.simibubi.create.content.kinetics.press.MechanicalPressBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogCTBehaviour;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.content.redstone.displayLink.source.ItemNameDisplaySource;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.data.*;
-import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.utility.Couple;
-import com.tterrag.registrate.Registrate;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import fr.iglee42.createcasing.CreateCasing;
-import fr.iglee42.createcasing.blocks.api.ApiDepotBlock;
-import fr.iglee42.createcasing.blocks.api.ApiGearboxBlock;
-import fr.iglee42.createcasing.blocks.api.ApiMixerBlock;
-import fr.iglee42.createcasing.blocks.api.ApiPressBlock;
-import fr.iglee42.createcasing.blocks.customs.CustomDepotBlock;
-import fr.iglee42.createcasing.blocks.customs.CustomGearboxBlock;
-import fr.iglee42.createcasing.blocks.customs.CustomMixerBlock;
+import fr.iglee42.createcasing.api.blocks.ApiDepotBlock;
+import fr.iglee42.createcasing.api.blocks.ApiGearboxBlock;
+import fr.iglee42.createcasing.api.blocks.ApiMixerBlock;
+import fr.iglee42.createcasing.api.blocks.ApiPressBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedCogwheelBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedPipeBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedShaftBlock;
-import fr.iglee42.createcasing.items.ApiVerticalGearboxItem;
-import fr.iglee42.createcasing.items.CustomVerticalGearboxItem;
+import fr.iglee42.createcasing.api.items.ApiVerticalGearboxItem;
 import fr.iglee42.createcasing.registries.ModBlocks;
 import fr.iglee42.createcasing.utils.Deferred;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
@@ -52,7 +39,6 @@ import static com.simibubi.create.content.redstone.displayLink.AllDisplayBehavio
 import static com.simibubi.create.foundation.data.BlockStateGen.axisBlock;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
-import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 
 /**
  * @author iglee42

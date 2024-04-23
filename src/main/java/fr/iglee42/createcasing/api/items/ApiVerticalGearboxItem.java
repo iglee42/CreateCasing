@@ -1,4 +1,4 @@
-package fr.iglee42.createcasing.items;
+package fr.iglee42.createcasing.api.items;
 
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.foundation.utility.Iterate;

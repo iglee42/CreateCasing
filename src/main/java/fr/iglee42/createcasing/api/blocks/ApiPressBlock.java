@@ -1,4 +1,4 @@
-package fr.iglee42.createcasing.blocks.api;
+package fr.iglee42.createcasing.api.blocks;
 
 import com.simibubi.create.content.kinetics.press.MechanicalPressBlock;
 import com.simibubi.create.content.kinetics.press.MechanicalPressBlockEntity;
