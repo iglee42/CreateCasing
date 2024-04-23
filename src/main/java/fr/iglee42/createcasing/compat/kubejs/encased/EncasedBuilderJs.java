@@ -10,7 +10,7 @@ import dev.latvian.mods.kubejs.typings.Info;
 import dev.latvian.mods.kubejs.util.UtilsJS;
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.api.CreateCasingApi;
-import fr.iglee42.createcasing.blocks.customs.EncasedCustomShaftBlock;
+import fr.iglee42.createcasing.blocks.shafts.EncasedCustomShaftBlock;
 import fr.iglee42.createcasing.compat.kubejs.CreateCasingBuilderBaseJS;
 import fr.iglee42.createcasing.compat.kubejs.CreateCasingUtilsJS;
 import fr.iglee42.createcasing.compat.kubejs.EncasedBlockJSEnum;

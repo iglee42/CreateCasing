@@ -3,7 +3,7 @@ package fr.iglee42.createcasing.blockEntities.renderers;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.base.ShaftRenderer;
 import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
-import fr.iglee42.createcasing.blocks.customs.EncasedCustomShaftBlock;
+import fr.iglee42.createcasing.blocks.shafts.EncasedCustomShaftBlock;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.world.level.block.state.BlockState;
 

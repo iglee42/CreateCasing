@@ -1,7 +1,7 @@
 package fr.iglee42.createcasing.blockEntities;
 
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntity;
-import fr.iglee42.createcasing.blocks.customs.EncasedCustomShaftBlock;
+import fr.iglee42.createcasing.blocks.shafts.EncasedCustomShaftBlock;
 import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.registries.ModBlocks;
 import net.minecraft.core.BlockPos;
