@@ -2,13 +2,11 @@ package fr.iglee42.createcasing.blocks.customs;
 
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedShaftBlock;
-import fr.iglee42.createcasing.blockEntities.CustomEncasedShaftBlockEntity;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
 import fr.iglee42.createcasing.utils.DontShowInCreativeTab;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
@@ -20,11 +18,11 @@ import net.minecraft.world.phys.HitResult;
 
 import java.util.function.Supplier;
 
-public class CustomEncasedShaft extends EncasedShaftBlock implements DontShowInCreativeTab {
+public class EncasedCustomShaftBlock extends EncasedShaftBlock implements DontShowInCreativeTab {
 
     private Supplier<Block> shaft;
 
-    public CustomEncasedShaft(Properties properties, Supplier<Block> casing, Supplier<? extends Block> shaft) {
+    public EncasedCustomShaftBlock(Properties properties, Supplier<Block> casing, Supplier<? extends Block> shaft) {
         super(properties, casing);
         this.shaft = shaft::get;
     }
