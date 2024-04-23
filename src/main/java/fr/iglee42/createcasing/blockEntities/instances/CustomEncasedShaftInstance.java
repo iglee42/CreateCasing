@@ -4,7 +4,7 @@ import com.jozufozu.flywheel.api.MaterialManager;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.base.ShaftInstance;
 import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
-import fr.iglee42.createcasing.blocks.customs.EncasedCustomShaftBlock;
+import fr.iglee42.createcasing.blocks.shafts.EncasedCustomShaftBlock;
 import net.minecraft.world.level.block.state.BlockState;
 
 public class CustomEncasedShaftInstance extends ShaftInstance<KineticBlockEntity> {
