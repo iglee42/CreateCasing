@@ -2,7 +2,6 @@ package fr.iglee42.createcasing.blocks.customs;
 
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedShaftBlock;
-import fr.iglee42.createcasing.blockEntities.CustomEncasedShaftBlockEntity;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
@@ -18,11 +17,11 @@ import net.minecraft.world.phys.HitResult;
 
 import java.util.function.Supplier;
 
-public class CustomEncasedShaft extends EncasedShaftBlock {
+public class EncasedCustomShaftBlock extends EncasedShaftBlock {
 
     private Supplier<Block> shaft;
 
-    public CustomEncasedShaft(Properties properties, Supplier<Block> casing, Supplier<? extends Block> shaft) {
+    public EncasedCustomShaftBlock(Properties properties, Supplier<Block> casing, Supplier<? extends Block> shaft) {
         super(properties, casing);
         this.shaft = shaft.get().delegate;
     }
