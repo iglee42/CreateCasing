@@ -1,11 +1,7 @@
-package fr.iglee42.createcasing.blocks.customs;
+package fr.iglee42.createcasing.blocks;
 
-import com.simibubi.create.AllBlockEntityTypes;
-import com.simibubi.create.AllShapes;
-import com.simibubi.create.content.kinetics.base.DirectionalKineticBlock;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
-import com.simibubi.create.content.kinetics.motor.CreativeMotorBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.foundation.block.IBE;
 import fr.iglee42.createcasing.blockEntities.CreativeCogwheelBlockEntity;
@@ -18,8 +14,6 @@ import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class CreativeCogwheelBlock extends RotatedPillarKineticBlock implements IBE<CreativeCogwheelBlockEntity>,ICogWheel {
 

@@ -1,4 +1,4 @@
-package fr.iglee42.createcasing.blocks.customs;
+package fr.iglee42.createcasing.blocks.shafts;
 
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedShaftBlock;

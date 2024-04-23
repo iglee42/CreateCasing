@@ -9,7 +9,7 @@ import dev.latvian.mods.kubejs.typings.Info;
 import dev.latvian.mods.kubejs.util.UtilsJS;
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.api.CreateCasingApi;
-import fr.iglee42.createcasing.blocks.customs.CustomEncasedShaft;
+import fr.iglee42.createcasing.blocks.shafts.EncasedCustomShaftBlock;
 import fr.iglee42.createcasing.compat.kubejs.CreateCasingBuilderBaseJS;
 import fr.iglee42.createcasing.compat.kubejs.CreateCasingUtilsJS;
 import fr.iglee42.createcasing.compat.kubejs.EncasedBlockJSEnum;
@@ -285,7 +285,7 @@ public class EncasedBuilderJs extends CreateCasingBuilderBaseJS {
             case LARGE_COGWHEEL -> CreateCasingApi.createEncasedLargeCogwheel(KubeJSCompatPlugin.REGISTRATE,name,casing,connectedTexture);
             case PIPE -> CreateCasingApi.createEncasedPipe(KubeJSCompatPlugin.REGISTRATE,name,casing,connectedTexture);
             case CUSTOM_SHAFT -> CreateCasingApi.forCustomShafts(shaft -> {
-                KubeJSCompatPlugin.REGISTRATE.block(name + "_encased_" + shaft.getId().getPath(), p -> new CustomEncasedShaft(p, casing, shaft))
+                KubeJSCompatPlugin.REGISTRATE.block(name + "_encased_" + shaft.getId().getPath(), p -> new EncasedCustomShaftBlock(p, casing, shaft))
                         .properties(p -> p.color(MaterialColor.PODZOL))
                         .transform(BuilderTransformers.encasedShaft(name, () -> connectedTexture))
                         .transform(EncasingRegistry.addVariantTo(shaft))
