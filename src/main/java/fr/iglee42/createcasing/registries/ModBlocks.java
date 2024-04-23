@@ -214,7 +214,7 @@ public class ModBlocks {
             .simpleItem()
                 .register();
 
-    public static final BlockEntry<MLDEGShaftBlock> MLDEG_SHAFT = REGISTRATE.block("mldeg_shaft", MLDEGShaftBlock::new)
+    public static final BlockEntry<MetalShaftBlock> MLDEG_SHAFT = REGISTRATE.block("mldeg_shaft", MetalShaftBlock::new)
             .initialProperties(()-> Blocks.BLACKSTONE)
             .properties(p -> p.color(MaterialColor.NONE)
                     .sound(SoundType.STONE)
@@ -448,7 +448,7 @@ public class ModBlocks {
                 String casing = c.getId().getPath().replace("_casing", "");
                 try {
                     CTSpriteShiftEntry sprite = (CTSpriteShiftEntry) AllSpriteShifts.class.getField(c.getId().getPath().toUpperCase()).get(new CTSpriteShiftEntry(AllCTTypes.OMNIDIRECTIONAL));
-                    REGISTRATE.block(casing + "_encased_" + shaft.getId().getPath(), p -> new CustomEncasedShaft(p, c, shaft))
+                    REGISTRATE.block(casing + "_encased_" + shaft.getId().getPath(), p -> new EncasedCustomShaftBlock(p, c, shaft))
                             .properties(p -> p.color(MaterialColor.PODZOL))
                             .transform(BuilderTransformers.encasedShaft(casing, () -> sprite))
                             .transform(EncasingRegistry.addVariantTo(shaft))
@@ -461,7 +461,7 @@ public class ModBlocks {
                 }
             });
 
-            REGISTRATE.block("creative_encased_"+shaft.getId().getPath(), p -> new CustomEncasedShaft(p, ModBlocks.CREATIVE_CASING::get,shaft))
+            REGISTRATE.block("creative_encased_"+shaft.getId().getPath(), p -> new EncasedCustomShaftBlock(p, ModBlocks.CREATIVE_CASING::get,shaft))
                     .properties(p -> p.color(MaterialColor.PODZOL))
                     .transform(BuilderTransformers.encasedShaft("creative", () -> AllSpriteShifts.CREATIVE_CASING))
                     .transform(EncasingRegistry.addVariantTo(shaft))
@@ -470,7 +470,7 @@ public class ModBlocks {
                     .onRegisterAfter(Registry.ITEM_REGISTRY, CreateCasing::hideItem)
                     .register();
 
-            REGISTRATE.block("industrial_iron_encased_"+shaft.getId().getPath(), p -> new CustomEncasedShaft(p, AllBlocks.INDUSTRIAL_IRON_BLOCK,shaft))
+            REGISTRATE.block("industrial_iron_encased_"+shaft.getId().getPath(), p -> new EncasedCustomShaftBlock(p, AllBlocks.INDUSTRIAL_IRON_BLOCK,shaft))
                     .properties(p -> p.color(MaterialColor.PODZOL))
                     .transform(encasedNoSpriteShaft("industrial_iron"))
                     .transform(EncasingRegistry.addVariantTo(shaft))
