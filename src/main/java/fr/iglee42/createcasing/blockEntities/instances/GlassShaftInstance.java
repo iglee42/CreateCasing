@@ -4,13 +4,10 @@ import com.jozufozu.flywheel.api.Instancer;
 import com.jozufozu.flywheel.api.MaterialManager;
 import com.jozufozu.flywheel.util.transform.TransformStack;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import com.simibubi.create.AllPartialModels;
+import com.mojang.math.Vector3f;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.base.SingleRotatingInstance;
 import com.simibubi.create.content.kinetics.base.flwdata.RotatingData;
-
-import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.foundation.render.AllMaterialSpecs;
 import fr.iglee42.createcasing.blockEntities.GlassShaftBlockEntity;
 import fr.iglee42.createcasing.blockEntities.renderers.GlassShaftRenderer;
@@ -55,7 +52,7 @@ public class GlassShaftInstance extends SingleRotatingInstance<GlassShaftBlockEn
 		TransformStack.cast(poseStack)
 				.centre()
 				.rotateToFace(facing)
-				.multiply(Axis.XN.rotationDegrees(-90))
+				.multiply(Vector3f.XN.rotationDegrees(-90))
 				.unCentre();
 		return poseStack;
 	}
