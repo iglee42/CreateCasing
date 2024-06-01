@@ -20,7 +20,7 @@ apply plugin: 'maven-publish'
 
 group = 'fr.iglee42'
 
-version = '1.20.1-1.6.0'
+version = '1.20.1-1.6.0-fix1'
 
 java {
     archivesBaseName = 'CreateCasing'
@@ -198,10 +198,6 @@ dependencies {
     implementation fg.deobf("com.simibubi.create:create-${mc_version}:${create_version}:slim") { transitive = false }
     implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${mc_version}:${flywheel_version}")
     implementation fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
-
-    //CREATE CRYSTAL CLEAR
-    compileOnly fg.deobf("curse.maven:create-crystal-clear-669724:${crystal_clear_file}")
-
 
     //JEI
     // compile against the JEI API but do not include it at runtime

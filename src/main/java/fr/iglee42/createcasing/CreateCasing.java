@@ -14,17 +14,21 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
+import fr.iglee42.createcasing.api.CreateCasingApi;
 import fr.iglee42.createcasing.blockEntities.MetalShaftBlockEntity;
 import fr.iglee42.createcasing.compat.kubejs.KubeJSCompatInit;
 import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.registries.*;
 import fr.iglee42.createcasing.screen.BrassShaftScreen;
+import fr.iglee42.createcasing.utils.DontShowInCreativeTab;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.CreativeModeTabs;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -32,6 +36,7 @@ import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayer;
+import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
@@ -40,6 +45,7 @@ import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.ForgeRegistries;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -102,9 +108,6 @@ public class CreateCasing {
         return new ResourceLocation(MODID, path);
     }
 
-    public static boolean isExtendedCogsLoaded() {
-        return ModList.get().isLoaded("extendedgears");
-    }
 
     public static void hideItem(ItemLike it){
         hidedItems.add(it);
@@ -113,9 +116,7 @@ public class CreateCasing {
     private void setup(final FMLCommonSetupEvent event) {
     }
 
-    public static boolean isCrystalClearLoaded(){
-        return ModList.get().isLoaded("create_crystal_clear");
-    }
+
 
 
     private void onPlayerRightClickOnBlock(PlayerInteractEvent.RightClickBlock event){

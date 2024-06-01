@@ -116,27 +116,3 @@ run/
 
 # Avoid ignoring Gradle wrapper jar file (.jar files are usually ignored)
 !gradle-wrapper.jar
-/src/main/resources/assets/createcasing/sounds/mldeg.ogg
-/src/main/java/fr/iglee42/createcasing/blocks/customs/MLDEGShaftBlock.java
-/src/main/resources/assets/createcasing/models/block/mldeg_shaft.json
-/src/main/resources/assets/createcasing/textures/block/mldeg_shaft.png
-/src/main/resources/assets/createcasing/models/item/mldeg_shaft.json
-/src/main/resources/assets/createcasing/blockstates/mldeg_shaft.json
-/src/main/resources/assets/createcasing/blockstates/andesite_encased_mldeg_shaft.json
-/src/main/resources/assets/createcasing/blockstates/brass_encased_mldeg_shaft.json
-/src/main/resources/assets/createcasing/blockstates/copper_encased_mldeg_shaft.json
-/src/main/resources/assets/createcasing/blockstates/industrial_iron_encased_mldeg_shaft.json
-/src/main/resources/assets/createcasing/blockstates/railway_encased_mldeg_shaft.json
-/src/main/resources/assets/createcasing/blockstates/refined_radiance_encased_mldeg_shaft.json
-/src/main/resources/assets/createcasing/blockstates/shadow_steel_encased_mldeg_shaft.json
-/src/main/resources/assets/createcasing/blockstates/creative_encased_mldeg_shaft.json
-/src/main/resources/assets/createcasing/textures/block/mldeg_shaft_top.png
-/src/main/resources/assets/createcasing/models/item/andesite_encased_mldeg_shaft.json
-/src/main/resources/assets/createcasing/models/item/brass_encased_mldeg_shaft.json
-/src/main/resources/assets/createcasing/models/item/copper_encased_mldeg_shaft.json
-/src/main/resources/assets/createcasing/models/item/industrial_iron_encased_mldeg_shaft.json
-/src/main/resources/assets/createcasing/models/item/railway_encased_mldeg_shaft.json
-/src/main/resources/assets/createcasing/models/item/refined_radiance_encased_mldeg_shaft.json
-/src/main/resources/assets/createcasing/models/item/shadow_steel_encased_mldeg_shaft.json
-/src/main/resources/assets/createcasing/models/item/creative_encased_mldeg_shaft.json
-/src/main/resources/assets/createcasing/models/item/api/base_encased_mldeg_shaft.json

@@ -26,10 +26,7 @@ import com.simibubi.create.content.logistics.depot.DepotRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import fr.iglee42.createcasing.blockEntities.*;
 import fr.iglee42.createcasing.blockEntities.instances.*;
-import fr.iglee42.createcasing.blockEntities.renderers.CreativeCogwheelRenderer;
-import fr.iglee42.createcasing.blockEntities.renderers.CustomEncasedShaftRenderer;
-import fr.iglee42.createcasing.blockEntities.renderers.CustomMixerRenderer;
-import fr.iglee42.createcasing.blockEntities.renderers.CustomPressRenderer;
+import fr.iglee42.createcasing.blockEntities.renderers.*;
 import fr.iglee42.createcasing.blockEntities.BrassShaftBlockEntity;
 
 import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
@@ -97,9 +94,9 @@ public class ModBlockEntities {
 
     public static final BlockEntityEntry<GlassShaftBlockEntity> GLASS_SHAFT = REGISTRATE
             .blockEntity("glass_shaft", GlassShaftBlockEntity::new)
-            .instance(() -> BracketedKineticBlockEntityInstance::new, false)
+            //.instance(() -> GlassShaftInstance::new, false)
             .validBlocks(ModBlocks.GLASS_SHAFT)
-            .renderer(() -> BracketedKineticBlockEntityRenderer::new)
+            .renderer(() -> GlassShaftRenderer::new)
             .register();
 
     public static final BlockEntityEntry<MetalShaftBlockEntity> METAL_SHAFT = REGISTRATE
@@ -153,7 +150,7 @@ public class ModBlockEntities {
             .renderer(() -> DepotRenderer::new)
             .register();
 
-    public static final BlockEntityEntry<MechanicalMixerBlockEntity> API_MIXER = Create.REGISTRATE
+    public static final BlockEntityEntry<MechanicalMixerBlockEntity> API_MIXER = REGISTRATE
             .blockEntity("api_mixer", MechanicalMixerBlockEntity::new)
             .instance(() -> MixerInstance::new)
             .validBlocks()

@@ -31,10 +31,12 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import fr.iglee42.createcasing.CreateCasing;
+import fr.iglee42.createcasing.blocks.CreativeCogwheelBlock;
 import fr.iglee42.createcasing.blocks.customs.*;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedCogwheelBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedPipeBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedShaftBlock;
+import fr.iglee42.createcasing.blocks.shafts.*;
 import fr.iglee42.createcasing.items.CustomVerticalGearboxItem;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.Registries;
@@ -152,7 +154,6 @@ public class ModBlocks {
             .blockstate((c, p) -> axisBlock(c, p, $ -> AssetLookup.partialBaseModel(c, p), true))
             .item()
             .transform(customItemModel())
-            .onRegisterAfter(Registries.ITEM, CreateCasing::hideItem)
             .register();
 
     public static final BlockEntry<CustomMixerBlock> BRASS_MIXER = createMixer("brass");
@@ -218,7 +219,7 @@ public class ModBlocks {
             .simpleItem()
                 .register();
 
-    public static final BlockEntry<MLDEGShaftBlock> MLDEG_SHAFT = REGISTRATE.block("mldeg_shaft", MLDEGShaftBlock::new)
+    public static final BlockEntry<MetalShaftBlock> MLDEG_SHAFT = REGISTRATE.block("mldeg_shaft", MetalShaftBlock::new)
             .initialProperties(()-> Blocks.BLACKSTONE)
             .properties(p -> p.mapColor(MapColor.NONE)
                     .sound(SoundType.STONE)
@@ -449,7 +450,7 @@ public class ModBlocks {
                 String casing = c.getId().getPath().replace("_casing", "");
                 try {
                     CTSpriteShiftEntry sprite = (CTSpriteShiftEntry) AllSpriteShifts.class.getField(c.getId().getPath().toUpperCase()).get(new CTSpriteShiftEntry(AllCTTypes.OMNIDIRECTIONAL));
-                    REGISTRATE.block(casing + "_encased_" + shaft.getId().getPath(), p -> new CustomEncasedShaft(p, c, shaft))
+                    REGISTRATE.block(casing + "_encased_" + shaft.getId().getPath(), p -> new EncasedCustomShaftBlock(p, c, shaft))
                             .properties(p -> p.mapColor(MapColor.PODZOL))
                             .transform(BuilderTransformers.encasedShaft(casing, () -> sprite))
                             .transform(EncasingRegistry.addVariantTo(shaft))
@@ -462,7 +463,7 @@ public class ModBlocks {
                 }
             });
 
-            REGISTRATE.block("creative_encased_"+shaft.getId().getPath(), p -> new CustomEncasedShaft(p, ModBlocks.CREATIVE_CASING::get,shaft))
+            REGISTRATE.block("creative_encased_"+shaft.getId().getPath(), p -> new EncasedCustomShaftBlock(p, ModBlocks.CREATIVE_CASING::get,shaft))
                     .properties(p -> p.mapColor(MapColor.PODZOL))
                     .transform(BuilderTransformers.encasedShaft("creative", () -> AllSpriteShifts.CREATIVE_CASING))
                     .transform(EncasingRegistry.addVariantTo(shaft))
@@ -471,7 +472,7 @@ public class ModBlocks {
                     .onRegisterAfter(Registries.ITEM, CreateCasing::hideItem)
                     .register();
 
-            REGISTRATE.block("industrial_iron_encased_"+shaft.getId().getPath(), p -> new CustomEncasedShaft(p, AllBlocks.INDUSTRIAL_IRON_BLOCK,shaft))
+            REGISTRATE.block("industrial_iron_encased_"+shaft.getId().getPath(), p -> new EncasedCustomShaftBlock(p, AllBlocks.INDUSTRIAL_IRON_BLOCK,shaft))
                     .properties(p -> p.mapColor(MapColor.PODZOL))
                     .transform(encasedNoSpriteShaft("industrial_iron"))
                     .transform(EncasingRegistry.addVariantTo(shaft))
