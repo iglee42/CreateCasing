@@ -153,7 +153,6 @@ public class ModBlocks {
             .blockstate((c, p) -> axisBlock(c, p, $ -> AssetLookup.partialBaseModel(c, p), true))
             .item()
             .transform(customItemModel())
-            .onRegisterAfter(Registry.ITEM_REGISTRY, CreateCasing::hideItem)
             .register();
 
     public static final BlockEntry<CustomMixerBlock> BRASS_MIXER = createMixer("brass");
