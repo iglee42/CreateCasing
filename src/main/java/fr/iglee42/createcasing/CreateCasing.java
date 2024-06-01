@@ -14,6 +14,7 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipHelper;
 import com.simibubi.create.foundation.item.TooltipModifier;
+import fr.iglee42.createcasing.api.CreateCasingApi;
 import fr.iglee42.createcasing.blockEntities.MetalShaftBlockEntity;
 import fr.iglee42.createcasing.compat.kubejs.KubeJSCompatInit;
 import fr.iglee42.createcasing.config.ModConfigs;
