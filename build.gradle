@@ -254,8 +254,7 @@ publishing {
     repositories {
         maven {
             name = 'igleeRepo'
-            url = "http://${System.getenv("MAVEN_IP")}/releases"
-            allowInsecureProtocol = true
+            url = "https://${System.getenv("MAVEN_IP")}/releases"
             credentials {
                 username = System.getenv("MAVEN_USER")
                 password = System.getenv("MAVEN_PASS")
