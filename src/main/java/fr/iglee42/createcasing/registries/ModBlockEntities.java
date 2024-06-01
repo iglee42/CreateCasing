@@ -150,7 +150,7 @@ public class ModBlockEntities {
             .renderer(() -> DepotRenderer::new)
             .register();
 
-    public static final BlockEntityEntry<MechanicalMixerBlockEntity> API_MIXER = Create.REGISTRATE
+    public static final BlockEntityEntry<MechanicalMixerBlockEntity> API_MIXER = REGISTRATE
             .blockEntity("api_mixer", MechanicalMixerBlockEntity::new)
             .instance(() -> MixerInstance::new)
             .validBlocks()
