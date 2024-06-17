@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/encased_cogwheel/item",
+  "textures": {
+    "1": "minecraft:block/stripped_spruce_log_top",
+    "casing": "create:block/creative_casing",
+    "particle": "create:block/creative_casing",
+    "side": "createcasing:block/creative_encased_cogwheel_side",
+    "1_2": "createcasing:block/jungle_cogwheel"
+  }
+}

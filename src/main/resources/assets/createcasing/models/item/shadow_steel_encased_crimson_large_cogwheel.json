@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/encased_large_cogwheel/item",
+  "textures": {
+    "1": "minecraft:block/stripped_spruce_log_top",
+    "casing": "create:block/shadow_steel_casing",
+    "particle": "create:block/shadow_steel_casing",
+    "side": "createcasing:block/shadow_encased_cogwheel_side_connected",
+    "4": "createcasing:block/crimson_large_cogwheel"
+  }
+}
