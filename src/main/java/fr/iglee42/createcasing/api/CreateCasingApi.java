@@ -1,5 +1,6 @@
 package fr.iglee42.createcasing.api;
 
+import com.jozufozu.flywheel.core.PartialModel;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.Create;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
@@ -10,6 +11,7 @@ import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlock;
+import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockModel;
 import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogCTBehaviour;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogwheelBlock;
@@ -22,14 +24,14 @@ import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
-import fr.iglee42.createcasing.api.blocks.ApiDepotBlock;
-import fr.iglee42.createcasing.api.blocks.ApiGearboxBlock;
-import fr.iglee42.createcasing.api.blocks.ApiMixerBlock;
-import fr.iglee42.createcasing.api.blocks.ApiPressBlock;
+import fr.iglee42.createcasing.api.blocks.*;
+import fr.iglee42.createcasing.api.items.ApiCogwheelBlockItem;
+import fr.iglee42.createcasing.blocks.customs.WoodenCogwheelBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedCogwheelBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedPipeBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedShaftBlock;
 import fr.iglee42.createcasing.api.items.ApiVerticalGearboxItem;
+import fr.iglee42.createcasing.items.WoodenCogwheelBlockItem;
 import fr.iglee42.createcasing.registries.ModBlocks;
 import fr.iglee42.createcasing.utils.Deferred;
 import net.minecraft.client.renderer.RenderType;
@@ -37,6 +39,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 
@@ -47,6 +50,7 @@ import static com.simibubi.create.content.redstone.displayLink.AllDisplayBehavio
 import static com.simibubi.create.foundation.data.BlockStateGen.axisBlock;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
+import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 
 /**
  * @author iglee42
@@ -245,6 +249,33 @@ public class CreateCasingApi {
                 .transform(BlockStressDefaults.setImpact(8.0))
                 .item(AssemblyOperatorBlockItem::new)
                 .transform(customItemModel())
+                .register();
+    }
+
+
+    public static BlockEntry<ApiCogwheelBlock> createSmallCogwheel(CreateRegistrate registrate, String name){
+        return registrate.block(name+"_cogwheel", ApiCogwheelBlock::small)
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.sound(SoundType.WOOD).mapColor(MapColor.DIRT))
+                .transform(BlockStressDefaults.setNoImpact())
+                .transform(axeOrPickaxe())
+                .blockstate(BlockStateGen.axisBlockProvider(false))
+                .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
+                .item(ApiCogwheelBlockItem::new)
+                .build()
+                .register();
+    }
+
+    public static BlockEntry<ApiCogwheelBlock> createLargeCogwheel(CreateRegistrate registrate, String name, PartialModel partialModel){
+        return registrate.block(name+"_large_cogwheel", (p)->ApiCogwheelBlock.large(p,partialModel))
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.sound(SoundType.WOOD).mapColor(MapColor.DIRT))
+                .transform(axeOrPickaxe())
+                .transform(BlockStressDefaults.setNoImpact())
+                .blockstate(BlockStateGen.axisBlockProvider(false))
+                .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
+                .item(ApiCogwheelBlockItem::new)
+                .build()
                 .register();
     }
 

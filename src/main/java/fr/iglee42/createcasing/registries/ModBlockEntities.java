@@ -14,16 +14,17 @@ import com.simibubi.create.content.kinetics.mixer.MechanicalMixerBlockEntity;
 import com.simibubi.create.content.kinetics.mixer.MechanicalMixerRenderer;
 import com.simibubi.create.content.kinetics.mixer.MixerInstance;
 import com.simibubi.create.content.kinetics.press.MechanicalPressBlockEntity;
+import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntityInstance;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogInstance;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogRenderer;
-import com.simibubi.create.content.kinetics.transmission.SplitShaftInstance;
-import com.simibubi.create.content.kinetics.transmission.SplitShaftRenderer;
 import com.simibubi.create.content.logistics.depot.DepotBlockEntity;
 import com.simibubi.create.content.logistics.depot.DepotRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
+import fr.iglee42.createcasing.api.instances.ApiCogwheelBlockEntityInstance;
+import fr.iglee42.createcasing.api.renderers.ApiCogwheelBlockEntityRenderer;
 import fr.iglee42.createcasing.blockEntities.*;
 import fr.iglee42.createcasing.blockEntities.instances.*;
 import fr.iglee42.createcasing.blockEntities.renderers.*;
@@ -133,6 +134,29 @@ public class ModBlockEntities {
             .validBlocks(ModBlocks.BRASS_CHAIN_GEARSHIFT,ModBlocks.COPPER_CHAIN_GEARSHIFT,ModBlocks.RAILWAY_CHAIN_GEARSHIFT,ModBlocks.INDUSTRIAL_IRON_CHAIN_GEARSHIFT,ModBlocks.CREATIVE_CHAIN_GEARSHIFT)
             .renderer(() -> ShaftRenderer::new)
             .register();
+    public static final BlockEntityEntry<BracketedKineticBlockEntity> WOODEN_COGWHEELS = REGISTRATE
+            .blockEntity("wooden_cogwheels", BracketedKineticBlockEntity::new)
+            .instance(() -> WoodenCogwheelBlockEntityInstance::new, false)
+            .validBlocks()
+            .renderer(() -> WoodenCogwheelBlockEntityRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<SimpleKineticBlockEntity> ENCASED_CUSTOM_COGWHEEL = Create.REGISTRATE
+            .blockEntity("encased_custom_cogwheel", SimpleKineticBlockEntity::new)
+            .instance(() -> EncasedCustomCogInstance::small, false)
+            .validBlocks(AllBlocks.ANDESITE_ENCASED_COGWHEEL, AllBlocks.BRASS_ENCASED_COGWHEEL)
+            .renderer(() -> EncasedCustomCogRenderer::small)
+            .register();
+
+    public static final BlockEntityEntry<SimpleKineticBlockEntity> ENCASED_CUSTOM_LARGE_COGWHEEL = Create.REGISTRATE
+            .blockEntity("encased_custom_large_cogwheel", SimpleKineticBlockEntity::new)
+            .instance(() -> EncasedCustomCogInstance::large, false)
+            .validBlocks(AllBlocks.ANDESITE_ENCASED_LARGE_COGWHEEL, AllBlocks.BRASS_ENCASED_LARGE_COGWHEEL)
+            .renderer(() -> EncasedCustomCogRenderer::large)
+            .register();
+
+
+
 
     //API
 
@@ -164,6 +188,13 @@ public class ModBlockEntities {
             .renderer(() -> CustomPressRenderer::new)
             .register();
 
+
+    public static final BlockEntityEntry<BracketedKineticBlockEntity> API_COGWHEEL = REGISTRATE
+            .blockEntity("api_cogwheel", BracketedKineticBlockEntity::new)
+            .instance(() -> ApiCogwheelBlockEntityInstance::new, false)
+            .validBlocks()
+            .renderer(() -> ApiCogwheelBlockEntityRenderer::new)
+            .register();
 
     public static void register() {}
 }
