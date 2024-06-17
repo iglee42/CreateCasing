@@ -1,0 +1,17 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "createcasing:block/cogwheel/crimson",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "createcasing:block/cogwheel/crimson"
+    },
+    "axis=z": {
+      "model": "createcasing:block/cogwheel/crimson",
+      "x": 90,
+      "y": 180
+    }
+  }
+}
