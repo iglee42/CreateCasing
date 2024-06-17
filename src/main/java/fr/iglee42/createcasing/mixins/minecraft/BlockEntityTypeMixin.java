@@ -20,10 +20,15 @@ public class BlockEntityTypeMixin {
                 this.equals(ModBlockEntities.ENCASED_COGWHEEL_LARGE.get()) ||
                 this.equals(ModBlockEntities.ENCASED_FLUID_PIPE.get()) ||
                 this.equals(ModBlockEntities.CUSTOM_ENCASED_SHAFT.get()) ||
+                this.equals(ModBlockEntities.ENCASED_CUSTOM_COGWHEEL.get()) ||
+                this.equals(ModBlockEntities.ENCASED_CUSTOM_LARGE_COGWHEEL.get()) ||
+                this.equals(ModBlockEntities.WOODEN_COGWHEELS.get()) ||
+                this.equals(AllBlockEntityTypes.BRACKETED_KINETIC.get()) ||
                 this.equals(ModBlockEntities.API_GEARBOX.get()) ||
                 this.equals(ModBlockEntities.API_DEPOT.get()) ||
                 this.equals(ModBlockEntities.API_MIXER.get()) ||
                 this.equals(ModBlockEntities.API_PRESS.get()) ||
+                this.equals(ModBlockEntities.API_COGWHEEL.get()) ||
                 this.equals(AllBlockEntityTypes.FLUID_PIPE.get()) ||
                 this.equals(AllBlockEntityTypes.FLUID_TANK.get()))
             cir.setReturnValue(true);

@@ -13,6 +13,9 @@ import fr.iglee42.createcasing.registries.ModBlocks;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -24,8 +27,11 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.function.Predicate;
+
+import static fr.iglee42.createcasing.CreateCasing.MODID;
 
 public class WoodenShaftBlock extends ShaftBlock {
 
@@ -44,43 +50,17 @@ public class WoodenShaftBlock extends ShaftBlock {
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult ray) {
         InteractionResult result = super.use(state, world, pos, player, hand, ray);
         if (result != InteractionResult.PASS) return result;
-        Item item = player.getItemInHand(hand).getItem();
-        if (item.equals(Items.OAK_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.OAK_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        } else if (item.equals(Items.SPRUCE_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.SPRUCE_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        } else if (item.equals(Items.BIRCH_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.BIRCH_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        } else if (item.equals(Items.JUNGLE_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.JUNGLE_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        } else if (item.equals(Items.ACACIA_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.ACACIA_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        } else if (item.equals(Items.DARK_OAK_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.DARK_OAK_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        } else if (item.equals(Items.CRIMSON_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.CRIMSON_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        } else if (item.equals(Items.WARPED_PLANKS)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.WARPED_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        } else if (item.equals(Items.BLACKSTONE)) {
+        ItemStack item = player.getItemInHand(hand);
+        if (item.getItem().equals(Items.BLACKSTONE)) {
             Direction.Axis axis = state.getValue(AXIS);
             world.setBlockAndUpdate(pos, ModBlocks.MLDEG_SHAFT.getDefaultState().setValue(AXIS, axis));
             return InteractionResult.SUCCESS;
+        } else {
+            if (item.is(ItemTags.PLANKS) && ForgeRegistries.ITEMS.getKey(item.getItem()).getNamespace().equals("minecraft")) {
+                Direction.Axis axis = state.getValue(AXIS);
+                world.setBlockAndUpdate(pos, ForgeRegistries.BLOCKS.getValue(new ResourceLocation(MODID,ForgeRegistries.ITEMS.getKey(item.getItem()).getPath().replace("_planks","")+"_shaft")).defaultBlockState().setValue(AXIS, axis));
+                return InteractionResult.SUCCESS;
+            }
         }
         IPlacementHelper helper = PlacementHelpers.get(placementHelperId);
         ItemStack heldItem = player.getItemInHand(hand);
