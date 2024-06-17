@@ -16,8 +16,10 @@ import com.simibubi.create.content.kinetics.chainDrive.ChainGearshiftBlock;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlock;
 import com.simibubi.create.content.kinetics.motor.CreativeMotorGenerator;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockModel;
+import com.simibubi.create.content.kinetics.simpleRelays.CogWheelBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogCTBehaviour;
+import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogwheelBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedShaftBlock;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.content.redstone.displayLink.source.ItemNameDisplaySource;
@@ -38,8 +40,11 @@ import fr.iglee42.createcasing.blocks.publics.PublicEncasedPipeBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedShaftBlock;
 import fr.iglee42.createcasing.blocks.shafts.*;
 import fr.iglee42.createcasing.items.CustomVerticalGearboxItem;
+import fr.iglee42.createcasing.items.WoodenCogwheelBlockItem;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Rarity;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -197,6 +202,29 @@ public class ModBlocks {
     public static final BlockEntry<WoodenShaftBlock> BAMBOO_SHAFT = createWoodenShaft("cherry");
     public static final BlockEntry<WoodenShaftBlock> CRIMSON_SHAFT = createWoodenShaft("crimson");
     public static final BlockEntry<WoodenShaftBlock> WARPED_SHAFT = createWoodenShaft("warped");
+
+
+    public static final BlockEntry<WoodenCogwheelBlock> OAK_COGWHEEL = createWoodenCogwheel("oak");
+    public static final BlockEntry<WoodenCogwheelBlock> BIRCH_COGWHEEL = createWoodenCogwheel("birch");
+    public static final BlockEntry<WoodenCogwheelBlock> JUNGLE_COGWHEEL = createWoodenCogwheel("jungle");
+    public static final BlockEntry<WoodenCogwheelBlock> ACACIA_COGWHEEL = createWoodenCogwheel("acacia");
+    public static final BlockEntry<WoodenCogwheelBlock> DARK_OAK_COGWHEEL = createWoodenCogwheel("dark_oak");
+    public static final BlockEntry<WoodenCogwheelBlock> MANGROVE_COGWHEEL = createWoodenCogwheel("mangrove");
+    public static final BlockEntry<WoodenCogwheelBlock> CHERRY_COGWHEEL = createWoodenCogwheel("bamboo");
+    public static final BlockEntry<WoodenCogwheelBlock> BAMBOO_COGWHEEL = createWoodenCogwheel("cherry");
+    public static final BlockEntry<WoodenCogwheelBlock> CRIMSON_COGWHEEL = createWoodenCogwheel("crimson");
+    public static final BlockEntry<WoodenCogwheelBlock> WARPED_COGWHEEL = createWoodenCogwheel("warped");
+
+    public static final BlockEntry<WoodenCogwheelBlock> OAK_LARGE_COGWHEEL = createLargeWoodenCogwheel("oak");
+    public static final BlockEntry<WoodenCogwheelBlock> BIRCH_LARGE_COGWHEEL = createLargeWoodenCogwheel("birch");
+    public static final BlockEntry<WoodenCogwheelBlock> JUNGLE_LARGE_COGWHEEL = createLargeWoodenCogwheel("jungle");
+    public static final BlockEntry<WoodenCogwheelBlock> ACACIA_LARGE_COGWHEEL = createLargeWoodenCogwheel("acacia");
+    public static final BlockEntry<WoodenCogwheelBlock> DARK_OAK_LARGE_COGWHEEL = createLargeWoodenCogwheel("dark_oak");
+    public static final BlockEntry<WoodenCogwheelBlock> MANGROVE_LARGE_COGWHEEL = createLargeWoodenCogwheel("mangrove");
+    public static final BlockEntry<WoodenCogwheelBlock> CHERRY_LARGE_COGWHEEL = createLargeWoodenCogwheel("bamboo");
+    public static final BlockEntry<WoodenCogwheelBlock> BAMBOO_LARGE_COGWHEEL = createLargeWoodenCogwheel("cherry");
+    public static final BlockEntry<WoodenCogwheelBlock> CRIMSON_LARGE_COGWHEEL = createLargeWoodenCogwheel("crimson");
+    public static final BlockEntry<WoodenCogwheelBlock> WARPED_LARGE_COGWHEEL = createLargeWoodenCogwheel("warped");
 
     public static final BlockEntry<GlassShaftBlock> GLASS_SHAFT = REGISTRATE.block("glass_shaft", GlassShaftBlock::new)
             .initialProperties(()-> GLASS)
@@ -396,6 +424,34 @@ public class ModBlocks {
                 .register();
     }
 
+    private static BlockEntry<WoodenCogwheelBlock> createWoodenCogwheel(String name) {
+        return REGISTRATE.block(name+"_cogwheel", WoodenCogwheelBlock::small)
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.sound(SoundType.WOOD).mapColor(MapColor.DIRT))
+                .transform(BlockStressDefaults.setNoImpact())
+                .transform(axeOrPickaxe())
+                .blockstate(BlockStateGen.axisBlockProvider(false))
+                .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
+                .item(WoodenCogwheelBlockItem::new)
+                .build()
+                .register();
+    }
+
+    private static BlockEntry<WoodenCogwheelBlock> createLargeWoodenCogwheel(String name) {
+        return REGISTRATE.block(name+"_large_cogwheel", WoodenCogwheelBlock::large)
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.sound(SoundType.WOOD).mapColor(MapColor.DIRT))
+                .transform(axeOrPickaxe())
+                .transform(BlockStressDefaults.setNoImpact())
+                .blockstate(BlockStateGen.axisBlockProvider(false))
+                .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
+                .item(WoodenCogwheelBlockItem::new)
+                .build()
+                .register();
+
+    }
+
+
     public static BlockEntry<CustomDepotBlock> createDepot(String name){
         return REGISTRATE.block(name+"_depot", CustomDepotBlock::new)
                 .initialProperties(SharedProperties::stone)
@@ -482,6 +538,118 @@ public class ModBlocks {
                     .register();
 
         });
+        forEachCogwheel(cogwheel-> {
+            Create.REGISTRATE.getAll(Registries.BLOCK).stream().filter(r->r.getId().getPath().endsWith("_casing")).forEach(c-> {
+                String casing = c.getId().getPath().replace("_casing", "");
+                try {
+                    CTSpriteShiftEntry sprite = (CTSpriteShiftEntry) AllSpriteShifts.class.getField(c.getId().getPath().toUpperCase()).get(new CTSpriteShiftEntry(AllCTTypes.OMNIDIRECTIONAL));
+                    REGISTRATE.block(casing + "_encased_" + cogwheel.getId().getPath(), p -> new EncasedCustomCogwheelBlock(p,cogwheel.get().isLarge, c, cogwheel))
+                            .properties(p -> p.mapColor(MapColor.PODZOL))
+                            .transform(BuilderTransformers.encasedCogwheel(casing, () -> sprite))
+                            .transform(EncasingRegistry.addVariantTo(cogwheel))
+                            .transform(axeOrPickaxe())
+                            .loot((l,s)->l.dropOther(s,s.getCogwheel().get().asItem()))
+                            .onRegisterAfter(Registries.ITEM, CreateCasing::hideItem)
+                            .register();
+                } catch (NoSuchFieldException | IllegalAccessException ex) {
+                    ex.printStackTrace();
+                }
+            });
+
+            REGISTRATE.block("creative_encased_"+cogwheel.getId().getPath(), p -> new EncasedCustomCogwheelBlock(p,cogwheel.get().isLarge, ModBlocks.CREATIVE_CASING::get,cogwheel))
+                    .properties(p -> p.mapColor(MapColor.PODZOL))
+                    .transform(BuilderTransformers.encasedCogwheel("creative", () -> AllSpriteShifts.CREATIVE_CASING))
+                    .transform(EncasingRegistry.addVariantTo(cogwheel))
+                    .transform(axeOrPickaxe())
+                    .loot((l,s)->l.dropOther(s,s.getCogwheel().get().asItem()))
+                    .onRegisterAfter(Registries.ITEM, CreateCasing::hideItem)
+                    .register();
+
+            REGISTRATE.block("industrial_iron_encased_"+cogwheel.getId().getPath(), p -> new EncasedCustomCogwheelBlock(p,cogwheel.get().isLarge, AllBlocks.INDUSTRIAL_IRON_BLOCK,cogwheel))
+                    .properties(p -> p.mapColor(MapColor.PODZOL))
+                    .transform(encasedCogwheel("industrial_iron"))
+                    .transform(EncasingRegistry.addVariantTo(cogwheel))
+                    .transform(axeOrPickaxe())
+                    .loot((l,s)->l.dropOther(s,s.getCogwheel().get().asItem()))
+                    .onRegisterAfter(Registries.ITEM, CreateCasing::hideItem)
+                    .register();
+
+        });
+        forEachLargeCogwheel(cogwheel-> {
+            Create.REGISTRATE.getAll(Registries.BLOCK).stream().filter(r->r.getId().getPath().endsWith("_casing")).forEach(c-> {
+                String casing = c.getId().getPath().replace("_casing", "");
+                try {
+                    CTSpriteShiftEntry sprite = (CTSpriteShiftEntry) AllSpriteShifts.class.getField(c.getId().getPath().toUpperCase()).get(new CTSpriteShiftEntry(AllCTTypes.OMNIDIRECTIONAL));
+                    REGISTRATE.block(casing + "_encased_" + cogwheel.getId().getPath(), p -> new EncasedCustomCogwheelBlock(p,cogwheel.get().isLarge, c, cogwheel))
+                            .properties(p -> p.mapColor(MapColor.PODZOL))
+                            .transform(BuilderTransformers.encasedCogwheel(casing, () -> sprite))
+                            .transform(EncasingRegistry.addVariantTo(cogwheel))
+                            .transform(axeOrPickaxe())
+                            .loot((l,s)->l.dropOther(s,s.getCogwheel().get().asItem()))
+                            .onRegisterAfter(Registries.ITEM, CreateCasing::hideItem)
+                            .register();
+                } catch (NoSuchFieldException | IllegalAccessException ex) {
+                    ex.printStackTrace();
+                }
+            });
+
+            REGISTRATE.block("creative_encased_"+cogwheel.getId().getPath(), p -> new EncasedCustomCogwheelBlock(p,cogwheel.get().isLarge, ModBlocks.CREATIVE_CASING::get,cogwheel))
+                    .properties(p -> p.mapColor(MapColor.PODZOL))
+                    .transform(BuilderTransformers.encasedCogwheel("creative", () -> AllSpriteShifts.CREATIVE_CASING))
+                    .transform(EncasingRegistry.addVariantTo(cogwheel))
+                    .transform(axeOrPickaxe())
+                    .loot((l,s)->l.dropOther(s,s.getCogwheel().get().asItem()))
+                    .onRegisterAfter(Registries.ITEM, CreateCasing::hideItem)
+                    .register();
+
+            REGISTRATE.block("industrial_iron_encased_"+cogwheel.getId().getPath(), p -> new EncasedCustomCogwheelBlock(p,cogwheel.get().isLarge, AllBlocks.INDUSTRIAL_IRON_BLOCK,cogwheel))
+                    .properties(p -> p.mapColor(MapColor.PODZOL))
+                    .transform(encasedLargeCogwheel("industrial_iron"))
+                    .transform(EncasingRegistry.addVariantTo(cogwheel))
+                    .transform(axeOrPickaxe())
+                    .loot((l,s)->l.dropOther(s,s.getCogwheel().get().asItem()))
+                    .onRegisterAfter(Registries.ITEM, CreateCasing::hideItem)
+                    .register();
+
+        });
+    }
+
+    public static <B extends EncasedCogwheelBlock, P> NonNullUnaryOperator<BlockBuilder<B, P>> encasedCogwheel(
+            String casing) {
+        return b -> encasedCogwheelBaseNoShift(b, casing, AllBlocks.COGWHEEL::get, false);
+    }
+
+    public static <B extends EncasedCogwheelBlock, P> NonNullUnaryOperator<BlockBuilder<B, P>> encasedLargeCogwheel(
+            String casing) {
+        return b -> encasedCogwheelBaseNoShift(b, casing, AllBlocks.LARGE_COGWHEEL::get, true);
+    }
+
+    private static <B extends EncasedCogwheelBlock, P> BlockBuilder<B, P> encasedCogwheelBaseNoShift(BlockBuilder<B, P> b,
+                                                                                              String casing, Supplier<ItemLike> drop, boolean large) {
+        String encasedSuffix = "_encased_cogwheel_side" + (large ? "_connected" : "");
+        String blockFolder = large ? "encased_large_cogwheel" : "encased_cogwheel";
+        String wood = casing.equals("brass") ? "dark_oak" : "spruce";
+        String gearbox = casing.equals("brass") ? "brass_gearbox" : "gearbox";
+        return encasedBase(b, drop).addLayer(() -> RenderType::cutoutMipped)
+                .blockstate((c, p) -> axisBlock(c, p, blockState -> {
+                    String suffix = (blockState.getValue(EncasedCogwheelBlock.TOP_SHAFT) ? "_top" : "")
+                            + (blockState.getValue(EncasedCogwheelBlock.BOTTOM_SHAFT) ? "_bottom" : "");
+                    String modelName = c.getName() + suffix;
+                    return p.models()
+                            .withExistingParent(modelName, p.modLoc("block/" + blockFolder + "/block" + suffix))
+                            .texture("casing", Create.asResource("block/" + casing + "_casing"))
+                            .texture("particle", Create.asResource("block/" + casing + "_casing"))
+                            .texture("4", Create.asResource("block/" + gearbox))
+                            .texture("1", new ResourceLocation("block/stripped_" + wood + "_log_top"))
+                            .texture("side", Create.asResource("block/" + casing + encasedSuffix));
+                }, false))
+                .item()
+                .model((c, p) -> p.withExistingParent(c.getName(), p.modLoc("block/" + blockFolder + "/item"))
+                        .texture("casing", Create.asResource("block/" + casing + "_casing"))
+                        .texture("particle", Create.asResource("block/" + casing + "_casing"))
+                        .texture("1", new ResourceLocation("block/stripped_" + wood + "_log_top"))
+                        .texture("side", Create.asResource("block/" + casing + encasedSuffix)))
+                .build();
     }
 
     public static void register() {
@@ -518,5 +686,31 @@ public class ModBlocks {
         action.accept(CRIMSON_SHAFT);
         action.accept(GLASS_SHAFT);
         action.accept(MLDEG_SHAFT);
+    }
+
+    public static void forEachCogwheel(Consumer<BlockEntry<? extends WoodenCogwheelBlock>> action){
+        action.accept(OAK_COGWHEEL);
+        action.accept(BIRCH_COGWHEEL);
+        action.accept(JUNGLE_COGWHEEL);
+        action.accept(ACACIA_COGWHEEL);
+        action.accept(DARK_OAK_COGWHEEL);
+        action.accept(MANGROVE_COGWHEEL);
+        action.accept(BAMBOO_COGWHEEL);
+        action.accept(CHERRY_COGWHEEL);
+        action.accept(WARPED_COGWHEEL);
+        action.accept(CRIMSON_COGWHEEL);
+    }
+
+    public static void forEachLargeCogwheel(Consumer<BlockEntry<? extends WoodenCogwheelBlock>> action){
+        action.accept(OAK_LARGE_COGWHEEL);
+        action.accept(BIRCH_LARGE_COGWHEEL);
+        action.accept(JUNGLE_LARGE_COGWHEEL);
+        action.accept(ACACIA_LARGE_COGWHEEL);
+        action.accept(DARK_OAK_LARGE_COGWHEEL);
+        action.accept(MANGROVE_LARGE_COGWHEEL);
+        action.accept(BAMBOO_LARGE_COGWHEEL);
+        action.accept(CHERRY_LARGE_COGWHEEL);
+        action.accept(WARPED_LARGE_COGWHEEL);
+        action.accept(CRIMSON_LARGE_COGWHEEL);
     }
 }
