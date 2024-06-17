@@ -1,0 +1,17 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "createcasing:block/large_cogwheel/warped",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "createcasing:block/large_cogwheel/warped"
+    },
+    "axis=z": {
+      "model": "createcasing:block/large_cogwheel/warped",
+      "x": 90,
+      "y": 180
+    }
+  }
+}
