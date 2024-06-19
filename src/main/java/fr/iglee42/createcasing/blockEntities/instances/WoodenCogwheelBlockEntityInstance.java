@@ -55,6 +55,7 @@ public class WoodenCogwheelBlockEntityInstance extends SingleRotatingInstance<Br
 
 		Direction.Axis axis = KineticBlockEntityRenderer.getRotationAxisOf(blockEntity);
 		Direction facing = Direction.fromAxisAndDirection(axis, AxisDirection.POSITIVE);
+		if (ModPartialModels.LARGE_COGS_MODELS.get(ForgeRegistries.BLOCKS.getKey(blockState.getBlock()).getPath().replaceAll("_large_cogwheel","")) == null) return super.getModel();
 		return getRotatingMaterial().getModel(ModPartialModels.LARGE_COGS_MODELS.get(ForgeRegistries.BLOCKS.getKey(blockState.getBlock()).getPath().replaceAll("_large_cogwheel","")), blockState, facing,
 			() -> this.rotateToAxis(axis));
 	}

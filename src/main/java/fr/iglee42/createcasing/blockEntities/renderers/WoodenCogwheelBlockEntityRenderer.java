@@ -45,6 +45,7 @@ public class WoodenCogwheelBlockEntityRenderer extends KineticBlockEntityRendere
 
 		Axis axis = getRotationAxisOf(be);
 		Direction facing = Direction.fromAxisAndDirection(axis, AxisDirection.POSITIVE);
+		if (ModPartialModels.LARGE_COGS_MODELS.get(ForgeRegistries.BLOCKS.getKey(be.getBlockState().getBlock()).getPath().replaceAll("_large_cogwheel","")) == null) return;
 		renderRotatingBuffer(be,
 			CachedBufferer.partialFacingVertical(ModPartialModels.LARGE_COGS_MODELS.get(ForgeRegistries.BLOCKS.getKey(be.getBlockState().getBlock()).getPath().replaceAll("_large_cogwheel","")), be.getBlockState(), facing),
 			ms, buffer.getBuffer(RenderType.solid()), light);
