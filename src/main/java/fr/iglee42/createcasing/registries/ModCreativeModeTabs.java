@@ -15,6 +15,7 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.util.thread.EffectiveSide;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -121,6 +122,7 @@ public class ModCreativeModeTabs {
 
 		@Override
 		public void accept(CreativeModeTab.ItemDisplayParameters pParameters, CreativeModeTab.Output output) {
+			if (EffectiveSide.get().isServer()) return;
 			ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
 			List<RegistrateDisplayItemsGenerator.ItemOrdering> orderings = makeOrderings();
 			Function<Item, ItemStack> stackFunc = makeStackFunc();
