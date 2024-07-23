@@ -28,9 +28,9 @@ public class BlockEntityTypeMixin {
                 this.equals(ModBlockEntities.API_DEPOT.get()) ||
                 this.equals(ModBlockEntities.API_MIXER.get()) ||
                 this.equals(ModBlockEntities.API_PRESS.get()) ||
-                this.equals(ModBlockEntities.API_COGWHEEL.get()) ||
-                this.equals(AllBlockEntityTypes.FLUID_PIPE.get()) ||
-                this.equals(AllBlockEntityTypes.FLUID_TANK.get()))
+                this.equals(ModBlockEntities.API_COGWHEEL.get()))// ||
+                //this.equals(AllBlockEntityTypes.FLUID_PIPE.get()) ||
+                //this.equals(AllBlockEntityTypes.FLUID_TANK.get()))
             cir.setReturnValue(true);
 
     }
