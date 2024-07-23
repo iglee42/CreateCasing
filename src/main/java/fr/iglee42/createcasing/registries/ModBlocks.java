@@ -379,7 +379,7 @@ public class ModBlocks {
                 .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
                 .onRegisterAfter(Registries.ITEM, v -> ItemDescription.useKey(v, "block.createcasing."+name+"_mixer"))
                 .addLayer(() -> RenderType::cutoutMipped)
-                .transform(BlockStressDefaults.setImpact(6.0))
+                .transform(BlockStressDefaults.setImpact(4.0))
                 .item(AssemblyOperatorBlockItem::new)
                 .transform(customItemModel())
                 .register()
