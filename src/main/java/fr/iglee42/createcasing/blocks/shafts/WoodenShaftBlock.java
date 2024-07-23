@@ -1,5 +1,6 @@
 package fr.iglee42.createcasing.blocks.shafts;
 
+import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.AbstractSimpleShaftBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
@@ -88,7 +89,7 @@ public class WoodenShaftBlock extends ShaftBlock {
 
         @Override
         public Predicate<BlockState> getStatePredicate() {
-            return s->s.getBlock() instanceof AbstractSimpleShaftBlock;
+            return s->s.getBlock() instanceof ShaftBlock || AllBlocks.POWERED_LATCH.has(s);
         }
 
         @Override
