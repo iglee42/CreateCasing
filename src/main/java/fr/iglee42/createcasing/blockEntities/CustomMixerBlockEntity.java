@@ -176,6 +176,18 @@ public class CustomMixerBlockEntity extends BasinOperatingBlockEntity {
 
 					processingTicks = Mth.clamp((Mth.log2((int) (512 / speed))) * Mth.ceil(recipeSpeed * 15) + 1, 1, 512);
 
+					if (ModConfigs.common().kinetics.shouldCustomMixerMixeFaster.get() && currentRecipe != null){
+						if (ModBlocks.RAILWAY_MIXER.has(getBlockState())){
+							processingTicks = processingTicks / 2;
+						} else if (ModBlocks.BRASS_MIXER.has(getBlockState()) &&
+								(currentRecipe instanceof ShapelessRecipe ||
+										(currentRecipe instanceof ProcessingRecipe<?> r && r.getFluidIngredients().isEmpty()))){
+							processingTicks = processingTicks / 2;
+						} else if (ModBlocks.COPPER_MIXER.has(getBlockState()) && (currentRecipe.getId().getPath().contains("potion_mixing") || (currentRecipe instanceof ProcessingRecipe<?> r && r.getIngredients().isEmpty() && !r.getFluidIngredients().isEmpty()))) {
+							processingTicks = processingTicks / 2;
+						}
+					}
+
 					Optional<BasinBlockEntity> basin = getBasin();
 					if (basin.isPresent()) {
 						Couple<SmartFluidTankBehaviour> tanks = basin.get()
@@ -190,21 +202,6 @@ public class CustomMixerBlockEntity extends BasinOperatingBlockEntity {
 
 				} else {
 					processingTicks--;
-					if (currentRecipe != null) {
-						if (ModConfigs.common().kinetics.shouldCustomMixerMixeFaster.get()) {
-
-							if (ModBlocks.RAILWAY_MIXER.has(getBlockState())) {
-								processingTicks--;
-							} else if (ModBlocks.BRASS_MIXER.has(getBlockState())) {
-								if (currentRecipe instanceof ShapelessRecipe)
-									processingTicks--;
-								else if (((ProcessingRecipe<?>) currentRecipe).getFluidIngredients().isEmpty())
-									processingTicks--;
-							} else if (ModBlocks.COPPER_MIXER.has(getBlockState()) && currentRecipe instanceof ProcessingRecipe<?> && (((ProcessingRecipe<?>) currentRecipe).getIngredients().isEmpty() || currentRecipe.getId().getPath().contains("potion_mixing"))) {
-								processingTicks--;
-							}
-						}
-					}
 					if (processingTicks == 0) {
 						runningTicks++;
 						processingTicks = -1;
