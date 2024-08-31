@@ -68,7 +68,7 @@ public class CreateCasing {
         ModConfigs.register(ModLoadingContext.get());
 
         REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
-        Create.REGISTRATE.addRegisterCallback(Registry.BLOCK_REGISTRY,ModBlocks::registerEncasedShafts);
+
         //if (isExtendedCogsLoaded())CreateExtendedCogwheelsCompat.REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
 
         //if (isExtendedCogsLoaded()) ExtendedCogwheels.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, CreateExtendedCogwheelsCompat::register);
@@ -77,6 +77,9 @@ public class CreateCasing {
         ModBlocks.register();
         ModBlockEntities.register();
         ModPackets.registerPackets();
+
+        LOGGER.info("MAIN CALL");
+        ModBlocks.registerEncasedShafts();
 
         if (ModList.get().isLoaded("kubejs")) {
             KubeJSCompatInit.init();
