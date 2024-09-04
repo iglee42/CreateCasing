@@ -56,6 +56,8 @@ import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.Objects;
 import java.util.function.Consumer;
 import java.util.function.Supplier;
@@ -501,12 +503,13 @@ public class ModBlocks {
 
 
     public static void registerEncasedShafts() {
+        List<BlockEntry<?>> casings = Arrays.asList(AllBlocks.ANDESITE_CASING,AllBlocks.BRASS_CASING,AllBlocks.COPPER_CASING,AllBlocks.RAILWAY_CASING,AllBlocks.REFINED_RADIANCE_CASING,AllBlocks.SHADOW_STEEL_CASING);
         forEachShaft(shaft-> {
-            Create.REGISTRATE.getAll(Registries.BLOCK).stream().filter(r->r.getId().getPath().endsWith("_casing")).forEach(c-> {
+            casings.forEach(c-> {
                 String casing = c.getId().getPath().replace("_casing", "");
                 try {
                     CTSpriteShiftEntry sprite = (CTSpriteShiftEntry) AllSpriteShifts.class.getField(c.getId().getPath().toUpperCase()).get(new CTSpriteShiftEntry(AllCTTypes.OMNIDIRECTIONAL));
-                    REGISTRATE.block(casing + "_encased_" + shaft.getId().getPath(), p -> new EncasedCustomShaftBlock(p, c, shaft))
+                    REGISTRATE.block(casing + "_encased_" + shaft.getId().getPath(), p -> new EncasedCustomShaftBlock(p, (Supplier<Block>) c, shaft))
                             .properties(p -> p.mapColor(MapColor.PODZOL))
                             .transform(BuilderTransformers.encasedShaft(casing, () -> sprite))
                             .transform(EncasingRegistry.addVariantTo(shaft))
@@ -539,11 +542,11 @@ public class ModBlocks {
 
         });
         forEachCogwheel(cogwheel-> {
-            Create.REGISTRATE.getAll(Registries.BLOCK).stream().filter(r->r.getId().getPath().endsWith("_casing")).forEach(c-> {
+            casings.forEach(c-> {
                 String casing = c.getId().getPath().replace("_casing", "");
                 try {
                     CTSpriteShiftEntry sprite = (CTSpriteShiftEntry) AllSpriteShifts.class.getField(c.getId().getPath().toUpperCase()).get(new CTSpriteShiftEntry(AllCTTypes.OMNIDIRECTIONAL));
-                    REGISTRATE.block(casing + "_encased_" + cogwheel.getId().getPath(), p -> new EncasedCustomCogwheelBlock(p,cogwheel.get().isLarge, c, cogwheel))
+                    REGISTRATE.block(casing + "_encased_" + cogwheel.getId().getPath(), p -> new EncasedCustomCogwheelBlock(p,cogwheel.get().isLarge, (Supplier<Block>) c, cogwheel))
                             .properties(p -> p.mapColor(MapColor.PODZOL))
                             .transform(BuilderTransformers.encasedCogwheel(casing, () -> sprite))
                             .transform(EncasingRegistry.addVariantTo(cogwheel))
@@ -576,11 +579,11 @@ public class ModBlocks {
 
         });
         forEachLargeCogwheel(cogwheel-> {
-            Create.REGISTRATE.getAll(Registries.BLOCK).stream().filter(r->r.getId().getPath().endsWith("_casing")).forEach(c-> {
+            casings.forEach(c-> {
                 String casing = c.getId().getPath().replace("_casing", "");
                 try {
                     CTSpriteShiftEntry sprite = (CTSpriteShiftEntry) AllSpriteShifts.class.getField(c.getId().getPath().toUpperCase()).get(new CTSpriteShiftEntry(AllCTTypes.OMNIDIRECTIONAL));
-                    REGISTRATE.block(casing + "_encased_" + cogwheel.getId().getPath(), p -> new EncasedCustomCogwheelBlock(p,cogwheel.get().isLarge, c, cogwheel))
+                    REGISTRATE.block(casing + "_encased_" + cogwheel.getId().getPath(), p -> new EncasedCustomCogwheelBlock(p,cogwheel.get().isLarge, (Supplier<Block>) c, cogwheel))
                             .properties(p -> p.mapColor(MapColor.PODZOL))
                             .transform(BuilderTransformers.encasedCogwheel(casing, () -> sprite))
                             .transform(EncasingRegistry.addVariantTo(cogwheel))

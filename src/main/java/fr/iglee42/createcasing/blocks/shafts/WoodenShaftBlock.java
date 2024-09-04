@@ -88,7 +88,7 @@ public class WoodenShaftBlock extends ShaftBlock {
 
         @Override
         public Predicate<BlockState> getStatePredicate() {
-            return s->s.getBlock() instanceof ShaftBlock || AllBlocks.POWERED_LATCH.has(s);
+            return s->s.getBlock() instanceof ShaftBlock || AllBlocks.POWERED_SHAFT.has(s);
         }
 
         @Override
