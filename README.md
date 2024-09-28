@@ -34,7 +34,7 @@ implementation fg.deobf("fr.iglee42:CreateCasing:${mc_version}-${create_encased_
 ```
 <h1 align="center">
 <a href="http://maven.iglee.fr/#/releases/fr/iglee42/CreateCasing">
-        <img src="https://flat.badgen.net/maven/v/metadata-url/http/50.20.249.21:8080/releases/fr/iglee42/CreateCasing/maven-metadata.xml?color=cf9555&label=CreateEncased" alt="Create Encased Latest Version">
+        <img src="https://flat.badgen.net/maven/v/metadata-url/https/iglee.fr:8081/releases/fr/iglee42/CreateCasing/maven-metadata.xml?color=cf9555&label=CreateEncased" alt="Create Encased Latest Version">
     </a>
 </h1>
 
