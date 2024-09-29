@@ -50,18 +50,6 @@ public class WoodenShaftBlock extends ShaftBlock {
     public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult ray) {
         InteractionResult result = super.use(state, world, pos, player, hand, ray);
         if (result != InteractionResult.PASS) return result;
-        ItemStack item = player.getItemInHand(hand);
-        if (item.getItem().equals(Items.BLACKSTONE)) {
-            Direction.Axis axis = state.getValue(AXIS);
-            world.setBlockAndUpdate(pos, ModBlocks.MLDEG_SHAFT.getDefaultState().setValue(AXIS, axis));
-            return InteractionResult.SUCCESS;
-        } else {
-            if (item.is(ItemTags.PLANKS) && ForgeRegistries.ITEMS.getKey(item.getItem()).getNamespace().equals("minecraft")) {
-                Direction.Axis axis = state.getValue(AXIS);
-                world.setBlockAndUpdate(pos, ForgeRegistries.BLOCKS.getValue(new ResourceLocation(MODID,ForgeRegistries.ITEMS.getKey(item.getItem()).getPath().replace("_planks","")+"_shaft")).defaultBlockState().setValue(AXIS, axis));
-                return InteractionResult.SUCCESS;
-            }
-        }
         IPlacementHelper helper = PlacementHelpers.get(placementHelperId);
         ItemStack heldItem = player.getItemInHand(hand);
         if (helper.matchesItem(heldItem))

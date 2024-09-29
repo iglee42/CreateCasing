@@ -24,6 +24,11 @@ public class ModSprites {
     public static final CTSpriteShiftEntry CREATIVE_ENCASED_COGWHEEL_SIDE;
     public static final CTSpriteShiftEntry CREATIVE_ENCASED_COGWHEEL_OTHERSIDE;
 
+    public static final SpriteShiftEntry COPPER_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/copper_belt_casing");
+    public static final SpriteShiftEntry RAILWAY_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/copper_belt_casing");
+    public static final SpriteShiftEntry INDUSTRIAL_IRON_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/copper_belt_casing");
+    public static final SpriteShiftEntry CREATIVE_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/copper_belt_casing");
+
     private static CTSpriteShiftEntry horizontal(String name) {
         return getCT(AllCTTypes.HORIZONTAL, name);
     }
@@ -35,6 +40,13 @@ public class ModSprites {
         return getCT(AllCTTypes.OMNIDIRECTIONAL, name);
     }
 
+    private static SpriteShiftEntry get(String originalLocation, String targetLocation) {
+        return SpriteShifter.get(CreateCasing.asResource(originalLocation), CreateCasing.asResource(targetLocation));
+    }
+
+    private static SpriteShiftEntry getFromCreate(String originalLocation, String targetLocation) {
+        return SpriteShifter.get(Create.asResource(originalLocation), CreateCasing.asResource(targetLocation));
+    }
 
     private static CTSpriteShiftEntry getCT(CTType type, String blockTextureName, String connectedTextureName) {
         return CTSpriteShifter.getCT(type, CreateCasing.asResource("block/" + blockTextureName), CreateCasing.asResource("block/" + connectedTextureName + "_connected"));

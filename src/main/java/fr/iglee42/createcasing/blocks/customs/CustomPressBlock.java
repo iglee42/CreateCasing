@@ -31,39 +31,6 @@ public class CustomPressBlock extends HorizontalKineticBlock implements IBE<Mech
 		super(properties);
 	}
 
-
-	@Override
-	public InteractionResult use(BlockState blockState, Level world, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult p_60508_) {
-
-			Direction facing = blockState.getValue(HORIZONTAL_FACING);
-
-			if (player.getItemInHand(hand).is(AllBlocks.ANDESITE_CASING.get().asItem())) {
-				world.setBlockAndUpdate(blockPos, AllBlocks.MECHANICAL_PRESS.getDefaultState().setValue(HORIZONTAL_FACING, facing));
-				return InteractionResult.SUCCESS;
-			} else if (player.getItemInHand(hand).is(AllBlocks.BRASS_CASING.get().asItem())) {
-				if (ModBlocks.COPPER_PRESS.has(blockState) || ModBlocks.RAILWAY_PRESS.has(blockState) || ModBlocks.INDUSTRIAL_IRON_PRESS.has(blockState) || ModBlocks.CREATIVE_PRESS.has(blockState))
-					world.setBlockAndUpdate(blockPos, ModBlocks.BRASS_PRESS.getDefaultState().setValue(HORIZONTAL_FACING, facing));
-				return InteractionResult.SUCCESS;
-			} else if (player.getItemInHand(hand).is(AllBlocks.COPPER_CASING.get().asItem())) {
-				if (ModBlocks.BRASS_PRESS.has(blockState)||ModBlocks.RAILWAY_PRESS.has(blockState) || ModBlocks.INDUSTRIAL_IRON_PRESS.has(blockState) || ModBlocks.CREATIVE_PRESS.has(blockState))
-					world.setBlockAndUpdate(blockPos, ModBlocks.COPPER_PRESS.getDefaultState().setValue(HORIZONTAL_FACING, facing));
-				return InteractionResult.SUCCESS;
-			} else if (player.getItemInHand(hand).is(AllBlocks.RAILWAY_CASING.get().asItem())) {
-				if (ModBlocks.BRASS_PRESS.has(blockState)||ModBlocks.COPPER_PRESS.has(blockState) || ModBlocks.INDUSTRIAL_IRON_PRESS.has(blockState) || ModBlocks.CREATIVE_PRESS.has(blockState))
-					world.setBlockAndUpdate(blockPos, ModBlocks.RAILWAY_PRESS.getDefaultState().setValue(HORIZONTAL_FACING, facing));
-				return InteractionResult.SUCCESS;
-			} else if (player.getItemInHand(hand).is(AllBlocks.INDUSTRIAL_IRON_BLOCK.get().asItem())) {
-				if (ModBlocks.BRASS_PRESS.has(blockState)||ModBlocks.COPPER_PRESS.has(blockState) || ModBlocks.RAILWAY_PRESS.has(blockState) || ModBlocks.CREATIVE_PRESS.has(blockState))
-					world.setBlockAndUpdate(blockPos, ModBlocks.INDUSTRIAL_IRON_PRESS.getDefaultState().setValue(HORIZONTAL_FACING, facing));
-				return InteractionResult.SUCCESS;
-			} else if (player.getItemInHand(hand).is(ModBlocks.CREATIVE_CASING.get().asItem())) {
-				if (ModBlocks.BRASS_PRESS.has(blockState)||ModBlocks.COPPER_PRESS.has(blockState) || ModBlocks.RAILWAY_PRESS.has(blockState) || ModBlocks.INDUSTRIAL_IRON_PRESS.has(blockState))
-					world.setBlockAndUpdate(blockPos, ModBlocks.CREATIVE_PRESS.getDefaultState().setValue(HORIZONTAL_FACING, facing));
-				return InteractionResult.SUCCESS;
-			}
-		return super.use(blockState, world, blockPos, player, hand, p_60508_);
-	}
-
 	@Override
 	public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
 		if (context instanceof EntityCollisionContext

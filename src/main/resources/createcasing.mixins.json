@@ -7,6 +7,9 @@
   "mixins": [
     "create.AllArmInteractionPointTypesMixin",
     "create.AssemblyOperatorBlockItemMixin",
+    "create.BeltBlockMixin",
+    "create.BeltCasingTypeMixin",
+    "create.BeltModelMixin",
     "create.CogWheelBlockMixin",
     "create.CreateJeiMixin",
     "create.RotationPropagatorMixin",

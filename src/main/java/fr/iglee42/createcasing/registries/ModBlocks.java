@@ -11,6 +11,7 @@ import com.simibubi.create.content.fluids.PipeAttachmentModel;
 import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
+import com.simibubi.create.content.kinetics.belt.BeltBlockEntity;
 import com.simibubi.create.content.kinetics.chainDrive.ChainDriveGenerator;
 import com.simibubi.create.content.kinetics.chainDrive.ChainGearshiftBlock;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlock;
@@ -79,6 +80,12 @@ public class ModBlocks {
 
     public static final BlockEntry<CasingBlock> CREATIVE_CASING = createCasing("creative",AllSpriteShifts.CREATIVE_CASING);
 
+
+    //BELT CASINGS
+    public static BeltBlockEntity.CasingType COPPER_BELT_CASING;
+    public static BeltBlockEntity.CasingType RAILWAY_BELT_CASING;
+    public static BeltBlockEntity.CasingType INDUSTRIAL_IRON_BELT_CASING;
+    public static BeltBlockEntity.CasingType CREATIVE_BELT_CASING;
 
     //SHAFTS
     public static final BlockEntry<PublicEncasedShaftBlock> RAILWAY_ENCASED_SHAFT = createShaft("railway",AllBlocks.RAILWAY_CASING::get,AllSpriteShifts.RAILWAY_CASING);
@@ -200,8 +207,8 @@ public class ModBlocks {
     public static final BlockEntry<WoodenShaftBlock> ACACIA_SHAFT = createWoodenShaft("acacia");
     public static final BlockEntry<WoodenShaftBlock> DARK_OAK_SHAFT = createWoodenShaft("dark_oak");
     public static final BlockEntry<WoodenShaftBlock> MANGROVE_SHAFT = createWoodenShaft("mangrove");
-    public static final BlockEntry<WoodenShaftBlock> CHERRY_SHAFT = createWoodenShaft("bamboo");
-    public static final BlockEntry<WoodenShaftBlock> BAMBOO_SHAFT = createWoodenShaft("cherry");
+    public static final BlockEntry<WoodenShaftBlock> CHERRY_SHAFT = createWoodenShaft("cherry");
+    public static final BlockEntry<WoodenShaftBlock> BAMBOO_SHAFT = createWoodenShaft("bamboo");
     public static final BlockEntry<WoodenShaftBlock> CRIMSON_SHAFT = createWoodenShaft("crimson");
     public static final BlockEntry<WoodenShaftBlock> WARPED_SHAFT = createWoodenShaft("warped");
 
@@ -212,8 +219,8 @@ public class ModBlocks {
     public static final BlockEntry<WoodenCogwheelBlock> ACACIA_COGWHEEL = createWoodenCogwheel("acacia");
     public static final BlockEntry<WoodenCogwheelBlock> DARK_OAK_COGWHEEL = createWoodenCogwheel("dark_oak");
     public static final BlockEntry<WoodenCogwheelBlock> MANGROVE_COGWHEEL = createWoodenCogwheel("mangrove");
-    public static final BlockEntry<WoodenCogwheelBlock> CHERRY_COGWHEEL = createWoodenCogwheel("bamboo");
-    public static final BlockEntry<WoodenCogwheelBlock> BAMBOO_COGWHEEL = createWoodenCogwheel("cherry");
+    public static final BlockEntry<WoodenCogwheelBlock> CHERRY_COGWHEEL = createWoodenCogwheel("cherry");
+    public static final BlockEntry<WoodenCogwheelBlock> BAMBOO_COGWHEEL = createWoodenCogwheel("bamboo");
     public static final BlockEntry<WoodenCogwheelBlock> CRIMSON_COGWHEEL = createWoodenCogwheel("crimson");
     public static final BlockEntry<WoodenCogwheelBlock> WARPED_COGWHEEL = createWoodenCogwheel("warped");
 
@@ -223,8 +230,8 @@ public class ModBlocks {
     public static final BlockEntry<WoodenCogwheelBlock> ACACIA_LARGE_COGWHEEL = createLargeWoodenCogwheel("acacia");
     public static final BlockEntry<WoodenCogwheelBlock> DARK_OAK_LARGE_COGWHEEL = createLargeWoodenCogwheel("dark_oak");
     public static final BlockEntry<WoodenCogwheelBlock> MANGROVE_LARGE_COGWHEEL = createLargeWoodenCogwheel("mangrove");
-    public static final BlockEntry<WoodenCogwheelBlock> CHERRY_LARGE_COGWHEEL = createLargeWoodenCogwheel("bamboo");
-    public static final BlockEntry<WoodenCogwheelBlock> BAMBOO_LARGE_COGWHEEL = createLargeWoodenCogwheel("cherry");
+    public static final BlockEntry<WoodenCogwheelBlock> CHERRY_LARGE_COGWHEEL = createLargeWoodenCogwheel("cherry");
+    public static final BlockEntry<WoodenCogwheelBlock> BAMBOO_LARGE_COGWHEEL = createLargeWoodenCogwheel("bamboo");
     public static final BlockEntry<WoodenCogwheelBlock> CRIMSON_LARGE_COGWHEEL = createLargeWoodenCogwheel("crimson");
     public static final BlockEntry<WoodenCogwheelBlock> WARPED_LARGE_COGWHEEL = createLargeWoodenCogwheel("warped");
 

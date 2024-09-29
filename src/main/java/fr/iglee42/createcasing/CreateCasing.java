@@ -100,8 +100,6 @@ public class CreateCasing {
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> CreateCasingClient.onCtorClient(modEventBus, forgeEventBus));
 
         FMLJavaModLoadingContext.get().getModEventBus().addListener(this::setup);
-        forgeEventBus.addListener(this::onPlayerRightClickOnBlock);
-
         modEventBus.addListener(ModSounds::register);
 
 
@@ -118,83 +116,6 @@ public class CreateCasing {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
-    }
-
-
-
-
-    private void onPlayerRightClickOnBlock(PlayerInteractEvent.RightClickBlock event){
-        Level world = event.getEntity().level();
-        if (event.getItemStack().isEmpty()) return;
-        if (AllBlocks.MECHANICAL_PRESS.has(world.getBlockState(event.getPos()))){
-            BlockState blockState = world.getBlockState(event.getPos());
-            Direction facing = blockState.getValue(HORIZONTAL_FACING);
-            if (event.getItemStack().is(AllBlocks.BRASS_CASING.get().asItem())){
-                world.setBlockAndUpdate(event.getPos(), ModBlocks.BRASS_PRESS.getDefaultState().setValue(HORIZONTAL_FACING, facing));
-                event.setCancellationResult(InteractionResult.SUCCESS);
-                event.setCanceled(true);
-            } else if (event.getItemStack().is(AllBlocks.COPPER_CASING.get().asItem())){
-                world.setBlockAndUpdate(event.getPos(), ModBlocks.COPPER_PRESS.getDefaultState().setValue(HORIZONTAL_FACING, facing));
-                event.setCancellationResult(InteractionResult.SUCCESS);
-                event.setCanceled(true);
-            } else if (event.getItemStack().is(AllBlocks.RAILWAY_CASING.get().asItem())){
-                world.setBlockAndUpdate(event.getPos(), ModBlocks.RAILWAY_PRESS.getDefaultState().setValue(HORIZONTAL_FACING, facing));
-                event.setCancellationResult(InteractionResult.SUCCESS);
-                event.setCanceled(true);
-            } else if (event.getItemStack().is(AllBlocks.INDUSTRIAL_IRON_BLOCK.get().asItem())){
-                world.setBlockAndUpdate(event.getPos(), ModBlocks.INDUSTRIAL_IRON_PRESS.getDefaultState().setValue(HORIZONTAL_FACING, facing));
-                event.setCancellationResult(InteractionResult.SUCCESS);
-                event.setCanceled(true);
-            } else if (event.getItemStack().is(ModBlocks.CREATIVE_CASING.get().asItem())){
-                world.setBlockAndUpdate(event.getPos(), ModBlocks.CREATIVE_PRESS.getDefaultState().setValue(HORIZONTAL_FACING, facing));
-                event.setCancellationResult(InteractionResult.SUCCESS);
-                event.setCanceled(true);
-            }
-        } else if (AllBlocks.MECHANICAL_MIXER.has(world.getBlockState(event.getPos()))){
-            if (event.getItemStack().is(AllBlocks.BRASS_CASING.get().asItem())){
-                world.setBlockAndUpdate(event.getPos(), ModBlocks.BRASS_MIXER.getDefaultState());
-                event.setCancellationResult(InteractionResult.SUCCESS);
-                event.setCanceled(true);
-            } else if (event.getItemStack().is(AllBlocks.COPPER_CASING.get().asItem())){
-                world.setBlockAndUpdate(event.getPos(), ModBlocks.COPPER_MIXER.getDefaultState());
-                event.setCancellationResult(InteractionResult.SUCCESS);
-                event.setCanceled(true);
-            } else if (event.getItemStack().is(AllBlocks.RAILWAY_CASING.get().asItem())){
-                world.setBlockAndUpdate(event.getPos(), ModBlocks.RAILWAY_MIXER.getDefaultState());
-                event.setCancellationResult(InteractionResult.SUCCESS);
-                event.setCanceled(true);
-            } else if (event.getItemStack().is(AllBlocks.INDUSTRIAL_IRON_BLOCK.get().asItem())){
-                world.setBlockAndUpdate(event.getPos(), ModBlocks.INDUSTRIAL_IRON_MIXER.getDefaultState());
-                event.setCancellationResult(InteractionResult.SUCCESS);
-                event.setCanceled(true);
-            } else if (event.getItemStack().is(ModBlocks.CREATIVE_CASING.get().asItem())){
-                world.setBlockAndUpdate(event.getPos(), ModBlocks.CREATIVE_MIXER.getDefaultState());
-                event.setCancellationResult(InteractionResult.SUCCESS);
-                event.setCanceled(true);
-            }
-        } else if (AllBlocks.DEPOT.has(world.getBlockState(event.getPos()))){
-            if (event.getItemStack().is(AllBlocks.BRASS_CASING.get().asItem())){
-                world.setBlockAndUpdate(event.getPos(), ModBlocks.BRASS_DEPOT.getDefaultState());
-                event.setCancellationResult(InteractionResult.SUCCESS);
-                event.setCanceled(true);
-            } else if (event.getItemStack().is(AllBlocks.COPPER_CASING.get().asItem())){
-                world.setBlockAndUpdate(event.getPos(), ModBlocks.COPPER_DEPOT.getDefaultState());
-                event.setCancellationResult(InteractionResult.SUCCESS);
-                event.setCanceled(true);
-            } else if (event.getItemStack().is(AllBlocks.RAILWAY_CASING.get().asItem())){
-                world.setBlockAndUpdate(event.getPos(), ModBlocks.RAILWAY_DEPOT.getDefaultState());
-                event.setCancellationResult(InteractionResult.SUCCESS);
-                event.setCanceled(true);
-            } else if (event.getItemStack().is(AllBlocks.INDUSTRIAL_IRON_BLOCK.get().asItem())){
-                world.setBlockAndUpdate(event.getPos(), ModBlocks.INDUSTRIAL_IRON_DEPOT.getDefaultState());
-                event.setCancellationResult(InteractionResult.SUCCESS);
-                event.setCanceled(true);
-            } else if (event.getItemStack().is(ModBlocks.CREATIVE_CASING.get().asItem())){
-                world.setBlockAndUpdate(event.getPos(), ModBlocks.CREATIVE_DEPOT.getDefaultState());
-                event.setCancellationResult(InteractionResult.SUCCESS);
-                event.setCanceled(true);
-            }
-        }
     }
 
 

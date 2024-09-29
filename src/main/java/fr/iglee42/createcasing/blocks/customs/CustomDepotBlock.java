@@ -80,37 +80,6 @@ public class CustomDepotBlock extends Block implements IBE<DepotBlockEntity>, IW
 	public BlockEntityType<? extends DepotBlockEntity> getBlockEntityType() {
 		return ModBlockEntities.DEPOT.get();
 	}
-	
-	@Override
-	public InteractionResult use(BlockState blockState, Level world, BlockPos blockPos, Player player, InteractionHand hand, BlockHitResult p_60508_) {
-
-
-		if (player.getItemInHand(hand).is(AllBlocks.ANDESITE_CASING.get().asItem())) {
-			world.setBlockAndUpdate(blockPos, AllBlocks.DEPOT.getDefaultState());
-			return InteractionResult.SUCCESS;
-		} else if (player.getItemInHand(hand).is(AllBlocks.BRASS_CASING.get().asItem())) {
-			if (ModBlocks.COPPER_DEPOT.has(blockState) || ModBlocks.RAILWAY_DEPOT.has(blockState)  || ModBlocks.INDUSTRIAL_IRON_DEPOT.has(blockState) || ModBlocks.CREATIVE_DEPOT.has(blockState))
-				world.setBlockAndUpdate(blockPos, ModBlocks.BRASS_DEPOT.getDefaultState());
-			return InteractionResult.SUCCESS;
-		} else if (player.getItemInHand(hand).is(AllBlocks.COPPER_CASING.get().asItem())) {
-			if (ModBlocks.BRASS_DEPOT.has(blockState)||ModBlocks.RAILWAY_DEPOT.has(blockState)  || ModBlocks.INDUSTRIAL_IRON_DEPOT.has(blockState)  || ModBlocks.CREATIVE_DEPOT.has(blockState))
-				world.setBlockAndUpdate(blockPos, ModBlocks.COPPER_DEPOT.getDefaultState());
-			return InteractionResult.SUCCESS;
-		} else if (player.getItemInHand(hand).is(AllBlocks.RAILWAY_CASING.get().asItem())) {
-			if (ModBlocks.BRASS_DEPOT.has(blockState)||ModBlocks.COPPER_DEPOT.has(blockState) || ModBlocks.INDUSTRIAL_IRON_DEPOT.has(blockState) || ModBlocks.CREATIVE_DEPOT.has(blockState))
-				world.setBlockAndUpdate(blockPos, ModBlocks.RAILWAY_DEPOT.getDefaultState());
-			return InteractionResult.SUCCESS;
-		}else if (player.getItemInHand(hand).is(AllBlocks.INDUSTRIAL_IRON_BLOCK.get().asItem())) {
-			if (ModBlocks.BRASS_DEPOT.has(blockState)||ModBlocks.COPPER_DEPOT.has(blockState) || ModBlocks.RAILWAY_DEPOT.has(blockState) || ModBlocks.CREATIVE_DEPOT.has(blockState))
-				world.setBlockAndUpdate(blockPos, ModBlocks.INDUSTRIAL_IRON_DEPOT.getDefaultState());
-			return InteractionResult.SUCCESS;
-		}else if (player.getItemInHand(hand).is(ModBlocks.CREATIVE_CASING.get().asItem())) {
-			if (ModBlocks.BRASS_DEPOT.has(blockState)||ModBlocks.COPPER_DEPOT.has(blockState) || ModBlocks.RAILWAY_DEPOT.has(blockState) || ModBlocks.INDUSTRIAL_IRON_DEPOT.has(blockState))
-				world.setBlockAndUpdate(blockPos, ModBlocks.CREATIVE_DEPOT.getDefaultState());
-			return InteractionResult.SUCCESS;
-		}
-		return SharedDepotBlockMethods.onUse(blockState, world, blockPos, player, hand, p_60508_);
-	}
 
 	@Override
 	public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {

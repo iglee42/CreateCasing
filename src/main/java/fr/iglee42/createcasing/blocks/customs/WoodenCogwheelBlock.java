@@ -140,19 +140,6 @@ public class WoodenCogwheelBlock extends AbstractSimpleShaftBlock implements ICo
 		InteractionResult result = tryEncase(state, world, pos, heldItem, player, hand, ray);
 		if (result.consumesAction())
 			return result;
-
-		ItemStack item = player.getItemInHand(hand);
-		if (item.getItem().equals(Items.SPRUCE_PLANKS)){
-			Direction.Axis axis = state.getValue(AXIS);
-			world.setBlockAndUpdate(pos, (isLarge ? AllBlocks.LARGE_COGWHEEL : AllBlocks.COGWHEEL).getDefaultState().setValue(AXIS, axis));
-			return InteractionResult.SUCCESS;
-		}
-		if (item.is(ItemTags.PLANKS) && ForgeRegistries.ITEMS.getKey(item.getItem()).getNamespace().equals("minecraft")) {
-			Direction.Axis axis = state.getValue(AXIS);
-			world.setBlockAndUpdate(pos, ForgeRegistries.BLOCKS.getValue(new ResourceLocation(MODID,ForgeRegistries.ITEMS.getKey(item.getItem()).getPath().replace("_planks","")+(isLarge?"_large_cogwheel":"_cogwheel"))).defaultBlockState().setValue(AXIS, axis));
-			return InteractionResult.SUCCESS;
-		}
-
 		return InteractionResult.PASS;
 	}
 
