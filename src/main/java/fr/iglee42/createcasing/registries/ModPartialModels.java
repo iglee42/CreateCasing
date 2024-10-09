@@ -16,7 +16,13 @@ public class ModPartialModels {
 
             BRASS_MIXER_HEAD = block("brass_mixer/head"), COPPER_MIXER_HEAD = block("copper_mixer/head"), RAILWAY_MIXER_HEAD = block("railway_mixer/head"), INDUSTRIAL_IRON_MIXER_HEAD = block("industrial_iron_mixer/head"),
 
-    GLASS_SHAFT = block("glass_shaft");
+    GLASS_SHAFT = block("glass_shaft"),
+
+    COPPER_BELT_COVER_X = block("belt_cover/copper_belt_cover_x"), COPPER_BELT_COVER_Z = block("belt_cover/copper_belt_cover_z"),
+    RAILWAY_BELT_COVER_X = block("belt_cover/railway_belt_cover_x"), RAILWAY_BELT_COVER_Z = block("belt_cover/railway_belt_cover_z"),
+    INDUSTRIAL_IRON_BELT_COVER_X = block("belt_cover/industrial_iron_belt_cover_x"), INDUSTRIAL_IRON_BELT_COVER_Z = block("belt_cover/industrial_iron_belt_cover_z"),
+    CREATIVE_BELT_COVER_X = block("belt_cover/creative_belt_cover_x"), CREATIVE_BELT_COVER_Z = block("belt_cover/creative_belt_cover_z")
+            ;
 
     public static final Map<String,PartialModel> COGS_MODELS = new HashMap<>();
     public static final Map<String,PartialModel> LARGE_COGS_MODELS = new HashMap<>();

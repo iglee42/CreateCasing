@@ -1,0 +1,7 @@
+{
+	"parent": "create:block/belt_cover/andesite_belt_cover_z",
+	"textures": {
+		"0": "createcasing:block/railway_funnel_frame",
+		"1": "createcasing:block/railway_belt_cover"
+	}
+}

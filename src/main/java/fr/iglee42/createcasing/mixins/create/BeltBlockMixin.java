@@ -25,7 +25,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
-@Mixin(value = BeltBlock.class,remap = false)
+@Mixin(value = BeltBlock.class)
 public abstract class BeltBlockMixin {
 
     @Shadow public abstract void updateCoverProperty(LevelAccessor world, BlockPos pos, BlockState state);
