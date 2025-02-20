@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.ModifyArg;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 
-@Mixin(value = BeltBlockEntity.class,remap = false)
+@Mixin(value = BeltBlockEntity.class)
 public abstract class BeltBlockEntityMixin {
 
 
@@ -23,7 +23,7 @@ public abstract class BeltBlockEntityMixin {
 
     @Shadow public abstract BeltBlockEntity getControllerBE();
 
-    @Inject(method = "setCasingType",at=@At("HEAD"))
+    @Inject(method = "setCasingType",at=@At("HEAD"),remap=false)
     private void encased$saveNewCasing(BeltBlockEntity.CasingType type, CallbackInfo ci){
         createCasing$newCasing = type;
     }
