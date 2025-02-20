@@ -87,7 +87,6 @@ public class CreateCasing {
         ModCreativeModeTabs.register(modEventBus);
         ModPackets.registerPackets();
 
-        LOGGER.info("MAIN CALL");
         ModBlocks.registerEncasedShafts();
 
         if (ModList.get().isLoaded("kubejs")) {
