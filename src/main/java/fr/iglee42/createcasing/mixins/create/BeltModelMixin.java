@@ -5,6 +5,7 @@ import com.simibubi.create.content.kinetics.belt.BeltBlockEntity;
 import com.simibubi.create.content.kinetics.belt.BeltModel;
 import com.simibubi.create.foundation.block.render.SpriteShiftEntry;
 import com.simibubi.create.foundation.model.BakedQuadHelper;
+import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.registries.ModBlocks;
 import fr.iglee42.createcasing.registries.ModPartialModels;
 import fr.iglee42.createcasing.registries.ModSprites;
@@ -20,8 +21,7 @@ import net.minecraftforge.client.model.data.ModelProperty;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
@@ -33,10 +33,8 @@ public class BeltModelMixin {
 
     @Shadow @Final public static ModelProperty<BeltBlockEntity.CasingType> CASING_PROPERTY;
 
-    @Inject(method = "getParticleIcon",at = @At(value = "INVOKE", shift = At.Shift.AFTER, target = "Lnet/minecraftforge/client/model/data/ModelData;get(Lnet/minecraftforge/client/model/data/ModelProperty;)Ljava/lang/Object;"), cancellable = true)
-    private void encased$customParticle(ModelData data, CallbackInfoReturnable<TextureAtlasSprite> cir){
-        BeltBlockEntity.CasingType type = data.get(CASING_PROPERTY);
-        System.out.println(type);
+    @Inject(method = "getParticleIcon",at = @At(value = "RETURN", ordinal = 2), cancellable = true,locals = LocalCapture.CAPTURE_FAILSOFT)
+    private void encased$customParticle(ModelData data, CallbackInfoReturnable<TextureAtlasSprite> cir, BeltBlockEntity.CasingType type){
         if (type.equals(ModBlocks.COPPER_BELT_CASING)) {
             cir.setReturnValue(AllSpriteShifts.COPPER_CASING.getOriginal());
         }
