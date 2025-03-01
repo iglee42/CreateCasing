@@ -16,9 +16,8 @@ plugins {
     id 'net.neoforged.moddev' version '2.0.43-beta'
 }
 
-apply plugin: 'org.spongepowered.mixin'
-
-apply plugin: 'maven-publish'
+group = mod_group_id
+version = minecraft_version + "-" +mod_version
 
 
 group = 'fr.iglee42'
@@ -57,10 +56,8 @@ neoForge {
         data {
             data()
 
-            property 'forge.logging.console.level', 'debug'
-
-            property 'mixin.env.remapRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
+            // example of overriding the workingDirectory set in configureEach above, uncomment if you want to use it
+            // gameDirectory = project.file('run-data')
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
             programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath()
@@ -125,13 +122,7 @@ repositories {
     }
     maven { url "https://maven.shedaniel.me/" }
 
-    maven {
-        // saps.dev Maven (KubeJS and Rhino)
-        url = "https://maven.saps.dev/releases"
-        content {
-            includeGroup "dev.latvian.mods"
-        }
-    }
+
 }
 
 dependencies {
