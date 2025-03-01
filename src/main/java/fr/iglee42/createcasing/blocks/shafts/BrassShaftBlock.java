@@ -2,7 +2,7 @@ package fr.iglee42.createcasing.blocks.shafts;
 
 import com.simibubi.create.content.kinetics.RotationPropagator;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
-import com.simibubi.create.foundation.gui.ScreenOpener;
+import com.tterrag.registrate.util.RegistrateDistExecutor;
 import fr.iglee42.createcasing.blockEntities.BrassShaftBlockEntity;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
 import fr.iglee42.createcasing.screen.BrassShaftScreen;
@@ -16,9 +16,8 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.fml.DistExecutor;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
 
 public class BrassShaftBlock extends MetalShaftBlock{
     public BrassShaftBlock(Properties properties) {
@@ -31,8 +30,8 @@ public class BrassShaftBlock extends MetalShaftBlock{
     }
 
     @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult ray) {
-        DistExecutor.unsafeRunWhenOn(Dist.CLIENT,
+    protected InteractionResult useWithoutItem(BlockState p_60503_, Level world, BlockPos pos, Player player, BlockHitResult p_60508_) {
+        RegistrateDistExecutor.unsafeRunWhenOn(Dist.CLIENT,
                 () -> () -> withBlockEntityDo(world, pos, be -> openScreen((BrassShaftBlockEntity) be,player)));
         return InteractionResult.SUCCESS;
     }

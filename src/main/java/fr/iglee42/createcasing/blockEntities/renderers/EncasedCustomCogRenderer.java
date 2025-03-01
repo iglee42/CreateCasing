@@ -20,9 +20,9 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
 import net.minecraft.core.Direction.AxisDirection;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class EncasedCustomCogRenderer extends KineticBlockEntityRenderer<SimpleKineticBlockEntity> {
 
@@ -71,7 +71,7 @@ public class EncasedCustomCogRenderer extends KineticBlockEntityRenderer<SimpleK
 	@Override
 	protected SuperByteBuffer getRotatedModel(SimpleKineticBlockEntity be, BlockState state) {
 		return CachedBufferer.partialFacingVertical(
-			large ? ModPartialModels.LARGE_COGS_MODELS.get(ForgeRegistries.BLOCKS.getKey(((EncasedCustomCogwheelBlock)state.getBlock()).getCogwheel().get()).getPath().replaceAll("_large_cogwheel","")) : ModPartialModels.COGS_MODELS.get(ForgeRegistries.BLOCKS.getKey(((EncasedCustomCogwheelBlock)state.getBlock()).getCogwheel().get()).getPath().replaceAll("_cogwheel","")), state,
+			large ? ModPartialModels.LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(((EncasedCustomCogwheelBlock)state.getBlock()).getCogwheel().get()).getPath().replaceAll("_large_cogwheel","")) : ModPartialModels.COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(((EncasedCustomCogwheelBlock)state.getBlock()).getCogwheel().get()).getPath().replaceAll("_cogwheel","")), state,
 			Direction.fromAxisAndDirection(state.getValue(EncasedCustomCogwheelBlock.AXIS), AxisDirection.POSITIVE));
 	}
 

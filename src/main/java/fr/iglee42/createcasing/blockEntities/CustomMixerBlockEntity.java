@@ -42,11 +42,10 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.common.capabilities.ForgeCapabilities;
-import net.minecraftforge.common.crafting.IShapedRecipe;
-import net.minecraftforge.items.IItemHandler;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.items.IItemHandler;
 
 import java.util.List;
 import java.util.Optional;
@@ -112,20 +111,20 @@ public class CustomMixerBlockEntity extends BasinOperatingBlockEntity {
 	}
 
 	@Override
-	protected void read(CompoundTag compound, boolean clientPacket) {
+	protected void read(CompoundTag compound, HolderLookup.Provider provider, boolean clientPacket) {
 		running = compound.getBoolean("Running");
 		runningTicks = compound.getInt("Ticks");
-		super.read(compound, clientPacket);
+		super.read(compound,provider, clientPacket);
 
 		if (clientPacket && hasLevel())
 			getBasin().ifPresent(bte -> bte.setAreFluidsMoving(running && runningTicks <= 20));
 	}
 
 	@Override
-	public void write(CompoundTag compound, boolean clientPacket) {
+	public void write(CompoundTag compound, HolderLookup.Provider provider, boolean clientPacket) {
 		compound.putBoolean("Running", running);
 		compound.putInt("Ticks", runningTicks);
-		super.write(compound, clientPacket);
+		super.write(compound,provider, clientPacket);
 	}
 
 	@Override
@@ -181,7 +180,7 @@ public class CustomMixerBlockEntity extends BasinOperatingBlockEntity {
 								(currentRecipe instanceof ShapelessRecipe ||
 										(currentRecipe instanceof ProcessingRecipe<?> r && r.getFluidIngredients().isEmpty()))){
 							processingTicks = processingTicks / 2;
-						} else if (ModBlocks.COPPER_MIXER.has(getBlockState()) && (currentRecipe.getId().getPath().contains("potion_mixing") || (currentRecipe instanceof ProcessingRecipe<?> r && r.getIngredients().isEmpty() && !r.getFluidIngredients().isEmpty()))) {
+						} else if (ModBlocks.COPPER_MIXER.has(getBlockState()) && ((currentRecipe instanceof ProcessingRecipe<?> r && r.getIngredients().isEmpty() && !r.getFluidIngredients().isEmpty()))) {
 							processingTicks = processingTicks / 2;
 						}
 					}
@@ -267,10 +266,8 @@ public class CustomMixerBlockEntity extends BasinOperatingBlockEntity {
 		BasinBlockEntity basinTileEntity = basin.get();
 		if (basin.isEmpty())
 			return matchingRecipes;
-		
-		IItemHandler availableItems = basinTileEntity
-			.getCapability(ForgeCapabilities.ITEM_HANDLER)
-			.orElse(null);
+
+		IItemHandler availableItems = level.getCapability(Capabilities.ItemHandler.BLOCK, basinBlockEntity.getBlockPos(), null);
 		if (availableItems == null)
 			return matchingRecipes;
 
@@ -291,12 +288,14 @@ public class CustomMixerBlockEntity extends BasinOperatingBlockEntity {
 	}
 
 	@Override
-	protected <C extends Container> boolean matchStaticFilters(Recipe<C> r) {
-		return ((r instanceof CraftingRecipe && !(r instanceof IShapedRecipe<?>)
-				 && AllConfigs.server().recipes.allowShapelessInMixer.get() && r.getIngredients()
+	protected boolean matchStaticFilters(RecipeHolder<? extends Recipe<?>> recipe) {
+		Recipe<?> r = recipe.value();
+		return ((r instanceof CraftingRecipe && !(r instanceof ShapedRecipe)
+				&& AllConfigs.server().recipes.allowShapelessInMixer.get() && r.getIngredients()
 				.size() > 1
-				 && !MechanicalPressBlockEntity.canCompress(r)) && !AllRecipeTypes.shouldIgnoreInAutomation(r)
-			|| r.getType() == AllRecipeTypes.MIXING.getType());
+				&& !MechanicalPressBlockEntity.canCompress(r)) && !AllRecipeTypes.shouldIgnoreInAutomation(recipe)
+				|| r.getType() == AllRecipeTypes.MIXING.getType());
+
 	}
 
 	@Override

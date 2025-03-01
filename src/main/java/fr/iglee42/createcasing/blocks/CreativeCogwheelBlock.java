@@ -53,7 +53,7 @@ public class CreativeCogwheelBlock extends RotatedPillarKineticBlock implements 
     }
 
     @Override
-    public boolean isPathfindable(BlockState state, BlockGetter reader, BlockPos pos, PathComputationType type) {
+    protected boolean isPathfindable(BlockState p_60475_, PathComputationType p_60478_) {
         return false;
     }
 

@@ -20,7 +20,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
 import net.minecraft.core.Direction.AxisDirection;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 public class WoodenCogwheelBlockEntityRenderer extends KineticBlockEntityRenderer<BracketedKineticBlockEntity> {
 
@@ -45,7 +45,7 @@ public class WoodenCogwheelBlockEntityRenderer extends KineticBlockEntityRendere
 
 		Axis axis = getRotationAxisOf(be);
 		Direction facing = Direction.fromAxisAndDirection(axis, AxisDirection.POSITIVE);
-		if (ModPartialModels.LARGE_COGS_MODELS.get(ForgeRegistries.BLOCKS.getKey(be.getBlockState().getBlock()).getPath().replaceAll("_large_cogwheel","")) == null) return;
+		if (ModPartialModels.LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(be.getBlockState().getBlock()).getPath().replaceAll("_large_cogwheel","")) == null) return;
 		renderRotatingBuffer(be,
 			CachedBufferer.partialFacingVertical(ModPartialModels.LARGE_COGS_MODELS.get(ForgeRegistries.BLOCKS.getKey(be.getBlockState().getBlock()).getPath().replaceAll("_large_cogwheel","")), be.getBlockState(), facing),
 			ms, buffer.getBuffer(RenderType.solid()), light);

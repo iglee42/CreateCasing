@@ -17,7 +17,7 @@ import fr.iglee42.createcasing.registries.ModPartialModels;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.AxisDirection;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 public class WoodenCogwheelBlockEntityInstance extends SingleRotatingInstance<BracketedKineticBlockEntity> {
 

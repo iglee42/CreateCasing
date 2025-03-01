@@ -76,8 +76,7 @@ public class CustomPressBlock extends HorizontalKineticBlock implements IBE<Mech
 	}
 
 	@Override
-	public boolean isPathfindable(BlockState state, BlockGetter reader, BlockPos pos, PathComputationType type) {
+	protected boolean isPathfindable(BlockState p_60475_, PathComputationType p_60478_) {
 		return false;
 	}
-
 }

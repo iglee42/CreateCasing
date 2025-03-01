@@ -11,8 +11,9 @@ import fr.iglee42.createcasing.registries.ModGuiTextures;
 import fr.iglee42.createcasing.registries.ModPackets;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.neoforge.network.PacketDistributor;
 
 @OnlyIn(Dist.CLIENT)
 public class BrassShaftScreen extends AbstractSimiScreen {
@@ -80,7 +81,6 @@ public class BrassShaftScreen extends AbstractSimiScreen {
 
     @Override
     public void removed() {
-        ModPackets.getChannel()
-                .sendToServer(new ConfigureBrassShaftPacket(be.getBlockPos(), maxStressWidget.getState()));
+        PacketDistributor.sendToServer(new ConfigureBrassShaftPacket(be.getBlockPos(), maxStressWidget.getState()));
     }
 }

@@ -15,9 +15,8 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.Direction;
-import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class CustomMixerRenderer extends KineticBlockEntityRenderer {
 
@@ -54,6 +53,7 @@ public class CustomMixerRenderer extends KineticBlockEntityRenderer {
 		SuperByteBuffer headRender = CachedBufferer.partial(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState);
 		SuperByteBuffer oldHeadRender = CachedBufferer.partial(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState);
 		switch (ForgeRegistries.BLOCKS.getKey(mixer.getBlockState().getBlock()).getPath().replace("_mixer","").toLowerCase()) {
+		switch (BuiltInRegistries.BLOCK.getKey(mixer.getBlockState().getBlock()).getPath().replace("_mixer","").toLowerCase()) {
 			case "brass" -> {
 				headRender = CachedBufferer.partial(ModPartialModels.BRASS_MIXER_HEAD, blockState);
 			}

@@ -2,6 +2,7 @@ package fr.iglee42.createcasing.blockEntities;
 
 import com.simibubi.create.content.kinetics.RotationPropagator;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -41,14 +42,14 @@ public class BrassShaftBlockEntity extends MetalShaftBlockEntity {
     }
 
     @Override
-    protected void write(CompoundTag compound, boolean clientPacket) {
+    protected void write(CompoundTag compound, HolderLookup.Provider provider, boolean clientPacket) {
         compound.putInt("configuredStress", configuredStress);
-        super.write(compound, clientPacket);
+        super.write(compound,provider, clientPacket);
     }
 
     @Override
-    protected void read(CompoundTag compound, boolean clientPacket) {
+    protected void read(CompoundTag compound, HolderLookup.Provider provider, boolean clientPacket) {
         configuredStress = compound.getInt("configuredStress");
-        super.read(compound, clientPacket);
+        super.read(compound, provider, clientPacket);
     }
 }

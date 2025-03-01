@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class BlockEntityTypeMixin {
 
 
-    @Inject(method = "isValid",at = @At("HEAD"),cancellable = true)
+    @Inject(method = "isValid",at = @At("HEAD"),cancellable = true,remap = false)
     private void isValid(BlockState state, CallbackInfoReturnable<Boolean> cir){
         if (this.equals(ModBlockEntities.ENCASED_SHAFT.get()) ||
                 this.equals(ModBlockEntities.ENCASED_COGWHEEL.get()) ||

@@ -13,14 +13,16 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.loading.FMLEnvironment;
-import net.minecraftforge.fml.util.thread.EffectiveSide;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.RegistryObject;
+
+import net.neoforged.api.distmarker.Dist;
+import net.neoforged.api.distmarker.OnlyIn;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.common.EventBusSubscriber;
+import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.fml.util.thread.EffectiveSide;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
+import org.apache.commons.lang3.mutable.MutableObject;
 
 import java.util.LinkedList;
 import java.util.List;
@@ -30,16 +32,16 @@ import java.util.function.Function;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModCreativeModeTabs {
 
-	private static final DeferredRegister<CreativeModeTab> TAB_REGISTER =
-		DeferredRegister.create(Registries.CREATIVE_MODE_TAB, CreateCasing.MODID);
+    private static final DeferredRegister<CreativeModeTab> TAB_REGISTER =
+            DeferredRegister.create(Registries.CREATIVE_MODE_TAB, CreateCasing.MODID);
 
-	public static final RegistryObject<CreativeModeTab> MAIN_TAB = TAB_REGISTER.register("tab",
-		() -> CreativeModeTab.builder()
-			.title(Component.translatable("itemGroup.createcasing"))
-			.withTabsBefore(AllCreativeModeTabs.BASE_CREATIVE_TAB.getKey())
-			.icon(ModBlocks.BRASS_GEARBOX::asStack)
-				.displayItems(new RegistrateDisplayItemsGenerator())
-			.build());
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN_TAB = TAB_REGISTER.register("tab",
+            () -> CreativeModeTab.builder()
+                    .title(Component.translatable("itemGroup.createcasing"))
+                    .withTabsBefore(AllCreativeModeTabs.BASE_CREATIVE_TAB.getKey())
+                    .icon(ModBlocks.BRASS_GEARBOX::asStack)
+                    .displayItems(new RegistrateDisplayItemsGenerator(true,ModCreativeModeTabs.MAIN_TAB))
+                    .build());
 
 	
 	public static void register(IEventBus modEventBus) {

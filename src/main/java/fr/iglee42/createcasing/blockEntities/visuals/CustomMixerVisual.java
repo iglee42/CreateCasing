@@ -12,7 +12,7 @@ import com.simibubi.create.foundation.utility.AnimationTickHolder;
 import fr.iglee42.createcasing.registries.ModPartialModels;
 import fr.iglee42.createcasing.blockEntities.CustomMixerBlockEntity;
 import net.minecraft.core.Direction;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraft.core.registries.BuiltInRegistries;
 
 public class CustomMixerInstance extends EncasedCogInstance implements DynamicInstance {
 

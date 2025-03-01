@@ -3,7 +3,6 @@ package fr.iglee42.createcasing.registries;
 import com.jozufozu.flywheel.core.PartialModel;
 import com.simibubi.create.Create;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.HashMap;
 import java.util.Map;

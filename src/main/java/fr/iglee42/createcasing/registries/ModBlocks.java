@@ -43,7 +43,7 @@ import fr.iglee42.createcasing.blocks.shafts.*;
 import fr.iglee42.createcasing.items.CustomVerticalGearboxItem;
 import fr.iglee42.createcasing.items.WoodenCogwheelBlockItem;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Rarity;
@@ -54,8 +54,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
 import java.util.Arrays;
 import java.util.List;
@@ -76,7 +75,7 @@ public class ModBlocks {
         REGISTRATE.setCreativeTab(ModCreativeModeTabs.MAIN_TAB);
     }
 
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, CreateCasing.MODID);
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(BuiltInRegistries.BLOCK, CreateCasing.MODID);
 
     public static final BlockEntry<CasingBlock> CREATIVE_CASING = createCasing("creative",AllSpriteShifts.CREATIVE_CASING);
 
@@ -650,14 +649,14 @@ public class ModBlocks {
                             .texture("casing", Create.asResource("block/" + casing + "_casing"))
                             .texture("particle", Create.asResource("block/" + casing + "_casing"))
                             .texture("4", Create.asResource("block/" + gearbox))
-                            .texture("1", new ResourceLocation("block/stripped_" + wood + "_log_top"))
+                            .texture("1", ResourceLocation.withDefaultNamespace("block/stripped_" + wood + "_log_top"))
                             .texture("side", Create.asResource("block/" + casing + encasedSuffix));
                 }, false))
                 .item()
                 .model((c, p) -> p.withExistingParent(c.getName(), p.modLoc("block/" + blockFolder + "/item"))
                         .texture("casing", Create.asResource("block/" + casing + "_casing"))
                         .texture("particle", Create.asResource("block/" + casing + "_casing"))
-                        .texture("1", new ResourceLocation("block/stripped_" + wood + "_log_top"))
+                        .texture("1", ResourceLocation.withDefaultNamespace("block/stripped_" + wood + "_log_top"))
                         .texture("side", Create.asResource("block/" + casing + encasedSuffix)))
                 .build();
     }
