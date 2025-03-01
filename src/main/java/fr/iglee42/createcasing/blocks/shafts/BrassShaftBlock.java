@@ -6,6 +6,7 @@ import com.tterrag.registrate.util.RegistrateDistExecutor;
 import fr.iglee42.createcasing.blockEntities.BrassShaftBlockEntity;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
 import fr.iglee42.createcasing.screen.BrassShaftScreen;
+import net.createmod.catnip.gui.ScreenOpener;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
@@ -46,7 +47,7 @@ public class BrassShaftBlock extends MetalShaftBlock{
     @Override
     public void neighborChanged(BlockState p_60509_, Level level, BlockPos pos, Block p_60512_, BlockPos p_60513_, boolean p_60514_) {
         if (level.hasNeighborSignal(pos)){
-            RotationPropagator.handleAdded((Level) level,pos, (KineticBlockEntity) level.getBlockEntity(pos));
+            RotationPropagator.handleAdded(level,pos, (KineticBlockEntity) level.getBlockEntity(pos));
         }
         super.neighborChanged(p_60509_, level, pos, p_60512_, p_60513_, p_60514_);
     }

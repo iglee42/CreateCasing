@@ -2,7 +2,6 @@ package fr.iglee42.createcasing.api;
 
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
-import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogCTBehaviour;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogwheelBlock;
@@ -11,8 +10,10 @@ import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
+import com.simibubi.create.infrastructure.config.CStress;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
+import fr.iglee42.createcasing.config.CCStress;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
@@ -46,12 +47,12 @@ public class ApiBuilderTransformers {
         return encasedBase(b, drop).addLayer(() -> RenderType::cutoutMipped).onRegister(CreateRegistrate.casingConnectivity((block, cc) -> cc.make(block, casingShift.get(), (s, f) -> f.getAxis() == s.getValue(EncasedCogwheelBlock.AXIS) && !s.getValue(f.getAxisDirection() == Direction.AxisDirection.POSITIVE ? EncasedCogwheelBlock.TOP_SHAFT : EncasedCogwheelBlock.BOTTOM_SHAFT)))).blockstate((c, p) -> axisBlock(c, p, blockState -> {
             String suffix = (blockState.getValue(EncasedCogwheelBlock.TOP_SHAFT) ? "_top" : "") + (blockState.getValue(EncasedCogwheelBlock.BOTTOM_SHAFT) ? "_bottom" : "");
             String modelName = c.getName() + suffix;
-            return p.models().withExistingParent(modelName, p.modLoc("block/" + blockFolder + "/block" + suffix)).texture("casing", p.modLoc("block/" + casing + "_casing")).texture("particle", p.modLoc("block/" + casing + "_casing")).texture("4", p.modLoc("block/" + gearbox)).texture("1", new ResourceLocation("block/stripped_" + wood + "_log_top")).texture("side", p.modLoc("block/" + casing + encasedSuffix));
-        }, false)).item().model((c, p) -> p.withExistingParent(c.getName(), p.modLoc("block/" + blockFolder + "/item")).texture("casing", p.modLoc("block/" + casing + "_casing")).texture("particle", p.modLoc("block/" + casing + "_casing")).texture("1", new ResourceLocation("block/stripped_" + wood + "_log_top")).texture("side", p.modLoc("block/" + casing + encasedSuffix))).build();
+            return p.models().withExistingParent(modelName, p.modLoc("block/" + blockFolder + "/block" + suffix)).texture("casing", p.modLoc("block/" + casing + "_casing")).texture("particle", p.modLoc("block/" + casing + "_casing")).texture("4", p.modLoc("block/" + gearbox)).texture("1", ResourceLocation.withDefaultNamespace("block/stripped_" + wood + "_log_top")).texture("side", p.modLoc("block/" + casing + encasedSuffix));
+        }, false)).item().model((c, p) -> p.withExistingParent(c.getName(), p.modLoc("block/" + blockFolder + "/item")).texture("casing", p.modLoc("block/" + casing + "_casing")).texture("particle", p.modLoc("block/" + casing + "_casing")).texture("1", ResourceLocation.withDefaultNamespace("block/stripped_" + wood + "_log_top")).texture("side", p.modLoc("block/" + casing + encasedSuffix))).build();
     }
 
     private static <B extends RotatedPillarKineticBlock, P> BlockBuilder<B, P> encasedBase(BlockBuilder<B, P> b, Supplier<ItemLike> drop) {
-        return b.initialProperties(SharedProperties::stone).properties(BlockBehaviour.Properties::noOcclusion).transform(BlockStressDefaults.setNoImpact()).loot((p, lb) -> p.dropOther(lb, drop.get()));
+        return b.initialProperties(SharedProperties::stone).properties(BlockBehaviour.Properties::noOcclusion).transform(CCStress.setNoImpact()).loot((p, lb) -> p.dropOther(lb, drop.get()));
     }
 
 

@@ -1,129 +1,123 @@
-package fr.iglee42.createcasing.blockEntities.instances;
+package fr.iglee42.createcasing.blockEntities.visuals;
 
-import com.jozufozu.flywheel.api.Instancer;
-import com.jozufozu.flywheel.api.MaterialManager;
-import com.jozufozu.flywheel.api.instance.DynamicInstance;
-import com.jozufozu.flywheel.core.materials.oriented.OrientedData;
 import com.simibubi.create.AllPartialModels;
-import com.simibubi.create.content.kinetics.base.flwdata.RotatingData;
-import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogInstance;
-import com.simibubi.create.foundation.render.AllMaterialSpecs;
-import com.simibubi.create.foundation.utility.AnimationTickHolder;
+
+import com.simibubi.create.content.kinetics.base.RotatingInstance;
+import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
+import com.simibubi.create.foundation.render.AllInstanceTypes;
+import dev.engine_room.flywheel.api.instance.Instance;
+import dev.engine_room.flywheel.api.visualization.VisualizationContext;
+import dev.engine_room.flywheel.lib.instance.InstanceTypes;
+import dev.engine_room.flywheel.lib.instance.OrientedInstance;
+import dev.engine_room.flywheel.lib.model.Models;
+import dev.engine_room.flywheel.lib.visual.SimpleDynamicVisual;
 import fr.iglee42.createcasing.registries.ModPartialModels;
 import fr.iglee42.createcasing.blockEntities.CustomMixerBlockEntity;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 
-public class CustomMixerInstance extends EncasedCogInstance implements DynamicInstance {
+import java.util.function.Consumer;
 
-	private RotatingData mixerHead;
-	private OrientedData mixerPole;
+public class CustomMixerVisual extends SingleAxisRotatingVisual<CustomMixerBlockEntity> implements SimpleDynamicVisual {
+
+	private RotatingInstance mixerHead;
+	private OrientedInstance mixerPole;
 
 	private final CustomMixerBlockEntity mixer;
 
-	public CustomMixerInstance(MaterialManager dispatcher, CustomMixerBlockEntity tile) {
-		super(dispatcher, tile, false);
-		this.mixer = tile;
+	public CustomMixerVisual(VisualizationContext context, CustomMixerBlockEntity blockEntity, float partialTick) {
+		super(context, blockEntity, partialTick, Models.partial(AllPartialModels.SHAFTLESS_COGWHEEL));
+		this.mixer = blockEntity;
 
-		RotatingData mixerHead = null;
-
-
-		OrientedData mixerPole = getOrientedMaterial().getModel(AllPartialModels.MECHANICAL_MIXER_POLE, blockState)
-				.createInstance();;
+		RotatingInstance mixerHead;
 
 
-		switch (ForgeRegistries.BLOCKS.getKey(tile.getBlockState().getBlock()).getPath().replace("_mixer","").toLowerCase()) {
+		mixerPole = instancerProvider().instancer(InstanceTypes.ORIENTED, Models.partial(AllPartialModels.MECHANICAL_MIXER_POLE))
+				.createInstance();
+
+
+		switch (BuiltInRegistries.BLOCK.getKey(mixer.getBlockState().getBlock()).getPath().replace("_mixer","").toLowerCase()) {
 			case "brass" -> {
-				mixerHead = materialManager.defaultCutout()
-						.material(AllMaterialSpecs.ROTATING).getModel(ModPartialModels.BRASS_MIXER_HEAD, blockState)
+				mixerHead = instancerProvider()
+						.instancer(AllInstanceTypes.ROTATING,Models.partial(ModPartialModels.BRASS_MIXER_HEAD))
 						.createInstance();
 			}
             case "copper" -> {
-				mixerHead = materialManager.defaultCutout()
-						.material(AllMaterialSpecs.ROTATING).getModel(ModPartialModels.COPPER_MIXER_HEAD, blockState)
+				mixerHead = instancerProvider()
+						.instancer(AllInstanceTypes.ROTATING,Models.partial(ModPartialModels.COPPER_MIXER_HEAD))
 						.createInstance();
 			}
             case "railway" -> {
-                mixerHead = materialManager.defaultCutout()
-                        .material(AllMaterialSpecs.ROTATING).getModel(ModPartialModels.RAILWAY_MIXER_HEAD, blockState)
-                        .createInstance();
+				mixerHead = instancerProvider()
+						.instancer(AllInstanceTypes.ROTATING,Models.partial(ModPartialModels.RAILWAY_MIXER_HEAD))
+						.createInstance();
             }
 			case "industrial_iron" ->{
-				mixerHead = materialManager.defaultCutout()
-						.material(AllMaterialSpecs.ROTATING).getModel(ModPartialModels.INDUSTRIAL_IRON_MIXER_HEAD, blockState)
+				mixerHead = instancerProvider()
+						.instancer(AllInstanceTypes.ROTATING,Models.partial(ModPartialModels.INDUSTRIAL_IRON_MIXER_HEAD))
 						.createInstance();
 			}
 			default -> {
-				mixerHead = materialManager.defaultCutout()
-						.material(AllMaterialSpecs.ROTATING).getModel(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState)
+				mixerHead = instancerProvider()
+						.instancer(AllInstanceTypes.ROTATING,Models.partial(AllPartialModels.MECHANICAL_MIXER_HEAD))
 						.createInstance();
 			}
 		}
 
 
 		this.mixerHead = mixerHead;
-		this.mixerPole = mixerPole;
-
-
 		this.mixerHead.setRotationAxis(Direction.Axis.Y);
 
+		animate(partialTick);
+	}
 
-		float renderedHeadOffset = getRenderedHeadOffset();
+
+	private void animate(float pt) {
+		float renderedHeadOffset = mixer.getRenderedHeadOffset(pt);
 
 		transformPole(renderedHeadOffset);
-		transformHead(renderedHeadOffset);
+		transformHead(renderedHeadOffset, pt);
 	}
 
-	@Override
-	protected Instancer<RotatingData> getCogModel() {
-		return materialManager.defaultSolid()
-			.material(AllMaterialSpecs.ROTATING)
-			.getModel(AllPartialModels.SHAFTLESS_COGWHEEL, blockEntity.getBlockState());
-	}
+	private void transformHead(float renderedHeadOffset, float pt) {
+		float speed = mixer.getRenderedHeadRotationSpeed(pt);
 
-	@Override
-	public void beginFrame() {
-
-		float renderedHeadOffset = getRenderedHeadOffset();
-
-		/*if (mixerHead.skyLight == 0 || mixerPole.skyLight == 0) {
-			remove();
-			return;
-		}*/
-
-		transformPole(renderedHeadOffset);
-		transformHead(renderedHeadOffset);
-	}
-
-	private void transformHead(float renderedHeadOffset) {
-		float speed = mixer.getRenderedHeadRotationSpeed(AnimationTickHolder.getPartialTicks());
-
-		mixerHead.setPosition(getInstancePosition())
+		mixerHead.setPosition(getVisualPosition())
 				.nudge(0, -renderedHeadOffset, 0)
-				.setRotationalSpeed(speed * 2);
+				.setRotationalSpeed(speed * 2 * RotatingInstance.SPEED_MULTIPLIER)
+				.setChanged();
 	}
 
 	private void transformPole(float renderedHeadOffset) {
-		mixerPole.setPosition(getInstancePosition())
-				.nudge(0, -renderedHeadOffset, 0);
-	}
-
-	private float getRenderedHeadOffset() {
-		return mixer.getRenderedHeadOffset(AnimationTickHolder.getPartialTicks());
+		mixerPole.position(getVisualPosition())
+				.translatePosition(0, -renderedHeadOffset, 0)
+				.setChanged();
 	}
 
 	@Override
-	public void updateLight() {
-		super.updateLight();
+	public void updateLight(float partialTick) {
+		super.updateLight(partialTick);
 
 		relight(pos.below(), mixerHead);
-		relight(pos, mixerPole);
+		relight(mixerPole);
 	}
 
 	@Override
-	public void remove() {
-		super.remove();
+	protected void _delete() {
+		super._delete();
 		mixerHead.delete();
 		mixerPole.delete();
+	}
+
+	@Override
+	public void collectCrumblingInstances(Consumer<Instance> consumer) {
+		super.collectCrumblingInstances(consumer);
+		consumer.accept(mixerHead);
+		consumer.accept(mixerPole);
+	}
+
+	@Override
+	public void beginFrame(Context context) {
+		animate(context.partialTick());
 	}
 }

@@ -4,14 +4,10 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllShapes;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.kinetics.base.KineticBlock;
-import com.simibubi.create.content.kinetics.mixer.MechanicalMixerBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.foundation.block.IBE;
-import com.simibubi.create.foundation.placement.IPlacementHelper;
-import com.simibubi.create.foundation.placement.PlacementHelpers;
-import fr.iglee42.createcasing.registries.ModBlockEntities;
 import fr.iglee42.createcasing.blockEntities.CustomMixerBlockEntity;
-import fr.iglee42.createcasing.registries.ModBlocks;
+import fr.iglee42.createcasing.registries.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
@@ -83,5 +79,4 @@ public class CustomMixerBlock extends KineticBlock implements IBE<CustomMixerBlo
     protected boolean isPathfindable(BlockState p_60475_, PathComputationType p_60478_) {
         return false;
     }
-
 }

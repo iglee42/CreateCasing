@@ -1,7 +1,7 @@
 package fr.iglee42.createcasing.items;
 
 import com.simibubi.create.content.kinetics.base.IRotate;
-import com.simibubi.create.foundation.utility.Iterate;
+import net.createmod.catnip.data.Iterate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
@@ -38,9 +38,9 @@ public class CustomVerticalGearboxItem extends BlockItem {
 	protected boolean updateCustomBlockEntityTag(BlockPos pos, Level world, Player player, ItemStack stack, BlockState state) {
 		Axis prefferedAxis = null;
 		for (Direction side : Iterate.horizontalDirections) {
-			BlockState blockState = world.getBlockState(pos.relative(side,1));
+			BlockState blockState = world.getBlockState(pos.relative(side));
 			if (blockState.getBlock() instanceof IRotate) {
-				if (((IRotate) blockState.getBlock()).hasShaftTowards(world, pos.relative(side,1), blockState,
+				if (((IRotate) blockState.getBlock()).hasShaftTowards(world, pos.relative(side), blockState,
 						side.getOpposite()))
 					if (prefferedAxis != null && prefferedAxis != side.getAxis()) {
 						prefferedAxis = null;
@@ -57,5 +57,4 @@ public class CustomVerticalGearboxItem extends BlockItem {
 		world.setBlockAndUpdate(pos, state.setValue(BlockStateProperties.AXIS, axis));
 		return super.updateCustomBlockEntityTag(pos, world, player, stack, state);
 	}
-
 }

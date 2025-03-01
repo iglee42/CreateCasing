@@ -1,13 +1,11 @@
 package fr.iglee42.createcasing.registries;
 
-import com.jozufozu.flywheel.core.PartialModel;
-import com.simibubi.create.Create;
-import net.minecraft.resources.ResourceLocation;
+
+import dev.engine_room.flywheel.lib.model.baked.PartialModel;
+import fr.iglee42.createcasing.CreateCasing;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static fr.iglee42.createcasing.CreateCasing.MODID;
 
 public class ModPartialModels {
 
@@ -27,13 +25,13 @@ public class ModPartialModels {
     public static final Map<String,PartialModel> LARGE_COGS_MODELS = new HashMap<>();
 
     public static PartialModel block(String path) {
-        return new PartialModel(new ResourceLocation(MODID, "block/" + path));
+        return PartialModel.of(CreateCasing.asResource("block/" + path));
     }
 
     public static void init() {
         String[] woods = new String[]{"oak","birch","acacia","jungle","warped","dark_oak","crimson","mangrove","cherry","bamboo"};
         for (String w : woods) {
-          COGS_MODELS.put(w,ModPartialModels.block("cogwheel_shaftless/"+ w));
+          COGS_MODELS.put(w,ModPartialModels.block("cogwheel/"+ w));
           LARGE_COGS_MODELS.put(w,ModPartialModels.block("large_cogwheel_shaftless/"+ w));
         }
     }

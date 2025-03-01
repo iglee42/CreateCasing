@@ -13,13 +13,11 @@ import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.CogWheelBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.CogwheelBlockItem;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
-import com.simibubi.create.foundation.placement.IPlacementHelper;
-import com.simibubi.create.foundation.placement.PlacementHelpers;
-import com.simibubi.create.foundation.placement.PlacementOffset;
-import com.simibubi.create.foundation.utility.Iterate;
-
 import fr.iglee42.createcasing.api.items.ApiCogwheelBlockItem;
 import fr.iglee42.createcasing.blocks.customs.WoodenCogwheelBlock;
+import net.createmod.catnip.placement.IPlacementHelper;
+import net.createmod.catnip.placement.PlacementHelpers;
+import net.createmod.catnip.placement.PlacementOffset;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -60,7 +58,7 @@ public class WoodenCogwheelBlockItem extends BlockItem {
 		BlockHitResult ray = new BlockHitResult(context.getClickLocation(), context.getClickedFace(), pos, true);
 		if (helper.matchesState(state) && player != null && !player.isShiftKeyDown()) {
 			return helper.getOffset(player, world, state, pos, ray)
-				.placeInWorld(world, this, player, context.getHand(), ray);
+					.placeInWorld(world, this, player, context.getHand(), ray).result();
 		}
 
 		if (integratedCogHelperId != -1) {
@@ -68,7 +66,7 @@ public class WoodenCogwheelBlockItem extends BlockItem {
 
 			if (helper.matchesState(state) && player != null && !player.isShiftKeyDown()) {
 				return helper.getOffset(player, world, state, pos, ray)
-					.placeInWorld(world, this, player, context.getHand(), ray);
+						.placeInWorld(world, this, player, context.getHand(), ray).result();
 			}
 		}
 

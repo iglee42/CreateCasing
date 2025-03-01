@@ -1,7 +1,5 @@
 package fr.iglee42.createcasing.blocks.customs;
 
-import javax.annotation.ParametersAreNonnullByDefault;
-
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllShapes;
 import com.simibubi.create.content.decoration.encasing.EncasableBlock;
@@ -11,19 +9,13 @@ import com.simibubi.create.content.kinetics.simpleRelays.AbstractSimpleShaftBloc
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.content.kinetics.speedController.SpeedControllerBlock;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
-import com.simibubi.create.foundation.placement.IPlacementHelper;
-import com.simibubi.create.foundation.placement.PlacementHelpers;
-import com.simibubi.create.foundation.utility.Iterate;
-
 import fr.iglee42.createcasing.registries.ModBlockEntities;
-import fr.iglee42.createcasing.registries.ModBlocks;
+import net.createmod.catnip.data.Iterate;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
 import net.minecraft.core.Direction.AxisDirection;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
@@ -41,9 +33,8 @@ import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-import net.minecraftforge.registries.ForgeRegistries;
 
-import static fr.iglee42.createcasing.CreateCasing.MODID;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
@@ -127,6 +118,7 @@ public class WoodenCogwheelBlock extends AbstractSimpleShaftBlock implements ICo
 		}
 	}
 
+
 	@Override
 	protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
 		if (player.isShiftKeyDown() || !player.mayBuild())
@@ -138,6 +130,7 @@ public class WoodenCogwheelBlock extends AbstractSimpleShaftBlock implements ICo
 
 		return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
 	}
+
 
 
 	public static boolean isValidCogwheelPosition(boolean large, LevelReader worldIn, BlockPos pos, Axis cogAxis) {

@@ -17,7 +17,7 @@ import java.util.List;
 public class JEIPlugin implements IModPlugin {
     @Override
     public ResourceLocation getPluginUid() {
-        return new ResourceLocation("createcasing:jei");
+        return CreateCasing.asResource("jei");
     }
 
     @Override

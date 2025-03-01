@@ -1,17 +1,15 @@
 package fr.iglee42.createcasing.api.renderers;
 
-import com.jozufozu.flywheel.backend.Backend;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
-import com.simibubi.create.foundation.render.CachedBufferer;
-import com.simibubi.create.foundation.render.SuperByteBuffer;
-import com.simibubi.create.foundation.utility.AnimationTickHolder;
+import dev.engine_room.flywheel.api.visualization.VisualizationManager;
 import fr.iglee42.createcasing.api.blocks.ApiCogwheelBlock;
 import fr.iglee42.createcasing.blocks.customs.WoodenCogwheelBlock;
-import fr.iglee42.createcasing.registries.ModPartialModels;
+import net.createmod.catnip.render.CachedBuffers;
+import net.createmod.catnip.render.SuperByteBuffer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider.Context;
@@ -19,7 +17,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
 import net.minecraft.core.Direction.AxisDirection;
-import net.minecraftforge.registries.ForgeRegistries;
 
 public class ApiCogwheelBlockEntityRenderer extends KineticBlockEntityRenderer<BracketedKineticBlockEntity> {
 
@@ -29,9 +26,9 @@ public class ApiCogwheelBlockEntityRenderer extends KineticBlockEntityRenderer<B
 
 	@Override
 	protected void renderSafe(BracketedKineticBlockEntity be, float partialTicks, PoseStack ms,
-		MultiBufferSource buffer, int light, int overlay) {
+							  MultiBufferSource buffer, int light, int overlay) {
 
-		if (Backend.canUseInstancing(be.getLevel()))
+		if (VisualizationManager.supportsVisualization(be.getLevel()))
 			return;
 
 		if (!(be.getBlockState().getBlock() instanceof WoodenCogwheelBlock)) {
@@ -45,12 +42,12 @@ public class ApiCogwheelBlockEntityRenderer extends KineticBlockEntityRenderer<B
 		Axis axis = getRotationAxisOf(be);
 		Direction facing = Direction.fromAxisAndDirection(axis, AxisDirection.POSITIVE);
 		renderRotatingBuffer(be,
-			CachedBufferer.partialFacingVertical(((ApiCogwheelBlock)be.getBlockState().getBlock()).getLargeCogwheelModel(), be.getBlockState(), facing),
-			ms, buffer.getBuffer(RenderType.solid()), light);
+				CachedBuffers.partialFacingVertical(((ApiCogwheelBlock)be.getBlockState().getBlock()).getLargeCogwheelModel(), be.getBlockState(), facing),
+				ms, buffer.getBuffer(RenderType.solid()), light);
 
 		float angle = getAngleForLargeCogShaft(be, axis);
 		SuperByteBuffer shaft =
-			CachedBufferer.partialFacingVertical(AllPartialModels.COGWHEEL_SHAFT, be.getBlockState(), facing);
+				CachedBuffers.partialFacingVertical(AllPartialModels.COGWHEEL_SHAFT, be.getBlockState(), facing);
 		kineticRotationTransform(shaft, be, axis, angle, light);
 		shaft.renderInto(ms, buffer.getBuffer(RenderType.solid()));
 
@@ -59,7 +56,7 @@ public class ApiCogwheelBlockEntityRenderer extends KineticBlockEntityRenderer<B
 	public static float getAngleForLargeCogShaft(SimpleKineticBlockEntity be, Axis axis) {
 		BlockPos pos = be.getBlockPos();
 		float offset = getShaftAngleOffset(axis, pos);
-		float time = AnimationTickHolder.getRenderTime(be.getLevel());
+		float time = net.createmod.catnip.animation.AnimationTickHolder.getRenderTime(be.getLevel());
 		float angle = ((time * be.getSpeed() * 3f / 10 + offset) % 360) / 180 * (float) Math.PI;
 		return angle;
 	}
@@ -67,7 +64,7 @@ public class ApiCogwheelBlockEntityRenderer extends KineticBlockEntityRenderer<B
 	public static float getShaftAngleOffset(Axis axis, BlockPos pos) {
 		float offset = 0;
 		double d = (((axis == Axis.X) ? 0 : pos.getX()) + ((axis == Axis.Y) ? 0 : pos.getY())
-			+ ((axis == Axis.Z) ? 0 : pos.getZ())) % 2;
+				+ ((axis == Axis.Z) ? 0 : pos.getZ())) % 2;
 		if (d == 0)
 			offset = 22.5f;
 		return offset;

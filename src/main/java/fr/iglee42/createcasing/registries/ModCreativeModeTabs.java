@@ -1,17 +1,20 @@
 package fr.iglee42.createcasing.registries;
 
 import com.simibubi.create.AllCreativeModeTabs;
+import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.util.entry.ItemProviderEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.utils.DontShowInCreativeTab;
 import it.unimi.dsi.fastutil.objects.*;
+import net.createmod.catnip.platform.CatnipServices;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 
 import net.neoforged.api.distmarker.Dist;
@@ -27,9 +30,10 @@ import org.apache.commons.lang3.mutable.MutableObject;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.function.Function;
+import java.util.function.Predicate;
 
-@Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModCreativeModeTabs {
 
     private static final DeferredRegister<CreativeModeTab> TAB_REGISTER =
@@ -43,185 +47,210 @@ public class ModCreativeModeTabs {
                     .displayItems(new RegistrateDisplayItemsGenerator(true,ModCreativeModeTabs.MAIN_TAB))
                     .build());
 
-	
-	public static void register(IEventBus modEventBus) {
-		TAB_REGISTER.register(modEventBus);
-	}
 
-	public static CreativeModeTab getBaseTab() {
-		return MAIN_TAB.get();
-	}
+    public static void register(IEventBus modEventBus) {
+        TAB_REGISTER.register(modEventBus);
+    }
 
-	public static class RegistrateDisplayItemsGenerator implements CreativeModeTab.DisplayItemsGenerator {
+    public static CreativeModeTab getBaseTab() {
+        return MAIN_TAB.get();
+    }
 
-		private static boolean testExclusion(Item item) {
-			return (item instanceof BlockItem ? (((BlockItem) item).getBlock() instanceof DontShowInCreativeTab) : item instanceof DontShowInCreativeTab) || CreateCasing.hidedItems.stream().anyMatch(i-> i.asItem().equals(item));
-		}
+    public static class RegistrateDisplayItemsGenerator implements CreativeModeTab.DisplayItemsGenerator {
+        private static final Predicate<Item> IS_ITEM_3D_PREDICATE;
 
-		private static List<RegistrateDisplayItemsGenerator.ItemOrdering> makeOrderings() {
-			List<RegistrateDisplayItemsGenerator.ItemOrdering> orderings = new ReferenceArrayList<>();
+        static {
+            MutableObject<Predicate<Item>> isItem3d = new MutableObject<>(item -> false);
+            if (CatnipServices.PLATFORM.getEnv().isClient())
+                isItem3d.setValue(makeClient3dItemPredicate());
+            IS_ITEM_3D_PREDICATE = isItem3d.getValue();
+        }
 
-			Map<ItemProviderEntry<?>, ItemProviderEntry<?>> simpleBeforeOrderings = Map.of(
+        private final boolean addItems;
+        private final DeferredHolder<CreativeModeTab, CreativeModeTab> tabFilter;
 
-			);
+        public RegistrateDisplayItemsGenerator(boolean addItems, DeferredHolder<CreativeModeTab, CreativeModeTab> tabFilter) {
+            this.addItems = addItems;
+            this.tabFilter = tabFilter;
+        }
 
-			Map<ItemProviderEntry<?>, ItemProviderEntry<?>> simpleAfterOrderings = Map.of(
-					ModItems.VERTICAL_BRASS_GEARBOX, ModBlocks.BRASS_GEARBOX,
-					ModItems.VERTICAL_COPPER_GEARBOX, ModBlocks.COPPER_GEARBOX,
-					ModItems.VERTICAL_RAILWAY_GEARBOX, ModBlocks.RAILWAY_GEARBOX,
-					ModItems.VERTICAL_CREATIVE_GEARBOX, ModBlocks.CREATIVE_GEARBOX,
-					ModItems.VERTICAL_INDUSTRIAL_IRON_GEARBOX, ModBlocks.INDUSTRIAL_IRON_GEARBOX
-			);
+        @OnlyIn(Dist.CLIENT)
+        private static Predicate<Item> makeClient3dItemPredicate() {
+            return item -> {
+                ItemRenderer itemRenderer = Minecraft.getInstance()
+                        .getItemRenderer();
+                BakedModel model = itemRenderer.getModel(new ItemStack(item), null, null, 0);
+                return model.isGui3d();
+            };
+        }
 
-			simpleBeforeOrderings.forEach((entry, otherEntry) -> {
-				orderings.add(RegistrateDisplayItemsGenerator.ItemOrdering.before(entry.asItem(), otherEntry.asItem()));
-			});
+        private static Predicate<Item> makeExclusionPredicate() {
+            Set<Item> exclusions = new ReferenceOpenHashSet<>();
+            exclusions.addAll(CreateCasing.hidedItems.stream().map(ItemLike::asItem).toList());
+            return exclusions::contains;
+        }
 
-			simpleAfterOrderings.forEach((entry, otherEntry) -> {
-				orderings.add(RegistrateDisplayItemsGenerator.ItemOrdering.after(entry.asItem(), otherEntry.asItem()));
-			});
+        private static List<RegistrateDisplayItemsGenerator.ItemOrdering> makeOrderings() {
+            List<RegistrateDisplayItemsGenerator.ItemOrdering> orderings = new ReferenceArrayList<>();
 
-			return orderings;
-		}
+            Map<ItemProviderEntry<?, ?>, ItemProviderEntry<?, ?>> simpleBeforeOrderings = Map.of(
 
-		private static Function<Item, ItemStack> makeStackFunc() {
-			Map<Item, Function<Item, ItemStack>> factories = new Reference2ReferenceOpenHashMap<>();
+            );
 
-			Map<ItemProviderEntry<?>, Function<Item, ItemStack>> simpleFactories = Map.of(
+            Map<ItemProviderEntry<?, ?>, ItemProviderEntry<?, ?>> simpleAfterOrderings = Map.of(
+                    ModItems.VERTICAL_BRASS_GEARBOX, ModBlocks.BRASS_GEARBOX,
+                    ModItems.VERTICAL_COPPER_GEARBOX, ModBlocks.COPPER_GEARBOX,
+                    ModItems.VERTICAL_RAILWAY_GEARBOX, ModBlocks.RAILWAY_GEARBOX,
+                    ModItems.VERTICAL_CREATIVE_GEARBOX, ModBlocks.CREATIVE_GEARBOX,
+                    ModItems.VERTICAL_INDUSTRIAL_IRON_GEARBOX, ModBlocks.INDUSTRIAL_IRON_GEARBOX
+            );
 
-			);
+            simpleBeforeOrderings.forEach((entry, otherEntry) -> {
+                orderings.add(RegistrateDisplayItemsGenerator.ItemOrdering.before(entry.asItem(), otherEntry.asItem()));
+            });
 
-			simpleFactories.forEach((entry, factory) -> {
-				factories.put(entry.asItem(), factory);
-			});
+            simpleAfterOrderings.forEach((entry, otherEntry) -> {
+                orderings.add(RegistrateDisplayItemsGenerator.ItemOrdering.after(entry.asItem(), otherEntry.asItem()));
+            });
 
-			return item -> {
-				Function<Item, ItemStack> factory = factories.get(item);
-				if (factory != null) {
-					return factory.apply(item);
-				}
-				return new ItemStack(item);
-			};
-		}
+            return orderings;
+        }
 
-		private static Function<Item, CreativeModeTab.TabVisibility> makeVisibilityFunc() {
-			Map<Item, CreativeModeTab.TabVisibility> visibilities = new Reference2ObjectOpenHashMap<>();
+        private static Function<Item, ItemStack> makeStackFunc() {
+            Map<Item, Function<Item, ItemStack>> factories = new Reference2ReferenceOpenHashMap<>();
 
-			Map<ItemProviderEntry<?>, CreativeModeTab.TabVisibility> simpleVisibilities = Map.of(
-			);
+            Map<ItemProviderEntry<?, ?>, Function<Item, ItemStack>> simpleFactories = Map.of(
 
-			simpleVisibilities.forEach((entry, factory) -> {
-				visibilities.put(entry.asItem(), factory);
-			});
+            );
 
+            simpleFactories.forEach((entry, factory) -> {
+                factories.put(entry.asItem(), factory);
+            });
 
+            return item -> {
+                Function<Item, ItemStack> factory = factories.get(item);
+                if (factory != null) {
+                    return factory.apply(item);
+                }
+                return new ItemStack(item);
+            };
+        }
 
-			return item -> {
-				CreativeModeTab.TabVisibility visibility = visibilities.get(item);
-				if (visibility != null) {
-					return visibility;
-				}
-				return CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS;
-			};
-		}
+        private static Function<Item, CreativeModeTab.TabVisibility> makeVisibilityFunc() {
+            Map<Item, CreativeModeTab.TabVisibility> visibilities = new Reference2ObjectOpenHashMap<>();
 
-		@Override
-		public void accept(CreativeModeTab.ItemDisplayParameters pParameters, CreativeModeTab.Output output) {
-			if (EffectiveSide.get().isServer()) return;
-			if (FMLEnvironment.dist == Dist.DEDICATED_SERVER) return;
-			ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
-			List<RegistrateDisplayItemsGenerator.ItemOrdering> orderings = makeOrderings();
-			Function<Item, ItemStack> stackFunc = makeStackFunc();
-			Function<Item, CreativeModeTab.TabVisibility> visibilityFunc = makeVisibilityFunc();
-			RegistryObject<CreativeModeTab> tab = MAIN_TAB;
+            Map<ItemProviderEntry<?, ?>, CreativeModeTab.TabVisibility> simpleVisibilities = Map.of(
+            );
 
-			List<Item> items = new LinkedList<>();
-			items.addAll(collectItems(tab, itemRenderer, true));
-			items.addAll(collectBlocks(tab));
-			items.addAll(collectItems(tab, itemRenderer, false));
-
-			applyOrderings(items, orderings);
-			outputAll(output, items, stackFunc, visibilityFunc);
-		}
-
-		private List<Item> collectBlocks(RegistryObject<CreativeModeTab> tab) {
-			List<Item> items = new ReferenceArrayList<>();
-			for (RegistryEntry<Block> entry : CreateCasing.REGISTRATE.getAll(Registries.BLOCK)) {
-				if (!CreateCasing.REGISTRATE.isInCreativeTab(entry, tab))
-					continue;
-				Item item = entry.get()
-						.asItem();
-				if (item == Items.AIR)
-					continue;
-				if (testExclusion(item))
-					continue;
-				items.add(item);
-			}
-			items = new ReferenceArrayList<>(new ReferenceLinkedOpenHashSet<>(items));
-			return items;
-		}
-
-		private List<Item> collectItems(RegistryObject<CreativeModeTab> tab, ItemRenderer itemRenderer, boolean special) {
-			List<Item> items = new ReferenceArrayList<>();
+            simpleVisibilities.forEach((entry, factory) -> {
+                visibilities.put(entry.asItem(), factory);
+            });
 
 
-			for (RegistryEntry<Item> entry : CreateCasing.REGISTRATE.getAll(Registries.ITEM)) {
-				if (!CreateCasing.REGISTRATE.isInCreativeTab(entry, tab))
-					continue;
-				Item item = entry.get();
-				if (item instanceof BlockItem)
-					continue;
-				BakedModel model = itemRenderer.getModel(new ItemStack(item), null, null, 0);
-				if (model.isGui3d() != special)
-					continue;
-				if (testExclusion(item))
-					continue;
-				items.add(item);
-			}
-			return items;
-		}
+            return item -> {
+                CreativeModeTab.TabVisibility visibility = visibilities.get(item);
+                if (visibility != null) {
+                    return visibility;
+                }
+                return CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS;
+            };
+        }
 
-		private static void applyOrderings(List<Item> items, List<RegistrateDisplayItemsGenerator.ItemOrdering> orderings) {
-			for (RegistrateDisplayItemsGenerator.ItemOrdering ordering : orderings) {
-				int anchorIndex = items.indexOf(ordering.anchor());
-				if (anchorIndex != -1) {
-					Item item = ordering.item();
-					int itemIndex = items.indexOf(item);
-					if (itemIndex != -1) {
-						items.remove(itemIndex);
-						if (itemIndex < anchorIndex) {
-							anchorIndex--;
-						}
-					}
-					if (ordering.type() == RegistrateDisplayItemsGenerator.ItemOrdering.Type.AFTER) {
-						items.add(anchorIndex + 1, item);
-					} else {
-						items.add(anchorIndex, item);
-					}
-				}
-			}
-		}
+        private static void applyOrderings(List<Item> items, List<ItemOrdering> orderings) {
+            for (ItemOrdering ordering : orderings) {
+                int anchorIndex = items.indexOf(ordering.anchor());
+                if (anchorIndex != -1) {
+                    Item item = ordering.item();
+                    int itemIndex = items.indexOf(item);
+                    if (itemIndex != -1) {
+                        items.remove(itemIndex);
+                        if (itemIndex < anchorIndex) {
+                            anchorIndex--;
+                        }
+                    }
+                    if (ordering.type() == ItemOrdering.Type.AFTER) {
+                        items.add(anchorIndex + 1, item);
+                    } else {
+                        items.add(anchorIndex, item);
+                    }
+                }
+            }
+        }
 
-		private static void outputAll(CreativeModeTab.Output output, List<Item> items, Function<Item, ItemStack> stackFunc, Function<Item, CreativeModeTab.TabVisibility> visibilityFunc) {
-			for (Item item : items) {
-				output.accept(stackFunc.apply(item), visibilityFunc.apply(item));
-			}
-		}
+        private static void outputAll(CreativeModeTab.Output output, List<Item> items, Function<Item, ItemStack> stackFunc, Function<Item, CreativeModeTab.TabVisibility> visibilityFunc) {
+            for (Item item : items) {
+                output.accept(stackFunc.apply(item), visibilityFunc.apply(item));
+            }
+        }
 
-		private record ItemOrdering(Item item, Item anchor, RegistrateDisplayItemsGenerator.ItemOrdering.Type type) {
-			public static RegistrateDisplayItemsGenerator.ItemOrdering before(Item item, Item anchor) {
-				return new RegistrateDisplayItemsGenerator.ItemOrdering(item, anchor, RegistrateDisplayItemsGenerator.ItemOrdering.Type.BEFORE);
-			}
+        @Override
+        public void accept(CreativeModeTab.ItemDisplayParameters pParameters, CreativeModeTab.Output output) {
+            if (EffectiveSide.get().isServer()) return;
+            if (FMLEnvironment.dist == Dist.DEDICATED_SERVER) return;
+			Predicate<Item> exclusionPredicate = makeExclusionPredicate();
+            List<RegistrateDisplayItemsGenerator.ItemOrdering> orderings = makeOrderings();
+            Function<Item, ItemStack> stackFunc = makeStackFunc();
+            Function<Item, CreativeModeTab.TabVisibility> visibilityFunc = makeVisibilityFunc();
+            DeferredHolder<CreativeModeTab, CreativeModeTab> tab = MAIN_TAB;
 
-			public static RegistrateDisplayItemsGenerator.ItemOrdering after(Item item, Item anchor) {
-				return new RegistrateDisplayItemsGenerator.ItemOrdering(item, anchor, RegistrateDisplayItemsGenerator.ItemOrdering.Type.AFTER);
-			}
 
-			public enum Type {
-				BEFORE,
-				AFTER;
-			}
-		}
-	}
+            List<Item> items = new LinkedList<>();
+            if (addItems) {
+                items.addAll(collectItems(exclusionPredicate.or(IS_ITEM_3D_PREDICATE.negate())));
+            }
+            items.addAll(collectBlocks(exclusionPredicate));
+            if (addItems) {
+                items.addAll(collectItems(exclusionPredicate.or(IS_ITEM_3D_PREDICATE)));
+            }
+
+            applyOrderings(items, orderings);
+            outputAll(output, items, stackFunc, visibilityFunc);
+        }
+
+        private List<Item> collectBlocks(Predicate<Item> exclusionPredicate) {
+            List<Item> items = new ReferenceArrayList<>();
+            for (RegistryEntry<Block, Block> entry : CreateCasing.REGISTRATE.getAll(Registries.BLOCK)) {
+                if (!CreateRegistrate.isInCreativeTab(entry, tabFilter))
+                    continue;
+                Item item = entry.get()
+                        .asItem();
+                if (item == Items.AIR)
+                    continue;
+                if (!exclusionPredicate.test(item))
+                    items.add(item);
+            }
+            items = new ReferenceArrayList<>(new ReferenceLinkedOpenHashSet<>(items));
+            return items;
+        }
+
+        private List<Item> collectItems(Predicate<Item> exclusionPredicate) {
+            List<Item> items = new ReferenceArrayList<>();
+            for (RegistryEntry<Item, Item> entry : CreateCasing.REGISTRATE.getAll(Registries.ITEM)) {
+                if (!CreateRegistrate.isInCreativeTab(entry, tabFilter))
+                    continue;
+                Item item = entry.get();
+                if (item instanceof BlockItem)
+                    continue;
+                if (!exclusionPredicate.test(item))
+                    items.add(item);
+            }
+            return items;
+        }
+
+        private record ItemOrdering(Item item, Item anchor, Type type) {
+            public static ItemOrdering before(Item item, Item anchor) {
+                return new ItemOrdering(item, anchor, Type.BEFORE);
+            }
+
+            public static ItemOrdering after(Item item, Item anchor) {
+                return new ItemOrdering(item, anchor, Type.AFTER);
+            }
+
+            public enum Type {
+                BEFORE,
+                AFTER;
+            }
+        }
+    }
 
 }

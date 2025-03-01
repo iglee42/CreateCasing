@@ -1,9 +1,9 @@
 package fr.iglee42.createcasing.mixins.create;
 
-import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.kinetics.simpleRelays.CogWheelBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;

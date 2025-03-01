@@ -1,23 +1,16 @@
 package fr.iglee42.createcasing.api.items;
 
-import static com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock.AXIS;
-
-import java.util.List;
-import java.util.function.Predicate;
-
 import com.simibubi.create.AllShapes;
 import com.simibubi.create.content.kinetics.base.DirectionalKineticBlock;
 import com.simibubi.create.content.kinetics.base.HorizontalKineticBlock;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
-import com.simibubi.create.foundation.placement.IPlacementHelper;
-import com.simibubi.create.foundation.placement.PlacementHelpers;
-import com.simibubi.create.foundation.placement.PlacementOffset;
-import com.simibubi.create.foundation.utility.Iterate;
-
 import fr.iglee42.createcasing.api.blocks.ApiCogwheelBlock;
-import fr.iglee42.createcasing.blocks.customs.WoodenCogwheelBlock;
+import net.createmod.catnip.data.Iterate;
+import net.createmod.catnip.placement.IPlacementHelper;
+import net.createmod.catnip.placement.PlacementHelpers;
+import net.createmod.catnip.placement.PlacementOffset;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -30,6 +23,11 @@ import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+
+import java.util.List;
+import java.util.function.Predicate;
+
+import static com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock.AXIS;
 
 public class ApiCogwheelBlockItem extends BlockItem {
 
@@ -46,6 +44,7 @@ public class ApiCogwheelBlockItem extends BlockItem {
 		integratedCogHelperId =
 			PlacementHelpers.register(large ? new IntegratedLargeCogHelper() : new IntegratedSmallCogHelper());
 	}
+
 
 	@Override
 	public InteractionResult onItemUseFirst(ItemStack stack, UseOnContext context) {

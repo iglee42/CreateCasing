@@ -1,40 +1,29 @@
-package fr.iglee42.createcasing.blockEntities.visuals;
+package fr.iglee42.createcasing.api.instances;
 
-
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.base.RotatingInstance;
 import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
-
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.foundation.render.AllInstanceTypes;
 import dev.engine_room.flywheel.api.instance.Instance;
-import dev.engine_room.flywheel.api.model.Model;
 import dev.engine_room.flywheel.api.visual.BlockEntityVisual;
 import dev.engine_room.flywheel.api.visualization.VisualizationContext;
 import dev.engine_room.flywheel.lib.model.Models;
-import fr.iglee42.createcasing.registries.ModPartialModels;
-import net.minecraft.core.BlockPos;
+import fr.iglee42.createcasing.api.blocks.ApiCogwheelBlock;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Direction.AxisDirection;
-import net.minecraft.core.registries.BuiltInRegistries;
 
 import java.util.function.Consumer;
 
-public class WoodenCogwheelBlockEntityVisual {
-
+public class ApiCogwheelBlockEntityVisual {
 
 	public static BlockEntityVisual<BracketedKineticBlockEntity> create(VisualizationContext context, BracketedKineticBlockEntity blockEntity, float partialTick) {
 		if (ICogWheel.isLargeCog(blockEntity.getBlockState())) {
 			return new LargeCogVisual(context, blockEntity, partialTick);
 		} else {
-			Model model = Models.partial(ModPartialModels.COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(blockEntity.getBlockState().getBlock()).getPath().replaceAll("_cogwheel","")));
-			return new SingleAxisRotatingVisual<>(context, blockEntity, partialTick, model);
+			return new SingleAxisRotatingVisual<>(context, blockEntity, partialTick, Models.block(blockEntity.getBlockState()));
 		}
 	}
 	// Large cogs sometimes have to offset their teeth by 11.25 degrees in order to
@@ -44,7 +33,7 @@ public class WoodenCogwheelBlockEntityVisual {
 		protected final RotatingInstance additionalShaft;
 
 		private LargeCogVisual(VisualizationContext context, BracketedKineticBlockEntity blockEntity, float partialTick) {
-			super(context, blockEntity, partialTick, Models.partial(ModPartialModels.LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(blockEntity.getBlockState().getBlock()).getPath().replaceAll("_large_cogwheel",""))));
+			super(context, blockEntity, partialTick, Models.partial(((ApiCogwheelBlock)blockEntity.getBlockState().getBlock()).getLargeCogwheelModel()));
 
 			Direction.Axis axis = KineticBlockEntityRenderer.getRotationAxisOf(blockEntity);
 
@@ -84,4 +73,6 @@ public class WoodenCogwheelBlockEntityVisual {
 			consumer.accept(additionalShaft);
 		}
 	}
+
+
 }

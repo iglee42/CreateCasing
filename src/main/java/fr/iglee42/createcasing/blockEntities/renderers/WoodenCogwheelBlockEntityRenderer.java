@@ -1,18 +1,16 @@
 package fr.iglee42.createcasing.blockEntities.renderers;
 
-import com.jozufozu.flywheel.backend.Backend;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
-import com.simibubi.create.foundation.render.CachedBufferer;
-import com.simibubi.create.foundation.render.SuperByteBuffer;
-import com.simibubi.create.foundation.utility.AnimationTickHolder;
-
+import dev.engine_room.flywheel.api.visualization.VisualizationManager;
 import fr.iglee42.createcasing.blocks.customs.WoodenCogwheelBlock;
 import fr.iglee42.createcasing.registries.ModPartialModels;
+import net.createmod.catnip.animation.AnimationTickHolder;
+import net.createmod.catnip.render.CachedBuffers;
+import net.createmod.catnip.render.SuperByteBuffer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider.Context;
@@ -32,7 +30,7 @@ public class WoodenCogwheelBlockEntityRenderer extends KineticBlockEntityRendere
 	protected void renderSafe(BracketedKineticBlockEntity be, float partialTicks, PoseStack ms,
 		MultiBufferSource buffer, int light, int overlay) {
 
-		if (Backend.canUseInstancing(be.getLevel()))
+		if (VisualizationManager.supportsVisualization(be.getLevel()))
 			return;
 
 		if (!(be.getBlockState().getBlock() instanceof WoodenCogwheelBlock)) {
@@ -47,12 +45,12 @@ public class WoodenCogwheelBlockEntityRenderer extends KineticBlockEntityRendere
 		Direction facing = Direction.fromAxisAndDirection(axis, AxisDirection.POSITIVE);
 		if (ModPartialModels.LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(be.getBlockState().getBlock()).getPath().replaceAll("_large_cogwheel","")) == null) return;
 		renderRotatingBuffer(be,
-			CachedBufferer.partialFacingVertical(ModPartialModels.LARGE_COGS_MODELS.get(ForgeRegistries.BLOCKS.getKey(be.getBlockState().getBlock()).getPath().replaceAll("_large_cogwheel","")), be.getBlockState(), facing),
+			CachedBuffers.partialFacingVertical(ModPartialModels.LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(be.getBlockState().getBlock()).getPath().replaceAll("_large_cogwheel","")), be.getBlockState(), facing),
 			ms, buffer.getBuffer(RenderType.solid()), light);
 
 		float angle = getAngleForLargeCogShaft(be, axis);
 		SuperByteBuffer shaft =
-			CachedBufferer.partialFacingVertical(AllPartialModels.COGWHEEL_SHAFT, be.getBlockState(), facing);
+				CachedBuffers.partialFacingVertical(AllPartialModels.COGWHEEL_SHAFT, be.getBlockState(), facing);
 		kineticRotationTransform(shaft, be, axis, angle, light);
 		shaft.renderInto(ms, buffer.getBuffer(RenderType.solid()));
 

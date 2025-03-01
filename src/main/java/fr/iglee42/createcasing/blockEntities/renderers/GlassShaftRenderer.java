@@ -1,20 +1,18 @@
 package fr.iglee42.createcasing.blockEntities.renderers;
 
-import com.jozufozu.flywheel.api.MaterialManager;
-import com.jozufozu.flywheel.backend.Backend;
+
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
-import com.simibubi.create.content.kinetics.base.SingleRotatingInstance;
-import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntity;
-import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntityRenderer;
+
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
-import com.simibubi.create.foundation.render.CachedBufferer;
-import com.simibubi.create.foundation.render.SuperByteBuffer;
-import com.simibubi.create.foundation.utility.AnimationTickHolder;
+
 import fr.iglee42.createcasing.blockEntities.GlassShaftBlockEntity;
 import fr.iglee42.createcasing.registries.ModPartialModels;
+import net.createmod.catnip.animation.AnimationTickHolder;
+import net.createmod.catnip.render.CachedBuffers;
+import net.createmod.catnip.render.SuperByteBuffer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
@@ -44,7 +42,7 @@ public class GlassShaftRenderer extends KineticBlockEntityRenderer<GlassShaftBlo
 
         float angle = getAngleForLargeCogShaft(be, axis);
         SuperByteBuffer shaft =
-                CachedBufferer.partialFacingVertical(ModPartialModels.GLASS_SHAFT, be.getBlockState(), facing);
+                CachedBuffers.partialFacingVertical(ModPartialModels.GLASS_SHAFT, be.getBlockState(), facing);
         kineticRotationTransform(shaft, be, axis, angle, light);
         shaft.renderInto(ms, buffer.getBuffer(RenderType.cutoutMipped()));
 

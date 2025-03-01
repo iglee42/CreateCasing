@@ -1,6 +1,7 @@
 package fr.iglee42.createcasing.config;
 
-import com.simibubi.create.foundation.config.ConfigBase;
+
+import net.createmod.catnip.config.ConfigBase;
 
 public class CCCommon extends ConfigBase {
 

@@ -1,10 +1,7 @@
 package fr.iglee42.createcasing.config;
 
-import com.simibubi.create.content.kinetics.BlockStressValues;
-import com.simibubi.create.foundation.config.ConfigBase;
-import com.simibubi.create.infrastructure.config.CClient;
-import com.simibubi.create.infrastructure.config.CCommon;
-import com.simibubi.create.infrastructure.config.CServer;
+import com.simibubi.create.api.stress.BlockStressValues;
+import net.createmod.catnip.config.ConfigBase;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModLoadingContext;
@@ -18,8 +15,6 @@ import java.util.EnumMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.function.Supplier;
-
-import static com.simibubi.create.infrastructure.config.AllConfigs.server;
 
 @EventBusSubscriber(bus = EventBusSubscriber.Bus.MOD)
 public class ModConfigs {
@@ -68,7 +63,8 @@ public class ModConfigs {
 			container.registerConfig(pair.getKey(), pair.getValue().specification);
 
 
-		//BlockStressValues.registerProvider(context.getActiveNamespace(), common().kinetics.stressValues);
+		BlockStressValues.IMPACTS.registerProvider(common().kinetics.stressValues::getImpact);
+		BlockStressValues.CAPACITIES.registerProvider(common().kinetics.stressValues::getCapacity);
 
 
 	}

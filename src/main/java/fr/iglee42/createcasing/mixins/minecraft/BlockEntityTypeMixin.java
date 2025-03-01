@@ -15,7 +15,7 @@ public class BlockEntityTypeMixin {
 
     @Inject(method = "isValid",at = @At("HEAD"),cancellable = true,remap = false)
     private void isValid(BlockState state, CallbackInfoReturnable<Boolean> cir){
-        if (this.equals(ModBlockEntities.ENCASED_SHAFT.get()) ||
+        if (ModBlockEntities.ENCASED_SHAFT.isBound() &&( this.equals(ModBlockEntities.ENCASED_SHAFT.get()) ||
                 this.equals(ModBlockEntities.ENCASED_COGWHEEL.get()) ||
                 this.equals(ModBlockEntities.ENCASED_COGWHEEL_LARGE.get()) ||
                 this.equals(ModBlockEntities.ENCASED_FLUID_PIPE.get()) ||
@@ -28,9 +28,9 @@ public class BlockEntityTypeMixin {
                 this.equals(ModBlockEntities.API_DEPOT.get()) ||
                 this.equals(ModBlockEntities.API_MIXER.get()) ||
                 this.equals(ModBlockEntities.API_PRESS.get()) ||
-                this.equals(ModBlockEntities.API_COGWHEEL.get()))// ||
+                this.equals(ModBlockEntities.API_COGWHEEL.get())))// ||
                 //this.equals(AllBlockEntityTypes.FLUID_PIPE.get()) ||
-                //this.equals(AllBlockEntityTypes.FLUID_TANK.get()))
+                //this.equals(AllBlockEntityTypes.FLUID_TANK.get())))
             cir.setReturnValue(true);
 
     }

@@ -1,8 +1,7 @@
 package fr.iglee42.createcasing.config;
 
-import com.simibubi.create.foundation.config.ConfigBase;
-import com.simibubi.create.infrastructure.config.CStress;
 
+import net.createmod.catnip.config.ConfigBase;
 
 public class CCKinetics extends ConfigBase {
 
@@ -14,7 +13,9 @@ public class CCKinetics extends ConfigBase {
     public ConfigBool shouldGlassShaftBreak = b(true,"shouldGlassShaftBreak", Comments.shouldGlassShaftBreak);
 
     public ConfigInt maxSpeedWoodenShaft = i(32,2, 256,"maxSpeedWoodenShaft",Comments.maxSpeedWoodenShaft);
-    //public final CStress stressValues = nested(1, CStress::new, Comments.stress);
+    //public final CCStress stressValues = nested(1, CCStress::new, Comments.stress);
+
+    public final CCStress stressValues = nested(1, CCStress::new, Comments.stress);
 
     @Override
     public String getName() {
