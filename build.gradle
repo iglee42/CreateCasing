@@ -155,15 +155,6 @@ dependencies {
     compileOnly("me.shedaniel:RoughlyEnoughItems-api-neoforge:${rei_version}")
     compileOnly("me.shedaniel:RoughlyEnoughItems-default-plugin-neoforge:${rei_version}")
 
-    //KUBEJS
-    implementation fg.deobf("dev.latvian.mods:kubejs-forge:${kubejs_version}")
-
-    implementation fg.deobf("dev.latvian.mods:rhino-forge:${rhino_version}")
-
-    runtimeOnly fg.deobf("curse.maven:atlasviewer-633577:4882554")
-
-
-    //MIXINS
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
