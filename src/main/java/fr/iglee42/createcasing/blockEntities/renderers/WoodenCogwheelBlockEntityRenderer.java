@@ -43,9 +43,9 @@ public class WoodenCogwheelBlockEntityRenderer extends KineticBlockEntityRendere
 
 		Axis axis = getRotationAxisOf(be);
 		Direction facing = Direction.fromAxisAndDirection(axis, AxisDirection.POSITIVE);
-		if (ModPartialModels.LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(be.getBlockState().getBlock()).getPath().replaceAll("_large_cogwheel","")) == null) return;
+		if (ModPartialModels.SHAFTLESS_LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(be.getBlockState().getBlock()).getPath().replaceAll("_large_cogwheel","")) == null) return;
 		renderRotatingBuffer(be,
-			CachedBuffers.partialFacingVertical(ModPartialModels.LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(be.getBlockState().getBlock()).getPath().replaceAll("_large_cogwheel","")), be.getBlockState(), facing),
+			CachedBuffers.partialFacingVertical(ModPartialModels.SHAFTLESS_LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(be.getBlockState().getBlock()).getPath().replaceAll("_large_cogwheel","")), be.getBlockState(), facing),
 			ms, buffer.getBuffer(RenderType.solid()), light);
 
 		float angle = getAngleForLargeCogShaft(be, axis);

@@ -1,9 +1,6 @@
 package fr.iglee42.createcasing.blockEntities.visuals;
 
 
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Axis;
-import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.base.RotatingInstance;
@@ -19,9 +16,7 @@ import dev.engine_room.flywheel.api.visual.BlockEntityVisual;
 import dev.engine_room.flywheel.api.visualization.VisualizationContext;
 import dev.engine_room.flywheel.lib.model.Models;
 import fr.iglee42.createcasing.registries.ModPartialModels;
-import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Direction.AxisDirection;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 import java.util.function.Consumer;
@@ -44,7 +39,7 @@ public class WoodenCogwheelBlockEntityVisual {
 		protected final RotatingInstance additionalShaft;
 
 		private LargeCogVisual(VisualizationContext context, BracketedKineticBlockEntity blockEntity, float partialTick) {
-			super(context, blockEntity, partialTick, Models.partial(ModPartialModels.LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(blockEntity.getBlockState().getBlock()).getPath().replaceAll("_large_cogwheel",""))));
+			super(context, blockEntity, partialTick, Models.partial(ModPartialModels.SHAFTLESS_LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(blockEntity.getBlockState().getBlock()).getPath().replaceAll("_large_cogwheel",""))));
 
 			Direction.Axis axis = KineticBlockEntityRenderer.getRotationAxisOf(blockEntity);
 

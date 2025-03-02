@@ -120,7 +120,7 @@ public class EncasedCustomCogVisual extends KineticBlockEntityVisual<KineticBloc
 		BlockState referenceState = blockEntity.getBlockState();
 		Direction facing =
 			Direction.fromAxisAndDirection(referenceState.getValue(BlockStateProperties.AXIS), AxisDirection.POSITIVE);
-		PartialModel partial = large ? ModPartialModels.LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(((EncasedCustomCogwheelBlock)referenceState.getBlock()).getCogwheel().get()).getPath().replaceAll("_large_cogwheel","")) : ModPartialModels.COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(((EncasedCustomCogwheelBlock)referenceState.getBlock()).getCogwheel().get()).getPath().replaceAll("_cogwheel",""));
+		PartialModel partial = large ? ModPartialModels.SHAFTLESS_LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(((EncasedCustomCogwheelBlock)referenceState.getBlock()).getCogwheel().get()).getPath().replaceAll("_large_cogwheel","")) : ModPartialModels.SHAFTLESS_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(((EncasedCustomCogwheelBlock)referenceState.getBlock()).getCogwheel().get()).getPath().replaceAll("_cogwheel",""));
 		return partial;
 	}
 

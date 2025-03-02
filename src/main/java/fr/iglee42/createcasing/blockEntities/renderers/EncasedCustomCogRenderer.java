@@ -69,7 +69,7 @@ public class EncasedCustomCogRenderer extends KineticBlockEntityRenderer<SimpleK
 	@Override
 	protected SuperByteBuffer getRotatedModel(SimpleKineticBlockEntity be, BlockState state) {
 		return CachedBuffers.partialFacingVertical(
-			large ? ModPartialModels.LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(((EncasedCustomCogwheelBlock)state.getBlock()).getCogwheel().get()).getPath().replaceAll("_large_cogwheel","")) : ModPartialModels.COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(((EncasedCustomCogwheelBlock)state.getBlock()).getCogwheel().get()).getPath().replaceAll("_cogwheel","")), state,
+			large ? ModPartialModels.SHAFTLESS_LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(((EncasedCustomCogwheelBlock)state.getBlock()).getCogwheel().get()).getPath().replaceAll("_large_cogwheel","")) : ModPartialModels.COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(((EncasedCustomCogwheelBlock)state.getBlock()).getCogwheel().get()).getPath().replaceAll("_cogwheel","")), state,
 			Direction.fromAxisAndDirection(state.getValue(EncasedCustomCogwheelBlock.AXIS), AxisDirection.POSITIVE));
 	}
 

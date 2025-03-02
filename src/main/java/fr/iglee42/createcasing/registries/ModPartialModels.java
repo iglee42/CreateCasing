@@ -14,6 +14,8 @@ public class ModPartialModels {
             BRASS_MIXER_HEAD = block("brass_mixer/head"), COPPER_MIXER_HEAD = block("copper_mixer/head"), RAILWAY_MIXER_HEAD = block("railway_mixer/head"), INDUSTRIAL_IRON_MIXER_HEAD = block("industrial_iron_mixer/head"),
 
     GLASS_SHAFT = block("glass_shaft"),
+    BRASS_SHAFT = block("brass_shaft"),
+    MLDEG_SHAFT = block("mldeg_shaft"),
 
     COPPER_BELT_COVER_X = block("belt_cover/copper_belt_cover_x"), COPPER_BELT_COVER_Z = block("belt_cover/copper_belt_cover_z"),
     RAILWAY_BELT_COVER_X = block("belt_cover/railway_belt_cover_x"), RAILWAY_BELT_COVER_Z = block("belt_cover/railway_belt_cover_z"),
@@ -21,8 +23,11 @@ public class ModPartialModels {
     CREATIVE_BELT_COVER_X = block("belt_cover/creative_belt_cover_x"), CREATIVE_BELT_COVER_Z = block("belt_cover/creative_belt_cover_z")
             ;
 
+    public static final Map<String,PartialModel> SHAFT_MODELS = new HashMap<>();
     public static final Map<String,PartialModel> COGS_MODELS = new HashMap<>();
+    public static final Map<String,PartialModel> SHAFTLESS_COGS_MODELS = new HashMap<>();
     public static final Map<String,PartialModel> LARGE_COGS_MODELS = new HashMap<>();
+    public static final Map<String,PartialModel> SHAFTLESS_LARGE_COGS_MODELS = new HashMap<>();
 
     public static PartialModel block(String path) {
         return PartialModel.of(CreateCasing.asResource("block/" + path));
@@ -31,9 +36,13 @@ public class ModPartialModels {
     public static void init() {
         String[] woods = new String[]{"oak","birch","acacia","jungle","warped","dark_oak","crimson","mangrove","cherry","bamboo"};
         for (String w : woods) {
+          SHAFT_MODELS.put(w,ModPartialModels.block("wooden_shaft/"+ w));
           COGS_MODELS.put(w,ModPartialModels.block("cogwheel/"+ w));
-          LARGE_COGS_MODELS.put(w,ModPartialModels.block("large_cogwheel_shaftless/"+ w));
+          SHAFTLESS_COGS_MODELS.put(w,ModPartialModels.block("cogwheel_shaftless/"+ w));
+          LARGE_COGS_MODELS.put(w,ModPartialModels.block("large_cogwheel/"+ w));
+          SHAFTLESS_LARGE_COGS_MODELS.put(w,ModPartialModels.block("large_cogwheel_shaftless/"+ w));
         }
+
     }
 
 }

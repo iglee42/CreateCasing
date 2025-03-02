@@ -6,6 +6,7 @@ import com.simibubi.create.content.fluids.pipes.FluidPipeBlockEntity;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.base.ShaftRenderer;
 import com.simibubi.create.content.kinetics.base.ShaftVisual;
+import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
 import com.simibubi.create.content.kinetics.chainDrive.ChainGearshiftBlockEntity;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlockEntity;
 import com.simibubi.create.content.kinetics.gearbox.GearboxRenderer;
@@ -24,6 +25,7 @@ import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogVisua
 import com.simibubi.create.content.logistics.depot.DepotBlockEntity;
 import com.simibubi.create.content.logistics.depot.DepotRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
+import dev.engine_room.flywheel.lib.model.Models;
 import fr.iglee42.createcasing.api.instances.ApiCogwheelBlockEntityVisual;
 import fr.iglee42.createcasing.api.renderers.ApiCogwheelBlockEntityRenderer;
 import fr.iglee42.createcasing.blockEntities.*;
@@ -88,7 +90,7 @@ public class ModBlockEntities {
 
     public static final BlockEntityEntry<WoodenShaftBlockEntity> WOODEN_SHAFT = REGISTRATE
             .blockEntity("wooden_shaft", WoodenShaftBlockEntity::new)
-            .visual(() -> BracketedKineticBlockEntityVisual::create, false)
+            .visual(() -> WoodenShaftVisual::create, false)
             .validBlocks(ModBlocks.OAK_SHAFT,ModBlocks.SPRUCE_SHAFT,ModBlocks.BIRCH_SHAFT,ModBlocks.JUNGLE_SHAFT,ModBlocks.ACACIA_SHAFT,ModBlocks.DARK_OAK_SHAFT,ModBlocks.CRIMSON_SHAFT,ModBlocks.WARPED_SHAFT,ModBlocks.MANGROVE_SHAFT,ModBlocks.BAMBOO_SHAFT,ModBlocks.CHERRY_SHAFT)
             .renderer(() -> BracketedKineticBlockEntityRenderer::new)
             .register();
@@ -102,13 +104,13 @@ public class ModBlockEntities {
 
     public static final BlockEntityEntry<MetalShaftBlockEntity> METAL_SHAFT = REGISTRATE
             .blockEntity("metal_shaft", MetalShaftBlockEntity::new)
-            .visual(() -> BracketedKineticBlockEntityVisual::create, false)
+            .visual(() -> (ctx,be,pt)->new SingleAxisRotatingVisual<>(ctx,be,pt,Models.partial(ModPartialModels.MLDEG_SHAFT)), false)
             .validBlocks(ModBlocks.MLDEG_SHAFT)
             .renderer(() -> BracketedKineticBlockEntityRenderer::new)
             .register();
     public static final BlockEntityEntry<BrassShaftBlockEntity> BRASS_SHAFT = REGISTRATE
             .blockEntity("brass_shaft", BrassShaftBlockEntity::new)
-            .visual(() -> BracketedKineticBlockEntityVisual::create, false)
+            .visual(() -> (visualizationContext, be, pt) ->new SingleAxisRotatingVisual<>(visualizationContext,be,pt, Models.partial(ModPartialModels.BRASS_SHAFT)), false)
             .validBlocks(ModBlocks.BRASS_SHAFT)
             .renderer(() -> BracketedKineticBlockEntityRenderer::new)
             .register();
