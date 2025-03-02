@@ -5,6 +5,7 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
 import com.tterrag.registrate.util.RegistrateDistExecutor;
+import fr.iglee42.createcasing.commands.CreateCasingCommand;
 import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.registries.*;
 import net.createmod.catnip.lang.FontHelper;
@@ -18,7 +19,9 @@ import net.neoforged.fml.ModContainer;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.neoforge.common.NeoForge;
+import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -41,7 +44,7 @@ public class CreateCasing {
                 .andThen(TooltipModifier.mapNull(KineticStats.create(item))));
     }
     public CreateCasing(IEventBus modEventBus, ModContainer container) {
-        IEventBus forgeEventBus = NeoForge.EVENT_BUS;
+        IEventBus neoForgeEventBus = NeoForge.EVENT_BUS;
 
 
         REGISTRATE.registerEventListeners(modEventBus);
@@ -66,6 +69,7 @@ public class CreateCasing {
 
         RegistrateDistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> CreateCasingClient.onCtorClient(modEventBus));
 
+        neoForgeEventBus.addListener(this::registerCommands);
         modEventBus.addListener(this::setup);
         modEventBus.addListener(ModSounds::register);
 
@@ -81,6 +85,10 @@ public class CreateCasing {
     }
 
     private void setup(final FMLCommonSetupEvent event) {
+    }
+
+    private void registerCommands(RegisterCommandsEvent event){
+        if (!FMLEnvironment.production) new CreateCasingCommand(event.getDispatcher());
     }
 
 
