@@ -6,7 +6,9 @@
   "loops": 4,
   "results": [
     {
-      "item": "createcasing:chorium_ingot"
+      "item":{
+        "id":"createcasing:chorium_ingot"
+      }
     }
   ],
   "sequence": [
@@ -17,14 +19,16 @@
           "item": "createcasing:processing_chorium"
         },
         {
+          "type": "fluid_stack",
           "amount": 500,
-          "fluid": "minecraft:lava",
-          "nbt": {}
+          "fluid": "minecraft:lava"
         }
       ],
       "results": [
         {
-          "item": "createcasing:processing_chorium"
+          "item": {
+            "id": "createcasing:processing_chorium"
+          }
         }
       ]
     },
@@ -40,7 +44,9 @@
       ],
       "results": [
         {
-          "item": "createcasing:processing_chorium"
+          "item":{
+            "id":"createcasing:processing_chorium"
+          }
         }
       ]
     },
@@ -53,12 +59,16 @@
       ],
       "results": [
         {
-          "item": "createcasing:processing_chorium"
+          "item": {
+            "id":"createcasing:processing_chorium"
+          }
         }
       ]
     }
   ],
-  "transitionalItem": {
-    "item": "createcasing:processing_chorium"
+  "transitional_item": {
+    "item":{
+      "id":"createcasing:processing_chorium"
+    }
   }
 }

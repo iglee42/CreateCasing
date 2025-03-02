@@ -8,9 +8,11 @@
       "item": "createcasing:chorium_ingot"
     }
   ],
-  "results": [
+  "results":[
     {
-      "item": "createcasing:creative_casing"
+      "item":{
+        "id":"createcasing:creative_casing"
+      }
     }
   ]
 }

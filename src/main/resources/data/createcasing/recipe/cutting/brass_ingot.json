@@ -9,7 +9,9 @@
   "results": [
     {
       "count": 6,
-      "item": "createcasing:brass_shaft"
+      "item": {
+        "id": "createcasing:brass_shaft"
+      }
     }
   ]
 }
