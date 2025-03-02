@@ -304,6 +304,25 @@
     "createcasing:shadow_steel_encased_spruce_shaft",
     "createcasing:shadow_steel_encased_warped_cogwheel",
     "createcasing:shadow_steel_encased_warped_large_cogwheel",
-    "createcasing:shadow_steel_encased_warped_shaft"
+    "createcasing:shadow_steel_encased_warped_shaft",
+    "createcasing:brass_encased_chain_drive",
+    "createcasing:copper_encased_chain_drive",
+    "createcasing:railway_encased_chain_drive",
+    "createcasing:industrial_iron_encased_chain_drive",
+    "createcasing:creative_encased_chain_drive",
+    "createcasing:brass_adjustable_chain_gearshift",
+    "createcasing:copper_adjustable_chain_gearshift",
+    "createcasing:railway_adjustable_chain_gearshift",
+    "createcasing:industrial_iron_adjustable_chain_gearshift",
+    "createcasing:creative_adjustable_chain_gearshift",
+    "createcasing:andesite_encased_mldeg_shaft",
+    "createcasing:brass_encased_mldeg_shaft",
+    "createcasing:copper_encased_mldeg_shaft",
+    "createcasing:railway_encased_mldeg_shaft",
+    "createcasing:industrial_iron_encased_mldeg_shaft",
+    "createcasing:creative_encased_mldeg_shaft",
+    "createcasing:refined_radiance_encased_mldeg_shaft",
+    "createcasing:shadow_steel_encased_mldeg_shaft",
+    "createcasing:mldeg_shaft"
   ]
 }
