@@ -43,6 +43,9 @@ public class ModPartialModels {
           SHAFTLESS_LARGE_COGS_MODELS.put(w,ModPartialModels.block("large_cogwheel_shaftless/"+ w));
         }
 
+        SHAFT_MODELS.put("mldeg",MLDEG_SHAFT);
+        SHAFT_MODELS.put("glass",GLASS_SHAFT);
+
     }
 
 }
