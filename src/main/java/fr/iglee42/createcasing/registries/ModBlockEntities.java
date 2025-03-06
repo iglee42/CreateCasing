@@ -1,7 +1,6 @@
 package fr.iglee42.createcasing.registries;
 
 import com.simibubi.create.AllBlocks;
-import com.simibubi.create.Create;
 import com.simibubi.create.content.fluids.pipes.FluidPipeBlockEntity;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.base.ShaftRenderer;
@@ -18,7 +17,6 @@ import com.simibubi.create.content.kinetics.press.MechanicalPressBlockEntity;
 import com.simibubi.create.content.kinetics.press.PressVisual;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntityRenderer;
-import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntityVisual;
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogRenderer;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogVisual;
@@ -130,7 +128,7 @@ public class ModBlockEntities {
             .renderer(() -> CustomEncasedShaftRenderer::new)
             .register();
 
-    public static final BlockEntityEntry<ChainGearshiftBlockEntity> CUSTOM_CHAIN_GEARSHIFT = Create.REGISTRATE
+    public static final BlockEntityEntry<ChainGearshiftBlockEntity> CUSTOM_CHAIN_GEARSHIFT = REGISTRATE
             .blockEntity("custom_chain_gearshift", ChainGearshiftBlockEntity::new)
             .visual(() -> ShaftVisual::new, false)
             .validBlocks(ModBlocks.BRASS_CHAIN_GEARSHIFT,ModBlocks.COPPER_CHAIN_GEARSHIFT,ModBlocks.RAILWAY_CHAIN_GEARSHIFT,ModBlocks.INDUSTRIAL_IRON_CHAIN_GEARSHIFT,ModBlocks.CREATIVE_CHAIN_GEARSHIFT)
@@ -143,14 +141,14 @@ public class ModBlockEntities {
             .renderer(() -> WoodenCogwheelBlockEntityRenderer::new)
             .register();
 
-    public static final BlockEntityEntry<SimpleKineticBlockEntity> ENCASED_CUSTOM_COGWHEEL = Create.REGISTRATE
+    public static final BlockEntityEntry<SimpleKineticBlockEntity> ENCASED_CUSTOM_COGWHEEL = REGISTRATE
             .blockEntity("encased_custom_cogwheel", SimpleKineticBlockEntity::new)
             .visual(() -> EncasedCustomCogVisual::small, false)
             .validBlocks(AllBlocks.ANDESITE_ENCASED_COGWHEEL, AllBlocks.BRASS_ENCASED_COGWHEEL)
             .renderer(() -> EncasedCustomCogRenderer::small)
             .register();
 
-    public static final BlockEntityEntry<SimpleKineticBlockEntity> ENCASED_CUSTOM_LARGE_COGWHEEL = Create.REGISTRATE
+    public static final BlockEntityEntry<SimpleKineticBlockEntity> ENCASED_CUSTOM_LARGE_COGWHEEL = REGISTRATE
             .blockEntity("encased_custom_large_cogwheel", SimpleKineticBlockEntity::new)
             .visual(() -> EncasedCustomCogVisual::large, false)
             .validBlocks(AllBlocks.ANDESITE_ENCASED_LARGE_COGWHEEL, AllBlocks.BRASS_ENCASED_LARGE_COGWHEEL)
