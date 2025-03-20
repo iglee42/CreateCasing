@@ -1,7 +1,8 @@
 {
 	"credit": "Made with Blockbench and by iglee42",
 	"textures": {
-		"5": "createcasing:block/creative_cogwheel"
+		"5": "createcasing:block/creative_cogwheel",
+		"particle": "create:block/creative_casing"
 	},
 	"elements": [
 		{
