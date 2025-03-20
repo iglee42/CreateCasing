@@ -4,8 +4,8 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
+import com.simibubi.create.content.kinetics.mixer.MechanicalMixerBlockEntity;
 import dev.engine_room.flywheel.api.visualization.VisualizationManager;
-import fr.iglee42.createcasing.blockEntities.CustomMixerBlockEntity;
 import fr.iglee42.createcasing.registries.ModPartialModels;
 import net.createmod.catnip.animation.AnimationTickHolder;
 import net.createmod.catnip.render.CachedBuffers;
@@ -17,19 +17,19 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.level.block.state.BlockState;
 
-public class CustomMixerRenderer extends KineticBlockEntityRenderer<CustomMixerBlockEntity> {
+public class CustomMixerRenderer extends KineticBlockEntityRenderer<MechanicalMixerBlockEntity> {
 
 	public CustomMixerRenderer(BlockEntityRendererProvider.Context context) {
 		super(context);
 	}
 
 	@Override
-	public boolean shouldRenderOffScreen(CustomMixerBlockEntity be) {
+	public boolean shouldRenderOffScreen(MechanicalMixerBlockEntity be) {
 		return true;
 	}
 
 	@Override
-	protected void renderSafe(CustomMixerBlockEntity mixer, float partialTicks, PoseStack ms, MultiBufferSource buffer,
+	protected void renderSafe(MechanicalMixerBlockEntity mixer, float partialTicks, PoseStack ms, MultiBufferSource buffer,
 		int light, int overlay) {
 
 		//if (light == 0) return;

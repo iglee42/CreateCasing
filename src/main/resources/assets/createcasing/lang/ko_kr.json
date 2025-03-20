@@ -152,14 +152,12 @@
   "block.createcasing.brass_shaft.tooltip.behaviour1": "Opens the configuration screen",
   "block.createcasing.custom_mixer.tooltip": "믹서",
   "block.createcasing.custom_mixer.tooltip.summary": "_일반_ 믹서와 _동일하게_ 작동합니다.",
-  "block.createcasing.brass_mixer.tooltip": "황동 믹서",
-  "block.createcasing.brass_mixer.tooltip.summary": "_아이템만 사용_하는 제작법일 경우 일반 믹서보다 _2배 빠르지만_ 약간 _더 큰 피로도_를 부하합니다.",
-  "block.createcasing.copper_mixer.tooltip": "구리 믹서",
-  "block.createcasing.copper_mixer.tooltip.summary": "_유체만 사용_하는 제작법이거나 _물약 제조_일 경우 일반 믹서보다 _2배 빠르지만_ 약간 _더 큰 피로도_를 부하합니다.",
-  "block.createcasing.railway_mixer.tooltip": "기차 믹서",
-  "block.createcasing.railway_mixer.tooltip.summary": "일반 믹서보다 _2배 빠르지만_ 약간 _더 큰 피로도_를 부하합니다.",
-  "tooltip.createcasing.mixermixenormaly.title": "설정 비활성화됨 : ",
-  "tooltip.createcasing.mixermixenormaly": "경고. 일반 믹서와 동일하게 작동합니다!",
+
+
+
+
+
+
   "tooltip.createcasing.brass_shaft_max_stress": "Stress to stop",
   "block.createcasing.custom_press.tooltip": "압착기",
   "block.createcasing.custom_press.tooltip.summary": "_일반_ 압착기와 _동일하게_ 작동합니다.",

@@ -379,31 +379,18 @@ public class ModBlocks {
     }
 
     private static BlockEntry<CustomMixerBlock> createMixer(String name){
-        return Objects.equals(name, "brass") || Objects.equals(name, "copper") || Objects.equals(name, "railway") ? REGISTRATE.block(name+"_mixer", CustomMixerBlock::new)
+        return REGISTRATE.block(name+"_mixer", CustomMixerBlock::new)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.mapColor(MapColor.STONE))
                 .properties(BlockBehaviour.Properties::noOcclusion)
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-                .onRegisterAfter(Registries.ITEM, v -> ItemDescription.useKey(v, "block.createcasing."+name+"_mixer"))
+                .onRegisterAfter(Registries.ITEM, v -> ItemDescription.useKey(v, "block.createcasing.custom_mixer"))
                 .addLayer(() -> RenderType::cutoutMipped)
                 .transform(CCStress.setImpact(4.0))
                 .item(AssemblyOperatorBlockItem::new)
                 .transform(customItemModel())
-                .register()
-        :
-                REGISTRATE.block(name+"_mixer", CustomMixerBlock::new)
-                        .initialProperties(SharedProperties::stone)
-                        .properties(p -> p.mapColor(MapColor.STONE))
-                        .properties(BlockBehaviour.Properties::noOcclusion)
-                        .transform(axeOrPickaxe())
-                        .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-                        .onRegisterAfter(Registries.ITEM, v -> ItemDescription.useKey(v, "block.createcasing.custom_mixer"))
-                        .addLayer(() -> RenderType::cutoutMipped)
-                        .transform(CCStress.setImpact(4.0))
-                        .item(AssemblyOperatorBlockItem::new)
-                        .transform(customItemModel())
-                        .register();
+                .register();
     }
 
     private static BlockEntry<CustomPressBlock> createPress(String name){

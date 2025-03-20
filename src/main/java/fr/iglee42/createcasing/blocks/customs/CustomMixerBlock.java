@@ -4,9 +4,10 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllShapes;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.kinetics.base.KineticBlock;
+import com.simibubi.create.content.kinetics.mixer.MechanicalMixerBlock;
+import com.simibubi.create.content.kinetics.mixer.MechanicalMixerBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.foundation.block.IBE;
-import fr.iglee42.createcasing.blockEntities.CustomMixerBlockEntity;
 import fr.iglee42.createcasing.registries.ModBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -20,7 +21,7 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.EntityCollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class CustomMixerBlock extends KineticBlock implements IBE<CustomMixerBlockEntity>, ICogWheel {
+public class CustomMixerBlock extends KineticBlock implements IBE<MechanicalMixerBlockEntity>, ICogWheel {
 
     public CustomMixerBlock(Properties properties) {
         super(properties);
@@ -66,12 +67,12 @@ public class CustomMixerBlock extends KineticBlock implements IBE<CustomMixerBlo
     }
 
     @Override
-    public Class<CustomMixerBlockEntity> getBlockEntityClass() {
-        return CustomMixerBlockEntity.class;
+    public Class<MechanicalMixerBlockEntity> getBlockEntityClass() {
+        return MechanicalMixerBlockEntity.class;
     }
 
     @Override
-    public BlockEntityType<? extends CustomMixerBlockEntity> getBlockEntityType() {
+    public BlockEntityType<? extends MechanicalMixerBlockEntity> getBlockEntityType() {
         return ModBlockEntities.MIXER.get();
     }
 

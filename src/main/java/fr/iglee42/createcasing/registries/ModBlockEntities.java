@@ -66,8 +66,8 @@ public class ModBlockEntities {
             .renderer(() -> GearboxRenderer::new)
             .register();
 
-    public static final BlockEntityEntry<CustomMixerBlockEntity> MIXER = REGISTRATE
-            .blockEntity("custom_mixer", CustomMixerBlockEntity::new)
+    public static final BlockEntityEntry<MechanicalMixerBlockEntity> MIXER = REGISTRATE
+            .blockEntity("custom_mixer", MechanicalMixerBlockEntity::new)
             .visual(() -> CustomMixerVisual::new)
             .validBlocks(ModBlocks.BRASS_MIXER,ModBlocks.COPPER_MIXER,ModBlocks.RAILWAY_MIXER,ModBlocks.INDUSTRIAL_IRON_MIXER,ModBlocks.CREATIVE_MIXER)
             .renderer(() -> CustomMixerRenderer::new)

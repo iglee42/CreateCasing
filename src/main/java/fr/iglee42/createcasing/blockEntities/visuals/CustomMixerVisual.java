@@ -4,6 +4,7 @@ import com.simibubi.create.AllPartialModels;
 
 import com.simibubi.create.content.kinetics.base.RotatingInstance;
 import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
+import com.simibubi.create.content.kinetics.mixer.MechanicalMixerBlockEntity;
 import com.simibubi.create.foundation.render.AllInstanceTypes;
 import dev.engine_room.flywheel.api.instance.Instance;
 import dev.engine_room.flywheel.api.visualization.VisualizationContext;
@@ -12,20 +13,19 @@ import dev.engine_room.flywheel.lib.instance.OrientedInstance;
 import dev.engine_room.flywheel.lib.model.Models;
 import dev.engine_room.flywheel.lib.visual.SimpleDynamicVisual;
 import fr.iglee42.createcasing.registries.ModPartialModels;
-import fr.iglee42.createcasing.blockEntities.CustomMixerBlockEntity;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 
 import java.util.function.Consumer;
 
-public class CustomMixerVisual extends SingleAxisRotatingVisual<CustomMixerBlockEntity> implements SimpleDynamicVisual {
+public class CustomMixerVisual extends SingleAxisRotatingVisual<MechanicalMixerBlockEntity> implements SimpleDynamicVisual {
 
 	private RotatingInstance mixerHead;
 	private OrientedInstance mixerPole;
 
-	private final CustomMixerBlockEntity mixer;
+	private final MechanicalMixerBlockEntity mixer;
 
-	public CustomMixerVisual(VisualizationContext context, CustomMixerBlockEntity blockEntity, float partialTick) {
+	public CustomMixerVisual(VisualizationContext context, MechanicalMixerBlockEntity blockEntity, float partialTick) {
 		super(context, blockEntity, partialTick, Models.partial(AllPartialModels.SHAFTLESS_COGWHEEL));
 		this.mixer = blockEntity;
 

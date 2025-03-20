@@ -362,14 +362,12 @@
   "block.createcasing.brass_shaft.tooltip.behaviour1": "Відкриває параметри вала",
   "block.createcasing.custom_mixer.tooltip": "СПЕЦІАЛЬНИЙ ЗМІШУВАЧ",
   "block.createcasing.custom_mixer.tooltip.summary": "Працює як звичайний змішувач",
-  "block.createcasing.brass_mixer.tooltip": "ЛАТУННИЙ ЗМІШУВАЧ",
-  "block.createcasing.brass_mixer.tooltip.summary": "Змішує вдвічі швидше, коли в рецепті лише предмети",
-  "block.createcasing.copper_mixer.tooltip": "МІДНИЙ ЗМІШУВАЧ",
-  "block.createcasing.copper_mixer.tooltip.summary": "Змішує вдвічі швидше, якщо в рецепті лише рідини",
-  "block.createcasing.railway_mixer.tooltip": "ЗАЛІЗНИЧНИЙ ЗМІШУВАЧ",
-  "block.createcasing.railway_mixer.tooltip.summary": "Змішує вдвічі швидше",
-  "tooltip.createcasing.mixermixenormaly.title": "Конфігурація вимкнена : ",
-  "tooltip.createcasing.mixermixenormaly": "Попередження: спеціальні змішувачі працюють як звичайні!",
+
+
+
+
+
+
   "tooltip.createcasing.brass_shaft_max_stress": "Стрес для зупинки",
   "block.createcasing.custom_press.tooltip": "СПЕЦІАЛЬНИЙ ПРЕС",
   "block.createcasing.custom_press.tooltip.summary": "Працює як звичайний прес",

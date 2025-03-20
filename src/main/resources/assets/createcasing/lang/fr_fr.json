@@ -152,14 +152,12 @@
   "block.createcasing.brass_shaft.tooltip.behaviour1": "Ouvrir l'écran de configuration",
   "block.createcasing.custom_mixer.tooltip": "MELANGEUR MECANIQUE PERSONNALISE",
   "block.createcasing.custom_mixer.tooltip.summary": "_Fonctionne_ comme un mixeur méchanique _normal_",
-  "block.createcasing.brass_mixer.tooltip": "MELANGEUR MECANIQUE EN LAITON",
-  "block.createcasing.brass_mixer.tooltip.summary": "Mixe _2x plus rapidement_ si la recette _contient seulement des objets_, mais _utilise plus de stress_ qu'un mixeur méchanique normal",
-  "block.createcasing.copper_mixer.tooltip": "MELANGEUR MECANIQUE EN CUIVRE",
-  "block.createcasing.copper_mixer.tooltip.summary": "Mixe _2x plus rapidement_ si la recette _contient seulement des liquides_ ou si la recette est _une potion_, mais _utilise plus de stress_ qu'un mixeur méchanique normal",
-  "block.createcasing.railway_mixer.tooltip": "MELANGEUR MECANIQUE DE TRAIN",
-  "block.createcasing.railway_mixer.tooltip.summary": "Mixe _2x plus rapidement_, mais _utilise plus de stress_ qu'un mixeur méchanique normal",
-  "tooltip.createcasing.mixermixenormaly.title": "Configuration désactivée : ",
-  "tooltip.createcasing.mixermixenormaly": "Attention: Le mixeur mécanique personnalisé fonctionne comme un mixeur méchanique normal!",
+
+
+
+
+
+
   "tooltip.createcasing.brass_shaft_max_stress": "Limite du stress",
   "block.createcasing.custom_press.tooltip": "Presse méchanique personnalisée",
   "block.createcasing.custom_press.tooltip.summary": "_Fonctionne_ comme une presse méchanique _normale_",
