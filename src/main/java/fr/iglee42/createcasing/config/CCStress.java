@@ -72,7 +72,7 @@ public class CCStress extends ConfigBase {
 	public static <B extends Block, P> NonNullUnaryOperator<BlockBuilder<B, P>> setImpact(double value) {
 		return builder -> {
 			assertFromCreateCasing(builder);
-			ResourceLocation id = Create.asResource(builder.getName());
+			ResourceLocation id = CreateCasing.asResource(builder.getName());
 			DEFAULT_IMPACTS.put(id, value);
 			return builder;
 		};
