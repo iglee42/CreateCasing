@@ -1,0 +1,18 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "item": "createcasing:creative_casing"
+    },
+    {
+      "item": "create:shaft"
+    }
+  ],
+  "results":[
+    {
+      "item":{
+        "id":"createcasing:creative_configurable_gearbox"
+      }
+    }
+  ]
+}

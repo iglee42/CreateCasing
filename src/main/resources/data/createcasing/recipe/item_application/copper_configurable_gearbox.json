@@ -1,0 +1,18 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "item": "create:copper_casing"
+    },
+    {
+      "item": "create:shaft"
+    }
+  ],
+  "results":[
+    {
+      "item":{
+        "id":"createcasing:copper_configurable_gearbox"
+      }
+    }
+  ]
+}

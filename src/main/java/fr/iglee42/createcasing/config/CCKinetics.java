@@ -7,6 +7,8 @@ public class CCKinetics extends ConfigBase {
 
     public ConfigBool casingBlockSwappable = b(true,"casingBlockSwappable",Comments.casingBlockSwappable);
     public ConfigBool shaftCogwheelsSwappable = b(true,"shaftCogwheelsSwappable",Comments.shaftCogwheelsSwappable);
+    public ConfigBool configurableGearboxRequiresShaft = b(true,"configurableGearboxRequiresShaft",Comments.configurableGearboxRequiresShaft);
+    public ConfigBool configurableGearboxChangeTwoFaces = b(false,"configurableGearboxChangeTwoFaces",Comments.configurableGearboxChangeTwoFaces);
 
     public ConfigBool shouldWoodenShaftBreak = b(true,"shouldWoodenShaftBreak", Comments.shouldWoodenShaftBreak);
     public ConfigBool shouldGlassShaftBreak = b(true,"shouldGlassShaftBreak", Comments.shouldGlassShaftBreak);
@@ -27,6 +29,8 @@ public class CCKinetics extends ConfigBase {
         static String shouldWoodenShaftBreak = "Should Wooden Shaft break if the speed is too high";
         static String shouldGlassShaftBreak = "Should Glass Shaft break if the system is overstressed";
         static String maxSpeedWoodenShaft = "The max speed wooden shafts can endure";
+        static String configurableGearboxRequiresShaft = "Defines if the configurable requires a shaft to add a shaft to a face";
+        static String configurableGearboxChangeTwoFaces = "Defines if when the face is changed on the configurable gearbox, the opposite face should be also changed. It doesn't consume more shaft !";
         static String stress = "Fine tune the kinetic stats of individual components";
 
     }

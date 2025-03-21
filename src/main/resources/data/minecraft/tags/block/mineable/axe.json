@@ -351,6 +351,12 @@
     "createcasing:industrial_iron_encased_shaft",
     "createcasing:copper_press",
     "createcasing:brass_depot",
-    "createcasing:industrial_iron_encased_fluid_pipe"
+    "createcasing:industrial_iron_encased_fluid_pipe",
+    "createcasing:andesite_configurable_gearbox",
+    "createcasing:brass_configurable_gearbox",
+    "createcasing:copper_configurable_gearbox",
+    "createcasing:railway_configurable_gearbox",
+    "createcasing:industrial_iron_configurable_gearbox",
+    "createcasing:creative_configurable_gearbox"
   ]
 }

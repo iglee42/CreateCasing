@@ -357,6 +357,13 @@
   "block.createcasing.warped_large_cogwheel": "Warped Large Cogwheel",
   "block.createcasing.warped_shaft": "Warped Shaft",
 
+  "block.createcasing.andesite_configurable_gearbox": "Andesite Configurable Gearbox",
+  "block.createcasing.brass_configurable_gearbox": "Brass Configurable Gearbox",
+  "block.createcasing.copper_configurable_gearbox": "Copper Configurable Gearbox",
+  "block.createcasing.railway_configurable_gearbox": "Railway Configurable Gearbox",
+  "block.createcasing.creative_configurable_gearbox": "Creative Configurable Gearbox",
+  "block.createcasing.industrial_iron_configurable_gearbox": "Industrial Iron Configurable Gearbox",
+
   "block.createcasing.brass_shaft.tooltip": "BRASS SHAFT",
   "block.createcasing.brass_shaft.tooltip.summary" : "_Stop_ when the _stress_ is _upper_ than the _configured stress_. Can be _restarted_ with _redstone_ signal. It doesn't restart automatically",
   "block.createcasing.brass_shaft.tooltip.condition1": "When R-Clicked",

@@ -1,0 +1,18 @@
+{
+	"credit": "Made with Blockbench",
+	"parent": "block/block",
+	"textures": {
+		"0": "create:block/andesite_casing"
+	},
+	"elements": [
+		{
+			"name": "Core",
+			"from": [2, 2, 0],
+			"to": [14, 14, 2],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, -2]},
+			"faces": {
+				"north": {"uv": [2, 2, 14, 14], "texture": "#0"}
+			}
+		}
+	]
+}

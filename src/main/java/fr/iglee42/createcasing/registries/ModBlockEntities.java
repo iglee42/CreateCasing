@@ -113,12 +113,18 @@ public class ModBlockEntities {
             .renderer(() -> BracketedKineticBlockEntityRenderer::new)
             .register();
 
-
     public static final BlockEntityEntry<CreativeCogwheelBlockEntity> CREATIVE_COGWHEEL = REGISTRATE
             .blockEntity("creative_cogwheel", CreativeCogwheelBlockEntity::new)
             .visual(() -> CreativeCogwheelVisual::new, false)
             .validBlocks(ModBlocks.CREATIVE_COGWHEEL)
             .renderer(() -> CreativeCogwheelRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<GearboxBlockEntity> CONFIGURABLE_GEARBOX = REGISTRATE
+            .blockEntity("configurable_gearbox", GearboxBlockEntity::new)
+            .visual(() -> ConfigurableGearboxVisual::new, false)
+            .validBlocks(ModBlocks.ANDESITE_CONFIGURABLE_GEARBOX,ModBlocks.BRASS_CONFIGURABLE_GEARBOX,ModBlocks.COPPER_CONFIGURABLE_GEARBOX,ModBlocks.RAILWAY_CONFIGURABLE_GEARBOX,ModBlocks.CREATIVE_CONFIGURABLE_GEARBOX,ModBlocks.INDUSTRIAL_IRON_CONFIGURABLE_GEARBOX)
+            .renderer(() -> ConfigurableGearboxRenderer::new)
             .register();
 
     public static final BlockEntityEntry<CustomEncasedShaftBlockEntity> CUSTOM_ENCASED_SHAFT = REGISTRATE

@@ -1,0 +1,68 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/andesite/block"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/andesite/face",
+        "uvlock": true
+      },
+      "when": {
+        "north": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/andesite/face",
+        "uvlock": true,
+        "y": 90
+      },
+      "when": {
+        "east": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/andesite/face",
+        "uvlock": true,
+        "y": 180
+      },
+      "when": {
+        "south": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/andesite/face",
+        "uvlock": true,
+        "y": 270
+      },
+      "when": {
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/andesite/face",
+        "uvlock": true,
+        "x": 270
+      },
+      "when": {
+        "up": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/andesite/face",
+        "uvlock": true,
+        "x": 90
+      },
+      "when": {
+        "down": "false"
+      }
+    }
+  ]
+}

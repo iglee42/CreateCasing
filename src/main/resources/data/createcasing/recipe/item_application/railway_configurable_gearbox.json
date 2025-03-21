@@ -1,0 +1,18 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "item": "create:railway_casing"
+    },
+    {
+      "item": "create:shaft"
+    }
+  ],
+  "results":[
+    {
+      "item":{
+        "id":"createcasing:railway_configurable_gearbox"
+      }
+    }
+  ]
+}

@@ -323,6 +323,12 @@
     "createcasing:creative_encased_mldeg_shaft",
     "createcasing:refined_radiance_encased_mldeg_shaft",
     "createcasing:shadow_steel_encased_mldeg_shaft",
-    "createcasing:mldeg_shaft"
+    "createcasing:mldeg_shaft",
+    "createcasing:andesite_configurable_gearbox",
+    "createcasing:brass_configurable_gearbox",
+    "createcasing:copper_configurable_gearbox",
+    "createcasing:railway_configurable_gearbox",
+    "createcasing:industrial_iron_configurable_gearbox",
+    "createcasing:creative_configurable_gearbox"
   ]
 }

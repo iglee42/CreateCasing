@@ -29,6 +29,7 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import fr.iglee42.createcasing.CreateCasing;
+import fr.iglee42.createcasing.blocks.ConfigurableGearboxBlock;
 import fr.iglee42.createcasing.blocks.CreativeCogwheelBlock;
 import fr.iglee42.createcasing.blocks.customs.*;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedCogwheelBlock;
@@ -40,6 +41,7 @@ import fr.iglee42.createcasing.items.CustomVerticalGearboxItem;
 import fr.iglee42.createcasing.items.WoodenCogwheelBlockItem;
 import fr.iglee42.createcasing.utils.CasingBuilderTransformers;
 import net.createmod.catnip.data.Couple;
+import net.createmod.catnip.render.SpriteShiftEntry;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.core.registries.Registries;
@@ -283,6 +285,23 @@ public class ModBlocks {
                     .transform(customItemModel())
                     .register();
 
+    public static final BlockEntry<ConfigurableGearboxBlock> ANDESITE_CONFIGURABLE_GEARBOX = createConfigurableGearbox("andesite",AllSpriteShifts.ANDESITE_CASING);
+    public static final BlockEntry<ConfigurableGearboxBlock> BRASS_CONFIGURABLE_GEARBOX = createConfigurableGearbox("brass",AllSpriteShifts.BRASS_CASING);
+    public static final BlockEntry<ConfigurableGearboxBlock> COPPER_CONFIGURABLE_GEARBOX = createConfigurableGearbox("copper",AllSpriteShifts.COPPER_CASING);
+    public static final BlockEntry<ConfigurableGearboxBlock> RAILWAY_CONFIGURABLE_GEARBOX = createConfigurableGearbox("railway",AllSpriteShifts.RAILWAY_CASING);
+    public static final BlockEntry<ConfigurableGearboxBlock> CREATIVE_CONFIGURABLE_GEARBOX = createConfigurableGearbox("creative",AllSpriteShifts.CREATIVE_CASING);
+    public static final BlockEntry<ConfigurableGearboxBlock> INDUSTRIAL_IRON_CONFIGURABLE_GEARBOX =  REGISTRATE.block("industrial_iron_configurable_gearbox", ConfigurableGearboxBlock::new)
+            .initialProperties(SharedProperties::stone)
+            .properties(BlockBehaviour.Properties::noOcclusion)
+            .properties(p -> p.mapColor(MapColor.PODZOL))
+            .transform(CCStress.setNoImpact())
+            .transform(axeOrPickaxe())
+            .item()
+            .transform(customItemModel())
+            .register();
+
+
+
 
     public static <B extends EncasedShaftBlock, P> NonNullUnaryOperator<BlockBuilder<B, P>> encasedNoSpriteShaft(String casing) {
         return builder -> encasedBase(builder, AllBlocks.SHAFT::get)
@@ -492,6 +511,21 @@ public class ModBlocks {
                 .model((c, p) -> p.withExistingParent(c.getName(), p.modLoc("block/encased_chain_drive/"+name+"/item"))
                         .texture("side", p.modLoc("block/" + c.getName())))
                 .build()
+                .register();
+    }
+
+    public static BlockEntry<ConfigurableGearboxBlock> createConfigurableGearbox(String name, CTSpriteShiftEntry ct){
+        return REGISTRATE.block(name+"_configurable_gearbox", ConfigurableGearboxBlock::new)
+                .initialProperties(SharedProperties::stone)
+                .properties(BlockBehaviour.Properties::noOcclusion)
+                .properties(p -> p.mapColor(MapColor.PODZOL))
+                .transform(CCStress.setNoImpact())
+                .transform(axeOrPickaxe())
+                .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(ct)))
+                .onRegister(CreateRegistrate.casingConnectivity((block, cc) -> cc.make(block, ct,
+                        (s, f) -> !s.getValue(ConfigurableGearboxBlock.getPropertyByDirection(f)))))
+                .item()
+                .transform(customItemModel())
                 .register();
     }
 

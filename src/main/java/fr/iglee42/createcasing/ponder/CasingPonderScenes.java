@@ -8,6 +8,7 @@ import com.simibubi.create.infrastructure.ponder.scenes.KineticsScenes;
 import com.simibubi.create.infrastructure.ponder.scenes.ProcessingScenes;
 import com.tterrag.registrate.util.entry.ItemProviderEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
+import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.registries.ModBlocks;
 import fr.iglee42.createcasing.registries.ModItems;
 import net.createmod.ponder.api.registration.PonderSceneRegistrationHelper;
@@ -37,6 +38,8 @@ public class CasingPonderScenes {
 		HELPER.forComponents(ModBlocks.BRASS_CHAIN_DRIVE,ModBlocks.COPPER_CHAIN_DRIVE,ModBlocks.RAILWAY_CHAIN_DRIVE,ModBlocks.INDUSTRIAL_IRON_CHAIN_DRIVE,ModBlocks.CREATIVE_CHAIN_DRIVE,ModBlocks.BRASS_CHAIN_GEARSHIFT,ModBlocks.COPPER_CHAIN_GEARSHIFT,ModBlocks.RAILWAY_CHAIN_GEARSHIFT,ModBlocks.INDUSTRIAL_IRON_CHAIN_GEARSHIFT,ModBlocks.CREATIVE_CHAIN_GEARSHIFT)
 				.addStoryBoard(Create.asResource("chain_drive/gearshift"), ChainDriveScenes::adjustableChainGearshift);
 
+		HELPER.forComponents(ModBlocks.ANDESITE_CONFIGURABLE_GEARBOX,ModBlocks.BRASS_CONFIGURABLE_GEARBOX,ModBlocks.COPPER_CONFIGURABLE_GEARBOX,ModBlocks.RAILWAY_CONFIGURABLE_GEARBOX,ModBlocks.INDUSTRIAL_IRON_CONFIGURABLE_GEARBOX,ModBlocks.CREATIVE_CONFIGURABLE_GEARBOX)
+				.addStoryBoard(CreateCasing.asResource("configurable_gearbox"), CustomPonderScenes::configurableGearbox);
 
 	}
 

@@ -1,0 +1,18 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "item": "create:industrial_iron_block"
+    },
+    {
+      "item": "create:shaft"
+    }
+  ],
+  "results":[
+    {
+      "item":{
+        "id":"createcasing:industrial_iron_configurable_gearbox"
+      }
+    }
+  ]
+}
