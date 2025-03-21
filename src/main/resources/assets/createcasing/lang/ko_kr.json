@@ -1,5 +1,5 @@
 {
-  "itemGroup.createcasing": "Create Encased",
+  "itemGroup.createcasing.base": "Create Encased",
   "block.createcasing.acacia_shaft": "아카시아나무 축",
   "block.createcasing.andesite_encased_acacia_shaft": "안산암 케이스를 씌운 아카시아나무 축",
   "block.createcasing.andesite_encased_bamboo_shaft": "안산암 케이스를 씌운 대나무 축",

@@ -28,10 +28,11 @@ public class CasingPonderTags {
 		PonderTagRegistrationHelper<ItemLike> itemHelper = helper.withKeyFunction(
 				RegisteredObjectsHelper::getKeyOrThrow);
 
-		helper.registerTag(ENCASED_BLOCKS).item(ModBlocks.BRASS_GEARBOX.get())
-				.title("Create : Encased")
-				.description("Components which added by Create Encased")
-				.addToIndex();
+		helper.registerTag(ENCASED_BLOCKS).item(ModBlocks.BRASS_GEARBOX.get(),true,false)
+				.title("Create Encased")
+				.description("Components added by Create Encased")
+				.addToIndex()
+				.register();
 
 
 		HELPER.addToTag(AllCreatePonderTags.CREATIVE)

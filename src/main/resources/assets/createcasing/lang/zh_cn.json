@@ -1,5 +1,5 @@
 {
-  "itemGroup.createcasing": "机械动力：封装工艺",
+  "itemGroup.createcasing.base": "机械动力：封装工艺",
   "block.createcasing.acacia_cogwheel": "金合欢木齿轮",
   "block.createcasing.acacia_large_cogwheel": "金合欢木大齿轮",
   "block.createcasing.acacia_shaft": "金合欢木传动杆",

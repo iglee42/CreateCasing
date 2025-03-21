@@ -1,5 +1,5 @@
 {
-  "itemGroup.createcasing": "Create Encased",
+  "itemGroup.createcasing.base": "Create Encased",
   
   "block.createcasing.acacia_shaft": "Акациевый вал",
   "block.createcasing.andesite_encased_acacia_shaft": "Акациевый вал в андезитовом корпусе",

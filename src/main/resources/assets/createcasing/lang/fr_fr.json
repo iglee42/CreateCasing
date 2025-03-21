@@ -1,5 +1,5 @@
 {
-  "itemGroup.createcasing": "Create Encased",
+  "itemGroup.createcasing.base": "Create Encased",
   "block.createcasing.acacia_shaft": "Rotor en acacia",
   "block.createcasing.andesite_encased_acacia_shaft": "Rotor en acacia dans un revêtement d'andésite",
   "block.createcasing.andesite_encased_bamboo_shaft": "Rotor en bambou dans un revêtement d'andésite",

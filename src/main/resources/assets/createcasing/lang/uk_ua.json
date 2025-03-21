@@ -1,5 +1,5 @@
 {
-  "itemGroup.createcasing": "Облицювання Create",
+  "itemGroup.createcasing.base": "Облицювання Create",
   "block.createcasing.acacia_cogwheel": "Акацієва шестірня",
   "block.createcasing.acacia_large_cogwheel": "Велика акацієва шестірня",
   "block.createcasing.acacia_shaft": "Акацієвий вал",

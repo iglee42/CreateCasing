@@ -41,7 +41,7 @@ public class ModCreativeModeTabs {
 
     public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN_TAB = TAB_REGISTER.register("tab",
             () -> CreativeModeTab.builder()
-                    .title(Component.translatable("itemGroup.createcasing"))
+                    .title(Component.translatable("itemGroup."+CreateCasing.MODID+".base"))
                     .withTabsBefore(AllCreativeModeTabs.BASE_CREATIVE_TAB.getKey())
                     .icon(ModBlocks.BRASS_GEARBOX::asStack)
                     .displayItems(new RegistrateDisplayItemsGenerator(true,ModCreativeModeTabs.MAIN_TAB))

@@ -1,5 +1,5 @@
 {
-  "itemGroup.createcasing": "Create: Encased",
+  "itemGroup.createcasing.base": "Create: Encased",
 
   "block.createcasing.acacia_cogwheel": "アカシアの歯車",
   "block.createcasing.acacia_large_cogwheel": "アカシアの大きな歯車",
