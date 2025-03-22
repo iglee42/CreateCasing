@@ -1,22 +1,29 @@
 package fr.iglee42.createcasing.screen;
 
+import com.google.common.collect.ImmutableList;
+import com.simibubi.create.content.schematics.cannon.ConfigureSchematicannonPacket;
 import com.simibubi.create.foundation.gui.AllIcons;
-import com.simibubi.create.foundation.gui.widget.IconButton;
-import com.simibubi.create.foundation.gui.widget.Label;
-import com.simibubi.create.foundation.gui.widget.ScrollInput;
+import com.simibubi.create.foundation.gui.widget.*;
+import com.simibubi.create.foundation.utility.CreateLang;
+import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.blockEntities.BrassShaftBlockEntity;
 import fr.iglee42.createcasing.packets.ConfigureBrassShaftPacket;
 import fr.iglee42.createcasing.registries.ModGuiTextures;
-import fr.iglee42.createcasing.registries.ModPackets;
+import fr.iglee42.createcasing.registries.ModIcons;
 import net.createmod.catnip.gui.AbstractSimiScreen;
 import net.createmod.catnip.gui.element.GuiGameElement;
 import net.createmod.catnip.gui.widget.AbstractSimiWidget;
 import net.createmod.catnip.gui.widget.ElementWidget;
 import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.neoforge.network.PacketDistributor;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Stream;
 
 @OnlyIn(Dist.CLIENT)
 public class BrassShaftScreen extends AbstractSimiScreen {
@@ -24,6 +31,11 @@ public class BrassShaftScreen extends AbstractSimiScreen {
     protected BrassShaftBlockEntity be;
     protected ModGuiTextures background= ModGuiTextures.BRASS_SHAFT;
     protected ScrollInput maxStressWidget;
+    private SelectionScrollInput scrollInput;
+    private Label scrollInputLabel;
+    protected List<IconButton> operationButtons;
+
+
 
     protected AbstractSimiWidget brassShaftWidget;
 
@@ -43,28 +55,65 @@ public class BrassShaftScreen extends AbstractSimiScreen {
         int x = guiLeft;
         int y = guiTop;
 
-        brassShaftWidget  = new ElementWidget(x + 33, y + 38)
+        brassShaftWidget  = new ElementWidget(x + 51, y + 48)
                 .showingElement(GuiGameElement.of(be.getBlockState().getBlock()));
         addRenderableWidget(brassShaftWidget);
 
-        Label label = new Label(x + 65 + 20, y + 43, Component.empty()).withShadow();
 
+        scrollInput = new SelectionScrollInput(x + 51, y + 25, 145, 18);
+        scrollInputLabel = new Label(x + 53, y + 29, CommonComponents.EMPTY).withShadow();
+        scrollInput.forOptions(BrassShaftBlockEntity.Mode.getComponents())
+                .titled(Component.translatable(CreateCasing.MODID+".brass_shaft.mode"))
+                .writingTo(scrollInputLabel)
+                .setState(be.getMode().ordinal());
+        addRenderableWidgets(scrollInputLabel,scrollInput);
 
-        maxStressWidget = new ScrollInput(x + 56 + 20, y + 38, 144, 18)
-                .withRange(0, (int) be.getCapacity())
+        Label label = new Label(x + 76, y + 52, Component.empty()).withShadow();
+        maxStressWidget = new ScrollInput(x + 75 , y + 48, 120, 18);
+        maxStressWidget.withRange(0,Integer.MAX_VALUE)
                 .writingTo(label)
-                .withShiftStep(128)
-                .withStepFunction((context)->context.control ? (context.shift ? 1024 : 512) : 1)
-                .titled(Component.translatable("tooltip.createcasing.brass_shaft_max_stress"))
-                .calling(state -> {
-                    label.setX(x + 65 + 40 - font.width(label.text) / 2);
-                });
+                .withStepFunction((context)->context.control ? (context.shift ? 1024 : 512) : context.shift ? 128 : 1)
+                .titled(Component.translatable("createcasing.brass_shaft.max_stress"))
+                .format(i-> Component.literal(addSpacesEveryThreeDigits(i)));
         maxStressWidget.setState(be.getMaxSupportedStress());
         maxStressWidget.onChanged();
         addRenderableWidgets(label,maxStressWidget);
         confirmButton = new IconButton(x + background.getWidth() - 33, y + background.getHeight() - 24, AllIcons.I_CONFIRM);
         confirmButton.withCallback(this::onClose);
         addRenderableWidget(confirmButton);
+
+        operationButtons = new ArrayList<>(3);
+
+        List<AllIcons> icons = ImmutableList.of(AllIcons.I_MTD_LEFT, ModIcons.I_EQUALS,
+                AllIcons.I_MTD_RIGHT);
+        for (int i = 0; i < 3; i++) {
+            IconButton operationButton = new IconButton(x + 33 + i * 18, y + background.getHeight() - 24, icons.get(i));
+            int operation = i;
+            operationButton.withCallback(() -> {
+                PacketDistributor.sendToServer(new ConfigureBrassShaftPacket(be.getBlockPos(), maxStressWidget.getState(),scrollInput.getState(),operation));
+            });
+            operationButton.setToolTip(BrassShaftBlockEntity.Operation.getComponents().get(i));
+            operationButtons.add(operationButton);
+        }
+        addRenderableWidgets(operationButtons);
+    }
+
+    private static String addSpacesEveryThreeDigits(int number) {
+        String numberStr = String.valueOf(number);
+        StringBuilder formatted = new StringBuilder();
+
+        int length = numberStr.length();
+        int count = 0;
+
+        for (int i = length - 1; i >= 0; i--) {
+            formatted.insert(0, numberStr.charAt(i));
+            count++;
+            if (count % 3 == 0 && i > 0) {
+                formatted.insert(0, " ");
+            }
+        }
+
+        return formatted.toString();
     }
 
     @Override
@@ -80,10 +129,16 @@ public class BrassShaftScreen extends AbstractSimiScreen {
         graphics.drawString(font, title, x + (background.getWidth() - 8) / 2 - font.width(title) / 2, y + 4, 0x592424, false);
     }
 
-
+    @Override
+    public void tick() {
+        super.tick();
+        for (int operation = 0; operation < operationButtons.size(); operation++) {
+            operationButtons.get(operation).green = operation == be.getOperation().ordinal();
+        }
+    }
 
     @Override
     public void removed() {
-        PacketDistributor.sendToServer(new ConfigureBrassShaftPacket(be.getBlockPos(), maxStressWidget.getState()));
+        PacketDistributor.sendToServer(new ConfigureBrassShaftPacket(be.getBlockPos(), maxStressWidget.getState(),scrollInput.getState(),be.getOperation().ordinal()));
     }
 }

@@ -369,13 +369,17 @@
   "block.createcasing.brass_shaft.tooltip.condition1": "When R-Clicked",
   "block.createcasing.brass_shaft.tooltip.behaviour1": "Opens the configuration screen",
 
-
   "block.createcasing.custom_mixer.tooltip": "CUSTOM MIXER",
   "block.createcasing.custom_mixer.tooltip.summary": "_Works_ like a _normal_ mixer",
 
-
-
-  "tooltip.createcasing.brass_shaft_max_stress": "Stress to stop",
+  "createcasing.brass_shaft.max_stress": "Max Stress",
+  "createcasing.brass_shaft.mode": "Mode",
+  "createcasing.brass_shaft.mode.used_stress": "Used Stress",
+  "createcasing.brass_shaft.mode.remaining_stress": "Remaining Stress",
+  "createcasing.brass_shaft.mode.max_stress": "Max Stress",
+  "createcasing.brass_shaft.operation.less": "Less than",
+  "createcasing.brass_shaft.operation.equals": "Equals to",
+  "createcasing.brass_shaft.operation.greater": "Greater than",
 
   "block.createcasing.custom_press.tooltip": "CUSTOM PRESS",
   "block.createcasing.custom_press.tooltip.summary" : "_Works_ like a _normal_ press",

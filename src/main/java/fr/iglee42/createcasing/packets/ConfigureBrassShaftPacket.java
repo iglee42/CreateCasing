@@ -20,20 +20,28 @@ public class ConfigureBrassShaftPacket extends BlockEntityConfigurationPacket<Br
 	public static final StreamCodec<ByteBuf, ConfigureBrassShaftPacket> STREAM_CODEC = StreamCodec.composite(
 			BlockPos.STREAM_CODEC, packet -> packet.pos,
 			ByteBufCodecs.INT, p->p.stress,
+			ByteBufCodecs.INT, p->p.mode,
+			ByteBufCodecs.INT, p->p.operation,
 			ConfigureBrassShaftPacket::new
 	);
 
 	private final int stress;
+	private final int mode;
+	private final int operation;
 
-	public ConfigureBrassShaftPacket(BlockPos pos, int stress) {
+	public ConfigureBrassShaftPacket(BlockPos pos, int stress, int mode,int operation) {
 		super(pos);
 		this.stress = stress;
+		this.mode = mode;
+		this.operation = operation;
 	}
 
 
 	@Override
 	protected void applySettings(ServerPlayer serverPlayer, BrassShaftBlockEntity be) {
 		be.setMaxSupportedStress(stress);
+		be.setMode(BrassShaftBlockEntity.Mode.byId(mode));
+		be.setOperation(BrassShaftBlockEntity.Operation.byId(operation));
 		RotationPropagator.handleAdded(be.getLevel(),pos, be);
 	}
 

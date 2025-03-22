@@ -15,7 +15,7 @@ import net.neoforged.api.distmarker.OnlyIn;
 
 public enum ModGuiTextures implements ScreenElement, TextureSheetSegment {
 
-	BRASS_SHAFT("brass_shaft", 200, 102);
+	BRASS_SHAFT("brass_shaft", 254, 104);
 
 	;
 
