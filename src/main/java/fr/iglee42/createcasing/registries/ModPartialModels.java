@@ -11,7 +11,7 @@ public class ModPartialModels {
 
     public static final PartialModel
 
-            BRASS_MIXER_HEAD = block("brass_mixer/head"), COPPER_MIXER_HEAD = block("copper_mixer/head"), RAILWAY_MIXER_HEAD = block("railway_mixer/head"), INDUSTRIAL_IRON_MIXER_HEAD = block("industrial_iron_mixer/head"),
+            BRASS_MIXER_HEAD = block("brass_mixer/head"), COPPER_MIXER_HEAD = block("copper_mixer/head"), RAILWAY_MIXER_HEAD = block("railway_mixer/head"), INDUSTRIAL_IRON_MIXER_HEAD = block("industrial_iron_mixer/head"), CREATIVE_MIXER_HEAD = block("creative_mixer/head"),
 
     GLASS_SHAFT = block("glass_shaft"),
     BRASS_SHAFT = block("brass_shaft"),
