@@ -48,8 +48,8 @@ public class ConfigurableGearboxBlock extends KineticBlock implements IBE<Gearbo
                 .setValue(EAST,false)
                 .setValue(SOUTH,false)
                 .setValue(WEST,false)
-                .setValue(UP,true)
-                .setValue(DOWN,true)
+                .setValue(UP,false)
+                .setValue(DOWN,false)
         );
     }
 
@@ -111,12 +111,12 @@ public class ConfigurableGearboxBlock extends KineticBlock implements IBE<Gearbo
         if (!ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get()) return stacks;
         int shaftCount = 0;
         if (ModConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get()){
-            if (!state.getValue(UP)) shaftCount--;
+            if (state.getValue(UP)) shaftCount++;
             if (state.getValue(NORTH)) shaftCount++;
             if (state.getValue(WEST)) shaftCount++;
         } else {
-            if (!state.getValue(UP)) shaftCount--;
-            if (!state.getValue(DOWN)) shaftCount--;
+            if (state.getValue(UP)) shaftCount++;
+            if (state.getValue(DOWN)) shaftCount++;
             if (state.getValue(NORTH)) shaftCount++;
             if (state.getValue(SOUTH)) shaftCount++;
             if (state.getValue(WEST)) shaftCount++;
