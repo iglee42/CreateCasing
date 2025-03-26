@@ -135,13 +135,19 @@ public class CustomPonderScenes {
         scene.world().modifyKineticSpeed(util.select().fromTo(3,3,3,3,4,3),(f)->32f);
         scene.idle(50);
 
-        scene.overlay().showText(60)
+        scene.overlay().showText(ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get() ? 60 : -10)
                 .colored(PonderPalette.GREEN)
                 .pointAt(util.vector().blockSurface(util.grid().at(3, 2, 3),Direction.WEST))
                 .placeNearTarget()
                 .attachKeyFrame()
-                .text("You can add a shaft to this gearbox by right clicking on a face with " +(
-                        ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get() ? "a shaft" : "a wrench"));
+                .text("You can add a shaft to this gearbox by right clicking on a face with a shaft");
+
+        scene.overlay().showText(!ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get() ? 60 : -10)
+                .colored(PonderPalette.GREEN)
+                .pointAt(util.vector().blockSurface(util.grid().at(3, 2, 3),Direction.WEST))
+                .placeNearTarget()
+                .attachKeyFrame()
+                .text("You can add a shaft to this gearbox by right clicking on a face with a wrench");
 
         scene.idle(70);
 
