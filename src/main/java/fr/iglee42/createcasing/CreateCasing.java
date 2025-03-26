@@ -1,5 +1,6 @@
 package fr.iglee42.createcasing;
 
+import com.simibubi.create.content.logistics.depot.DepotBehaviour;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
@@ -20,6 +21,8 @@ import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.fml.loading.FMLEnvironment;
+import net.neoforged.neoforge.capabilities.Capabilities;
+import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.RegisterCommandsEvent;
 import org.slf4j.Logger;
@@ -72,6 +75,7 @@ public class CreateCasing {
         neoForgeEventBus.addListener(this::registerCommands);
         modEventBus.addListener(this::setup);
         modEventBus.addListener(ModSounds::register);
+        modEventBus.addListener(this::registerCapabilities);
 
     }
 
@@ -91,5 +95,16 @@ public class CreateCasing {
         if (!FMLEnvironment.production) new CreateCasingCommand(event.getDispatcher());
     }
 
-
+    private void registerCapabilities(RegisterCapabilitiesEvent event){
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                ModBlockEntities.DEPOT.get(),
+                (be, context) -> be.getBehaviour(DepotBehaviour.TYPE).itemHandler
+        );
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                ModBlockEntities.API_DEPOT.get(),
+                (be, context) -> be.getBehaviour(DepotBehaviour.TYPE).itemHandler
+        );
+    }
 }
