@@ -439,6 +439,14 @@
   "createcasing.ponder.chain_gearshift.text_5": "Using analog signals, the ratio can be adjusted more precisely between 1 and 2",
   "createcasing.ponder.chain_gearshift.text_6": "12 RPM",
 
+  "createcasing.ponder.configurable_gearbox.header": "Gearbox are so boring !",
+  "createcasing.ponder.configurable_gearbox.text_1": "Gearboxes are useful to change the direction of a shaft",
+  "createcasing.ponder.configurable_gearbox.text_2": "But they are very annoying when you want to send the rotation in multiple axis",
+  "createcasing.ponder.configurable_gearbox.text_3": "The configurable gearbox is here to fix this problem",
+  "createcasing.ponder.configurable_gearbox.text_4": "You can add a shaft to this gearbox by right clicking on a face with a shaft",
+  "createcasing.ponder.configurable_gearbox.text_5": "You can add a shaft to this gearbox by right clicking on a face with a wrench",
+  "createcasing.ponder.configurable_gearbox.text_6": "You can also remove a shaft on a face by right clicking with a wrench",
+
   "createcasing.ponder.shared.rpm16": "16 RPM",
   "createcasing.ponder.shared.rpm16_source": "Source: 16 RPM",
   "createcasing.ponder.shared.rpm32": "32 RPM",
