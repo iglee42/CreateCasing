@@ -4,7 +4,9 @@ package fr.iglee42.createcasing.registries;
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 import fr.iglee42.createcasing.CreateCasing;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ModPartialModels {
@@ -23,6 +25,8 @@ public class ModPartialModels {
     CREATIVE_BELT_COVER_X = block("belt_cover/creative_belt_cover_x"), CREATIVE_BELT_COVER_Z = block("belt_cover/creative_belt_cover_z")
             ;
 
+    public static final List<PartialModel> ALL_ENCASED_MODELS = new ArrayList<>();
+
     public static final Map<String,PartialModel> SHAFT_MODELS = new HashMap<>();
     public static final Map<String,PartialModel> COGS_MODELS = new HashMap<>();
     public static final Map<String,PartialModel> SHAFTLESS_COGS_MODELS = new HashMap<>();
@@ -30,22 +34,30 @@ public class ModPartialModels {
     public static final Map<String,PartialModel> SHAFTLESS_LARGE_COGS_MODELS = new HashMap<>();
 
     public static PartialModel block(String path) {
-        return PartialModel.of(CreateCasing.asResource("block/" + path));
+        PartialModel model = PartialModel.of(CreateCasing.asResource("block/" + path));
+        if (ALL_ENCASED_MODELS != null) {
+            ALL_ENCASED_MODELS.add(model);
+        }
+        return model;
     }
 
-    public static void init() {
+    static {
         String[] woods = new String[]{"oak","birch","acacia","jungle","warped","dark_oak","crimson","mangrove","cherry","bamboo"};
         for (String w : woods) {
-          SHAFT_MODELS.put(w,ModPartialModels.block("wooden_shaft/"+ w));
-          COGS_MODELS.put(w,ModPartialModels.block("cogwheel/"+ w));
-          SHAFTLESS_COGS_MODELS.put(w,ModPartialModels.block("cogwheel_shaftless/"+ w));
-          LARGE_COGS_MODELS.put(w,ModPartialModels.block("large_cogwheel/"+ w));
-          SHAFTLESS_LARGE_COGS_MODELS.put(w,ModPartialModels.block("large_cogwheel_shaftless/"+ w));
+            SHAFT_MODELS.put(w,ModPartialModels.block("wooden_shaft/"+ w));
+            COGS_MODELS.put(w,ModPartialModels.block("cogwheel/"+ w));
+            SHAFTLESS_COGS_MODELS.put(w,ModPartialModels.block("cogwheel_shaftless/"+ w));
+            LARGE_COGS_MODELS.put(w,ModPartialModels.block("large_cogwheel/"+ w));
+            SHAFTLESS_LARGE_COGS_MODELS.put(w,ModPartialModels.block("large_cogwheel_shaftless/"+ w));
         }
 
         SHAFT_MODELS.put("spruce",ModPartialModels.block("wooden_shaft/spruce"));
-        SHAFT_MODELS.put("mldeg",MLDEG_SHAFT);
-        SHAFT_MODELS.put("glass",GLASS_SHAFT);
+        SHAFT_MODELS.put("mldeg",ModPartialModels.block("mldeg_shaft"));
+        SHAFT_MODELS.put("glass",ModPartialModels.block("glass_shaft"));
+    }
+
+    public static void init() {
+
 
     }
 

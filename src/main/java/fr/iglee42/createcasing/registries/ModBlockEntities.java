@@ -95,9 +95,9 @@ public class ModBlockEntities {
 
     public static final BlockEntityEntry<GlassShaftBlockEntity> GLASS_SHAFT = REGISTRATE
             .blockEntity("glass_shaft", GlassShaftBlockEntity::new)
-            //.instance(() -> GlassShaftInstance::new, false)
+            .visual(() -> (ctx,be,pt)->new SingleAxisRotatingVisual<>(ctx,be,pt,Models.partial(ModPartialModels.GLASS_SHAFT)), false)
             .validBlocks(ModBlocks.GLASS_SHAFT)
-            .renderer(() -> GlassShaftRenderer::new)
+            .renderer(() -> BracketedKineticBlockEntityRenderer::new)
             .register();
 
     public static final BlockEntityEntry<MetalShaftBlockEntity> METAL_SHAFT = REGISTRATE
