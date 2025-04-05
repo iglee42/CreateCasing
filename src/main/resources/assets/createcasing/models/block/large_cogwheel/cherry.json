@@ -6,7 +6,7 @@
 		"0": "create:block/cogwheel_axis",
 		"3": "create:block/axis_top",
 		"4": "createcasing:block/cherry_large_cogwheel",
-		"particle": "block/stripped_spruce_log"
+		"particle": "block/stripped_cherry_log"
 	},
 	"elements": [
 		{

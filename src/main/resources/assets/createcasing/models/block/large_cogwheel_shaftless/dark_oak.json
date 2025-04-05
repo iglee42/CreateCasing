@@ -4,7 +4,7 @@
 	"texture_size": [32, 32],
 	"textures": {
 		"4": "createcasing:block/dark_oak_large_cogwheel",
-		"particle": "block/stripped_spruce_log"
+		"particle": "block/stripped_dark_oak_log"
 	},
 	"elements": [
 		{

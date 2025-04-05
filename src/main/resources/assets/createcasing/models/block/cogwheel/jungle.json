@@ -6,7 +6,7 @@
 		"0": "create:block/cogwheel_axis",
 		"3": "create:block/axis_top",
 		"1_2": "createcasing:block/jungle_cogwheel",
-		"particle": "block/stripped_spruce_log_top"
+		"particle": "block/stripped_jungle_log_top"
 	},
 	"elements": [
 		{

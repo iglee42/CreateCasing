@@ -4,7 +4,7 @@
 	"texture_size": [32, 32],
 	"textures": {
 		"1_2": "createcasing:block/mangrove_cogwheel",
-		"particle": "block/stripped_spruce_log_top"
+		"particle": "block/stripped_mangrove_log_top"
 	},
 	"elements": [
 		{
