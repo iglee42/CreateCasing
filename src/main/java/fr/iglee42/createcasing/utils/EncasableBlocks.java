@@ -18,12 +18,12 @@ import java.util.Arrays;
 
 public enum EncasableBlocks {
 
-    ANDESITE(AllBlocks.ANDESITE_CASING,AllBlocks.GEARBOX,AllBlocks.MECHANICAL_MIXER,AllBlocks.MECHANICAL_PRESS,AllBlocks.DEPOT,AllBlocks.ENCASED_CHAIN_DRIVE,AllBlocks.ADJUSTABLE_CHAIN_GEARSHIFT),
-    BRASS(AllBlocks.BRASS_CASING, ModBlocks.BRASS_GEARBOX,ModBlocks.BRASS_MIXER,ModBlocks.BRASS_PRESS,ModBlocks.BRASS_DEPOT,ModBlocks.BRASS_CHAIN_DRIVE,ModBlocks.BRASS_CHAIN_GEARSHIFT),
-    COPPER(AllBlocks.COPPER_CASING, ModBlocks.COPPER_GEARBOX,ModBlocks.COPPER_MIXER,ModBlocks.COPPER_PRESS,ModBlocks.COPPER_DEPOT,ModBlocks.COPPER_CHAIN_DRIVE,ModBlocks.COPPER_CHAIN_GEARSHIFT),
-    RAILWAY(AllBlocks.RAILWAY_CASING, ModBlocks.RAILWAY_GEARBOX,ModBlocks.RAILWAY_MIXER,ModBlocks.RAILWAY_PRESS,ModBlocks.RAILWAY_DEPOT,ModBlocks.RAILWAY_CHAIN_DRIVE,ModBlocks.RAILWAY_CHAIN_GEARSHIFT),
-    INDUSTRIAL_IRON(AllBlocks.INDUSTRIAL_IRON_BLOCK, ModBlocks.INDUSTRIAL_IRON_GEARBOX,ModBlocks.INDUSTRIAL_IRON_MIXER,ModBlocks.INDUSTRIAL_IRON_PRESS,ModBlocks.INDUSTRIAL_IRON_DEPOT,ModBlocks.INDUSTRIAL_IRON_CHAIN_DRIVE,ModBlocks.INDUSTRIAL_IRON_CHAIN_GEARSHIFT),
-    CREATIVE(ModBlocks.CREATIVE_CASING, ModBlocks.CREATIVE_GEARBOX,ModBlocks.CREATIVE_MIXER,ModBlocks.CREATIVE_PRESS,ModBlocks.CREATIVE_DEPOT,ModBlocks.CREATIVE_CHAIN_DRIVE,ModBlocks.CREATIVE_CHAIN_GEARSHIFT),
+    ANDESITE(AllBlocks.ANDESITE_CASING,AllBlocks.GEARBOX,AllBlocks.MECHANICAL_MIXER,AllBlocks.MECHANICAL_PRESS,AllBlocks.DEPOT,AllBlocks.ENCASED_CHAIN_DRIVE,AllBlocks.ADJUSTABLE_CHAIN_GEARSHIFT,ModBlocks.ANDESITE_CONFIGURABLE_GEARBOX),
+    BRASS(AllBlocks.BRASS_CASING, ModBlocks.BRASS_GEARBOX,ModBlocks.BRASS_MIXER,ModBlocks.BRASS_PRESS,ModBlocks.BRASS_DEPOT,ModBlocks.BRASS_CHAIN_DRIVE,ModBlocks.BRASS_CHAIN_GEARSHIFT,ModBlocks.BRASS_CONFIGURABLE_GEARBOX),
+    COPPER(AllBlocks.COPPER_CASING, ModBlocks.COPPER_GEARBOX,ModBlocks.COPPER_MIXER,ModBlocks.COPPER_PRESS,ModBlocks.COPPER_DEPOT,ModBlocks.COPPER_CHAIN_DRIVE,ModBlocks.COPPER_CHAIN_GEARSHIFT,ModBlocks.COPPER_CONFIGURABLE_GEARBOX),
+    RAILWAY(AllBlocks.RAILWAY_CASING, ModBlocks.RAILWAY_GEARBOX,ModBlocks.RAILWAY_MIXER,ModBlocks.RAILWAY_PRESS,ModBlocks.RAILWAY_DEPOT,ModBlocks.RAILWAY_CHAIN_DRIVE,ModBlocks.RAILWAY_CHAIN_GEARSHIFT,ModBlocks.RAILWAY_CONFIGURABLE_GEARBOX),
+    INDUSTRIAL_IRON(AllBlocks.INDUSTRIAL_IRON_BLOCK, ModBlocks.INDUSTRIAL_IRON_GEARBOX,ModBlocks.INDUSTRIAL_IRON_MIXER,ModBlocks.INDUSTRIAL_IRON_PRESS,ModBlocks.INDUSTRIAL_IRON_DEPOT,ModBlocks.INDUSTRIAL_IRON_CHAIN_DRIVE,ModBlocks.INDUSTRIAL_IRON_CHAIN_GEARSHIFT,ModBlocks.INDUSTRIAL_IRON_CONFIGURABLE_GEARBOX),
+    CREATIVE(ModBlocks.CREATIVE_CASING, ModBlocks.CREATIVE_GEARBOX,ModBlocks.CREATIVE_MIXER,ModBlocks.CREATIVE_PRESS,ModBlocks.CREATIVE_DEPOT,ModBlocks.CREATIVE_CHAIN_DRIVE,ModBlocks.CREATIVE_CHAIN_GEARSHIFT,ModBlocks.CREATIVE_CONFIGURABLE_GEARBOX),
 ;
 
     private final BlockEntry<? extends Block> casing;
@@ -33,8 +33,9 @@ public enum EncasableBlocks {
     private final BlockEntry<? extends Block> depot;
     private final BlockEntry<? extends Block> chainDrive;
     private final BlockEntry<? extends Block> adjustableChainDrive;
+    private final BlockEntry<? extends Block> configurableGearbox;
 
-    EncasableBlocks(BlockEntry<? extends Block> casing, BlockEntry<? extends Block> gearbox, BlockEntry<? extends Block> mixer, BlockEntry<? extends Block> press, BlockEntry<? extends Block> depot, BlockEntry<? extends Block> chainDrive, BlockEntry<? extends Block> adjustableChainDrive) {
+    EncasableBlocks(BlockEntry<? extends Block> casing, BlockEntry<? extends Block> gearbox, BlockEntry<? extends Block> mixer, BlockEntry<? extends Block> press, BlockEntry<? extends Block> depot, BlockEntry<? extends Block> chainDrive, BlockEntry<? extends Block> adjustableChainDrive, BlockEntry<? extends Block> configurableGearbox) {
         this.casing = casing;
         this.gearbox = gearbox;
         this.mixer = mixer;
@@ -42,6 +43,7 @@ public enum EncasableBlocks {
         this.depot = depot;
         this.chainDrive = chainDrive;
         this.adjustableChainDrive = adjustableChainDrive;
+        this.configurableGearbox = configurableGearbox;
     }
 
     public static EncasableBlocks getBlockByCasing(BlockState casing){
@@ -88,6 +90,10 @@ public enum EncasableBlocks {
         return adjustableChainDrive;
     }
 
+    public BlockEntry<? extends Block> getConfigurableGearbox() {
+        return configurableGearbox;
+    }
+
     public static boolean isGearbox(BlockState state){
         return Arrays.stream(values()).anyMatch(b->b.getGearbox().has(state));
     }
@@ -111,9 +117,12 @@ public enum EncasableBlocks {
     public static boolean isAdjustableChainDrive(BlockState state){
         return Arrays.stream(values()).anyMatch(b->b.getAdjustableChainDrive().has(state));
     }
+    public static boolean isConfigurableGearbox(BlockState state){
+        return Arrays.stream(values()).anyMatch(b->b.getConfigurableGearbox().has(state));
+    }
 
     public boolean isInSet(BlockState state){
-        return casing.has(state) || gearbox.has(state) || mixer.has(state) || depot.has(state) || chainDrive.has(state) || adjustableChainDrive.has(state);
+        return casing.has(state) || gearbox.has(state) || mixer.has(state) || depot.has(state) || chainDrive.has(state) || adjustableChainDrive.has(state) || configurableGearbox.has(state);
     }
 
 

@@ -3,16 +3,23 @@ package fr.iglee42.createcasing.utils;
 import com.simibubi.create.content.kinetics.base.HorizontalKineticBlock;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import fr.iglee42.createcasing.CreateCasing;
+import fr.iglee42.createcasing.blocks.ConfigurableGearboxBlock;
 import fr.iglee42.createcasing.config.CCKinetics;
 import fr.iglee42.createcasing.config.ModConfigs;
+import net.createmod.catnip.data.Iterate;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.Property;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.stream.Collectors;
 
 import static com.simibubi.create.content.kinetics.base.HorizontalKineticBlock.HORIZONTAL_FACING;
 import static com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock.AXIS;
@@ -21,7 +28,7 @@ import static com.simibubi.create.content.kinetics.base.RotatedPillarKineticBloc
 public class ItemChangeBlockManager {
 
     @SubscribeEvent
-    public static void onRightClick(PlayerInteractEvent.RightClickBlock event){
+    public static <T extends Comparable<T>> void onRightClick(PlayerInteractEvent.RightClickBlock event){
         Level level = event.getEntity().level();
         if (event.getItemStack().isEmpty()) return;
         if (level.getBlockState(event.getPos()).isAir()) return;
@@ -41,6 +48,15 @@ public class ItemChangeBlockManager {
                 changeAxisBlock(event, state, level, casingSet.getChainDrive().getDefaultState());
             if (EncasableBlocks.isAdjustableChainDrive(state))
                 changeAxisBlock(event, state, level, casingSet.getAdjustableChainDrive().getDefaultState());
+            if (EncasableBlocks.isConfigurableGearbox(state))
+            {
+                BlockState newState = casingSet.getConfigurableGearbox().getDefaultState();
+                for (Direction dir : Iterate.directions) {
+                    Property<Boolean> property = ConfigurableGearboxBlock.getPropertyByDirection(dir);
+                    newState = newState.setValue(property,state.getValue(property));
+                }
+                changeBlock(event, state, level, newState);
+            }
         }
         if (WoodBlocks.hasBlocksForItem(event.getItemStack().getItem()) && ModConfigs.common().kinetics.shaftCogwheelsSwappable.get()){
             WoodBlocks woodSet = WoodBlocks.getBlockByItem(event.getItemStack().getItem());
