@@ -33,7 +33,12 @@ public class WoodenCogwheelBlockEntityRenderer extends KineticBlockEntityRendere
 		if (VisualizationManager.supportsVisualization(be.getLevel()))
 			return;
 
-		if (!(be.getBlockState().getBlock() instanceof WoodenCogwheelBlock)) {
+		if (!(be.getBlockState().getBlock() instanceof WoodenCogwheelBlock block)) {
+			super.renderSafe(be, partialTicks, ms, buffer, light, overlay);
+			return;
+		}
+
+		if (!block.isLargeCog()) {
 			super.renderSafe(be, partialTicks, ms, buffer, light, overlay);
 			return;
 		}
