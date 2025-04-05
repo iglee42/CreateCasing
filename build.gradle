@@ -142,6 +142,9 @@ dependencies {
     compileOnly("me.shedaniel:RoughlyEnoughItems-api-neoforge:${rei_version}")
     compileOnly("me.shedaniel:RoughlyEnoughItems-default-plugin-neoforge:${rei_version}")
 
+    runtimeOnly "curse.maven:irisshaders-455508:6213632"
+    runtimeOnly "curse.maven:sodium-394468:6382651"
+
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
