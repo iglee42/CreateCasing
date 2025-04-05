@@ -61,6 +61,7 @@ public class ConfigurableGearboxBlock extends KineticBlock implements IBE<Gearbo
     @Override
     public InteractionResult onWrenched(BlockState state, UseOnContext context) {
         Direction face = context.getClickedFace();
+        if (!state.getValue(getPropertyByDirection(face))) return InteractionResult.PASS;
         if (ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get()){
             state = state.setValue(getPropertyByDirection(context.getClickedFace()),false);
             if (ModConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get())state = state.setValue(getPropertyByDirection(context.getClickedFace().getOpposite()),false);
