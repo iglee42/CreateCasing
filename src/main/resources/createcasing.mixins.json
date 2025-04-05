@@ -6,6 +6,7 @@
   "refmap": "createcasing.refmap.json",
   "mixins": [
     "create.AllArmInteractionPointTypesMixin",
+    "create.AllSpriteShiftsMixin",
     "create.AssemblyOperatorBlockItemMixin",
     "create.BeltBlockEntityMixin",
     "create.BeltBlockMixin",
