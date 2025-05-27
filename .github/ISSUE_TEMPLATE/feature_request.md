@@ -6,6 +6,6 @@ labels: Idea
 
 ---
 
-**For any suggestion/idea go to [https://iglee.fr](https://iglee.fr)**
+For any suggestion/idea go to https://iglee.fr
 Don't forget to connect your discord account to be notify of the updates of your ideas 😉
 
