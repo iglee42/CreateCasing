@@ -1,20 +1,11 @@
 ---
 name: Feature request
-about: Suggest an idea for this project
-title: "[Feature]"
+about: Suggest an idea for this project (English Only)
+title: "DON'T POST IT"
 labels: Idea
-assignees: iglee42
 
 ---
 
-**Is your feature request related to a problem? Please describe.**
-A clear and concise description of what the problem is. Ex. I'm always frustrated when [...]
+For any suggestion/idea go to https://iglee.fr
+Don't forget to connect your discord account to be notify of the updates of your ideas 😉
 
-**Describe the solution you'd like**
-A clear and concise description of what you want to happen.
-
-**Describe alternatives you've considered**
-A clear and concise description of any alternative solutions or features you've considered.
-
-**Additional context**
-Add any other context or screenshots about the feature request here.
