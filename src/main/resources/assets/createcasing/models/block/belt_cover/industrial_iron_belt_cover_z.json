@@ -1,7 +1,7 @@
 {
-	"parent": "create:block/belt_cover/andesite_belt_cover_z",
-	"textures": {
-		"0": "createcasing:block/industrial_iron_funnel_frame",
-		"1": "createcasing:block/industrial_iron_belt_cover"
-	}
+    "parent": "create:block/belt_cover/andesite_belt_cover_z",
+    "textures": {
+        "0": "createcasing:block/funnel_frames/industrial_iron",
+        "1": "createcasing:block/belt_covers/industrial_iron"
+    }
 }

@@ -1,9 +1,9 @@
 {
-	"parent": "create:block/encased_shaft/item",
-	"textures": {
-		"1_0": "createcasing:block/glass_shaft",
-		"1_1": "createcasing:block/glass_shaft_top",
-		"casing": "create:block/refined_radiance_casing",
-		"opening": "createcasing:block/radiance_gearbox"
-	}
+    "parent": "create:block/encased_shaft/item",
+    "textures": {
+        "1_0": "createcasing:block/shafts/glass",
+        "1_1": "createcasing:block/shafts/glass_top",
+        "casing": "create:block/refined_radiance_casing",
+        "opening": "createcasing:block/gearboxes/radiance"
+    }
 }

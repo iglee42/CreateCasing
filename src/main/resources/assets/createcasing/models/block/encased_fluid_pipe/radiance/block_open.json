@@ -1,7 +1,7 @@
 {
-  "parent": "create:block/encased_fluid_pipe/block_open",
-  "textures": {
-    "0": "createcasing:block/encased_radiance_pipe",
-    "particle": "createcasing:block/encased_radiance_pipe"
-  }
+    "parent": "create:block/encased_fluid_pipe/block_open",
+    "textures": {
+        "0": "createcasing:block/encased_pipes/radiance",
+        "particle": "createcasing:block/encased_pipes/radiance"
+    }
 }
