@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/encased_large_cogwheel/block_bottom",
+  "textures": {
+    "1": "create:block/brass_casing",
+    "4": "create:block/brass_gearbox",
+    "casing": "create:block/brass_casing",
+    "particle": "#casing",
+    "side": "create:block/brass_encased_cogwheel_side_connected"
+  }
+}

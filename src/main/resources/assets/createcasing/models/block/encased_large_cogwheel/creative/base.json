@@ -1,8 +1,0 @@
-{
-    "parent": "create:block/encased_large_cogwheel/block",
-    "textures": {
-        "casing": "create:block/creative_casing",
-        "1": "create:block/creative_casing",
-        "side": "createcasing:block/encased_cogwheels/creative_connected"
-    }
-}

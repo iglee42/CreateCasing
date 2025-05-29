@@ -1,0 +1,6 @@
+{
+  "parent": "createcasing:block/encased_large_cogwheel/refined_radiance/item",
+  "textures": {
+    "4": "createcasing:block/large_cogwheels/crimson"
+  }
+}

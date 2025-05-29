@@ -1,0 +1,6 @@
+{
+  "parent": "createcasing:block/encased_large_cogwheel/brass/item",
+  "textures": {
+    "4": "createcasing:block/large_cogwheels/jungle"
+  }
+}
