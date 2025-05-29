@@ -8,7 +8,24 @@
     {
       "apply": {
         "model": "createcasing:block/configurable_gearbox/creative/face",
-        "uvlock": true
+        "x": 90
+      },
+      "when": {
+        "down": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/creative/face",
+        "x": -90
+      },
+      "when": {
+        "up": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/creative/face"
       },
       "when": {
         "north": "false"
@@ -17,17 +34,6 @@
     {
       "apply": {
         "model": "createcasing:block/configurable_gearbox/creative/face",
-        "uvlock": true,
-        "y": 90
-      },
-      "when": {
-        "east": "false"
-      }
-    },
-    {
-      "apply": {
-        "model": "createcasing:block/configurable_gearbox/creative/face",
-        "uvlock": true,
         "y": 180
       },
       "when": {
@@ -37,7 +43,6 @@
     {
       "apply": {
         "model": "createcasing:block/configurable_gearbox/creative/face",
-        "uvlock": true,
         "y": 270
       },
       "when": {
@@ -47,21 +52,10 @@
     {
       "apply": {
         "model": "createcasing:block/configurable_gearbox/creative/face",
-        "uvlock": true,
-        "x": 270
+        "y": 90
       },
       "when": {
-        "up": "false"
-      }
-    },
-    {
-      "apply": {
-        "model": "createcasing:block/configurable_gearbox/creative/face",
-        "uvlock": true,
-        "x": 90
-      },
-      "when": {
-        "down": "false"
+        "east": "false"
       }
     }
   ]
