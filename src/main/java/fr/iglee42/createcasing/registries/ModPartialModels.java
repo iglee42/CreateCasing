@@ -11,27 +11,42 @@ import java.util.Map;
 
 public class ModPartialModels {
 
+    public static final List<PartialModel> ALL_ENCASED_MODELS = new ArrayList<>();
     public static final PartialModel
+            BRASS_MIXER_HEAD = block("mixer/brass/head"),
+            COPPER_MIXER_HEAD = block("mixer/copper/head"),
+            RAILWAY_MIXER_HEAD = block("mixer/railway/head"),
+            INDUSTRIAL_IRON_MIXER_HEAD = block("mixer/industrial_iron/head"),
+            CREATIVE_MIXER_HEAD = block("mixer/creative/head"),
 
-            BRASS_MIXER_HEAD = block("brass_mixer/head"), COPPER_MIXER_HEAD = block("copper_mixer/head"), RAILWAY_MIXER_HEAD = block("railway_mixer/head"), INDUSTRIAL_IRON_MIXER_HEAD = block("industrial_iron_mixer/head"), CREATIVE_MIXER_HEAD = block("creative_mixer/head"),
-
-    GLASS_SHAFT = block("glass_shaft"),
-    BRASS_SHAFT = block("brass_shaft"),
-    MLDEG_SHAFT = block("mldeg_shaft"),
+    GLASS_SHAFT = block("shaft/glass"),
+            BRASS_SHAFT = block("shaft/brass"),
+            MLDEG_SHAFT = block("shaft/mldeg"),
 
     COPPER_BELT_COVER_X = block("belt_cover/copper_belt_cover_x"), COPPER_BELT_COVER_Z = block("belt_cover/copper_belt_cover_z"),
-    RAILWAY_BELT_COVER_X = block("belt_cover/railway_belt_cover_x"), RAILWAY_BELT_COVER_Z = block("belt_cover/railway_belt_cover_z"),
-    INDUSTRIAL_IRON_BELT_COVER_X = block("belt_cover/industrial_iron_belt_cover_x"), INDUSTRIAL_IRON_BELT_COVER_Z = block("belt_cover/industrial_iron_belt_cover_z"),
-    CREATIVE_BELT_COVER_X = block("belt_cover/creative_belt_cover_x"), CREATIVE_BELT_COVER_Z = block("belt_cover/creative_belt_cover_z")
-            ;
+            RAILWAY_BELT_COVER_X = block("belt_cover/railway_belt_cover_x"), RAILWAY_BELT_COVER_Z = block("belt_cover/railway_belt_cover_z"),
+            INDUSTRIAL_IRON_BELT_COVER_X = block("belt_cover/industrial_iron_belt_cover_x"), INDUSTRIAL_IRON_BELT_COVER_Z = block("belt_cover/industrial_iron_belt_cover_z"),
+            CREATIVE_BELT_COVER_X = block("belt_cover/creative_belt_cover_x"), CREATIVE_BELT_COVER_Z = block("belt_cover/creative_belt_cover_z");
+    public static final Map<String, PartialModel> SHAFT_MODELS = new HashMap<>();
+    public static final Map<String, PartialModel> COGS_MODELS = new HashMap<>();
+    public static final Map<String, PartialModel> SHAFTLESS_COGS_MODELS = new HashMap<>();
+    public static final Map<String, PartialModel> LARGE_COGS_MODELS = new HashMap<>();
+    public static final Map<String, PartialModel> SHAFTLESS_LARGE_COGS_MODELS = new HashMap<>();
 
-    public static final List<PartialModel> ALL_ENCASED_MODELS = new ArrayList<>();
+    static {
+        String[] woods = new String[]{"oak", "birch", "acacia", "jungle", "warped", "dark_oak", "crimson", "mangrove", "cherry", "bamboo"};
+        for (String w : woods) {
+            SHAFT_MODELS.put(w, ModPartialModels.block("shaft/" + w));
+            COGS_MODELS.put(w, ModPartialModels.block("cogwheel/" + w));
+            SHAFTLESS_COGS_MODELS.put(w, ModPartialModels.block("cogwheel_shaftless/" + w));
+            LARGE_COGS_MODELS.put(w, ModPartialModels.block("large_cogwheel/" + w));
+            SHAFTLESS_LARGE_COGS_MODELS.put(w, ModPartialModels.block("large_cogwheel_shaftless/" + w));
+        }
 
-    public static final Map<String,PartialModel> SHAFT_MODELS = new HashMap<>();
-    public static final Map<String,PartialModel> COGS_MODELS = new HashMap<>();
-    public static final Map<String,PartialModel> SHAFTLESS_COGS_MODELS = new HashMap<>();
-    public static final Map<String,PartialModel> LARGE_COGS_MODELS = new HashMap<>();
-    public static final Map<String,PartialModel> SHAFTLESS_LARGE_COGS_MODELS = new HashMap<>();
+        SHAFT_MODELS.put("spruce", ModPartialModels.block("shaft/spruce"));
+        SHAFT_MODELS.put("mldeg", ModPartialModels.block("shaft/mldeg"));
+        SHAFT_MODELS.put("glass", ModPartialModels.block("shaft/glass"));
+    }
 
     public static PartialModel block(String path) {
         PartialModel model = PartialModel.of(CreateCasing.asResource("block/" + path));
@@ -39,21 +54,6 @@ public class ModPartialModels {
             ALL_ENCASED_MODELS.add(model);
         }
         return model;
-    }
-
-    static {
-        String[] woods = new String[]{"oak","birch","acacia","jungle","warped","dark_oak","crimson","mangrove","cherry","bamboo"};
-        for (String w : woods) {
-            SHAFT_MODELS.put(w,ModPartialModels.block("wooden_shaft/"+ w));
-            COGS_MODELS.put(w,ModPartialModels.block("cogwheel/"+ w));
-            SHAFTLESS_COGS_MODELS.put(w,ModPartialModels.block("cogwheel_shaftless/"+ w));
-            LARGE_COGS_MODELS.put(w,ModPartialModels.block("large_cogwheel/"+ w));
-            SHAFTLESS_LARGE_COGS_MODELS.put(w,ModPartialModels.block("large_cogwheel_shaftless/"+ w));
-        }
-
-        SHAFT_MODELS.put("spruce",ModPartialModels.block("wooden_shaft/spruce"));
-        SHAFT_MODELS.put("mldeg",ModPartialModels.block("mldeg_shaft"));
-        SHAFT_MODELS.put("glass",ModPartialModels.block("glass_shaft"));
     }
 
     public static void init() {

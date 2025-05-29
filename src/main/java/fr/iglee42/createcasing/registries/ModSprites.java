@@ -1,5 +1,6 @@
 package fr.iglee42.createcasing.registries;
 
+import com.simibubi.create.AllSpriteShifts;
 import com.simibubi.create.Create;
 import com.simibubi.create.foundation.block.connected.AllCTTypes;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
@@ -16,18 +17,18 @@ public class ModSprites {
     public static final CTSpriteShiftEntry RAILWAY_ENCASED_COGWHEEL_OTHERSIDE;
     public static final CTSpriteShiftEntry COPPER_ENCASED_COGWHEEL_SIDE;
     public static final CTSpriteShiftEntry COPPER_ENCASED_COGWHEEL_OTHERSIDE;
-    public static final CTSpriteShiftEntry SHADOW_ENCASED_COGWHEEL_SIDE;
-    public static final CTSpriteShiftEntry SHADOW_ENCASED_COGWHEEL_OTHERSIDE;
-    public static final CTSpriteShiftEntry RADIANCE_ENCASED_COGWHEEL_SIDE;
-    public static final CTSpriteShiftEntry RADIANCE_ENCASED_COGWHEEL_OTHERSIDE;
+    public static final CTSpriteShiftEntry SHADOW_STEEL_ENCASED_COGWHEEL_SIDE;
+    public static final CTSpriteShiftEntry SHADOW_STEEL_ENCASED_COGWHEEL_OTHERSIDE;
+    public static final CTSpriteShiftEntry REFINED_RADIANCE_ENCASED_COGWHEEL_SIDE;
+    public static final CTSpriteShiftEntry REFINED_RADIANCE_ENCASED_COGWHEEL_OTHERSIDE;
     //public static final CTSpriteShiftEntry CREATIVE_CASING;
     public static final CTSpriteShiftEntry CREATIVE_ENCASED_COGWHEEL_SIDE;
     public static final CTSpriteShiftEntry CREATIVE_ENCASED_COGWHEEL_OTHERSIDE;
 
-    public static final SpriteShiftEntry COPPER_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/copper_belt_casing");
-    public static final SpriteShiftEntry RAILWAY_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/railway_belt_casing");
-    public static final SpriteShiftEntry INDUSTRIAL_IRON_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/industrial_iron_belt_casing");
-    public static final SpriteShiftEntry CREATIVE_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/creative_belt_casing");
+    public static final SpriteShiftEntry COPPER_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casings/copper");
+    public static final SpriteShiftEntry RAILWAY_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casings/railway");
+    public static final SpriteShiftEntry INDUSTRIAL_IRON_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casings/industrial_iron");
+    public static final SpriteShiftEntry CREATIVE_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casings/creative");
 
     public static final SpriteShiftEntry INDUSTRIAL_IRON = getFromCreate("block/industrial_iron_block");
 
@@ -63,18 +64,56 @@ public class ModSprites {
     }
 
 
+    public static CTSpriteShiftEntry getEntryForCasing(String casing){
+        return switch (casing){
+            case "andesite"-> AllSpriteShifts.ANDESITE_CASING;
+            case "brass"-> AllSpriteShifts.BRASS_CASING;
+            case "copper"-> AllSpriteShifts.COPPER_CASING;
+            case "railway"-> AllSpriteShifts.RAILWAY_CASING;
+            case "creative"-> AllSpriteShifts.CREATIVE_CASING;
+            case "shadow_steel"-> AllSpriteShifts.SHADOW_STEEL_CASING;
+            case "refined_radiance"-> AllSpriteShifts.REFINED_RADIANCE_CASING;
+            default -> null;
+        };
+    }
+
+    public static CTSpriteShiftEntry getEntryForSide(String casing){
+        return switch (casing){
+            case "andesite"-> AllSpriteShifts.ANDESITE_ENCASED_COGWHEEL_SIDE;
+            case "brass"-> AllSpriteShifts.BRASS_ENCASED_COGWHEEL_SIDE;
+            case "copper"-> ModSprites.COPPER_ENCASED_COGWHEEL_SIDE;
+            case "railway"-> ModSprites.RAILWAY_ENCASED_COGWHEEL_SIDE;
+            case "creative"-> ModSprites.CREATIVE_ENCASED_COGWHEEL_SIDE;
+            case "shadow_steel"-> ModSprites.SHADOW_STEEL_ENCASED_COGWHEEL_SIDE;
+            case "refined_radiance"-> ModSprites.REFINED_RADIANCE_ENCASED_COGWHEEL_SIDE;
+            default -> null;
+        };
+    }
+
+    public static CTSpriteShiftEntry getEntryForOtherSide(String casing){
+        return switch (casing){
+            case "andesite"-> AllSpriteShifts.ANDESITE_ENCASED_COGWHEEL_OTHERSIDE;
+            case "brass"-> AllSpriteShifts.BRASS_ENCASED_COGWHEEL_OTHERSIDE;
+            case "copper"-> ModSprites.COPPER_ENCASED_COGWHEEL_OTHERSIDE;
+            case "railway"-> ModSprites.RAILWAY_ENCASED_COGWHEEL_OTHERSIDE;
+            case "creative"-> ModSprites.CREATIVE_ENCASED_COGWHEEL_OTHERSIDE;
+            case "shadow_steel"-> ModSprites.SHADOW_STEEL_ENCASED_COGWHEEL_OTHERSIDE;
+            case "refined_radiance"-> ModSprites.REFINED_RADIANCE_ENCASED_COGWHEEL_OTHERSIDE;
+            default -> null;
+        };
+    }
     static {
-        RAILWAY_ENCASED_COGWHEEL_SIDE = vertical("railway_encased_cogwheel_side");
-        RAILWAY_ENCASED_COGWHEEL_OTHERSIDE = horizontal("railway_encased_cogwheel_side");
-        COPPER_ENCASED_COGWHEEL_SIDE = vertical("copper_encased_cogwheel_side");
-        COPPER_ENCASED_COGWHEEL_OTHERSIDE = horizontal("copper_encased_cogwheel_side");
-        SHADOW_ENCASED_COGWHEEL_SIDE = vertical("shadow_encased_cogwheel_side");
-        SHADOW_ENCASED_COGWHEEL_OTHERSIDE = horizontal("shadow_encased_cogwheel_side");
-        RADIANCE_ENCASED_COGWHEEL_SIDE = vertical("radiance_encased_cogwheel_side");
-        RADIANCE_ENCASED_COGWHEEL_OTHERSIDE = horizontal("radiance_encased_cogwheel_side");
+        RAILWAY_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheels/railway");
+        RAILWAY_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheels/railway");
+        COPPER_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheels/copper");
+        COPPER_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheels/copper");
+        SHADOW_STEEL_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheels/shadow");
+        SHADOW_STEEL_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheels/shadow");
+        REFINED_RADIANCE_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheels/radiance");
+        REFINED_RADIANCE_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheels/radiance");
         //CREATIVE_CASING = omni("creative_casing");
-        CREATIVE_ENCASED_COGWHEEL_SIDE = vertical("creative_encased_cogwheel_side");
-        CREATIVE_ENCASED_COGWHEEL_OTHERSIDE = horizontal("creative_encased_cogwheel_side");
+        CREATIVE_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheels/creative");
+        CREATIVE_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheels/creative");
     }
 
 }
