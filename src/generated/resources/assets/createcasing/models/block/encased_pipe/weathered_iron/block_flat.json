@@ -1,0 +1,6 @@
+{
+  "parent": "create:block/encased_fluid_pipe/block_flat",
+  "textures": {
+    "0": "create:block/weathered_iron_block"
+  }
+}

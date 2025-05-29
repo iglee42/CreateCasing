@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/encased_chain_drive/middle_vertical",
+  "textures": {
+    "1": "createcasing:block/encased_chain_drive_middles/weathered_iron",
+    "side": "createcasing:block/encased_chain_drives/weathered_iron"
+  }
+}

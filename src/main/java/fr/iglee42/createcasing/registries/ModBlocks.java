@@ -80,6 +80,7 @@ public class ModBlocks {
     public static BeltBlockEntity.CasingType RAILWAY_BELT_CASING;
     public static BeltBlockEntity.CasingType INDUSTRIAL_IRON_BELT_CASING;
     public static BeltBlockEntity.CasingType CREATIVE_BELT_CASING;
+    public static BeltBlockEntity.CasingType WEATHERED_IRON_BELT_CASING;
 
     //SHAFTS
     public static final BlockEntry<PublicEncasedShaftBlock> RAILWAY_ENCASED_SHAFT = createShaft("railway",AllBlocks.RAILWAY_CASING::get,AllSpriteShifts.RAILWAY_CASING);
@@ -88,6 +89,7 @@ public class ModBlocks {
     public static final BlockEntry<PublicEncasedShaftBlock> REFINED_RADIANCE_ENCASED_SHAFT = createShaft("refined_radiance",AllBlocks.REFINED_RADIANCE_CASING::get,AllSpriteShifts.REFINED_RADIANCE_CASING);
     public static final BlockEntry<PublicEncasedShaftBlock> CREATIVE_ENCASED_SHAFT = createShaft("creative",ModBlocks.CREATIVE_CASING::get,AllSpriteShifts.CREATIVE_CASING);
     public static final BlockEntry<PublicEncasedShaftBlock> INDUSTRIAL_IRON_ENCASED_SHAFT = createShaft("industrial_iron",AllBlocks.INDUSTRIAL_IRON_BLOCK::get,null);
+    public static final BlockEntry<PublicEncasedShaftBlock> WEATHERED_IRON_ENCASED_SHAFT = createShaft("weathered_iron",AllBlocks.WEATHERED_IRON_BLOCK::get,null);
 
     //COGWHEELS
     public static final BlockEntry<PublicEncasedCogwheelBlock> RAILWAY_ENCASED_COGWHEEL = createCogwheel("railway",AllBlocks.RAILWAY_CASING::get,AllSpriteShifts.RAILWAY_CASING,ModSprites.RAILWAY_ENCASED_COGWHEEL_SIDE,ModSprites.RAILWAY_ENCASED_COGWHEEL_OTHERSIDE);
@@ -96,6 +98,7 @@ public class ModBlocks {
     public static final BlockEntry<PublicEncasedCogwheelBlock> RADIANCE_ENCASED_COGWHEEL = createCogwheel("refined_radiance",AllBlocks.REFINED_RADIANCE_CASING::get,AllSpriteShifts.REFINED_RADIANCE_CASING,ModSprites.REFINED_RADIANCE_ENCASED_COGWHEEL_SIDE,ModSprites.REFINED_RADIANCE_ENCASED_COGWHEEL_OTHERSIDE);
     public static final BlockEntry<PublicEncasedCogwheelBlock> CREATIVE_ENCASED_COGWHEEL = createCogwheel("creative",ModBlocks.CREATIVE_CASING::get,AllSpriteShifts.CREATIVE_CASING,ModSprites.CREATIVE_ENCASED_COGWHEEL_SIDE,ModSprites.CREATIVE_ENCASED_COGWHEEL_OTHERSIDE);
     public static final BlockEntry<PublicEncasedCogwheelBlock> INDUSTRIAL_IRON_ENCASED_COGWHEEL = createCogwheel("industrial_iron",AllBlocks.INDUSTRIAL_IRON_BLOCK::get,null,null,null);
+    public static final BlockEntry<PublicEncasedCogwheelBlock> WEATHERED_IRON_ENCASED_COGWHEEL = createCogwheel("weathered_iron",AllBlocks.WEATHERED_IRON_BLOCK::get,null,null,null);
 
     //LARGE COGWHEELS
 
@@ -105,6 +108,7 @@ public class ModBlocks {
     public static final BlockEntry<PublicEncasedCogwheelBlock> RADIANCE_ENCASED_COGWHEEL_LARGE = createLargeCogwheel("refined_radiance",AllBlocks.REFINED_RADIANCE_CASING::get,AllSpriteShifts.REFINED_RADIANCE_CASING);
     public static final BlockEntry<PublicEncasedCogwheelBlock> CREATIVE_ENCASED_COGWHEEL_LARGE = createLargeCogwheel("creative",ModBlocks.CREATIVE_CASING::get,AllSpriteShifts.CREATIVE_CASING);
     public static final BlockEntry<PublicEncasedCogwheelBlock> INDUSTRIAL_IRON_ENCASED_COGWHEEL_LARGE = createLargeCogwheel("industrial_iron",AllBlocks.INDUSTRIAL_IRON_BLOCK::get,null);
+    public static final BlockEntry<PublicEncasedCogwheelBlock> WEATHERED_IRON_ENCASED_COGWHEEL_LARGE = createLargeCogwheel("weathered_iron",AllBlocks.WEATHERED_IRON_BLOCK::get,null);
 
 
     //PIPES
@@ -116,42 +120,49 @@ public class ModBlocks {
     public static final BlockEntry<PublicEncasedPipeBlock> ENCASED_RADIANCE_FLUID_PIPE = createPipe("refined_radiance",AllBlocks.REFINED_RADIANCE_CASING::get,AllSpriteShifts.REFINED_RADIANCE_CASING);
     public static final BlockEntry<PublicEncasedPipeBlock> ENCASED_CREATIVE_FLUID_PIPE = createPipe("creative",ModBlocks.CREATIVE_CASING::get,AllSpriteShifts.CREATIVE_CASING);
     public static final BlockEntry<PublicEncasedPipeBlock> ENCASED_INDUSTRIAL_IRON_FLUID_PIPE = createPipe("industrial_iron",AllBlocks.INDUSTRIAL_IRON_BLOCK::get,null);
+    public static final BlockEntry<PublicEncasedPipeBlock> ENCASED_WEATHERED_IRON_FLUID_PIPE = createPipe("weathered_iron",AllBlocks.WEATHERED_IRON_BLOCK::get,null);
 
     public static final BlockEntry<CustomGearboxBlock> BRASS_GEARBOX = createGearbox("brass",AllSpriteShifts.BRASS_CASING,ModItems.VERTICAL_BRASS_GEARBOX);
     public static final BlockEntry<CustomGearboxBlock> COPPER_GEARBOX = createGearbox("copper",AllSpriteShifts.COPPER_CASING,ModItems.VERTICAL_COPPER_GEARBOX);
     public static final BlockEntry<CustomGearboxBlock> RAILWAY_GEARBOX = createGearbox("railway",AllSpriteShifts.RAILWAY_CASING,ModItems.VERTICAL_RAILWAY_GEARBOX);
     public static final BlockEntry<CustomGearboxBlock> CREATIVE_GEARBOX = createGearbox("creative",AllSpriteShifts.CREATIVE_CASING,ModItems.VERTICAL_CREATIVE_GEARBOX);
     public static final BlockEntry<CustomGearboxBlock> INDUSTRIAL_IRON_GEARBOX = createGearbox("industrial_iron",null,ModItems.VERTICAL_INDUSTRIAL_IRON_GEARBOX);
+    public static final BlockEntry<CustomGearboxBlock> WEATHERED_IRON_GEARBOX = createGearbox("weathered_iron",null,ModItems.VERTICAL_WEATHERED_IRON_GEARBOX);
 
     public static final BlockEntry<CustomMixerBlock> BRASS_MIXER = createMixer("brass");
     public static final BlockEntry<CustomMixerBlock> COPPER_MIXER = createMixer("copper");
     public static final BlockEntry<CustomMixerBlock> RAILWAY_MIXER = createMixer("railway");
     public static final BlockEntry<CustomMixerBlock> CREATIVE_MIXER = createMixer("creative");
     public static final BlockEntry<CustomMixerBlock> INDUSTRIAL_IRON_MIXER = createMixer("industrial_iron");
+    public static final BlockEntry<CustomMixerBlock> WEATHERED_IRON_MIXER = createMixer("weathered_iron");
 
     public static final BlockEntry<CustomPressBlock> BRASS_PRESS = createPress("brass");
     public static final BlockEntry<CustomPressBlock> COPPER_PRESS = createPress("copper");
     public static final BlockEntry<CustomPressBlock> RAILWAY_PRESS = createPress("railway");
     public static final BlockEntry<CustomPressBlock> CREATIVE_PRESS = createPress("creative");
     public static final BlockEntry<CustomPressBlock> INDUSTRIAL_IRON_PRESS = createPress("industrial_iron");
+    public static final BlockEntry<CustomPressBlock> WEATHERED_IRON_PRESS = createPress("weathered_iron");
 
     public static final BlockEntry<CustomDepotBlock> BRASS_DEPOT = createDepot("brass");
     public static final BlockEntry<CustomDepotBlock> COPPER_DEPOT = createDepot("copper");
     public static final BlockEntry<CustomDepotBlock> RAILWAY_DEPOT = createDepot("railway");
     public static final BlockEntry<CustomDepotBlock> CREATIVE_DEPOT = createDepot("creative");
     public static final BlockEntry<CustomDepotBlock> INDUSTRIAL_IRON_DEPOT = createDepot("industrial_iron");
+    public static final BlockEntry<CustomDepotBlock> WEATHERED_IRON_DEPOT = createDepot("weathered_iron");
 
     public static final BlockEntry<CustomChainDriveBlock> BRASS_CHAIN_DRIVE = createDrive("brass");
     public static final BlockEntry<CustomChainDriveBlock> COPPER_CHAIN_DRIVE = createDrive("copper");
     public static final BlockEntry<CustomChainDriveBlock> RAILWAY_CHAIN_DRIVE = createDrive("railway");
     public static final BlockEntry<CustomChainDriveBlock> CREATIVE_CHAIN_DRIVE = createDrive("creative");
     public static final BlockEntry<CustomChainDriveBlock> INDUSTRIAL_IRON_CHAIN_DRIVE = createDrive("industrial_iron");
+    public static final BlockEntry<CustomChainDriveBlock> WEATHERED_IRON_CHAIN_DRIVE = createDrive("weathered_iron");
 
     public static final BlockEntry<CustomChainGearshiftBlock> BRASS_CHAIN_GEARSHIFT = createChainGearshift("brass");
     public static final BlockEntry<CustomChainGearshiftBlock> COPPER_CHAIN_GEARSHIFT = createChainGearshift("copper");
     public static final BlockEntry<CustomChainGearshiftBlock> RAILWAY_CHAIN_GEARSHIFT = createChainGearshift("railway");
     public static final BlockEntry<CustomChainGearshiftBlock> CREATIVE_CHAIN_GEARSHIFT = createChainGearshift("creative");
     public static final BlockEntry<CustomChainGearshiftBlock> INDUSTRIAL_IRON_CHAIN_GEARSHIFT = createChainGearshift("industrial_iron");
+    public static final BlockEntry<CustomChainGearshiftBlock> WEATHERED_IRON_CHAIN_GEARSHIFT = createChainGearshift("weathered_iron");
 
     public static final BlockEntry<WoodenShaftBlock> OAK_SHAFT = createWoodenShaft("oak");
     public static final BlockEntry<WoodenShaftBlock> SPRUCE_SHAFT = createWoodenShaft("spruce");
@@ -249,6 +260,7 @@ public class ModBlocks {
     public static final BlockEntry<ConfigurableGearboxBlock> RAILWAY_CONFIGURABLE_GEARBOX = createConfigurableGearbox("railway",AllSpriteShifts.RAILWAY_CASING);
     public static final BlockEntry<ConfigurableGearboxBlock> CREATIVE_CONFIGURABLE_GEARBOX = createConfigurableGearbox("creative",AllSpriteShifts.CREATIVE_CASING);
     public static final BlockEntry<ConfigurableGearboxBlock> INDUSTRIAL_IRON_CONFIGURABLE_GEARBOX = createConfigurableGearbox("industrial_iron",null);
+    public static final BlockEntry<ConfigurableGearboxBlock> WEATHERED_IRON_CONFIGURABLE_GEARBOX = createConfigurableGearbox("weathered_iron",null);
 
 
     //METHODS
@@ -488,7 +500,7 @@ public class ModBlocks {
     }
 
     public static void registerEncasedShafts() {
-        List<BlockEntry<?>> casings = Arrays.asList(AllBlocks.INDUSTRIAL_IRON_BLOCK,CREATIVE_CASING,AllBlocks.ANDESITE_CASING,AllBlocks.BRASS_CASING,AllBlocks.COPPER_CASING,AllBlocks.RAILWAY_CASING,AllBlocks.REFINED_RADIANCE_CASING,AllBlocks.SHADOW_STEEL_CASING);
+        List<BlockEntry<?>> casings = Arrays.asList(AllBlocks.WEATHERED_IRON_BLOCK,AllBlocks.INDUSTRIAL_IRON_BLOCK,CREATIVE_CASING,AllBlocks.ANDESITE_CASING,AllBlocks.BRASS_CASING,AllBlocks.COPPER_CASING,AllBlocks.RAILWAY_CASING,AllBlocks.REFINED_RADIANCE_CASING,AllBlocks.SHADOW_STEEL_CASING);
         forEachShaft(shaft-> {
             casings.forEach(c-> {
                 String casing = c.getId().getPath().replace("_casing", "").replace("_block","");

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "CBC",
+    " C "
+  ],
+  "key": {
+    "C": {
+      "item": "create:cogwheel"
+    },
+    "B": {
+      "item": "create:weathered_iron_block"
+    }
+  },
+  "result": {
+    "id": "createcasing:weathered_iron_gearbox"
+  }
+}

@@ -17,6 +17,7 @@ public class ModPartialModels {
             COPPER_MIXER_HEAD = block("mixer/copper/head"),
             RAILWAY_MIXER_HEAD = block("mixer/railway/head"),
             INDUSTRIAL_IRON_MIXER_HEAD = block("mixer/industrial_iron/head"),
+            WEATHERED_IRON_MIXER_HEAD = block("mixer/weathered_iron/head"),
             CREATIVE_MIXER_HEAD = block("mixer/creative/head"),
 
     GLASS_SHAFT = block("shaft/glass"),
@@ -26,7 +27,8 @@ public class ModPartialModels {
     COPPER_BELT_COVER_X = block("belt_cover/copper_belt_cover_x"), COPPER_BELT_COVER_Z = block("belt_cover/copper_belt_cover_z"),
             RAILWAY_BELT_COVER_X = block("belt_cover/railway_belt_cover_x"), RAILWAY_BELT_COVER_Z = block("belt_cover/railway_belt_cover_z"),
             INDUSTRIAL_IRON_BELT_COVER_X = block("belt_cover/industrial_iron_belt_cover_x"), INDUSTRIAL_IRON_BELT_COVER_Z = block("belt_cover/industrial_iron_belt_cover_z"),
-            CREATIVE_BELT_COVER_X = block("belt_cover/creative_belt_cover_x"), CREATIVE_BELT_COVER_Z = block("belt_cover/creative_belt_cover_z");
+            CREATIVE_BELT_COVER_X = block("belt_cover/creative_belt_cover_x"), CREATIVE_BELT_COVER_Z = block("belt_cover/creative_belt_cover_z"),
+            WEATHERED_IRON_BELT_COVER_X = block("belt_cover/weathered_iron_belt_cover_x"), WEATHERED_IRON_BELT_COVER_Z = block("belt_cover/weathered_iron_belt_cover_z");
     public static final Map<String, PartialModel> SHAFT_MODELS = new HashMap<>();
     public static final Map<String, PartialModel> COGS_MODELS = new HashMap<>();
     public static final Map<String, PartialModel> SHAFTLESS_COGS_MODELS = new HashMap<>();

@@ -33,6 +33,7 @@ public abstract class BeltBlockEntityMixin {
         if (createCasing$newCasing.equals(ModBlocks.COPPER_BELT_CASING)) return Block.getId(AllBlocks.COPPER_CASING.getDefaultState());
         if (createCasing$newCasing.equals(ModBlocks.RAILWAY_BELT_CASING)) return Block.getId(AllBlocks.RAILWAY_CASING.getDefaultState());
         if (createCasing$newCasing.equals(ModBlocks.INDUSTRIAL_IRON_BELT_CASING)) return Block.getId(AllBlocks.INDUSTRIAL_IRON_BLOCK.getDefaultState());
+        if (createCasing$newCasing.equals(ModBlocks.WEATHERED_IRON_BELT_CASING)) return Block.getId(AllBlocks.WEATHERED_IRON_BLOCK.getDefaultState());
         if (createCasing$newCasing.equals(ModBlocks.CREATIVE_BELT_CASING)) return Block.getId(ModBlocks.CREATIVE_CASING.getDefaultState());
         return old;
     }

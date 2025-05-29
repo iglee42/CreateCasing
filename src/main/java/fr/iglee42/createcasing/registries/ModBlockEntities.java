@@ -38,51 +38,51 @@ public class ModBlockEntities {
     public static final BlockEntityEntry<KineticBlockEntity> ENCASED_SHAFT = REGISTRATE
             .blockEntity("casing_encased_shaft", KineticBlockEntity::new)
             .visual(() -> ShaftVisual::new, false)
-            .validBlocks(ModBlocks.RAILWAY_ENCASED_SHAFT,ModBlocks.COPPER_ENCASED_SHAFT,ModBlocks.SHADOW_ENCASED_SHAFT,ModBlocks.REFINED_RADIANCE_ENCASED_SHAFT,ModBlocks.INDUSTRIAL_IRON_ENCASED_SHAFT,ModBlocks.CREATIVE_ENCASED_SHAFT,ModBlocks.BRASS_CHAIN_DRIVE,ModBlocks.COPPER_CHAIN_DRIVE,ModBlocks.RAILWAY_CHAIN_DRIVE,ModBlocks.INDUSTRIAL_IRON_CHAIN_DRIVE,ModBlocks.CREATIVE_CHAIN_DRIVE)
+            .validBlocks(ModBlocks.RAILWAY_ENCASED_SHAFT,ModBlocks.COPPER_ENCASED_SHAFT,ModBlocks.SHADOW_ENCASED_SHAFT,ModBlocks.REFINED_RADIANCE_ENCASED_SHAFT,ModBlocks.INDUSTRIAL_IRON_ENCASED_SHAFT,ModBlocks.CREATIVE_ENCASED_SHAFT,ModBlocks.BRASS_CHAIN_DRIVE,ModBlocks.COPPER_CHAIN_DRIVE,ModBlocks.RAILWAY_CHAIN_DRIVE,ModBlocks.INDUSTRIAL_IRON_CHAIN_DRIVE,ModBlocks.CREATIVE_CHAIN_DRIVE,ModBlocks.WEATHERED_IRON_ENCASED_SHAFT,ModBlocks.WEATHERED_IRON_CHAIN_DRIVE)
             .renderer(() -> ShaftRenderer::new)
             .register();
     public static final BlockEntityEntry<SimpleKineticBlockEntity> ENCASED_COGWHEEL = REGISTRATE
             .blockEntity("casing_encased_cogwheel", SimpleKineticBlockEntity::new)
             .visual(() -> EncasedCogVisual::small, false)
-            .validBlocks(ModBlocks.RAILWAY_ENCASED_COGWHEEL,ModBlocks.COPPER_ENCASED_COGWHEEL,ModBlocks.SHADOW_ENCASED_COGWHEEL,ModBlocks.RADIANCE_ENCASED_COGWHEEL,ModBlocks.INDUSTRIAL_IRON_ENCASED_COGWHEEL,ModBlocks.CREATIVE_ENCASED_COGWHEEL)
+            .validBlocks(ModBlocks.RAILWAY_ENCASED_COGWHEEL,ModBlocks.COPPER_ENCASED_COGWHEEL,ModBlocks.SHADOW_ENCASED_COGWHEEL,ModBlocks.RADIANCE_ENCASED_COGWHEEL,ModBlocks.INDUSTRIAL_IRON_ENCASED_COGWHEEL,ModBlocks.CREATIVE_ENCASED_COGWHEEL,ModBlocks.WEATHERED_IRON_ENCASED_COGWHEEL)
             .renderer(() -> EncasedCogRenderer::small)
             .register();
     public static final BlockEntityEntry<SimpleKineticBlockEntity> ENCASED_COGWHEEL_LARGE = REGISTRATE
             .blockEntity("casing_encased_cogwheel_large", SimpleKineticBlockEntity::new)
             .visual(() -> EncasedCogVisual::large, false)
-            .validBlocks(ModBlocks.RAILWAY_ENCASED_COGWHEEL_LARGE,ModBlocks.COPPER_ENCASED_COGWHEEL_LARGE,ModBlocks.SHADOW_ENCASED_COGWHEEL_LARGE,ModBlocks.RADIANCE_ENCASED_COGWHEEL_LARGE,ModBlocks.INDUSTRIAL_IRON_ENCASED_COGWHEEL_LARGE,ModBlocks.CREATIVE_ENCASED_COGWHEEL_LARGE)
+            .validBlocks(ModBlocks.RAILWAY_ENCASED_COGWHEEL_LARGE,ModBlocks.COPPER_ENCASED_COGWHEEL_LARGE,ModBlocks.SHADOW_ENCASED_COGWHEEL_LARGE,ModBlocks.RADIANCE_ENCASED_COGWHEEL_LARGE,ModBlocks.INDUSTRIAL_IRON_ENCASED_COGWHEEL_LARGE,ModBlocks.CREATIVE_ENCASED_COGWHEEL_LARGE,ModBlocks.WEATHERED_IRON_ENCASED_COGWHEEL_LARGE)
             .renderer(() -> EncasedCogRenderer::large)
             .register();
 
     public static final BlockEntityEntry<FluidPipeBlockEntity> ENCASED_FLUID_PIPE = REGISTRATE
             .blockEntity("encased_fluid_pipe", FluidPipeBlockEntity::new)
-            .validBlocks(ModBlocks.ENCASED_ANDESITE_FLUID_PIPE,ModBlocks.ENCASED_BRASS_FLUID_PIPE,ModBlocks.ENCASED_RAILWAY_FLUID_PIPE,ModBlocks.ENCASED_RADIANCE_FLUID_PIPE,ModBlocks.ENCASED_SHADOW_FLUID_PIPE,ModBlocks.ENCASED_INDUSTRIAL_IRON_FLUID_PIPE,ModBlocks.ENCASED_CREATIVE_FLUID_PIPE)
+            .validBlocks(ModBlocks.ENCASED_ANDESITE_FLUID_PIPE,ModBlocks.ENCASED_BRASS_FLUID_PIPE,ModBlocks.ENCASED_RAILWAY_FLUID_PIPE,ModBlocks.ENCASED_RADIANCE_FLUID_PIPE,ModBlocks.ENCASED_SHADOW_FLUID_PIPE,ModBlocks.ENCASED_INDUSTRIAL_IRON_FLUID_PIPE,ModBlocks.ENCASED_CREATIVE_FLUID_PIPE,ModBlocks.ENCASED_WEATHERED_IRON_FLUID_PIPE)
             .register();
 
     public static final BlockEntityEntry<GearboxBlockEntity> GEARBOX = REGISTRATE
             .blockEntity("custom_gearbox", GearboxBlockEntity::new)
             .visual(() -> GearboxVisual::new, false)
-            .validBlocks(ModBlocks.BRASS_GEARBOX,ModBlocks.COPPER_GEARBOX,ModBlocks.RAILWAY_GEARBOX,ModBlocks.INDUSTRIAL_IRON_GEARBOX,ModBlocks.CREATIVE_GEARBOX)
+            .validBlocks(ModBlocks.BRASS_GEARBOX,ModBlocks.COPPER_GEARBOX,ModBlocks.RAILWAY_GEARBOX,ModBlocks.INDUSTRIAL_IRON_GEARBOX,ModBlocks.CREATIVE_GEARBOX,ModBlocks.WEATHERED_IRON_GEARBOX)
             .renderer(() -> GearboxRenderer::new)
             .register();
 
     public static final BlockEntityEntry<MechanicalMixerBlockEntity> MIXER = REGISTRATE
             .blockEntity("custom_mixer", MechanicalMixerBlockEntity::new)
             .visual(() -> CustomMixerVisual::new)
-            .validBlocks(ModBlocks.BRASS_MIXER,ModBlocks.COPPER_MIXER,ModBlocks.RAILWAY_MIXER,ModBlocks.INDUSTRIAL_IRON_MIXER,ModBlocks.CREATIVE_MIXER)
+            .validBlocks(ModBlocks.BRASS_MIXER,ModBlocks.COPPER_MIXER,ModBlocks.RAILWAY_MIXER,ModBlocks.INDUSTRIAL_IRON_MIXER,ModBlocks.CREATIVE_MIXER,ModBlocks.WEATHERED_IRON_MIXER)
             .renderer(() -> CustomMixerRenderer::new)
             .register();
 
     public static final BlockEntityEntry<MechanicalPressBlockEntity> PRESS = REGISTRATE
             .blockEntity("custom_press", MechanicalPressBlockEntity::new)
             .visual(() -> PressVisual::new)
-            .validBlocks(ModBlocks.BRASS_PRESS,ModBlocks.COPPER_PRESS,ModBlocks.RAILWAY_PRESS,ModBlocks.INDUSTRIAL_IRON_PRESS,ModBlocks.CREATIVE_PRESS)
+            .validBlocks(ModBlocks.BRASS_PRESS,ModBlocks.COPPER_PRESS,ModBlocks.RAILWAY_PRESS,ModBlocks.INDUSTRIAL_IRON_PRESS,ModBlocks.CREATIVE_PRESS,ModBlocks.WEATHERED_IRON_PRESS)
             .renderer(() -> CustomPressRenderer::new)
             .register();
 
     public static final BlockEntityEntry<DepotBlockEntity> DEPOT = REGISTRATE
             .blockEntity("custom_depot", DepotBlockEntity::new)
-            .validBlocks(ModBlocks.BRASS_DEPOT,ModBlocks.COPPER_DEPOT,ModBlocks.RAILWAY_DEPOT,ModBlocks.INDUSTRIAL_IRON_DEPOT,ModBlocks.CREATIVE_DEPOT)
+            .validBlocks(ModBlocks.BRASS_DEPOT,ModBlocks.COPPER_DEPOT,ModBlocks.RAILWAY_DEPOT,ModBlocks.INDUSTRIAL_IRON_DEPOT,ModBlocks.CREATIVE_DEPOT,ModBlocks.WEATHERED_IRON_DEPOT)
             .renderer(() -> DepotRenderer::new)
             .register();
 
@@ -123,7 +123,7 @@ public class ModBlockEntities {
     public static final BlockEntityEntry<GearboxBlockEntity> CONFIGURABLE_GEARBOX = REGISTRATE
             .blockEntity("configurable_gearbox", GearboxBlockEntity::new)
             .visual(() -> ConfigurableGearboxVisual::new, false)
-            .validBlocks(ModBlocks.ANDESITE_CONFIGURABLE_GEARBOX,ModBlocks.BRASS_CONFIGURABLE_GEARBOX,ModBlocks.COPPER_CONFIGURABLE_GEARBOX,ModBlocks.RAILWAY_CONFIGURABLE_GEARBOX,ModBlocks.CREATIVE_CONFIGURABLE_GEARBOX,ModBlocks.INDUSTRIAL_IRON_CONFIGURABLE_GEARBOX)
+            .validBlocks(ModBlocks.ANDESITE_CONFIGURABLE_GEARBOX,ModBlocks.BRASS_CONFIGURABLE_GEARBOX,ModBlocks.COPPER_CONFIGURABLE_GEARBOX,ModBlocks.RAILWAY_CONFIGURABLE_GEARBOX,ModBlocks.CREATIVE_CONFIGURABLE_GEARBOX,ModBlocks.INDUSTRIAL_IRON_CONFIGURABLE_GEARBOX,ModBlocks.WEATHERED_IRON_CONFIGURABLE_GEARBOX)
             .renderer(() -> ConfigurableGearboxRenderer::new)
             .register();
 
@@ -137,7 +137,7 @@ public class ModBlockEntities {
     public static final BlockEntityEntry<ChainGearshiftBlockEntity> CUSTOM_CHAIN_GEARSHIFT = REGISTRATE
             .blockEntity("custom_chain_gearshift", ChainGearshiftBlockEntity::new)
             .visual(() -> ShaftVisual::new, false)
-            .validBlocks(ModBlocks.BRASS_CHAIN_GEARSHIFT,ModBlocks.COPPER_CHAIN_GEARSHIFT,ModBlocks.RAILWAY_CHAIN_GEARSHIFT,ModBlocks.INDUSTRIAL_IRON_CHAIN_GEARSHIFT,ModBlocks.CREATIVE_CHAIN_GEARSHIFT)
+            .validBlocks(ModBlocks.BRASS_CHAIN_GEARSHIFT,ModBlocks.COPPER_CHAIN_GEARSHIFT,ModBlocks.RAILWAY_CHAIN_GEARSHIFT,ModBlocks.WEATHERED_IRON_CHAIN_GEARSHIFT,ModBlocks.INDUSTRIAL_IRON_CHAIN_GEARSHIFT,ModBlocks.CREATIVE_CHAIN_GEARSHIFT)
             .renderer(() -> ShaftRenderer::new)
             .register();
     public static final BlockEntityEntry<BracketedKineticBlockEntity> WOODEN_COGWHEELS = REGISTRATE

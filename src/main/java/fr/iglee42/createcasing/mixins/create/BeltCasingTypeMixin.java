@@ -31,6 +31,7 @@ public class BeltCasingTypeMixin {
         ModBlocks.COPPER_BELT_CASING = encased$addVariant("COPPER");
         ModBlocks.RAILWAY_BELT_CASING = encased$addVariant("RAILWAY");
         ModBlocks.INDUSTRIAL_IRON_BELT_CASING = encased$addVariant("INDUSTRIAL_IRON");
+        ModBlocks.WEATHERED_IRON_BELT_CASING = encased$addVariant("WEATHERED_IRON");
         ModBlocks.CREATIVE_BELT_CASING = encased$addVariant("CREATIVE");
     }
 

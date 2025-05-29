@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/mechanical_mixer/item",
+  "textures": {
+    "11": "createcasing:block/press_tops/weathered_iron",
+    "2": "create:block/weathered_iron_block",
+    "4": "createcasing:block/mixer_sides/weathered_iron",
+    "6": "createcasing:block/mixer_heads/weathered_iron"
+  }
+}

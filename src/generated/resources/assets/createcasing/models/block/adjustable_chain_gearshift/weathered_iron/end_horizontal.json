@@ -1,0 +1,6 @@
+{
+  "parent": "createcasing:block/encased_chain_drive/weathered_iron/end_horizontal",
+  "textures": {
+    "side": "createcasing:block/adjustable_chain_gearshifts/weathered_iron"
+  }
+}

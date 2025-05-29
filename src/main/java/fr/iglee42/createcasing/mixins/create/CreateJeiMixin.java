@@ -29,6 +29,7 @@ public class CreateJeiMixin {
                 registration.addRecipeCatalyst(ModBlocks.COPPER_MIXER.asStack(), c.getRecipeType());
                 registration.addRecipeCatalyst(ModBlocks.RAILWAY_MIXER.asStack(), c.getRecipeType());
                 registration.addRecipeCatalyst(ModBlocks.INDUSTRIAL_IRON_MIXER.asStack(), c.getRecipeType());
+                registration.addRecipeCatalyst(ModBlocks.WEATHERED_IRON_MIXER.asStack(), c.getRecipeType());
                 registration.addRecipeCatalyst(ModBlocks.CREATIVE_MIXER.asStack(), c.getRecipeType());
             }
             if (c instanceof PressingCategory || c.getRecipeType().getUid().getPath().equals("packing") || c.getRecipeType().getUid().getPath().equals("automatic_packing")) {
@@ -36,6 +37,7 @@ public class CreateJeiMixin {
                 registration.addRecipeCatalyst(ModBlocks.COPPER_PRESS.asStack(), c.getRecipeType());
                 registration.addRecipeCatalyst(ModBlocks.RAILWAY_PRESS.asStack(), c.getRecipeType());
                 registration.addRecipeCatalyst(ModBlocks.INDUSTRIAL_IRON_PRESS.asStack(), c.getRecipeType());
+                registration.addRecipeCatalyst(ModBlocks.WEATHERED_IRON_PRESS.asStack(), c.getRecipeType());
                 registration.addRecipeCatalyst(ModBlocks.CREATIVE_PRESS.asStack(), c.getRecipeType());
             }
         }

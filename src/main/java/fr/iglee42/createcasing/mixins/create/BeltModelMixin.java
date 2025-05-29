@@ -44,6 +44,9 @@ public class BeltModelMixin {
         if (type.equals(ModBlocks.INDUSTRIAL_IRON_BELT_CASING)) {
             cir.setReturnValue(ModSprites.INDUSTRIAL_IRON.getOriginal());
         }
+        if (type.equals(ModBlocks.WEATHERED_IRON_BELT_CASING)) {
+            cir.setReturnValue(ModSprites.WEATHERED_IRON.getOriginal());
+        }
         if (type.equals(ModBlocks.CREATIVE_BELT_CASING)) {
             cir.setReturnValue(AllSpriteShifts.CREATIVE_CASING.getOriginal());
         }
@@ -67,6 +70,10 @@ public class BeltModelMixin {
             quads.removeAll(coverModel.getQuads(state, side, rand, extraData, renderType));
             quads.addAll((alongX ? ModPartialModels.CREATIVE_BELT_COVER_X : ModPartialModels.CREATIVE_BELT_COVER_Z).get().getQuads(state, side, rand, extraData, renderType));
         }
+        if (type.equals(ModBlocks.WEATHERED_IRON_BELT_CASING)){
+            quads.removeAll(coverModel.getQuads(state, side, rand, extraData, renderType));
+            quads.addAll((alongX ? ModPartialModels.WEATHERED_IRON_BELT_COVER_X : ModPartialModels.WEATHERED_IRON_BELT_COVER_Z).get().getQuads(state, side, rand, extraData, renderType));
+        }
     }
 
     @Inject(method = "getQuads",at = @At(value = "INVOKE",target = "Ljava/util/List;size()I",ordinal = 0,shift = At.Shift.BEFORE), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
@@ -81,6 +88,10 @@ public class BeltModelMixin {
         }
         if (type.equals(ModBlocks.INDUSTRIAL_IRON_BELT_CASING)){
             cir.setReturnValue(getQuadsForSprite(quads, ModSprites.INDUSTRIAL_IRON_BELT_CASING));
+            return;
+        }
+        if (type.equals(ModBlocks.WEATHERED_IRON_BELT_CASING)){
+            cir.setReturnValue(getQuadsForSprite(quads, ModSprites.WEATHERED_IRON_BELT_CASING));
             return;
         }
         if (type.equals(ModBlocks.CREATIVE_BELT_CASING)){

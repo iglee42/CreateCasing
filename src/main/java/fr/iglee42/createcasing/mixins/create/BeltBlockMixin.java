@@ -45,6 +45,10 @@ public abstract class BeltBlockMixin {
             cir.setReturnValue(ItemInteractionResult.SUCCESS);
             return;
         }
+        if (cmr$customCasingUse(AllBlocks.WEATHERED_IRON_BLOCK,ModBlocks.WEATHERED_IRON_BELT_CASING,stack,level,pos,player)) {
+            cir.setReturnValue(ItemInteractionResult.SUCCESS);
+            return;
+        }
         if (cmr$customCasingUse(ModBlocks.CREATIVE_CASING,ModBlocks.CREATIVE_BELT_CASING,stack,level,pos,player)) {
             cir.setReturnValue(ItemInteractionResult.SUCCESS);
             return;
