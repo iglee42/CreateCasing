@@ -14,7 +14,8 @@
     "create.BeltModelMixin",
     "create.CreateJeiMixin",
     "create.RotationPropagatorMixin",
-    "minecraft.BlockEntityTypeMixin"
+    "minecraft.BlockEntityTypeMixin",
+    "minecraft.IItemExtensionMixin"
   ],
   "client": [
   ],
