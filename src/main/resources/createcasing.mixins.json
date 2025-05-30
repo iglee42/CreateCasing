@@ -12,6 +12,7 @@
     "create.BeltBlockMixin",
     "create.BeltCasingTypeMixin",
     "create.BeltModelMixin",
+    "create.ChainConveyorConnectionHandlerMixin",
     "create.CreateJeiMixin",
     "create.RotationPropagatorMixin",
     "minecraft.BlockEntityTypeMixin",

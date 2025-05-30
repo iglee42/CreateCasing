@@ -86,6 +86,32 @@ public class EncasedBlockStateGens {
         };
     }
 
+    public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> chainConveyor(String casing) {
+        return (ctx,prov)->{
+            prov.simpleBlock(ctx.get(),createConveyorModel(prov,casing,false));
+            texturesChainConveyor(Objects.requireNonNull(createModelInBlock(prov, "chain_conveyor/" + casing + "/wheel")).parent(new ModelFile.UncheckedModelFile("create:block/chain_conveyor/wheel")),casing);
+            texturesChainConveyor(Objects.requireNonNull(createModelInBlock(prov, "chain_conveyor/" + casing + "/guard")).parent(new ModelFile.UncheckedModelFile("create:block/chain_conveyor/guard")),casing);
+        };
+    }
+
+    public static ModelFile createConveyorModel(RegistrateProvider prov, String casing, boolean item) {
+        if (!item){
+            return Objects.requireNonNull(createModelInBlock(prov, "chain_conveyor/" + casing + "/block"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/chain_conveyor/block"))
+                    .texture("0",getConveyorCasingTexture(casing))
+                    .texture("particle",getCasingTexture(casing));
+        } else {
+            return texturesChainConveyor(Objects.requireNonNull(createModelInBlock(prov, "chain_conveyor/" + casing + "/item"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/chain_conveyor/item")),casing);
+        }
+    }
+
+    private static ModelBuilder<? extends ModelBuilder<?>> texturesChainConveyor(ModelBuilder<? extends ModelBuilder<?>> builder,String casing){
+        return builder
+                .texture("conveyor_casing",getConveyorCasingTexture(casing))
+                .texture("conveyor_port", getConveyorPortTexture(casing));
+    }
+
     public static ModelFile createAdjustableChainGearshiftModel(RegistrateProvider provider, String casing, boolean item, String suffix, boolean powered){
         ModelFile file = createChainDriveModel(provider,casing,item,suffix);
         if (!isValidProvider(provider)) return file;
@@ -377,6 +403,7 @@ public class EncasedBlockStateGens {
 
 
     public static String getCasingTexture(String casing){
+        if (casing.equals("normal")) return Create.ID+":block/andesite_casing";
         String modid = getModForCasing(casing);
         if (casing.equals("industrial_iron") || casing.equals("weathered_iron")) return modid + ":block/"+casing+"_block";
         return modid + ":block/"+casing+"_casing";
@@ -388,7 +415,7 @@ public class EncasedBlockStateGens {
     }
 
     public static String getGearboxTexture(String casing){
-        if (casing.equals("andesite")) return Create.ID+":block/gearbox";
+        if (casing.equals("andesite") || casing.equals("normal")) return Create.ID+":block/gearbox";
         if (casing.equals("brass")) return Create.ID + ":block/"+casing+"_gearbox";
         return CreateCasing.MODID + ":block/gearboxes/"+casing;
     }
@@ -447,6 +474,15 @@ public class EncasedBlockStateGens {
     public static String getAdjustableChainGearshiftTexture(String casing,boolean powered) {
         if (casing.equals("normal")) return Create.ID + ":block/adjustable_chain_gearshift"+(powered ? "_powered":"");
         return CreateCasing.MODID + ":block/adjustable_chain_gearshifts"+(powered ? "_powered":"")+"/"+casing;
+    }
+    public static String getConveyorPortTexture(String casing) {
+        if (casing.equals("normal")) return Create.ID + ":block/conveyor_port";
+        return CreateCasing.MODID + ":block/conveyor_ports/"+casing;
+    }
+
+    public static String getConveyorCasingTexture(String casing) {
+        if (casing.equals("normal")) return Create.ID + ":block/conveyor_casing";
+        return CreateCasing.MODID + ":block/conveyor_casings/"+casing;
     }
 
     private static boolean isWoodenShaft(String shaft){

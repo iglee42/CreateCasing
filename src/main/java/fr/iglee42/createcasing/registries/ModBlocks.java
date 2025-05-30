@@ -6,6 +6,7 @@ import com.simibubi.create.content.decoration.encasing.*;
 import com.simibubi.create.content.fluids.PipeAttachmentModel;
 import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.kinetics.belt.BeltBlockEntity;
+import com.simibubi.create.content.kinetics.chainConveyor.ChainConveyorBlock;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockModel;
 import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
@@ -17,6 +18,7 @@ import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.data.*;
 import com.simibubi.create.foundation.item.ItemDescription;
+import com.simibubi.create.infrastructure.config.CStress;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
@@ -25,6 +27,7 @@ import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.blocks.ConfigurableGearboxBlock;
 import fr.iglee42.createcasing.blocks.CreativeCogwheelBlock;
 import fr.iglee42.createcasing.blocks.customs.*;
+import fr.iglee42.createcasing.blocks.publics.PublicChainConveyorBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedCogwheelBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedPipeBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedShaftBlock;
@@ -262,7 +265,12 @@ public class ModBlocks {
     public static final BlockEntry<ConfigurableGearboxBlock> INDUSTRIAL_IRON_CONFIGURABLE_GEARBOX = createConfigurableGearbox("industrial_iron",null);
     public static final BlockEntry<ConfigurableGearboxBlock> WEATHERED_IRON_CONFIGURABLE_GEARBOX = createConfigurableGearbox("weathered_iron",null);
 
-
+    public static final BlockEntry<PublicChainConveyorBlock> BRASS_CHAIN_CONVEYOR = createChainConveyor("brass");
+    public static final BlockEntry<PublicChainConveyorBlock> COPPER_CHAIN_CONVEYOR = createChainConveyor("copper");
+    public static final BlockEntry<PublicChainConveyorBlock> RAILWAY_CHAIN_CONVEYOR = createChainConveyor("railway");
+    public static final BlockEntry<PublicChainConveyorBlock> CREATIVE_CHAIN_CONVEYOR = createChainConveyor("creative");
+    public static final BlockEntry<PublicChainConveyorBlock> INDUSTRIAL_IRON_CHAIN_CONVEYOR = createChainConveyor("industrial_iron");
+    public static final BlockEntry<PublicChainConveyorBlock> WEATHERED_IRON_CHAIN_CONVEYOR = createChainConveyor("weathered_iron");
     //METHODS
 
     public static BlockEntry<CasingBlock> createCasing(String name, CTSpriteShiftEntry connectedTexturesSprite){
@@ -491,6 +499,20 @@ public class ModBlocks {
         return entry.register();
     }
 
+    public static BlockEntry<PublicChainConveyorBlock> createChainConveyor(String name){
+        return REGISTRATE.block(name+"_chain_conveyor", PublicChainConveyorBlock::new)
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.noOcclusion()
+                .mapColor(MapColor.PODZOL))
+                .transform(axeOrPickaxe())
+                .transform(CCStress.setImpact(1))
+                .blockstate(chainConveyor(name))
+                .item()
+                .model((c,p)->p.getBuilder(c.getName()).parent(createConveyorModel(p,name,true)))
+                .build()
+                .register();
+    }
+
     private static <T extends Block> BlockBuilder<T,CreateRegistrate> connectedTexture( BlockBuilder<T, CreateRegistrate> entry,CTSpriteShiftEntry sprite,BiConsumer<T, CasingConnectivity> consumer){
         if (sprite != null){
             return entry.onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(sprite)))
@@ -590,5 +612,15 @@ public class ModBlocks {
         action.accept(CHERRY_LARGE_COGWHEEL);
         action.accept(WARPED_LARGE_COGWHEEL);
         action.accept(CRIMSON_LARGE_COGWHEEL);
+    }
+
+    public static boolean isChainConveyor(BlockState state){
+        return AllBlocks.CHAIN_CONVEYOR.has(state)
+                || BRASS_CHAIN_CONVEYOR.has(state)
+                || COPPER_CHAIN_CONVEYOR.has(state)
+                || RAILWAY_CHAIN_CONVEYOR.has(state)
+                || CREATIVE_CHAIN_CONVEYOR.has(state)
+                || INDUSTRIAL_IRON_CHAIN_CONVEYOR.has(state)
+                || WEATHERED_IRON_CHAIN_CONVEYOR.has(state);
     }
 }

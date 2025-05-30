@@ -6,6 +6,9 @@ import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.base.ShaftRenderer;
 import com.simibubi.create.content.kinetics.base.ShaftVisual;
 import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
+import com.simibubi.create.content.kinetics.chainConveyor.ChainConveyorBlockEntity;
+import com.simibubi.create.content.kinetics.chainConveyor.ChainConveyorRenderer;
+import com.simibubi.create.content.kinetics.chainConveyor.ChainConveyorVisual;
 import com.simibubi.create.content.kinetics.chainDrive.ChainGearshiftBlockEntity;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlockEntity;
 import com.simibubi.create.content.kinetics.gearbox.GearboxRenderer;
@@ -159,6 +162,13 @@ public class ModBlockEntities {
             .visual(() -> EncasedCustomCogVisual::large, false)
             .validBlocks(AllBlocks.ANDESITE_ENCASED_LARGE_COGWHEEL, AllBlocks.BRASS_ENCASED_LARGE_COGWHEEL)
             .renderer(() -> EncasedCustomCogRenderer::large)
+            .register();
+
+    public static final BlockEntityEntry<ChainConveyorBlockEntity> CHAIN_CONVEYOR = REGISTRATE
+            .blockEntity("custom_chain_conveyor", ChainConveyorBlockEntity::new)
+            .visual(() -> CustomChainConveyorVisual::new)
+            .validBlocks(ModBlocks.BRASS_CHAIN_CONVEYOR,ModBlocks.COPPER_CHAIN_CONVEYOR,ModBlocks.RAILWAY_CHAIN_CONVEYOR,ModBlocks.CREATIVE_CHAIN_CONVEYOR,ModBlocks.INDUSTRIAL_IRON_CHAIN_CONVEYOR,ModBlocks.WEATHERED_IRON_CHAIN_CONVEYOR)
+            .renderer(() -> CustomChainConveyorRenderer::new)
             .register();
 
 
