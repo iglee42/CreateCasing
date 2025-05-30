@@ -9,10 +9,13 @@ import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.level.block.Block;
 
+import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
+import java.util.stream.Collectors;
 
 public class CreateCasingCommand {
 
@@ -48,7 +51,13 @@ public class CreateCasingCommand {
         if (!source.getSource().isPlayer()) return 0;
         AtomicInteger x = new AtomicInteger();
         AtomicInteger y = new AtomicInteger();
-        BuiltInRegistries.BLOCK.keySet().stream().filter(k->k.getNamespace().equals(CreateCasing.MODID) && k.getPath().contains(source.getArgument("filter",String.class))).forEach(k->{
+        String filter = source.getArgument("filter",String.class);
+        List<ResourceLocation> blocks =  BuiltInRegistries.BLOCK.keySet().stream().filter(k->k.getNamespace().equals(CreateCasing.MODID) && k.getPath().contains(source.getArgument("filter",String.class))).toList();
+        if (filter.startsWith("/") && filter.endsWith("/")){
+            String regex = filter.substring(1,filter.length() - 1);
+            blocks = BuiltInRegistries.BLOCK.keySet().stream().filter(k->k.getNamespace().equals(CreateCasing.MODID) && k.getPath().matches(regex)).toList();
+        }
+        blocks.forEach(k->{
             Block block = BuiltInRegistries.BLOCK.get(k);
             if (block != null){
                 BlockPos pos = source.getSource().getPlayer().blockPosition().offset(x.get(), y.get(),0);

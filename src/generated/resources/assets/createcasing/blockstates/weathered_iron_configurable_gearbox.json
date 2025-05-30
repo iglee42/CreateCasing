@@ -1,0 +1,62 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/weathered_iron/block"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/weathered_iron/face",
+        "x": 90
+      },
+      "when": {
+        "down": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/weathered_iron/face",
+        "x": -90
+      },
+      "when": {
+        "up": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/weathered_iron/face"
+      },
+      "when": {
+        "north": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/weathered_iron/face",
+        "y": 180
+      },
+      "when": {
+        "south": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/weathered_iron/face",
+        "y": 270
+      },
+      "when": {
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/weathered_iron/face",
+        "y": 90
+      },
+      "when": {
+        "east": "false"
+      }
+    }
+  ]
+}

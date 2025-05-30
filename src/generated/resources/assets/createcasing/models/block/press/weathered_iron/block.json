@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/mechanical_press/block",
+  "textures": {
+    "4": "createcasing:block/press_sides/weathered_iron",
+    "gearbox": "createcasing:block/gearboxes/weathered_iron",
+    "gearbox_top": "create:block/weathered_iron_block",
+    "mechanical_press_bottom": "createcasing:block/press_bottoms/weathered_iron",
+    "mechanical_press_top": "createcasing:block/press_tops/weathered_iron"
+  }
+}

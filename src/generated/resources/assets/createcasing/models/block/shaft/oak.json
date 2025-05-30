@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/shaft",
+  "textures": {
+    "0": "minecraft:block/stripped_oak_log",
+    "1": "minecraft:block/stripped_oak_log_top"
+  }
+}

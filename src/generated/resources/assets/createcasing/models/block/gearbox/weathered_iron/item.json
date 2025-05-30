@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/gearbox/item",
+  "textures": {
+    "0": "create:block/weathered_iron_block",
+    "1": "createcasing:block/gearboxes/weathered_iron"
+  }
+}

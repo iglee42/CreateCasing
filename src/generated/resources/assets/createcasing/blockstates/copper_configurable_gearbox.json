@@ -1,0 +1,62 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/copper/block"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/copper/face",
+        "x": 90
+      },
+      "when": {
+        "down": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/copper/face",
+        "x": -90
+      },
+      "when": {
+        "up": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/copper/face"
+      },
+      "when": {
+        "north": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/copper/face",
+        "y": 180
+      },
+      "when": {
+        "south": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/copper/face",
+        "y": 270
+      },
+      "when": {
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/copper/face",
+        "y": 90
+      },
+      "when": {
+        "east": "false"
+      }
+    }
+  ]
+}

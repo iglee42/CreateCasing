@@ -1,0 +1,6 @@
+{
+  "parent": "create:block/cogwheel",
+  "textures": {
+    "1_2": "createcasing:block/cogwheels/oak"
+  }
+}

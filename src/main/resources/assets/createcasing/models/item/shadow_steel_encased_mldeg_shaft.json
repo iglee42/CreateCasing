@@ -1,9 +1,0 @@
-{
-    "parent": "create:block/encased_shaft/item",
-    "textures": {
-        "1_0": "createcasing:block/shafts/mldeg",
-        "1_1": "createcasing:block/shafts/mldeg",
-        "casing": "create:block/shadow_steel_casing",
-        "opening": "createcasing:block/gearboxes/shadow"
-    }
-}

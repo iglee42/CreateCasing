@@ -1,0 +1,6 @@
+{
+  "parent": "createcasing:block/encased_cogwheel/andesite/item",
+  "textures": {
+    "1_2": "createcasing:block/cogwheels/mangrove"
+  }
+}

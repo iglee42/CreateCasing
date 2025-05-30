@@ -62,15 +62,7 @@ public class ConfigurableGearboxBlock extends KineticBlock implements IBE<Gearbo
     public InteractionResult onWrenched(BlockState state, UseOnContext context) {
         Direction face = context.getClickedFace();
         if (!state.getValue(getPropertyByDirection(face))) return InteractionResult.PASS;
-        if (ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get()){
-            state = state.setValue(getPropertyByDirection(context.getClickedFace()),false);
-            if (ModConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get())state = state.setValue(getPropertyByDirection(context.getClickedFace().getOpposite()),false);
-            if (context.getPlayer() != null && !context.getPlayer().isCreative())
-                context.getPlayer().addItem(AllBlocks.SHAFT.asStack());
-        } else {
-            state = state.setValue(getPropertyByDirection(context.getClickedFace()),!state.getValue(getPropertyByDirection(context.getClickedFace())));
-            if (ModConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get())state = state.setValue(getPropertyByDirection(context.getClickedFace().getOpposite()),!state.getValue(getPropertyByDirection(context.getClickedFace().getOpposite())));
-        }
+
         return super.onWrenched(state, context);
     }
 
@@ -78,14 +70,26 @@ public class ConfigurableGearboxBlock extends KineticBlock implements IBE<Gearbo
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
         if (level.isClientSide) return ItemInteractionResult.sidedSuccess(true);
         Direction face = result.getDirection();
-        if (state.getValue(getPropertyByDirection(face))) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-        if (!ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get()) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-        if (!stack.is(AllBlocks.SHAFT.asItem())) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-        state = state.setValue(getPropertyByDirection(face), true);
-        if (ModConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get()) state = state.setValue(getPropertyByDirection(face.getOpposite()),true);
-        KineticBlockEntity.switchToBlockState(level, pos, state);
-        if (!player.isCreative())
-            stack.shrink(1);
+        if (player.isCrouching()) face = face.getOpposite();
+        if (!state.getValue(getPropertyByDirection(face))) {
+            boolean flag = (ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get() && stack.is(AllBlocks.SHAFT.asItem())) || (!ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get() && AllItems.WRENCH.is(stack.getItem()));
+            if (!flag) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            state = state.setValue(getPropertyByDirection(face), true);
+            if (ModConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get())
+                state = state.setValue(getPropertyByDirection(face.getOpposite()), true);
+            KineticBlockEntity.switchToBlockState(level, pos, state);
+            if (!player.isCreative())
+                stack.shrink(1);
+        } else {
+            if (!stack.is(AllItems.WRENCH)) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            state = state.setValue(getPropertyByDirection(face),false);
+            if (ModConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get())state = state.setValue(getPropertyByDirection(face.getOpposite()),false);
+            if (ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get()){
+                if (player != null && !player.isCreative())
+                    player.addItem(AllBlocks.SHAFT.asStack());
+            }
+            KineticBlockEntity.switchToBlockState(level, pos, state);
+        }
         return ItemInteractionResult.SUCCESS;
     }
 

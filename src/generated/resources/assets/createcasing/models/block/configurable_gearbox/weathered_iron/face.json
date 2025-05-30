@@ -1,0 +1,6 @@
+{
+  "parent": "createcasing:block/templates/configurable_gearbox/face",
+  "textures": {
+    "0": "create:block/weathered_iron_block"
+  }
+}

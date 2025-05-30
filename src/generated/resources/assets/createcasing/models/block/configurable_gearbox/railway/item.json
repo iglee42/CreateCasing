@@ -1,0 +1,7 @@
+{
+  "parent": "createcasing:block/templates/configurable_gearbox/item",
+  "textures": {
+    "0": "create:block/railway_casing",
+    "1": "createcasing:block/gearboxes/railway"
+  }
+}
