@@ -30,6 +30,8 @@ public class ModSprites {
     public static final SpriteShiftEntry INDUSTRIAL_IRON_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casings/industrial_iron");
     public static final SpriteShiftEntry WEATHERED_IRON_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casings/weathered_iron");
     public static final SpriteShiftEntry CREATIVE_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casings/creative");
+    public static final SpriteShiftEntry REFINED_RADIANCE_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casings/refined_radiance");
+    public static final SpriteShiftEntry SHADOW_STEEL_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casings/shadow_steel");
 
     public static final SpriteShiftEntry INDUSTRIAL_IRON = getFromCreate("block/industrial_iron_block");
     public static final SpriteShiftEntry WEATHERED_IRON = getFromCreate("block/weathered_iron_block");

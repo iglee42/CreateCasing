@@ -18,13 +18,15 @@ import java.util.Arrays;
 
 public enum EncasableBlocks {
 
-    ANDESITE(AllBlocks.ANDESITE_CASING,AllBlocks.GEARBOX,AllBlocks.MECHANICAL_MIXER,AllBlocks.MECHANICAL_PRESS,AllBlocks.DEPOT,AllBlocks.ENCASED_CHAIN_DRIVE,AllBlocks.ADJUSTABLE_CHAIN_GEARSHIFT,ModBlocks.ANDESITE_CONFIGURABLE_GEARBOX),
-    BRASS(AllBlocks.BRASS_CASING, ModBlocks.BRASS_GEARBOX,ModBlocks.BRASS_MIXER,ModBlocks.BRASS_PRESS,ModBlocks.BRASS_DEPOT,ModBlocks.BRASS_CHAIN_DRIVE,ModBlocks.BRASS_CHAIN_GEARSHIFT,ModBlocks.BRASS_CONFIGURABLE_GEARBOX),
-    COPPER(AllBlocks.COPPER_CASING, ModBlocks.COPPER_GEARBOX,ModBlocks.COPPER_MIXER,ModBlocks.COPPER_PRESS,ModBlocks.COPPER_DEPOT,ModBlocks.COPPER_CHAIN_DRIVE,ModBlocks.COPPER_CHAIN_GEARSHIFT,ModBlocks.COPPER_CONFIGURABLE_GEARBOX),
-    RAILWAY(AllBlocks.RAILWAY_CASING, ModBlocks.RAILWAY_GEARBOX,ModBlocks.RAILWAY_MIXER,ModBlocks.RAILWAY_PRESS,ModBlocks.RAILWAY_DEPOT,ModBlocks.RAILWAY_CHAIN_DRIVE,ModBlocks.RAILWAY_CHAIN_GEARSHIFT,ModBlocks.RAILWAY_CONFIGURABLE_GEARBOX),
-    INDUSTRIAL_IRON(AllBlocks.INDUSTRIAL_IRON_BLOCK, ModBlocks.INDUSTRIAL_IRON_GEARBOX,ModBlocks.INDUSTRIAL_IRON_MIXER,ModBlocks.INDUSTRIAL_IRON_PRESS,ModBlocks.INDUSTRIAL_IRON_DEPOT,ModBlocks.INDUSTRIAL_IRON_CHAIN_DRIVE,ModBlocks.INDUSTRIAL_IRON_CHAIN_GEARSHIFT,ModBlocks.INDUSTRIAL_IRON_CONFIGURABLE_GEARBOX),
-    WEATHERED_IRON(AllBlocks.WEATHERED_IRON_BLOCK, ModBlocks.WEATHERED_IRON_GEARBOX,ModBlocks.WEATHERED_IRON_MIXER,ModBlocks.WEATHERED_IRON_PRESS,ModBlocks.WEATHERED_IRON_DEPOT,ModBlocks.WEATHERED_IRON_CHAIN_DRIVE,ModBlocks.WEATHERED_IRON_CHAIN_GEARSHIFT,ModBlocks.WEATHERED_IRON_CONFIGURABLE_GEARBOX),
-    CREATIVE(ModBlocks.CREATIVE_CASING, ModBlocks.CREATIVE_GEARBOX,ModBlocks.CREATIVE_MIXER,ModBlocks.CREATIVE_PRESS,ModBlocks.CREATIVE_DEPOT,ModBlocks.CREATIVE_CHAIN_DRIVE,ModBlocks.CREATIVE_CHAIN_GEARSHIFT,ModBlocks.CREATIVE_CONFIGURABLE_GEARBOX),
+    ANDESITE(AllBlocks.ANDESITE_CASING,AllBlocks.GEARBOX,AllBlocks.MECHANICAL_MIXER,AllBlocks.MECHANICAL_PRESS,AllBlocks.DEPOT,AllBlocks.ENCASED_CHAIN_DRIVE,AllBlocks.ADJUSTABLE_CHAIN_GEARSHIFT,ModBlocks.ANDESITE_CONFIGURABLE_GEARBOX,AllBlocks.CHAIN_CONVEYOR),
+    BRASS(AllBlocks.BRASS_CASING, ModBlocks.BRASS_GEARBOX,ModBlocks.BRASS_MIXER,ModBlocks.BRASS_PRESS,ModBlocks.BRASS_DEPOT,ModBlocks.BRASS_CHAIN_DRIVE,ModBlocks.BRASS_CHAIN_GEARSHIFT,ModBlocks.BRASS_CONFIGURABLE_GEARBOX,ModBlocks.BRASS_CHAIN_CONVEYOR),
+    COPPER(AllBlocks.COPPER_CASING, ModBlocks.COPPER_GEARBOX,ModBlocks.COPPER_MIXER,ModBlocks.COPPER_PRESS,ModBlocks.COPPER_DEPOT,ModBlocks.COPPER_CHAIN_DRIVE,ModBlocks.COPPER_CHAIN_GEARSHIFT,ModBlocks.COPPER_CONFIGURABLE_GEARBOX,ModBlocks.COPPER_CHAIN_CONVEYOR),
+    RAILWAY(AllBlocks.RAILWAY_CASING, ModBlocks.RAILWAY_GEARBOX,ModBlocks.RAILWAY_MIXER,ModBlocks.RAILWAY_PRESS,ModBlocks.RAILWAY_DEPOT,ModBlocks.RAILWAY_CHAIN_DRIVE,ModBlocks.RAILWAY_CHAIN_GEARSHIFT,ModBlocks.RAILWAY_CONFIGURABLE_GEARBOX,ModBlocks.RAILWAY_CHAIN_CONVEYOR),
+    INDUSTRIAL_IRON(AllBlocks.INDUSTRIAL_IRON_BLOCK, ModBlocks.INDUSTRIAL_IRON_GEARBOX,ModBlocks.INDUSTRIAL_IRON_MIXER,ModBlocks.INDUSTRIAL_IRON_PRESS,ModBlocks.INDUSTRIAL_IRON_DEPOT,ModBlocks.INDUSTRIAL_IRON_CHAIN_DRIVE,ModBlocks.INDUSTRIAL_IRON_CHAIN_GEARSHIFT,ModBlocks.INDUSTRIAL_IRON_CONFIGURABLE_GEARBOX,ModBlocks.INDUSTRIAL_IRON_CHAIN_CONVEYOR),
+    WEATHERED_IRON(AllBlocks.WEATHERED_IRON_BLOCK, ModBlocks.WEATHERED_IRON_GEARBOX,ModBlocks.WEATHERED_IRON_MIXER,ModBlocks.WEATHERED_IRON_PRESS,ModBlocks.WEATHERED_IRON_DEPOT,ModBlocks.WEATHERED_IRON_CHAIN_DRIVE,ModBlocks.WEATHERED_IRON_CHAIN_GEARSHIFT,ModBlocks.WEATHERED_IRON_CONFIGURABLE_GEARBOX,ModBlocks.WEATHERED_IRON_CHAIN_CONVEYOR),
+    REFINED_RADIANCE(AllBlocks.REFINED_RADIANCE_CASING, ModBlocks.REFINED_RADIANCE_GEARBOX,ModBlocks.REFINED_RADIANCE_MIXER,ModBlocks.REFINED_RADIANCE_PRESS,ModBlocks.REFINED_RADIANCE_DEPOT,ModBlocks.REFINED_RADIANCE_CHAIN_DRIVE,ModBlocks.REFINED_RADIANCE_CHAIN_GEARSHIFT,ModBlocks.REFINED_RADIANCE_CONFIGURABLE_GEARBOX,ModBlocks.REFINED_RADIANCE_CHAIN_CONVEYOR),
+    SHADOW_STEEL(AllBlocks.SHADOW_STEEL_CASING, ModBlocks.SHADOW_STEEL_GEARBOX,ModBlocks.SHADOW_STEEL_MIXER,ModBlocks.SHADOW_STEEL_PRESS,ModBlocks.SHADOW_STEEL_DEPOT,ModBlocks.SHADOW_STEEL_CHAIN_DRIVE,ModBlocks.SHADOW_STEEL_CHAIN_GEARSHIFT,ModBlocks.SHADOW_STEEL_CONFIGURABLE_GEARBOX,ModBlocks.SHADOW_STEEL_CHAIN_CONVEYOR),
+    CREATIVE(ModBlocks.CREATIVE_CASING, ModBlocks.CREATIVE_GEARBOX,ModBlocks.CREATIVE_MIXER,ModBlocks.CREATIVE_PRESS,ModBlocks.CREATIVE_DEPOT,ModBlocks.CREATIVE_CHAIN_DRIVE,ModBlocks.CREATIVE_CHAIN_GEARSHIFT,ModBlocks.CREATIVE_CONFIGURABLE_GEARBOX,ModBlocks.CREATIVE_CHAIN_CONVEYOR),
 ;
 
     private final BlockEntry<? extends Block> casing;
@@ -35,8 +37,9 @@ public enum EncasableBlocks {
     private final BlockEntry<? extends Block> chainDrive;
     private final BlockEntry<? extends Block> adjustableChainDrive;
     private final BlockEntry<? extends Block> configurableGearbox;
+    private final BlockEntry<? extends Block> chainConveyor;
 
-    EncasableBlocks(BlockEntry<? extends Block> casing, BlockEntry<? extends Block> gearbox, BlockEntry<? extends Block> mixer, BlockEntry<? extends Block> press, BlockEntry<? extends Block> depot, BlockEntry<? extends Block> chainDrive, BlockEntry<? extends Block> adjustableChainDrive, BlockEntry<? extends Block> configurableGearbox) {
+    EncasableBlocks(BlockEntry<? extends Block> casing, BlockEntry<? extends Block> gearbox, BlockEntry<? extends Block> mixer, BlockEntry<? extends Block> press, BlockEntry<? extends Block> depot, BlockEntry<? extends Block> chainDrive, BlockEntry<? extends Block> adjustableChainDrive, BlockEntry<? extends Block> configurableGearbox, BlockEntry<? extends Block> chainConveyor) {
         this.casing = casing;
         this.gearbox = gearbox;
         this.mixer = mixer;
@@ -45,6 +48,7 @@ public enum EncasableBlocks {
         this.chainDrive = chainDrive;
         this.adjustableChainDrive = adjustableChainDrive;
         this.configurableGearbox = configurableGearbox;
+        this.chainConveyor = chainConveyor;
     }
 
     public static EncasableBlocks getBlockByCasing(BlockState casing){
@@ -95,6 +99,10 @@ public enum EncasableBlocks {
         return configurableGearbox;
     }
 
+    public BlockEntry<? extends Block> getChainConveyor() {
+        return chainConveyor;
+    }
+
     public static boolean isGearbox(BlockState state){
         return Arrays.stream(values()).anyMatch(b->b.getGearbox().has(state));
     }
@@ -121,9 +129,12 @@ public enum EncasableBlocks {
     public static boolean isConfigurableGearbox(BlockState state){
         return Arrays.stream(values()).anyMatch(b->b.getConfigurableGearbox().has(state));
     }
+    public static boolean isChainConveyor(BlockState state){
+        return Arrays.stream(values()).anyMatch(b->b.getChainConveyor().has(state));
+    }
 
     public boolean isInSet(BlockState state){
-        return casing.has(state) || gearbox.has(state) || mixer.has(state) || depot.has(state) || chainDrive.has(state) || adjustableChainDrive.has(state) || configurableGearbox.has(state);
+        return casing.has(state) || gearbox.has(state) || mixer.has(state) || depot.has(state) || chainDrive.has(state) || adjustableChainDrive.has(state) || configurableGearbox.has(state) || chainConveyor.has(state);
     }
 
 

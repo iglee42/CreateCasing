@@ -67,6 +67,16 @@ public class CustomMixerVisual extends SingleAxisRotatingVisual<MechanicalMixerB
 						.instancer(AllInstanceTypes.ROTATING,Models.partial(ModPartialModels.CREATIVE_MIXER_HEAD))
 						.createInstance();
 			}
+			case "refined_radiance" ->{
+				mixerHead = instancerProvider()
+						.instancer(AllInstanceTypes.ROTATING,Models.partial(ModPartialModels.REFINED_RADIANCE_MIXER_HEAD))
+						.createInstance();
+			}
+			case "shadow_steel" ->{
+				mixerHead = instancerProvider()
+						.instancer(AllInstanceTypes.ROTATING,Models.partial(ModPartialModels.SHADOW_STEEL_MIXER_HEAD))
+						.createInstance();
+			}
 			default -> {
 				mixerHead = instancerProvider()
 						.instancer(AllInstanceTypes.ROTATING,Models.partial(AllPartialModels.MECHANICAL_MIXER_HEAD))

@@ -57,6 +57,9 @@ public class ItemChangeBlockManager {
                 }
                 changeBlock(event, state, level, newState);
             }
+            if (EncasableBlocks.isChainConveyor(state)) {
+                changeBlock(event, state, level, casingSet.getChainConveyor().getDefaultState());
+            }
         }
         if (WoodBlocks.hasBlocksForItem(event.getItemStack().getItem()) && ModConfigs.common().kinetics.shaftCogwheelsSwappable.get()){
             WoodBlocks woodSet = WoodBlocks.getBlockByItem(event.getItemStack().getItem());

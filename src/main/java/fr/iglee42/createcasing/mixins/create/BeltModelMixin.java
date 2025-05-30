@@ -50,6 +50,12 @@ public class BeltModelMixin {
         if (type.equals(ModBlocks.CREATIVE_BELT_CASING)) {
             cir.setReturnValue(AllSpriteShifts.CREATIVE_CASING.getOriginal());
         }
+        if (type.equals(ModBlocks.SHADOW_STEEL_BELT_CASING)) {
+            cir.setReturnValue(AllSpriteShifts.SHADOW_STEEL_CASING.getOriginal());
+        }
+        if (type.equals(ModBlocks.REFINED_RADIANCE_BELT_CASING)) {
+            cir.setReturnValue(AllSpriteShifts.REFINED_RADIANCE_CASING.getOriginal());
+        }
     }
 
     @Inject(method = "getQuads",at = @At(value = "INVOKE", target = "Ljava/util/List;addAll(Ljava/util/Collection;)Z",ordinal = 0,shift = At.Shift.AFTER),locals = LocalCapture.CAPTURE_FAILSOFT)
@@ -74,6 +80,14 @@ public class BeltModelMixin {
             quads.removeAll(coverModel.getQuads(state, side, rand, extraData, renderType));
             quads.addAll((alongX ? ModPartialModels.WEATHERED_IRON_BELT_COVER_X : ModPartialModels.WEATHERED_IRON_BELT_COVER_Z).get().getQuads(state, side, rand, extraData, renderType));
         }
+        if (type.equals(ModBlocks.SHADOW_STEEL_BELT_CASING)){
+            quads.removeAll(coverModel.getQuads(state, side, rand, extraData, renderType));
+            quads.addAll((alongX ? ModPartialModels.SHADOW_STEEL_BELT_COVER_X : ModPartialModels.SHADOW_STEEL_BELT_COVER_Z).get().getQuads(state, side, rand, extraData, renderType));
+        }
+        if (type.equals(ModBlocks.REFINED_RADIANCE_BELT_CASING)){
+            quads.removeAll(coverModel.getQuads(state, side, rand, extraData, renderType));
+            quads.addAll((alongX ? ModPartialModels.REFINED_RADIANCE_BELT_COVER_X : ModPartialModels.REFINED_RADIANCE_BELT_COVER_Z).get().getQuads(state, side, rand, extraData, renderType));
+        }
     }
 
     @Inject(method = "getQuads",at = @At(value = "INVOKE",target = "Ljava/util/List;size()I",ordinal = 0,shift = At.Shift.BEFORE), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
@@ -96,6 +110,14 @@ public class BeltModelMixin {
         }
         if (type.equals(ModBlocks.CREATIVE_BELT_CASING)){
             cir.setReturnValue(getQuadsForSprite(quads, ModSprites.CREATIVE_BELT_CASING));
+            return;
+        }
+        if (type.equals(ModBlocks.SHADOW_STEEL_BELT_CASING)){
+            cir.setReturnValue(getQuadsForSprite(quads, ModSprites.SHADOW_STEEL_BELT_CASING));
+            return;
+        }
+        if (type.equals(ModBlocks.REFINED_RADIANCE_BELT_CASING)){
+            cir.setReturnValue(getQuadsForSprite(quads, ModSprites.REFINED_RADIANCE_BELT_CASING));
             return;
         }
     }

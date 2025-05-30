@@ -32,6 +32,8 @@ public class ModItems {
     public static final ItemEntry<CustomVerticalGearboxItem> VERTICAL_CREATIVE_GEARBOX =createVerticalGearboxItem("creative",p->new CustomVerticalGearboxItem(p,ModBlocks.CREATIVE_GEARBOX.get()));
     public static final ItemEntry<CustomVerticalGearboxItem> VERTICAL_INDUSTRIAL_IRON_GEARBOX =createVerticalGearboxItem("industrial_iron",p->new CustomVerticalGearboxItem(p,ModBlocks.INDUSTRIAL_IRON_GEARBOX.get()));
     public static final ItemEntry<CustomVerticalGearboxItem> VERTICAL_WEATHERED_IRON_GEARBOX =createVerticalGearboxItem("weathered_iron",p->new CustomVerticalGearboxItem(p,ModBlocks.WEATHERED_IRON_GEARBOX.get()));
+    public static final ItemEntry<CustomVerticalGearboxItem> VERTICAL_REFINED_RADIANCE_GEARBOX =createVerticalGearboxItem("refined_radiance",p->new CustomVerticalGearboxItem(p,ModBlocks.REFINED_RADIANCE_GEARBOX.get()));
+    public static final ItemEntry<CustomVerticalGearboxItem> VERTICAL_SHADOW_STEEL_GEARBOX =createVerticalGearboxItem("shadow_steel",p->new CustomVerticalGearboxItem(p,ModBlocks.SHADOW_STEEL_GEARBOX.get()));
 
 
     public static ItemEntry<CustomVerticalGearboxItem> createVerticalGearboxItem(String name, NonNullFunction<Item.Properties, CustomVerticalGearboxItem> function){

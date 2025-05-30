@@ -53,6 +53,14 @@ public abstract class BeltBlockMixin {
             cir.setReturnValue(ItemInteractionResult.SUCCESS);
             return;
         }
+        if (cmr$customCasingUse(AllBlocks.SHADOW_STEEL_CASING,ModBlocks.SHADOW_STEEL_BELT_CASING,stack,level,pos,player)) {
+            cir.setReturnValue(ItemInteractionResult.SUCCESS);
+            return;
+        }
+        if (cmr$customCasingUse(AllBlocks.REFINED_RADIANCE_CASING,ModBlocks.REFINED_RADIANCE_BELT_CASING,stack,level,pos,player)) {
+            cir.setReturnValue(ItemInteractionResult.SUCCESS);
+            return;
+        }
     }
 
 

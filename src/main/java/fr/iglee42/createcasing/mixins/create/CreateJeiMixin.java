@@ -31,6 +31,8 @@ public class CreateJeiMixin {
                 registration.addRecipeCatalyst(ModBlocks.INDUSTRIAL_IRON_MIXER.asStack(), c.getRecipeType());
                 registration.addRecipeCatalyst(ModBlocks.WEATHERED_IRON_MIXER.asStack(), c.getRecipeType());
                 registration.addRecipeCatalyst(ModBlocks.CREATIVE_MIXER.asStack(), c.getRecipeType());
+                registration.addRecipeCatalyst(ModBlocks.REFINED_RADIANCE_MIXER.asStack(), c.getRecipeType());
+                registration.addRecipeCatalyst(ModBlocks.SHADOW_STEEL_MIXER.asStack(), c.getRecipeType());
             }
             if (c instanceof PressingCategory || c.getRecipeType().getUid().getPath().equals("packing") || c.getRecipeType().getUid().getPath().equals("automatic_packing")) {
                 registration.addRecipeCatalyst(ModBlocks.BRASS_PRESS.asStack(), c.getRecipeType());
@@ -39,6 +41,8 @@ public class CreateJeiMixin {
                 registration.addRecipeCatalyst(ModBlocks.INDUSTRIAL_IRON_PRESS.asStack(), c.getRecipeType());
                 registration.addRecipeCatalyst(ModBlocks.WEATHERED_IRON_PRESS.asStack(), c.getRecipeType());
                 registration.addRecipeCatalyst(ModBlocks.CREATIVE_PRESS.asStack(), c.getRecipeType());
+                registration.addRecipeCatalyst(ModBlocks.REFINED_RADIANCE_PRESS.asStack(), c.getRecipeType());
+                registration.addRecipeCatalyst(ModBlocks.SHADOW_STEEL_PRESS.asStack(), c.getRecipeType());
             }
         }
     }

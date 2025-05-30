@@ -33,6 +33,8 @@ public class BeltCasingTypeMixin {
         ModBlocks.INDUSTRIAL_IRON_BELT_CASING = encased$addVariant("INDUSTRIAL_IRON");
         ModBlocks.WEATHERED_IRON_BELT_CASING = encased$addVariant("WEATHERED_IRON");
         ModBlocks.CREATIVE_BELT_CASING = encased$addVariant("CREATIVE");
+        ModBlocks.REFINED_RADIANCE_BELT_CASING = encased$addVariant("REFINED_RADIANCE");
+        ModBlocks.SHADOW_STEEL_BELT_CASING = encased$addVariant("SHADOW_STEEL");
     }
 
     @Unique

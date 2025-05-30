@@ -21,6 +21,8 @@ public class ModPartialModels {
             INDUSTRIAL_IRON_MIXER_HEAD = block("mixer/industrial_iron/head"),
             WEATHERED_IRON_MIXER_HEAD = block("mixer/weathered_iron/head"),
             CREATIVE_MIXER_HEAD = block("mixer/creative/head"),
+            REFINED_RADIANCE_MIXER_HEAD = block("mixer/refined_radiance/head"),
+            SHADOW_STEEL_MIXER_HEAD = block("mixer/shadow_steel/head"),
 
     GLASS_SHAFT = block("shaft/glass"),
             BRASS_SHAFT = block("shaft/brass"),
@@ -31,20 +33,26 @@ public class ModPartialModels {
             INDUSTRIAL_IRON_BELT_COVER_X = block("belt_cover/industrial_iron_belt_cover_x"), INDUSTRIAL_IRON_BELT_COVER_Z = block("belt_cover/industrial_iron_belt_cover_z"),
             CREATIVE_BELT_COVER_X = block("belt_cover/creative_belt_cover_x"), CREATIVE_BELT_COVER_Z = block("belt_cover/creative_belt_cover_z"),
             WEATHERED_IRON_BELT_COVER_X = block("belt_cover/weathered_iron_belt_cover_x"), WEATHERED_IRON_BELT_COVER_Z = block("belt_cover/weathered_iron_belt_cover_z"),
+            REFINED_RADIANCE_BELT_COVER_X = block("belt_cover/refined_radiance_belt_cover_x"), REFINED_RADIANCE_BELT_COVER_Z = block("belt_cover/refined_radiance_belt_cover_z"),
+            SHADOW_STEEL_BELT_COVER_X = block("belt_cover/shadow_steel_belt_cover_x"), SHADOW_STEEL_BELT_COVER_Z = block("belt_cover/shadow_steel_belt_cover_z"),
 
-    BRASS_CONVEYOR_WHEEL = block("chain_conveyor/normal/wheel"),
+    BRASS_CONVEYOR_WHEEL = block("chain_conveyor/brass/wheel"),
     COPPER_CONVEYOR_WHEEL = block("chain_conveyor/copper/wheel"),
     RAILWAY_CONVEYOR_WHEEL = block("chain_conveyor/railway/wheel"),
     INDUSTRIAL_IRON_CONVEYOR_WHEEL = block("chain_conveyor/industrial_iron/wheel"),
     WEATHERED_IRON_CONVEYOR_WHEEL = block("chain_conveyor/weathered_iron/wheel"),
     CREATIVE_CONVEYOR_WHEEL = block("chain_conveyor/creative/wheel"),
-            BRASS_CONVEYOR_GUARD = block("chain_conveyor/normal/guard"),
+    REFINED_RADIANCE_CONVEYOR_WHEEL = block("chain_conveyor/refined_radiance/wheel"),
+    SHADOW_STEEL_CONVEYOR_WHEEL = block("chain_conveyor/shadow_steel/wheel"),
+            BRASS_CONVEYOR_GUARD = block("chain_conveyor/brass/guard"),
             COPPER_CONVEYOR_GUARD = block("chain_conveyor/copper/guard"),
             RAILWAY_CONVEYOR_GUARD = block("chain_conveyor/railway/guard"),
             INDUSTRIAL_IRON_CONVEYOR_GUARD = block("chain_conveyor/industrial_iron/guard"),
             WEATHERED_IRON_CONVEYOR_GUARD = block("chain_conveyor/weathered_iron/guard"),
-            CREATIVE_CONVEYOR_GUARD = block("chain_conveyor/creative/guard");
-    
+            CREATIVE_CONVEYOR_GUARD = block("chain_conveyor/creative/guard"),
+            REFINED_RADIANCE_CONVEYOR_GUARD = block("chain_conveyor/refined_radiance/guard"),
+            SHADOW_STEEL_CONVEYOR_GUARD = block("chain_conveyor/shadow_steel/guard");
+
     public static final Map<String, PartialModel> SHAFT_MODELS = new HashMap<>();
     public static final Map<String, PartialModel> COGS_MODELS = new HashMap<>();
     public static final Map<String, PartialModel> SHAFTLESS_COGS_MODELS = new HashMap<>();
@@ -86,6 +94,8 @@ public class ModPartialModels {
         if (ModBlocks.CREATIVE_CHAIN_CONVEYOR.has(state)) return CREATIVE_CONVEYOR_WHEEL;
         if (ModBlocks.INDUSTRIAL_IRON_CHAIN_CONVEYOR.has(state)) return INDUSTRIAL_IRON_CONVEYOR_WHEEL;
         if (ModBlocks.WEATHERED_IRON_CHAIN_CONVEYOR.has(state)) return WEATHERED_IRON_CONVEYOR_WHEEL;
+        if (ModBlocks.REFINED_RADIANCE_CHAIN_CONVEYOR.has(state)) return REFINED_RADIANCE_CONVEYOR_WHEEL;
+        if (ModBlocks.SHADOW_STEEL_CHAIN_CONVEYOR.has(state)) return SHADOW_STEEL_CONVEYOR_WHEEL;
         return AllPartialModels.CHAIN_CONVEYOR_WHEEL;
     }
 
@@ -96,6 +106,8 @@ public class ModPartialModels {
         if (ModBlocks.CREATIVE_CHAIN_CONVEYOR.has(state)) return CREATIVE_CONVEYOR_GUARD;
         if (ModBlocks.INDUSTRIAL_IRON_CHAIN_CONVEYOR.has(state)) return INDUSTRIAL_IRON_CONVEYOR_GUARD;
         if (ModBlocks.WEATHERED_IRON_CHAIN_CONVEYOR.has(state)) return WEATHERED_IRON_CONVEYOR_GUARD;
+        if (ModBlocks.REFINED_RADIANCE_CHAIN_CONVEYOR.has(state)) return REFINED_RADIANCE_CONVEYOR_GUARD;
+        if (ModBlocks.SHADOW_STEEL_CHAIN_CONVEYOR.has(state)) return SHADOW_STEEL_CONVEYOR_GUARD;
         return AllPartialModels.CHAIN_CONVEYOR_GUARD;
     }
 

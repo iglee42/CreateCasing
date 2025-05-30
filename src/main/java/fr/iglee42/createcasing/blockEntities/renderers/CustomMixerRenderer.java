@@ -69,6 +69,12 @@ public class CustomMixerRenderer extends KineticBlockEntityRenderer<MechanicalMi
 			case "creative" -> {
 				headRender = CachedBuffers.partial(ModPartialModels.CREATIVE_MIXER_HEAD, blockState);
 			}
+			case "refined_radiance" -> {
+				headRender = CachedBuffers.partial(ModPartialModels.REFINED_RADIANCE_MIXER_HEAD, blockState);
+			}
+			case "shadow_steel" -> {
+				headRender = CachedBuffers.partial(ModPartialModels.SHADOW_STEEL_MIXER_HEAD, blockState);
+			}
 			default -> {
 				headRender = CachedBuffers.partial(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState);
 			}

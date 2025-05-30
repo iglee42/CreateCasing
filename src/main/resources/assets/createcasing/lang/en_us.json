@@ -495,5 +495,11 @@
   "createcasing.ponder.shared.rpm16": "16 RPM",
   "createcasing.ponder.shared.rpm16_source": "Source: 16 RPM",
   "createcasing.ponder.shared.rpm32": "32 RPM",
-  "createcasing.ponder.shared.rpm8": "8 RPM"
+  "createcasing.ponder.shared.rpm8": "8 RPM",
+  "createcasing.ponder.chain_conveyor.header": "Relaying rotational force using Chain Conveyors",
+  "createcasing.ponder.chain_conveyor.text_1": "Right-click two conveyors with chains to connect them",
+  "createcasing.ponder.chain_conveyor.text_2": "Chain conveyors relay rotational power between each other..",
+  "createcasing.ponder.chain_conveyor.text_3": "..and connect to shafts above or below them",
+  "createcasing.ponder.chain_conveyor.text_4": "Right-click holding a wrench to start travelling on the chain",
+  "createcasing.ponder.chain_conveyor.text_5": "At a junction, face towards a chain to follow it"
 }

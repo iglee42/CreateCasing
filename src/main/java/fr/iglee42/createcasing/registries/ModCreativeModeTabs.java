@@ -103,7 +103,9 @@ public class ModCreativeModeTabs {
                     ModItems.VERTICAL_RAILWAY_GEARBOX, ModBlocks.RAILWAY_GEARBOX,
                     ModItems.VERTICAL_CREATIVE_GEARBOX, ModBlocks.CREATIVE_GEARBOX,
                     ModItems.VERTICAL_INDUSTRIAL_IRON_GEARBOX, ModBlocks.INDUSTRIAL_IRON_GEARBOX,
-                    ModItems.VERTICAL_WEATHERED_IRON_GEARBOX, ModBlocks.WEATHERED_IRON_GEARBOX
+                    ModItems.VERTICAL_WEATHERED_IRON_GEARBOX, ModBlocks.WEATHERED_IRON_GEARBOX,
+                    ModItems.VERTICAL_REFINED_RADIANCE_GEARBOX, ModBlocks.REFINED_RADIANCE_GEARBOX,
+                    ModItems.VERTICAL_SHADOW_STEEL_GEARBOX, ModBlocks.SHADOW_STEEL_GEARBOX
             );
 
             simpleBeforeOrderings.forEach((entry, otherEntry) -> {
