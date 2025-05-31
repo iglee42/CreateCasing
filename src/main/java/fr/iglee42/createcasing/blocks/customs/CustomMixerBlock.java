@@ -4,11 +4,10 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllShapes;
 import com.simibubi.create.content.kinetics.base.IRotate;
 import com.simibubi.create.content.kinetics.base.KineticBlock;
-import com.simibubi.create.content.kinetics.mixer.MechanicalMixerBlock;
 import com.simibubi.create.content.kinetics.mixer.MechanicalMixerBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.foundation.block.IBE;
-import fr.iglee42.createcasing.registries.ModBlockEntities;
+import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
@@ -73,7 +72,7 @@ public class CustomMixerBlock extends KineticBlock implements IBE<MechanicalMixe
 
     @Override
     public BlockEntityType<? extends MechanicalMixerBlockEntity> getBlockEntityType() {
-        return ModBlockEntities.MIXER.get();
+        return EncasedBlockEntities.MIXER.get();
     }
 
     @Override

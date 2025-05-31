@@ -2,15 +2,13 @@ package fr.iglee42.createcasing.api.blocks;
 
 import com.simibubi.create.content.logistics.depot.DepotBlockEntity;
 import fr.iglee42.createcasing.blocks.customs.CustomDepotBlock;
-import fr.iglee42.createcasing.registries.ModBlockEntities;
+import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
 
@@ -21,7 +19,7 @@ public class ApiDepotBlock extends CustomDepotBlock {
 
     @Override
     public BlockEntityType<? extends DepotBlockEntity> getBlockEntityType() {
-        return ModBlockEntities.API_DEPOT.get();
+        return EncasedBlockEntities.API_DEPOT.get();
     }
 
     @Override

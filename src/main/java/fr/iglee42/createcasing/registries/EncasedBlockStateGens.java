@@ -311,7 +311,7 @@ public class EncasedBlockStateGens {
 
 
     public static <T extends Block> void axisBlock(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov,ModelFile model){
-        axisBlock(ctx,prov,bs->model,true);
+        axisBlock(ctx,prov,bs->model,false);
     }
     public static <T extends Block> void axisBlock(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov, Function<BlockState,ModelFile> model, boolean uvLock){
         if (model == null) {

@@ -1,7 +1,7 @@
 package fr.iglee42.createcasing;
 
 import fr.iglee42.createcasing.ponder.CasingPonderPlugin;
-import fr.iglee42.createcasing.registries.ModPartialModels;
+import fr.iglee42.createcasing.registries.EncasedPartialModels;
 import net.createmod.ponder.foundation.PonderIndex;
 import net.minecraft.client.resources.model.ModelResourceLocation;
 import net.neoforged.bus.api.IEventBus;
@@ -22,7 +22,7 @@ public class CreateCasingClient {
     }
 
     public static void clientInit(final FMLClientSetupEvent event) {
-        ModPartialModels.init();
+        EncasedPartialModels.init();
 
         //CasingPonderTags.register();
         //CasingPonderScenes.register();
@@ -31,6 +31,6 @@ public class CreateCasingClient {
     }
 
     public static void onRegisterAdditionalModels(ModelEvent.RegisterAdditional event){
-        ModPartialModels.ALL_ENCASED_MODELS.forEach(m->event.register(ModelResourceLocation.standalone(m.modelLocation())));
+        EncasedPartialModels.ALL_ENCASED_MODELS.forEach(m->event.register(ModelResourceLocation.standalone(m.modelLocation())));
     }
 }

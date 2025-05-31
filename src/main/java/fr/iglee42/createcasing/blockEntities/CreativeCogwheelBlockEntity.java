@@ -8,8 +8,7 @@ import com.simibubi.create.foundation.blockEntity.behaviour.ValueBoxTransform;
 import com.simibubi.create.foundation.blockEntity.behaviour.scrollValue.ScrollValueBehaviour;
 import com.simibubi.create.foundation.utility.CreateLang;
 import fr.iglee42.createcasing.blocks.CreativeCogwheelBlock;
-import fr.iglee42.createcasing.registries.ModBlocks;
-import net.createmod.catnip.lang.Lang;
+import fr.iglee42.createcasing.registries.EncasedBlocks;
 import net.createmod.catnip.math.VecHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -57,7 +56,7 @@ public class CreativeCogwheelBlockEntity extends GeneratingKineticBlockEntity {
 
     @Override
     public float getGeneratedSpeed() {
-        if (!ModBlocks.CREATIVE_COGWHEEL.has(getBlockState()))
+        if (!EncasedBlocks.CREATIVE_COGWHEEL.has(getBlockState()))
             return 0;
         return generatedSpeed.getValue();
     }

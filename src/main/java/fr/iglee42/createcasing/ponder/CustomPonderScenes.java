@@ -5,12 +5,11 @@ import com.simibubi.create.AllItems;
 import com.simibubi.create.foundation.ponder.CreateSceneBuilder;
 import fr.iglee42.createcasing.blocks.ConfigurableGearboxBlock;
 import fr.iglee42.createcasing.config.ModConfigs;
-import fr.iglee42.createcasing.registries.ModBlocks;
+import fr.iglee42.createcasing.registries.EncasedBlocks;
 import net.createmod.catnip.math.Pointing;
 import net.createmod.ponder.api.PonderPalette;
 import net.createmod.ponder.api.scene.SceneBuilder;
 import net.createmod.ponder.api.scene.SceneBuildingUtil;
-import net.createmod.ponder.api.scene.Selection;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.phys.Vec3;
@@ -109,7 +108,7 @@ public class CustomPonderScenes {
 
         scene.idle(90);
 
-        scene.world().setBlock(gearbox, ModBlocks.ANDESITE_CONFIGURABLE_GEARBOX.getDefaultState()
+        scene.world().setBlock(gearbox, EncasedBlocks.ANDESITE_CONFIGURABLE_GEARBOX.getDefaultState()
                 .setValue(ConfigurableGearboxBlock.UP,false)
                 .setValue(ConfigurableGearboxBlock.DOWN,false)
                 .setValue(ConfigurableGearboxBlock.NORTH,true)

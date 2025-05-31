@@ -20,7 +20,7 @@ import dev.engine_room.flywheel.lib.model.Models;
 import dev.engine_room.flywheel.lib.visual.SimpleDynamicVisual;
 import dev.engine_room.flywheel.lib.visual.SimpleTickableVisual;
 import dev.engine_room.flywheel.lib.visual.util.SmartRecycler;
-import fr.iglee42.createcasing.registries.ModPartialModels;
+import fr.iglee42.createcasing.registries.EncasedPartialModels;
 import net.createmod.catnip.math.VecHelper;
 import net.createmod.catnip.math.AngleHelper;
 import net.minecraft.client.renderer.LightTexture;
@@ -150,8 +150,8 @@ public class CustomChainConveyorVisual extends SingleAxisRotatingVisual<ChainCon
 	private void setupGuards() {
 		deleteGuards();
 
-		var wheelInstancer = instancerProvider().instancer(InstanceTypes.TRANSFORMED, SpecialModels.chunkDiffuse(ModPartialModels.getChainConveyorWheel(blockState)));
-		var guardInstancer = instancerProvider().instancer(InstanceTypes.TRANSFORMED, SpecialModels.chunkDiffuse(ModPartialModels.getChainConveyorGuard(blockState)));
+		var wheelInstancer = instancerProvider().instancer(InstanceTypes.TRANSFORMED, SpecialModels.chunkDiffuse(EncasedPartialModels.getChainConveyorWheel(blockState)));
+		var guardInstancer = instancerProvider().instancer(InstanceTypes.TRANSFORMED, SpecialModels.chunkDiffuse(EncasedPartialModels.getChainConveyorGuard(blockState)));
 
 		TransformedInstance wheel = wheelInstancer.createInstance();
 		

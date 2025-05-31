@@ -2,7 +2,7 @@ package fr.iglee42.createcasing.api.blocks;
 
 import com.simibubi.create.content.kinetics.press.MechanicalPressBlock;
 import com.simibubi.create.content.kinetics.press.MechanicalPressBlockEntity;
-import fr.iglee42.createcasing.registries.ModBlockEntities;
+import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
 public class ApiPressBlock extends MechanicalPressBlock {
@@ -13,6 +13,6 @@ public class ApiPressBlock extends MechanicalPressBlock {
 
     @Override
     public BlockEntityType<? extends MechanicalPressBlockEntity> getBlockEntityType() {
-        return ModBlockEntities.API_PRESS.get();
+        return EncasedBlockEntities.API_PRESS.get();
     }
 }

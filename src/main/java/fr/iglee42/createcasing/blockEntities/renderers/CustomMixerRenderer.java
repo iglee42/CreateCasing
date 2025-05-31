@@ -6,7 +6,7 @@ import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.mixer.MechanicalMixerBlockEntity;
 import dev.engine_room.flywheel.api.visualization.VisualizationManager;
-import fr.iglee42.createcasing.registries.ModPartialModels;
+import fr.iglee42.createcasing.registries.EncasedPartialModels;
 import net.createmod.catnip.animation.AnimationTickHolder;
 import net.createmod.catnip.render.CachedBuffers;
 import net.createmod.catnip.render.SuperByteBuffer;
@@ -52,28 +52,28 @@ public class CustomMixerRenderer extends KineticBlockEntityRenderer<MechanicalMi
 		SuperByteBuffer oldHeadRender = CachedBuffers.partial(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState);
 		switch (BuiltInRegistries.BLOCK.getKey(mixer.getBlockState().getBlock()).getPath().replace("_mixer","").toLowerCase()) {
 			case "brass" -> {
-				headRender = CachedBuffers.partial(ModPartialModels.BRASS_MIXER_HEAD, blockState);
+				headRender = CachedBuffers.partial(EncasedPartialModels.BRASS_MIXER_HEAD, blockState);
 			}
 			case "copper" -> {
-				headRender = CachedBuffers.partial(ModPartialModels.COPPER_MIXER_HEAD, blockState);
+				headRender = CachedBuffers.partial(EncasedPartialModels.COPPER_MIXER_HEAD, blockState);
 			}
 			case "railway" -> {
-				headRender = CachedBuffers.partial(ModPartialModels.RAILWAY_MIXER_HEAD, blockState);
+				headRender = CachedBuffers.partial(EncasedPartialModels.RAILWAY_MIXER_HEAD, blockState);
 			}
 			case "industrial_iron" -> {
-				headRender = CachedBuffers.partial(ModPartialModels.INDUSTRIAL_IRON_MIXER_HEAD, blockState);
+				headRender = CachedBuffers.partial(EncasedPartialModels.INDUSTRIAL_IRON_MIXER_HEAD, blockState);
 			}
 			case "weathered_iron" -> {
-				headRender = CachedBuffers.partial(ModPartialModels.WEATHERED_IRON_MIXER_HEAD, blockState);
+				headRender = CachedBuffers.partial(EncasedPartialModels.WEATHERED_IRON_MIXER_HEAD, blockState);
 			}
 			case "creative" -> {
-				headRender = CachedBuffers.partial(ModPartialModels.CREATIVE_MIXER_HEAD, blockState);
+				headRender = CachedBuffers.partial(EncasedPartialModels.CREATIVE_MIXER_HEAD, blockState);
 			}
 			case "refined_radiance" -> {
-				headRender = CachedBuffers.partial(ModPartialModels.REFINED_RADIANCE_MIXER_HEAD, blockState);
+				headRender = CachedBuffers.partial(EncasedPartialModels.REFINED_RADIANCE_MIXER_HEAD, blockState);
 			}
 			case "shadow_steel" -> {
-				headRender = CachedBuffers.partial(ModPartialModels.SHADOW_STEEL_MIXER_HEAD, blockState);
+				headRender = CachedBuffers.partial(EncasedPartialModels.SHADOW_STEEL_MIXER_HEAD, blockState);
 			}
 			default -> {
 				headRender = CachedBuffers.partial(AllPartialModels.MECHANICAL_MIXER_HEAD, blockState);

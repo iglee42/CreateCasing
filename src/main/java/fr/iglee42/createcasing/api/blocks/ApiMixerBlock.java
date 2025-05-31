@@ -2,7 +2,7 @@ package fr.iglee42.createcasing.api.blocks;
 
 import com.simibubi.create.content.kinetics.mixer.MechanicalMixerBlock;
 import com.simibubi.create.content.kinetics.mixer.MechanicalMixerBlockEntity;
-import fr.iglee42.createcasing.registries.ModBlockEntities;
+import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
 public class ApiMixerBlock extends MechanicalMixerBlock {
@@ -13,6 +13,6 @@ public class ApiMixerBlock extends MechanicalMixerBlock {
 
     @Override
     public BlockEntityType<? extends MechanicalMixerBlockEntity> getBlockEntityType() {
-        return ModBlockEntities.API_MIXER.get();
+        return EncasedBlockEntities.API_MIXER.get();
     }
 }

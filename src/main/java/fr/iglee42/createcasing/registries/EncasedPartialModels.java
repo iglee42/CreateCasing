@@ -11,7 +11,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ModPartialModels {
+public class EncasedPartialModels {
 
     public static final List<PartialModel> ALL_ENCASED_MODELS = new ArrayList<>();
     public static final PartialModel
@@ -62,16 +62,16 @@ public class ModPartialModels {
     static {
         String[] woods = new String[]{"oak", "birch", "acacia", "jungle", "warped", "dark_oak", "crimson", "mangrove", "cherry", "bamboo"};
         for (String w : woods) {
-            SHAFT_MODELS.put(w, ModPartialModels.block("shaft/" + w));
-            COGS_MODELS.put(w, ModPartialModels.block("cogwheel/" + w));
-            SHAFTLESS_COGS_MODELS.put(w, ModPartialModels.block("cogwheel_shaftless/" + w));
-            LARGE_COGS_MODELS.put(w, ModPartialModels.block("large_cogwheel/" + w));
-            SHAFTLESS_LARGE_COGS_MODELS.put(w, ModPartialModels.block("large_cogwheel_shaftless/" + w));
+            SHAFT_MODELS.put(w, EncasedPartialModels.block("shaft/" + w));
+            COGS_MODELS.put(w, EncasedPartialModels.block("cogwheel/" + w));
+            SHAFTLESS_COGS_MODELS.put(w, EncasedPartialModels.block("cogwheel_shaftless/" + w));
+            LARGE_COGS_MODELS.put(w, EncasedPartialModels.block("large_cogwheel/" + w));
+            SHAFTLESS_LARGE_COGS_MODELS.put(w, EncasedPartialModels.block("large_cogwheel_shaftless/" + w));
         }
 
-        SHAFT_MODELS.put("spruce", ModPartialModels.block("shaft/spruce"));
-        SHAFT_MODELS.put("mldeg", ModPartialModels.block("shaft/mldeg"));
-        SHAFT_MODELS.put("glass", ModPartialModels.block("shaft/glass"));
+        SHAFT_MODELS.put("spruce", EncasedPartialModels.block("shaft/spruce"));
+        SHAFT_MODELS.put("mldeg", EncasedPartialModels.block("shaft/mldeg"));
+        SHAFT_MODELS.put("glass", EncasedPartialModels.block("shaft/glass"));
     }
 
     public static PartialModel block(String path) {
@@ -88,26 +88,26 @@ public class ModPartialModels {
     }
 
     public static PartialModel getChainConveyorWheel(BlockState state){
-        if (ModBlocks.BRASS_CHAIN_CONVEYOR.has(state)) return BRASS_CONVEYOR_WHEEL;
-        if (ModBlocks.COPPER_CHAIN_CONVEYOR.has(state)) return COPPER_CONVEYOR_WHEEL;
-        if (ModBlocks.RAILWAY_CHAIN_CONVEYOR.has(state)) return RAILWAY_CONVEYOR_WHEEL;
-        if (ModBlocks.CREATIVE_CHAIN_CONVEYOR.has(state)) return CREATIVE_CONVEYOR_WHEEL;
-        if (ModBlocks.INDUSTRIAL_IRON_CHAIN_CONVEYOR.has(state)) return INDUSTRIAL_IRON_CONVEYOR_WHEEL;
-        if (ModBlocks.WEATHERED_IRON_CHAIN_CONVEYOR.has(state)) return WEATHERED_IRON_CONVEYOR_WHEEL;
-        if (ModBlocks.REFINED_RADIANCE_CHAIN_CONVEYOR.has(state)) return REFINED_RADIANCE_CONVEYOR_WHEEL;
-        if (ModBlocks.SHADOW_STEEL_CHAIN_CONVEYOR.has(state)) return SHADOW_STEEL_CONVEYOR_WHEEL;
+        if (EncasedBlocks.BRASS_CHAIN_CONVEYOR.has(state)) return BRASS_CONVEYOR_WHEEL;
+        if (EncasedBlocks.COPPER_CHAIN_CONVEYOR.has(state)) return COPPER_CONVEYOR_WHEEL;
+        if (EncasedBlocks.RAILWAY_CHAIN_CONVEYOR.has(state)) return RAILWAY_CONVEYOR_WHEEL;
+        if (EncasedBlocks.CREATIVE_CHAIN_CONVEYOR.has(state)) return CREATIVE_CONVEYOR_WHEEL;
+        if (EncasedBlocks.INDUSTRIAL_IRON_CHAIN_CONVEYOR.has(state)) return INDUSTRIAL_IRON_CONVEYOR_WHEEL;
+        if (EncasedBlocks.WEATHERED_IRON_CHAIN_CONVEYOR.has(state)) return WEATHERED_IRON_CONVEYOR_WHEEL;
+        if (EncasedBlocks.REFINED_RADIANCE_CHAIN_CONVEYOR.has(state)) return REFINED_RADIANCE_CONVEYOR_WHEEL;
+        if (EncasedBlocks.SHADOW_STEEL_CHAIN_CONVEYOR.has(state)) return SHADOW_STEEL_CONVEYOR_WHEEL;
         return AllPartialModels.CHAIN_CONVEYOR_WHEEL;
     }
 
     public static PartialModel getChainConveyorGuard(BlockState state){
-        if (ModBlocks.BRASS_CHAIN_CONVEYOR.has(state)) return BRASS_CONVEYOR_GUARD;
-        if (ModBlocks.COPPER_CHAIN_CONVEYOR.has(state)) return COPPER_CONVEYOR_GUARD;
-        if (ModBlocks.RAILWAY_CHAIN_CONVEYOR.has(state)) return RAILWAY_CONVEYOR_GUARD;
-        if (ModBlocks.CREATIVE_CHAIN_CONVEYOR.has(state)) return CREATIVE_CONVEYOR_GUARD;
-        if (ModBlocks.INDUSTRIAL_IRON_CHAIN_CONVEYOR.has(state)) return INDUSTRIAL_IRON_CONVEYOR_GUARD;
-        if (ModBlocks.WEATHERED_IRON_CHAIN_CONVEYOR.has(state)) return WEATHERED_IRON_CONVEYOR_GUARD;
-        if (ModBlocks.REFINED_RADIANCE_CHAIN_CONVEYOR.has(state)) return REFINED_RADIANCE_CONVEYOR_GUARD;
-        if (ModBlocks.SHADOW_STEEL_CHAIN_CONVEYOR.has(state)) return SHADOW_STEEL_CONVEYOR_GUARD;
+        if (EncasedBlocks.BRASS_CHAIN_CONVEYOR.has(state)) return BRASS_CONVEYOR_GUARD;
+        if (EncasedBlocks.COPPER_CHAIN_CONVEYOR.has(state)) return COPPER_CONVEYOR_GUARD;
+        if (EncasedBlocks.RAILWAY_CHAIN_CONVEYOR.has(state)) return RAILWAY_CONVEYOR_GUARD;
+        if (EncasedBlocks.CREATIVE_CHAIN_CONVEYOR.has(state)) return CREATIVE_CONVEYOR_GUARD;
+        if (EncasedBlocks.INDUSTRIAL_IRON_CHAIN_CONVEYOR.has(state)) return INDUSTRIAL_IRON_CONVEYOR_GUARD;
+        if (EncasedBlocks.WEATHERED_IRON_CHAIN_CONVEYOR.has(state)) return WEATHERED_IRON_CONVEYOR_GUARD;
+        if (EncasedBlocks.REFINED_RADIANCE_CHAIN_CONVEYOR.has(state)) return REFINED_RADIANCE_CONVEYOR_GUARD;
+        if (EncasedBlocks.SHADOW_STEEL_CHAIN_CONVEYOR.has(state)) return SHADOW_STEEL_CONVEYOR_GUARD;
         return AllPartialModels.CHAIN_CONVEYOR_GUARD;
     }
 

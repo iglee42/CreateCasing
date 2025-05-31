@@ -1,8 +1,7 @@
 package fr.iglee42.createcasing.mixins.create;
 
 import com.simibubi.create.content.kinetics.belt.BeltBlockEntity;
-import com.simibubi.create.content.processing.recipe.HeatCondition;
-import fr.iglee42.createcasing.registries.ModBlocks;
+import fr.iglee42.createcasing.registries.EncasedBlocks;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.gen.Invoker;
 import org.spongepowered.asm.mixin.injection.At;
@@ -11,8 +10,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Locale;
-import java.util.Map;
 
 @Mixin(value = BeltBlockEntity.CasingType.class,remap = false)
 public class BeltCasingTypeMixin {
@@ -28,13 +25,13 @@ public class BeltCasingTypeMixin {
 
     @Inject(method = "<clinit>",at = @At("TAIL"))
     private static void cmr$clinit(CallbackInfo ci) {
-        ModBlocks.COPPER_BELT_CASING = encased$addVariant("COPPER");
-        ModBlocks.RAILWAY_BELT_CASING = encased$addVariant("RAILWAY");
-        ModBlocks.INDUSTRIAL_IRON_BELT_CASING = encased$addVariant("INDUSTRIAL_IRON");
-        ModBlocks.WEATHERED_IRON_BELT_CASING = encased$addVariant("WEATHERED_IRON");
-        ModBlocks.CREATIVE_BELT_CASING = encased$addVariant("CREATIVE");
-        ModBlocks.REFINED_RADIANCE_BELT_CASING = encased$addVariant("REFINED_RADIANCE");
-        ModBlocks.SHADOW_STEEL_BELT_CASING = encased$addVariant("SHADOW_STEEL");
+        EncasedBlocks.COPPER_BELT_CASING = encased$addVariant("COPPER");
+        EncasedBlocks.RAILWAY_BELT_CASING = encased$addVariant("RAILWAY");
+        EncasedBlocks.INDUSTRIAL_IRON_BELT_CASING = encased$addVariant("INDUSTRIAL_IRON");
+        EncasedBlocks.WEATHERED_IRON_BELT_CASING = encased$addVariant("WEATHERED_IRON");
+        EncasedBlocks.CREATIVE_BELT_CASING = encased$addVariant("CREATIVE");
+        EncasedBlocks.REFINED_RADIANCE_BELT_CASING = encased$addVariant("REFINED_RADIANCE");
+        EncasedBlocks.SHADOW_STEEL_BELT_CASING = encased$addVariant("SHADOW_STEEL");
     }
 
     @Unique

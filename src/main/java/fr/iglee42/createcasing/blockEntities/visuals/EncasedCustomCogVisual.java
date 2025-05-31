@@ -16,7 +16,7 @@ import dev.engine_room.flywheel.api.visualization.VisualizationContext;
 import dev.engine_room.flywheel.lib.model.Models;
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 import fr.iglee42.createcasing.blocks.customs.EncasedCustomCogwheelBlock;
-import fr.iglee42.createcasing.registries.ModPartialModels;
+import fr.iglee42.createcasing.registries.EncasedPartialModels;
 import net.createmod.catnip.data.Iterate;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.AxisDirection;
@@ -120,7 +120,7 @@ public class EncasedCustomCogVisual extends KineticBlockEntityVisual<KineticBloc
 		BlockState referenceState = blockEntity.getBlockState();
 		Direction facing =
 			Direction.fromAxisAndDirection(referenceState.getValue(BlockStateProperties.AXIS), AxisDirection.POSITIVE);
-		PartialModel partial = large ? ModPartialModels.SHAFTLESS_LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(((EncasedCustomCogwheelBlock)referenceState.getBlock()).getCogwheel().get()).getPath().replaceAll("_large_cogwheel","")) : ModPartialModels.SHAFTLESS_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(((EncasedCustomCogwheelBlock)referenceState.getBlock()).getCogwheel().get()).getPath().replaceAll("_cogwheel",""));
+		PartialModel partial = large ? EncasedPartialModels.SHAFTLESS_LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(((EncasedCustomCogwheelBlock)referenceState.getBlock()).getCogwheel().get()).getPath().replaceAll("_large_cogwheel","")) : EncasedPartialModels.SHAFTLESS_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(((EncasedCustomCogwheelBlock)referenceState.getBlock()).getCogwheel().get()).getPath().replaceAll("_cogwheel",""));
 		return partial;
 	}
 

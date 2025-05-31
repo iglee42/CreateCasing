@@ -30,7 +30,7 @@ import java.util.concurrent.CompletableFuture;
 import java.util.function.BiConsumer;
 import java.util.function.Supplier;
 
-public class ModSounds{
+public class EncasedSounds {
 
     public static final Map<ResourceLocation, SoundEntry> ALL = new HashMap<>();
 

@@ -18,7 +18,7 @@ import org.joml.Matrix4f;
 import static fr.iglee42.createcasing.CreateCasing.MODID;
 
 
-public class ModIcons extends AllIcons {
+public class EncasedIcons extends AllIcons {
 
 	public static final ResourceLocation ICON_ATLAS =ResourceLocation.fromNamespaceAndPath(MODID,"textures/gui/icons.png");
 	public static final int ICON_ATLAS_SIZE = 256;
@@ -28,21 +28,21 @@ public class ModIcons extends AllIcons {
 
 
 
-	public static final ModIcons
+	public static final EncasedIcons
 		I_EQUALS = newRow();
 
-	public ModIcons(int x, int y) {
+	public EncasedIcons(int x, int y) {
 		super(x,y);
 		iconX = x * 16;
 		iconY = y * 16;
 	}
 
-	private static ModIcons next() {
-		return new ModIcons(++x, y);
+	private static EncasedIcons next() {
+		return new EncasedIcons(++x, y);
 	}
 
-	private static ModIcons newRow() {
-		return new ModIcons(x = 0, ++y);
+	private static EncasedIcons newRow() {
+		return new EncasedIcons(x = 0, ++y);
 	}
 
 	@OnlyIn(Dist.CLIENT)

@@ -12,7 +12,7 @@ import dev.engine_room.flywheel.lib.instance.InstanceTypes;
 import dev.engine_room.flywheel.lib.instance.OrientedInstance;
 import dev.engine_room.flywheel.lib.model.Models;
 import dev.engine_room.flywheel.lib.visual.SimpleDynamicVisual;
-import fr.iglee42.createcasing.registries.ModPartialModels;
+import fr.iglee42.createcasing.registries.EncasedPartialModels;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.BuiltInRegistries;
 
@@ -39,42 +39,42 @@ public class CustomMixerVisual extends SingleAxisRotatingVisual<MechanicalMixerB
 		switch (BuiltInRegistries.BLOCK.getKey(mixer.getBlockState().getBlock()).getPath().replace("_mixer","").toLowerCase()) {
 			case "brass" -> {
 				mixerHead = instancerProvider()
-						.instancer(AllInstanceTypes.ROTATING,Models.partial(ModPartialModels.BRASS_MIXER_HEAD))
+						.instancer(AllInstanceTypes.ROTATING,Models.partial(EncasedPartialModels.BRASS_MIXER_HEAD))
 						.createInstance();
 			}
             case "copper" -> {
 				mixerHead = instancerProvider()
-						.instancer(AllInstanceTypes.ROTATING,Models.partial(ModPartialModels.COPPER_MIXER_HEAD))
+						.instancer(AllInstanceTypes.ROTATING,Models.partial(EncasedPartialModels.COPPER_MIXER_HEAD))
 						.createInstance();
 			}
             case "railway" -> {
 				mixerHead = instancerProvider()
-						.instancer(AllInstanceTypes.ROTATING,Models.partial(ModPartialModels.RAILWAY_MIXER_HEAD))
+						.instancer(AllInstanceTypes.ROTATING,Models.partial(EncasedPartialModels.RAILWAY_MIXER_HEAD))
 						.createInstance();
             }
 			case "industrial_iron" ->{
 				mixerHead = instancerProvider()
-						.instancer(AllInstanceTypes.ROTATING,Models.partial(ModPartialModels.INDUSTRIAL_IRON_MIXER_HEAD))
+						.instancer(AllInstanceTypes.ROTATING,Models.partial(EncasedPartialModels.INDUSTRIAL_IRON_MIXER_HEAD))
 						.createInstance();
 			}
 			case "weathered_iron" ->{
 				mixerHead = instancerProvider()
-						.instancer(AllInstanceTypes.ROTATING,Models.partial(ModPartialModels.WEATHERED_IRON_MIXER_HEAD))
+						.instancer(AllInstanceTypes.ROTATING,Models.partial(EncasedPartialModels.WEATHERED_IRON_MIXER_HEAD))
 						.createInstance();
 			}
 			case "creative" ->{
 				mixerHead = instancerProvider()
-						.instancer(AllInstanceTypes.ROTATING,Models.partial(ModPartialModels.CREATIVE_MIXER_HEAD))
+						.instancer(AllInstanceTypes.ROTATING,Models.partial(EncasedPartialModels.CREATIVE_MIXER_HEAD))
 						.createInstance();
 			}
 			case "refined_radiance" ->{
 				mixerHead = instancerProvider()
-						.instancer(AllInstanceTypes.ROTATING,Models.partial(ModPartialModels.REFINED_RADIANCE_MIXER_HEAD))
+						.instancer(AllInstanceTypes.ROTATING,Models.partial(EncasedPartialModels.REFINED_RADIANCE_MIXER_HEAD))
 						.createInstance();
 			}
 			case "shadow_steel" ->{
 				mixerHead = instancerProvider()
-						.instancer(AllInstanceTypes.ROTATING,Models.partial(ModPartialModels.SHADOW_STEEL_MIXER_HEAD))
+						.instancer(AllInstanceTypes.ROTATING,Models.partial(EncasedPartialModels.SHADOW_STEEL_MIXER_HEAD))
 						.createInstance();
 			}
 			default -> {

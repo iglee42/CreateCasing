@@ -2,9 +2,7 @@ package fr.iglee42.createcasing.blocks.publics;
 
 import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.fluids.pipes.FluidPipeBlockEntity;
-import fr.iglee42.createcasing.registries.ModBlockEntities;
-import fr.iglee42.createcasing.utils.DontShowInCreativeTab;
-import net.minecraft.world.item.Item;
+import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
@@ -23,7 +21,7 @@ public class PublicEncasedPipeBlock extends EncasedPipeBlock /*implements DontSh
 
 	@Override
 	public BlockEntityType<? extends FluidPipeBlockEntity> getBlockEntityType() {
-		return ModBlockEntities.ENCASED_FLUID_PIPE.get();
+		return EncasedBlockEntities.ENCASED_FLUID_PIPE.get();
 	}
 
 }

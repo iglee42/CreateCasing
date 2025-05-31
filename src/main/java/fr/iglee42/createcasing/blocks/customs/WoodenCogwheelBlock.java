@@ -9,7 +9,7 @@ import com.simibubi.create.content.kinetics.simpleRelays.AbstractSimpleShaftBloc
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.content.kinetics.speedController.SpeedControllerBlock;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
-import fr.iglee42.createcasing.registries.ModBlockEntities;
+import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import net.createmod.catnip.data.Iterate;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
@@ -204,6 +204,6 @@ public class WoodenCogwheelBlock extends AbstractSimpleShaftBlock implements ICo
 
 	@Override
 	public BlockEntityType<? extends KineticBlockEntity> getBlockEntityType() {
-		return ModBlockEntities.WOODEN_COGWHEELS.get();
+		return EncasedBlockEntities.WOODEN_COGWHEELS.get();
 	}
 }

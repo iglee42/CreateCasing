@@ -1,8 +1,5 @@
 package fr.iglee42.createcasing.registries;
 
-import com.mojang.blaze3d.systems.RenderSystem;
-import com.simibubi.create.Create;
-
 import fr.iglee42.createcasing.CreateCasing;
 import net.createmod.catnip.gui.TextureSheetSegment;
 import net.createmod.catnip.gui.UIRenderHelper;
@@ -13,7 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
-public enum ModGuiTextures implements ScreenElement, TextureSheetSegment {
+public enum EncasedGuiTextures implements ScreenElement, TextureSheetSegment {
 
 	BRASS_SHAFT("brass_shaft", 254, 104);
 
@@ -28,15 +25,15 @@ public enum ModGuiTextures implements ScreenElement, TextureSheetSegment {
 	private final int startX;
 	private final int startY;
 
-	ModGuiTextures(String location, int width, int height) {
+	EncasedGuiTextures(String location, int width, int height) {
 		this(location, 0, 0, width, height);
 	}
 
-	ModGuiTextures(String location, int startX, int startY, int width, int height) {
+	EncasedGuiTextures(String location, int startX, int startY, int width, int height) {
 		this(CreateCasing.MODID, location, startX, startY, width, height);
 	}
 
-	ModGuiTextures(String namespace, String location, int startX, int startY, int width, int height) {
+	EncasedGuiTextures(String namespace, String location, int startX, int startY, int width, int height) {
 		this.location = ResourceLocation.fromNamespaceAndPath(namespace, "textures/gui/" + location + ".png");
 		this.width = width;
 		this.height = height;

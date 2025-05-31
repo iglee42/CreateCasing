@@ -26,7 +26,7 @@ import fr.iglee42.createcasing.blocks.publics.PublicEncasedCogwheelBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedPipeBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedShaftBlock;
 import fr.iglee42.createcasing.config.CCStress;
-import fr.iglee42.createcasing.registries.ModBlocks;
+import fr.iglee42.createcasing.registries.EncasedBlocks;
 import fr.iglee42.createcasing.utils.Deferred;
 import net.createmod.catnip.data.Couple;
 import net.minecraft.client.renderer.RenderType;
@@ -277,7 +277,7 @@ public class CreateCasingApi {
 
 
     public static void forCustomShafts(Consumer<BlockEntry<? extends ShaftBlock>> action) {
-        ModBlocks.forEachShaft(action);
+        EncasedBlocks.forEachShaft(action);
     }
 
 }

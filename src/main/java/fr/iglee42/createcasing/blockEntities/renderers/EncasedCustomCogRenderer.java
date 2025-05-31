@@ -8,7 +8,7 @@ import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEn
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
 import dev.engine_room.flywheel.api.visualization.VisualizationManager;
 import fr.iglee42.createcasing.blocks.customs.EncasedCustomCogwheelBlock;
-import fr.iglee42.createcasing.registries.ModPartialModels;
+import fr.iglee42.createcasing.registries.EncasedPartialModels;
 import net.createmod.catnip.data.Iterate;
 import net.createmod.catnip.render.CachedBuffers;
 import net.createmod.catnip.render.SuperByteBuffer;
@@ -69,7 +69,7 @@ public class EncasedCustomCogRenderer extends KineticBlockEntityRenderer<SimpleK
 	@Override
 	protected SuperByteBuffer getRotatedModel(SimpleKineticBlockEntity be, BlockState state) {
 		return CachedBuffers.partialFacingVertical(
-			large ? ModPartialModels.SHAFTLESS_LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(((EncasedCustomCogwheelBlock)state.getBlock()).getCogwheel().get()).getPath().replaceAll("_large_cogwheel","")) : ModPartialModels.SHAFTLESS_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(((EncasedCustomCogwheelBlock)state.getBlock()).getCogwheel().get()).getPath().replaceAll("_cogwheel","")), state,
+			large ? EncasedPartialModels.SHAFTLESS_LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(((EncasedCustomCogwheelBlock)state.getBlock()).getCogwheel().get()).getPath().replaceAll("_large_cogwheel","")) : EncasedPartialModels.SHAFTLESS_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(((EncasedCustomCogwheelBlock)state.getBlock()).getCogwheel().get()).getPath().replaceAll("_cogwheel","")), state,
 			Direction.fromAxisAndDirection(state.getValue(EncasedCustomCogwheelBlock.AXIS), AxisDirection.POSITIVE));
 	}
 

@@ -11,7 +11,7 @@ import net.createmod.catnip.render.SpriteShiftEntry;
 import net.createmod.catnip.render.SpriteShifter;
 
 
-public class ModSprites {
+public class EncasedSprites {
 
     public static final CTSpriteShiftEntry RAILWAY_ENCASED_COGWHEEL_SIDE;
     public static final CTSpriteShiftEntry RAILWAY_ENCASED_COGWHEEL_OTHERSIDE;
@@ -85,11 +85,11 @@ public class ModSprites {
         return switch (casing){
             case "andesite"-> AllSpriteShifts.ANDESITE_ENCASED_COGWHEEL_SIDE;
             case "brass"-> AllSpriteShifts.BRASS_ENCASED_COGWHEEL_SIDE;
-            case "copper"-> ModSprites.COPPER_ENCASED_COGWHEEL_SIDE;
-            case "railway"-> ModSprites.RAILWAY_ENCASED_COGWHEEL_SIDE;
-            case "creative"-> ModSprites.CREATIVE_ENCASED_COGWHEEL_SIDE;
-            case "shadow_steel"-> ModSprites.SHADOW_STEEL_ENCASED_COGWHEEL_SIDE;
-            case "refined_radiance"-> ModSprites.REFINED_RADIANCE_ENCASED_COGWHEEL_SIDE;
+            case "copper"-> EncasedSprites.COPPER_ENCASED_COGWHEEL_SIDE;
+            case "railway"-> EncasedSprites.RAILWAY_ENCASED_COGWHEEL_SIDE;
+            case "creative"-> EncasedSprites.CREATIVE_ENCASED_COGWHEEL_SIDE;
+            case "shadow_steel"-> EncasedSprites.SHADOW_STEEL_ENCASED_COGWHEEL_SIDE;
+            case "refined_radiance"-> EncasedSprites.REFINED_RADIANCE_ENCASED_COGWHEEL_SIDE;
             default -> null;
         };
     }
@@ -98,11 +98,11 @@ public class ModSprites {
         return switch (casing){
             case "andesite"-> AllSpriteShifts.ANDESITE_ENCASED_COGWHEEL_OTHERSIDE;
             case "brass"-> AllSpriteShifts.BRASS_ENCASED_COGWHEEL_OTHERSIDE;
-            case "copper"-> ModSprites.COPPER_ENCASED_COGWHEEL_OTHERSIDE;
-            case "railway"-> ModSprites.RAILWAY_ENCASED_COGWHEEL_OTHERSIDE;
-            case "creative"-> ModSprites.CREATIVE_ENCASED_COGWHEEL_OTHERSIDE;
-            case "shadow_steel"-> ModSprites.SHADOW_STEEL_ENCASED_COGWHEEL_OTHERSIDE;
-            case "refined_radiance"-> ModSprites.REFINED_RADIANCE_ENCASED_COGWHEEL_OTHERSIDE;
+            case "copper"-> EncasedSprites.COPPER_ENCASED_COGWHEEL_OTHERSIDE;
+            case "railway"-> EncasedSprites.RAILWAY_ENCASED_COGWHEEL_OTHERSIDE;
+            case "creative"-> EncasedSprites.CREATIVE_ENCASED_COGWHEEL_OTHERSIDE;
+            case "shadow_steel"-> EncasedSprites.SHADOW_STEEL_ENCASED_COGWHEEL_OTHERSIDE;
+            case "refined_radiance"-> EncasedSprites.REFINED_RADIANCE_ENCASED_COGWHEEL_OTHERSIDE;
             default -> null;
         };
     }

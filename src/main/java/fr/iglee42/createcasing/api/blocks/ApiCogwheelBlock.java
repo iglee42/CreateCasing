@@ -10,22 +10,18 @@ import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
 import com.simibubi.create.content.kinetics.speedController.SpeedControllerBlock;
 import com.simibubi.create.foundation.advancement.AllAdvancements;
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
-import fr.iglee42.createcasing.registries.ModBlockEntities;
+import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import net.createmod.catnip.data.Iterate;
 import net.minecraft.MethodsReturnNonnullByDefault;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Direction.Axis;
 import net.minecraft.core.Direction.AxisDirection;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.InteractionResult;
 import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -40,8 +36,6 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import javax.annotation.ParametersAreNonnullByDefault;
-
-import static fr.iglee42.createcasing.CreateCasing.MODID;
 
 @ParametersAreNonnullByDefault
 @MethodsReturnNonnullByDefault
@@ -217,7 +211,7 @@ public class ApiCogwheelBlock extends AbstractSimpleShaftBlock implements ICogWh
 
 	@Override
 	public BlockEntityType<? extends KineticBlockEntity> getBlockEntityType() {
-		return ModBlockEntities.API_COGWHEEL.get();
+		return EncasedBlockEntities.API_COGWHEEL.get();
 	}
 
 	public PartialModel getLargeCogwheelModel() {

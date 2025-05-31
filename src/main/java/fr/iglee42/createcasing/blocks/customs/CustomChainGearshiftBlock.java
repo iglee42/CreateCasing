@@ -1,10 +1,9 @@
 package fr.iglee42.createcasing.blocks.customs;
 
-import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 
 import com.simibubi.create.content.kinetics.chainDrive.ChainGearshiftBlockEntity;
-import fr.iglee42.createcasing.registries.ModBlockEntities;
+import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.Level;
@@ -64,7 +63,7 @@ public class CustomChainGearshiftBlock extends CustomChainDriveBlock {
 
 	@Override
 	public BlockEntityType<? extends KineticBlockEntity> getBlockEntityType() {
-		return ModBlockEntities.CUSTOM_CHAIN_GEARSHIFT.get();
+		return EncasedBlockEntities.CUSTOM_CHAIN_GEARSHIFT.get();
 	}
 
 }

@@ -1,15 +1,13 @@
 package fr.iglee42.createcasing.screen;
 
 import com.google.common.collect.ImmutableList;
-import com.simibubi.create.content.schematics.cannon.ConfigureSchematicannonPacket;
 import com.simibubi.create.foundation.gui.AllIcons;
 import com.simibubi.create.foundation.gui.widget.*;
-import com.simibubi.create.foundation.utility.CreateLang;
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.blockEntities.BrassShaftBlockEntity;
 import fr.iglee42.createcasing.packets.ConfigureBrassShaftPacket;
-import fr.iglee42.createcasing.registries.ModGuiTextures;
-import fr.iglee42.createcasing.registries.ModIcons;
+import fr.iglee42.createcasing.registries.EncasedGuiTextures;
+import fr.iglee42.createcasing.registries.EncasedIcons;
 import net.createmod.catnip.gui.AbstractSimiScreen;
 import net.createmod.catnip.gui.element.GuiGameElement;
 import net.createmod.catnip.gui.widget.AbstractSimiWidget;
@@ -23,13 +21,12 @@ import net.neoforged.neoforge.network.PacketDistributor;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
 
 @OnlyIn(Dist.CLIENT)
 public class BrassShaftScreen extends AbstractSimiScreen {
 
     protected BrassShaftBlockEntity be;
-    protected ModGuiTextures background= ModGuiTextures.BRASS_SHAFT;
+    protected EncasedGuiTextures background= EncasedGuiTextures.BRASS_SHAFT;
     protected ScrollInput maxStressWidget;
     private SelectionScrollInput scrollInput;
     private Label scrollInputLabel;
@@ -84,7 +81,7 @@ public class BrassShaftScreen extends AbstractSimiScreen {
 
         operationButtons = new ArrayList<>(3);
 
-        List<AllIcons> icons = ImmutableList.of(AllIcons.I_MTD_LEFT, ModIcons.I_EQUALS,
+        List<AllIcons> icons = ImmutableList.of(AllIcons.I_MTD_LEFT, EncasedIcons.I_EQUALS,
                 AllIcons.I_MTD_RIGHT);
         for (int i = 0; i < 3; i++) {
             IconButton operationButton = new IconButton(x + 33 + i * 18, y + background.getHeight() - 24, icons.get(i));

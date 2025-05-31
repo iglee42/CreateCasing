@@ -10,7 +10,7 @@ import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
 
 import java.util.Locale;
 
-public enum ModPackets implements BasePacketPayload.PacketTypeProvider {
+public enum EncasedPackets implements BasePacketPayload.PacketTypeProvider {
 
 	// Client to Server
 	BRASS_SHAFT_CONFIGURE(ConfigureBrassShaftPacket.class, ConfigureBrassShaftPacket.STREAM_CODEC),
@@ -22,7 +22,7 @@ public enum ModPackets implements BasePacketPayload.PacketTypeProvider {
 
 	private final CatnipPacketRegistry.PacketType<?> type;
 
-	<T extends BasePacketPayload> ModPackets(Class<T> clazz, StreamCodec<? super RegistryFriendlyByteBuf, T> codec) {
+	<T extends BasePacketPayload> EncasedPackets(Class<T> clazz, StreamCodec<? super RegistryFriendlyByteBuf, T> codec) {
 		String name = this.name().toLowerCase(Locale.ROOT);
 		this.type = new CatnipPacketRegistry.PacketType<>(
 				new CustomPacketPayload.Type<>(CreateCasing.asResource(name)),
@@ -38,7 +38,7 @@ public enum ModPackets implements BasePacketPayload.PacketTypeProvider {
 
 	public static void register() {
 		CatnipPacketRegistry packetRegistry = new CatnipPacketRegistry(CreateCasing.MODID, 1);
-		for (ModPackets packet : ModPackets.values()) {
+		for (EncasedPackets packet : EncasedPackets.values()) {
 			packetRegistry.registerPacket(packet.type);
 		}
 		packetRegistry.registerAllPackets();

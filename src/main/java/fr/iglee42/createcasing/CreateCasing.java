@@ -5,7 +5,6 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
-import com.simibubi.create.infrastructure.data.CreateDatagen;
 import com.tterrag.registrate.providers.RegistrateDataProvider;
 import com.tterrag.registrate.util.RegistrateDistExecutor;
 import fr.iglee42.createcasing.commands.CreateCasingCommand;
@@ -60,14 +59,14 @@ public class CreateCasing {
 
         //if (isExtendedCogsLoaded()) ExtendedCogwheels.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, CreateExtendedCogwheelsCompat::register);
         
-        ModSounds.prepare();
-        ModBlocks.register();
-        ModItems.register();
-        ModBlockEntities.register();
-        ModCreativeModeTabs.register(modEventBus);
-        ModPackets.register();
+        EncasedSounds.prepare();
+        EncasedBlocks.register();
+        EncasedItems.register();
+        EncasedBlockEntities.register();
+        EncasedCreativeModeTabs.register(modEventBus);
+        EncasedPackets.register();
 
-        ModBlocks.registerEncasedShafts();
+        EncasedBlocks.registerEncasedShafts();
 
         ModConfigs.register(ModLoadingContext.get(),container);
 
@@ -78,7 +77,7 @@ public class CreateCasing {
 
         neoForgeEventBus.addListener(this::registerCommands);
         modEventBus.addListener(this::setup);
-        modEventBus.addListener(ModSounds::register);
+        modEventBus.addListener(EncasedSounds::register);
         modEventBus.addListener(this::registerCapabilities);
         modEventBus.addListener(EventPriority.LOWEST, this::gatherData);
 
@@ -104,12 +103,12 @@ public class CreateCasing {
     private void registerCapabilities(RegisterCapabilitiesEvent event){
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
-                ModBlockEntities.DEPOT.get(),
+                EncasedBlockEntities.DEPOT.get(),
                 (be, context) -> be.getBehaviour(DepotBehaviour.TYPE).itemHandler
         );
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
-                ModBlockEntities.API_DEPOT.get(),
+                EncasedBlockEntities.API_DEPOT.get(),
                 (be, context) -> be.getBehaviour(DepotBehaviour.TYPE).itemHandler
         );
     }

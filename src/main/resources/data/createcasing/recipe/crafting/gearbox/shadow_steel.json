@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " C ",
+    "CBC",
+    " C "
+  ],
+  "key": {
+    "C": {
+      "item": "create:cogwheel"
+    },
+    "B": {
+      "item": "create:shadow_steel_casing"
+    }
+  },
+  "result": {
+    "id": "createcasing:shadow_steel_gearbox"
+  }
+}

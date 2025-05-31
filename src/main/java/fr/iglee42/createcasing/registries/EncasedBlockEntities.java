@@ -33,98 +33,98 @@ import fr.iglee42.createcasing.blockEntities.visuals.*;
 
 import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 
-public class ModBlockEntities {
+public class EncasedBlockEntities {
 
 
     public static final BlockEntityEntry<KineticBlockEntity> ENCASED_SHAFT = REGISTRATE
             .blockEntity("casing_encased_shaft", KineticBlockEntity::new)
             .visual(() -> ShaftVisual::new, false)
-            .validBlocks(ModBlocks.RAILWAY_ENCASED_SHAFT,ModBlocks.COPPER_ENCASED_SHAFT,ModBlocks.SHADOW_STEEL_ENCASED_SHAFT,ModBlocks.REFINED_RADIANCE_ENCASED_SHAFT,ModBlocks.INDUSTRIAL_IRON_ENCASED_SHAFT,ModBlocks.CREATIVE_ENCASED_SHAFT,ModBlocks.BRASS_CHAIN_DRIVE,ModBlocks.COPPER_CHAIN_DRIVE,ModBlocks.RAILWAY_CHAIN_DRIVE,ModBlocks.INDUSTRIAL_IRON_CHAIN_DRIVE,ModBlocks.CREATIVE_CHAIN_DRIVE,ModBlocks.WEATHERED_IRON_ENCASED_SHAFT,ModBlocks.WEATHERED_IRON_CHAIN_DRIVE,ModBlocks.REFINED_RADIANCE_CHAIN_DRIVE,ModBlocks.SHADOW_STEEL_CHAIN_DRIVE)
+            .validBlocks(EncasedBlocks.RAILWAY_ENCASED_SHAFT, EncasedBlocks.COPPER_ENCASED_SHAFT, EncasedBlocks.SHADOW_STEEL_ENCASED_SHAFT, EncasedBlocks.REFINED_RADIANCE_ENCASED_SHAFT, EncasedBlocks.INDUSTRIAL_IRON_ENCASED_SHAFT, EncasedBlocks.CREATIVE_ENCASED_SHAFT, EncasedBlocks.BRASS_CHAIN_DRIVE, EncasedBlocks.COPPER_CHAIN_DRIVE, EncasedBlocks.RAILWAY_CHAIN_DRIVE, EncasedBlocks.INDUSTRIAL_IRON_CHAIN_DRIVE, EncasedBlocks.CREATIVE_CHAIN_DRIVE, EncasedBlocks.WEATHERED_IRON_ENCASED_SHAFT, EncasedBlocks.WEATHERED_IRON_CHAIN_DRIVE, EncasedBlocks.REFINED_RADIANCE_CHAIN_DRIVE, EncasedBlocks.SHADOW_STEEL_CHAIN_DRIVE)
             .renderer(() -> ShaftRenderer::new)
             .register();
     public static final BlockEntityEntry<SimpleKineticBlockEntity> ENCASED_COGWHEEL = REGISTRATE
             .blockEntity("casing_encased_cogwheel", SimpleKineticBlockEntity::new)
             .visual(() -> EncasedCogVisual::small, false)
-            .validBlocks(ModBlocks.RAILWAY_ENCASED_COGWHEEL,ModBlocks.COPPER_ENCASED_COGWHEEL,ModBlocks.SHADOW_STEEL_ENCASED_COGWHEEL,ModBlocks.REFINED_RADIANCE_ENCASED_COGWHEEL,ModBlocks.INDUSTRIAL_IRON_ENCASED_COGWHEEL,ModBlocks.CREATIVE_ENCASED_COGWHEEL,ModBlocks.WEATHERED_IRON_ENCASED_COGWHEEL)
+            .validBlocks(EncasedBlocks.RAILWAY_ENCASED_COGWHEEL, EncasedBlocks.COPPER_ENCASED_COGWHEEL, EncasedBlocks.SHADOW_STEEL_ENCASED_COGWHEEL, EncasedBlocks.REFINED_RADIANCE_ENCASED_COGWHEEL, EncasedBlocks.INDUSTRIAL_IRON_ENCASED_COGWHEEL, EncasedBlocks.CREATIVE_ENCASED_COGWHEEL, EncasedBlocks.WEATHERED_IRON_ENCASED_COGWHEEL)
             .renderer(() -> EncasedCogRenderer::small)
             .register();
     public static final BlockEntityEntry<SimpleKineticBlockEntity> ENCASED_COGWHEEL_LARGE = REGISTRATE
             .blockEntity("casing_encased_cogwheel_large", SimpleKineticBlockEntity::new)
             .visual(() -> EncasedCogVisual::large, false)
-            .validBlocks(ModBlocks.RAILWAY_ENCASED_COGWHEEL_LARGE,ModBlocks.COPPER_ENCASED_COGWHEEL_LARGE,ModBlocks.SHADOW_STEEL_ENCASED_COGWHEEL_LARGE,ModBlocks.REFINED_RADIANCE_ENCASED_COGWHEEL_LARGE,ModBlocks.INDUSTRIAL_IRON_ENCASED_COGWHEEL_LARGE,ModBlocks.CREATIVE_ENCASED_COGWHEEL_LARGE,ModBlocks.WEATHERED_IRON_ENCASED_COGWHEEL_LARGE)
+            .validBlocks(EncasedBlocks.RAILWAY_ENCASED_COGWHEEL_LARGE, EncasedBlocks.COPPER_ENCASED_COGWHEEL_LARGE, EncasedBlocks.SHADOW_STEEL_ENCASED_COGWHEEL_LARGE, EncasedBlocks.REFINED_RADIANCE_ENCASED_COGWHEEL_LARGE, EncasedBlocks.INDUSTRIAL_IRON_ENCASED_COGWHEEL_LARGE, EncasedBlocks.CREATIVE_ENCASED_COGWHEEL_LARGE, EncasedBlocks.WEATHERED_IRON_ENCASED_COGWHEEL_LARGE)
             .renderer(() -> EncasedCogRenderer::large)
             .register();
 
     public static final BlockEntityEntry<FluidPipeBlockEntity> ENCASED_FLUID_PIPE = REGISTRATE
             .blockEntity("encased_fluid_pipe", FluidPipeBlockEntity::new)
-            .validBlocks(ModBlocks.ENCASED_ANDESITE_FLUID_PIPE,ModBlocks.ENCASED_BRASS_FLUID_PIPE,ModBlocks.ENCASED_RAILWAY_FLUID_PIPE,ModBlocks.ENCASED_REFINED_RADIANCE_FLUID_PIPE,ModBlocks.ENCASED_SHADOW_STEEL_FLUID_PIPE,ModBlocks.ENCASED_INDUSTRIAL_IRON_FLUID_PIPE,ModBlocks.ENCASED_CREATIVE_FLUID_PIPE,ModBlocks.ENCASED_WEATHERED_IRON_FLUID_PIPE)
+            .validBlocks(EncasedBlocks.ENCASED_ANDESITE_FLUID_PIPE, EncasedBlocks.ENCASED_BRASS_FLUID_PIPE, EncasedBlocks.ENCASED_RAILWAY_FLUID_PIPE, EncasedBlocks.ENCASED_REFINED_RADIANCE_FLUID_PIPE, EncasedBlocks.ENCASED_SHADOW_STEEL_FLUID_PIPE, EncasedBlocks.ENCASED_INDUSTRIAL_IRON_FLUID_PIPE, EncasedBlocks.ENCASED_CREATIVE_FLUID_PIPE, EncasedBlocks.ENCASED_WEATHERED_IRON_FLUID_PIPE)
             .register();
 
     public static final BlockEntityEntry<GearboxBlockEntity> GEARBOX = REGISTRATE
             .blockEntity("custom_gearbox", GearboxBlockEntity::new)
             .visual(() -> GearboxVisual::new, false)
-            .validBlocks(ModBlocks.BRASS_GEARBOX,ModBlocks.COPPER_GEARBOX,ModBlocks.RAILWAY_GEARBOX,ModBlocks.INDUSTRIAL_IRON_GEARBOX,ModBlocks.CREATIVE_GEARBOX,ModBlocks.WEATHERED_IRON_GEARBOX,ModBlocks.REFINED_RADIANCE_GEARBOX,ModBlocks.SHADOW_STEEL_GEARBOX)
+            .validBlocks(EncasedBlocks.BRASS_GEARBOX, EncasedBlocks.COPPER_GEARBOX, EncasedBlocks.RAILWAY_GEARBOX, EncasedBlocks.INDUSTRIAL_IRON_GEARBOX, EncasedBlocks.CREATIVE_GEARBOX, EncasedBlocks.WEATHERED_IRON_GEARBOX, EncasedBlocks.REFINED_RADIANCE_GEARBOX, EncasedBlocks.SHADOW_STEEL_GEARBOX)
             .renderer(() -> GearboxRenderer::new)
             .register();
 
     public static final BlockEntityEntry<MechanicalMixerBlockEntity> MIXER = REGISTRATE
             .blockEntity("custom_mixer", MechanicalMixerBlockEntity::new)
             .visual(() -> CustomMixerVisual::new)
-            .validBlocks(ModBlocks.BRASS_MIXER,ModBlocks.COPPER_MIXER,ModBlocks.RAILWAY_MIXER,ModBlocks.INDUSTRIAL_IRON_MIXER,ModBlocks.CREATIVE_MIXER,ModBlocks.WEATHERED_IRON_MIXER,ModBlocks.REFINED_RADIANCE_MIXER,ModBlocks.SHADOW_STEEL_MIXER)
+            .validBlocks(EncasedBlocks.BRASS_MIXER, EncasedBlocks.COPPER_MIXER, EncasedBlocks.RAILWAY_MIXER, EncasedBlocks.INDUSTRIAL_IRON_MIXER, EncasedBlocks.CREATIVE_MIXER, EncasedBlocks.WEATHERED_IRON_MIXER, EncasedBlocks.REFINED_RADIANCE_MIXER, EncasedBlocks.SHADOW_STEEL_MIXER)
             .renderer(() -> CustomMixerRenderer::new)
             .register();
 
     public static final BlockEntityEntry<MechanicalPressBlockEntity> PRESS = REGISTRATE
             .blockEntity("custom_press", MechanicalPressBlockEntity::new)
             .visual(() -> PressVisual::new)
-            .validBlocks(ModBlocks.BRASS_PRESS,ModBlocks.COPPER_PRESS,ModBlocks.RAILWAY_PRESS,ModBlocks.INDUSTRIAL_IRON_PRESS,ModBlocks.CREATIVE_PRESS,ModBlocks.WEATHERED_IRON_PRESS,ModBlocks.REFINED_RADIANCE_PRESS,ModBlocks.SHADOW_STEEL_PRESS)
+            .validBlocks(EncasedBlocks.BRASS_PRESS, EncasedBlocks.COPPER_PRESS, EncasedBlocks.RAILWAY_PRESS, EncasedBlocks.INDUSTRIAL_IRON_PRESS, EncasedBlocks.CREATIVE_PRESS, EncasedBlocks.WEATHERED_IRON_PRESS, EncasedBlocks.REFINED_RADIANCE_PRESS, EncasedBlocks.SHADOW_STEEL_PRESS)
             .renderer(() -> CustomPressRenderer::new)
             .register();
 
     public static final BlockEntityEntry<DepotBlockEntity> DEPOT = REGISTRATE
             .blockEntity("custom_depot", DepotBlockEntity::new)
-            .validBlocks(ModBlocks.BRASS_DEPOT,ModBlocks.COPPER_DEPOT,ModBlocks.RAILWAY_DEPOT,ModBlocks.INDUSTRIAL_IRON_DEPOT,ModBlocks.CREATIVE_DEPOT,ModBlocks.WEATHERED_IRON_DEPOT,ModBlocks.REFINED_RADIANCE_DEPOT,ModBlocks.SHADOW_STEEL_DEPOT)
+            .validBlocks(EncasedBlocks.BRASS_DEPOT, EncasedBlocks.COPPER_DEPOT, EncasedBlocks.RAILWAY_DEPOT, EncasedBlocks.INDUSTRIAL_IRON_DEPOT, EncasedBlocks.CREATIVE_DEPOT, EncasedBlocks.WEATHERED_IRON_DEPOT, EncasedBlocks.REFINED_RADIANCE_DEPOT, EncasedBlocks.SHADOW_STEEL_DEPOT)
             .renderer(() -> DepotRenderer::new)
             .register();
 
     public static final BlockEntityEntry<WoodenShaftBlockEntity> WOODEN_SHAFT = REGISTRATE
             .blockEntity("wooden_shaft", WoodenShaftBlockEntity::new)
             .visual(() -> WoodenShaftVisual::create, false)
-            .validBlocks(ModBlocks.OAK_SHAFT,ModBlocks.SPRUCE_SHAFT,ModBlocks.BIRCH_SHAFT,ModBlocks.JUNGLE_SHAFT,ModBlocks.ACACIA_SHAFT,ModBlocks.DARK_OAK_SHAFT,ModBlocks.CRIMSON_SHAFT,ModBlocks.WARPED_SHAFT,ModBlocks.MANGROVE_SHAFT,ModBlocks.BAMBOO_SHAFT,ModBlocks.CHERRY_SHAFT)
+            .validBlocks(EncasedBlocks.OAK_SHAFT, EncasedBlocks.SPRUCE_SHAFT, EncasedBlocks.BIRCH_SHAFT, EncasedBlocks.JUNGLE_SHAFT, EncasedBlocks.ACACIA_SHAFT, EncasedBlocks.DARK_OAK_SHAFT, EncasedBlocks.CRIMSON_SHAFT, EncasedBlocks.WARPED_SHAFT, EncasedBlocks.MANGROVE_SHAFT, EncasedBlocks.BAMBOO_SHAFT, EncasedBlocks.CHERRY_SHAFT)
             .renderer(() -> BracketedKineticBlockEntityRenderer::new)
             .register();
 
     public static final BlockEntityEntry<GlassShaftBlockEntity> GLASS_SHAFT = REGISTRATE
             .blockEntity("glass_shaft", GlassShaftBlockEntity::new)
-            .visual(() -> (ctx,be,pt)->new SingleAxisRotatingVisual<>(ctx,be,pt,Models.partial(ModPartialModels.GLASS_SHAFT)), false)
-            .validBlocks(ModBlocks.GLASS_SHAFT)
+            .visual(() -> (ctx,be,pt)->new SingleAxisRotatingVisual<>(ctx,be,pt,Models.partial(EncasedPartialModels.GLASS_SHAFT)), false)
+            .validBlocks(EncasedBlocks.GLASS_SHAFT)
             .renderer(() -> BracketedKineticBlockEntityRenderer::new)
             .register();
 
     public static final BlockEntityEntry<MetalShaftBlockEntity> METAL_SHAFT = REGISTRATE
             .blockEntity("metal_shaft", MetalShaftBlockEntity::new)
-            .visual(() -> (ctx,be,pt)->new SingleAxisRotatingVisual<>(ctx,be,pt,Models.partial(ModPartialModels.MLDEG_SHAFT)), false)
-            .validBlocks(ModBlocks.MLDEG_SHAFT)
+            .visual(() -> (ctx,be,pt)->new SingleAxisRotatingVisual<>(ctx,be,pt,Models.partial(EncasedPartialModels.MLDEG_SHAFT)), false)
+            .validBlocks(EncasedBlocks.MLDEG_SHAFT)
             .renderer(() -> BracketedKineticBlockEntityRenderer::new)
             .register();
     public static final BlockEntityEntry<BrassShaftBlockEntity> BRASS_SHAFT = REGISTRATE
             .blockEntity("brass_shaft", BrassShaftBlockEntity::new)
-            .visual(() -> (visualizationContext, be, pt) ->new SingleAxisRotatingVisual<>(visualizationContext,be,pt, Models.partial(ModPartialModels.BRASS_SHAFT)), false)
-            .validBlocks(ModBlocks.BRASS_SHAFT)
+            .visual(() -> (visualizationContext, be, pt) ->new SingleAxisRotatingVisual<>(visualizationContext,be,pt, Models.partial(EncasedPartialModels.BRASS_SHAFT)), false)
+            .validBlocks(EncasedBlocks.BRASS_SHAFT)
             .renderer(() -> BracketedKineticBlockEntityRenderer::new)
             .register();
 
     public static final BlockEntityEntry<CreativeCogwheelBlockEntity> CREATIVE_COGWHEEL = REGISTRATE
             .blockEntity("creative_cogwheel", CreativeCogwheelBlockEntity::new)
             .visual(() -> CreativeCogwheelVisual::new, false)
-            .validBlocks(ModBlocks.CREATIVE_COGWHEEL)
+            .validBlocks(EncasedBlocks.CREATIVE_COGWHEEL)
             .renderer(() -> CreativeCogwheelRenderer::new)
             .register();
 
     public static final BlockEntityEntry<GearboxBlockEntity> CONFIGURABLE_GEARBOX = REGISTRATE
             .blockEntity("configurable_gearbox", GearboxBlockEntity::new)
             .visual(() -> ConfigurableGearboxVisual::new, false)
-            .validBlocks(ModBlocks.ANDESITE_CONFIGURABLE_GEARBOX,ModBlocks.BRASS_CONFIGURABLE_GEARBOX,ModBlocks.COPPER_CONFIGURABLE_GEARBOX,ModBlocks.RAILWAY_CONFIGURABLE_GEARBOX,ModBlocks.CREATIVE_CONFIGURABLE_GEARBOX,ModBlocks.INDUSTRIAL_IRON_CONFIGURABLE_GEARBOX,ModBlocks.WEATHERED_IRON_CONFIGURABLE_GEARBOX,ModBlocks.REFINED_RADIANCE_CONFIGURABLE_GEARBOX,ModBlocks.SHADOW_STEEL_CONFIGURABLE_GEARBOX)
+            .validBlocks(EncasedBlocks.ANDESITE_CONFIGURABLE_GEARBOX, EncasedBlocks.BRASS_CONFIGURABLE_GEARBOX, EncasedBlocks.COPPER_CONFIGURABLE_GEARBOX, EncasedBlocks.RAILWAY_CONFIGURABLE_GEARBOX, EncasedBlocks.CREATIVE_CONFIGURABLE_GEARBOX, EncasedBlocks.INDUSTRIAL_IRON_CONFIGURABLE_GEARBOX, EncasedBlocks.WEATHERED_IRON_CONFIGURABLE_GEARBOX, EncasedBlocks.REFINED_RADIANCE_CONFIGURABLE_GEARBOX, EncasedBlocks.SHADOW_STEEL_CONFIGURABLE_GEARBOX)
             .renderer(() -> ConfigurableGearboxRenderer::new)
             .register();
 
@@ -138,7 +138,7 @@ public class ModBlockEntities {
     public static final BlockEntityEntry<ChainGearshiftBlockEntity> CUSTOM_CHAIN_GEARSHIFT = REGISTRATE
             .blockEntity("custom_chain_gearshift", ChainGearshiftBlockEntity::new)
             .visual(() -> ShaftVisual::new, false)
-            .validBlocks(ModBlocks.BRASS_CHAIN_GEARSHIFT,ModBlocks.COPPER_CHAIN_GEARSHIFT,ModBlocks.RAILWAY_CHAIN_GEARSHIFT,ModBlocks.WEATHERED_IRON_CHAIN_GEARSHIFT,ModBlocks.INDUSTRIAL_IRON_CHAIN_GEARSHIFT,ModBlocks.CREATIVE_CHAIN_GEARSHIFT,ModBlocks.REFINED_RADIANCE_CHAIN_GEARSHIFT,ModBlocks.SHADOW_STEEL_CHAIN_GEARSHIFT)
+            .validBlocks(EncasedBlocks.BRASS_CHAIN_GEARSHIFT, EncasedBlocks.COPPER_CHAIN_GEARSHIFT, EncasedBlocks.RAILWAY_CHAIN_GEARSHIFT, EncasedBlocks.WEATHERED_IRON_CHAIN_GEARSHIFT, EncasedBlocks.INDUSTRIAL_IRON_CHAIN_GEARSHIFT, EncasedBlocks.CREATIVE_CHAIN_GEARSHIFT, EncasedBlocks.REFINED_RADIANCE_CHAIN_GEARSHIFT, EncasedBlocks.SHADOW_STEEL_CHAIN_GEARSHIFT)
             .renderer(() -> ShaftRenderer::new)
             .register();
     public static final BlockEntityEntry<BracketedKineticBlockEntity> WOODEN_COGWHEELS = REGISTRATE
@@ -165,7 +165,7 @@ public class ModBlockEntities {
     public static final BlockEntityEntry<ChainConveyorBlockEntity> CHAIN_CONVEYOR = REGISTRATE
             .blockEntity("custom_chain_conveyor", ChainConveyorBlockEntity::new)
             .visual(() -> CustomChainConveyorVisual::new)
-            .validBlocks(ModBlocks.BRASS_CHAIN_CONVEYOR,ModBlocks.COPPER_CHAIN_CONVEYOR,ModBlocks.RAILWAY_CHAIN_CONVEYOR,ModBlocks.CREATIVE_CHAIN_CONVEYOR,ModBlocks.INDUSTRIAL_IRON_CHAIN_CONVEYOR,ModBlocks.WEATHERED_IRON_CHAIN_CONVEYOR,ModBlocks.REFINED_RADIANCE_CHAIN_CONVEYOR,ModBlocks.SHADOW_STEEL_CHAIN_CONVEYOR)
+            .validBlocks(EncasedBlocks.BRASS_CHAIN_CONVEYOR, EncasedBlocks.COPPER_CHAIN_CONVEYOR, EncasedBlocks.RAILWAY_CHAIN_CONVEYOR, EncasedBlocks.CREATIVE_CHAIN_CONVEYOR, EncasedBlocks.INDUSTRIAL_IRON_CHAIN_CONVEYOR, EncasedBlocks.WEATHERED_IRON_CHAIN_CONVEYOR, EncasedBlocks.REFINED_RADIANCE_CHAIN_CONVEYOR, EncasedBlocks.SHADOW_STEEL_CHAIN_CONVEYOR)
             .renderer(() -> CustomChainConveyorRenderer::new)
             .register();
 

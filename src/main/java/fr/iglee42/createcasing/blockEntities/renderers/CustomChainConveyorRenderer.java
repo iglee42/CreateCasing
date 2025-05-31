@@ -5,7 +5,7 @@ import java.util.Map.Entry;
 
 import com.simibubi.create.content.kinetics.chainConveyor.ChainConveyorBlockEntity;
 import com.simibubi.create.content.kinetics.chainConveyor.ChainConveyorPackage;
-import fr.iglee42.createcasing.registries.ModPartialModels;
+import fr.iglee42.createcasing.registries.EncasedPartialModels;
 import org.joml.Matrix4f;
 
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -60,7 +60,7 @@ public class CustomChainConveyorRenderer extends KineticBlockEntityRenderer<Chai
 		if (VisualizationManager.supportsVisualization(be.getLevel()))
 			return;
 
-		CachedBuffers.partial(ModPartialModels.getChainConveyorWheel(be.getBlockState()), be.getBlockState())
+		CachedBuffers.partial(EncasedPartialModels.getChainConveyorWheel(be.getBlockState()), be.getBlockState())
 			.light(light)
 			.overlay(overlay)
 			.renderInto(ms, buffer.getBuffer(RenderType.cutoutMipped()));
@@ -161,7 +161,7 @@ public class CustomChainConveyorRenderer extends KineticBlockEntityRenderer<Chai
 
 			if (!VisualizationManager.supportsVisualization(be.getLevel())) {
 				SuperByteBuffer guard =
-					CachedBuffers.partial(ModPartialModels.getChainConveyorGuard(be.getBlockState()), be.getBlockState());
+					CachedBuffers.partial(EncasedPartialModels.getChainConveyorGuard(be.getBlockState()), be.getBlockState());
 				guard.center();
 				guard.rotateYDegrees((float) yaw);
 
