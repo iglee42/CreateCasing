@@ -2,6 +2,7 @@
   "parent": "createcasing:block/templates/configurable_gearbox/block",
   "textures": {
     "0": "create:block/creative_casing",
-    "1": "createcasing:block/gearboxes/creative"
+    "1": "createcasing:block/gearboxes/creative",
+    "particle": "create:block/creative_casing"
   }
 }

@@ -20,6 +20,7 @@ group = mod_group_id
 version = minecraft_version + "-" +mod_version
 
 var cleanResources = tasks.register('cleanOldGeneratedResources', Delete) {
+    println("Deleting $projectDir/src/generated/resources...")
     delete "$projectDir/src/generated/resources"
 }
 

@@ -4,6 +4,7 @@
     "1_0": "createcasing:block/shafts/glass",
     "1_1": "createcasing:block/shafts/glass_top",
     "casing": "create:block/shadow_steel_casing",
-    "opening": "createcasing:block/gearboxes/shadow_steel"
+    "opening": "createcasing:block/gearboxes/shadow_steel",
+    "particle": "create:block/shadow_steel_casing"
   }
 }

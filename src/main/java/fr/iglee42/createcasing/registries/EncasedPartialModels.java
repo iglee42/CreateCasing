@@ -44,6 +44,15 @@ public class EncasedPartialModels {
     CREATIVE_CONVEYOR_WHEEL = block("chain_conveyor/creative/wheel"),
     REFINED_RADIANCE_CONVEYOR_WHEEL = block("chain_conveyor/refined_radiance/wheel"),
     SHADOW_STEEL_CONVEYOR_WHEEL = block("chain_conveyor/shadow_steel/wheel"),
+
+    BRASS_CONVEYOR_SHAFT = block("chain_conveyor/brass/shaft"),
+            COPPER_CONVEYOR_SHAFT = block("chain_conveyor/copper/shaft"),
+            RAILWAY_CONVEYOR_SHAFT = block("chain_conveyor/railway/shaft"),
+            INDUSTRIAL_IRON_CONVEYOR_SHAFT = block("chain_conveyor/industrial_iron/shaft"),
+            WEATHERED_IRON_CONVEYOR_SHAFT = block("chain_conveyor/weathered_iron/shaft"),
+            CREATIVE_CONVEYOR_SHAFT = block("chain_conveyor/creative/shaft"),
+            REFINED_RADIANCE_CONVEYOR_SHAFT = block("chain_conveyor/refined_radiance/shaft"),
+            SHADOW_STEEL_CONVEYOR_SHAFT = block("chain_conveyor/shadow_steel/shaft"),
             BRASS_CONVEYOR_GUARD = block("chain_conveyor/brass/guard"),
             COPPER_CONVEYOR_GUARD = block("chain_conveyor/copper/guard"),
             RAILWAY_CONVEYOR_GUARD = block("chain_conveyor/railway/guard"),
@@ -111,4 +120,15 @@ public class EncasedPartialModels {
         return AllPartialModels.CHAIN_CONVEYOR_GUARD;
     }
 
+    public static PartialModel getChainConveyorShaft(BlockState state){
+        if (EncasedBlocks.BRASS_CHAIN_CONVEYOR.has(state)) return BRASS_CONVEYOR_SHAFT;
+        if (EncasedBlocks.COPPER_CHAIN_CONVEYOR.has(state)) return COPPER_CONVEYOR_SHAFT;
+        if (EncasedBlocks.RAILWAY_CHAIN_CONVEYOR.has(state)) return RAILWAY_CONVEYOR_SHAFT;
+        if (EncasedBlocks.CREATIVE_CHAIN_CONVEYOR.has(state)) return CREATIVE_CONVEYOR_SHAFT;
+        if (EncasedBlocks.INDUSTRIAL_IRON_CHAIN_CONVEYOR.has(state)) return INDUSTRIAL_IRON_CONVEYOR_SHAFT;
+        if (EncasedBlocks.WEATHERED_IRON_CHAIN_CONVEYOR.has(state)) return WEATHERED_IRON_CONVEYOR_SHAFT;
+        if (EncasedBlocks.REFINED_RADIANCE_CHAIN_CONVEYOR.has(state)) return REFINED_RADIANCE_CONVEYOR_SHAFT;
+        if (EncasedBlocks.SHADOW_STEEL_CHAIN_CONVEYOR.has(state)) return SHADOW_STEEL_CONVEYOR_SHAFT;
+        return AllPartialModels.CHAIN_CONVEYOR_SHAFT;
+    }
 }

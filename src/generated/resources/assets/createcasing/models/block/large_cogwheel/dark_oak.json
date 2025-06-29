@@ -1,6 +1,7 @@
 {
   "parent": "create:block/large_cogwheel",
   "textures": {
-    "4": "createcasing:block/large_cogwheels/dark_oak"
+    "4": "createcasing:block/large_cogwheels/dark_oak",
+    "particle": "minecraft:block/stripped_dark_oak_log"
   }
 }

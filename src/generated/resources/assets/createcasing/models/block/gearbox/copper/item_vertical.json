@@ -2,6 +2,7 @@
   "parent": "create:block/gearbox/item_vertical",
   "textures": {
     "gearbox": "createcasing:block/gearboxes/copper",
-    "gearbox_top": "create:block/copper_casing"
+    "gearbox_top": "create:block/copper_casing",
+    "particle": "create:block/copper_casing"
   }
 }

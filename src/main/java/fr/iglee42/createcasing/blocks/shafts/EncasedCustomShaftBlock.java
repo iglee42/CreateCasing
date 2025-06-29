@@ -17,7 +17,7 @@ import net.minecraft.world.phys.HitResult;
 
 import java.util.function.Supplier;
 
-public class EncasedCustomShaftBlock extends EncasedShaftBlock {
+public class EncasedCustomShaftBlock extends EncasedShaftBlock   {
 
     private Supplier<Block> shaft;
 

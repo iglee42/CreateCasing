@@ -1,6 +1,7 @@
 {
   "parent": "create:block/cogwheel",
   "textures": {
-    "1_2": "createcasing:block/cogwheels/oak"
+    "1_2": "createcasing:block/cogwheels/oak",
+    "particle": "minecraft:block/stripped_oak_log"
   }
 }

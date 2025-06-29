@@ -1,6 +1,7 @@
 {
   "parent": "create:block/large_cogwheel",
   "textures": {
-    "4": "createcasing:block/large_cogwheels/cherry"
+    "4": "createcasing:block/large_cogwheels/cherry",
+    "particle": "minecraft:block/stripped_cherry_log"
   }
 }

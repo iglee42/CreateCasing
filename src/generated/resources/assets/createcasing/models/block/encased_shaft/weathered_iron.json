@@ -2,6 +2,7 @@
   "parent": "create:block/encased_shaft/block",
   "textures": {
     "casing": "create:block/weathered_iron_block",
-    "opening": "createcasing:block/gearboxes/weathered_iron"
+    "opening": "createcasing:block/gearboxes/weathered_iron",
+    "particle": "create:block/weathered_iron_block"
   }
 }

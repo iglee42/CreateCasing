@@ -248,8 +248,8 @@ public class CreateCasingApi {
     }
 
 
-    public static BlockEntry<ApiCogwheelBlock> createSmallCogwheel(CreateRegistrate registrate, String name){
-        return registrate.block(name+"_cogwheel", ApiCogwheelBlock::small)
+    public static BlockEntry<ApiCogwheelBlock> createSmallCogwheel(CreateRegistrate registrate, String name, PartialModel partialModel){
+        return registrate.block(name+"_cogwheel", (p)->ApiCogwheelBlock.small(p,partialModel))
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.sound(SoundType.WOOD).mapColor(MapColor.DIRT))
                 .transform(CCStress.setNoImpact())

@@ -1,6 +1,7 @@
 {
   "parent": "createcasing:block/encased_chain_drive/copper/middle_vertical",
   "textures": {
+    "particle": "create:block/copper_casing",
     "side": "createcasing:block/adjustable_chain_gearshifts_powered/copper"
   }
 }

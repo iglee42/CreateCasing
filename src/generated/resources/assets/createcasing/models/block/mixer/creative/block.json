@@ -3,6 +3,7 @@
   "textures": {
     "11": "createcasing:block/press_tops/creative",
     "2": "create:block/creative_casing",
-    "4": "createcasing:block/mixer_sides/creative"
+    "4": "createcasing:block/mixer_sides/creative",
+    "particle": "create:block/creative_casing"
   }
 }

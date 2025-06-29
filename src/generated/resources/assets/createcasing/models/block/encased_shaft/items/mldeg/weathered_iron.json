@@ -4,6 +4,7 @@
     "1_0": "createcasing:block/shafts/mldeg",
     "1_1": "createcasing:block/shafts/mldeg",
     "casing": "create:block/weathered_iron_block",
-    "opening": "createcasing:block/gearboxes/weathered_iron"
+    "opening": "createcasing:block/gearboxes/weathered_iron",
+    "particle": "create:block/weathered_iron_block"
   }
 }

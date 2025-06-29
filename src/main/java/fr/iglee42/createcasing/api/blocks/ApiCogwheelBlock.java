@@ -42,22 +42,17 @@ import javax.annotation.ParametersAreNonnullByDefault;
 public class ApiCogwheelBlock extends AbstractSimpleShaftBlock implements ICogWheel, EncasableBlock {
 
 	public boolean isLarge;
-	private PartialModel largeWheelModel;
+	private PartialModel model;
 
-	protected ApiCogwheelBlock(boolean large, Properties properties) {
+
+	protected ApiCogwheelBlock(boolean large, Properties properties,PartialModel model) {
 		super(properties);
 		isLarge = large;
-		this.largeWheelModel = null;
+		this.model = model;
 	}
 
-	protected ApiCogwheelBlock(boolean large, Properties properties,PartialModel largeWheelModel) {
-		super(properties);
-		isLarge = large;
-		this.largeWheelModel = largeWheelModel;
-	}
-
-	public static ApiCogwheelBlock small(Properties properties) {
-		return new ApiCogwheelBlock(false, properties);
+	public static ApiCogwheelBlock small(Properties properties,PartialModel model) {
+		return new ApiCogwheelBlock(false, properties,model);
 	}
 
 	public static ApiCogwheelBlock large(Properties properties,PartialModel largeWheelModel) {
@@ -214,7 +209,7 @@ public class ApiCogwheelBlock extends AbstractSimpleShaftBlock implements ICogWh
 		return EncasedBlockEntities.API_COGWHEEL.get();
 	}
 
-	public PartialModel getLargeCogwheelModel() {
-		return largeWheelModel;
+	public PartialModel getModel() {
+		return model;
 	}
 }

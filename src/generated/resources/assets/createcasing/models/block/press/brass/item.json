@@ -5,6 +5,7 @@
     "gearbox": "create:block/brass_gearbox",
     "gearbox_top": "create:block/brass_casing",
     "mechanical_press_bottom": "createcasing:block/press_bottoms/brass",
-    "mechanical_press_top": "createcasing:block/press_tops/brass"
+    "mechanical_press_top": "createcasing:block/press_tops/brass",
+    "particle": "create:block/brass_casing"
   }
 }

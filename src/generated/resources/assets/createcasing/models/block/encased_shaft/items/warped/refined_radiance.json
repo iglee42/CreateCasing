@@ -4,6 +4,7 @@
     "1_0": "minecraft:block/stripped_warped_stem",
     "1_1": "minecraft:block/stripped_warped_stem_top",
     "casing": "create:block/refined_radiance_casing",
-    "opening": "createcasing:block/gearboxes/refined_radiance"
+    "opening": "createcasing:block/gearboxes/refined_radiance",
+    "particle": "create:block/refined_radiance_casing"
   }
 }

@@ -1,0 +1,11 @@
+{
+  "parent": "create:block/mechanical_press/item",
+  "textures": {
+    "8": "createcasing:block/press_sides/refined_radiance",
+    "gearbox": "createcasing:block/gearboxes/refined_radiance",
+    "gearbox_top": "create:block/refined_radiance_casing",
+    "mechanical_press_bottom": "createcasing:block/press_bottoms/refined_radiance",
+    "mechanical_press_top": "createcasing:block/press_tops/refined_radiance",
+    "particle": "create:block/refined_radiance_casing"
+  }
+}

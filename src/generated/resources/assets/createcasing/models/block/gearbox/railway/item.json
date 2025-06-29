@@ -2,6 +2,7 @@
   "parent": "create:block/gearbox/item",
   "textures": {
     "0": "create:block/railway_casing",
-    "1": "createcasing:block/gearboxes/railway"
+    "1": "createcasing:block/gearboxes/railway",
+    "particle": "create:block/railway_casing"
   }
 }

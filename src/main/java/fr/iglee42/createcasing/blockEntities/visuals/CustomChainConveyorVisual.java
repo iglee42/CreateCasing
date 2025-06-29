@@ -41,7 +41,7 @@ public class CustomChainConveyorVisual extends SingleAxisRotatingVisual<ChainCon
 	private final SmartRecycler<ResourceLocation, TransformedInstance> rigging;
 
 	public CustomChainConveyorVisual(VisualizationContext context, ChainConveyorBlockEntity blockEntity, float partialTick) {
-		super(context, blockEntity, partialTick, Models.partial(AllPartialModels.CHAIN_CONVEYOR_SHAFT));
+		super(context, blockEntity, partialTick, Models.partial(EncasedPartialModels.getChainConveyorShaft(blockEntity.getBlockState())));
 
 		setupGuards();
 
@@ -158,7 +158,7 @@ public class CustomChainConveyorVisual extends SingleAxisRotatingVisual<ChainCon
 		wheel.translate(getVisualPosition())
 			.light(rotatingModel.light)
 			.setChanged();
-		
+
 		guards.add(wheel);
 		
 		for (BlockPos blockPos : blockEntity.connections) {

@@ -91,6 +91,7 @@ public class EncasedBlockStateGens {
             prov.simpleBlock(ctx.get(),createConveyorModel(prov,casing,false));
             texturesChainConveyor(Objects.requireNonNull(createModelInBlock(prov, "chain_conveyor/" + casing + "/wheel")).parent(new ModelFile.UncheckedModelFile("create:block/chain_conveyor/wheel")),casing);
             texturesChainConveyor(Objects.requireNonNull(createModelInBlock(prov, "chain_conveyor/" + casing + "/guard")).parent(new ModelFile.UncheckedModelFile("create:block/chain_conveyor/guard")),casing);
+            texturesChainConveyor(Objects.requireNonNull(createModelInBlock(prov, "chain_conveyor/" + casing + "/shaft")).parent(new ModelFile.UncheckedModelFile("create:block/chain_conveyor/shaft")),casing);
         };
     }
 
@@ -109,7 +110,9 @@ public class EncasedBlockStateGens {
     private static ModelBuilder<? extends ModelBuilder<?>> texturesChainConveyor(ModelBuilder<? extends ModelBuilder<?>> builder,String casing){
         return builder
                 .texture("conveyor_casing",getConveyorCasingTexture(casing))
-                .texture("conveyor_port", getConveyorPortTexture(casing));
+                .texture("conveyor_port", getConveyorPortTexture(casing))
+                .texture("bullwheel", getBullWheelTexture(casing))
+                .texture("particle",getCasingTexture(casing));
     }
 
     public static ModelFile createAdjustableChainGearshiftModel(RegistrateProvider provider, String casing, boolean item, String suffix, boolean powered){
@@ -117,7 +120,8 @@ public class EncasedBlockStateGens {
         if (!isValidProvider(provider)) return file;
         return Objects.requireNonNull(createModelInBlock(provider, "adjustable_chain_gearshift/" + casing + "/" + suffix + (powered ? "_powered" : "")))
                 .parent(file)
-                .texture("side",getAdjustableChainGearshiftTexture(casing,powered));
+                .texture("side",getAdjustableChainGearshiftTexture(casing,powered))
+                .texture("particle",getCasingTexture(casing));
     }
 
 
@@ -126,13 +130,16 @@ public class EncasedBlockStateGens {
             String partKey = suffix.startsWith("end") ? "2" : "1";
             return Objects.requireNonNull(createModelInBlock(provider, "encased_chain_drive/" + casing + "/" + suffix))
                     .parent(new ModelFile.UncheckedModelFile("create:block/encased_chain_drive/"+suffix))
-                    .texture(partKey,suffix.equals("single") ? getGearboxTexture(casing) : getChainDrivePart(casing,suffix))
-                    .texture("side",getChainDriveSideTexture(casing));
+                    .texture(partKey,suffix.equals("single") ? getGearboxTexture(casing) : getChainDrivePart(casing,partKey))
+                    .texture("side",getChainDriveSideTexture(casing))
+                    .texture("particle",getCasingTexture(casing));
+
         } else {
             return Objects.requireNonNull(createModelInBlock(provider, "encased_chain_drive/" + casing + "/item"))
                     .parent(new ModelFile.UncheckedModelFile("create:block/encased_chain_drive/item"))
                     .texture("1",getGearboxTexture(casing))
-                    .texture("side",getChainDriveSideTexture(casing));
+                    .texture("side",getChainDriveSideTexture(casing))
+                    .texture("particle",getCasingTexture(casing));
         }
     }
 
@@ -179,8 +186,8 @@ public class EncasedBlockStateGens {
 
     public static <P extends EncasedPipeBlock> NonNullBiConsumer<DataGenContext<Block, P>, RegistrateBlockstateProvider> encasedPipe(String casing) {
         return (c, p) -> {
-            ModelFile open = Objects.requireNonNull(createModelInBlock(p, "encased_pipe/" + casing + "/block_open")).parent(new ModelFile.UncheckedModelFile(CreateCasing.asResource("block/templates/pipe_block_open"))).texture("1",getCasingTexture(casing));
-            ModelFile flat = Objects.requireNonNull(createModelInBlock(p, "encased_pipe/" + casing + "/block_flat")).parent(new ModelFile.UncheckedModelFile(Create.ID + ":block/encased_fluid_pipe/block_flat")).texture("0",getCasingTexture(casing));
+            ModelFile open = Objects.requireNonNull(createModelInBlock(p, "encased_pipe/" + casing + "/block_open")).parent(new ModelFile.UncheckedModelFile(CreateCasing.asResource("block/templates/pipe_block_open"))).texture("1",getCasingTexture(casing)).texture("particle",getCasingTexture(casing));
+            ModelFile flat = Objects.requireNonNull(createModelInBlock(p, "encased_pipe/" + casing + "/block_flat")).parent(new ModelFile.UncheckedModelFile(Create.ID + ":block/encased_fluid_pipe/block_flat")).texture("0",getCasingTexture(casing)).texture("particle",getCasingTexture(casing));
             MultiPartBlockStateBuilder builder = p.getMultipartBuilder(c.get());
             for (boolean flatPass : Iterate.trueAndFalse)
                 for (Direction d : Iterate.directions) {
@@ -202,10 +209,12 @@ public class EncasedBlockStateGens {
             ModelFile block = Objects.requireNonNull(createModelInBlock(p, "configurable_gearbox/" + casing + "/block"))
                     .parent(new ModelFile.UncheckedModelFile(CreateCasing.asResource("block/templates/configurable_gearbox/block")))
                     .texture("0",getCasingTexture(casing))
-                    .texture("1",getGearboxTexture(casing));
+                    .texture("1",getGearboxTexture(casing))
+                    .texture("particle",getCasingTexture(casing));
             ModelFile face = Objects.requireNonNull(createModelInBlock(p, "configurable_gearbox/" + casing + "/face"))
                     .parent(new ModelFile.UncheckedModelFile(CreateCasing.asResource("block/templates/configurable_gearbox/face")))
-                    .texture("0",getCasingTexture(casing));
+                    .texture("0",getCasingTexture(casing))
+                    .texture("particle",getCasingTexture(casing));
             MultiPartBlockStateBuilder builder = p.getMultipartBuilder(c.get());
             builder.part().modelFile(block).addModel().end();
                 for (Direction d : Iterate.directions) {
@@ -226,7 +235,8 @@ public class EncasedBlockStateGens {
         return Objects.requireNonNull(createModelInBlock(p, "configurable_gearbox/" + casing + "/item"))
                 .parent(new ModelFile.UncheckedModelFile(CreateCasing.asResource("block/templates/configurable_gearbox/item")))
                 .texture("0",getCasingTexture(casing))
-                .texture("1",getGearboxTexture(casing));
+                .texture("1",getGearboxTexture(casing))
+                .texture("particle",getCasingTexture(casing));
     }
 
     public static <P extends Block> NonNullBiConsumer<DataGenContext<Block, P>, RegistrateBlockstateProvider> press(String casing) {
@@ -255,7 +265,7 @@ public class EncasedBlockStateGens {
                     .parent(new ModelFile.UncheckedModelFile("create:block/encased"+(large? "_large": "")+"_cogwheel/block" + suffix))
                     .texture("1", getCasingTexture(casing))
                     .texture("casing", getCasingTexture(casing))
-                    .texture("particle", "#casing")
+                    .texture("particle",getCasingTexture(casing))
                     .texture("4", getGearboxTexture(casing))
                     .texture("side", large ? getLargeCogwheelSideTexture(casing) : getCogwheelSideTexture(casing));
             if (state == null) file = file.parent(new ModelFile.UncheckedModelFile("create:block/encased"+(large? "_large": "")+"_cogwheel/item"));
@@ -272,7 +282,8 @@ public class EncasedBlockStateGens {
                     .texture("gearbox",getGearboxTexture(casing))
                     .texture("mechanical_press_top",getPressPart(casing,"top"))
                     .texture("4",getPressPart(casing,"side"))
-                    .texture("mechanical_press_bottom",getPressPart(casing,"bottom"));
+                    .texture("mechanical_press_bottom",getPressPart(casing,"bottom"))
+                    .texture("particle",getCasingTexture(casing));
         else
             return Objects.requireNonNull(createModelInBlock(p, "press/" + casing+"/item"))
                     .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_press/item"))
@@ -280,7 +291,8 @@ public class EncasedBlockStateGens {
                     .texture("gearbox",getGearboxTexture(casing))
                     .texture("mechanical_press_top",getPressPart(casing,"top"))
                     .texture("8",getPressPart(casing,"side"))
-                    .texture("mechanical_press_bottom",getPressPart(casing,"bottom"));
+                    .texture("mechanical_press_bottom",getPressPart(casing,"bottom"))
+                    .texture("particle",getCasingTexture(casing));
     }
 
     public static <T> ModelFile depotModel(RegistrateProvider p, String casing){
@@ -289,7 +301,8 @@ public class EncasedBlockStateGens {
                     .parent(new ModelFile.UncheckedModelFile("create:block/depot/block"))
                     .texture("3",getCasingTexture(casing))
                     .texture("2",getDepotPart(casing,"top"))
-                    .texture("1",getDepotPart(casing,"side"));
+                    .texture("1",getDepotPart(casing,"side"))
+                    .texture("particle",getCasingTexture(casing));
         return null;
     }
 
@@ -299,19 +312,21 @@ public class EncasedBlockStateGens {
                     .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_mixer/block"))
                     .texture("2",getCasingTexture(casing))
                     .texture("11",getPressPart(casing,"top"))
-                    .texture("4",getMixerPart(casing,"side"));
+                    .texture("4",getMixerPart(casing,"side"))
+                    .texture("particle",getCasingTexture(casing));
         else
             return Objects.requireNonNull(createModelInBlock(p, "mixer/" + casing+"/item"))
                     .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_mixer/item"))
                     .texture("2",getCasingTexture(casing))
                     .texture("11",getPressPart(casing,"top"))
                     .texture("4",getMixerPart(casing,"side"))
-                    .texture("6",getMixerPart(casing,"head"));
+                    .texture("6",getMixerPart(casing,"head"))
+                    .texture("particle",getCasingTexture(casing));
     }
 
 
     public static <T extends Block> void axisBlock(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov,ModelFile model){
-        axisBlock(ctx,prov,bs->model,false);
+        axisBlock(ctx,prov,bs->model,true);
     }
     public static <T extends Block> void axisBlock(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov, Function<BlockState,ModelFile> model, boolean uvLock){
         if (model == null) {
@@ -337,7 +352,8 @@ public class EncasedBlockStateGens {
           return  Objects.requireNonNull(createModelInBlock(p, "gearbox/" + casing + "/" + type))
                     .parent(new ModelFile.UncheckedModelFile("create:block/gearbox/"+type))
                     .texture(topKey,getCasingTexture(casing))
-                    .texture(casingKey,getGearboxTexture(casing));
+                    .texture(casingKey,getGearboxTexture(casing))
+                  .texture("particle",getCasingTexture(casing));
 
         return null;
     }
@@ -347,7 +363,8 @@ public class EncasedBlockStateGens {
             ModelBuilder<? extends ModelBuilder<?>> file = Objects.requireNonNull(createModelInBlock(p, "shaft/" + shaft))
                     .parent(new ModelFile.UncheckedModelFile("create:block/shaft"))
                     .texture("0", getShaftTexture(shaft))
-                    .texture("1", getShaftTexture(shaft) + (!shaft.equals("mldeg") ? "_top" : ""));
+                    .texture("1", getShaftTexture(shaft) + (!shaft.equals("mldeg") ? "_top" : ""))
+                    .texture("particle",getShaftTexture(shaft));
             if (shaft.equals("glass")) file = file.renderType("cutout_mipped");
             return file;
         }
@@ -358,7 +375,8 @@ public class EncasedBlockStateGens {
         if (isValidProvider(p))
             return Objects.requireNonNull(createModelInBlock(p, "cogwheel"+(shaft?"":"_shaftless")+"/" + cogwheel))
                     .parent(new ModelFile.UncheckedModelFile("create:block/cogwheel"+(shaft?"":"_shaftless")))
-                    .texture("1_2",getCogwheelTexture(cogwheel));
+                    .texture("1_2",getCogwheelTexture(cogwheel))
+                    .texture("particle",getShaftTexture(cogwheel));
         return null;
     }
 
@@ -366,7 +384,8 @@ public class EncasedBlockStateGens {
         if (isValidProvider(p))
             return Objects.requireNonNull(createModelInBlock(p, "large_cogwheel"+(shaft?"":"_shaftless")+"/" + cogwheel))
                     .parent(new ModelFile.UncheckedModelFile("create:block/large_cogwheel"+(shaft?"":"_shaftless")))
-                    .texture("4",getLargeCogwheelTexture(cogwheel));
+                    .texture("4",getLargeCogwheelTexture(cogwheel))
+                    .texture("particle",getShaftTexture(cogwheel));
         return null;
     }
 
@@ -378,14 +397,16 @@ public class EncasedBlockStateGens {
             return Objects.requireNonNull(createModelInBlock(p, "encased_shaft/" + casing))
                     .parent(new ModelFile.UncheckedModelFile("create:block/encased_shaft/block"))
                     .texture("casing",getCasingTexture(casing))
-                    .texture("opening",getGearboxTexture(casing));
+                    .texture("opening",getGearboxTexture(casing))
+                    .texture("particle",getCasingTexture(casing));
         else
             return Objects.requireNonNull(createModelInBlock(p, "encased_shaft/items/" + shaft + "/" + casing))
                     .parent(new ModelFile.UncheckedModelFile("create:block/encased_shaft/item"))
                     .texture("casing",getCasingTexture(casing))
                     .texture("opening",getGearboxTexture(casing))
                     .texture("1_0",getShaftTexture(shaft))
-                    .texture("1_1", getShaftTexture(shaft) + (!shaft.equals("mldeg") ? "_top": ""));
+                    .texture("1_1", getShaftTexture(shaft) + (!shaft.equals("mldeg") ? "_top": ""))
+                    .texture("particle",getCasingTexture(casing));
     }
 
     public static ModelBuilder<? extends ModelBuilder<?>> createModelInBlock(RegistrateProvider p, String path){
@@ -484,6 +505,12 @@ public class EncasedBlockStateGens {
         if (casing.equals("normal")) return Create.ID + ":block/conveyor_casing";
         return CreateCasing.MODID + ":block/conveyor_casings/"+casing;
     }
+
+    public static String getBullWheelTexture(String casing) {
+        if (casing.equals("normal")) return Create.ID + ":block/bullwheel";
+        return CreateCasing.MODID + ":block/bullwheels/"+casing;
+    }
+
 
     private static boolean isWoodenShaft(String shaft){
         return WoodType.values().anyMatch(w->w.name().toLowerCase().equalsIgnoreCase(shaft));

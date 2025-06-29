@@ -4,6 +4,7 @@
     "1_0": "minecraft:block/stripped_dark_oak_log",
     "1_1": "minecraft:block/stripped_dark_oak_log_top",
     "casing": "create:block/refined_radiance_casing",
-    "opening": "createcasing:block/gearboxes/refined_radiance"
+    "opening": "createcasing:block/gearboxes/refined_radiance",
+    "particle": "create:block/refined_radiance_casing"
   }
 }

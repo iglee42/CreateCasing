@@ -4,7 +4,7 @@
     "1": "create:block/creative_casing",
     "4": "createcasing:block/gearboxes/creative",
     "casing": "create:block/creative_casing",
-    "particle": "#casing",
+    "particle": "create:block/creative_casing",
     "side": "createcasing:block/encased_cogwheels/creative"
   }
 }

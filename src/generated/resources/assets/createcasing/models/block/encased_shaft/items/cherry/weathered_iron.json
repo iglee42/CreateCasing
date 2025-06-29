@@ -4,6 +4,7 @@
     "1_0": "minecraft:block/stripped_cherry_log",
     "1_1": "minecraft:block/stripped_cherry_log_top",
     "casing": "create:block/weathered_iron_block",
-    "opening": "createcasing:block/gearboxes/weathered_iron"
+    "opening": "createcasing:block/gearboxes/weathered_iron",
+    "particle": "create:block/weathered_iron_block"
   }
 }

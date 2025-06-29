@@ -4,6 +4,7 @@
     "1_0": "minecraft:block/stripped_oak_log",
     "1_1": "minecraft:block/stripped_oak_log_top",
     "casing": "create:block/creative_casing",
-    "opening": "createcasing:block/gearboxes/creative"
+    "opening": "createcasing:block/gearboxes/creative",
+    "particle": "create:block/creative_casing"
   }
 }

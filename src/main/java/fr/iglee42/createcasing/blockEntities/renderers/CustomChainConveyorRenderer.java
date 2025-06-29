@@ -263,7 +263,7 @@ public class CustomChainConveyorRenderer extends KineticBlockEntityRenderer<Chai
 
 	@Override
 	protected SuperByteBuffer getRotatedModel(ChainConveyorBlockEntity be, BlockState state) {
-		return CachedBuffers.partial(AllPartialModels.CHAIN_CONVEYOR_SHAFT, state);
+		return CachedBuffers.partial(EncasedPartialModels.getChainConveyorShaft(state), state);
 	}
 
 	@Override

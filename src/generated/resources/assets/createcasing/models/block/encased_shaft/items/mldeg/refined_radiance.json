@@ -4,6 +4,7 @@
     "1_0": "createcasing:block/shafts/mldeg",
     "1_1": "createcasing:block/shafts/mldeg",
     "casing": "create:block/refined_radiance_casing",
-    "opening": "createcasing:block/gearboxes/refined_radiance"
+    "opening": "createcasing:block/gearboxes/refined_radiance",
+    "particle": "create:block/refined_radiance_casing"
   }
 }

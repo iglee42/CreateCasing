@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/chain_conveyor/block",
+  "textures": {
+    "0": "createcasing:block/conveyor_casings/shadow_steel",
+    "particle": "create:block/shadow_steel_casing"
+  }
+}

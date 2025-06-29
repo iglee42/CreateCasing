@@ -4,6 +4,7 @@
     "1_0": "minecraft:block/stripped_jungle_log",
     "1_1": "minecraft:block/stripped_jungle_log_top",
     "casing": "create:block/copper_casing",
-    "opening": "createcasing:block/gearboxes/copper"
+    "opening": "createcasing:block/gearboxes/copper",
+    "particle": "create:block/copper_casing"
   }
 }

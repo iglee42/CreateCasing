@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/mechanical_mixer/item",
+  "textures": {
+    "11": "createcasing:block/press_tops/refined_radiance",
+    "2": "create:block/refined_radiance_casing",
+    "4": "createcasing:block/mixer_sides/refined_radiance",
+    "6": "createcasing:block/mixer_heads/refined_radiance",
+    "particle": "create:block/refined_radiance_casing"
+  }
+}

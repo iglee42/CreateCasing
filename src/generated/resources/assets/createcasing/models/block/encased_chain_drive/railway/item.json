@@ -2,6 +2,7 @@
   "parent": "create:block/encased_chain_drive/item",
   "textures": {
     "1": "createcasing:block/gearboxes/railway",
+    "particle": "create:block/railway_casing",
     "side": "createcasing:block/encased_chain_drives/railway"
   }
 }

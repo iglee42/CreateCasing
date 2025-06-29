@@ -3,6 +3,7 @@
   "textures": {
     "1": "createcasing:block/depot_sides/railway",
     "2": "createcasing:block/depot_tops/railway",
-    "3": "create:block/railway_casing"
+    "3": "create:block/railway_casing",
+    "particle": "create:block/railway_casing"
   }
 }

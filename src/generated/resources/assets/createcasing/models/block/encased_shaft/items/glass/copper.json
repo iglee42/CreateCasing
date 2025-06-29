@@ -4,6 +4,7 @@
     "1_0": "createcasing:block/shafts/glass",
     "1_1": "createcasing:block/shafts/glass_top",
     "casing": "create:block/copper_casing",
-    "opening": "createcasing:block/gearboxes/copper"
+    "opening": "createcasing:block/gearboxes/copper",
+    "particle": "create:block/copper_casing"
   }
 }

@@ -2,6 +2,7 @@
   "parent": "create:block/encased_shaft/block",
   "textures": {
     "casing": "create:block/creative_casing",
-    "opening": "createcasing:block/gearboxes/creative"
+    "opening": "createcasing:block/gearboxes/creative",
+    "particle": "create:block/creative_casing"
   }
 }

@@ -5,6 +5,7 @@
     "gearbox": "createcasing:block/gearboxes/railway",
     "gearbox_top": "create:block/railway_casing",
     "mechanical_press_bottom": "createcasing:block/press_bottoms/railway",
-    "mechanical_press_top": "createcasing:block/press_tops/railway"
+    "mechanical_press_top": "createcasing:block/press_tops/railway",
+    "particle": "create:block/railway_casing"
   }
 }

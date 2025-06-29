@@ -2,6 +2,7 @@
   "parent": "create:block/gearbox/item_vertical",
   "textures": {
     "gearbox": "createcasing:block/gearboxes/industrial_iron",
-    "gearbox_top": "create:block/industrial_iron_block"
+    "gearbox_top": "create:block/industrial_iron_block",
+    "particle": "create:block/industrial_iron_block"
   }
 }

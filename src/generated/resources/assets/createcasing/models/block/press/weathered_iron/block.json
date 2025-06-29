@@ -5,6 +5,7 @@
     "gearbox": "createcasing:block/gearboxes/weathered_iron",
     "gearbox_top": "create:block/weathered_iron_block",
     "mechanical_press_bottom": "createcasing:block/press_bottoms/weathered_iron",
-    "mechanical_press_top": "createcasing:block/press_tops/weathered_iron"
+    "mechanical_press_top": "createcasing:block/press_tops/weathered_iron",
+    "particle": "create:block/weathered_iron_block"
   }
 }

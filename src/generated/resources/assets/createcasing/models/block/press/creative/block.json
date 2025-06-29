@@ -5,6 +5,7 @@
     "gearbox": "createcasing:block/gearboxes/creative",
     "gearbox_top": "create:block/creative_casing",
     "mechanical_press_bottom": "createcasing:block/press_bottoms/creative",
-    "mechanical_press_top": "createcasing:block/press_tops/creative"
+    "mechanical_press_top": "createcasing:block/press_tops/creative",
+    "particle": "create:block/creative_casing"
   }
 }

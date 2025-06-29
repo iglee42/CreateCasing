@@ -1,6 +1,7 @@
 {
   "parent": "create:block/cogwheel",
   "textures": {
-    "1_2": "createcasing:block/cogwheels/warped"
+    "1_2": "createcasing:block/cogwheels/warped",
+    "particle": "minecraft:block/stripped_warped_stem"
   }
 }

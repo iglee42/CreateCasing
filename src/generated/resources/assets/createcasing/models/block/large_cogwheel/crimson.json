@@ -1,6 +1,7 @@
 {
   "parent": "create:block/large_cogwheel",
   "textures": {
-    "4": "createcasing:block/large_cogwheels/crimson"
+    "4": "createcasing:block/large_cogwheels/crimson",
+    "particle": "minecraft:block/stripped_crimson_stem"
   }
 }

@@ -3,6 +3,7 @@
   "textures": {
     "11": "createcasing:block/press_tops/copper",
     "2": "create:block/copper_casing",
-    "4": "createcasing:block/mixer_sides/copper"
+    "4": "createcasing:block/mixer_sides/copper",
+    "particle": "create:block/copper_casing"
   }
 }

@@ -31,10 +31,16 @@ public class ApiCogwheelBlockEntityRenderer extends KineticBlockEntityRenderer<B
 		if (VisualizationManager.supportsVisualization(be.getLevel()))
 			return;
 
-		if (!(be.getBlockState().getBlock() instanceof WoodenCogwheelBlock)) {
+		if (!(be.getBlockState().getBlock() instanceof ApiCogwheelBlock block)) {
 			super.renderSafe(be, partialTicks, ms, buffer, light, overlay);
 			return;
 		}
+
+		if (!block.isLargeCog()) {
+			super.renderSafe(be, partialTicks, ms, buffer, light, overlay);
+			return;
+		}
+
 
 		// Large cogs sometimes have to offset their teeth by 11.25 degrees in order to
 		// mesh properly
@@ -42,7 +48,7 @@ public class ApiCogwheelBlockEntityRenderer extends KineticBlockEntityRenderer<B
 		Axis axis = getRotationAxisOf(be);
 		Direction facing = Direction.fromAxisAndDirection(axis, AxisDirection.POSITIVE);
 		renderRotatingBuffer(be,
-				CachedBuffers.partialFacingVertical(((ApiCogwheelBlock)be.getBlockState().getBlock()).getLargeCogwheelModel(), be.getBlockState(), facing),
+				CachedBuffers.partialFacingVertical(((ApiCogwheelBlock)be.getBlockState().getBlock()).getModel(), be.getBlockState(), facing),
 				ms, buffer.getBuffer(RenderType.solid()), light);
 
 		float angle = getAngleForLargeCogShaft(be, axis);

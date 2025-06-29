@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/chain_conveyor/shaft",
+  "textures": {
+    "bullwheel": "createcasing:block/bullwheels/creative",
+    "conveyor_casing": "createcasing:block/conveyor_casings/creative",
+    "conveyor_port": "createcasing:block/conveyor_ports/creative",
+    "particle": "create:block/creative_casing"
+  }
+}

@@ -12,6 +12,7 @@ import dev.engine_room.flywheel.api.instance.Instance;
 import dev.engine_room.flywheel.api.visual.BlockEntityVisual;
 import dev.engine_room.flywheel.api.visualization.VisualizationContext;
 import dev.engine_room.flywheel.lib.model.Models;
+import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 import fr.iglee42.createcasing.api.blocks.ApiCogwheelBlock;
 import net.minecraft.core.Direction;
 
@@ -23,7 +24,7 @@ public class ApiCogwheelBlockEntityVisual {
 		if (ICogWheel.isLargeCog(blockEntity.getBlockState())) {
 			return new LargeCogVisual(context, blockEntity, partialTick);
 		} else {
-			return new SingleAxisRotatingVisual<>(context, blockEntity, partialTick, Models.block(blockEntity.getBlockState()));
+			return new SingleAxisRotatingVisual<>(context, blockEntity, partialTick, Models.partial( ((ApiCogwheelBlock)blockEntity.getBlockState().getBlock()).getModel()));
 		}
 	}
 	// Large cogs sometimes have to offset their teeth by 11.25 degrees in order to
@@ -33,7 +34,7 @@ public class ApiCogwheelBlockEntityVisual {
 		protected final RotatingInstance additionalShaft;
 
 		private LargeCogVisual(VisualizationContext context, BracketedKineticBlockEntity blockEntity, float partialTick) {
-			super(context, blockEntity, partialTick, Models.partial(((ApiCogwheelBlock)blockEntity.getBlockState().getBlock()).getLargeCogwheelModel()));
+			super(context, blockEntity, partialTick, Models.partial(((ApiCogwheelBlock)blockEntity.getBlockState().getBlock()).getModel()));
 
 			Direction.Axis axis = KineticBlockEntityRenderer.getRotationAxisOf(blockEntity);
 

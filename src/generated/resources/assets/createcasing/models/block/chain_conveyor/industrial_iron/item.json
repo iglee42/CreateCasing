@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/chain_conveyor/item",
+  "textures": {
+    "bullwheel": "createcasing:block/bullwheels/industrial_iron",
+    "conveyor_casing": "createcasing:block/conveyor_casings/industrial_iron",
+    "conveyor_port": "createcasing:block/conveyor_ports/industrial_iron",
+    "particle": "create:block/industrial_iron_block"
+  }
+}

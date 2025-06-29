@@ -2,6 +2,7 @@
   "parent": "create:block/gearbox/item_vertical",
   "textures": {
     "gearbox": "createcasing:block/gearboxes/creative",
-    "gearbox_top": "create:block/creative_casing"
+    "gearbox_top": "create:block/creative_casing",
+    "particle": "create:block/creative_casing"
   }
 }

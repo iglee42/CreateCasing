@@ -3,6 +3,7 @@
   "textures": {
     "11": "createcasing:block/press_tops/brass",
     "2": "create:block/brass_casing",
-    "4": "createcasing:block/mixer_sides/brass"
+    "4": "createcasing:block/mixer_sides/brass",
+    "particle": "create:block/brass_casing"
   }
 }

@@ -1,7 +1,8 @@
 {
   "parent": "create:block/encased_chain_drive/end_horizontal",
   "textures": {
-    "2": "createcasing:block/encased_chain_drive_middles/weathered_iron",
+    "2": "createcasing:block/encased_chain_drive_ends/weathered_iron",
+    "particle": "create:block/weathered_iron_block",
     "side": "createcasing:block/encased_chain_drives/weathered_iron"
   }
 }

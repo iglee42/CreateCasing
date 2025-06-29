@@ -2,6 +2,7 @@
   "parent": "create:block/shaft",
   "textures": {
     "0": "createcasing:block/shafts/brass",
-    "1": "createcasing:block/shafts/brass_top"
+    "1": "createcasing:block/shafts/brass_top",
+    "particle": "createcasing:block/shafts/brass"
   }
 }

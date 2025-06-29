@@ -4,6 +4,7 @@
     "1_0": "create:block/axis",
     "1_1": "create:block/axis_top",
     "casing": "create:block/railway_casing",
-    "opening": "createcasing:block/gearboxes/railway"
+    "opening": "createcasing:block/gearboxes/railway",
+    "particle": "create:block/railway_casing"
   }
 }

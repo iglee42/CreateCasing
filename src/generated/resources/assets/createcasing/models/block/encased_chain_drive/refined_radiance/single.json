@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/encased_chain_drive/single",
+  "textures": {
+    "1": "createcasing:block/gearboxes/refined_radiance",
+    "particle": "create:block/refined_radiance_casing",
+    "side": "createcasing:block/encased_chain_drives/refined_radiance"
+  }
+}

@@ -4,6 +4,7 @@
     "1_0": "minecraft:block/stripped_acacia_log",
     "1_1": "minecraft:block/stripped_acacia_log_top",
     "casing": "create:block/shadow_steel_casing",
-    "opening": "createcasing:block/gearboxes/shadow_steel"
+    "opening": "createcasing:block/gearboxes/shadow_steel",
+    "particle": "create:block/shadow_steel_casing"
   }
 }

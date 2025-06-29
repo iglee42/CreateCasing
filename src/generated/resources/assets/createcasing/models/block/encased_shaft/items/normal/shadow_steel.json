@@ -4,6 +4,7 @@
     "1_0": "create:block/axis",
     "1_1": "create:block/axis_top",
     "casing": "create:block/shadow_steel_casing",
-    "opening": "createcasing:block/gearboxes/shadow_steel"
+    "opening": "createcasing:block/gearboxes/shadow_steel",
+    "particle": "create:block/shadow_steel_casing"
   }
 }

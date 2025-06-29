@@ -524,9 +524,9 @@ public class EncasedBlocks {
                 .mapColor(MapColor.PODZOL))
                 .transform(axeOrPickaxe())
                 .transform(CCStress.setImpact(1))
-                .blockstate(chainConveyor("normal"))
+                .blockstate(chainConveyor(name))
                 .item()
-                .model((c,p)->p.getBuilder(c.getName()).parent(createConveyorModel(p,"normal",true)))
+                .model((c,p)->p.getBuilder(c.getName()).parent(createConveyorModel(p,name,true)))
                 .build()
                 .register();
     }

@@ -4,6 +4,7 @@
     "1_0": "minecraft:block/stripped_acacia_log",
     "1_1": "minecraft:block/stripped_acacia_log_top",
     "casing": "create:block/brass_casing",
-    "opening": "create:block/brass_gearbox"
+    "opening": "create:block/brass_gearbox",
+    "particle": "create:block/brass_casing"
   }
 }

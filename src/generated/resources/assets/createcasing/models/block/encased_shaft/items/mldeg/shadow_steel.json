@@ -4,6 +4,7 @@
     "1_0": "createcasing:block/shafts/mldeg",
     "1_1": "createcasing:block/shafts/mldeg",
     "casing": "create:block/shadow_steel_casing",
-    "opening": "createcasing:block/gearboxes/shadow_steel"
+    "opening": "createcasing:block/gearboxes/shadow_steel",
+    "particle": "create:block/shadow_steel_casing"
   }
 }
