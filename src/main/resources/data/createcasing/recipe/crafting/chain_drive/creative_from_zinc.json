@@ -3,7 +3,7 @@
   "category": "misc",
   "ingredients": [
     {
-      "item": "create:creative_casing"
+      "item": "createcasing:creative_casing"
     },
     {
       "tag": "c:nuggets/zinc"

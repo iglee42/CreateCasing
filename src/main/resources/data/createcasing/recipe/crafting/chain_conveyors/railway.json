@@ -6,7 +6,7 @@
       "item": "create:large_cogwheel"
     },
     "C": {
-      "item": "create:brass_casing"
+      "item": "create:railway_casing"
     }
   },
   "pattern": [
@@ -16,7 +16,7 @@
   ],
   "result": {
     "count": 2,
-    "item": "createcasing:brass_chain_conveyor"
+    "id": "createcasing:railway_chain_conveyor"
   },
   "show_notification": true
 }

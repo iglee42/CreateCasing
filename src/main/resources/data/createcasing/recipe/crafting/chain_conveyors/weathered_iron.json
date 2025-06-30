@@ -6,7 +6,7 @@
       "item": "create:large_cogwheel"
     },
     "C": {
-      "item": "create:railway_casing"
+      "item": "create:weathered_iron_block"
     }
   },
   "pattern": [
@@ -16,7 +16,7 @@
   ],
   "result": {
     "count": 2,
-    "item": "createcasing:railway_chain_conveyor"
+    "id": "createcasing:weathered_iron_chain_conveyor"
   },
   "show_notification": true
 }

@@ -6,7 +6,7 @@
       "item": "create:large_cogwheel"
     },
     "C": {
-      "item": "create:industrial_iron_block"
+      "item": "create:shadow_steel_casing"
     }
   },
   "pattern": [
@@ -16,7 +16,7 @@
   ],
   "result": {
     "count": 2,
-    "item": "createcasing:industrial_iron_chain_conveyor"
+    "id": "createcasing:shadow_steel_chain_conveyor"
   },
   "show_notification": true
 }
