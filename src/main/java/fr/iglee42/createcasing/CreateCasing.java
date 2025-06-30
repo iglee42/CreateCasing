@@ -114,6 +114,6 @@ public class CreateCasing {
     }
 
     private void gatherData(GatherDataEvent event) {
-        event.getGenerator().addProvider(true, REGISTRATE.setDataProvider(new RegistrateDataProvider(REGISTRATE, MODID, event)));
+        //event.getGenerator().addProvider(true, REGISTRATE.setDataProvider(new RegistrateDataProvider(REGISTRATE, MODID, event)));
     }
 }
