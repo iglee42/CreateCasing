@@ -1,0 +1,11 @@
+{
+  "parent": "create:block/mechanical_press/block",
+  "textures": {
+    "4": "createcasing:block/press_sides/shadow_steel",
+    "gearbox": "createcasing:block/gearboxes/shadow_steel",
+    "gearbox_top": "create:block/shadow_steel_casing",
+    "mechanical_press_bottom": "createcasing:block/press_bottoms/shadow_steel",
+    "mechanical_press_top": "createcasing:block/press_tops/shadow_steel",
+    "particle": "create:block/shadow_steel_casing"
+  }
+}

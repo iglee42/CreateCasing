@@ -1,21 +1,15 @@
 package fr.iglee42.createcasing.blockEntities.renderers;
 
-import com.jozufozu.flywheel.backend.Backend;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.kinetics.base.IRotate;
-import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
-import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntityRenderer;
-import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
-import com.simibubi.create.foundation.render.CachedBufferer;
-import com.simibubi.create.foundation.render.SuperByteBuffer;
-import com.simibubi.create.foundation.utility.Iterate;
-
+import dev.engine_room.flywheel.api.visualization.VisualizationManager;
 import fr.iglee42.createcasing.blockEntities.CreativeCogwheelBlockEntity;
-import fr.iglee42.createcasing.blocks.customs.CreativeCogwheelBlock;
+import fr.iglee42.createcasing.blocks.CreativeCogwheelBlock;
+import net.createmod.catnip.render.CachedBuffers;
+import net.createmod.catnip.render.SuperByteBuffer;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -36,7 +30,7 @@ public class CreativeCogwheelRenderer extends KineticBlockEntityRenderer<Creativ
 	protected void renderSafe(CreativeCogwheelBlockEntity be, float partialTicks, PoseStack ms, MultiBufferSource buffer,
 		int light, int overlay) {
 		super.renderSafe(be, partialTicks, ms, buffer, light, overlay);
-		if (Backend.canUseInstancing(be.getLevel()))
+		if (VisualizationManager.supportsVisualization(be.getLevel()))
 			return;
 
 		BlockState blockState = be.getBlockState();
@@ -47,13 +41,13 @@ public class CreativeCogwheelRenderer extends KineticBlockEntityRenderer<Creativ
 
 		Axis axis = getRotationAxisOf(be);
 		BlockPos pos = be.getBlockPos();
-		float angle = getAngleForTe(be, pos, axis);
+		float angle = getAngleForBe(be, pos, axis);
 
 	}
 
 	@Override
 	protected SuperByteBuffer getRotatedModel(CreativeCogwheelBlockEntity be, BlockState state) {
-		return CachedBufferer.partialFacingVertical(AllPartialModels.SHAFTLESS_COGWHEEL, state,
+		return CachedBuffers.partialFacingVertical(AllPartialModels.SHAFTLESS_COGWHEEL, state,
 			Direction.fromAxisAndDirection(state.getValue(CreativeCogwheelBlock.AXIS), AxisDirection.POSITIVE));
 	}
 

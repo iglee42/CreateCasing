@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/encased_cogwheel/block_bottom",
+  "textures": {
+    "1": "create:block/refined_radiance_casing",
+    "4": "createcasing:block/gearboxes/refined_radiance",
+    "casing": "create:block/refined_radiance_casing",
+    "particle": "create:block/refined_radiance_casing",
+    "side": "createcasing:block/encased_cogwheels/refined_radiance"
+  }
+}

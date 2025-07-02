@@ -1,0 +1,8 @@
+{
+  "parent": "createcasing:block/templates/configurable_gearbox/block",
+  "textures": {
+    "0": "create:block/industrial_iron_block",
+    "1": "createcasing:block/gearboxes/industrial_iron",
+    "particle": "create:block/industrial_iron_block"
+  }
+}

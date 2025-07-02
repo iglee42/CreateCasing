@@ -1,0 +1,6 @@
+{
+  "parent": "createcasing:block/encased_cogwheel/shadow_steel/item",
+  "textures": {
+    "1_2": "create:block/cogwheel"
+  }
+}

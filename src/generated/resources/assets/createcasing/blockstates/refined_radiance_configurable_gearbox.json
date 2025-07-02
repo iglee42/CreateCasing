@@ -1,0 +1,62 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/refined_radiance/block"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/refined_radiance/face",
+        "x": 90
+      },
+      "when": {
+        "down": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/refined_radiance/face",
+        "x": -90
+      },
+      "when": {
+        "up": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/refined_radiance/face"
+      },
+      "when": {
+        "north": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/refined_radiance/face",
+        "y": 180
+      },
+      "when": {
+        "south": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/refined_radiance/face",
+        "y": 270
+      },
+      "when": {
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/configurable_gearbox/refined_radiance/face",
+        "y": 90
+      },
+      "when": {
+        "east": "false"
+      }
+    }
+  ]
+}

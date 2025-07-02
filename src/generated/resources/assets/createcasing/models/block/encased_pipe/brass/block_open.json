@@ -1,0 +1,7 @@
+{
+  "parent": "createcasing:block/templates/pipe_block_open",
+  "textures": {
+    "1": "create:block/brass_casing",
+    "particle": "create:block/brass_casing"
+  }
+}

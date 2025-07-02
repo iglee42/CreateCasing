@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/encased_shaft/item",
+  "textures": {
+    "1_0": "minecraft:block/stripped_bamboo_block",
+    "1_1": "minecraft:block/stripped_bamboo_block_top",
+    "casing": "create:block/shadow_steel_casing",
+    "opening": "createcasing:block/gearboxes/shadow_steel",
+    "particle": "create:block/shadow_steel_casing"
+  }
+}

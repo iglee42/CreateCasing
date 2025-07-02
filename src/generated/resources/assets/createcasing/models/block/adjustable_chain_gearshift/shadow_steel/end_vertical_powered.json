@@ -1,0 +1,7 @@
+{
+  "parent": "createcasing:block/encased_chain_drive/shadow_steel/end_vertical",
+  "textures": {
+    "particle": "create:block/shadow_steel_casing",
+    "side": "createcasing:block/adjustable_chain_gearshifts_powered/shadow_steel"
+  }
+}

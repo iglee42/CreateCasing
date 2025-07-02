@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/gearbox/item",
+  "textures": {
+    "0": "create:block/shadow_steel_casing",
+    "1": "createcasing:block/gearboxes/shadow_steel",
+    "particle": "create:block/shadow_steel_casing"
+  }
+}

@@ -1,58 +1,49 @@
 package fr.iglee42.createcasing.api;
 
-import com.mojang.logging.LogUtils;
 import com.simibubi.create.AllBlocks;
-import com.simibubi.create.AllSpriteShifts;
-import com.simibubi.create.Create;
+import com.simibubi.create.AllDisplaySources;
+import com.simibubi.create.AllMountedStorageTypes;
 import com.simibubi.create.content.decoration.encasing.CasingBlock;
 import com.simibubi.create.content.decoration.encasing.EncasedCTBehaviour;
 import com.simibubi.create.content.decoration.encasing.EncasingRegistry;
 import com.simibubi.create.content.fluids.PipeAttachmentModel;
 import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
-import com.simibubi.create.content.kinetics.BlockStressDefaults;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlock;
-import com.simibubi.create.content.kinetics.press.MechanicalPressBlock;
+import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockModel;
 import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogCTBehaviour;
+import com.simibubi.create.content.logistics.depot.MountedDepotInteractionBehaviour;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
-import com.simibubi.create.content.redstone.displayLink.source.ItemNameDisplaySource;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.data.*;
-import com.simibubi.create.foundation.item.ItemDescription;
-import com.simibubi.create.foundation.utility.Couple;
-import com.tterrag.registrate.Registrate;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.entry.ItemEntry;
-import fr.iglee42.createcasing.CreateCasing;
-import fr.iglee42.createcasing.blocks.api.ApiDepotBlock;
-import fr.iglee42.createcasing.blocks.api.ApiGearboxBlock;
-import fr.iglee42.createcasing.blocks.api.ApiMixerBlock;
-import fr.iglee42.createcasing.blocks.api.ApiPressBlock;
-import fr.iglee42.createcasing.blocks.customs.CustomDepotBlock;
-import fr.iglee42.createcasing.blocks.customs.CustomGearboxBlock;
-import fr.iglee42.createcasing.blocks.customs.CustomMixerBlock;
+import dev.engine_room.flywheel.lib.model.baked.PartialModel;
+import fr.iglee42.createcasing.api.blocks.*;
+import fr.iglee42.createcasing.api.items.ApiCogwheelBlockItem;
+import fr.iglee42.createcasing.api.items.ApiVerticalGearboxItem;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedCogwheelBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedPipeBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedShaftBlock;
-import fr.iglee42.createcasing.items.ApiVerticalGearboxItem;
-import fr.iglee42.createcasing.items.CustomVerticalGearboxItem;
-import fr.iglee42.createcasing.registries.ModBlocks;
+import fr.iglee42.createcasing.config.CCStress;
+import fr.iglee42.createcasing.registries.EncasedBlocks;
 import fr.iglee42.createcasing.utils.Deferred;
+import net.createmod.catnip.data.Couple;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.core.registries.Registries;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 
 import java.util.function.Consumer;
 import java.util.function.Supplier;
 
-import static com.simibubi.create.content.redstone.displayLink.AllDisplayBehaviours.assignDataBehaviour;
+import static com.simibubi.create.api.behaviour.display.DisplaySource.displaySource;
+import static com.simibubi.create.api.behaviour.interaction.MovingInteractionBehaviour.interactionBehaviour;
+import static com.simibubi.create.api.contraption.storage.item.MountedItemStorageType.mountedItemStorage;
 import static com.simibubi.create.foundation.data.BlockStateGen.axisBlock;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
-import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 
 /**
  * @author iglee42
@@ -89,7 +80,7 @@ public class CreateCasingApi {
     public static BlockEntry<PublicEncasedShaftBlock> createEncasedShaft(CreateRegistrate registrate, String name, Supplier<Block> casing, CTSpriteShiftEntry connectedTexturesSprite){
         return registrate.block(name+"_encased_shaft", p -> new PublicEncasedShaftBlock(p, casing))
                 .properties(p -> p.mapColor(MapColor.PODZOL))
-                .transform(BuilderTransformers.encasedShaft(name, () -> connectedTexturesSprite))
+                .transform(ApiBuilderTransformers.encasedShaft(name, () -> connectedTexturesSprite))
                 .transform(EncasingRegistry.addVariantTo(AllBlocks.SHAFT))
                 .transform(axeOrPickaxe())
                 .register();
@@ -111,7 +102,7 @@ public class CreateCasingApi {
     public static BlockEntry<PublicEncasedCogwheelBlock> createEncasedCogwheel(CreateRegistrate registrate, String name, Supplier<Block> casing, CTSpriteShiftEntry connectedTexturesSprite,CTSpriteShiftEntry verticalCogwheelSide,CTSpriteShiftEntry horizontalCogwheelSide){
         return registrate.block(name+"_encased_cogwheel", p -> new PublicEncasedCogwheelBlock(p, false, casing))
                 .properties(p -> p.mapColor(MapColor.PODZOL))
-                .transform(BuilderTransformers.encasedCogwheel(name, () -> connectedTexturesSprite))
+                .transform(ApiBuilderTransformers.encasedCogwheel(name, () -> connectedTexturesSprite))
                 .transform(EncasingRegistry.addVariantTo(AllBlocks.COGWHEEL))
                 .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCogCTBehaviour(connectedTexturesSprite,
                         Couple.create(verticalCogwheelSide,
@@ -133,7 +124,7 @@ public class CreateCasingApi {
     public static BlockEntry<PublicEncasedCogwheelBlock> createEncasedLargeCogwheel(CreateRegistrate registrate, String name, Supplier<Block> casing, CTSpriteShiftEntry connectedTexturesSprite){
         return registrate.block(name+"_encased_large_cogwheel", p -> new PublicEncasedCogwheelBlock(p, true, casing))
                 .properties(p -> p.mapColor(MapColor.PODZOL))
-                .transform(BuilderTransformers.encasedLargeCogwheel(name, () -> connectedTexturesSprite))
+                .transform(ApiBuilderTransformers.encasedLargeCogwheel(name, () -> connectedTexturesSprite))
                 .transform(EncasingRegistry.addVariantTo(AllBlocks.LARGE_COGWHEEL))
                 .transform(axeOrPickaxe())
                 .register();
@@ -159,7 +150,7 @@ public class CreateCasingApi {
                 .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(connectedTexturesSprite)))
                 .onRegister(CreateRegistrate.casingConnectivity((block, cc) -> cc.make(block, connectedTexturesSprite,
                         (s, f) -> !s.getValue(EncasedPipeBlock.FACING_TO_PROPERTY_MAP.get(f)))))
-                .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::new))
+                .onRegister(CreateRegistrate.blockModel(() -> PipeAttachmentModel::withAO))
                 .loot((p, b) -> p.dropOther(b, AllBlocks.FLUID_PIPE.get()))
                 .transform(EncasingRegistry.addVariantTo(AllBlocks.FLUID_PIPE))
                 .register();
@@ -185,7 +176,7 @@ public class CreateCasingApi {
                     .initialProperties(SharedProperties::stone)
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .properties(p -> p.mapColor(MapColor.PODZOL))
-                    .transform(BlockStressDefaults.setNoImpact())
+                    .transform(CCStress.setNoImpact())
                     .transform(axeOrPickaxe())
                     .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(connectedTexturesSprite)))
                     .onRegister(CreateRegistrate.casingConnectivity((block, cc) -> cc.make(block, connectedTexturesSprite,
@@ -203,7 +194,7 @@ public class CreateCasingApi {
                     .initialProperties(SharedProperties::stone)
                     .properties(BlockBehaviour.Properties::noOcclusion)
                     .properties(p -> p.mapColor(MapColor.PODZOL))
-                    .transform(BlockStressDefaults.setNoImpact())
+                    .transform(CCStress.setNoImpact())
                     .transform(axeOrPickaxe())
                     .onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(connectedTexturesSprite)))
                     .onRegister(CreateRegistrate.casingConnectivity((block, cc) -> cc.make(block, connectedTexturesSprite,
@@ -222,7 +213,9 @@ public class CreateCasingApi {
                 .properties(p -> p.mapColor(MapColor.COLOR_GRAY))
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
-                .onRegister(assignDataBehaviour(new ItemNameDisplaySource(), "combine_item_names"))
+                .transform(displaySource(AllDisplaySources.ITEM_NAMES))
+                .onRegister(interactionBehaviour(new MountedDepotInteractionBehaviour()))
+                .transform(mountedItemStorage(AllMountedStorageTypes.DEPOT))
                 .item()
                 .transform(customItemModel("_", "block"))
                 .register();
@@ -237,7 +230,7 @@ public class CreateCasingApi {
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) -> p.simpleBlock(c.getEntry(), AssetLookup.partialBaseModel(c, p)))
                 .addLayer(() -> RenderType::cutoutMipped)
-                .transform(BlockStressDefaults.setImpact(4.0))
+                .transform(CCStress.setImpact(4.0))
                 .item(AssemblyOperatorBlockItem::new)
                 .transform(customItemModel())
                 .register();
@@ -248,17 +241,43 @@ public class CreateCasingApi {
                 .properties(p -> p.noOcclusion().mapColor(MapColor.PODZOL))
                 .transform(axeOrPickaxe())
                 .blockstate(BlockStateGen.horizontalBlockProvider(true))
-                .transform(BlockStressDefaults.setImpact(8.0))
+                .transform(CCStress.setImpact(8.0))
                 .item(AssemblyOperatorBlockItem::new)
                 .transform(customItemModel())
                 .register();
     }
 
 
-
-    public static void forCustomShafts(Consumer<BlockEntry<? extends ShaftBlock>> action) {
-        ModBlocks.forEachShaft(action);
+    public static BlockEntry<ApiCogwheelBlock> createSmallCogwheel(CreateRegistrate registrate, String name, PartialModel partialModel){
+        return registrate.block(name+"_cogwheel", (p)->ApiCogwheelBlock.small(p,partialModel))
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.sound(SoundType.WOOD).mapColor(MapColor.DIRT))
+                .transform(CCStress.setNoImpact())
+                .transform(axeOrPickaxe())
+                .blockstate(BlockStateGen.axisBlockProvider(false))
+                .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
+                .item(ApiCogwheelBlockItem::new)
+                .build()
+                .register();
     }
 
+    public static BlockEntry<ApiCogwheelBlock> createLargeCogwheel(CreateRegistrate registrate, String name, PartialModel partialModel){
+        return registrate.block(name+"_large_cogwheel", (p)->ApiCogwheelBlock.large(p,partialModel))
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.sound(SoundType.WOOD).mapColor(MapColor.DIRT))
+                .transform(axeOrPickaxe())
+                .transform(CCStress.setNoImpact())
+                .blockstate(BlockStateGen.axisBlockProvider(false))
+                .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
+                .item(ApiCogwheelBlockItem::new)
+                .build()
+                .register();
+    }
+
+
+
+    public static void forCustomShafts(Consumer<BlockEntry<? extends ShaftBlock>> action) {
+        EncasedBlocks.forEachShaft(action);
+    }
 
 }

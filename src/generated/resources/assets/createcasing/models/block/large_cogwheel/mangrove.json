@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/large_cogwheel",
+  "textures": {
+    "4": "createcasing:block/large_cogwheels/mangrove",
+    "particle": "minecraft:block/stripped_mangrove_log"
+  }
+}

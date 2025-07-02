@@ -1,5 +1,5 @@
 
-![CreateHosting](https://cdn.discordapp.com/attachments/785493649969381396/1151964355534016602/CREATE_ENCASED.png)
+![CreateHosting](https://iglee.fr:3000/image/encased)
 <h1 align="center"> Create Encased <br>
 <a  href="https://www.curseforge.com/minecraft/mc-mods/create-encased/files"><img src="https://cf.way2muchnoise.eu/versions/829380.svg" alt="Supported Versions"></a>
 <a  href="https://www.curseforge.com/minecraft/mc-mods/create-encased"><img src="http://cf.way2muchnoise.eu/829380.svg" alt="CF"></a>
@@ -34,7 +34,7 @@ implementation fg.deobf("fr.iglee42:CreateCasing:${mc_version}-${create_encased_
 ```
 <h1 align="center">
 <a href="http://maven.iglee.fr/#/releases/fr/iglee42/CreateCasing">
-        <img src="https://flat.badgen.net/maven/v/metadata-url/http/50.20.249.21:8080/releases/fr/iglee42/CreateCasing/maven-metadata.xml?color=cf9555&label=CreateEncased" alt="Create Encased Latest Version">
+        <img src="https://flat.badgen.net/maven/v/metadata-url/https/iglee.fr:8081/releases/fr/iglee42/CreateCasing/maven-metadata.xml?color=cf9555&label=CreateEncased" alt="Create Encased Latest Version">
     </a>
 </h1>
 

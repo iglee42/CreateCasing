@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/large_cogwheel_shaftless",
+  "textures": {
+    "4": "createcasing:block/large_cogwheels/warped",
+    "particle": "minecraft:block/stripped_warped_stem"
+  }
+}

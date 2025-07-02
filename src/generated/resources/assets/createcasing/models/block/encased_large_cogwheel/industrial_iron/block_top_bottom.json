@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/encased_large_cogwheel/block_top_bottom",
+  "textures": {
+    "1": "create:block/industrial_iron_block",
+    "4": "createcasing:block/gearboxes/industrial_iron",
+    "casing": "create:block/industrial_iron_block",
+    "particle": "create:block/industrial_iron_block",
+    "side": "createcasing:block/encased_cogwheels/industrial_iron_connected"
+  }
+}

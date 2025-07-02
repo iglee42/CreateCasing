@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/gearbox/block",
+  "textures": {
+    "0": "create:block/copper_casing",
+    "1": "createcasing:block/gearboxes/copper",
+    "particle": "create:block/copper_casing"
+  }
+}

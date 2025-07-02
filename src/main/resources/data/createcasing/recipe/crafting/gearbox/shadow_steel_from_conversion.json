@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "createcasing:vertical_shadow_steel_gearbox"
+    }
+  ],
+  "result": {
+    "id": "createcasing:shadow_steel_gearbox"
+  }
+}

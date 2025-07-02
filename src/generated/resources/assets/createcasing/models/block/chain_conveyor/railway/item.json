@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/chain_conveyor/item",
+  "textures": {
+    "bullwheel": "createcasing:block/bullwheels/railway",
+    "conveyor_casing": "createcasing:block/conveyor_casings/railway",
+    "conveyor_port": "createcasing:block/conveyor_ports/railway",
+    "particle": "create:block/railway_casing"
+  }
+}

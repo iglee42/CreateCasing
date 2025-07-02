@@ -1,0 +1,6 @@
+{
+  "parent": "createcasing:block/encased_large_cogwheel/creative/item",
+  "textures": {
+    "4": "create:block/large_cogwheel"
+  }
+}

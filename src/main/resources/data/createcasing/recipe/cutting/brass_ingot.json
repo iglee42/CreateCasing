@@ -1,0 +1,17 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "create:brass_ingot"
+    }
+  ],
+  "processingTime": 200,
+  "results": [
+    {
+      "count": 6,
+      "item": {
+        "id": "createcasing:brass_shaft"
+      }
+    }
+  ]
+}

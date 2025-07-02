@@ -1,0 +1,11 @@
+{
+  "parent": "create:block/mechanical_press/item",
+  "textures": {
+    "8": "createcasing:block/press_sides/industrial_iron",
+    "gearbox": "createcasing:block/gearboxes/industrial_iron",
+    "gearbox_top": "create:block/industrial_iron_block",
+    "mechanical_press_bottom": "createcasing:block/press_bottoms/industrial_iron",
+    "mechanical_press_top": "createcasing:block/press_tops/industrial_iron",
+    "particle": "create:block/industrial_iron_block"
+  }
+}

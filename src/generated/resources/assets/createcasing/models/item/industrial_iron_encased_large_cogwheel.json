@@ -1,0 +1,6 @@
+{
+  "parent": "createcasing:block/encased_large_cogwheel/industrial_iron/item",
+  "textures": {
+    "4": "create:block/large_cogwheel"
+  }
+}

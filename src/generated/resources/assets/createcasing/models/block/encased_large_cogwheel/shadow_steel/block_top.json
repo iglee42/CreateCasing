@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/encased_large_cogwheel/block_top",
+  "textures": {
+    "1": "create:block/shadow_steel_casing",
+    "4": "createcasing:block/gearboxes/shadow_steel",
+    "casing": "create:block/shadow_steel_casing",
+    "particle": "create:block/shadow_steel_casing",
+    "side": "createcasing:block/encased_cogwheels/shadow_steel_connected"
+  }
+}

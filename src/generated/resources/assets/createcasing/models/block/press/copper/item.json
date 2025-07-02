@@ -1,0 +1,11 @@
+{
+  "parent": "create:block/mechanical_press/item",
+  "textures": {
+    "8": "createcasing:block/press_sides/copper",
+    "gearbox": "createcasing:block/gearboxes/copper",
+    "gearbox_top": "create:block/copper_casing",
+    "mechanical_press_bottom": "createcasing:block/press_bottoms/copper",
+    "mechanical_press_top": "createcasing:block/press_tops/copper",
+    "particle": "create:block/copper_casing"
+  }
+}

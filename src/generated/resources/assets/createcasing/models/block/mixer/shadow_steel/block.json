@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/mechanical_mixer/block",
+  "textures": {
+    "11": "createcasing:block/press_tops/shadow_steel",
+    "2": "create:block/shadow_steel_casing",
+    "4": "createcasing:block/mixer_sides/shadow_steel",
+    "particle": "create:block/shadow_steel_casing"
+  }
+}

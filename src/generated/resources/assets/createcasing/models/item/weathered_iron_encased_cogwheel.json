@@ -1,0 +1,6 @@
+{
+  "parent": "createcasing:block/encased_cogwheel/weathered_iron/item",
+  "textures": {
+    "1_2": "create:block/cogwheel"
+  }
+}

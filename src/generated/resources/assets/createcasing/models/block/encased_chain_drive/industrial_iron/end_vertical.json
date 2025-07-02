@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/encased_chain_drive/end_vertical",
+  "textures": {
+    "2": "createcasing:block/encased_chain_drive_ends/industrial_iron",
+    "particle": "create:block/industrial_iron_block",
+    "side": "createcasing:block/encased_chain_drives/industrial_iron"
+  }
+}

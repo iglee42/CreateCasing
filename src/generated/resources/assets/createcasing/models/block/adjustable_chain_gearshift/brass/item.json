@@ -1,0 +1,7 @@
+{
+  "parent": "createcasing:block/encased_chain_drive/brass/item",
+  "textures": {
+    "particle": "create:block/brass_casing",
+    "side": "createcasing:block/adjustable_chain_gearshifts/brass"
+  }
+}

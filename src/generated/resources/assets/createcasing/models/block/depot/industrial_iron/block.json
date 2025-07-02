@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/depot/block",
+  "textures": {
+    "1": "createcasing:block/depot_sides/industrial_iron",
+    "2": "createcasing:block/depot_tops/industrial_iron",
+    "3": "create:block/industrial_iron_block",
+    "particle": "create:block/industrial_iron_block"
+  }
+}

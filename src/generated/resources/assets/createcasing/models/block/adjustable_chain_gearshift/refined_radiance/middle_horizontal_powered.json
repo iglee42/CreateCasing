@@ -1,0 +1,7 @@
+{
+  "parent": "createcasing:block/encased_chain_drive/refined_radiance/middle_horizontal",
+  "textures": {
+    "particle": "create:block/refined_radiance_casing",
+    "side": "createcasing:block/adjustable_chain_gearshifts_powered/refined_radiance"
+  }
+}

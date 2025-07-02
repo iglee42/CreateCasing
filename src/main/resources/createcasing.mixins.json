@@ -6,10 +6,17 @@
   "refmap": "createcasing.refmap.json",
   "mixins": [
     "create.AllArmInteractionPointTypesMixin",
+    "create.AllSpriteShiftsMixin",
     "create.AssemblyOperatorBlockItemMixin",
+    "create.BeltBlockEntityMixin",
+    "create.BeltBlockMixin",
+    "create.BeltCasingTypeMixin",
+    "create.BeltModelMixin",
+    "create.ChainConveyorConnectionHandlerMixin",
     "create.CreateJeiMixin",
     "create.RotationPropagatorMixin",
-    "minecraft.BlockEntityTypeMixin"
+    "minecraft.BlockEntityTypeMixin",
+    "minecraft.IItemExtensionMixin"
   ],
   "client": [
   ],

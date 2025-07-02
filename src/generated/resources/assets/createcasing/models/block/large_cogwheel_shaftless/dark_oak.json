@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/large_cogwheel_shaftless",
+  "textures": {
+    "4": "createcasing:block/large_cogwheels/dark_oak",
+    "particle": "minecraft:block/stripped_dark_oak_log"
+  }
+}

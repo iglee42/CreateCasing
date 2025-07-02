@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/depot/block",
+  "textures": {
+    "1": "createcasing:block/depot_sides/copper",
+    "2": "createcasing:block/depot_tops/copper",
+    "3": "create:block/copper_casing",
+    "particle": "create:block/copper_casing"
+  }
+}

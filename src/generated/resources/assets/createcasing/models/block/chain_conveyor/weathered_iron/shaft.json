@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/chain_conveyor/shaft",
+  "textures": {
+    "bullwheel": "createcasing:block/bullwheels/weathered_iron",
+    "conveyor_casing": "createcasing:block/conveyor_casings/weathered_iron",
+    "conveyor_port": "createcasing:block/conveyor_ports/weathered_iron",
+    "particle": "create:block/weathered_iron_block"
+  }
+}

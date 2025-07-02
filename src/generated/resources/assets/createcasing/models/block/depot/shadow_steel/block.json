@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/depot/block",
+  "textures": {
+    "1": "createcasing:block/depot_sides/shadow_steel",
+    "2": "createcasing:block/depot_tops/shadow_steel",
+    "3": "create:block/shadow_steel_casing",
+    "particle": "create:block/shadow_steel_casing"
+  }
+}

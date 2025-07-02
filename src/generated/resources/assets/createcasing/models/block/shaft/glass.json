@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/shaft",
+  "render_type": "minecraft:cutout_mipped",
+  "textures": {
+    "0": "createcasing:block/shafts/glass",
+    "1": "createcasing:block/shafts/glass_top",
+    "particle": "createcasing:block/shafts/glass"
+  }
+}

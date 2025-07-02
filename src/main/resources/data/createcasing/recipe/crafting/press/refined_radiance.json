@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "S",
+    "C",
+    "I"
+  ],
+  "key": {
+    "C": {
+      "item": "create:refined_radiance_casing"
+    },
+    "S": {
+      "item": "create:shaft"
+    },
+    "I": {
+      "tag": "c:storage_blocks/iron"
+    }
+  },
+  "result": {
+    "id": "createcasing:refined_radiance_press"
+  }
+}
