@@ -521,7 +521,7 @@
   "createcasing.ponder.shared.rpm16": "16 RPM",
   "createcasing.ponder.shared.rpm16_source": "动力源：16 RPM",
   "createcasing.ponder.shared.rpm32": "32 RPM",
-  "createcasing.ponder.shared.rpm8": "8 RPM"
+  "createcasing.ponder.shared.rpm8": "8 RPM",
   "createcasing.ponder.chain_conveyor.header": "使用锁链传动轮传递旋转力",
   "createcasing.ponder.chain_conveyor.text_1": "右击两个锁链传动轮以连接它们",
   "createcasing.ponder.chain_conveyor.text_2": "锁链传动轮之间可以互相传递旋转力……",
