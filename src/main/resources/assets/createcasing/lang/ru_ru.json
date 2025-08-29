@@ -480,7 +480,7 @@
   "createcasing.ponder.mechanical_press.text_1": "Механический пресс может обрабатывать предметы под собой",
   "createcasing.ponder.mechanical_press.text_2": "Подаваемые предметы должны быть брошены или помещены под пресс",
   "createcasing.ponder.mechanical_press.text_3": "Когда предметы подаются на конвейере...",
-  "createcasing.ponder.mechanical_press.text_4": "... пресс будет задерживать и прессовать их автоматически",
+  "createcasing.ponder.mechanical_press.text_4": "...пресс будет задерживать и прессовать их автоматически",
   "createcasing.ponder.mechanical_press_compacting.header": "Спрессовыванием и сжатием предметов механическим прессом",
   "createcasing.ponder.mechanical_press_compacting.text_1": "Спрессовывание предметов в чаше скомпонует их",
   "createcasing.ponder.mechanical_press_compacting.text_2": "Сжатие предметов и спрессовывание включают в себя любые заполненные 2×2 или 3×3 рецепты создания и некоторые другие",
@@ -525,7 +525,7 @@
   "createcasing.ponder.chain_conveyor.header": "Передачей силы вращения с помощью цепных конвейеров",
   "createcasing.ponder.chain_conveyor.text_1": "Кликните ПКМ по двум конвейерам с цепями в руке, чтобы соединить их",
   "createcasing.ponder.chain_conveyor.text_2": "Цепные конвейеры передают силу вращения между собой...",
-  "createcasing.ponder.chain_conveyor.text_3": "... и соединяются с валами выше или ниже их самих",
+  "createcasing.ponder.chain_conveyor.text_3": "...и соединяются с валами выше или ниже их самих",
   "createcasing.ponder.chain_conveyor.text_4": "Кликните ПКМ, держа гаечный ключ в руке, для поездки по цепи",
   "createcasing.ponder.chain_conveyor.text_5": "На пересечении конвейеров повернитесь лицом в нужное направление, чтобы следовать по нему"
 }
