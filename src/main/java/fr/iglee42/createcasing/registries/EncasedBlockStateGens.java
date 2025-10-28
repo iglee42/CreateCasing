@@ -37,7 +37,7 @@ public class EncasedBlockStateGens {
 
 
     public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> shaft(String shaft) {
-        return (ctx,prov)->axisBlock(ctx,prov,shaftModel(prov,shaft));
+        return (ctx,prov)->axisBlock(ctx,prov,shaftModel(prov,shaft),false);
     }
 
     public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> cogwheel(String cogwheel) {
@@ -326,7 +326,11 @@ public class EncasedBlockStateGens {
 
 
     public static <T extends Block> void axisBlock(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov,ModelFile model){
-        axisBlock(ctx,prov,bs->model,true);
+        axisBlock(ctx,prov,model,true);
+    }
+
+    public static <T extends Block> void axisBlock(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov,ModelFile model, boolean uvLock){
+        axisBlock(ctx,prov,bs->model,uvLock);
     }
     public static <T extends Block> void axisBlock(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov, Function<BlockState,ModelFile> model, boolean uvLock){
         if (model == null) {
