@@ -16,14 +16,14 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
 
-public class MetalShaftBlock extends ShaftBlock {
-    public MetalShaftBlock(Properties properties) {
+public class CustomShaftBlock extends ShaftBlock {
+    public CustomShaftBlock(Properties properties) {
         super(properties);
     }
 
     @Override
     public BlockEntityType<? extends KineticBlockEntity> getBlockEntityType() {
-        return EncasedBlockEntities.METAL_SHAFT.get();
+        return EncasedBlockEntities.CUSTOM_SHAFT.get();
     }
 
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {

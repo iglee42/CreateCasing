@@ -63,7 +63,7 @@ public class CustomChainGearshiftBlock extends CustomChainDriveBlock {
 
 	@Override
 	public BlockEntityType<? extends KineticBlockEntity> getBlockEntityType() {
-		return EncasedBlockEntities.CUSTOM_CHAIN_GEARSHIFT.get();
+		return EncasedBlockEntities.CHAIN_GEARSHIFT.get();
 	}
 
 }

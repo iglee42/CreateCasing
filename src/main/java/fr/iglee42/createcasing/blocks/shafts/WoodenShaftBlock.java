@@ -6,6 +6,7 @@ import com.simibubi.create.content.kinetics.simpleRelays.AbstractSimpleShaftBloc
 import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
 import com.simibubi.create.content.kinetics.steamEngine.PoweredShaftBlock;
 import com.simibubi.create.foundation.placement.PoleHelper;
+import fr.iglee42.createcasing.blockEntities.CustomShaftBlockEntity;
 import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import net.createmod.catnip.placement.IPlacementHelper;
 import net.createmod.catnip.placement.PlacementHelpers;
@@ -25,9 +26,8 @@ import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.function.Predicate;
 
-public class WoodenShaftBlock extends ShaftBlock {
+public class WoodenShaftBlock extends CustomShaftBlock {
 
-    public static final int placementHelperId = PlacementHelpers.register(new WoodenShaftBlock.PlacementHelper());
 
     public WoodenShaftBlock(Properties properties) {
         super(properties);
@@ -38,52 +38,4 @@ public class WoodenShaftBlock extends ShaftBlock {
         return EncasedBlockEntities.WOODEN_SHAFT.get();
     }
 
-
-
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (!player.isShiftKeyDown() && player.mayBuild()) {
-            ItemInteractionResult result = this.tryEncase(state, level, pos, stack, player, hand, hitResult);
-            if (result.consumesAction()) {
-                return result;
-            } else {
-                IPlacementHelper helper = PlacementHelpers.get(placementHelperId);
-                return helper.matchesItem(stack) ? helper.getOffset(player, level, state, pos, hitResult).placeInWorld(level, (BlockItem)stack.getItem(), player, hand, hitResult) : ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-            }
-        } else {
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-        }
-    }
-
-    @MethodsReturnNonnullByDefault
-    private static class PlacementHelper extends PoleHelper<Direction.Axis> {
-        // used for extending a shaft in its axis, like the piston poles. works with
-        // shafts and cogs
-
-        private PlacementHelper() {
-            super(state -> state.getBlock() instanceof AbstractSimpleShaftBlock
-                    || state.getBlock() instanceof PoweredShaftBlock, state -> state.getValue(AXIS), AXIS);
-        }
-
-        @Override
-        public Predicate<ItemStack> getItemPredicate() {
-            return i -> i.getItem() instanceof BlockItem
-                    && ((BlockItem) i.getItem()).getBlock() instanceof AbstractSimpleShaftBlock;
-        }
-
-        @Override
-        public Predicate<BlockState> getStatePredicate() {
-            return s->s.getBlock() instanceof ShaftBlock || AllBlocks.POWERED_SHAFT.has(s);
-        }
-
-        @Override
-        public PlacementOffset getOffset(Player player, Level world, BlockState state, BlockPos pos,
-                                         BlockHitResult ray) {
-            PlacementOffset offset = super.getOffset(player, world, state, pos, ray);
-            if (offset.isSuccessful())
-                offset.withTransform(offset.getTransform()
-                        .andThen(s -> ShaftBlock.pickCorrectShaftType(s, world, offset.getBlockPos())));
-            return offset;
-        }
-
-    }
 }

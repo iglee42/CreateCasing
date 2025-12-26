@@ -28,7 +28,7 @@ public class EncasedCustomShaftBlock extends EncasedShaftBlock   {
 
     @Override
     public BlockEntityType<? extends KineticBlockEntity> getBlockEntityType() {
-        return EncasedBlockEntities.CUSTOM_ENCASED_SHAFT.get();
+        return EncasedBlockEntities.ENCASED_CUSTOM_SHAFT.get();
     }
 
     public Supplier<Block> getShaft() {

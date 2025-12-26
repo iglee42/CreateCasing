@@ -19,7 +19,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
-public class BrassShaftBlock extends MetalShaftBlock{
+public class BrassShaftBlock extends CustomShaftBlock {
     public BrassShaftBlock(Properties properties) {
         super(properties);
     }

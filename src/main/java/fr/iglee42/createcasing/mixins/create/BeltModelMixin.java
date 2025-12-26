@@ -4,6 +4,8 @@ import com.simibubi.create.AllSpriteShifts;
 import com.simibubi.create.content.kinetics.belt.BeltBlockEntity;
 import com.simibubi.create.content.kinetics.belt.BeltModel;
 import com.simibubi.create.foundation.model.BakedQuadHelper;
+import fr.iglee42.createcasing.casings.CasingSet;
+import fr.iglee42.createcasing.casings.CasingSets;
 import fr.iglee42.createcasing.registries.EncasedBlocks;
 import fr.iglee42.createcasing.registries.EncasedPartialModels;
 import fr.iglee42.createcasing.registries.EncasedSprites;
@@ -14,17 +16,21 @@ import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.Direction;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.level.block.state.BlockState;
 import net.neoforged.neoforge.client.model.data.ModelData;
 import net.neoforged.neoforge.client.model.data.ModelProperty;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
+import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.*;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 
 import java.util.List;
+import java.util.Objects;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 @Mixin(value = BeltModel.class,remap = false)
 public class BeltModelMixin {
@@ -34,94 +40,33 @@ public class BeltModelMixin {
 
     @Inject(method = "getParticleIcon",at = @At(value = "RETURN", ordinal = 2), cancellable = true,locals = LocalCapture.CAPTURE_FAILSOFT)
     private void encased$customParticle(ModelData data, CallbackInfoReturnable<TextureAtlasSprite> cir, BeltBlockEntity.CasingType type){
-        if (type.equals(EncasedBlocks.COPPER_BELT_CASING)) {
-            cir.setReturnValue(AllSpriteShifts.COPPER_CASING.getOriginal());
-        }
-        if (type.equals(EncasedBlocks.RAILWAY_BELT_CASING)) {
-            cir.setReturnValue(AllSpriteShifts.RAILWAY_CASING.getOriginal());
-        }
-        if (type.equals(EncasedBlocks.INDUSTRIAL_IRON_BELT_CASING)) {
-            cir.setReturnValue(EncasedSprites.INDUSTRIAL_IRON.getOriginal());
-        }
-        if (type.equals(EncasedBlocks.WEATHERED_IRON_BELT_CASING)) {
-            cir.setReturnValue(EncasedSprites.WEATHERED_IRON.getOriginal());
-        }
-        if (type.equals(EncasedBlocks.CREATIVE_BELT_CASING)) {
-            cir.setReturnValue(AllSpriteShifts.CREATIVE_CASING.getOriginal());
-        }
-        if (type.equals(EncasedBlocks.SHADOW_STEEL_BELT_CASING)) {
-            cir.setReturnValue(AllSpriteShifts.SHADOW_STEEL_CASING.getOriginal());
-        }
-        if (type.equals(EncasedBlocks.REFINED_RADIANCE_BELT_CASING)) {
-            cir.setReturnValue(AllSpriteShifts.REFINED_RADIANCE_CASING.getOriginal());
-        }
+        CasingSets.getSets().stream().filter(CasingSet::doesGenerateBelt).filter(set-> Objects.equals(type,set.getBeltCasingType())).findFirst().ifPresent(set->{
+            if (set.getConnectedTextureSprite() == null)
+                cir.setReturnValue(set.getBeltSprite().getOriginal());
+            else cir.setReturnValue(set.getConnectedTextureSprite().getOriginal());
+        });
     }
 
     @Inject(method = "getQuads",at = @At(value = "INVOKE", target = "Ljava/util/List;addAll(Ljava/util/Collection;)Z",ordinal = 0,shift = At.Shift.AFTER),locals = LocalCapture.CAPTURE_FAILSOFT)
-    private void encased$customCasingCover(BlockState state, Direction side, RandomSource rand, ModelData extraData, RenderType renderType, CallbackInfoReturnable<List<BakedQuad>> cir, List quads, boolean cover, BeltBlockEntity.CasingType type, boolean brassCasing, boolean alongX, BakedModel coverModel){
-        if (type.equals(EncasedBlocks.COPPER_BELT_CASING)){
+    private void encased$customCasingCover(BlockState state, Direction side, RandomSource rand, ModelData extraData, RenderType renderType, CallbackInfoReturnable<List<BakedQuad>> cir, List<BakedQuad> quads, boolean cover, BeltBlockEntity.CasingType type, boolean brassCasing, boolean alongX, BakedModel coverModel){
+        CasingSets.getSets().stream().filter(CasingSet::doesGenerateBelt).filter(set-> Objects.equals(type,set.getBeltCasingType())).findFirst().ifPresent(set->{
             quads.removeAll(coverModel.getQuads(state, side, rand, extraData, renderType));
-            quads.addAll((alongX ? EncasedPartialModels.COPPER_BELT_COVER_X : EncasedPartialModels.COPPER_BELT_COVER_Z).get().getQuads(state, side, rand, extraData, renderType));
-        }
-        if (type.equals(EncasedBlocks.RAILWAY_BELT_CASING)){
-            quads.removeAll(coverModel.getQuads(state, side, rand, extraData, renderType));
-        quads.addAll((alongX ? EncasedPartialModels.RAILWAY_BELT_COVER_X : EncasedPartialModels.RAILWAY_BELT_COVER_Z).get().getQuads(state, side, rand, extraData, renderType));
-        }
-        if (type.equals(EncasedBlocks.INDUSTRIAL_IRON_BELT_CASING)){
-            quads.removeAll(coverModel.getQuads(state, side, rand, extraData, renderType));
-            quads.addAll((alongX ? EncasedPartialModels.INDUSTRIAL_IRON_BELT_COVER_X : EncasedPartialModels.INDUSTRIAL_IRON_BELT_COVER_Z).get().getQuads(state, side, rand, extraData, renderType));
-        }
-        if (type.equals(EncasedBlocks.CREATIVE_BELT_CASING)){
-            quads.removeAll(coverModel.getQuads(state, side, rand, extraData, renderType));
-            quads.addAll((alongX ? EncasedPartialModels.CREATIVE_BELT_COVER_X : EncasedPartialModels.CREATIVE_BELT_COVER_Z).get().getQuads(state, side, rand, extraData, renderType));
-        }
-        if (type.equals(EncasedBlocks.WEATHERED_IRON_BELT_CASING)){
-            quads.removeAll(coverModel.getQuads(state, side, rand, extraData, renderType));
-            quads.addAll((alongX ? EncasedPartialModels.WEATHERED_IRON_BELT_COVER_X : EncasedPartialModels.WEATHERED_IRON_BELT_COVER_Z).get().getQuads(state, side, rand, extraData, renderType));
-        }
-        if (type.equals(EncasedBlocks.SHADOW_STEEL_BELT_CASING)){
-            quads.removeAll(coverModel.getQuads(state, side, rand, extraData, renderType));
-            quads.addAll((alongX ? EncasedPartialModels.SHADOW_STEEL_BELT_COVER_X : EncasedPartialModels.SHADOW_STEEL_BELT_COVER_Z).get().getQuads(state, side, rand, extraData, renderType));
-        }
-        if (type.equals(EncasedBlocks.REFINED_RADIANCE_BELT_CASING)){
-            quads.removeAll(coverModel.getQuads(state, side, rand, extraData, renderType));
-            quads.addAll((alongX ? EncasedPartialModels.REFINED_RADIANCE_BELT_COVER_X : EncasedPartialModels.REFINED_RADIANCE_BELT_COVER_Z).get().getQuads(state, side, rand, extraData, renderType));
-        }
+            quads.addAll(set.getBeltPartialModel(alongX).get().getQuads(state, side, rand, extraData, renderType));
+        });
     }
 
     @Inject(method = "getQuads",at = @At(value = "INVOKE",target = "Ljava/util/List;size()I",ordinal = 0,shift = At.Shift.BEFORE), locals = LocalCapture.CAPTURE_FAILSOFT, cancellable = true)
-    private void encased$customCasingType(BlockState state, Direction side, RandomSource rand, ModelData extraData, RenderType renderType, CallbackInfoReturnable<List<BakedQuad>> cir, List quads, boolean cover, BeltBlockEntity.CasingType type, boolean brassCasing, int i){
-        if (type.equals(EncasedBlocks.COPPER_BELT_CASING)){
-            cir.setReturnValue(getQuadsForSprite(quads, EncasedSprites.COPPER_BELT_CASING));
-            return;
-        }
-        if (type.equals(EncasedBlocks.RAILWAY_BELT_CASING)){
-            cir.setReturnValue(getQuadsForSprite(quads, EncasedSprites.RAILWAY_BELT_CASING));
-            return;
-        }
-        if (type.equals(EncasedBlocks.INDUSTRIAL_IRON_BELT_CASING)){
-            cir.setReturnValue(getQuadsForSprite(quads, EncasedSprites.INDUSTRIAL_IRON_BELT_CASING));
-            return;
-        }
-        if (type.equals(EncasedBlocks.WEATHERED_IRON_BELT_CASING)){
-            cir.setReturnValue(getQuadsForSprite(quads, EncasedSprites.WEATHERED_IRON_BELT_CASING));
-            return;
-        }
-        if (type.equals(EncasedBlocks.CREATIVE_BELT_CASING)){
-            cir.setReturnValue(getQuadsForSprite(quads, EncasedSprites.CREATIVE_BELT_CASING));
-            return;
-        }
-        if (type.equals(EncasedBlocks.SHADOW_STEEL_BELT_CASING)){
-            cir.setReturnValue(getQuadsForSprite(quads, EncasedSprites.SHADOW_STEEL_BELT_CASING));
-            return;
-        }
-        if (type.equals(EncasedBlocks.REFINED_RADIANCE_BELT_CASING)){
-            cir.setReturnValue(getQuadsForSprite(quads, EncasedSprites.REFINED_RADIANCE_BELT_CASING));
-            return;
-        }
+    private void encased$customCasingType(BlockState state, Direction side, RandomSource rand, ModelData extraData, RenderType renderType, CallbackInfoReturnable<List<BakedQuad>> cir, List<BakedQuad> quads, boolean cover, BeltBlockEntity.CasingType type, boolean brassCasing, int i){
+        AtomicBoolean mustReturn = new AtomicBoolean(false);
+        CasingSets.getSets().stream().filter(CasingSet::doesGenerateBelt).filter(set-> Objects.equals(type,set.getBeltCasingType())).findFirst().ifPresent(set->{
+            cir.setReturnValue(createEncased$getQuadsForSprite(quads,set.getBeltSprite()));
+            mustReturn.set(true);
+        });
+        if (mustReturn.get()) return;
     }
 
-    private static List<BakedQuad> getQuadsForSprite(List<BakedQuad> quads, SpriteShiftEntry spriteShift){
+    @Unique
+    private static List<BakedQuad> createEncased$getQuadsForSprite(List<BakedQuad> quads, SpriteShiftEntry spriteShift){
         for (int i = 0; i < quads.size(); i++) {
             BakedQuad quad = quads.get(i);
             TextureAtlasSprite original = quad.getSprite();

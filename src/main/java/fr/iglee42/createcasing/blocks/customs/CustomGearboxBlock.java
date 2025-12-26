@@ -1,16 +1,13 @@
 package fr.iglee42.createcasing.blocks.customs;
 
-import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
+import com.simibubi.create.content.kinetics.gearbox.GearboxBlock;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlockEntity;
-import com.simibubi.create.foundation.block.IBE;
-import com.tterrag.registrate.util.entry.ItemEntry;
-import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import fr.iglee42.createcasing.items.CustomVerticalGearboxItem;
+import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,16 +16,13 @@ import net.minecraft.world.phys.HitResult;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Supplier;
 
+public class CustomGearboxBlock extends GearboxBlock {
 
-/*
-This class is a copy from the original class GearboxBlock
- */
-public class CustomGearboxBlock extends RotatedPillarKineticBlock implements IBE<GearboxBlockEntity> {
+	private final Supplier<BlockItem> verticalItem;
 
-	private final ItemEntry<CustomVerticalGearboxItem> verticalItem;
-
-	public CustomGearboxBlock(Properties properties , ItemEntry<CustomVerticalGearboxItem> verticalItem) {
+	public CustomGearboxBlock(Properties properties , Supplier<BlockItem> verticalItem) {
 		super(properties);
 		this.verticalItem = verticalItem;
 	}
@@ -50,29 +44,6 @@ public class CustomGearboxBlock extends RotatedPillarKineticBlock implements IBE
 		if (state.getValue(AXIS).isVertical())
 			return super.getCloneItemStack(state, target, world, pos, player);
 		return new ItemStack(verticalItem.get());
-	}
-
-
-	@Override
-	public BlockState getStateForPlacement(BlockPlaceContext context) {
-		return defaultBlockState().setValue(AXIS, Direction.Axis.Y);
-	}
-
-	// IRotate:
-
-	@Override
-	public boolean hasShaftTowards(LevelReader world, BlockPos pos, BlockState state, Direction face) {
-		return face.getAxis() != state.getValue(AXIS);
-	}
-
-	@Override
-	public Direction.Axis getRotationAxis(BlockState state) {
-		return state.getValue(AXIS);
-	}
-
-	@Override
-	public Class<GearboxBlockEntity> getBlockEntityClass() {
-		return GearboxBlockEntity.class;
 	}
 
 }

@@ -6,6 +6,7 @@ import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import fr.iglee42.createcasing.blockEntities.GlassShaftBlockEntity;
 import fr.iglee42.createcasing.blocks.shafts.GlassShaftBlock;
 import fr.iglee42.createcasing.registries.EncasedBlocks;
+import fr.iglee42.createcasing.transmissions.TransmissionSets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -18,6 +19,6 @@ public class GlassShaftRenderer extends KineticBlockEntityRenderer<GlassShaftBlo
 
     @Override
     protected BlockState getRenderedBlockState(GlassShaftBlockEntity be) {
-        return EncasedBlocks.GLASS_SHAFT.getDefaultState().setValue(GlassShaftBlock.AXIS,getRotationAxisOf(be));
+        return TransmissionSets.GLASS.getShaft().defaultBlockState().setValue(GlassShaftBlock.AXIS,getRotationAxisOf(be));
     }
 }

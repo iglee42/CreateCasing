@@ -6,7 +6,7 @@ import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
 import dev.engine_room.flywheel.api.visualization.VisualizationManager;
-import fr.iglee42.createcasing.blocks.customs.WoodenCogwheelBlock;
+import fr.iglee42.createcasing.blocks.cogwheels.WoodenCogwheelBlock;
 import fr.iglee42.createcasing.registries.EncasedPartialModels;
 import net.createmod.catnip.animation.AnimationTickHolder;
 import net.createmod.catnip.render.CachedBuffers;
