@@ -13,6 +13,7 @@
     "create.BeltCasingTypeMixin",
     "create.BeltModelMixin",
     "create.ChainConveyorConnectionHandlerMixin",
+    "create.ChainDriveBlockMixin",
     "create.CreateJeiMixin",
     "create.RotationPropagatorMixin",
     "create.client.ChainConveyorRendererMixin",

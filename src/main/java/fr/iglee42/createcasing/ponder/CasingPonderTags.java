@@ -39,12 +39,8 @@ public class CasingPonderTags {
 
 		HELPER.addToTag(AllCreatePonderTags.CREATIVE)
 						.add(EncasedBlocks.CREATIVE_COGWHEEL);
-		List<ItemLike> entries = new ArrayList<>(List.of(
-				EncasedBlocks.CREATIVE_COGWHEEL,CasingSets.ANDESITE.getConfigurableGearbox()));
-
-
-		entries.forEach(e->itemHelper.addToTag(ENCASED_BLOCKS).add(e));
-
+		HELPER.addToTag(ENCASED_BLOCKS).add(EncasedBlocks.CREATIVE_COGWHEEL);
+		itemHelper.addToTag(ENCASED_BLOCKS).add(CasingSets.ANDESITE.getConfigurableGearbox());
 		itemHelper.addToTag(AllCreatePonderTags.KINETIC_RELAYS).add(CasingSets.ANDESITE.getConfigurableGearbox());
 
 

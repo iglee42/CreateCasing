@@ -7,6 +7,7 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
+import fr.iglee42.createcasing.transmissions.TransmissionSets;
 import it.unimi.dsi.fastutil.objects.*;
 import net.createmod.catnip.platform.CatnipServices;
 import net.minecraft.client.Minecraft;
@@ -85,6 +86,7 @@ public class EncasedCreativeModeTabs {
         private static Predicate<Item> makeExclusionPredicate() {
             Set<Item> exclusions = new ReferenceOpenHashSet<>();
             exclusions.addAll(CreateCasing.hidedItems.stream().map(ItemLike::asItem).toList());
+            exclusions.add(TransmissionSets.MLDEG.getShaft().asItem());
             return exclusions::contains;
         }
 

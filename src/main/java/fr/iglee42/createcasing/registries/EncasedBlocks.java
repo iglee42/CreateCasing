@@ -71,81 +71,6 @@ public class EncasedBlocks {
         REGISTRATE.setCreativeTab(EncasedCreativeModeTabs.MAIN_TAB);
     }
 
-    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(BuiltInRegistries.BLOCK, CreateCasing.MODID);
-
-    // public static final BlockEntry<WoodenShaftBlock> OAK_SHAFT = createWoodenShaft("oak");
-    // public static final BlockEntry<WoodenShaftBlock> SPRUCE_SHAFT = createWoodenShaft("spruce");
-    // public static final BlockEntry<WoodenShaftBlock> BIRCH_SHAFT = createWoodenShaft("birch");
-    // public static final BlockEntry<WoodenShaftBlock> JUNGLE_SHAFT = createWoodenShaft("jungle");
-    // public static final BlockEntry<WoodenShaftBlock> ACACIA_SHAFT = createWoodenShaft("acacia");
-    // public static final BlockEntry<WoodenShaftBlock> DARK_OAK_SHAFT = createWoodenShaft("dark_oak");
-    // public static final BlockEntry<WoodenShaftBlock> MANGROVE_SHAFT = createWoodenShaft("mangrove");
-    // public static final BlockEntry<WoodenShaftBlock> CHERRY_SHAFT = createWoodenShaft("cherry");
-    // public static final BlockEntry<WoodenShaftBlock> BAMBOO_SHAFT = createWoodenShaft("bamboo");
-    // public static final BlockEntry<WoodenShaftBlock> CRIMSON_SHAFT = createWoodenShaft("crimson");
-    // public static final BlockEntry<WoodenShaftBlock> WARPED_SHAFT = createWoodenShaft("warped");
-
-
-    /*public static final BlockEntry<WoodenCogwheelBlock> OAK_COGWHEEL = createWoodenCogwheel("oak");
-    public static final BlockEntry<WoodenCogwheelBlock> BIRCH_COGWHEEL = createWoodenCogwheel("birch");
-    public static final BlockEntry<WoodenCogwheelBlock> JUNGLE_COGWHEEL = createWoodenCogwheel("jungle");
-    public static final BlockEntry<WoodenCogwheelBlock> ACACIA_COGWHEEL = createWoodenCogwheel("acacia");
-    public static final BlockEntry<WoodenCogwheelBlock> DARK_OAK_COGWHEEL = createWoodenCogwheel("dark_oak");
-    public static final BlockEntry<WoodenCogwheelBlock> MANGROVE_COGWHEEL = createWoodenCogwheel("mangrove");
-    public static final BlockEntry<WoodenCogwheelBlock> CHERRY_COGWHEEL = createWoodenCogwheel("cherry");
-    public static final BlockEntry<WoodenCogwheelBlock> BAMBOO_COGWHEEL = createWoodenCogwheel("bamboo");
-    public static final BlockEntry<WoodenCogwheelBlock> CRIMSON_COGWHEEL = createWoodenCogwheel("crimson");
-    public static final BlockEntry<WoodenCogwheelBlock> WARPED_COGWHEEL = createWoodenCogwheel("warped");
-
-    public static final BlockEntry<WoodenCogwheelBlock> OAK_LARGE_COGWHEEL = createLargeCogwheel("oak");
-    public static final BlockEntry<WoodenCogwheelBlock> BIRCH_LARGE_COGWHEEL = createLargeCogwheel("birch");
-    public static final BlockEntry<WoodenCogwheelBlock> JUNGLE_LARGE_COGWHEEL = createLargeCogwheel("jungle");
-    public static final BlockEntry<WoodenCogwheelBlock> ACACIA_LARGE_COGWHEEL = createLargeCogwheel("acacia");
-    public static final BlockEntry<WoodenCogwheelBlock> DARK_OAK_LARGE_COGWHEEL = createLargeCogwheel("dark_oak");
-    public static final BlockEntry<WoodenCogwheelBlock> MANGROVE_LARGE_COGWHEEL = createLargeCogwheel("mangrove");
-    public static final BlockEntry<WoodenCogwheelBlock> CHERRY_LARGE_COGWHEEL = createLargeCogwheel("cherry");
-    public static final BlockEntry<WoodenCogwheelBlock> BAMBOO_LARGE_COGWHEEL = createLargeCogwheel("bamboo");
-    public static final BlockEntry<WoodenCogwheelBlock> CRIMSON_LARGE_COGWHEEL = createLargeCogwheel("crimson");
-    public static final BlockEntry<WoodenCogwheelBlock> WARPED_LARGE_COGWHEEL = createLargeCogwheel("warped");*/
-
-    /*public static final BlockEntry<GlassShaftBlock> GLASS_SHAFT = REGISTRATE.block("glass_shaft", GlassShaftBlock::new)
-            .initialProperties(()-> GLASS)
-            .properties(p -> p.mapColor(MapColor.NONE)
-                    .sound(SoundType.GLASS)
-                    .noOcclusion())
-            .transform(CCStress.setNoImpact())
-            .blockstate(EncasedBlockStateGens.shaft("glass"))
-            .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
-            .item()
-            .model((c,p)->p.getBuilder(c.getName()).parent(Objects.requireNonNull(shaftModel(p, "glass"))))
-            .build()
-            .register();
-
-    public static final BlockEntry<BrassShaftBlock> BRASS_SHAFT = REGISTRATE.block("brass_shaft", BrassShaftBlock::new)
-            .initialProperties(SharedProperties::softMetal)
-            .properties(p -> p.mapColor(MapColor.METAL))
-            .transform(CCStress.setNoImpact())
-            .transform(pickaxeOnly())
-            .blockstate(EncasedBlockStateGens.shaft("brass"))
-            .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
-            .item()
-            .model((c,p)->p.getBuilder(c.getName()).parent(Objects.requireNonNull(shaftModel(p, "brass"))))
-            .build()
-            .register();*/
-
-   /* public static final BlockEntry<CustomShaftBlock> MLDEG_SHAFT = REGISTRATE.block("mldeg_shaft", CustomShaftBlock::new)
-            .initialProperties(()-> Blocks.BLACKSTONE)
-            .properties(p -> p.mapColor(MapColor.NONE)
-                    .sound(SoundType.STONE)
-                    .noOcclusion())
-            .transform(CCStress.setNoImpact())
-            .blockstate(EncasedBlockStateGens.shaft("mldeg"))
-            .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
-            .onRegisterAfter(Registries.ITEM, CreateCasing::hideItem)
-            .item()
-            .model((c,p)->p.getBuilder(c.getName()).parent(Objects.requireNonNull(shaftModel(p, "mldeg"))))
-            .build()
-            .register();*/
 
     public static final BlockEntry<CreativeCogwheelBlock> CREATIVE_COGWHEEL =
             REGISTRATE.block("creative_cogwheel", CreativeCogwheelBlock::new)
@@ -264,7 +189,6 @@ public class EncasedBlocks {
                 .properties(BlockBehaviour.Properties::noOcclusion)
                 .transform(axeOrPickaxe())
                 .blockstate(EncasedBlockStateGens.mixer(name))
-                .onRegisterAfter(Registries.ITEM, v -> ItemDescription.useKey(v, "block.createcasing.custom_mixer"))
                 .addLayer(() -> RenderType::cutoutMipped)
                 .transform(CCStress.setImpact(4.0))
                 .item(AssemblyOperatorBlockItem::new)
@@ -281,7 +205,6 @@ public class EncasedBlocks {
                 .transform(axeOrPickaxe())
                 .blockstate(EncasedBlockStateGens.press(name))
                 .transform(CCStress.setImpact(8.0))
-                .onRegisterAfter(Registries.ITEM, v -> ItemDescription.useKey(v, "block.createcasing.custom_press"))
                 .item(AssemblyOperatorBlockItem::new)
                 .model((c,p)->p.getBuilder(c.getName()).parent(pressModel(p,name,true)))
                 .build()

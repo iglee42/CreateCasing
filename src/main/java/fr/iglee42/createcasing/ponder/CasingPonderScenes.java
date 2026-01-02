@@ -30,6 +30,8 @@ public class CasingPonderScenes {
 
 		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateGearbox).map(CasingSet::getGearbox).toList())
 				.addStoryBoard(Create.asResource("gearbox"), KineticsScenes::gearbox, AllCreatePonderTags.KINETIC_RELAYS);
+		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateGearbox).map(CasingSet::getVerticalGearboxItem).toList())
+				.addStoryBoard(Create.asResource("gearbox"), KineticsScenes::gearbox, AllCreatePonderTags.KINETIC_RELAYS);
 
 		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateMixer).map(CasingSet::getMixer).toList()).addStoryBoard(Create.asResource("mechanical_mixer/mixing"), ProcessingScenes::mixing);
 		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGeneratePress).map(CasingSet::getPress).toList())
