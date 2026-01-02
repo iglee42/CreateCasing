@@ -25,7 +25,7 @@ public interface IItemExtensionMixin {
 
     /**
      * @author iglee42
-     * @reason Allow shaft to used on the configurable gearbox when sneaking
+     * @reason Allow shaft to be used on the configurable gearbox when sneaking
      */
     @Overwrite
     default boolean doesSneakBypassUse(ItemStack stack, LevelReader level, BlockPos pos, Player player){

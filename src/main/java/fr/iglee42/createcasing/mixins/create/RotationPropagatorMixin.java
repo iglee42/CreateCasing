@@ -23,7 +23,6 @@ public class RotationPropagatorMixin {
 
     @Inject(method = "getRotationSpeedModifier",at = @At(value = "INVOKE", target = "Lcom/simibubi/create/content/kinetics/RotationPropagator;isLargeToLargeGear(Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/world/level/block/state/BlockState;Lnet/minecraft/core/BlockPos;)Z",shift = At.Shift.BEFORE),cancellable = true, locals = LocalCapture.CAPTURE_FAILSOFT)
     private static void inject(KineticBlockEntity from, KineticBlockEntity to, CallbackInfoReturnable<Float> cir, BlockState stateFrom, BlockState stateTo, Block fromBlock, Block toBlock, IRotate definitionFrom, IRotate definitionTo, BlockPos diff){
-        //Injection from Create Encased
         final Direction direction = Direction.getNearest(diff.getX(), diff.getY(), diff.getZ());
         createCasing$rotationSpeedModifier(from,to,stateFrom,stateTo,fromBlock,toBlock,direction,cir);
     }
@@ -31,7 +30,7 @@ public class RotationPropagatorMixin {
     @Unique
     private static void createCasing$rotationSpeedModifier(KineticBlockEntity from,KineticBlockEntity to,BlockState stateFrom,BlockState stateTo,Block fromBlock,Block toBlock,Direction direction, CallbackInfoReturnable<Float> cir) {
         if (fromBlock instanceof CustomChainDriveBlock && toBlock instanceof CustomChainDriveBlock) {
-            boolean connected = CustomChainDriveBlock.areBlocksConnected(stateFrom, stateTo, direction);
+            boolean connected = CustomChainDriveBlock.areCustomBlocksConnected(stateFrom, stateTo, direction);
             cir.setReturnValue(connected ? CustomChainDriveBlock.getRotationSpeedModifier(from, to) : 0);
         }
 

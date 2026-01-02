@@ -4,6 +4,7 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.foundation.ponder.CreateSceneBuilder;
 import fr.iglee42.createcasing.blocks.ConfigurableGearboxBlock;
+import fr.iglee42.createcasing.casings.CasingSets;
 import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.registries.EncasedBlocks;
 import net.createmod.catnip.math.Pointing;
@@ -108,7 +109,7 @@ public class CustomPonderScenes {
 
         scene.idle(90);
 
-        scene.world().setBlock(gearbox, EncasedBlocks.ANDESITE_CONFIGURABLE_GEARBOX.getDefaultState()
+        scene.world().setBlock(gearbox, CasingSets.ANDESITE.getConfigurableGearbox().defaultBlockState()
                 .setValue(ConfigurableGearboxBlock.UP,false)
                 .setValue(ConfigurableGearboxBlock.DOWN,false)
                 .setValue(ConfigurableGearboxBlock.NORTH,true)

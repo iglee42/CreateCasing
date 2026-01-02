@@ -4,6 +4,7 @@ import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntit
 import fr.iglee42.createcasing.blocks.shafts.EncasedCustomShaftBlock;
 import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.registries.EncasedBlocks;
+import fr.iglee42.createcasing.transmissions.TransmissionSets;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
@@ -17,11 +18,11 @@ public class CustomEncasedShaftBlockEntity extends SimpleKineticBlockEntity {
     public void tick() {
         super.tick();
 
-        if (EncasedBlocks.GLASS_SHAFT.has(((EncasedCustomShaftBlock) getBlockState().getBlock()).getShaft().get().defaultBlockState())) {
+        if (TransmissionSets.GLASS.getShaft() != null && ((EncasedCustomShaftBlock) getBlockState().getBlock()).getShaft().get().defaultBlockState().is(TransmissionSets.GLASS.getShaft())) {
             if (ModConfigs.common().kinetics.shouldGlassShaftBreak.get()) {
                 if (isOverStressed()) {
                     if (source != null) {
-                        if (!(EncasedBlocks.GLASS_SHAFT.has(getLevel().getBlockState(source))) || (getLevel().getBlockState(source).getBlock() instanceof EncasedCustomShaftBlock sh && EncasedBlocks.GLASS_SHAFT.has(sh.getShaft().get().defaultBlockState()))) {
+                        if (!(getLevel().getBlockState(source).is(TransmissionSets.GLASS.getShaft())) || (getLevel().getBlockState(source).getBlock() instanceof EncasedCustomShaftBlock sh &&sh.getShaft().get().defaultBlockState().is(TransmissionSets.GLASS.getShaft()))) {
                             getLevel().destroyBlock(worldPosition, false);
                         }
                     } else getLevel().destroyBlock(worldPosition, false);

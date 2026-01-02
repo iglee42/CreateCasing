@@ -5,6 +5,9 @@ import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.util.entry.ItemProviderEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import fr.iglee42.createcasing.CreateCasing;
+import fr.iglee42.createcasing.casings.CasingSet;
+import fr.iglee42.createcasing.casings.CasingSets;
+import fr.iglee42.createcasing.transmissions.TransmissionSets;
 import it.unimi.dsi.fastutil.objects.*;
 import net.createmod.catnip.platform.CatnipServices;
 import net.minecraft.client.Minecraft;
@@ -25,12 +28,10 @@ import net.neoforged.neoforge.registries.DeferredHolder;
 import net.neoforged.neoforge.registries.DeferredRegister;
 import org.apache.commons.lang3.mutable.MutableObject;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class EncasedCreativeModeTabs {
 
@@ -41,7 +42,7 @@ public class EncasedCreativeModeTabs {
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup."+CreateCasing.MODID+".base"))
                     .withTabsBefore(AllCreativeModeTabs.BASE_CREATIVE_TAB.getKey())
-                    .icon(EncasedBlocks.BRASS_GEARBOX::asStack)
+                    .icon(()-> CasingSets.BRASS.getGearbox().asItem().getDefaultInstance())
                     .displayItems(new RegistrateDisplayItemsGenerator(true, EncasedCreativeModeTabs.MAIN_TAB))
                     .build());
 
@@ -85,6 +86,7 @@ public class EncasedCreativeModeTabs {
         private static Predicate<Item> makeExclusionPredicate() {
             Set<Item> exclusions = new ReferenceOpenHashSet<>();
             exclusions.addAll(CreateCasing.hidedItems.stream().map(ItemLike::asItem).toList());
+            exclusions.add(TransmissionSets.MLDEG.getShaft().asItem());
             return exclusions::contains;
         }
 
@@ -95,23 +97,17 @@ public class EncasedCreativeModeTabs {
 
             );
 
-            Map<ItemProviderEntry<?, ?>, ItemProviderEntry<?, ?>> simpleAfterOrderings = Map.of(
-                    EncasedItems.VERTICAL_BRASS_GEARBOX, EncasedBlocks.BRASS_GEARBOX,
-                    EncasedItems.VERTICAL_COPPER_GEARBOX, EncasedBlocks.COPPER_GEARBOX,
-                    EncasedItems.VERTICAL_RAILWAY_GEARBOX, EncasedBlocks.RAILWAY_GEARBOX,
-                    EncasedItems.VERTICAL_CREATIVE_GEARBOX, EncasedBlocks.CREATIVE_GEARBOX,
-                    EncasedItems.VERTICAL_INDUSTRIAL_IRON_GEARBOX, EncasedBlocks.INDUSTRIAL_IRON_GEARBOX,
-                    EncasedItems.VERTICAL_WEATHERED_IRON_GEARBOX, EncasedBlocks.WEATHERED_IRON_GEARBOX,
-                    EncasedItems.VERTICAL_REFINED_RADIANCE_GEARBOX, EncasedBlocks.REFINED_RADIANCE_GEARBOX,
-                    EncasedItems.VERTICAL_SHADOW_STEEL_GEARBOX, EncasedBlocks.SHADOW_STEEL_GEARBOX
-            );
+            Map<Supplier<? extends Item>, Supplier<? extends Item>> simpleAfterOrderings = new HashMap<>(Map.of(
+            ));
+
+            CasingSets.getSets().stream().filter(CasingSet::doesGenerateGearbox).forEach(set->simpleAfterOrderings.put(set.getVerticalGearboxItemSupplier(),()->set.getGearbox().asItem()));
 
             simpleBeforeOrderings.forEach((entry, otherEntry) -> {
                 orderings.add(RegistrateDisplayItemsGenerator.ItemOrdering.before(entry.asItem(), otherEntry.asItem()));
             });
 
             simpleAfterOrderings.forEach((entry, otherEntry) -> {
-                orderings.add(RegistrateDisplayItemsGenerator.ItemOrdering.after(entry.asItem(), otherEntry.asItem()));
+                orderings.add(RegistrateDisplayItemsGenerator.ItemOrdering.after(entry.get(), otherEntry.get()));
             });
 
             return orderings;

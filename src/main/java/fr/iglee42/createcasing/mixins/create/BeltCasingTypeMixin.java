@@ -1,6 +1,8 @@
 package fr.iglee42.createcasing.mixins.create;
 
 import com.simibubi.create.content.kinetics.belt.BeltBlockEntity;
+import fr.iglee42.createcasing.casings.CasingSet;
+import fr.iglee42.createcasing.casings.CasingSets;
 import fr.iglee42.createcasing.registries.EncasedBlocks;
 import org.spongepowered.asm.mixin.*;
 import org.spongepowered.asm.mixin.gen.Invoker;
@@ -25,13 +27,8 @@ public class BeltCasingTypeMixin {
 
     @Inject(method = "<clinit>",at = @At("TAIL"))
     private static void cmr$clinit(CallbackInfo ci) {
-        EncasedBlocks.COPPER_BELT_CASING = encased$addVariant("COPPER");
-        EncasedBlocks.RAILWAY_BELT_CASING = encased$addVariant("RAILWAY");
-        EncasedBlocks.INDUSTRIAL_IRON_BELT_CASING = encased$addVariant("INDUSTRIAL_IRON");
-        EncasedBlocks.WEATHERED_IRON_BELT_CASING = encased$addVariant("WEATHERED_IRON");
-        EncasedBlocks.CREATIVE_BELT_CASING = encased$addVariant("CREATIVE");
-        EncasedBlocks.REFINED_RADIANCE_BELT_CASING = encased$addVariant("REFINED_RADIANCE");
-        EncasedBlocks.SHADOW_STEEL_BELT_CASING = encased$addVariant("SHADOW_STEEL");
+        CasingSets.getSets().stream().filter(CasingSet::doesGenerateBelt)
+                .forEach(set-> set.setBeltCasingType(encased$addVariant(set.getName().toUpperCase())));
     }
 
     @Unique

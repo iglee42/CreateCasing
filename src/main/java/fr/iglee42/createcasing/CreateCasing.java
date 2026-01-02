@@ -66,8 +66,6 @@ public class CreateCasing {
         EncasedCreativeModeTabs.register(modEventBus);
         EncasedPackets.register();
 
-        EncasedBlocks.registerEncasedShafts();
-
         ModConfigs.register(ModLoadingContext.get(),container);
 
 
@@ -104,11 +102,6 @@ public class CreateCasing {
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
                 EncasedBlockEntities.DEPOT.get(),
-                (be, context) -> be.getBehaviour(DepotBehaviour.TYPE).itemHandler
-        );
-        event.registerBlockEntity(
-                Capabilities.ItemHandler.BLOCK,
-                EncasedBlockEntities.API_DEPOT.get(),
                 (be, context) -> be.getBehaviour(DepotBehaviour.TYPE).itemHandler
         );
     }

@@ -27,7 +27,7 @@ public class CustomVerticalGearboxItem extends BlockItem {
 
 	@Override
 	public String getDescriptionId() {
-		return "item.createcasing.vertical_" + BuiltInRegistries.BLOCK.getKey(getBlock()).getPath();
+		return "item."+BuiltInRegistries.BLOCK.getKey(getBlock()).getNamespace()+".vertical_" + BuiltInRegistries.BLOCK.getKey(getBlock()).getPath();
 	}
 
 	@Override

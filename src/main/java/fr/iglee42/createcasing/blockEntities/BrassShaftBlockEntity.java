@@ -1,8 +1,6 @@
 package fr.iglee42.createcasing.blockEntities;
 
 import com.simibubi.create.content.kinetics.RotationPropagator;
-import com.simibubi.create.content.kinetics.base.IRotate;
-import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import fr.iglee42.createcasing.CreateCasing;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.HolderLookup;
@@ -17,7 +15,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.function.BiPredicate;
 
-public class BrassShaftBlockEntity extends MetalShaftBlockEntity {
+public class BrassShaftBlockEntity extends CustomShaftBlockEntity {
 
 
     public static int BASE_STRESS = 1024;

@@ -4,12 +4,12 @@ package fr.iglee42.createcasing.registries;
 import com.simibubi.create.AllPartialModels;
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 import fr.iglee42.createcasing.CreateCasing;
+import fr.iglee42.createcasing.casings.CasingSet;
+import fr.iglee42.createcasing.casings.CasingSets;
 import net.minecraft.world.level.block.state.BlockState;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
+import java.util.concurrent.atomic.AtomicReference;
 
 public class EncasedPartialModels {
 
@@ -97,38 +97,42 @@ public class EncasedPartialModels {
     }
 
     public static PartialModel getChainConveyorWheel(BlockState state){
-        if (EncasedBlocks.BRASS_CHAIN_CONVEYOR.has(state)) return BRASS_CONVEYOR_WHEEL;
-        if (EncasedBlocks.COPPER_CHAIN_CONVEYOR.has(state)) return COPPER_CONVEYOR_WHEEL;
-        if (EncasedBlocks.RAILWAY_CHAIN_CONVEYOR.has(state)) return RAILWAY_CONVEYOR_WHEEL;
-        if (EncasedBlocks.CREATIVE_CHAIN_CONVEYOR.has(state)) return CREATIVE_CONVEYOR_WHEEL;
-        if (EncasedBlocks.INDUSTRIAL_IRON_CHAIN_CONVEYOR.has(state)) return INDUSTRIAL_IRON_CONVEYOR_WHEEL;
-        if (EncasedBlocks.WEATHERED_IRON_CHAIN_CONVEYOR.has(state)) return WEATHERED_IRON_CONVEYOR_WHEEL;
-        if (EncasedBlocks.REFINED_RADIANCE_CHAIN_CONVEYOR.has(state)) return REFINED_RADIANCE_CONVEYOR_WHEEL;
-        if (EncasedBlocks.SHADOW_STEEL_CHAIN_CONVEYOR.has(state)) return SHADOW_STEEL_CONVEYOR_WHEEL;
-        return AllPartialModels.CHAIN_CONVEYOR_WHEEL;
+        AtomicReference<PartialModel> toReturn = new AtomicReference<>(AllPartialModels.CHAIN_CONVEYOR_WHEEL);
+        CasingSets.getSets().stream().filter(s->s.isInSet(state.getBlock()))
+                .filter(CasingSet::doesGenerateChainConveyor)
+                .filter(s->Objects.nonNull(s.getChainConveyorWheelModel()))
+                .findFirst()
+                .ifPresent(set->toReturn.set(set.getChainConveyorWheelModel()));
+        return toReturn.get();
     }
 
     public static PartialModel getChainConveyorGuard(BlockState state){
-        if (EncasedBlocks.BRASS_CHAIN_CONVEYOR.has(state)) return BRASS_CONVEYOR_GUARD;
-        if (EncasedBlocks.COPPER_CHAIN_CONVEYOR.has(state)) return COPPER_CONVEYOR_GUARD;
-        if (EncasedBlocks.RAILWAY_CHAIN_CONVEYOR.has(state)) return RAILWAY_CONVEYOR_GUARD;
-        if (EncasedBlocks.CREATIVE_CHAIN_CONVEYOR.has(state)) return CREATIVE_CONVEYOR_GUARD;
-        if (EncasedBlocks.INDUSTRIAL_IRON_CHAIN_CONVEYOR.has(state)) return INDUSTRIAL_IRON_CONVEYOR_GUARD;
-        if (EncasedBlocks.WEATHERED_IRON_CHAIN_CONVEYOR.has(state)) return WEATHERED_IRON_CONVEYOR_GUARD;
-        if (EncasedBlocks.REFINED_RADIANCE_CHAIN_CONVEYOR.has(state)) return REFINED_RADIANCE_CONVEYOR_GUARD;
-        if (EncasedBlocks.SHADOW_STEEL_CHAIN_CONVEYOR.has(state)) return SHADOW_STEEL_CONVEYOR_GUARD;
-        return AllPartialModels.CHAIN_CONVEYOR_GUARD;
+        AtomicReference<PartialModel> toReturn = new AtomicReference<>(AllPartialModels.CHAIN_CONVEYOR_GUARD);
+        CasingSets.getSets().stream().filter(s->s.isInSet(state.getBlock()))
+                .filter(CasingSet::doesGenerateChainConveyor)
+                .filter(s->Objects.nonNull(s.getChainConveyorGuardModel()))
+                .findFirst()
+                .ifPresent(set->toReturn.set(set.getChainConveyorGuardModel()));
+        return toReturn.get();
     }
 
     public static PartialModel getChainConveyorShaft(BlockState state){
-        if (EncasedBlocks.BRASS_CHAIN_CONVEYOR.has(state)) return BRASS_CONVEYOR_SHAFT;
-        if (EncasedBlocks.COPPER_CHAIN_CONVEYOR.has(state)) return COPPER_CONVEYOR_SHAFT;
-        if (EncasedBlocks.RAILWAY_CHAIN_CONVEYOR.has(state)) return RAILWAY_CONVEYOR_SHAFT;
-        if (EncasedBlocks.CREATIVE_CHAIN_CONVEYOR.has(state)) return CREATIVE_CONVEYOR_SHAFT;
-        if (EncasedBlocks.INDUSTRIAL_IRON_CHAIN_CONVEYOR.has(state)) return INDUSTRIAL_IRON_CONVEYOR_SHAFT;
-        if (EncasedBlocks.WEATHERED_IRON_CHAIN_CONVEYOR.has(state)) return WEATHERED_IRON_CONVEYOR_SHAFT;
-        if (EncasedBlocks.REFINED_RADIANCE_CHAIN_CONVEYOR.has(state)) return REFINED_RADIANCE_CONVEYOR_SHAFT;
-        if (EncasedBlocks.SHADOW_STEEL_CHAIN_CONVEYOR.has(state)) return SHADOW_STEEL_CONVEYOR_SHAFT;
-        return AllPartialModels.CHAIN_CONVEYOR_SHAFT;
+        AtomicReference<PartialModel> toReturn = new AtomicReference<>(AllPartialModels.CHAIN_CONVEYOR_SHAFT);
+        CasingSets.getSets().stream().filter(s->s.isInSet(state.getBlock()))
+                .filter(CasingSet::doesGenerateChainConveyor)
+                .filter(s->Objects.nonNull(s.getChainConveyorShaftModel()))
+                .findFirst()
+                .ifPresent(set->toReturn.set(set.getChainConveyorShaftModel()));
+        return toReturn.get();
+    }
+
+    public static PartialModel getMixerHead(BlockState state){
+        AtomicReference<PartialModel> toReturn = new AtomicReference<>(AllPartialModels.MECHANICAL_MIXER_HEAD);
+        CasingSets.getSets().stream().filter(s->s.isInSet(state.getBlock()))
+                .filter(CasingSet::doesGenerateMixer)
+                .filter(s->Objects.nonNull(s.getMixerHeadModel()))
+                .findFirst()
+                .ifPresent(set->toReturn.set(set.getMixerHeadModel()));
+        return toReturn.get();
     }
 }
