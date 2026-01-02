@@ -20,7 +20,6 @@
     "create.client.ChainConveyorVisualMixin",
     "create.client.MechanicalMixerRendererMixin",
     "create.client.MixerVisualMixin",
-    "minecraft.BlockEntityTypeMixin",
     "minecraft.IItemExtensionMixin"
   ],
   "client": [

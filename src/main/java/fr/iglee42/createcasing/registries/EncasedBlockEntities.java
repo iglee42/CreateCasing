@@ -32,10 +32,13 @@ import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.blockEntities.*;
 import fr.iglee42.createcasing.blockEntities.renderers.*;
 import fr.iglee42.createcasing.blockEntities.visuals.*;
+import fr.iglee42.createcasing.blocks.customs.EncasedCustomCogwheelBlock;
+import fr.iglee42.createcasing.blocks.shafts.EncasedCustomShaftBlock;
 import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
 import fr.iglee42.createcasing.transmissions.TransmissionSet;
 import fr.iglee42.createcasing.transmissions.TransmissionSets;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.neoforged.bus.api.SubscribeEvent;
@@ -208,6 +211,14 @@ public class EncasedBlockEntities {
         registerTransmission(event, CUSTOM_SHAFT.get(), TransmissionSet::getShaft, TransmissionSet::doesGenerateShaft, TransmissionSet::getShaftBlockEntityType);
         registerTransmission(event, CUSTOM_COGWHEELS.get(), TransmissionSet::getCogwheel, TransmissionSet::doesGenerateCogwheel, TransmissionSet::getCogwheelBlockEntityType);
         registerTransmission(event, CUSTOM_COGWHEELS.get(), TransmissionSet::getLargeCogwheel, TransmissionSet::doesGenerateLargeCogwheel, TransmissionSet::getLargeCogwheelBlockEntityType);
+
+        REGISTRATE.getAll(Registries.BLOCK).forEach(e->{
+            if (e.get() instanceof EncasedCustomShaftBlock block)
+                event.modify(ENCASED_CUSTOM_SHAFT.get(),block);
+
+            if (e.get() instanceof EncasedCustomCogwheelBlock block)
+                event.modify(block.isLargeCog() ? ENCASED_CUSTOM_LARGE_COGWHEEL.get() : ENCASED_CUSTOM_COGWHEEL.get(),block);
+        });
     }
 
     private static void register(BlockEntityTypeAddBlocksEvent event, BlockEntityType<?> type, Function<CasingSet, Block> blockFunction, Predicate<CasingSet> validateFunction){
