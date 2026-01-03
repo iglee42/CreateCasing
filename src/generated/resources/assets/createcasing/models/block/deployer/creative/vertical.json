@@ -2,11 +2,11 @@
   "parent": "create:block/deployer/vertical",
   "textures": {
     "5": "createcasing:block/casing_pistons/creative",
-    "6": "create:block/piston_bottom",
-    "7": "create:block/piston_inner",
+    "6": "createcasing:block/piston_bottoms/creative",
+    "7": "createcasing:block/piston_inners/creative",
     "andesite_casing_short": "createcasing:block/casing_shorts/creative",
     "gearbox": "createcasing:block/gearboxes/creative",
-    "gearbox_top": "create:block/gearbox_top",
-    "particle": "create:block/gearbox_top"
+    "gearbox_top": "createcasing:block/gearbox_tops/creative",
+    "particle": "createcasing:block/gearbox_tops/creative"
   }
 }

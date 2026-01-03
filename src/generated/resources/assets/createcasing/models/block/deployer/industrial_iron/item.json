@@ -2,11 +2,11 @@
   "parent": "create:block/deployer/item",
   "textures": {
     "10": "createcasing:block/casing_pistons/industrial_iron",
-    "6": "create:block/piston_bottom",
-    "7": "create:block/piston_inner",
+    "6": "createcasing:block/piston_bottoms/industrial_iron",
+    "7": "createcasing:block/piston_inners/industrial_iron",
     "andesite_casing_short": "createcasing:block/casing_shorts/industrial_iron",
     "gearbox": "createcasing:block/gearboxes/industrial_iron",
-    "gearbox_top": "create:block/gearbox_top",
-    "particle": "create:block/gearbox_top"
+    "gearbox_top": "createcasing:block/gearbox_tops/industrial_iron",
+    "particle": "createcasing:block/gearbox_tops/industrial_iron"
   }
 }

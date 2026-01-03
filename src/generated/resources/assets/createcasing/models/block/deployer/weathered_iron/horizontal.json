@@ -2,11 +2,11 @@
   "parent": "create:block/deployer/horizontal",
   "textures": {
     "5": "createcasing:block/casing_pistons/weathered_iron",
-    "6": "create:block/piston_bottom",
-    "7": "create:block/piston_inner",
+    "6": "createcasing:block/piston_bottoms/weathered_iron",
+    "7": "createcasing:block/piston_inners/weathered_iron",
     "andesite_casing_short": "createcasing:block/casing_shorts/weathered_iron",
     "gearbox": "createcasing:block/gearboxes/weathered_iron",
-    "gearbox_top": "create:block/gearbox_top",
-    "particle": "create:block/gearbox_top"
+    "gearbox_top": "createcasing:block/gearbox_tops/weathered_iron",
+    "particle": "createcasing:block/gearbox_tops/weathered_iron"
   }
 }

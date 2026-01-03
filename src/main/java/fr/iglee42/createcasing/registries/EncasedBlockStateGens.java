@@ -560,8 +560,7 @@ public class EncasedBlockStateGens {
 
     public static String getGearboxTopTexture(String casing){
         if (casing.equals("andesite") || casing.equals("normal")) return Create.ID+":block/gearbox_top";
-        //return CreateCasing.MODID + ":block/gearbox_tops/"+casing;
-        return Create.ID+":block/gearbox_top";
+        return CreateCasing.MODID + ":block/gearbox_tops/"+casing;
     }
 
 
@@ -669,14 +668,12 @@ public class EncasedBlockStateGens {
 
     public static String getPistonBottomTexture(String casing){
         if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/piston_bottom";
-        //return CreateCasing.MODID + ":block/piston_bottoms/" + casing;
-        return Create.ID+":block/piston_bottom";
+        return CreateCasing.MODID + ":block/piston_bottoms/" + casing;
     }
 
     public static String getPistonInnerTexture(String casing){
         if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/piston_inner";
-        //return CreateCasing.MODID + ":block/piston_inners/" + casing;
-        return Create.ID+":block/piston_inner";
+        return CreateCasing.MODID + ":block/piston_inners/" + casing;
     }
 
 
