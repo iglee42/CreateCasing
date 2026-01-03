@@ -12,12 +12,17 @@ import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogCTBehaviour;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogwheelBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedShaftBlock;
+import com.simibubi.create.content.kinetics.transmission.ClutchBlock;
+import com.simibubi.create.content.kinetics.transmission.GearshiftBlock;
 import com.simibubi.create.content.logistics.depot.MountedDepotInteractionBehaviour;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
+import com.simibubi.create.foundation.data.AssetLookup;
+import com.simibubi.create.foundation.data.BlockStateGen;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.data.SharedProperties;
 import com.simibubi.create.foundation.item.ItemDescription;
+import com.simibubi.create.infrastructure.config.CStress;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiFunction;
@@ -330,6 +335,36 @@ public class EncasedBlocks {
                 .register();
     }
 
+    public static BlockEntry<CustomGearshiftBlock> createGearshift(String name) {
+        return REGISTRATE.block(name+"_gearshift", CustomGearshiftBlock::new)
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.noOcclusion()
+                        .mapColor(MapColor.PODZOL))
+                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(CCStress.setNoImpact())
+                .transform(axeOrPickaxe())
+                .blockstate((c, p) -> EncasedBlockStateGens.axisBlock(c,p,gearshiftModel(p,name),false))
+                .item()
+                .model((c,p)->p.getBuilder(c.getName()).parent(gearshiftItemModel(p,name)))
+                .build()
+                .register();
+    }
+
+    public static BlockEntry<CustomClutchBlock> createClutch(String name) {
+        return REGISTRATE.block(name+"_clutch", CustomClutchBlock::new)
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.noOcclusion()
+                        .mapColor(MapColor.PODZOL))
+                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(CCStress.setNoImpact())
+                .transform(axeOrPickaxe())
+                .blockstate((c, p) ->EncasedBlockStateGens.axisBlock(c,p,clutchModel(p,name),false))
+                .item()
+                .model((c,p)->p.getBuilder(c.getName()).parent(clutchItemModel(p,name)))
+                .build()
+                .register();
+    }
+
     private static <T extends Block> BlockBuilder<T,CreateRegistrate> connectedTexture( BlockBuilder<T, CreateRegistrate> entry,CTSpriteShiftEntry sprite,BiConsumer<T, CasingConnectivity> consumer){
         if (sprite != null){
             return entry.onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(sprite)))
@@ -381,6 +416,12 @@ public class EncasedBlocks {
 
             if (set.doesGenerateChainConveyor())
                 set.setChainConveyor(createChainConveyor(set.getName()));
+
+            if (set.doesGenerateGearshift())
+                set.setGearshift(createGearshift(set.getName()));
+
+            if (set.doesGenerateClutch())
+                set.setClutch(createClutch(set.getName()));
         });
 
         TransmissionSets.getSets().forEach(set->{
@@ -396,7 +437,7 @@ public class EncasedBlocks {
 
         CasingSets.getSets().stream().filter(CasingSet::doesGenerateEncasedWoodenShaft).forEach(set->{
             TransmissionSets.getSets().stream().filter(Predicate.not(TransmissionSet::isNotEncasable)).filter(TransmissionSet::doesGenerateShaft).forEach(tset->{
-                if (set.getShaftSupplier() != null){
+                if (tset.getShaftSupplier() != null){
                     createEncasedShaft(tset.getShaftSupplier(),set.getName(), ()->set.getCasing(),set.getConnectedTextureSprite(),(p, s)->new EncasedCustomShaftBlock(p,s,tset.getShaftSupplier()));
                 }
             });
@@ -404,7 +445,7 @@ public class EncasedBlocks {
 
         CasingSets.getSets().stream().filter(CasingSet::doesGenerateEncasedWoodenCogwheel).forEach(set->{
             TransmissionSets.getSets().stream().filter(Predicate.not(TransmissionSet::isNotEncasable)).filter(TransmissionSet::doesGenerateCogwheel).forEach(tset->{
-                if (set.getCogwheelSupplier() != null){
+                if (tset.getCogwheelSupplier() != null){
                     createEncasedCogwheel(tset.getCogwheelSupplier(),set.getName(), ()->set.getCasing(),set.getConnectedTextureSprite(),set.getCogSideSprite(),set.getCogOtherSideSprite(),(p,s)->new EncasedCustomCogwheelBlock(p,false,s,tset.getCogwheelSupplier()));
                 }
             });
@@ -412,7 +453,7 @@ public class EncasedBlocks {
 
         CasingSets.getSets().stream().filter(CasingSet::doesGenerateEncasedWoodenLargeCogwheel).forEach(set->{
             TransmissionSets.getSets().stream().filter(Predicate.not(TransmissionSet::isNotEncasable)).filter(TransmissionSet::doesGenerateLargeCogwheel).forEach(tset->{
-                if (set.getLargeCogwheelSupplier() != null){
+                if (tset.getLargeCogwheelSupplier() != null){
                     createEncasedLargeCogwheel(tset.getLargeCogwheelSupplier(),set.getName(), ()->set.getCasing(),set.getConnectedTextureSprite(),(p,s)->new EncasedCustomCogwheelBlock(p,true,s,tset.getLargeCogwheelSupplier()));
                 }
             });

@@ -1,5 +1,6 @@
 package fr.iglee42.createcasing.registries;
 
+import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.fluids.pipes.FluidPipeBlockEntity;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
@@ -24,6 +25,10 @@ import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEn
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogRenderer;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogVisual;
+import com.simibubi.create.content.kinetics.transmission.ClutchBlockEntity;
+import com.simibubi.create.content.kinetics.transmission.GearshiftBlockEntity;
+import com.simibubi.create.content.kinetics.transmission.SplitShaftRenderer;
+import com.simibubi.create.content.kinetics.transmission.SplitShaftVisual;
 import com.simibubi.create.content.logistics.depot.DepotBlockEntity;
 import com.simibubi.create.content.logistics.depot.DepotRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
@@ -191,6 +196,18 @@ public class EncasedBlockEntities {
             .renderer(() -> EncasedCustomCogRenderer::large)
             .register();
 
+    public static final BlockEntityEntry<ClutchBlockEntity> CLUTCH = REGISTRATE
+            .blockEntity("clutch", ClutchBlockEntity::new)
+            .visual(() -> SplitShaftVisual::new, false)
+            .renderer(() -> SplitShaftRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<GearshiftBlockEntity> GEARSHIFT = REGISTRATE
+            .blockEntity("gearshift", GearshiftBlockEntity::new)
+            .visual(() -> SplitShaftVisual::new, false)
+            .renderer(() -> SplitShaftRenderer::new)
+            .register();
+
     public static void register() {}
 
     @SubscribeEvent
@@ -207,6 +224,8 @@ public class EncasedBlockEntities {
         register(event, CHAIN_GEARSHIFT.get(),CasingSet::getChainGearshift,CasingSet::doesGenerateChainGearshift);
         register(event,CONFIGURABLE_GEARBOX.get(),CasingSet::getConfigurableGearbox,CasingSet::doesGenerateConfigurableGearbox);
         register(event,CHAIN_CONVEYOR.get(),CasingSet::getChainConveyor,CasingSet::doesGenerateChainConveyor);
+        register(event, GEARSHIFT.get(),CasingSet::getGearshift,CasingSet::doesGenerateGearshift);
+        register(event,CLUTCH.get(),CasingSet::getClutch,CasingSet::doesGenerateClutch);
 
         registerTransmission(event, CUSTOM_SHAFT.get(), TransmissionSet::getShaft, TransmissionSet::doesGenerateShaft, TransmissionSet::getShaftBlockEntityType);
         registerTransmission(event, CUSTOM_COGWHEELS.get(), TransmissionSet::getCogwheel, TransmissionSet::doesGenerateCogwheel, TransmissionSet::getCogwheelBlockEntityType);

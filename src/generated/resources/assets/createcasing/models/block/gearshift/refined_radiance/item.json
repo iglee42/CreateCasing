@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/gearshift/item",
+  "textures": {
+    "0": "createcasing:block/gearshift_off/refined_radiance",
+    "1": "createcasing:block/gearboxes/refined_radiance",
+    "particle": "createcasing:block/gearshift_off/refined_radiance"
+  }
+}

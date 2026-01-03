@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/clutch/block_powered",
+  "textures": {
+    "0": "createcasing:block/clutch_on/refined_radiance",
+    "1": "createcasing:block/gearboxes/refined_radiance",
+    "2": "createcasing:block/funnel_frames/refined_radiance",
+    "particle": "createcasing:block/clutch_on/refined_radiance"
+  }
+}

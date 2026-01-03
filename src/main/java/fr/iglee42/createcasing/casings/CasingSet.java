@@ -39,6 +39,8 @@ public class CasingSet {
     private @Nullable Supplier<? extends Block> chainGearshiftBlock;
     private @Nullable Supplier<? extends Block> configurableGearboxBlock;
     private @Nullable Supplier<? extends Block> chainConveyorBlock;
+    private @Nullable Supplier<? extends Block> gearshiftBlock;
+    private @Nullable Supplier<? extends Block> clutchBlock;
 
     private final @Nullable Supplier<PartialModel> chainConveyorWheelModel;
     private final @Nullable Supplier<PartialModel> chainConveyorGuardModel;
@@ -60,6 +62,8 @@ public class CasingSet {
     private final boolean chainGearshift;
     private final boolean configurableGearbox;
     private final boolean chainConveyor;
+    private final boolean gearshift;
+    private final boolean clutch;
     private final boolean encasedWoodenShaft;
     private final boolean encasedWoodenCogwheel;
     private final boolean encasedWoodenLargeCogwheel;
@@ -86,6 +90,8 @@ public class CasingSet {
         chainGearshift = options.chainGearshift;
         configurableGearbox = options.configurableGearbox;
         chainConveyor = options.chainConveyor;
+        gearshift = options.gearshift;
+        clutch = options.clutch;
         encasedWoodenShaft = options.encasedWoodenShaft;
         encasedWoodenCogwheel = options.encasedWoodenCogwheel;
         encasedWoodenLargeCogwheel = options.encasedWoodenLargeCogwheel;
@@ -107,6 +113,8 @@ public class CasingSet {
         if (options.existingChainDrive != null) chainDriveBlock = options.existingChainDrive;
         if (options.existingChainGearshift != null) chainGearshiftBlock = options.existingChainGearshift;
         if (options.existingChainConveyor != null) chainConveyorBlock = options.existingChainConveyor;
+        if (options.existingGearshift != null) gearshiftBlock = options.existingGearshift;
+        if (options.existingClutch != null) clutchBlock = options.existingClutch;
     }
 
     public String getName() {
@@ -154,6 +162,12 @@ public class CasingSet {
     }
     public boolean doesGenerateChainConveyor(){
         return chainConveyor;
+    }
+    public boolean doesGenerateGearshift(){
+        return gearshift;
+    }
+    public boolean doesGenerateClutch(){
+        return clutch;
     }
     public boolean doesGenerateEncasedWoodenShaft(){
         return encasedWoodenShaft;
@@ -305,6 +319,27 @@ public class CasingSet {
         return chainConveyorBlock == null ? null : chainConveyorBlock.get();
     }
 
+    @Nullable
+    public Supplier<? extends Block> getGearshiftSupplier() {
+        return gearshiftBlock;
+    }
+
+    @Nullable
+    public Block getGearshift() {
+        return gearshiftBlock == null ? null : gearshiftBlock.get();
+    }
+
+    @Nullable
+    public Supplier<? extends Block> getClutchSupplier() {
+        return clutchBlock;
+    }
+
+    @Nullable
+    public Block getClutch() {
+        return clutchBlock == null ? null : clutchBlock.get();
+    }
+
+
 
     @Nullable
     public BeltBlockEntity.CasingType getBeltCasingType() {
@@ -401,6 +436,18 @@ public class CasingSet {
         chainConveyorBlock = chainConveyor;
     }
 
+    public void setGearshift(@Nonnull Supplier<? extends Block> gearshift){
+        if (getGearshiftSupplier() != null)
+            throw new UnsupportedOperationException("You cannot modify a gearshift that has already been referenced");
+        gearshiftBlock = gearshift;
+    }
+
+    public void setClutch(@Nonnull Supplier<? extends Block> clutch){
+        if (getClutchSupplier() != null)
+            throw new UnsupportedOperationException("You cannot modify a clutch that has already been referenced");
+        clutchBlock = clutch;
+    }
+
 
     @Nullable
     public CTSpriteShiftEntry getConnectedTextureSprite() {
@@ -449,7 +496,8 @@ public class CasingSet {
     public boolean isInSet(Block block){
         return block.equals(getCasing()) || block.equals(getShaft()) || block.equals(getCogwheel()) || block.equals(getLargeCogwheel()) || block.equals(getFluidPipe())
                 || block.equals(getGearbox()) || block.equals(getPress()) || block.equals(getMixer()) || block.equals(getDepot())
-                || block.equals(getChainDrive()) || block.equals(getChainGearshift()) || block.equals(getConfigurableGearbox()) || block.equals(getChainConveyor());
+                || block.equals(getChainDrive()) || block.equals(getChainGearshift()) || block.equals(getConfigurableGearbox()) || block.equals(getChainConveyor())
+                || block.equals(getGearshift()) || block.equals(getClutch());
     }
 
 
@@ -473,6 +521,8 @@ public class CasingSet {
         private boolean chainGearshift;
         private boolean configurableGearbox;
         private boolean chainConveyor;
+        private boolean gearshift;
+        private boolean clutch;
         private boolean encasedWoodenShaft;
         private boolean encasedWoodenCogwheel;
         private boolean encasedWoodenLargeCogwheel;
@@ -497,6 +547,8 @@ public class CasingSet {
         private @Nullable Supplier<? extends Block> existingChainDrive;
         private @Nullable Supplier<? extends Block> existingChainGearshift;
         private @Nullable Supplier<? extends Block> existingChainConveyor;
+        private @Nullable Supplier<? extends Block> existingGearshift;
+        private @Nullable Supplier<? extends Block> existingClutch;
 
         public Options() {
             ctSprite = null;
@@ -600,6 +652,16 @@ public class CasingSet {
             return this;
         }
 
+        public Options gearshift(){
+            this.gearshift = true;
+            return this;
+        }
+
+        public Options clutch(){
+            this.clutch = true;
+            return this;
+        }
+
         public Options encasedWoodenShaft(){
             this.encasedWoodenShaft = true;
             return this;
@@ -627,7 +689,7 @@ public class CasingSet {
         }
 
         public Options complexTransmissionBlocks(Supplier<PartialModel> conveyorGuard,Supplier<PartialModel> conveyorWheel,Supplier<PartialModel> conveyorShaft){
-            return gearbox().chainDrive().chainGearshift().configurableGearbox().chainConveyor(conveyorGuard,conveyorWheel,conveyorShaft);
+            return gearbox().chainDrive().chainGearshift().configurableGearbox().chainConveyor(conveyorGuard,conveyorWheel,conveyorShaft).gearshift().clutch();
         }
 
         public Options simpleTransmissions(@Nullable Supplier<CTSpriteShiftEntry> cogwheelSideSprite,@Nullable Supplier<CTSpriteShiftEntry> cogwheelOtherSideSprite){
@@ -714,6 +776,18 @@ public class CasingSet {
         Options existingChainConveyor(Supplier<? extends Block> chainConveyor) {
             this.existingChainConveyor = chainConveyor;
             this.chainConveyor = false;
+            return this;
+        }
+
+        Options existingGearshift(Supplier<? extends Block> gearshift) {
+            this.existingGearshift = gearshift;
+            this.gearshift = false;
+            return this;
+        }
+
+        Options existingClutch(Supplier<? extends Block> clutch) {
+            this.existingClutch = clutch;
+            this.clutch = false;
             return this;
         }
     }

@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/gearshift/block",
+  "textures": {
+    "0": "createcasing:block/gearshift_off/industrial_iron",
+    "1": "createcasing:block/gearboxes/industrial_iron",
+    "2": "createcasing:block/funnel_frames/industrial_iron",
+    "particle": "createcasing:block/gearshift_off/industrial_iron"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/clutch/item",
+  "textures": {
+    "0": "createcasing:block/clutch_off/railway",
+    "1": "createcasing:block/gearboxes/railway",
+    "4": "createcasing:block/funnel_frames/railway",
+    "particle": "createcasing:block/clutch_off/railway"
+  }
+}

@@ -324,6 +324,52 @@ public class EncasedBlockStateGens {
                     .texture("particle",getCasingTexture(casing));
     }
 
+    public static <T> Function<BlockState,ModelFile> gearshiftModel(RegistrateProvider p, String casing){
+        if (isValidProvider(p))
+           return state ->{
+            boolean powered = state.getValue(BlockStateProperties.POWERED);
+            return Objects.requireNonNull(createModelInBlock(p,"gearshift/"+casing+"/block" + (powered?"_powered":"")))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/gearshift/block" + (powered?"_powered":"")))
+                    .texture("0",getGearshiftTexture(casing,powered))
+                    .texture("1",getGearboxTexture(casing))
+                    .texture("2",getFunnelFrameTexture(casing))
+                    .texture("particle",getGearshiftTexture(casing,powered));
+           };
+        return null;
+    }
+
+    public static ModelFile gearshiftItemModel(RegistrateProvider p, String casing){
+        return Objects.requireNonNull(createModelInBlock(p,"gearshift/"+casing+"/item"))
+                .parent(new ModelFile.UncheckedModelFile("create:block/gearshift/item"))
+                .texture("0",getGearshiftTexture(casing,false))
+                .texture("1",getGearboxTexture(casing))
+                .texture("particle",getGearshiftTexture(casing,false));
+    }
+
+    public static <T> Function<BlockState,ModelFile> clutchModel(RegistrateProvider p, String casing){
+        if (isValidProvider(p))
+            return state ->{
+                boolean powered = state.getValue(BlockStateProperties.POWERED);
+                return Objects.requireNonNull(createModelInBlock(p,"clutch/"+casing+"/block" + (powered?"_powered":"")))
+                        .parent(new ModelFile.UncheckedModelFile("create:block/clutch/block" + (powered?"_powered":"")))
+                        .texture("0",getClutchTexture(casing,powered))
+                        .texture("1",getGearboxTexture(casing))
+                        .texture("2",getFunnelFrameTexture(casing))
+                        .texture("particle",getClutchTexture(casing,powered));
+            };
+        return null;
+    }
+
+    public static ModelFile clutchItemModel(RegistrateProvider p, String casing){
+        return Objects.requireNonNull(createModelInBlock(p,"clutch/"+casing+"/item"))
+                .parent(new ModelFile.UncheckedModelFile("create:block/clutch/item"))
+                .texture("0",getClutchTexture(casing,false))
+                .texture("1",getGearboxTexture(casing))
+                .texture("4",getFunnelFrameTexture(casing))
+                .texture("particle",getClutchTexture(casing,false));
+    }
+
+
 
     public static <T extends Block> void axisBlock(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov,ModelFile model){
         axisBlock(ctx,prov,model,true);
@@ -392,6 +438,8 @@ public class EncasedBlockStateGens {
                     .texture("particle",getShaftTexture(cogwheel));
         return null;
     }
+
+
 
 
 
@@ -513,6 +561,23 @@ public class EncasedBlockStateGens {
     public static String getBullWheelTexture(String casing) {
         if (casing.equals("normal")) return Create.ID + ":block/bullwheel";
         return CreateCasing.MODID + ":block/bullwheels/"+casing;
+    }
+
+    public static String getGearshiftTexture(String casing,boolean powered) {
+        if (casing.equals("normal")) return Create.ID + ":block/gearshift_"+(powered ? "on" : "off");
+        return CreateCasing.MODID + ":block/gearshift_"+(powered ? "on" : "off")+"/"+casing;
+    }
+
+    public static String getClutchTexture(String casing,boolean powered) {
+        if (casing.equals("normal")) return Create.ID + ":block/clutch_"+(powered ? "on" : "off");
+        return CreateCasing.MODID + ":block/clutch_"+(powered ? "on" : "off")+"/"+casing;
+    }
+
+    public static String getFunnelFrameTexture(String casing) {
+        if (casing.equals("normal")) return Create.ID + ":block/funnel/andesite_funnel_frame";
+        if (casing.equals("brass")) return Create.ID + ":block/funnel/brass_funnel_frame";
+        if (casing.equals("copper")) return Create.ID + ":block/funnel/copper_funnel_frame";
+        return CreateCasing.MODID + ":block/funnel_frames/"+casing;
     }
 
 

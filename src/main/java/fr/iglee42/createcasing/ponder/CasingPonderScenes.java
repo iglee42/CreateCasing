@@ -54,6 +54,12 @@ public class CasingPonderScenes {
 
 		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateConfigurableGearbox).map(CasingSet::getChainConveyor).toList())
 				.addStoryBoard(Create.asResource("high_logistics/chain_conveyor"), FrogAndConveyorScenes::conveyor);
+
+		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateClutch).map(CasingSet::getClutch).toList())
+				.addStoryBoard(Create.asResource("clutch"), KineticsScenes::clutch,AllCreatePonderTags.KINETIC_RELAYS);
+
+		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateGearshift).map(CasingSet::getGearshift).toList())
+				.addStoryBoard(Create.asResource("gearshift"), KineticsScenes::gearshift,AllCreatePonderTags.KINETIC_RELAYS);
 	}
 
 

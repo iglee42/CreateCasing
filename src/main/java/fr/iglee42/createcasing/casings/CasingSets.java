@@ -2,6 +2,7 @@ package fr.iglee42.createcasing.casings;
 
 import com.google.common.collect.ImmutableList;
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllItems;
 import com.simibubi.create.AllSpriteShifts;
 import fr.iglee42.createcasing.registries.EncasedPartialModels;
 import fr.iglee42.createcasing.registries.EncasedSprites;
@@ -26,6 +27,9 @@ public class CasingSets {
             .existingChainDrive(()->AllBlocks.ENCASED_CHAIN_DRIVE.get())
             .existingChainGearshift(()->AllBlocks.ADJUSTABLE_CHAIN_GEARSHIFT.get())
             .existingChainConveyor(()->AllBlocks.CHAIN_CONVEYOR.get())
+            .existingGearshift(()->AllBlocks.GEARSHIFT.get())
+            .existingClutch(()->AllBlocks.CLUTCH.get())
+            .existingGearbox(()->AllBlocks.GEARBOX.get(),()-> AllItems.VERTICAL_GEARBOX.get())
             .fluids()
             .encasedCustomTransmissionBlocks()
             .configurableGearbox()
