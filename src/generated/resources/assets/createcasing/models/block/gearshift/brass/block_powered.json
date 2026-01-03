@@ -1,9 +1,9 @@
 {
   "parent": "create:block/gearshift/block_powered",
   "textures": {
-    "0": "createcasing:block/gearshift_on/brass",
+    "0": "createcasing:block/gearshifts_on/brass",
     "1": "create:block/brass_gearbox",
     "2": "create:block/funnel/brass_funnel_frame",
-    "particle": "createcasing:block/gearshift_on/brass"
+    "particle": "createcasing:block/gearshifts_on/brass"
   }
 }

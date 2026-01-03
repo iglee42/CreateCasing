@@ -1,6 +1,7 @@
 package fr.iglee42.createcasing.utils;
 
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.content.kinetics.base.DirectionalKineticBlock;
 import com.simibubi.create.content.kinetics.base.HorizontalKineticBlock;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import fr.iglee42.createcasing.CreateCasing;
@@ -28,6 +29,7 @@ import java.util.Collections;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static com.simibubi.create.content.kinetics.base.DirectionalKineticBlock.FACING;
 import static com.simibubi.create.content.kinetics.base.HorizontalKineticBlock.HORIZONTAL_FACING;
 import static com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock.AXIS;
 
@@ -67,6 +69,15 @@ public class ItemChangeBlockManager {
             if (isChainConveyor(state) && casingSet.getChainConveyor() != null) {
                 changeBlock(event, state, level, casingSet.getChainConveyor().defaultBlockState());
             }
+            if (isGearshift(state) && casingSet.getGearshift() != null){
+                changeAxisBlock(event,state,level, casingSet.getGearshift().defaultBlockState());
+            }
+            if (isClutch(state) && casingSet.getClutch() != null){
+                changeAxisBlock(event,state,level, casingSet.getClutch().defaultBlockState());
+            }
+            if (isDeployer(state) && casingSet.getDeployer() != null){
+                changeFacingBlock(event,state,level, casingSet.getDeployer().defaultBlockState());
+            }
         }
         TransmissionSet transmissionSet;
 
@@ -98,6 +109,12 @@ public class ItemChangeBlockManager {
         if (!(state.getBlock() instanceof RotatedPillarKineticBlock))return;
         Direction.Axis axis = state.getValue(AXIS);
         changeBlock(event,state,level,newBlock.setValue(AXIS,axis));
+    }
+
+    private static void changeFacingBlock(PlayerInteractEvent.RightClickBlock event,BlockState state,Level level,BlockState newBlock){
+        if (!(state.getBlock() instanceof DirectionalKineticBlock))return;
+        Direction direction = state.getValue(FACING);
+        changeBlock(event,state,level,newBlock.setValue(FACING,direction));
     }
 
 
@@ -147,6 +164,18 @@ public class ItemChangeBlockManager {
 
     public static boolean isChainConveyor(BlockState state){
         return CasingSets.getSets().stream().filter(set->set.getChainConveyor() != null).anyMatch(set->state.getBlock().equals(set.getChainConveyor()));
+    }
+
+    public static boolean isGearshift(BlockState state){
+        return CasingSets.getSets().stream().filter(set->set.getGearshift() != null).anyMatch(set->state.getBlock().equals(set.getGearshift()));
+    }
+
+    public static boolean isClutch(BlockState state){
+        return CasingSets.getSets().stream().filter(set->set.getClutch() != null).anyMatch(set->state.getBlock().equals(set.getClutch()));
+    }
+
+    public static boolean isDeployer(BlockState state){
+        return CasingSets.getSets().stream().filter(set->set.getDeployer() != null).anyMatch(set->state.getBlock().equals(set.getDeployer()));
     }
 
     public static boolean isShaft(BlockState state){

@@ -5,6 +5,9 @@ import com.simibubi.create.api.stress.BlockStressValues;
 import com.simibubi.create.content.decoration.encasing.*;
 import com.simibubi.create.content.fluids.PipeAttachmentModel;
 import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
+import com.simibubi.create.content.kinetics.deployer.DeployerBlock;
+import com.simibubi.create.content.kinetics.deployer.DeployerMovementBehaviour;
+import com.simibubi.create.content.kinetics.deployer.DeployerMovingInteraction;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockModel;
 import com.simibubi.create.content.kinetics.simpleRelays.CogWheelBlock;
@@ -64,6 +67,7 @@ import java.util.function.*;
 
 import static com.simibubi.create.api.behaviour.display.DisplaySource.displaySource;
 import static com.simibubi.create.api.behaviour.interaction.MovingInteractionBehaviour.interactionBehaviour;
+import static com.simibubi.create.api.behaviour.movement.MovementBehaviour.movementBehaviour;
 import static com.simibubi.create.api.contraption.storage.item.MountedItemStorageType.mountedItemStorage;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.*;
@@ -365,6 +369,22 @@ public class EncasedBlocks {
                 .register();
     }
 
+    public static BlockEntry<CustomDeployerBlock> createDeployer(String name){
+        return REGISTRATE.block(name + "_deployer", CustomDeployerBlock::new)
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.mapColor(MapColor.PODZOL))
+                .transform(axeOrPickaxe())
+                .blockstate((c,p)->EncasedBlockStateGens.directionalAxisBlock(c,p,deployerModel(p,name)))
+                .transform(CCStress.setImpact(4.0))
+                .onRegister(movementBehaviour(new DeployerMovementBehaviour()))
+                .onRegister(interactionBehaviour(new DeployerMovingInteraction()))
+                .item(AssemblyOperatorBlockItem::new)
+                .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
+                .model((c,p)->p.getBuilder(c.getName()).parent(deployerItemModel(p,name)))
+                .build()
+                .register();
+    }
+
     private static <T extends Block> BlockBuilder<T,CreateRegistrate> connectedTexture( BlockBuilder<T, CreateRegistrate> entry,CTSpriteShiftEntry sprite,BiConsumer<T, CasingConnectivity> consumer){
         if (sprite != null){
             return entry.onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(sprite)))
@@ -422,6 +442,9 @@ public class EncasedBlocks {
 
             if (set.doesGenerateClutch())
                 set.setClutch(createClutch(set.getName()));
+
+            if (set.doesGenerateDeployer())
+                set.setDeployer(createDeployer(set.getName()));
         });
 
         TransmissionSets.getSets().forEach(set->{

@@ -11,6 +11,9 @@ import com.simibubi.create.content.kinetics.chainConveyor.ChainConveyorBlockEnti
 import com.simibubi.create.content.kinetics.chainConveyor.ChainConveyorRenderer;
 import com.simibubi.create.content.kinetics.chainConveyor.ChainConveyorVisual;
 import com.simibubi.create.content.kinetics.chainDrive.ChainGearshiftBlockEntity;
+import com.simibubi.create.content.kinetics.deployer.DeployerBlockEntity;
+import com.simibubi.create.content.kinetics.deployer.DeployerRenderer;
+import com.simibubi.create.content.kinetics.deployer.DeployerVisual;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlockEntity;
 import com.simibubi.create.content.kinetics.gearbox.GearboxRenderer;
 import com.simibubi.create.content.kinetics.gearbox.GearboxVisual;
@@ -208,6 +211,12 @@ public class EncasedBlockEntities {
             .renderer(() -> SplitShaftRenderer::new)
             .register();
 
+    public static final BlockEntityEntry<DeployerBlockEntity> DEPLOYER = REGISTRATE
+            .blockEntity("deployer", DeployerBlockEntity::new)
+            .visual(() -> DeployerVisual::new)
+            .renderer(() -> DeployerRenderer::new)
+            .register();
+
     public static void register() {}
 
     @SubscribeEvent
@@ -226,6 +235,7 @@ public class EncasedBlockEntities {
         register(event,CHAIN_CONVEYOR.get(),CasingSet::getChainConveyor,CasingSet::doesGenerateChainConveyor);
         register(event, GEARSHIFT.get(),CasingSet::getGearshift,CasingSet::doesGenerateGearshift);
         register(event,CLUTCH.get(),CasingSet::getClutch,CasingSet::doesGenerateClutch);
+        register(event,DEPLOYER.get(),CasingSet::getDeployer,CasingSet::doesGenerateDeployer);
 
         registerTransmission(event, CUSTOM_SHAFT.get(), TransmissionSet::getShaft, TransmissionSet::doesGenerateShaft, TransmissionSet::getShaftBlockEntityType);
         registerTransmission(event, CUSTOM_COGWHEELS.get(), TransmissionSet::getCogwheel, TransmissionSet::doesGenerateCogwheel, TransmissionSet::getCogwheelBlockEntityType);

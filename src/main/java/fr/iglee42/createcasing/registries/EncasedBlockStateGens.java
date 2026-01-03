@@ -3,8 +3,8 @@ package fr.iglee42.createcasing.registries;
 import com.google.common.base.Function;
 import com.simibubi.create.Create;
 import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
+import com.simibubi.create.content.kinetics.base.DirectionalAxisKineticBlock;
 import com.simibubi.create.content.kinetics.chainDrive.ChainDriveBlock;
-import com.simibubi.create.content.kinetics.chainDrive.ChainGearshiftBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogwheelBlock;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
@@ -24,6 +24,7 @@ import net.minecraft.world.level.block.state.properties.WoodType;
 import net.neoforged.neoforge.client.model.generators.*;
 
 import java.util.Objects;
+import java.util.function.BiFunction;
 
 public class EncasedBlockStateGens {
 
@@ -369,6 +370,36 @@ public class EncasedBlockStateGens {
                 .texture("particle",getClutchTexture(casing,false));
     }
 
+    public static BiFunction<BlockState,Boolean,ModelFile> deployerModel(RegistrateProvider p, String casing){
+        if (isValidProvider(p))
+            return ($,vertical) ->{
+                return Objects.requireNonNull(createModelInBlock(p,"deployer/"+casing+"/" + (vertical?"vertical":"horizontal")))
+                        .parent(new ModelFile.UncheckedModelFile("create:block/deployer/" + (vertical?"vertical":"horizontal")))
+                        .texture("5",getPistonCasingTexture(casing))
+                        .texture("6",getPistonBottomTexture(casing))
+                        .texture("7",getPistonInnerTexture(casing))
+                        .texture("particle",getGearboxTopTexture(casing))
+                        .texture("gearbox",getGearboxTexture(casing))
+                        .texture("gearbox_top",getGearboxTopTexture(casing))
+                        .texture("andesite_casing_short",getShortCasingTexture(casing));
+            };
+        return null;
+    }
+
+    public static ModelFile deployerItemModel(RegistrateProvider p, String casing){
+        return Objects.requireNonNull(createModelInBlock(p,"deployer/"+casing+"/item"))
+                .parent(new ModelFile.UncheckedModelFile("create:block/deployer/item"))
+                .texture("10",getPistonCasingTexture(casing))
+                .texture("6",getPistonBottomTexture(casing))
+                .texture("7",getPistonInnerTexture(casing))
+                .texture("particle",getGearboxTopTexture(casing))
+                .texture("gearbox",getGearboxTexture(casing))
+                .texture("gearbox_top",getGearboxTopTexture(casing))
+                .texture("andesite_casing_short",getShortCasingTexture(casing));
+    }
+
+
+
 
 
     public static <T extends Block> void axisBlock(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov,ModelFile model){
@@ -393,6 +424,31 @@ public class EncasedBlockStateGens {
                             .rotationY(axis == Direction.Axis.X ? 90 : axis == Direction.Axis.Z ? 180 : 0)
                             .build();
                 }, BlockStateProperties.WATERLOGGED);
+    }
+
+    public static <T extends DirectionalAxisKineticBlock> void directionalAxisBlock(DataGenContext<Block, T> ctx,
+                                                                                    RegistrateBlockstateProvider prov, BiFunction<BlockState, Boolean, ModelFile> modelFunc) {
+        if (modelFunc == null) {
+            prov.simpleBlock(ctx.get(),new ModelFile.UncheckedModelFile("block/dirt"));
+            return;
+        }
+        prov.getVariantBuilder(ctx.getEntry())
+                .forAllStates(state -> {
+
+                    boolean alongFirst = state.getValue(DirectionalAxisKineticBlock.AXIS_ALONG_FIRST_COORDINATE);
+                    Direction direction = state.getValue(DirectionalAxisKineticBlock.FACING);
+                    boolean vertical = direction.getAxis()
+                            .isHorizontal() && (direction.getAxis() == Direction.Axis.X) == alongFirst;
+                    int xRot = direction == Direction.DOWN ? 270 : direction == Direction.UP ? 90 : 0;
+                    int yRot = direction.getAxis()
+                            .isVertical() ? alongFirst ? 0 : 90 : (int) direction.toYRot();
+
+                    return ConfiguredModel.builder()
+                            .modelFile(modelFunc.apply(state, vertical))
+                            .rotationX(xRot)
+                            .rotationY(yRot)
+                            .build();
+                });
     }
 
     public static <T> ModelFile gearboxModel(RegistrateProvider p, String casing, String type){
@@ -493,6 +549,13 @@ public class EncasedBlockStateGens {
         return CreateCasing.MODID + ":block/gearboxes/"+casing;
     }
 
+    public static String getGearboxTopTexture(String casing){
+        if (casing.equals("andesite") || casing.equals("normal")) return Create.ID+":block/gearbox_top";
+        //return CreateCasing.MODID + ":block/gearbox_tops/"+casing;
+        return Create.ID+":block/gearbox_top";
+    }
+
+
     public static String getShaftTexture(String shaft){
         if (shaft.equals("normal")) return Create.ID + ":block/axis";
         if (shaft.equals("bamboo")) return "minecraft:block/stripped_bamboo_block";
@@ -565,12 +628,12 @@ public class EncasedBlockStateGens {
 
     public static String getGearshiftTexture(String casing,boolean powered) {
         if (casing.equals("normal")) return Create.ID + ":block/gearshift_"+(powered ? "on" : "off");
-        return CreateCasing.MODID + ":block/gearshift_"+(powered ? "on" : "off")+"/"+casing;
+        return CreateCasing.MODID + ":block/gearshifts_"+(powered ? "on" : "off")+"/"+casing;
     }
 
     public static String getClutchTexture(String casing,boolean powered) {
         if (casing.equals("normal")) return Create.ID + ":block/clutch_"+(powered ? "on" : "off");
-        return CreateCasing.MODID + ":block/clutch_"+(powered ? "on" : "off")+"/"+casing;
+        return CreateCasing.MODID + ":block/clutchs_"+(powered ? "on" : "off")+"/"+casing;
     }
 
     public static String getFunnelFrameTexture(String casing) {
@@ -579,6 +642,29 @@ public class EncasedBlockStateGens {
         if (casing.equals("copper")) return Create.ID + ":block/funnel/copper_funnel_frame";
         return CreateCasing.MODID + ":block/funnel_frames/"+casing;
     }
+
+    public static String getShortCasingTexture(String casing){
+        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/andesite_casing_short";
+        return CreateCasing.MODID + ":block/casing_shorts/" + casing;
+    }
+
+    public static String getPistonCasingTexture(String casing){
+        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/andesite_casing_piston";
+        return CreateCasing.MODID + ":block/casing_pistons/" + casing;
+    }
+
+    public static String getPistonBottomTexture(String casing){
+        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/piston_bottom";
+        //return CreateCasing.MODID + ":block/piston_bottoms/" + casing;
+        return Create.ID+":block/piston_bottom";
+    }
+
+    public static String getPistonInnerTexture(String casing){
+        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/piston_inner";
+        //return CreateCasing.MODID + ":block/piston_inners/" + casing;
+        return Create.ID+":block/piston_inner";
+    }
+
 
 
     private static boolean isWoodenShaft(String shaft){

@@ -1,8 +1,8 @@
 {
   "parent": "create:block/gearshift/item",
   "textures": {
-    "0": "createcasing:block/gearshift_off/weathered_iron",
+    "0": "createcasing:block/gearshifts_off/weathered_iron",
     "1": "createcasing:block/gearboxes/weathered_iron",
-    "particle": "createcasing:block/gearshift_off/weathered_iron"
+    "particle": "createcasing:block/gearshifts_off/weathered_iron"
   }
 }

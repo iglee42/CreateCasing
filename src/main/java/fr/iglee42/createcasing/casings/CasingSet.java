@@ -41,6 +41,7 @@ public class CasingSet {
     private @Nullable Supplier<? extends Block> chainConveyorBlock;
     private @Nullable Supplier<? extends Block> gearshiftBlock;
     private @Nullable Supplier<? extends Block> clutchBlock;
+    private @Nullable Supplier<? extends Block> deployerBlock;
 
     private final @Nullable Supplier<PartialModel> chainConveyorWheelModel;
     private final @Nullable Supplier<PartialModel> chainConveyorGuardModel;
@@ -64,6 +65,7 @@ public class CasingSet {
     private final boolean chainConveyor;
     private final boolean gearshift;
     private final boolean clutch;
+    private final boolean deployer;
     private final boolean encasedWoodenShaft;
     private final boolean encasedWoodenCogwheel;
     private final boolean encasedWoodenLargeCogwheel;
@@ -92,6 +94,7 @@ public class CasingSet {
         chainConveyor = options.chainConveyor;
         gearshift = options.gearshift;
         clutch = options.clutch;
+        deployer = options.deployer;
         encasedWoodenShaft = options.encasedWoodenShaft;
         encasedWoodenCogwheel = options.encasedWoodenCogwheel;
         encasedWoodenLargeCogwheel = options.encasedWoodenLargeCogwheel;
@@ -115,6 +118,7 @@ public class CasingSet {
         if (options.existingChainConveyor != null) chainConveyorBlock = options.existingChainConveyor;
         if (options.existingGearshift != null) gearshiftBlock = options.existingGearshift;
         if (options.existingClutch != null) clutchBlock = options.existingClutch;
+        if (options.existingDeployer != null) deployerBlock = options.existingDeployer;
     }
 
     public String getName() {
@@ -168,6 +172,9 @@ public class CasingSet {
     }
     public boolean doesGenerateClutch(){
         return clutch;
+    }
+    public boolean doesGenerateDeployer(){
+        return deployer;
     }
     public boolean doesGenerateEncasedWoodenShaft(){
         return encasedWoodenShaft;
@@ -339,6 +346,16 @@ public class CasingSet {
         return clutchBlock == null ? null : clutchBlock.get();
     }
 
+    @Nullable
+    public Supplier<? extends Block> getDeployerSupplier() {
+        return deployerBlock;
+    }
+
+    @Nullable
+    public Block getDeployer() {
+        return deployerBlock == null ? null : deployerBlock.get();
+    }
+
 
 
     @Nullable
@@ -448,6 +465,12 @@ public class CasingSet {
         clutchBlock = clutch;
     }
 
+    public void setDeployer(@Nonnull Supplier<? extends Block> deployer){
+        if (getDeployerSupplier() != null)
+            throw new UnsupportedOperationException("You cannot modify a deployer that has already been referenced");
+        deployerBlock = deployer;
+    }
+
 
     @Nullable
     public CTSpriteShiftEntry getConnectedTextureSprite() {
@@ -497,7 +520,7 @@ public class CasingSet {
         return block.equals(getCasing()) || block.equals(getShaft()) || block.equals(getCogwheel()) || block.equals(getLargeCogwheel()) || block.equals(getFluidPipe())
                 || block.equals(getGearbox()) || block.equals(getPress()) || block.equals(getMixer()) || block.equals(getDepot())
                 || block.equals(getChainDrive()) || block.equals(getChainGearshift()) || block.equals(getConfigurableGearbox()) || block.equals(getChainConveyor())
-                || block.equals(getGearshift()) || block.equals(getClutch());
+                || block.equals(getGearshift()) || block.equals(getClutch()) || block.equals(getDeployer());
     }
 
 
@@ -523,6 +546,7 @@ public class CasingSet {
         private boolean chainConveyor;
         private boolean gearshift;
         private boolean clutch;
+        private boolean deployer;
         private boolean encasedWoodenShaft;
         private boolean encasedWoodenCogwheel;
         private boolean encasedWoodenLargeCogwheel;
@@ -549,6 +573,7 @@ public class CasingSet {
         private @Nullable Supplier<? extends Block> existingChainConveyor;
         private @Nullable Supplier<? extends Block> existingGearshift;
         private @Nullable Supplier<? extends Block> existingClutch;
+        private @Nullable Supplier<? extends Block> existingDeployer;
 
         public Options() {
             ctSprite = null;
@@ -637,6 +662,11 @@ public class CasingSet {
             return this;
         }
 
+        public Options deployer(){
+            this.deployer = true;
+            return this;
+        }
+
         public Options chainDrive(){
             this.chainDrive = true;
             return this;
@@ -685,7 +715,7 @@ public class CasingSet {
         }
 
         public Options processingBlocks(Supplier<PartialModel> mixerHeadModel){
-            return press().mixer(mixerHeadModel).depot();
+            return press().mixer(mixerHeadModel).depot().deployer();
         }
 
         public Options complexTransmissionBlocks(Supplier<PartialModel> conveyorGuard,Supplier<PartialModel> conveyorWheel,Supplier<PartialModel> conveyorShaft){
@@ -788,6 +818,12 @@ public class CasingSet {
         Options existingClutch(Supplier<? extends Block> clutch) {
             this.existingClutch = clutch;
             this.clutch = false;
+            return this;
+        }
+
+        Options existingDeployer(Supplier<? extends Block> deployer) {
+            this.existingDeployer = deployer;
+            this.deployer = false;
             return this;
         }
     }

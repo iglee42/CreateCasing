@@ -30,6 +30,7 @@ public class CasingSets {
             .existingGearshift(()->AllBlocks.GEARSHIFT.get())
             .existingClutch(()->AllBlocks.CLUTCH.get())
             .existingGearbox(()->AllBlocks.GEARBOX.get(),()-> AllItems.VERTICAL_GEARBOX.get())
+            .existingDeployer(()->AllBlocks.DEPLOYER.get())
             .fluids()
             .encasedCustomTransmissionBlocks()
             .configurableGearbox()

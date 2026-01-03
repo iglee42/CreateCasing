@@ -1,0 +1,52 @@
+{
+  "variants": {
+    "axis_along_first=false,facing=down": {
+      "model": "createcasing:block/deployer/shadow_steel/horizontal",
+      "x": 270,
+      "y": 90
+    },
+    "axis_along_first=false,facing=east": {
+      "model": "createcasing:block/deployer/shadow_steel/horizontal",
+      "y": 270
+    },
+    "axis_along_first=false,facing=north": {
+      "model": "createcasing:block/deployer/shadow_steel/vertical",
+      "y": 180
+    },
+    "axis_along_first=false,facing=south": {
+      "model": "createcasing:block/deployer/shadow_steel/vertical"
+    },
+    "axis_along_first=false,facing=up": {
+      "model": "createcasing:block/deployer/shadow_steel/horizontal",
+      "x": 90,
+      "y": 90
+    },
+    "axis_along_first=false,facing=west": {
+      "model": "createcasing:block/deployer/shadow_steel/horizontal",
+      "y": 90
+    },
+    "axis_along_first=true,facing=down": {
+      "model": "createcasing:block/deployer/shadow_steel/horizontal",
+      "x": 270
+    },
+    "axis_along_first=true,facing=east": {
+      "model": "createcasing:block/deployer/shadow_steel/vertical",
+      "y": 270
+    },
+    "axis_along_first=true,facing=north": {
+      "model": "createcasing:block/deployer/shadow_steel/horizontal",
+      "y": 180
+    },
+    "axis_along_first=true,facing=south": {
+      "model": "createcasing:block/deployer/shadow_steel/horizontal"
+    },
+    "axis_along_first=true,facing=up": {
+      "model": "createcasing:block/deployer/shadow_steel/horizontal",
+      "x": 90
+    },
+    "axis_along_first=true,facing=west": {
+      "model": "createcasing:block/deployer/shadow_steel/vertical",
+      "y": 90
+    }
+  }
+}

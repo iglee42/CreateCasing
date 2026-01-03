@@ -1,5 +1,6 @@
 package fr.iglee42.createcasing;
 
+import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.content.logistics.depot.DepotBehaviour;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
@@ -9,6 +10,7 @@ import com.tterrag.registrate.providers.RegistrateDataProvider;
 import com.tterrag.registrate.util.RegistrateDistExecutor;
 import fr.iglee42.createcasing.commands.CreateCasingCommand;
 import fr.iglee42.createcasing.config.ModConfigs;
+import fr.iglee42.createcasing.mixins.create.DeployerBlockEntityAccessor;
 import fr.iglee42.createcasing.registries.*;
 import net.createmod.catnip.lang.FontHelper;
 import net.minecraft.resources.ResourceKey;
@@ -103,6 +105,17 @@ public class CreateCasing {
                 Capabilities.ItemHandler.BLOCK,
                 EncasedBlockEntities.DEPOT.get(),
                 (be, context) -> be.getBehaviour(DepotBehaviour.TYPE).itemHandler
+        );
+
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                EncasedBlockEntities.DEPLOYER.get(),
+                (be, context) ->  {
+                    DeployerBlockEntityAccessor accessor = (DeployerBlockEntityAccessor) be;
+                    if (accessor.getInvHandler() == null)
+                        accessor.invokeInitHandler();
+                    return accessor.getInvHandler();
+                }
         );
     }
 

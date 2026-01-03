@@ -2,6 +2,7 @@ package fr.iglee42.createcasing.mixins.create;
 
 import com.simibubi.create.compat.jei.CreateJEI;
 import com.simibubi.create.compat.jei.category.CreateRecipeCategory;
+import com.simibubi.create.compat.jei.category.DeployingCategory;
 import com.simibubi.create.compat.jei.category.MixingCategory;
 import com.simibubi.create.compat.jei.category.PressingCategory;
 import fr.iglee42.createcasing.casings.CasingSet;
@@ -28,13 +29,16 @@ public class CreateJeiMixin {
 
         for (CreateRecipeCategory<?> c : this.allCategories) {
             if (c instanceof MixingCategory) {
-                CasingSets.getSets().stream().filter(set-> Objects.nonNull(set.getMixer()))
+                CasingSets.getSets().stream().filter(set-> Objects.nonNull(set.getMixer())).filter(CasingSet::doesGenerateMixer)
                         .forEach(set->registration.addRecipeCatalyst(set.getMixer(),c.getRecipeType()));
             }
             if (c instanceof PressingCategory || c.getRecipeType().getUid().getPath().equals("packing") || c.getRecipeType().getUid().getPath().equals("automatic_packing")) {
-                CasingSets.getSets().stream().filter(set-> Objects.nonNull(set.getPress()))
+                CasingSets.getSets().stream().filter(set-> Objects.nonNull(set.getPress())).filter(CasingSet::doesGeneratePress)
                         .forEach(set->registration.addRecipeCatalyst(set.getPress(),c.getRecipeType()));
             }
+            if (c instanceof DeployingCategory)
+                CasingSets.getSets().stream().filter(set-> Objects.nonNull(set.getDeployer())).filter(CasingSet::doesGenerateDeployer)
+                        .forEach(set->registration.addRecipeCatalyst(set.getDeployer(),c.getRecipeType()));
         }
     }
 

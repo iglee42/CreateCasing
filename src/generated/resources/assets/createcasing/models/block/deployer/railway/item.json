@@ -1,0 +1,12 @@
+{
+  "parent": "create:block/deployer/item",
+  "textures": {
+    "10": "createcasing:block/casing_pistons/railway",
+    "6": "create:block/piston_bottom",
+    "7": "create:block/piston_inner",
+    "andesite_casing_short": "createcasing:block/casing_shorts/railway",
+    "gearbox": "createcasing:block/gearboxes/railway",
+    "gearbox_top": "create:block/gearbox_top",
+    "particle": "create:block/gearbox_top"
+  }
+}

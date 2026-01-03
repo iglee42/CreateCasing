@@ -1,9 +1,9 @@
 {
   "parent": "create:block/gearshift/block",
   "textures": {
-    "0": "createcasing:block/gearshift_off/copper",
+    "0": "createcasing:block/gearshifts_off/copper",
     "1": "createcasing:block/gearboxes/copper",
     "2": "create:block/funnel/copper_funnel_frame",
-    "particle": "createcasing:block/gearshift_off/copper"
+    "particle": "createcasing:block/gearshifts_off/copper"
   }
 }

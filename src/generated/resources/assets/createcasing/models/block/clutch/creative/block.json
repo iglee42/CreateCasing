@@ -1,9 +1,9 @@
 {
   "parent": "create:block/clutch/block",
   "textures": {
-    "0": "createcasing:block/clutch_off/creative",
+    "0": "createcasing:block/clutchs_off/creative",
     "1": "createcasing:block/gearboxes/creative",
     "2": "createcasing:block/funnel_frames/creative",
-    "particle": "createcasing:block/clutch_off/creative"
+    "particle": "createcasing:block/clutchs_off/creative"
   }
 }

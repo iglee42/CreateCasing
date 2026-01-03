@@ -1,0 +1,12 @@
+{
+  "parent": "create:block/deployer/horizontal",
+  "textures": {
+    "5": "createcasing:block/casing_pistons/refined_radiance",
+    "6": "create:block/piston_bottom",
+    "7": "create:block/piston_inner",
+    "andesite_casing_short": "createcasing:block/casing_shorts/refined_radiance",
+    "gearbox": "createcasing:block/gearboxes/refined_radiance",
+    "gearbox_top": "create:block/gearbox_top",
+    "particle": "create:block/gearbox_top"
+  }
+}
