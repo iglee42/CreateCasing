@@ -1,11 +1,9 @@
 package fr.iglee42.createcasing.ponder;
 
+import com.simibubi.create.AllBlocks;
 import com.simibubi.create.Create;
 import com.simibubi.create.infrastructure.ponder.AllCreatePonderTags;
-import com.simibubi.create.infrastructure.ponder.scenes.BeltScenes;
-import com.simibubi.create.infrastructure.ponder.scenes.ChainDriveScenes;
-import com.simibubi.create.infrastructure.ponder.scenes.KineticsScenes;
-import com.simibubi.create.infrastructure.ponder.scenes.ProcessingScenes;
+import com.simibubi.create.infrastructure.ponder.scenes.*;
 import com.simibubi.create.infrastructure.ponder.scenes.highLogistics.FrogAndConveyorScenes;
 import com.tterrag.registrate.util.entry.ItemProviderEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
@@ -60,6 +58,18 @@ public class CasingPonderScenes {
 
 		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateGearshift).map(CasingSet::getGearshift).toList())
 				.addStoryBoard(Create.asResource("gearshift"), KineticsScenes::gearshift,AllCreatePonderTags.KINETIC_RELAYS);
+
+		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateDeployer).map(CasingSet::getDeployer).toList())
+				.addStoryBoard(Create.asResource("deployer/filter"), DeployerScenes::filter, AllCreatePonderTags.KINETIC_APPLIANCES)
+				.addStoryBoard(Create.asResource("deployer/modes"), DeployerScenes::modes)
+				.addStoryBoard(Create.asResource("deployer/processing"), DeployerScenes::processing)
+				.addStoryBoard(Create.asResource("deployer/redstone"), DeployerScenes::redstone)
+				.addStoryBoard(Create.asResource("deployer/contraption"), DeployerScenes::contraption, AllCreatePonderTags.CONTRAPTION_ACTOR);
+
+		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateStorageInterface).map(CasingSet::getStorageInterface).toList())
+				.addStoryBoard(Create.asResource("portable_interface/transfer"), MovementActorScenes::psiTransfer, AllCreatePonderTags.CONTRAPTION_ACTOR)
+				.addStoryBoard(Create.asResource("portable_interface/redstone"), MovementActorScenes::psiRedstone);
+
 	}
 
 

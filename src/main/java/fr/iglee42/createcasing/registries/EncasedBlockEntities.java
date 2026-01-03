@@ -236,6 +236,7 @@ public class EncasedBlockEntities {
         register(event, GEARSHIFT.get(),CasingSet::getGearshift,CasingSet::doesGenerateGearshift);
         register(event,CLUTCH.get(),CasingSet::getClutch,CasingSet::doesGenerateClutch);
         register(event,DEPLOYER.get(),CasingSet::getDeployer,CasingSet::doesGenerateDeployer);
+        register(event,AllBlockEntityTypes.PORTABLE_STORAGE_INTERFACE.get(),CasingSet::getStorageInterface,CasingSet::doesGenerateStorageInterface);
 
         registerTransmission(event, CUSTOM_SHAFT.get(), TransmissionSet::getShaft, TransmissionSet::doesGenerateShaft, TransmissionSet::getShaftBlockEntityType);
         registerTransmission(event, CUSTOM_COGWHEELS.get(), TransmissionSet::getCogwheel, TransmissionSet::doesGenerateCogwheel, TransmissionSet::getCogwheelBlockEntityType);

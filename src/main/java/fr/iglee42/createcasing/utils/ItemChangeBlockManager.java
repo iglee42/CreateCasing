@@ -78,6 +78,9 @@ public class ItemChangeBlockManager {
             if (isDeployer(state) && casingSet.getDeployer() != null){
                 changeFacingBlock(event,state,level, casingSet.getDeployer().defaultBlockState());
             }
+            if (isStorageInterface(state) && casingSet.getStorageInterface() != null){
+                changeFacingBlock(event,state,level, casingSet.getStorageInterface().defaultBlockState());
+            }
         }
         TransmissionSet transmissionSet;
 
@@ -112,7 +115,7 @@ public class ItemChangeBlockManager {
     }
 
     private static void changeFacingBlock(PlayerInteractEvent.RightClickBlock event,BlockState state,Level level,BlockState newBlock){
-        if (!(state.getBlock() instanceof DirectionalKineticBlock))return;
+        if (!state.hasProperty(FACING)) return;
         Direction direction = state.getValue(FACING);
         changeBlock(event,state,level,newBlock.setValue(FACING,direction));
     }
@@ -176,6 +179,9 @@ public class ItemChangeBlockManager {
 
     public static boolean isDeployer(BlockState state){
         return CasingSets.getSets().stream().filter(set->set.getDeployer() != null).anyMatch(set->state.getBlock().equals(set.getDeployer()));
+    }
+    public static boolean isStorageInterface(BlockState state){
+        return CasingSets.getSets().stream().filter(set->set.getStorageInterface() != null).anyMatch(set->state.getBlock().equals(set.getStorageInterface()));
     }
 
     public static boolean isShaft(BlockState state){

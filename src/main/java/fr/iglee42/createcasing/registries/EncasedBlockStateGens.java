@@ -398,6 +398,15 @@ public class EncasedBlockStateGens {
                 .texture("andesite_casing_short",getShortCasingTexture(casing));
     }
 
+    public static ModelFile storageInterfaceModel(RegistrateProvider p, String casing,boolean item){
+        if (isValidProvider(p))
+            return Objects.requireNonNull(createModelInBlock(p,"portable_storage_interface/"+casing+"/"+(item ? "item" :"block")))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/portable_storage_interface/"+(item ? "item" :"block")))
+                    .texture("0",getPortableStorageInterfaceTexture(casing))
+                    .texture("1",getCasingTexture(casing))
+                    .texture("particle",getCasingTexture(casing));
+        return null;
+    }
 
 
 
@@ -651,6 +660,11 @@ public class EncasedBlockStateGens {
     public static String getPistonCasingTexture(String casing){
         if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/andesite_casing_piston";
         return CreateCasing.MODID + ":block/casing_pistons/" + casing;
+    }
+
+    public static String getPortableStorageInterfaceTexture(String casing){
+        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/portable_storage_interface";
+        return CreateCasing.MODID + ":block/portable_storage_interfaces/" + casing;
     }
 
     public static String getPistonBottomTexture(String casing){

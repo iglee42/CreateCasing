@@ -42,6 +42,7 @@ public class CasingSet {
     private @Nullable Supplier<? extends Block> gearshiftBlock;
     private @Nullable Supplier<? extends Block> clutchBlock;
     private @Nullable Supplier<? extends Block> deployerBlock;
+    private @Nullable Supplier<? extends Block> storageInterfaceBlock;
 
     private final @Nullable Supplier<PartialModel> chainConveyorWheelModel;
     private final @Nullable Supplier<PartialModel> chainConveyorGuardModel;
@@ -66,6 +67,7 @@ public class CasingSet {
     private final boolean gearshift;
     private final boolean clutch;
     private final boolean deployer;
+    private final boolean storageInterface;
     private final boolean encasedWoodenShaft;
     private final boolean encasedWoodenCogwheel;
     private final boolean encasedWoodenLargeCogwheel;
@@ -95,6 +97,7 @@ public class CasingSet {
         gearshift = options.gearshift;
         clutch = options.clutch;
         deployer = options.deployer;
+        storageInterface = options.storageInterface;
         encasedWoodenShaft = options.encasedWoodenShaft;
         encasedWoodenCogwheel = options.encasedWoodenCogwheel;
         encasedWoodenLargeCogwheel = options.encasedWoodenLargeCogwheel;
@@ -119,6 +122,7 @@ public class CasingSet {
         if (options.existingGearshift != null) gearshiftBlock = options.existingGearshift;
         if (options.existingClutch != null) clutchBlock = options.existingClutch;
         if (options.existingDeployer != null) deployerBlock = options.existingDeployer;
+        if (options.existingStorageInterface != null) storageInterfaceBlock = options.existingStorageInterface;
     }
 
     public String getName() {
@@ -175,6 +179,9 @@ public class CasingSet {
     }
     public boolean doesGenerateDeployer(){
         return deployer;
+    }
+    public boolean doesGenerateStorageInterface(){
+        return storageInterface;
     }
     public boolean doesGenerateEncasedWoodenShaft(){
         return encasedWoodenShaft;
@@ -356,6 +363,15 @@ public class CasingSet {
         return deployerBlock == null ? null : deployerBlock.get();
     }
 
+    @Nullable
+    public Supplier<? extends Block> getStorageInterfaceSupplier() {
+        return storageInterfaceBlock;
+    }
+
+    @Nullable
+    public Block getStorageInterface() {
+        return storageInterfaceBlock == null ? null : storageInterfaceBlock.get();
+    }
 
 
     @Nullable
@@ -471,6 +487,12 @@ public class CasingSet {
         deployerBlock = deployer;
     }
 
+    public void setStorageInterface(@Nonnull Supplier<? extends Block> storageInterface){
+        if (getStorageInterfaceSupplier() != null)
+            throw new UnsupportedOperationException("You cannot modify a portable storage interface that has already been referenced");
+        storageInterfaceBlock = storageInterface;
+    }
+
 
     @Nullable
     public CTSpriteShiftEntry getConnectedTextureSprite() {
@@ -520,7 +542,7 @@ public class CasingSet {
         return block.equals(getCasing()) || block.equals(getShaft()) || block.equals(getCogwheel()) || block.equals(getLargeCogwheel()) || block.equals(getFluidPipe())
                 || block.equals(getGearbox()) || block.equals(getPress()) || block.equals(getMixer()) || block.equals(getDepot())
                 || block.equals(getChainDrive()) || block.equals(getChainGearshift()) || block.equals(getConfigurableGearbox()) || block.equals(getChainConveyor())
-                || block.equals(getGearshift()) || block.equals(getClutch()) || block.equals(getDeployer());
+                || block.equals(getGearshift()) || block.equals(getClutch()) || block.equals(getDeployer()) || block.equals(getStorageInterface());
     }
 
 
@@ -547,6 +569,7 @@ public class CasingSet {
         private boolean gearshift;
         private boolean clutch;
         private boolean deployer;
+        private boolean storageInterface;
         private boolean encasedWoodenShaft;
         private boolean encasedWoodenCogwheel;
         private boolean encasedWoodenLargeCogwheel;
@@ -574,6 +597,7 @@ public class CasingSet {
         private @Nullable Supplier<? extends Block> existingGearshift;
         private @Nullable Supplier<? extends Block> existingClutch;
         private @Nullable Supplier<? extends Block> existingDeployer;
+        private @Nullable Supplier<? extends Block> existingStorageInterface;
 
         public Options() {
             ctSprite = null;
@@ -667,6 +691,11 @@ public class CasingSet {
             return this;
         }
 
+        public Options portableStorageInterface(){
+            this.storageInterface = true;
+            return this;
+        }
+
         public Options chainDrive(){
             this.chainDrive = true;
             return this;
@@ -730,12 +759,16 @@ public class CasingSet {
             return encasedWoodenShaft().encasedWoodenCogwheel().encasedWoodenLargeCogwheel();
         }
 
+        public Options contraptionBlocks(){
+            return portableStorageInterface();
+        }
+
         public Options fluids(){
             return fluidPipe();
         }
 
         public Options everythingExceptCasing(Supplier<CTSpriteShiftEntry> ctSprite,@Nonnull Supplier<SpriteShiftEntry> beltSprite,Supplier<PartialModel> alongXBeltModel,Supplier<PartialModel> alongZBeltModel,@Nullable Supplier<CTSpriteShiftEntry> cogwheelSideSprite,@Nullable Supplier<CTSpriteShiftEntry> cogwheelOtherSideSprite,Supplier<PartialModel> conveyorGuard,Supplier<PartialModel> conveyorWheel,Supplier<PartialModel> conveyorShaft,Supplier<PartialModel> mixerHeadModel){
-            return ctSprite(ctSprite).encasedCustomTransmissionBlocks().simpleTransmissions(cogwheelSideSprite,cogwheelOtherSideSprite).belt(beltSprite,alongXBeltModel,alongZBeltModel).processingBlocks(mixerHeadModel).complexTransmissionBlocks(conveyorGuard,conveyorWheel,conveyorShaft).fluids();
+            return ctSprite(ctSprite).contraptionBlocks().encasedCustomTransmissionBlocks().simpleTransmissions(cogwheelSideSprite,cogwheelOtherSideSprite).belt(beltSprite,alongXBeltModel,alongZBeltModel).processingBlocks(mixerHeadModel).complexTransmissionBlocks(conveyorGuard,conveyorWheel,conveyorShaft).fluids();
         }
 
         public Options everything(Supplier<CTSpriteShiftEntry> ctSprite,@Nonnull Supplier<SpriteShiftEntry> beltSprite,Supplier<PartialModel> alongXBeltModel,Supplier<PartialModel> alongZBeltModel,@Nullable Supplier<CTSpriteShiftEntry> cogwheelSideSprite,@Nullable Supplier<CTSpriteShiftEntry> cogwheelOtherSideSprite,Supplier<PartialModel> conveyorGuard,Supplier<PartialModel> conveyorWheel,Supplier<PartialModel> conveyorShaft,Supplier<PartialModel> mixerHeadModel){
@@ -824,6 +857,12 @@ public class CasingSet {
         Options existingDeployer(Supplier<? extends Block> deployer) {
             this.existingDeployer = deployer;
             this.deployer = false;
+            return this;
+        }
+
+        Options existingPortableStorageInterface(Supplier<? extends Block> storageInterface) {
+            this.existingStorageInterface = storageInterface;
+            this.storageInterface = false;
             return this;
         }
     }

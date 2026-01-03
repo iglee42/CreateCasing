@@ -34,6 +34,7 @@ public class CasingSets {
             .fluids()
             .encasedCustomTransmissionBlocks()
             .configurableGearbox()
+            .existingPortableStorageInterface(()-> AllBlocks.PORTABLE_STORAGE_INTERFACE.get())
     );
     public static final CasingSet BRASS = register("brass",new CasingSet.Options()
             .existingCasing(()-> AllBlocks.BRASS_CASING.get())
@@ -45,6 +46,7 @@ public class CasingSets {
             .encasedCustomTransmissionBlocks()
             .complexTransmissionBlocks(()->EncasedPartialModels.BRASS_CONVEYOR_GUARD,()->EncasedPartialModels.BRASS_CONVEYOR_WHEEL,()->EncasedPartialModels.BRASS_CONVEYOR_SHAFT)
             .processingBlocks(()->EncasedPartialModels.BRASS_MIXER_HEAD)
+            .contraptionBlocks()
     );
     public static final CasingSet COPPER = register("copper",new CasingSet.Options()
             .existingCasing(()->AllBlocks.COPPER_CASING.get())
@@ -57,6 +59,7 @@ public class CasingSets {
             .belt(()->EncasedSprites.COPPER_BELT_CASING,()-> EncasedPartialModels.COPPER_BELT_COVER_X,()->EncasedPartialModels.COPPER_BELT_COVER_Z)
             .complexTransmissionBlocks(()->EncasedPartialModels.COPPER_CONVEYOR_GUARD,()->EncasedPartialModels.COPPER_CONVEYOR_WHEEL,()->EncasedPartialModels.COPPER_CONVEYOR_SHAFT)
             .processingBlocks(()->EncasedPartialModels.COPPER_MIXER_HEAD)
+            .contraptionBlocks()
     );
     public static final CasingSet RAILWAY = register("railway",new CasingSet.Options()
             .existingCasing(()->AllBlocks.RAILWAY_CASING.get())

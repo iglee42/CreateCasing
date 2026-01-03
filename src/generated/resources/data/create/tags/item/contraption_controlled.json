@@ -1,12 +1,20 @@
 {
   "values": [
     "createcasing:brass_deployer",
+    "createcasing:brass_portable_storage_interface",
     "createcasing:copper_deployer",
+    "createcasing:copper_portable_storage_interface",
     "createcasing:railway_deployer",
+    "createcasing:railway_portable_storage_interface",
     "createcasing:shadow_steel_deployer",
+    "createcasing:shadow_steel_portable_storage_interface",
     "createcasing:refined_radiance_deployer",
+    "createcasing:refined_radiance_portable_storage_interface",
     "createcasing:creative_deployer",
+    "createcasing:creative_portable_storage_interface",
     "createcasing:industrial_iron_deployer",
-    "createcasing:weathered_iron_deployer"
+    "createcasing:industrial_iron_portable_storage_interface",
+    "createcasing:weathered_iron_deployer",
+    "createcasing:weathered_iron_portable_storage_interface"
   ]
 }

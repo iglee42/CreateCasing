@@ -2,6 +2,8 @@ package fr.iglee42.createcasing.registries;
 
 import com.simibubi.create.*;
 import com.simibubi.create.api.stress.BlockStressValues;
+import com.simibubi.create.content.contraptions.actors.psi.PortableStorageInterfaceBlock;
+import com.simibubi.create.content.contraptions.actors.psi.PortableStorageInterfaceMovement;
 import com.simibubi.create.content.decoration.encasing.*;
 import com.simibubi.create.content.fluids.PipeAttachmentModel;
 import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
@@ -385,6 +387,20 @@ public class EncasedBlocks {
                 .register();
     }
 
+    public static BlockEntry<PortableStorageInterfaceBlock> createPortableStorageInterface(String name) {
+        return REGISTRATE.block(name + "_portable_storage_interface", PortableStorageInterfaceBlock::forItems)
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.mapColor(MapColor.PODZOL))
+                .transform(axeOrPickaxe())
+                .blockstate((c, p) -> p.directionalBlock(c.get(), storageInterfaceModel(p,name,false)))
+                .onRegister(movementBehaviour(new PortableStorageInterfaceMovement()))
+                .item()
+                .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
+                .model((c,p)->p.getBuilder(c.getName()).parent(storageInterfaceModel(p,name,true)))
+                .build()
+                .register();
+    }
+
     private static <T extends Block> BlockBuilder<T,CreateRegistrate> connectedTexture( BlockBuilder<T, CreateRegistrate> entry,CTSpriteShiftEntry sprite,BiConsumer<T, CasingConnectivity> consumer){
         if (sprite != null){
             return entry.onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(sprite)))
@@ -445,6 +461,9 @@ public class EncasedBlocks {
 
             if (set.doesGenerateDeployer())
                 set.setDeployer(createDeployer(set.getName()));
+
+            if (set.doesGenerateStorageInterface())
+                set.setStorageInterface(createPortableStorageInterface(set.getName()));
         });
 
         TransmissionSets.getSets().forEach(set->{
