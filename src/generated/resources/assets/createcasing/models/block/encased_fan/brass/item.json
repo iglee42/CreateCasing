@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/encased_fan/item",
+  "textures": {
+    "2": "create:block/brass_gearbox",
+    "fan_casing": "createcasing:block/fan_casing/brass",
+    "fan_side": "createcasing:block/fan_side/brass",
+    "particle": "createcasing:block/fan_side/brass"
+  }
+}

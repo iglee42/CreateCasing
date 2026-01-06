@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "createcasing:block/encased_fan/brass/block",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "createcasing:block/encased_fan/brass/block",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "createcasing:block/encased_fan/brass/block",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "createcasing:block/encased_fan/brass/block",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "createcasing:block/encased_fan/brass/block"
+    },
+    "facing=west": {
+      "model": "createcasing:block/encased_fan/brass/block",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

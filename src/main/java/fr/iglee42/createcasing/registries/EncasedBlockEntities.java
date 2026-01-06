@@ -14,6 +14,9 @@ import com.simibubi.create.content.kinetics.chainDrive.ChainGearshiftBlockEntity
 import com.simibubi.create.content.kinetics.deployer.DeployerBlockEntity;
 import com.simibubi.create.content.kinetics.deployer.DeployerRenderer;
 import com.simibubi.create.content.kinetics.deployer.DeployerVisual;
+import com.simibubi.create.content.kinetics.fan.EncasedFanBlockEntity;
+import com.simibubi.create.content.kinetics.fan.EncasedFanRenderer;
+import com.simibubi.create.content.kinetics.fan.FanVisual;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlockEntity;
 import com.simibubi.create.content.kinetics.gearbox.GearboxRenderer;
 import com.simibubi.create.content.kinetics.gearbox.GearboxVisual;
@@ -217,6 +220,14 @@ public class EncasedBlockEntities {
             .renderer(() -> DeployerRenderer::new)
             .register();
 
+
+    public static final BlockEntityEntry<EncasedFanBlockEntity> ENCASED_FAN = REGISTRATE
+            .blockEntity("encased_fan", EncasedFanBlockEntity::new)
+            .visual(() -> FanVisual::new, false)
+            .validBlocks(AllBlocks.ENCASED_FAN)
+            .renderer(() -> EncasedFanRenderer::new)
+            .register();
+
     public static void register() {}
 
     @SubscribeEvent
@@ -237,6 +248,7 @@ public class EncasedBlockEntities {
         register(event,CLUTCH.get(),CasingSet::getClutch,CasingSet::doesGenerateClutch);
         register(event,DEPLOYER.get(),CasingSet::getDeployer,CasingSet::doesGenerateDeployer);
         register(event,AllBlockEntityTypes.PORTABLE_STORAGE_INTERFACE.get(),CasingSet::getStorageInterface,CasingSet::doesGenerateStorageInterface);
+        register(event,ENCASED_FAN.get(),CasingSet::getEncasedFan,CasingSet::doesGenerateEncasedFan);
 
         registerTransmission(event, CUSTOM_SHAFT.get(), TransmissionSet::getShaft, TransmissionSet::doesGenerateShaft, TransmissionSet::getShaftBlockEntityType);
         registerTransmission(event, CUSTOM_COGWHEELS.get(), TransmissionSet::getCogwheel, TransmissionSet::doesGenerateCogwheel, TransmissionSet::getCogwheelBlockEntityType);

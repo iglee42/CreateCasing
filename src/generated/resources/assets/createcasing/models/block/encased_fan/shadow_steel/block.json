@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/encased_fan/block",
+  "textures": {
+    "3": "createcasing:block/funnel_frame/shadow_steel",
+    "back": "createcasing:block/gearbox/shadow_steel",
+    "fan_casing": "createcasing:block/fan_casing/shadow_steel",
+    "fan_side": "createcasing:block/fan_side/shadow_steel",
+    "particle": "createcasing:block/fan_side/shadow_steel"
+  }
+}

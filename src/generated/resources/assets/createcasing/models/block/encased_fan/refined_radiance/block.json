@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/encased_fan/block",
+  "textures": {
+    "3": "createcasing:block/funnel_frame/refined_radiance",
+    "back": "createcasing:block/gearbox/refined_radiance",
+    "fan_casing": "createcasing:block/fan_casing/refined_radiance",
+    "fan_side": "createcasing:block/fan_side/refined_radiance",
+    "particle": "createcasing:block/fan_side/refined_radiance"
+  }
+}

@@ -43,6 +43,7 @@ public class CasingSet {
     private @Nullable Supplier<? extends Block> clutchBlock;
     private @Nullable Supplier<? extends Block> deployerBlock;
     private @Nullable Supplier<? extends Block> storageInterfaceBlock;
+    private @Nullable Supplier<? extends Block> encasedFanBlock;
 
     private final @Nullable Supplier<PartialModel> chainConveyorWheelModel;
     private final @Nullable Supplier<PartialModel> chainConveyorGuardModel;
@@ -68,6 +69,7 @@ public class CasingSet {
     private final boolean clutch;
     private final boolean deployer;
     private final boolean storageInterface;
+    private final boolean encasedFan;
     private final boolean encasedWoodenShaft;
     private final boolean encasedWoodenCogwheel;
     private final boolean encasedWoodenLargeCogwheel;
@@ -98,6 +100,7 @@ public class CasingSet {
         clutch = options.clutch;
         deployer = options.deployer;
         storageInterface = options.storageInterface;
+        encasedFan = options.encasedFan;
         encasedWoodenShaft = options.encasedWoodenShaft;
         encasedWoodenCogwheel = options.encasedWoodenCogwheel;
         encasedWoodenLargeCogwheel = options.encasedWoodenLargeCogwheel;
@@ -123,6 +126,7 @@ public class CasingSet {
         if (options.existingClutch != null) clutchBlock = options.existingClutch;
         if (options.existingDeployer != null) deployerBlock = options.existingDeployer;
         if (options.existingStorageInterface != null) storageInterfaceBlock = options.existingStorageInterface;
+        if (options.existingEncasedFan != null) encasedFanBlock = options.existingEncasedFan;
     }
 
     public String getName() {
@@ -182,6 +186,9 @@ public class CasingSet {
     }
     public boolean doesGenerateStorageInterface(){
         return storageInterface;
+    }
+    public boolean doesGenerateEncasedFan(){
+        return encasedFan;
     }
     public boolean doesGenerateEncasedWoodenShaft(){
         return encasedWoodenShaft;
@@ -373,6 +380,17 @@ public class CasingSet {
         return storageInterfaceBlock == null ? null : storageInterfaceBlock.get();
     }
 
+    @Nullable
+    public Supplier<? extends Block> getEncasedFanSupplier() {
+        return encasedFanBlock;
+    }
+
+    @Nullable
+    public Block getEncasedFan() {
+        return encasedFanBlock == null ? null : encasedFanBlock.get();
+    }
+
+
 
     @Nullable
     public BeltBlockEntity.CasingType getBeltCasingType() {
@@ -493,6 +511,12 @@ public class CasingSet {
         storageInterfaceBlock = storageInterface;
     }
 
+    public void setEncasedFan(@Nonnull Supplier<? extends Block> fan){
+        if (getEncasedFanSupplier() != null)
+            throw new UnsupportedOperationException("You cannot modify an encased fan that has already been referenced");
+        encasedFanBlock = fan;
+    }
+
 
     @Nullable
     public CTSpriteShiftEntry getConnectedTextureSprite() {
@@ -542,7 +566,8 @@ public class CasingSet {
         return block.equals(getCasing()) || block.equals(getShaft()) || block.equals(getCogwheel()) || block.equals(getLargeCogwheel()) || block.equals(getFluidPipe())
                 || block.equals(getGearbox()) || block.equals(getPress()) || block.equals(getMixer()) || block.equals(getDepot())
                 || block.equals(getChainDrive()) || block.equals(getChainGearshift()) || block.equals(getConfigurableGearbox()) || block.equals(getChainConveyor())
-                || block.equals(getGearshift()) || block.equals(getClutch()) || block.equals(getDeployer()) || block.equals(getStorageInterface());
+                || block.equals(getGearshift()) || block.equals(getClutch()) || block.equals(getDeployer()) || block.equals(getStorageInterface())
+                || block.equals(getEncasedFan());
     }
 
 
@@ -570,6 +595,7 @@ public class CasingSet {
         private boolean clutch;
         private boolean deployer;
         private boolean storageInterface;
+        private boolean encasedFan;
         private boolean encasedWoodenShaft;
         private boolean encasedWoodenCogwheel;
         private boolean encasedWoodenLargeCogwheel;
@@ -598,6 +624,7 @@ public class CasingSet {
         private @Nullable Supplier<? extends Block> existingClutch;
         private @Nullable Supplier<? extends Block> existingDeployer;
         private @Nullable Supplier<? extends Block> existingStorageInterface;
+        private @Nullable Supplier<? extends Block> existingEncasedFan;
 
         public Options() {
             ctSprite = null;
@@ -721,6 +748,11 @@ public class CasingSet {
             return this;
         }
 
+        public Options encasedFan(){
+            this.encasedFan = true;
+            return this;
+        }
+
         public Options encasedWoodenShaft(){
             this.encasedWoodenShaft = true;
             return this;
@@ -744,7 +776,7 @@ public class CasingSet {
         }
 
         public Options processingBlocks(Supplier<PartialModel> mixerHeadModel){
-            return press().mixer(mixerHeadModel).depot().deployer();
+            return press().mixer(mixerHeadModel).depot().deployer().encasedFan();
         }
 
         public Options complexTransmissionBlocks(Supplier<PartialModel> conveyorGuard,Supplier<PartialModel> conveyorWheel,Supplier<PartialModel> conveyorShaft){
@@ -863,6 +895,12 @@ public class CasingSet {
         Options existingPortableStorageInterface(Supplier<? extends Block> storageInterface) {
             this.existingStorageInterface = storageInterface;
             this.storageInterface = false;
+            return this;
+        }
+
+        Options existingEncasedFan(Supplier<? extends Block> fan) {
+            this.existingEncasedFan = fan;
+            this.encasedFan = false;
             return this;
         }
     }

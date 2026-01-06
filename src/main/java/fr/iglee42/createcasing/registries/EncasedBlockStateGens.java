@@ -408,6 +408,28 @@ public class EncasedBlockStateGens {
         return null;
     }
 
+    public static ModelFile fanModel(RegistrateProvider p, String casing){
+        if (isValidProvider(p))
+            return Objects.requireNonNull(createModelInBlock(p,"encased_fan/"+casing+"/block"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/encased_fan/block"))
+                    .texture("3",getFunnelFrameTexture(casing))
+                    .texture("back",getGearboxTexture(casing))
+                    .texture("fan_casing",getFanPart(casing,"casing"))
+                    .texture("particle",getFanPart(casing,"side"))
+                    .texture("fan_side",getFanPart(casing,"side"));
+        return null;
+    }
+
+    public static ModelFile fanItemModel(RegistrateProvider p, String casing){
+        return Objects.requireNonNull(createModelInBlock(p,"encased_fan/"+casing+"/item"))
+                .parent(new ModelFile.UncheckedModelFile("create:block/encased_fan/item"))
+                .texture("2",getGearboxTexture(casing))
+                .texture("fan_casing",getFanPart(casing,"casing"))
+                .texture("particle",getFanPart(casing,"side"))
+                .texture("fan_side",getFanPart(casing,"side"));
+    }
+
+
 
 
 
@@ -599,6 +621,11 @@ public class EncasedBlockStateGens {
     public static String getMixerPart(String casing,String part) {
         if (casing.equals("normal")) return Create.ID + ":block/mixer_base_"+part;
         return CreateCasing.MODID + ":block/mixer_"+part+"/"+casing;
+    }
+
+    public static String getFanPart(String casing,String part) {
+        if (casing.equals("normal")) return Create.ID + ":block/fan_"+part;
+        return CreateCasing.MODID + ":block/fan_"+part+"/"+casing;
     }
 
     public static String getDepotPart(String casing,String part) {

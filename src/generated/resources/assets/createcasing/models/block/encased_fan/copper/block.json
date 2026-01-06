@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/encased_fan/block",
+  "textures": {
+    "3": "create:block/funnel/copper_funnel_frame",
+    "back": "createcasing:block/gearbox/copper",
+    "fan_casing": "createcasing:block/fan_casing/copper",
+    "fan_side": "createcasing:block/fan_side/copper",
+    "particle": "createcasing:block/fan_side/copper"
+  }
+}

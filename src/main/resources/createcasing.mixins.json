@@ -15,6 +15,7 @@
     "create.BlockMovementChecksImplMixin",
     "create.ChainConveyorConnectionHandlerMixin",
     "create.ChainDriveBlockMixin",
+    "create.ChuteBlockEntityMixin",
     "create.CreateJeiMixin",
     "create.DeployerBlockEntityAccessor",
     "create.DeployerBlockEntityMixin",

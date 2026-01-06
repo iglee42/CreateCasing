@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "create:weathered_iron_block"
+    },
+    "P": {
+      "item": "create:propeller"
+    },
+    "S": {
+      "item": "create:shaft"
+    }
+  },
+  "pattern": [
+    "S",
+    "A",
+    "P"
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:weathered_iron_encased_fan"
+  }
+}

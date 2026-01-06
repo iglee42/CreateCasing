@@ -81,6 +81,9 @@ public class ItemChangeBlockManager {
             if (isStorageInterface(state) && casingSet.getStorageInterface() != null){
                 changeFacingBlock(event,state,level, casingSet.getStorageInterface().defaultBlockState());
             }
+            if (isEncasedFan(state) && casingSet.getEncasedFan() != null){
+                changeFacingBlock(event,state,level,casingSet.getEncasedFan().defaultBlockState());
+            }
         }
         TransmissionSet transmissionSet;
 
@@ -182,6 +185,9 @@ public class ItemChangeBlockManager {
     }
     public static boolean isStorageInterface(BlockState state){
         return CasingSets.getSets().stream().filter(set->set.getStorageInterface() != null).anyMatch(set->state.getBlock().equals(set.getStorageInterface()));
+    }
+    public static boolean isEncasedFan(BlockState state){
+        return CasingSets.getSets().stream().filter(set->set.getEncasedFan() != null).anyMatch(set->state.getBlock().equals(set.getEncasedFan()));
     }
 
     public static boolean isShaft(BlockState state){

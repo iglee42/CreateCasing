@@ -31,6 +31,7 @@ public class CasingSets {
             .existingClutch(()->AllBlocks.CLUTCH.get())
             .existingGearbox(()->AllBlocks.GEARBOX.get(),()-> AllItems.VERTICAL_GEARBOX.get())
             .existingDeployer(()->AllBlocks.DEPLOYER.get())
+            .existingEncasedFan(()->AllBlocks.ENCASED_FAN.get())
             .fluids()
             .encasedCustomTransmissionBlocks()
             .configurableGearbox()

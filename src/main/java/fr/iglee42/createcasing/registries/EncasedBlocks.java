@@ -10,6 +10,7 @@ import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.kinetics.deployer.DeployerBlock;
 import com.simibubi.create.content.kinetics.deployer.DeployerMovementBehaviour;
 import com.simibubi.create.content.kinetics.deployer.DeployerMovingInteraction;
+import com.simibubi.create.content.kinetics.fan.EncasedFanBlock;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockModel;
 import com.simibubi.create.content.kinetics.simpleRelays.CogWheelBlock;
@@ -401,6 +402,20 @@ public class EncasedBlocks {
                 .register();
     }
 
+    public static BlockEntry<CustomEncasedFanBlock> createEncasedFan(String name) {
+        return REGISTRATE.block(name + "_encased_fan", CustomEncasedFanBlock::new)
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.mapColor(MapColor.PODZOL))
+                .blockstate((c,p)->p.directionalBlock(c.get(),fanModel(p,name)))
+                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(axeOrPickaxe())
+                .transform(CCStress.setImpact(2.0))
+                .item()
+                .model((c,p)->p.getBuilder(c.getName()).parent(fanItemModel(p,name)))
+                .build()
+                .register();
+    }
+
     private static <T extends Block> BlockBuilder<T,CreateRegistrate> connectedTexture( BlockBuilder<T, CreateRegistrate> entry,CTSpriteShiftEntry sprite,BiConsumer<T, CasingConnectivity> consumer){
         if (sprite != null){
             return entry.onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(sprite)))
@@ -464,6 +479,9 @@ public class EncasedBlocks {
 
             if (set.doesGenerateStorageInterface())
                 set.setStorageInterface(createPortableStorageInterface(set.getName()));
+
+            if (set.doesGenerateEncasedFan())
+                set.setEncasedFan(createEncasedFan(set.getName()));
         });
 
         TransmissionSets.getSets().forEach(set->{

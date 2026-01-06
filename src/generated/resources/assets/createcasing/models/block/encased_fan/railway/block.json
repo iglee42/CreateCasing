@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/encased_fan/block",
+  "textures": {
+    "3": "createcasing:block/funnel_frame/railway",
+    "back": "createcasing:block/gearbox/railway",
+    "fan_casing": "createcasing:block/fan_casing/railway",
+    "fan_side": "createcasing:block/fan_side/railway",
+    "particle": "createcasing:block/fan_side/railway"
+  }
+}
