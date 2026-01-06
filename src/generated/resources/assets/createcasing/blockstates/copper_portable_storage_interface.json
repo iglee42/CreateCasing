@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "facing=down": {
+      "model": "createcasing:block/portable_storage_interface/copper/block",
+      "x": 180
+    },
+    "facing=east": {
+      "model": "createcasing:block/portable_storage_interface/copper/block",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north": {
+      "model": "createcasing:block/portable_storage_interface/copper/block",
+      "x": 90
+    },
+    "facing=south": {
+      "model": "createcasing:block/portable_storage_interface/copper/block",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up": {
+      "model": "createcasing:block/portable_storage_interface/copper/block"
+    },
+    "facing=west": {
+      "model": "createcasing:block/portable_storage_interface/copper/block",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

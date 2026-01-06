@@ -1,0 +1,12 @@
+{
+  "parent": "create:block/deployer/vertical",
+  "textures": {
+    "5": "createcasing:block/casing_piston/shadow_steel",
+    "6": "createcasing:block/piston_bottom/shadow_steel",
+    "7": "createcasing:block/piston_inner/shadow_steel",
+    "andesite_casing_short": "createcasing:block/casing_short/shadow_steel",
+    "gearbox": "createcasing:block/gearbox/shadow_steel",
+    "gearbox_top": "createcasing:block/gearbox_top/shadow_steel",
+    "particle": "createcasing:block/gearbox_top/shadow_steel"
+  }
+}

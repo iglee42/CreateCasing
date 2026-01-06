@@ -2,7 +2,7 @@ package fr.iglee42.createcasing.blocks.publics;
 
 import com.simibubi.create.content.kinetics.chainConveyor.ChainConveyorBlock;
 import com.simibubi.create.content.kinetics.chainConveyor.ChainConveyorBlockEntity;
-import fr.iglee42.createcasing.registries.ModBlockEntities;
+import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
 public class PublicChainConveyorBlock extends ChainConveyorBlock {
@@ -12,6 +12,6 @@ public class PublicChainConveyorBlock extends ChainConveyorBlock {
 
     @Override
     public BlockEntityType<? extends ChainConveyorBlockEntity> getBlockEntityType() {
-        return ModBlockEntities.CHAIN_CONVEYOR.get();
+        return EncasedBlockEntities.CHAIN_CONVEYOR.get();
     }
 }

@@ -1,20 +1,10 @@
 package fr.iglee42.createcasing.items;
 
-import static com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock.AXIS;
-
-import java.util.List;
-import java.util.function.Predicate;
-
-import com.simibubi.create.AllShapes;
-import com.simibubi.create.content.kinetics.base.DirectionalKineticBlock;
-import com.simibubi.create.content.kinetics.base.HorizontalKineticBlock;
 import com.simibubi.create.content.kinetics.base.IRotate;
-import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.CogWheelBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.CogwheelBlockItem;
 import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
-import fr.iglee42.createcasing.api.items.ApiCogwheelBlockItem;
-import fr.iglee42.createcasing.blocks.customs.WoodenCogwheelBlock;
+import fr.iglee42.createcasing.blocks.cogwheels.WoodenCogwheelBlock;
 import net.createmod.catnip.placement.IPlacementHelper;
 import net.createmod.catnip.placement.PlacementHelpers;
 import net.createmod.catnip.placement.PlacementOffset;
@@ -28,8 +18,14 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
+
+import java.util.List;
+import java.util.function.Predicate;
+
+import static com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock.AXIS;
 
 public class WoodenCogwheelBlockItem extends BlockItem {
 
@@ -38,9 +34,9 @@ public class WoodenCogwheelBlockItem extends BlockItem {
 	private final int placementHelperId;
 	private final int integratedCogHelperId;
 
-	public WoodenCogwheelBlockItem(WoodenCogwheelBlock block, Properties builder) {
+	public WoodenCogwheelBlockItem(CogWheelBlock block, Properties builder) {
 		super(block, builder);
-		large = block.isLarge;
+		large = block.isLargeCog();
 
 		placementHelperId = PlacementHelpers.register(large ? new LargeCogHelper() : new SmallCogHelper());
 		integratedCogHelperId =

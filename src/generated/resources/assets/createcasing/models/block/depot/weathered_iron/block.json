@@ -1,8 +1,9 @@
 {
   "parent": "create:block/depot/block",
   "textures": {
-    "1": "createcasing:block/depot_sides/weathered_iron",
-    "2": "createcasing:block/depot_tops/weathered_iron",
-    "3": "create:block/weathered_iron_block"
+    "1": "createcasing:block/depot_side/weathered_iron",
+    "2": "createcasing:block/depot_top/weathered_iron",
+    "3": "create:block/weathered_iron_block",
+    "particle": "create:block/weathered_iron_block"
   }
 }

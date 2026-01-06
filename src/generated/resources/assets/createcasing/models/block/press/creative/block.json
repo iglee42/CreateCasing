@@ -1,10 +1,11 @@
 {
   "parent": "create:block/mechanical_press/block",
   "textures": {
-    "4": "createcasing:block/press_sides/creative",
-    "gearbox": "createcasing:block/gearboxes/creative",
+    "4": "createcasing:block/press_side/creative",
+    "gearbox": "createcasing:block/gearbox/creative",
     "gearbox_top": "create:block/creative_casing",
-    "mechanical_press_bottom": "createcasing:block/press_bottoms/creative",
-    "mechanical_press_top": "createcasing:block/press_tops/creative"
+    "mechanical_press_bottom": "createcasing:block/press_bottom/creative",
+    "mechanical_press_top": "createcasing:block/press_top/creative",
+    "particle": "create:block/creative_casing"
   }
 }

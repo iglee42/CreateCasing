@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/gearshift/item",
+  "textures": {
+    "0": "createcasing:block/gearshift_off/railway",
+    "1": "createcasing:block/gearbox/railway",
+    "particle": "createcasing:block/gearshift_off/railway"
+  }
+}

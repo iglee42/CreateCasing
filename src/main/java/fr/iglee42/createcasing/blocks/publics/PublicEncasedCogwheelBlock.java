@@ -2,7 +2,7 @@ package fr.iglee42.createcasing.blocks.publics;
 
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogwheelBlock;
-import fr.iglee42.createcasing.registries.ModBlockEntities;
+import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
@@ -20,6 +20,6 @@ public class PublicEncasedCogwheelBlock extends EncasedCogwheelBlock /*implement
 
 	@Override
 	public BlockEntityType<? extends SimpleKineticBlockEntity> getBlockEntityType() {
-		return this.isLargeCog() ?  ModBlockEntities.ENCASED_COGWHEEL_LARGE.get() : ModBlockEntities.ENCASED_COGWHEEL.get();
+		return this.isLargeCog() ?  EncasedBlockEntities.ENCASED_COGWHEEL_LARGE.get() : EncasedBlockEntities.ENCASED_COGWHEEL.get();
 	}
 }

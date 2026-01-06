@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "createcasing:block/press/refined_radiance/block",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "createcasing:block/press/refined_radiance/block"
+    },
+    "facing=south": {
+      "model": "createcasing:block/press/refined_radiance/block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "createcasing:block/press/refined_radiance/block",
+      "y": 270
+    }
+  }
+}

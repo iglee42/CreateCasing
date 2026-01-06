@@ -1,15 +1,16 @@
 package fr.iglee42.createcasing;
 
+import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.content.logistics.depot.DepotBehaviour;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
-import com.simibubi.create.infrastructure.data.CreateDatagen;
 import com.tterrag.registrate.providers.RegistrateDataProvider;
 import com.tterrag.registrate.util.RegistrateDistExecutor;
 import fr.iglee42.createcasing.commands.CreateCasingCommand;
 import fr.iglee42.createcasing.config.ModConfigs;
+import fr.iglee42.createcasing.mixins.create.DeployerBlockEntityAccessor;
 import fr.iglee42.createcasing.registries.*;
 import net.createmod.catnip.lang.FontHelper;
 import net.minecraft.resources.ResourceKey;
@@ -60,14 +61,12 @@ public class CreateCasing {
 
         //if (isExtendedCogsLoaded()) ExtendedCogwheels.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, CreateExtendedCogwheelsCompat::register);
         
-        ModSounds.prepare();
-        ModBlocks.register();
-        ModItems.register();
-        ModBlockEntities.register();
-        ModCreativeModeTabs.register(modEventBus);
-        ModPackets.register();
-
-        ModBlocks.registerEncasedShafts();
+        EncasedSounds.prepare();
+        EncasedBlocks.register();
+        EncasedItems.register();
+        EncasedBlockEntities.register();
+        EncasedCreativeModeTabs.register(modEventBus);
+        EncasedPackets.register();
 
         ModConfigs.register(ModLoadingContext.get(),container);
 
@@ -78,7 +77,7 @@ public class CreateCasing {
 
         neoForgeEventBus.addListener(this::registerCommands);
         modEventBus.addListener(this::setup);
-        modEventBus.addListener(ModSounds::register);
+        modEventBus.addListener(EncasedSounds::register);
         modEventBus.addListener(this::registerCapabilities);
         modEventBus.addListener(EventPriority.LOWEST, this::gatherData);
 
@@ -104,17 +103,23 @@ public class CreateCasing {
     private void registerCapabilities(RegisterCapabilitiesEvent event){
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
-                ModBlockEntities.DEPOT.get(),
+                EncasedBlockEntities.DEPOT.get(),
                 (be, context) -> be.getBehaviour(DepotBehaviour.TYPE).itemHandler
         );
+
         event.registerBlockEntity(
                 Capabilities.ItemHandler.BLOCK,
-                ModBlockEntities.API_DEPOT.get(),
-                (be, context) -> be.getBehaviour(DepotBehaviour.TYPE).itemHandler
+                EncasedBlockEntities.DEPLOYER.get(),
+                (be, context) ->  {
+                    DeployerBlockEntityAccessor accessor = (DeployerBlockEntityAccessor) be;
+                    if (accessor.getInvHandler() == null)
+                        accessor.invokeInitHandler();
+                    return accessor.getInvHandler();
+                }
         );
     }
 
     private void gatherData(GatherDataEvent event) {
-        event.getGenerator().addProvider(true, REGISTRATE.setDataProvider(new RegistrateDataProvider(REGISTRATE, MODID, event)));
+        //event.getGenerator().addProvider(true, REGISTRATE.setDataProvider(new RegistrateDataProvider(REGISTRATE, MODID, event)));
     }
 }

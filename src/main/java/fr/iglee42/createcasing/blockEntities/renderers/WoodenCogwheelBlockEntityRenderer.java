@@ -6,8 +6,8 @@ import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
 import dev.engine_room.flywheel.api.visualization.VisualizationManager;
-import fr.iglee42.createcasing.blocks.customs.WoodenCogwheelBlock;
-import fr.iglee42.createcasing.registries.ModPartialModels;
+import fr.iglee42.createcasing.blocks.cogwheels.WoodenCogwheelBlock;
+import fr.iglee42.createcasing.registries.EncasedPartialModels;
 import net.createmod.catnip.animation.AnimationTickHolder;
 import net.createmod.catnip.render.CachedBuffers;
 import net.createmod.catnip.render.SuperByteBuffer;
@@ -48,9 +48,9 @@ public class WoodenCogwheelBlockEntityRenderer extends KineticBlockEntityRendere
 
 		Axis axis = getRotationAxisOf(be);
 		Direction facing = Direction.fromAxisAndDirection(axis, AxisDirection.POSITIVE);
-		if (ModPartialModels.SHAFTLESS_LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(be.getBlockState().getBlock()).getPath().replaceAll("_large_cogwheel","")) == null) return;
+		if (EncasedPartialModels.SHAFTLESS_LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(be.getBlockState().getBlock()).getPath().replaceAll("_large_cogwheel","")) == null) return;
 		renderRotatingBuffer(be,
-			CachedBuffers.partialFacingVertical(ModPartialModels.SHAFTLESS_LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(be.getBlockState().getBlock()).getPath().replaceAll("_large_cogwheel","")), be.getBlockState(), facing),
+			CachedBuffers.partialFacingVertical(EncasedPartialModels.SHAFTLESS_LARGE_COGS_MODELS.get(BuiltInRegistries.BLOCK.getKey(be.getBlockState().getBlock()).getPath().replaceAll("_large_cogwheel","")), be.getBlockState(), facing),
 			ms, buffer.getBuffer(RenderType.solid()), light);
 
 		float angle = getAngleForLargeCogShaft(be, axis);

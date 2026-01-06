@@ -4,12 +4,11 @@ import com.simibubi.create.content.kinetics.RotationPropagator;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.tterrag.registrate.util.RegistrateDistExecutor;
 import fr.iglee42.createcasing.blockEntities.BrassShaftBlockEntity;
-import fr.iglee42.createcasing.registries.ModBlockEntities;
+import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import fr.iglee42.createcasing.screen.BrassShaftScreen;
 import net.createmod.catnip.gui.ScreenOpener;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
-import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -20,14 +19,14 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.neoforged.api.distmarker.Dist;
 import net.neoforged.api.distmarker.OnlyIn;
 
-public class BrassShaftBlock extends MetalShaftBlock{
+public class BrassShaftBlock extends CustomShaftBlock {
     public BrassShaftBlock(Properties properties) {
         super(properties);
     }
 
     @Override
     public BlockEntityType<? extends KineticBlockEntity> getBlockEntityType() {
-        return ModBlockEntities.BRASS_SHAFT.get();
+        return EncasedBlockEntities.BRASS_SHAFT.get();
     }
 
     @Override

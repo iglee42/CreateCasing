@@ -1,83 +1,19 @@
 package fr.iglee42.createcasing.blocks.customs;
 
-import com.simibubi.create.AllBlocks;
-import com.simibubi.create.AllShapes;
-import com.simibubi.create.content.kinetics.base.IRotate;
-import com.simibubi.create.content.kinetics.base.KineticBlock;
 import com.simibubi.create.content.kinetics.mixer.MechanicalMixerBlock;
 import com.simibubi.create.content.kinetics.mixer.MechanicalMixerBlockEntity;
-import com.simibubi.create.content.kinetics.simpleRelays.ICogWheel;
-import com.simibubi.create.foundation.block.IBE;
-import fr.iglee42.createcasing.registries.ModBlockEntities;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
-import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.level.BlockGetter;
-import net.minecraft.world.level.LevelReader;
+import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import net.minecraft.world.level.block.entity.BlockEntityType;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.pathfinder.PathComputationType;
-import net.minecraft.world.phys.shapes.CollisionContext;
-import net.minecraft.world.phys.shapes.EntityCollisionContext;
-import net.minecraft.world.phys.shapes.VoxelShape;
 
-public class CustomMixerBlock extends KineticBlock implements IBE<MechanicalMixerBlockEntity>, ICogWheel {
+public class CustomMixerBlock extends MechanicalMixerBlock{
 
     public CustomMixerBlock(Properties properties) {
         super(properties);
     }
 
     @Override
-    public boolean canSurvive(BlockState state, LevelReader worldIn, BlockPos pos) {
-        return !AllBlocks.BASIN.has(worldIn.getBlockState(pos.below()));
-    }
-
-    @Override
-    public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
-        if (context instanceof EntityCollisionContext
-                && ((EntityCollisionContext) context).getEntity() instanceof Player)
-            return AllShapes.CASING_14PX.get(Direction.DOWN);
-
-        return AllShapes.MECHANICAL_PROCESSOR_SHAPE;
-    }
-
-    @Override
-    public Direction.Axis getRotationAxis(BlockState state) {
-        return Direction.Axis.Y;
-    }
-
-    @Override
-    public boolean hasShaftTowards(LevelReader world, BlockPos pos, BlockState state, Direction face) {
-        return false;
-    }
-
-    @Override
-    public float getParticleTargetRadius() {
-        return .85f;
-    }
-
-    @Override
-    public float getParticleInitialRadius() {
-        return .75f;
-    }
-
-    @Override
-    public IRotate.SpeedLevel getMinimumRequiredSpeedLevel() {
-        return IRotate.SpeedLevel.MEDIUM;
-    }
-
-    @Override
-    public Class<MechanicalMixerBlockEntity> getBlockEntityClass() {
-        return MechanicalMixerBlockEntity.class;
-    }
-
-    @Override
     public BlockEntityType<? extends MechanicalMixerBlockEntity> getBlockEntityType() {
-        return ModBlockEntities.MIXER.get();
+        return EncasedBlockEntities.MIXER.get();
     }
 
-    @Override
-    protected boolean isPathfindable(BlockState p_60475_, PathComputationType p_60478_) {
-        return false;
-    }
 }

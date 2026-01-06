@@ -1,0 +1,12 @@
+{
+  "parent": "create:block/deployer/horizontal",
+  "textures": {
+    "5": "createcasing:block/casing_piston/railway",
+    "6": "createcasing:block/piston_bottom/railway",
+    "7": "createcasing:block/piston_inner/railway",
+    "andesite_casing_short": "createcasing:block/casing_short/railway",
+    "gearbox": "createcasing:block/gearbox/railway",
+    "gearbox_top": "createcasing:block/gearbox_top/railway",
+    "particle": "createcasing:block/gearbox_top/railway"
+  }
+}

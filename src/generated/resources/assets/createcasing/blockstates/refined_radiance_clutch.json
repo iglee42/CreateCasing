@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "axis=x,powered=false": {
+      "model": "createcasing:block/clutch/refined_radiance/block",
+      "x": 90,
+      "y": 90
+    },
+    "axis=x,powered=true": {
+      "model": "createcasing:block/clutch/refined_radiance/block_powered",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y,powered=false": {
+      "model": "createcasing:block/clutch/refined_radiance/block"
+    },
+    "axis=y,powered=true": {
+      "model": "createcasing:block/clutch/refined_radiance/block_powered"
+    },
+    "axis=z,powered=false": {
+      "model": "createcasing:block/clutch/refined_radiance/block",
+      "x": 90,
+      "y": 180
+    },
+    "axis=z,powered=true": {
+      "model": "createcasing:block/clutch/refined_radiance/block_powered",
+      "x": 90,
+      "y": 180
+    }
+  }
+}

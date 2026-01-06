@@ -1,6 +1,7 @@
 {
   "parent": "createcasing:block/templates/pipe_block_open",
   "textures": {
-    "1": "create:block/industrial_iron_block"
+    "1": "create:block/industrial_iron_block",
+    "particle": "create:block/industrial_iron_block"
   }
 }

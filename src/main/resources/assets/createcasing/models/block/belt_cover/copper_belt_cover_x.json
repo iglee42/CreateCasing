@@ -2,6 +2,6 @@
     "parent": "create:block/belt_cover/andesite_belt_cover_x",
     "textures": {
         "0": "create:block/funnel/copper_funnel_frame",
-        "1": "createcasing:block/belt_covers/copper"
+        "1": "createcasing:block/belt_cover/copper"
     }
 }

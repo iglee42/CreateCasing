@@ -1,5 +1,5 @@
 
-![CreateHosting](https://iglee.fr:3000/image/encased)
+![CreateHosting](https://api.iglee.fr/image/encased)
 <h1 align="center"> Create Encased <br>
 <a  href="https://www.curseforge.com/minecraft/mc-mods/create-encased/files"><img src="https://cf.way2muchnoise.eu/versions/829380.svg" alt="Supported Versions"></a>
 <a  href="https://www.curseforge.com/minecraft/mc-mods/create-encased"><img src="http://cf.way2muchnoise.eu/829380.svg" alt="CF"></a>
@@ -10,10 +10,6 @@
 <p align="center">Create Encased is an addon to the mod <a href="https://github.com/Creators-of-Create/Create/">Create</a></p>
 <p align="center">The addon allow to useall of the casing in shaft; cogwheels and pipes</p>
 <p align="center">Original idea from <a href="https://www.youtube.com/MrMLDEG">MLDEG</a></p>
-
-<h1 align="center">
-<a href="https://bisecthosting.com/iglee"><img src="https://www.bisecthosting.com/partners/custom-banners/04b018a6-2b05-42f7-bc73-448bb3ee940c.webp" alt=""></a>
-</h1>
 
 <h3>For developer:</h3>
 
@@ -34,7 +30,7 @@ implementation fg.deobf("fr.iglee42:CreateCasing:${mc_version}-${create_encased_
 ```
 <h1 align="center">
 <a href="http://maven.iglee.fr/#/releases/fr/iglee42/CreateCasing">
-        <img src="https://flat.badgen.net/maven/v/metadata-url/https/iglee.fr:8081/releases/fr/iglee42/CreateCasing/maven-metadata.xml?color=cf9555&label=CreateEncased" alt="Create Encased Latest Version">
+        <img src="https://flat.badgen.net/maven/v/metadata-url/https/maven.iglee.fr/releases/fr/iglee42/CreateCasing/maven-metadata.xml?color=cf9555&label=CreateEncased" alt="Create Encased Latest Version">
     </a>
 </h1>
 

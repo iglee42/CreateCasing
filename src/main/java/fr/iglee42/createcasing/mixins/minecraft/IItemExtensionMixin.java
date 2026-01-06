@@ -2,6 +2,7 @@ package fr.iglee42.createcasing.mixins.minecraft;
 
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
+import fr.iglee42.createcasing.blocks.ConfigurableGearboxBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -24,11 +25,11 @@ public interface IItemExtensionMixin {
 
     /**
      * @author iglee42
-     * @reason Allow shaft to used on the configurable gearbox
+     * @reason Allow shaft to be used on the configurable gearbox when sneaking
      */
     @Overwrite
     default boolean doesSneakBypassUse(ItemStack stack, LevelReader level, BlockPos pos, Player player){
-        if (self() != null && (AllBlocks.SHAFT.is(self()) || AllItems.WRENCH.is(self()))) return true;
+        if (self() != null && AllBlocks.SHAFT.is(self()) && level.getBlockState(pos).getBlock() instanceof ConfigurableGearboxBlock) return true;
         return false;
     }
 

@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/chain_conveyor/item",
+  "textures": {
+    "bullwheel": "createcasing:block/bullwheel/refined_radiance",
+    "conveyor_casing": "createcasing:block/conveyor_casing/refined_radiance",
+    "conveyor_port": "createcasing:block/conveyor_port/refined_radiance",
+    "particle": "create:block/refined_radiance_casing"
+  }
+}
