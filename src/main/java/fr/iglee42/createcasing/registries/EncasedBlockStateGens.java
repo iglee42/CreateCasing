@@ -555,12 +555,12 @@ public class EncasedBlockStateGens {
     public static String getGearboxTexture(String casing){
         if (casing.equals("andesite") || casing.equals("normal")) return Create.ID+":block/gearbox";
         if (casing.equals("brass")) return Create.ID + ":block/"+casing+"_gearbox";
-        return CreateCasing.MODID + ":block/gearboxes/"+casing;
+        return CreateCasing.MODID + ":block/gearbox/"+casing;
     }
 
     public static String getGearboxTopTexture(String casing){
         if (casing.equals("andesite") || casing.equals("normal")) return Create.ID+":block/gearbox_top";
-        return CreateCasing.MODID + ":block/gearbox_tops/"+casing;
+        return CreateCasing.MODID + ":block/gearbox_top/"+casing;
     }
 
 
@@ -568,23 +568,23 @@ public class EncasedBlockStateGens {
         if (shaft.equals("normal")) return Create.ID + ":block/axis";
         if (shaft.equals("bamboo")) return "minecraft:block/stripped_bamboo_block";
         if (isWoodenShaft(shaft)) return "minecraft:block/stripped_"+shaft+"_" + (shaft.equals("crimson") || shaft.equals("warped") ? "stem": "log");
-        return CreateCasing.MODID + ":block/shafts/"+shaft;
+        return CreateCasing.MODID + ":block/shaft/"+shaft;
     }
 
 
     public static String getCogwheelTexture(String cogwheel) {
         if (cogwheel.equals("normal")) return Create.ID + ":block/cogwheel";
-        return CreateCasing.MODID + ":block/cogwheels/"+cogwheel;
+        return CreateCasing.MODID + ":block/cogwheel/"+cogwheel;
     }
 
     public static String getLargeCogwheelTexture(String cogwheel) {
         if (cogwheel.equals("normal")) return Create.ID + ":block/large_cogwheel";
-        return CreateCasing.MODID + ":block/large_cogwheels/"+cogwheel;
+        return CreateCasing.MODID + ":block/large_cogwheel/"+cogwheel;
     }
 
     public static String getCogwheelSideTexture(String casing) {
         if (casing.equals("andesite") || casing.equals("brass")) return Create.ID + ":block/"+casing+"_encased_cogwheel_side";
-        return CreateCasing.MODID + ":block/encased_cogwheels/"+casing;
+        return CreateCasing.MODID + ":block/encased_cogwheel/"+casing;
     }
 
     public static String getLargeCogwheelSideTexture(String casing) {
@@ -593,87 +593,87 @@ public class EncasedBlockStateGens {
 
     public static String getPressPart(String casing,String part) {
         if (casing.equals("normal")) return Create.ID + ":block/mechanical_press_"+part;
-        return CreateCasing.MODID + ":block/press_"+part+"s/"+casing;
+        return CreateCasing.MODID + ":block/press_"+part+"/"+casing;
     }
 
     public static String getMixerPart(String casing,String part) {
         if (casing.equals("normal")) return Create.ID + ":block/mixer_base_"+part;
-        return CreateCasing.MODID + ":block/mixer_"+part+"s/"+casing;
+        return CreateCasing.MODID + ":block/mixer_"+part+"/"+casing;
     }
 
     public static String getDepotPart(String casing,String part) {
         if (casing.equals("normal")) return Create.ID + ":block/depot_"+part;
-        return CreateCasing.MODID + ":block/depot_"+part+"s/"+casing;
+        return CreateCasing.MODID + ":block/depot_"+part+"/"+casing;
     }
 
     public static String getChainDrivePart(String casing,String partSuffix) {
         String part = partSuffix.equals("2") ? "end" : "middle";
         if (casing.equals("normal")) return Create.ID + ":block/encased_chain_drive"+part;
-        return CreateCasing.MODID + ":block/encased_chain_drive_"+part+"s/"+casing;
+        return CreateCasing.MODID + ":block/encased_chain_drive_"+part+"/"+casing;
     }
     public static String getChainDriveSideTexture(String casing) {
         if (casing.equals("normal")) return Create.ID + ":block/encased_chain_drive_side";
-        return CreateCasing.MODID + ":block/encased_chain_drives/"+casing;
+        return CreateCasing.MODID + ":block/encased_chain_drive/"+casing;
     }
     public static String getAdjustableChainGearshiftTexture(String casing,boolean powered) {
         if (casing.equals("normal")) return Create.ID + ":block/adjustable_chain_gearshift"+(powered ? "_powered":"");
-        return CreateCasing.MODID + ":block/adjustable_chain_gearshifts"+(powered ? "_powered":"")+"/"+casing;
+        return CreateCasing.MODID + ":block/adjustable_chain_gearshift"+(powered ? "_powered":"")+"/"+casing;
     }
     public static String getConveyorPortTexture(String casing) {
         if (casing.equals("normal")) return Create.ID + ":block/conveyor_port";
-        return CreateCasing.MODID + ":block/conveyor_ports/"+casing;
+        return CreateCasing.MODID + ":block/conveyor_port/"+casing;
     }
 
     public static String getConveyorCasingTexture(String casing) {
         if (casing.equals("normal")) return Create.ID + ":block/conveyor_casing";
-        return CreateCasing.MODID + ":block/conveyor_casings/"+casing;
+        return CreateCasing.MODID + ":block/conveyor_casing/"+casing;
     }
 
     public static String getBullWheelTexture(String casing) {
         if (casing.equals("normal")) return Create.ID + ":block/bullwheel";
-        return CreateCasing.MODID + ":block/bullwheels/"+casing;
+        return CreateCasing.MODID + ":block/bullwheel/"+casing;
     }
 
     public static String getGearshiftTexture(String casing,boolean powered) {
         if (casing.equals("normal")) return Create.ID + ":block/gearshift_"+(powered ? "on" : "off");
-        return CreateCasing.MODID + ":block/gearshifts_"+(powered ? "on" : "off")+"/"+casing;
+        return CreateCasing.MODID + ":block/gearshift_"+(powered ? "on" : "off")+"/"+casing;
     }
 
     public static String getClutchTexture(String casing,boolean powered) {
         if (casing.equals("normal")) return Create.ID + ":block/clutch_"+(powered ? "on" : "off");
-        return CreateCasing.MODID + ":block/clutchs_"+(powered ? "on" : "off")+"/"+casing;
+        return CreateCasing.MODID + ":block/clutch_"+(powered ? "on" : "off")+"/"+casing;
     }
 
     public static String getFunnelFrameTexture(String casing) {
         if (casing.equals("normal")) return Create.ID + ":block/funnel/andesite_funnel_frame";
         if (casing.equals("brass")) return Create.ID + ":block/funnel/brass_funnel_frame";
         if (casing.equals("copper")) return Create.ID + ":block/funnel/copper_funnel_frame";
-        return CreateCasing.MODID + ":block/funnel_frames/"+casing;
+        return CreateCasing.MODID + ":block/funnel_frame/"+casing;
     }
 
     public static String getShortCasingTexture(String casing){
         if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/andesite_casing_short";
-        return CreateCasing.MODID + ":block/casing_shorts/" + casing;
+        return CreateCasing.MODID + ":block/casing_short/" + casing;
     }
 
     public static String getPistonCasingTexture(String casing){
         if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/andesite_casing_piston";
-        return CreateCasing.MODID + ":block/casing_pistons/" + casing;
+        return CreateCasing.MODID + ":block/casing_piston/" + casing;
     }
 
     public static String getPortableStorageInterfaceTexture(String casing){
         if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/portable_storage_interface";
-        return CreateCasing.MODID + ":block/portable_storage_interfaces/" + casing;
+        return CreateCasing.MODID + ":block/portable_storage_interface/" + casing;
     }
 
     public static String getPistonBottomTexture(String casing){
         if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/piston_bottom";
-        return CreateCasing.MODID + ":block/piston_bottoms/" + casing;
+        return CreateCasing.MODID + ":block/piston_bottom/" + casing;
     }
 
     public static String getPistonInnerTexture(String casing){
         if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/piston_inner";
-        return CreateCasing.MODID + ":block/piston_inners/" + casing;
+        return CreateCasing.MODID + ":block/piston_inner/" + casing;
     }
 
 

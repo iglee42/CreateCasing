@@ -1,9 +1,9 @@
 {
   "parent": "create:block/gearshift/block",
   "textures": {
-    "0": "createcasing:block/gearshifts_off/creative",
-    "1": "createcasing:block/gearboxes/creative",
-    "2": "createcasing:block/funnel_frames/creative",
-    "particle": "createcasing:block/gearshifts_off/creative"
+    "0": "createcasing:block/gearshift_off/creative",
+    "1": "createcasing:block/gearbox/creative",
+    "2": "createcasing:block/funnel_frame/creative",
+    "particle": "createcasing:block/gearshift_off/creative"
   }
 }

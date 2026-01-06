@@ -1,7 +1,7 @@
 {
   "parent": "create:block/portable_storage_interface/item",
   "textures": {
-    "0": "createcasing:block/portable_storage_interfaces/weathered_iron",
+    "0": "createcasing:block/portable_storage_interface/weathered_iron",
     "1": "create:block/weathered_iron_block",
     "particle": "create:block/weathered_iron_block"
   }

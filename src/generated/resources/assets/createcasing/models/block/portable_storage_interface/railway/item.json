@@ -1,7 +1,7 @@
 {
   "parent": "create:block/portable_storage_interface/item",
   "textures": {
-    "0": "createcasing:block/portable_storage_interfaces/railway",
+    "0": "createcasing:block/portable_storage_interface/railway",
     "1": "create:block/railway_casing",
     "particle": "create:block/railway_casing"
   }

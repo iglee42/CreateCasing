@@ -2,9 +2,9 @@
   "parent": "create:block/encased_cogwheel/block",
   "textures": {
     "1": "create:block/weathered_iron_block",
-    "4": "createcasing:block/gearboxes/weathered_iron",
+    "4": "createcasing:block/gearbox/weathered_iron",
     "casing": "create:block/weathered_iron_block",
     "particle": "create:block/weathered_iron_block",
-    "side": "createcasing:block/encased_cogwheels/weathered_iron"
+    "side": "createcasing:block/encased_cogwheel/weathered_iron"
   }
 }

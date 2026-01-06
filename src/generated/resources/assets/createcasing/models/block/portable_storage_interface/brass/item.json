@@ -1,7 +1,7 @@
 {
   "parent": "create:block/portable_storage_interface/item",
   "textures": {
-    "0": "createcasing:block/portable_storage_interfaces/brass",
+    "0": "createcasing:block/portable_storage_interface/brass",
     "1": "create:block/brass_casing",
     "particle": "create:block/brass_casing"
   }

@@ -1,9 +1,9 @@
 {
   "parent": "create:block/clutch/block",
   "textures": {
-    "0": "createcasing:block/clutchs_off/weathered_iron",
-    "1": "createcasing:block/gearboxes/weathered_iron",
-    "2": "createcasing:block/funnel_frames/weathered_iron",
-    "particle": "createcasing:block/clutchs_off/weathered_iron"
+    "0": "createcasing:block/clutch_off/weathered_iron",
+    "1": "createcasing:block/gearbox/weathered_iron",
+    "2": "createcasing:block/funnel_frame/weathered_iron",
+    "particle": "createcasing:block/clutch_off/weathered_iron"
   }
 }

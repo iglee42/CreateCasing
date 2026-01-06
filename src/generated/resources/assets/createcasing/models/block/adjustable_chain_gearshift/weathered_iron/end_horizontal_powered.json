@@ -2,6 +2,6 @@
   "parent": "createcasing:block/encased_chain_drive/weathered_iron/end_horizontal",
   "textures": {
     "particle": "create:block/weathered_iron_block",
-    "side": "createcasing:block/adjustable_chain_gearshifts_powered/weathered_iron"
+    "side": "createcasing:block/adjustable_chain_gearshift_powered/weathered_iron"
   }
 }

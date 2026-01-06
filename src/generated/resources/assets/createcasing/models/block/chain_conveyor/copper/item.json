@@ -1,9 +1,9 @@
 {
   "parent": "create:block/chain_conveyor/item",
   "textures": {
-    "bullwheel": "createcasing:block/bullwheels/copper",
-    "conveyor_casing": "createcasing:block/conveyor_casings/copper",
-    "conveyor_port": "createcasing:block/conveyor_ports/copper",
+    "bullwheel": "createcasing:block/bullwheel/copper",
+    "conveyor_casing": "createcasing:block/conveyor_casing/copper",
+    "conveyor_port": "createcasing:block/conveyor_port/copper",
     "particle": "create:block/copper_casing"
   }
 }

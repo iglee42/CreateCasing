@@ -1,9 +1,9 @@
 {
   "parent": "create:block/gearshift/block",
   "textures": {
-    "0": "createcasing:block/gearshifts_off/refined_radiance",
-    "1": "createcasing:block/gearboxes/refined_radiance",
-    "2": "createcasing:block/funnel_frames/refined_radiance",
-    "particle": "createcasing:block/gearshifts_off/refined_radiance"
+    "0": "createcasing:block/gearshift_off/refined_radiance",
+    "1": "createcasing:block/gearbox/refined_radiance",
+    "2": "createcasing:block/funnel_frame/refined_radiance",
+    "particle": "createcasing:block/gearshift_off/refined_radiance"
   }
 }

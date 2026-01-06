@@ -1,12 +1,12 @@
 {
   "parent": "create:block/deployer/vertical",
   "textures": {
-    "5": "createcasing:block/casing_pistons/industrial_iron",
-    "6": "createcasing:block/piston_bottoms/industrial_iron",
-    "7": "createcasing:block/piston_inners/industrial_iron",
-    "andesite_casing_short": "createcasing:block/casing_shorts/industrial_iron",
-    "gearbox": "createcasing:block/gearboxes/industrial_iron",
-    "gearbox_top": "createcasing:block/gearbox_tops/industrial_iron",
-    "particle": "createcasing:block/gearbox_tops/industrial_iron"
+    "5": "createcasing:block/casing_piston/industrial_iron",
+    "6": "createcasing:block/piston_bottom/industrial_iron",
+    "7": "createcasing:block/piston_inner/industrial_iron",
+    "andesite_casing_short": "createcasing:block/casing_short/industrial_iron",
+    "gearbox": "createcasing:block/gearbox/industrial_iron",
+    "gearbox_top": "createcasing:block/gearbox_top/industrial_iron",
+    "particle": "createcasing:block/gearbox_top/industrial_iron"
   }
 }

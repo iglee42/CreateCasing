@@ -1,9 +1,9 @@
 {
   "parent": "create:block/clutch/item",
   "textures": {
-    "0": "createcasing:block/clutchs_off/shadow_steel",
-    "1": "createcasing:block/gearboxes/shadow_steel",
-    "4": "createcasing:block/funnel_frames/shadow_steel",
-    "particle": "createcasing:block/clutchs_off/shadow_steel"
+    "0": "createcasing:block/clutch_off/shadow_steel",
+    "1": "createcasing:block/gearbox/shadow_steel",
+    "4": "createcasing:block/funnel_frame/shadow_steel",
+    "particle": "createcasing:block/clutch_off/shadow_steel"
   }
 }

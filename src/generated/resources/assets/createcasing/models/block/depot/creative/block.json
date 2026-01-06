@@ -1,8 +1,8 @@
 {
   "parent": "create:block/depot/block",
   "textures": {
-    "1": "createcasing:block/depot_sides/creative",
-    "2": "createcasing:block/depot_tops/creative",
+    "1": "createcasing:block/depot_side/creative",
+    "2": "createcasing:block/depot_top/creative",
     "3": "create:block/creative_casing",
     "particle": "create:block/creative_casing"
   }

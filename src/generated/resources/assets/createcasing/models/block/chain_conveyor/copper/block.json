@@ -1,7 +1,7 @@
 {
   "parent": "create:block/chain_conveyor/block",
   "textures": {
-    "0": "createcasing:block/conveyor_casings/copper",
+    "0": "createcasing:block/conveyor_casing/copper",
     "particle": "create:block/copper_casing"
   }
 }

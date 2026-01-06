@@ -1,7 +1,7 @@
 {
   "parent": "create:block/gearbox/item_vertical",
   "textures": {
-    "gearbox": "createcasing:block/gearboxes/shadow_steel",
+    "gearbox": "createcasing:block/gearbox/shadow_steel",
     "gearbox_top": "create:block/shadow_steel_casing",
     "particle": "create:block/shadow_steel_casing"
   }

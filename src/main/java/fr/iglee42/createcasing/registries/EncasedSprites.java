@@ -25,13 +25,13 @@ public class EncasedSprites {
     public static final CTSpriteShiftEntry CREATIVE_ENCASED_COGWHEEL_SIDE;
     public static final CTSpriteShiftEntry CREATIVE_ENCASED_COGWHEEL_OTHERSIDE;
 
-    public static final SpriteShiftEntry COPPER_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casings/copper");
-    public static final SpriteShiftEntry RAILWAY_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casings/railway");
-    public static final SpriteShiftEntry INDUSTRIAL_IRON_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casings/industrial_iron");
-    public static final SpriteShiftEntry WEATHERED_IRON_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casings/weathered_iron");
-    public static final SpriteShiftEntry CREATIVE_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casings/creative");
-    public static final SpriteShiftEntry REFINED_RADIANCE_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casings/refined_radiance");
-    public static final SpriteShiftEntry SHADOW_STEEL_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casings/shadow_steel");
+    public static final SpriteShiftEntry COPPER_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casing/copper");
+    public static final SpriteShiftEntry RAILWAY_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casing/railway");
+    public static final SpriteShiftEntry INDUSTRIAL_IRON_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casing/industrial_iron");
+    public static final SpriteShiftEntry WEATHERED_IRON_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casing/weathered_iron");
+    public static final SpriteShiftEntry CREATIVE_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casing/creative");
+    public static final SpriteShiftEntry REFINED_RADIANCE_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casing/refined_radiance");
+    public static final SpriteShiftEntry SHADOW_STEEL_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casing/shadow_steel");
 
     public static final SpriteShiftEntry INDUSTRIAL_IRON = getFromCreate("block/industrial_iron_block");
     public static final SpriteShiftEntry WEATHERED_IRON = getFromCreate("block/weathered_iron_block");
@@ -107,17 +107,17 @@ public class EncasedSprites {
         };
     }
     static {
-        RAILWAY_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheels/railway");
-        RAILWAY_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheels/railway");
-        COPPER_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheels/copper");
-        COPPER_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheels/copper");
-        SHADOW_STEEL_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheels/shadow");
-        SHADOW_STEEL_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheels/shadow");
-        REFINED_RADIANCE_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheels/radiance");
-        REFINED_RADIANCE_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheels/radiance");
+        RAILWAY_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheel/railway");
+        RAILWAY_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheel/railway");
+        COPPER_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheel/copper");
+        COPPER_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheel/copper");
+        SHADOW_STEEL_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheel/shadow");
+        SHADOW_STEEL_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheel/shadow");
+        REFINED_RADIANCE_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheel/radiance");
+        REFINED_RADIANCE_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheel/radiance");
         //CREATIVE_CASING = omni("creative_casing");
-        CREATIVE_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheels/creative");
-        CREATIVE_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheels/creative");
+        CREATIVE_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheel/creative");
+        CREATIVE_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheel/creative");
     }
 
 }

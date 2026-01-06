@@ -2,9 +2,9 @@
   "parent": "create:block/encased_large_cogwheel/block_bottom",
   "textures": {
     "1": "create:block/railway_casing",
-    "4": "createcasing:block/gearboxes/railway",
+    "4": "createcasing:block/gearbox/railway",
     "casing": "create:block/railway_casing",
     "particle": "create:block/railway_casing",
-    "side": "createcasing:block/encased_cogwheels/railway_connected"
+    "side": "createcasing:block/encased_cogwheel/railway_connected"
   }
 }

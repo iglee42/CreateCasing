@@ -1,7 +1,7 @@
 {
   "parent": "create:block/portable_storage_interface/block",
   "textures": {
-    "0": "createcasing:block/portable_storage_interfaces/creative",
+    "0": "createcasing:block/portable_storage_interface/creative",
     "1": "create:block/creative_casing",
     "particle": "create:block/creative_casing"
   }

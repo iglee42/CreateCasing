@@ -2,6 +2,6 @@
   "parent": "createcasing:block/encased_chain_drive/industrial_iron/end_vertical",
   "textures": {
     "particle": "create:block/industrial_iron_block",
-    "side": "createcasing:block/adjustable_chain_gearshifts/industrial_iron"
+    "side": "createcasing:block/adjustable_chain_gearshift/industrial_iron"
   }
 }

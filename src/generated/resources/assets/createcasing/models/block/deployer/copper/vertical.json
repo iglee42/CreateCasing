@@ -1,12 +1,12 @@
 {
   "parent": "create:block/deployer/vertical",
   "textures": {
-    "5": "createcasing:block/casing_pistons/copper",
-    "6": "createcasing:block/piston_bottoms/copper",
-    "7": "createcasing:block/piston_inners/copper",
-    "andesite_casing_short": "createcasing:block/casing_shorts/copper",
-    "gearbox": "createcasing:block/gearboxes/copper",
-    "gearbox_top": "createcasing:block/gearbox_tops/copper",
-    "particle": "createcasing:block/gearbox_tops/copper"
+    "5": "createcasing:block/casing_piston/copper",
+    "6": "createcasing:block/piston_bottom/copper",
+    "7": "createcasing:block/piston_inner/copper",
+    "andesite_casing_short": "createcasing:block/casing_short/copper",
+    "gearbox": "createcasing:block/gearbox/copper",
+    "gearbox_top": "createcasing:block/gearbox_top/copper",
+    "particle": "createcasing:block/gearbox_top/copper"
   }
 }

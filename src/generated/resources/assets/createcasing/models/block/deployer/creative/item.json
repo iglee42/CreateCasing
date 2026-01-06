@@ -1,12 +1,12 @@
 {
   "parent": "create:block/deployer/item",
   "textures": {
-    "10": "createcasing:block/casing_pistons/creative",
-    "6": "createcasing:block/piston_bottoms/creative",
-    "7": "createcasing:block/piston_inners/creative",
-    "andesite_casing_short": "createcasing:block/casing_shorts/creative",
-    "gearbox": "createcasing:block/gearboxes/creative",
-    "gearbox_top": "createcasing:block/gearbox_tops/creative",
-    "particle": "createcasing:block/gearbox_tops/creative"
+    "10": "createcasing:block/casing_piston/creative",
+    "6": "createcasing:block/piston_bottom/creative",
+    "7": "createcasing:block/piston_inner/creative",
+    "andesite_casing_short": "createcasing:block/casing_short/creative",
+    "gearbox": "createcasing:block/gearbox/creative",
+    "gearbox_top": "createcasing:block/gearbox_top/creative",
+    "particle": "createcasing:block/gearbox_top/creative"
   }
 }
