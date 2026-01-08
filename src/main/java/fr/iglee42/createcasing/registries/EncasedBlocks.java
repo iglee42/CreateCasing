@@ -2,16 +2,27 @@ package fr.iglee42.createcasing.registries;
 
 import com.simibubi.create.*;
 import com.simibubi.create.api.stress.BlockStressValues;
+import com.simibubi.create.content.contraptions.actors.harvester.HarvesterBlock;
+import com.simibubi.create.content.contraptions.actors.harvester.HarvesterMovementBehaviour;
+import com.simibubi.create.content.contraptions.actors.plough.PloughBlock;
+import com.simibubi.create.content.contraptions.actors.plough.PloughMovementBehaviour;
 import com.simibubi.create.content.contraptions.actors.psi.PortableStorageInterfaceBlock;
 import com.simibubi.create.content.contraptions.actors.psi.PortableStorageInterfaceMovement;
+import com.simibubi.create.content.contraptions.actors.roller.RollerBlockItem;
+import com.simibubi.create.content.contraptions.actors.roller.RollerMovementBehaviour;
 import com.simibubi.create.content.decoration.encasing.*;
 import com.simibubi.create.content.fluids.PipeAttachmentModel;
 import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
 import com.simibubi.create.content.kinetics.deployer.DeployerBlock;
 import com.simibubi.create.content.kinetics.deployer.DeployerMovementBehaviour;
 import com.simibubi.create.content.kinetics.deployer.DeployerMovingInteraction;
+import com.simibubi.create.content.kinetics.drill.DrillBlock;
+import com.simibubi.create.content.kinetics.drill.DrillMovementBehaviour;
 import com.simibubi.create.content.kinetics.fan.EncasedFanBlock;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlock;
+import com.simibubi.create.content.kinetics.saw.SawBlock;
+import com.simibubi.create.content.kinetics.saw.SawGenerator;
+import com.simibubi.create.content.kinetics.saw.SawMovementBehaviour;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockModel;
 import com.simibubi.create.content.kinetics.simpleRelays.CogWheelBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
@@ -46,6 +57,7 @@ import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
 import fr.iglee42.createcasing.config.CCStress;
 import fr.iglee42.createcasing.items.WoodenCogwheelBlockItem;
+import fr.iglee42.createcasing.registries.generators.CustomSawGenerator;
 import fr.iglee42.createcasing.transmissions.TransmissionSet;
 import fr.iglee42.createcasing.transmissions.TransmissionSets;
 import fr.iglee42.createcasing.utils.CasingBuilderTransformers;
@@ -60,6 +72,7 @@ import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.MapColor;
+import net.neoforged.fml.ModList;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.registries.DeferredRegister;
 
@@ -74,6 +87,7 @@ import static com.simibubi.create.api.behaviour.movement.MovementBehaviour.movem
 import static com.simibubi.create.api.contraption.storage.item.MountedItemStorageType.mountedItemStorage;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.*;
+import static fr.iglee42.createcasing.CreateCasing.MODID;
 import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 import static fr.iglee42.createcasing.registries.EncasedBlockStateGens.*;
 
@@ -416,6 +430,84 @@ public class EncasedBlocks {
                 .register();
     }
 
+    public static BlockEntry<CustomHarvesterBlock> createHarvester(String name){
+        return REGISTRATE.block(name + "_mechanical_harvester", CustomHarvesterBlock::new)
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.mapColor(MapColor.METAL)
+                        .forceSolidOn())
+                .transform(axeOrPickaxe())
+                .onRegister(movementBehaviour(new HarvesterMovementBehaviour()))
+                .blockstate((c,p)->p.horizontalBlock(c.get(),harvesterModel(p,name,false)))
+                .addLayer(() -> RenderType::cutoutMipped)
+                .item()
+                .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
+                .model((c,p)->p.getBuilder(c.getName()).parent(harvesterModel(p,name,true)))
+                .build()
+                .register();
+    }
+
+    public static BlockEntry<PloughBlock> createPlough(String name){
+        return REGISTRATE.block(name+"_mechanical_plough", PloughBlock::new)
+			.initialProperties(SharedProperties::stone)
+			.properties(p -> p.mapColor(MapColor.COLOR_GRAY)
+				.forceSolidOn())
+			.transform(axeOrPickaxe())
+			.onRegister(movementBehaviour(new PloughMovementBehaviour()))
+            .blockstate((c,p)->p.horizontalBlock(c.get(),ploughModel(p,name)))
+			.item()
+			.tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
+            .model((c,p)->p.getBuilder(c.getName()).parent(new ModelFile.ExistingModelFile(CreateCasing.asResource("block/mechanical_plough/"+name),p.existingFileHelper)))
+			.build()
+			.register();
+    }
+    public static BlockEntry<CustomRollerBlock> createRoller(String name){
+        return REGISTRATE.block(name+"_mechanical_roller", CustomRollerBlock::new)
+			.initialProperties(SharedProperties::stone)
+			.properties(p -> p.mapColor(MapColor.COLOR_GRAY)
+				.noOcclusion())
+			.transform(axeOrPickaxe())
+			.onRegister(movementBehaviour(new RollerMovementBehaviour()))
+			.blockstate((c,p)->p.horizontalBlock(c.get(),rollerModel(p,name,false)))
+			.addLayer(() -> RenderType::cutoutMipped)
+			.item(RollerBlockItem::new)
+			.tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
+            .model((c,p)->p.getBuilder(c.getName()).parent(rollerModel(p,name,true)))
+            .build()
+			.register();
+    }
+
+    public static BlockEntry<CustomSawBlock> createSaw(String name){
+        return REGISTRATE.block(name+"_mechanical_saw", CustomSawBlock::new)
+                .initialProperties(SharedProperties::stone)
+                .addLayer(() -> RenderType::cutoutMipped)
+                .properties(p -> p.mapColor(MapColor.PODZOL))
+                .transform(axeOrPickaxe())
+                .blockstate(new CustomSawGenerator(name)::generate)
+                .transform(CCStress.setImpact(4.0))
+                .onRegister(movementBehaviour(new SawMovementBehaviour()))
+                .addLayer(() -> RenderType::cutoutMipped)
+                .item()
+                .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
+                .model((c,p)->p.getBuilder(c.getName()).parent(sawItemModel(p,name)))
+                .build()
+                .register();
+    }
+
+    public static BlockEntry<CustomDrillBlock> createDrill(String name){
+        return REGISTRATE.block(name+"_mechanical_drill", CustomDrillBlock::new)
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.mapColor(MapColor.PODZOL))
+                .transform(axeOrPickaxe())
+                .blockstate((c,p)->p.directionalBlock(c.get(),drillModel(p,name,false)))
+                .transform(CCStress.setImpact(4.0))
+                .onRegister(movementBehaviour(new DrillMovementBehaviour()))
+                .item()
+                .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
+                .model((c,p)->p.getBuilder(c.getName()).parent(drillModel(p,name,true)))
+                .build()
+                .register();
+    }
+
     private static <T extends Block> BlockBuilder<T,CreateRegistrate> connectedTexture( BlockBuilder<T, CreateRegistrate> entry,CTSpriteShiftEntry sprite,BiConsumer<T, CasingConnectivity> consumer){
         if (sprite != null){
             return entry.onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(sprite)))
@@ -482,6 +574,21 @@ public class EncasedBlocks {
 
             if (set.doesGenerateEncasedFan())
                 set.setEncasedFan(createEncasedFan(set.getName()));
+
+            if (set.doesGenerateHarvester())
+                set.setHarvester(createHarvester(set.getName()));
+
+            if (set.doesGenerateSaw())
+                set.setSaw(createSaw(set.getName()));
+
+            if (set.doesGenerateDrill())
+                set.setDrill(createDrill(set.getName()));
+
+            if (set.doesGeneratePlough())
+                set.setPlough(createPlough(set.getName()));
+
+            if (set.doesGenerateRoller())
+                set.setRoller(createRoller(set.getName()));
         });
 
         TransmissionSets.getSets().forEach(set->{

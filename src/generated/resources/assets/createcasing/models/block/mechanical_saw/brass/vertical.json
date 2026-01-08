@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/mechanical_saw/vertical",
+  "textures": {
+    "andesite_casing_short": "createcasing:block/casing_short/brass",
+    "gearbox": "create:block/brass_gearbox",
+    "gearbox_top": "createcasing:block/gearbox_top/brass",
+    "mechanical_saw_top": "createcasing:block/mechanical_saw_top/brass",
+    "particle": "createcasing:block/mechanical_saw_top/brass"
+  }
+}

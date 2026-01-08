@@ -32,6 +32,11 @@ public class CasingSets {
             .existingGearbox(()->AllBlocks.GEARBOX.get(),()-> AllItems.VERTICAL_GEARBOX.get())
             .existingDeployer(()->AllBlocks.DEPLOYER.get())
             .existingEncasedFan(()->AllBlocks.ENCASED_FAN.get())
+            .existingHarvester(()->AllBlocks.MECHANICAL_HARVESTER.get())
+            .existingSaw(()->AllBlocks.MECHANICAL_SAW.get())
+            .existingDrill(()->AllBlocks.MECHANICAL_DRILL.get())
+            .existingPlough(()->AllBlocks.MECHANICAL_PLOUGH.get())
+            .existingRoller(()->AllBlocks.MECHANICAL_ROLLER.get())
             .fluids()
             .encasedCustomTransmissionBlocks()
             .configurableGearbox()
@@ -47,7 +52,7 @@ public class CasingSets {
             .encasedCustomTransmissionBlocks()
             .complexTransmissionBlocks(()->EncasedPartialModels.BRASS_CONVEYOR_GUARD,()->EncasedPartialModels.BRASS_CONVEYOR_WHEEL,()->EncasedPartialModels.BRASS_CONVEYOR_SHAFT)
             .processingBlocks(()->EncasedPartialModels.BRASS_MIXER_HEAD)
-            .contraptionBlocks()
+            .contraptionBlocks(()->EncasedPartialModels.BRASS_DRILL_HEAD)
     );
     public static final CasingSet COPPER = register("copper",new CasingSet.Options()
             .existingCasing(()->AllBlocks.COPPER_CASING.get())
@@ -60,31 +65,31 @@ public class CasingSets {
             .belt(()->EncasedSprites.COPPER_BELT_CASING,()-> EncasedPartialModels.COPPER_BELT_COVER_X,()->EncasedPartialModels.COPPER_BELT_COVER_Z)
             .complexTransmissionBlocks(()->EncasedPartialModels.COPPER_CONVEYOR_GUARD,()->EncasedPartialModels.COPPER_CONVEYOR_WHEEL,()->EncasedPartialModels.COPPER_CONVEYOR_SHAFT)
             .processingBlocks(()->EncasedPartialModels.COPPER_MIXER_HEAD)
-            .contraptionBlocks()
+            .contraptionBlocks(()->EncasedPartialModels.COPPER_DRILL_HEAD)
     );
     public static final CasingSet RAILWAY = register("railway",new CasingSet.Options()
             .existingCasing(()->AllBlocks.RAILWAY_CASING.get())
-            .everythingExceptCasing(()->AllSpriteShifts.RAILWAY_CASING,()->EncasedSprites.RAILWAY_BELT_CASING,()-> EncasedPartialModels.RAILWAY_BELT_COVER_X,()->EncasedPartialModels.RAILWAY_BELT_COVER_Z,()-> EncasedSprites.RAILWAY_ENCASED_COGWHEEL_SIDE,()->EncasedSprites.RAILWAY_ENCASED_COGWHEEL_OTHERSIDE,()->EncasedPartialModels.RAILWAY_CONVEYOR_GUARD,()->EncasedPartialModels.RAILWAY_CONVEYOR_WHEEL,()->EncasedPartialModels.RAILWAY_CONVEYOR_SHAFT,()->EncasedPartialModels.RAILWAY_MIXER_HEAD)
+            .everythingExceptCasing(()->AllSpriteShifts.RAILWAY_CASING,()->EncasedSprites.RAILWAY_BELT_CASING,()-> EncasedPartialModels.RAILWAY_BELT_COVER_X,()->EncasedPartialModels.RAILWAY_BELT_COVER_Z,()-> EncasedSprites.RAILWAY_ENCASED_COGWHEEL_SIDE,()->EncasedSprites.RAILWAY_ENCASED_COGWHEEL_OTHERSIDE,()->EncasedPartialModels.RAILWAY_CONVEYOR_GUARD,()->EncasedPartialModels.RAILWAY_CONVEYOR_WHEEL,()->EncasedPartialModels.RAILWAY_CONVEYOR_SHAFT,()->EncasedPartialModels.RAILWAY_MIXER_HEAD,()->EncasedPartialModels.RAILWAY_DRILL_HEAD)
     );
     public static final CasingSet SHADOW_STEEL = register("shadow_steel",new CasingSet.Options()
             .existingCasing(()->AllBlocks.SHADOW_STEEL_CASING.get())
-            .everythingExceptCasing(()->AllSpriteShifts.SHADOW_STEEL_CASING,()->EncasedSprites.SHADOW_STEEL_BELT_CASING,()-> EncasedPartialModels.SHADOW_STEEL_BELT_COVER_X,()->EncasedPartialModels.SHADOW_STEEL_BELT_COVER_Z,()->EncasedSprites.SHADOW_STEEL_ENCASED_COGWHEEL_SIDE,()->EncasedSprites.SHADOW_STEEL_ENCASED_COGWHEEL_OTHERSIDE,()->EncasedPartialModels.SHADOW_STEEL_CONVEYOR_GUARD,()->EncasedPartialModels.SHADOW_STEEL_CONVEYOR_WHEEL,()->EncasedPartialModels.SHADOW_STEEL_CONVEYOR_SHAFT,()->EncasedPartialModels.SHADOW_STEEL_MIXER_HEAD)
+            .everythingExceptCasing(()->AllSpriteShifts.SHADOW_STEEL_CASING,()->EncasedSprites.SHADOW_STEEL_BELT_CASING,()-> EncasedPartialModels.SHADOW_STEEL_BELT_COVER_X,()->EncasedPartialModels.SHADOW_STEEL_BELT_COVER_Z,()->EncasedSprites.SHADOW_STEEL_ENCASED_COGWHEEL_SIDE,()->EncasedSprites.SHADOW_STEEL_ENCASED_COGWHEEL_OTHERSIDE,()->EncasedPartialModels.SHADOW_STEEL_CONVEYOR_GUARD,()->EncasedPartialModels.SHADOW_STEEL_CONVEYOR_WHEEL,()->EncasedPartialModels.SHADOW_STEEL_CONVEYOR_SHAFT,()->EncasedPartialModels.SHADOW_STEEL_MIXER_HEAD,()->EncasedPartialModels.SHADOW_STEEL_DRILL_HEAD)
     );
     public static final CasingSet REFINED_RADIANCE = register("refined_radiance",new CasingSet.Options()
             .existingCasing(()->AllBlocks.REFINED_RADIANCE_CASING.get())
-            .everythingExceptCasing(()->AllSpriteShifts.REFINED_RADIANCE_CASING,()->EncasedSprites.REFINED_RADIANCE_BELT_CASING,()-> EncasedPartialModels.REFINED_RADIANCE_BELT_COVER_X,()->EncasedPartialModels.REFINED_RADIANCE_BELT_COVER_Z,()->EncasedSprites.REFINED_RADIANCE_ENCASED_COGWHEEL_SIDE,()->EncasedSprites.REFINED_RADIANCE_ENCASED_COGWHEEL_OTHERSIDE,()->EncasedPartialModels.REFINED_RADIANCE_CONVEYOR_GUARD,()->EncasedPartialModels.REFINED_RADIANCE_CONVEYOR_WHEEL,()->EncasedPartialModels.REFINED_RADIANCE_CONVEYOR_SHAFT,()->EncasedPartialModels.REFINED_RADIANCE_MIXER_HEAD)
+            .everythingExceptCasing(()->AllSpriteShifts.REFINED_RADIANCE_CASING,()->EncasedSprites.REFINED_RADIANCE_BELT_CASING,()-> EncasedPartialModels.REFINED_RADIANCE_BELT_COVER_X,()->EncasedPartialModels.REFINED_RADIANCE_BELT_COVER_Z,()->EncasedSprites.REFINED_RADIANCE_ENCASED_COGWHEEL_SIDE,()->EncasedSprites.REFINED_RADIANCE_ENCASED_COGWHEEL_OTHERSIDE,()->EncasedPartialModels.REFINED_RADIANCE_CONVEYOR_GUARD,()->EncasedPartialModels.REFINED_RADIANCE_CONVEYOR_WHEEL,()->EncasedPartialModels.REFINED_RADIANCE_CONVEYOR_SHAFT,()->EncasedPartialModels.REFINED_RADIANCE_MIXER_HEAD,()->EncasedPartialModels.REFINED_RADIANCE_DRILL_HEAD)
     );
     public static final CasingSet CREATIVE = register("creative",new CasingSet.Options()
-            .everything(()->AllSpriteShifts.CREATIVE_CASING,()->EncasedSprites.CREATIVE_BELT_CASING,()-> EncasedPartialModels.CREATIVE_BELT_COVER_X,()->EncasedPartialModels.CREATIVE_BELT_COVER_Z,()->EncasedSprites.CREATIVE_ENCASED_COGWHEEL_SIDE,()->EncasedSprites.CREATIVE_ENCASED_COGWHEEL_OTHERSIDE,()->EncasedPartialModels.CREATIVE_CONVEYOR_GUARD,()->EncasedPartialModels.CREATIVE_CONVEYOR_WHEEL,()->EncasedPartialModels.CREATIVE_CONVEYOR_SHAFT,()->EncasedPartialModels.CREATIVE_MIXER_HEAD)
+            .everything(()->AllSpriteShifts.CREATIVE_CASING,()->EncasedSprites.CREATIVE_BELT_CASING,()-> EncasedPartialModels.CREATIVE_BELT_COVER_X,()->EncasedPartialModels.CREATIVE_BELT_COVER_Z,()->EncasedSprites.CREATIVE_ENCASED_COGWHEEL_SIDE,()->EncasedSprites.CREATIVE_ENCASED_COGWHEEL_OTHERSIDE,()->EncasedPartialModels.CREATIVE_CONVEYOR_GUARD,()->EncasedPartialModels.CREATIVE_CONVEYOR_WHEEL,()->EncasedPartialModels.CREATIVE_CONVEYOR_SHAFT,()->EncasedPartialModels.CREATIVE_MIXER_HEAD,()->EncasedPartialModels.CREATIVE_DRILL_HEAD)
     );
     public static final CasingSet INDUSTRIAL_IRON = register("industrial_iron",new CasingSet.Options()
             .existingCasing(()->AllBlocks.INDUSTRIAL_IRON_BLOCK.get())
-            .everythingExceptCasing(()->null,()->EncasedSprites.INDUSTRIAL_IRON_BELT_CASING,()-> EncasedPartialModels.INDUSTRIAL_IRON_BELT_COVER_X,()->EncasedPartialModels.INDUSTRIAL_IRON_BELT_COVER_Z,()->null,()->null,()->EncasedPartialModels.INDUSTRIAL_IRON_CONVEYOR_GUARD,()->EncasedPartialModels.INDUSTRIAL_IRON_CONVEYOR_WHEEL,()->EncasedPartialModels.INDUSTRIAL_IRON_CONVEYOR_SHAFT,()->EncasedPartialModels.INDUSTRIAL_IRON_MIXER_HEAD)
+            .everythingExceptCasing(()->null,()->EncasedSprites.INDUSTRIAL_IRON_BELT_CASING,()-> EncasedPartialModels.INDUSTRIAL_IRON_BELT_COVER_X,()->EncasedPartialModels.INDUSTRIAL_IRON_BELT_COVER_Z,()->null,()->null,()->EncasedPartialModels.INDUSTRIAL_IRON_CONVEYOR_GUARD,()->EncasedPartialModels.INDUSTRIAL_IRON_CONVEYOR_WHEEL,()->EncasedPartialModels.INDUSTRIAL_IRON_CONVEYOR_SHAFT,()->EncasedPartialModels.INDUSTRIAL_IRON_MIXER_HEAD,()->EncasedPartialModels.INDUSTRIAL_IRON_DRILL_HEAD)
 
     );
     public static final CasingSet WEATHERED_IRON = register("weathered_iron",new CasingSet.Options()
             .existingCasing(()->AllBlocks.WEATHERED_IRON_BLOCK.get())
-            .everythingExceptCasing(()->null,()->EncasedSprites.WEATHERED_IRON_BELT_CASING,()-> EncasedPartialModels.WEATHERED_IRON_BELT_COVER_X,()->EncasedPartialModels.WEATHERED_IRON_BELT_COVER_Z,()->null,()->null,()->EncasedPartialModels.WEATHERED_IRON_CONVEYOR_GUARD,()->EncasedPartialModels.WEATHERED_IRON_CONVEYOR_WHEEL,()->EncasedPartialModels.WEATHERED_IRON_CONVEYOR_SHAFT,()->EncasedPartialModels.WEATHERED_IRON_MIXER_HEAD)
+            .everythingExceptCasing(()->null,()->EncasedSprites.WEATHERED_IRON_BELT_CASING,()-> EncasedPartialModels.WEATHERED_IRON_BELT_COVER_X,()->EncasedPartialModels.WEATHERED_IRON_BELT_COVER_Z,()->null,()->null,()->EncasedPartialModels.WEATHERED_IRON_CONVEYOR_GUARD,()->EncasedPartialModels.WEATHERED_IRON_CONVEYOR_WHEEL,()->EncasedPartialModels.WEATHERED_IRON_CONVEYOR_SHAFT,()->EncasedPartialModels.WEATHERED_IRON_MIXER_HEAD,()->EncasedPartialModels.WEATHERED_IRON_DRILL_HEAD)
     );
 
     public static CasingSet register(String id, CasingSet.Options options){

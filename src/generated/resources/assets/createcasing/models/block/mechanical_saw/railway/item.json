@@ -1,0 +1,11 @@
+{
+  "parent": "create:block/mechanical_saw/item",
+  "textures": {
+    "andesite_casing_short": "createcasing:block/casing_short/railway",
+    "encased_belt": "createcasing:block/encased_chain_drive/railway",
+    "gearbox": "createcasing:block/gearbox/railway",
+    "gearbox_top": "createcasing:block/gearbox_top/railway",
+    "particle": "createcasing:block/gearbox_top/railway",
+    "slit": "createcasing:block/mechanical_saw_top_no_slot/railway"
+  }
+}

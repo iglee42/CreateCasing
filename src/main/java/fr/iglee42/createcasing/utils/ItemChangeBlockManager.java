@@ -4,6 +4,7 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.kinetics.base.DirectionalKineticBlock;
 import com.simibubi.create.content.kinetics.base.HorizontalKineticBlock;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
+import com.simibubi.create.content.kinetics.saw.SawBlock;
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.blocks.ConfigurableGearboxBlock;
 import fr.iglee42.createcasing.casings.CasingSet;
@@ -27,11 +28,12 @@ import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.stream.Collectors;
 
-import static com.simibubi.create.content.kinetics.base.DirectionalKineticBlock.FACING;
-import static com.simibubi.create.content.kinetics.base.HorizontalKineticBlock.HORIZONTAL_FACING;
 import static com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock.AXIS;
+import static net.minecraft.world.level.block.state.properties.BlockStateProperties.FACING;
+import static net.minecraft.world.level.block.state.properties.BlockStateProperties.HORIZONTAL_FACING;
 
 @EventBusSubscriber(modid = CreateCasing.MODID)
 public class ItemChangeBlockManager {
@@ -45,19 +47,19 @@ public class ItemChangeBlockManager {
         CasingSet casingSet;
         if ((casingSet = getSetForCasing(event.getItemStack().getItem())) != null && ModConfigs.common().kinetics.casingBlockSwappable.get()) {
             if (casingSet.isInSet(state.getBlock())) return;
-            if (isGearbox(state) && casingSet.getGearbox() != null)
+            if (isElementInSet(state,CasingSet::getGearbox) && casingSet.getGearbox() != null)
                 changeAxisBlock(event, state, level, casingSet.getGearbox().defaultBlockState());
-            if (isMixer(state) && casingSet.getMixer() != null)
+            if (isElementInSet(state,CasingSet::getMixer) && casingSet.getMixer() != null)
                 changeBlock(event, state, level, casingSet.getMixer().defaultBlockState());
-            if (isPress(state)&& casingSet.getPress() != null)
+            if (isElementInSet(state,CasingSet::getPress)&& casingSet.getPress() != null)
                 changeHorizontalDirectionBlock(event, state, level, casingSet.getPress().defaultBlockState());
-            if (isDepot(state) && event.getFace() != Direction.UP && casingSet.getDepot() != null)
+            if (isElementInSet(state,CasingSet::getDepot) && event.getFace() != Direction.UP && casingSet.getDepot() != null)
                 changeBlock(event, state, level, casingSet.getDepot().defaultBlockState());
-            if (isChainDrive(state) && casingSet.getChainDrive() != null)
+            if (isElementInSet(state,CasingSet::getChainDrive) && casingSet.getChainDrive() != null)
                 changeAxisBlock(event, state, level, casingSet.getChainDrive().defaultBlockState());
-            if (isChainGearshift(state) && casingSet.getChainGearshift() != null)
+            if (isElementInSet(state,CasingSet::getChainGearshift) && casingSet.getChainGearshift() != null)
                 changeAxisBlock(event, state, level, casingSet.getChainGearshift().defaultBlockState());
-            if (isConfigurableGearbox(state) && casingSet.getConfigurableGearbox() != null)
+            if (isElementInSet(state,CasingSet::getConfigurableGearbox) && casingSet.getConfigurableGearbox() != null)
             {
                 BlockState newState = casingSet.getConfigurableGearbox().defaultBlockState();
                 for (Direction dir : Iterate.directions) {
@@ -66,23 +68,40 @@ public class ItemChangeBlockManager {
                 }
                 changeBlock(event, state, level, newState);
             }
-            if (isChainConveyor(state) && casingSet.getChainConveyor() != null) {
+            if (isElementInSet(state,CasingSet::getChainConveyor) && casingSet.getChainConveyor() != null) {
                 changeBlock(event, state, level, casingSet.getChainConveyor().defaultBlockState());
             }
-            if (isGearshift(state) && casingSet.getGearshift() != null){
+            if (isElementInSet(state,CasingSet::getGearshift) && casingSet.getGearshift() != null){
                 changeAxisBlock(event,state,level, casingSet.getGearshift().defaultBlockState());
             }
-            if (isClutch(state) && casingSet.getClutch() != null){
+            if (isElementInSet(state,CasingSet::getClutch) && casingSet.getClutch() != null){
                 changeAxisBlock(event,state,level, casingSet.getClutch().defaultBlockState());
             }
-            if (isDeployer(state) && casingSet.getDeployer() != null){
+            if (isElementInSet(state,CasingSet::getDeployer) && casingSet.getDeployer() != null){
                 changeFacingBlock(event,state,level, casingSet.getDeployer().defaultBlockState());
             }
-            if (isStorageInterface(state) && casingSet.getStorageInterface() != null){
+            if (isElementInSet(state,CasingSet::getStorageInterface) && casingSet.getStorageInterface() != null){
                 changeFacingBlock(event,state,level, casingSet.getStorageInterface().defaultBlockState());
             }
-            if (isEncasedFan(state) && casingSet.getEncasedFan() != null){
+            if (isElementInSet(state,CasingSet::getEncasedFan) && casingSet.getEncasedFan() != null){
                 changeFacingBlock(event,state,level,casingSet.getEncasedFan().defaultBlockState());
+            }
+            if (isElementInSet(state,CasingSet::getHarvester) && casingSet.getHarvester() != null){
+                changeHorizontalDirectionBlock(event,state,level,casingSet.getHarvester().defaultBlockState());
+            }
+            if (isElementInSet(state,CasingSet::getSaw) && casingSet.getSaw() != null){
+                BlockState bs = casingSet.getSaw().defaultBlockState();
+                bs = bs.setValue(SawBlock.AXIS_ALONG_FIRST_COORDINATE,state.getValue(SawBlock.AXIS_ALONG_FIRST_COORDINATE)).setValue(SawBlock.FLIPPED,state.getValue(SawBlock.FLIPPED));
+                changeFacingBlock(event,state,level,bs);
+            }
+            if (isElementInSet(state,CasingSet::getDrill) && casingSet.getDrill() != null){
+                changeFacingBlock(event,state,level,casingSet.getDrill().defaultBlockState());
+            }
+            if (isElementInSet(state,CasingSet::getPlough) && casingSet.getPlough() != null){
+                changeHorizontalDirectionBlock(event,state,level,casingSet.getPlough().defaultBlockState());
+            }
+            if (isElementInSet(state,CasingSet::getRoller) && casingSet.getRoller() != null){
+                changeHorizontalDirectionBlock(event,state,level,casingSet.getRoller().defaultBlockState());
             }
         }
         TransmissionSet transmissionSet;
@@ -106,7 +125,7 @@ public class ItemChangeBlockManager {
     }
 
     private static void changeHorizontalDirectionBlock(PlayerInteractEvent.RightClickBlock event,BlockState state,Level level,BlockState newBlock){
-        if (!(state.getBlock() instanceof HorizontalKineticBlock))return;
+        if (!state.hasProperty(HORIZONTAL_FACING)) return;
         Direction facing = state.getValue(HORIZONTAL_FACING);
         changeBlock(event,state,level,newBlock.setValue(HORIZONTAL_FACING,facing));
     }
@@ -140,54 +159,8 @@ public class ItemChangeBlockManager {
                 .orElse(null);
     }
 
-    public static boolean isGearbox(BlockState state){
-        return CasingSets.getSets().stream().filter(set->set.getGearbox() != null).anyMatch(set->state.getBlock().equals(set.getGearbox()));
-    }
-
-    public static boolean isPress(BlockState state){
-        return CasingSets.getSets().stream().filter(set->set.getPress() != null).anyMatch(set->state.getBlock().equals(set.getPress()));
-    }
-
-    public static boolean isMixer(BlockState state){
-        return CasingSets.getSets().stream().filter(set->set.getMixer() != null).anyMatch(set->state.getBlock().equals(set.getMixer()));
-    }
-
-    public static boolean isDepot(BlockState state){
-        return CasingSets.getSets().stream().filter(set->set.getDepot() != null).anyMatch(set->state.getBlock().equals(set.getDepot()));
-    }
-
-    public static boolean isChainDrive(BlockState state){
-        return CasingSets.getSets().stream().filter(set->set.getChainDrive() != null).anyMatch(set->state.getBlock().equals(set.getChainDrive()));
-    }
-
-    public static boolean isChainGearshift(BlockState state){
-        return CasingSets.getSets().stream().filter(set->set.getChainGearshift() != null).anyMatch(set->state.getBlock().equals(set.getChainGearshift()));
-    }
-
-    public static boolean isConfigurableGearbox(BlockState state){
-        return CasingSets.getSets().stream().filter(set->set.getConfigurableGearbox() != null).anyMatch(set->state.getBlock().equals(set.getConfigurableGearbox()));
-    }
-
-    public static boolean isChainConveyor(BlockState state){
-        return CasingSets.getSets().stream().filter(set->set.getChainConveyor() != null).anyMatch(set->state.getBlock().equals(set.getChainConveyor()));
-    }
-
-    public static boolean isGearshift(BlockState state){
-        return CasingSets.getSets().stream().filter(set->set.getGearshift() != null).anyMatch(set->state.getBlock().equals(set.getGearshift()));
-    }
-
-    public static boolean isClutch(BlockState state){
-        return CasingSets.getSets().stream().filter(set->set.getClutch() != null).anyMatch(set->state.getBlock().equals(set.getClutch()));
-    }
-
-    public static boolean isDeployer(BlockState state){
-        return CasingSets.getSets().stream().filter(set->set.getDeployer() != null).anyMatch(set->state.getBlock().equals(set.getDeployer()));
-    }
-    public static boolean isStorageInterface(BlockState state){
-        return CasingSets.getSets().stream().filter(set->set.getStorageInterface() != null).anyMatch(set->state.getBlock().equals(set.getStorageInterface()));
-    }
-    public static boolean isEncasedFan(BlockState state){
-        return CasingSets.getSets().stream().filter(set->set.getEncasedFan() != null).anyMatch(set->state.getBlock().equals(set.getEncasedFan()));
+    public static boolean isElementInSet(BlockState state, Function<CasingSet,Block> function){
+        return CasingSets.getSets().stream().filter(set->function.apply(set) != null).anyMatch(set->state.getBlock().equals(function.apply(set)));
     }
 
     public static boolean isShaft(BlockState state){

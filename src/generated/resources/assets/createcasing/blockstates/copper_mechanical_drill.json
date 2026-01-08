@@ -1,0 +1,56 @@
+{
+  "variants": {
+    "facing=down,waterlogged=false": {
+      "model": "createcasing:block/mechanical_drill/copper/block",
+      "x": 180
+    },
+    "facing=down,waterlogged=true": {
+      "model": "createcasing:block/mechanical_drill/copper/block",
+      "x": 180
+    },
+    "facing=east,waterlogged=false": {
+      "model": "createcasing:block/mechanical_drill/copper/block",
+      "x": 90,
+      "y": 90
+    },
+    "facing=east,waterlogged=true": {
+      "model": "createcasing:block/mechanical_drill/copper/block",
+      "x": 90,
+      "y": 90
+    },
+    "facing=north,waterlogged=false": {
+      "model": "createcasing:block/mechanical_drill/copper/block",
+      "x": 90
+    },
+    "facing=north,waterlogged=true": {
+      "model": "createcasing:block/mechanical_drill/copper/block",
+      "x": 90
+    },
+    "facing=south,waterlogged=false": {
+      "model": "createcasing:block/mechanical_drill/copper/block",
+      "x": 90,
+      "y": 180
+    },
+    "facing=south,waterlogged=true": {
+      "model": "createcasing:block/mechanical_drill/copper/block",
+      "x": 90,
+      "y": 180
+    },
+    "facing=up,waterlogged=false": {
+      "model": "createcasing:block/mechanical_drill/copper/block"
+    },
+    "facing=up,waterlogged=true": {
+      "model": "createcasing:block/mechanical_drill/copper/block"
+    },
+    "facing=west,waterlogged=false": {
+      "model": "createcasing:block/mechanical_drill/copper/block",
+      "x": 90,
+      "y": 270
+    },
+    "facing=west,waterlogged=true": {
+      "model": "createcasing:block/mechanical_drill/copper/block",
+      "x": 90,
+      "y": 270
+    }
+  }
+}

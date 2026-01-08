@@ -1,0 +1,11 @@
+{
+  "parent": "create:block/mechanical_saw/item",
+  "textures": {
+    "andesite_casing_short": "createcasing:block/casing_short/shadow_steel",
+    "encased_belt": "createcasing:block/encased_chain_drive/shadow_steel",
+    "gearbox": "createcasing:block/gearbox/shadow_steel",
+    "gearbox_top": "createcasing:block/gearbox_top/shadow_steel",
+    "particle": "createcasing:block/gearbox_top/shadow_steel",
+    "slit": "createcasing:block/mechanical_saw_top_no_slot/shadow_steel"
+  }
+}

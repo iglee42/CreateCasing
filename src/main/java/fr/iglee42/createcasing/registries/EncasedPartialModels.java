@@ -60,7 +60,18 @@ public class EncasedPartialModels {
             WEATHERED_IRON_CONVEYOR_GUARD = block("chain_conveyor/weathered_iron/guard"),
             CREATIVE_CONVEYOR_GUARD = block("chain_conveyor/creative/guard"),
             REFINED_RADIANCE_CONVEYOR_GUARD = block("chain_conveyor/refined_radiance/guard"),
-            SHADOW_STEEL_CONVEYOR_GUARD = block("chain_conveyor/shadow_steel/guard");
+            SHADOW_STEEL_CONVEYOR_GUARD = block("chain_conveyor/shadow_steel/guard"),
+
+    BRASS_DRILL_HEAD = block("mechanical_drill/brass/head"),
+    COPPER_DRILL_HEAD = block("mechanical_drill/copper/head"),
+    RAILWAY_DRILL_HEAD = block("mechanical_drill/railway/head"),
+    INDUSTRIAL_IRON_DRILL_HEAD = block("mechanical_drill/industrial_iron/head"),
+    WEATHERED_IRON_DRILL_HEAD = block("mechanical_drill/weathered_iron/head"),
+    CREATIVE_DRILL_HEAD = block("mechanical_drill/creative/head"),
+    REFINED_RADIANCE_DRILL_HEAD = block("mechanical_drill/refined_radiance/head"),
+    SHADOW_STEEL_DRILL_HEAD = block("mechanical_drill/shadow_steel/head")
+
+            ;
 
     public static final Map<String, PartialModel> SHAFT_MODELS = new HashMap<>();
     public static final Map<String, PartialModel> COGS_MODELS = new HashMap<>();
@@ -133,6 +144,16 @@ public class EncasedPartialModels {
                 .filter(s->Objects.nonNull(s.getMixerHeadModel()))
                 .findFirst()
                 .ifPresent(set->toReturn.set(set.getMixerHeadModel()));
+        return toReturn.get();
+    }
+
+    public static PartialModel getDrillHead(BlockState state){
+        AtomicReference<PartialModel> toReturn = new AtomicReference<>(AllPartialModels.DRILL_HEAD);
+        CasingSets.getSets().stream().filter(s->s.isInSet(state.getBlock()))
+                .filter(CasingSet::doesGenerateDrill)
+                .filter(s->Objects.nonNull(s.getDrillHeadModel()))
+                .findFirst()
+                .ifPresent(set->toReturn.set(set.getDrillHeadModel()));
         return toReturn.get();
     }
 }

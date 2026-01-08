@@ -96,4 +96,9 @@ public class TransmissionSets {
     public static TransmissionSet getWoodSet(WoodType woodType){
         return woodSets.get(woodType);
     }
+
+    public static WoodType getWoodTypeForSet(TransmissionSet set) {
+        if (!woodSets.containsValue(set)) return null;
+        return woodSets.entrySet().stream().filter(e->e.getValue().equals(set)).map(Map.Entry::getKey).findFirst().orElse(null);
+    }
 }

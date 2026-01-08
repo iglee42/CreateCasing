@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/mechanical_saw/vertical",
+  "textures": {
+    "andesite_casing_short": "createcasing:block/casing_short/refined_radiance",
+    "gearbox": "createcasing:block/gearbox/refined_radiance",
+    "gearbox_top": "createcasing:block/gearbox_top/refined_radiance",
+    "mechanical_saw_top": "createcasing:block/mechanical_saw_top/refined_radiance",
+    "particle": "createcasing:block/mechanical_saw_top/refined_radiance"
+  }
+}

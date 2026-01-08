@@ -1,0 +1,11 @@
+{
+  "parent": "create:block/mechanical_saw/item",
+  "textures": {
+    "andesite_casing_short": "createcasing:block/casing_short/industrial_iron",
+    "encased_belt": "createcasing:block/encased_chain_drive/industrial_iron",
+    "gearbox": "createcasing:block/gearbox/industrial_iron",
+    "gearbox_top": "createcasing:block/gearbox_top/industrial_iron",
+    "particle": "createcasing:block/gearbox_top/industrial_iron",
+    "slit": "createcasing:block/mechanical_saw_top_no_slot/industrial_iron"
+  }
+}

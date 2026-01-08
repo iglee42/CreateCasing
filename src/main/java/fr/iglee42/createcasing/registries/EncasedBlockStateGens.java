@@ -430,6 +430,61 @@ public class EncasedBlockStateGens {
     }
 
 
+    public static ModelFile harvesterModel(RegistrateProvider p, String casing,boolean item){
+        if (isValidProvider(p))
+            return Objects.requireNonNull(createModelInBlock(p,"mechanical_harvester/"+casing+"/"+(item ? "item" :"block")))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_harvester/"+(item ? "item" :"block")))
+                    .texture("andesite_casing_short",getShortCasingTexture(casing))
+                    .texture("particle",getShortCasingTexture(casing));
+        return null;
+    }
+
+    public static ModelFile rollerModel(RegistrateProvider p, String casing,boolean item){
+        if (isValidProvider(p))
+            return Objects.requireNonNull(createModelInBlock(p,"mechanical_roller/"+casing+"/"+(item ? "item" :"block")))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_roller/"+(item ? "item" :"block")))
+                    .texture(item?"casing":"0", getRollerCasingTexture(casing))
+                    .texture("particle",getCasingTexture(casing));
+        return null;
+    }
+
+    public static ModelFile drillModel(RegistrateProvider p, String casing,boolean item){
+        if (isValidProvider(p)){
+            Objects.requireNonNull(createModelInBlock(p,"mechanical_drill/"+casing+"/head"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_drill/head"))
+                    .texture("10",getVeryShortCasingTexture(casing));
+            return Objects.requireNonNull(createModelInBlock(p,"mechanical_drill/"+casing+"/"+(item ? "item" :"block")))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_drill/"+(item ? "item" :"block")))
+                    .texture(item?"8":"4",getDrillTopTexture(casing))
+                    .texture("10",getVeryShortCasingTexture(casing))
+                    .texture("gearbox_top",getGearboxTopTexture(casing))
+                    .texture("particle",getGearboxTexture(casing))
+                    .texture("gearbox",getGearboxTexture(casing));
+        }
+
+        return null;
+    }
+
+    public static ModelFile ploughModel(RegistrateProvider p, String casing){
+        if (isValidProvider(p))
+            return Objects.requireNonNull(createModelInBlock(p,"mechanical_plough/"+casing))
+                .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_plough"))
+                .texture("andesite_casing_short",getShortCasingTexture(casing))
+                .texture("particle",getShortCasingTexture(casing));
+        return null;
+    }
+
+    public static ModelFile sawItemModel(RegistrateProvider p, String casing){
+        return Objects.requireNonNull(createModelInBlock(p,"mechanical_saw/"+casing+"/item"))
+                .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_saw/item"))
+                .texture("slit",getSawTexture(casing,"_top_no_slot"))
+                .texture("gearbox",getGearboxTexture(casing))
+                .texture("particle",getGearboxTopTexture(casing))
+                .texture("gearbox_top",getGearboxTopTexture(casing))
+                .texture("encased_belt",getChainDriveSideTexture(casing))
+                .texture("andesite_casing_short",getShortCasingTexture(casing));
+    }
+
 
 
 
@@ -623,6 +678,12 @@ public class EncasedBlockStateGens {
         return CreateCasing.MODID + ":block/mixer_"+part+"/"+casing;
     }
 
+    public static String getSawTexture(String casing,String part) {
+        if (casing.equals("normal")) return Create.ID + ":block/mechanical_saw"+part;
+        return CreateCasing.MODID + ":block/mechanical_saw"+part+"/"+casing;
+    }
+
+
     public static String getFanPart(String casing,String part) {
         if (casing.equals("normal")) return Create.ID + ":block/fan_"+part;
         return CreateCasing.MODID + ":block/fan_"+part+"/"+casing;
@@ -683,6 +744,11 @@ public class EncasedBlockStateGens {
         return CreateCasing.MODID + ":block/casing_short/" + casing;
     }
 
+    public static String getVeryShortCasingTexture(String casing){
+        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/andesite_casing_very_short";
+        return CreateCasing.MODID + ":block/casing_very_short/" + casing;
+    }
+
     public static String getPistonCasingTexture(String casing){
         if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/andesite_casing_piston";
         return CreateCasing.MODID + ":block/casing_piston/" + casing;
@@ -702,6 +768,17 @@ public class EncasedBlockStateGens {
         if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/piston_inner";
         return CreateCasing.MODID + ":block/piston_inner/" + casing;
     }
+
+    public static String getRollerCasingTexture(String casing){
+        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/roller_casing";
+        return CreateCasing.MODID + ":block/roller_casing/" + casing;
+    }
+
+    public static String getDrillTopTexture(String casing){
+        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/mechanical_drill_top";
+        return CreateCasing.MODID + ":block/mechanical_drill_top/" + casing;
+    }
+
 
 
 

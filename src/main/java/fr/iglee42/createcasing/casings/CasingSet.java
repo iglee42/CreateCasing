@@ -44,11 +44,17 @@ public class CasingSet {
     private @Nullable Supplier<? extends Block> deployerBlock;
     private @Nullable Supplier<? extends Block> storageInterfaceBlock;
     private @Nullable Supplier<? extends Block> encasedFanBlock;
+    private @Nullable Supplier<? extends Block> harvesterBlock;
+    private @Nullable Supplier<? extends Block> sawBlock;
+    private @Nullable Supplier<? extends Block> drillBlock;
+    private @Nullable Supplier<? extends Block> ploughBlock;
+    private @Nullable Supplier<? extends Block> rollerBlock;
 
     private final @Nullable Supplier<PartialModel> chainConveyorWheelModel;
     private final @Nullable Supplier<PartialModel> chainConveyorGuardModel;
     private final @Nullable Supplier<PartialModel> chainConveyorShaftModel;
     private final @Nullable Supplier<PartialModel> mixerHeadModel;
+    private final @Nullable Supplier<PartialModel> drillHeadModel;
 
 
     private final boolean casing;
@@ -70,13 +76,18 @@ public class CasingSet {
     private final boolean deployer;
     private final boolean storageInterface;
     private final boolean encasedFan;
+    private final boolean harvester;
+    private final boolean saw;
+    private final boolean drill;
+    private final boolean plough;
+    private final boolean roller;
     private final boolean encasedWoodenShaft;
     private final boolean encasedWoodenCogwheel;
     private final boolean encasedWoodenLargeCogwheel;
 
     protected CasingSet(String name, Options options) {
         this.name = name;
-        Preconditions.checkNotNull(options.ctSprite,"Connected Texture Sprite Supplied can't be null");
+        Preconditions.checkNotNull(options.ctSprite,"Connected Texture Sprite Supplier can't be null");
         ctSprite = options.ctSprite;
         cogSideSprite = options.cogSideSprite;
         cogOtherSideSprite = options.cogOtherSideSprite;
@@ -101,6 +112,11 @@ public class CasingSet {
         deployer = options.deployer;
         storageInterface = options.storageInterface;
         encasedFan = options.encasedFan;
+        harvester = options.harvester;
+        saw = options.saw;
+        drill = options.drill;
+        plough = options.plough;
+        roller = options.roller;
         encasedWoodenShaft = options.encasedWoodenShaft;
         encasedWoodenCogwheel = options.encasedWoodenCogwheel;
         encasedWoodenLargeCogwheel = options.encasedWoodenLargeCogwheel;
@@ -109,6 +125,7 @@ public class CasingSet {
         chainConveyorWheelModel = options.chainConveyorWheelModel;
         chainConveyorShaftModel = options.chainConveyorShaftModel;
         mixerHeadModel = options.mixerHeadModel;
+        drillHeadModel = options.drillHeadModel;
 
         if (options.existingShaft != null) shaftBlock = options.existingShaft;
         if (options.existingCogwheel != null) cogwheelBlock = options.existingCogwheel;
@@ -127,6 +144,11 @@ public class CasingSet {
         if (options.existingDeployer != null) deployerBlock = options.existingDeployer;
         if (options.existingStorageInterface != null) storageInterfaceBlock = options.existingStorageInterface;
         if (options.existingEncasedFan != null) encasedFanBlock = options.existingEncasedFan;
+        if (options.existingHarvester != null) harvesterBlock = options.existingHarvester;
+        if (options.existingSaw != null) sawBlock = options.existingSaw;
+        if (options.existingDrill != null) drillBlock = options.existingDrill;
+        if (options.existingPlough != null) ploughBlock = options.existingPlough;
+        if (options.existingRoller != null) rollerBlock = options.existingRoller;
     }
 
     public String getName() {
@@ -189,6 +211,21 @@ public class CasingSet {
     }
     public boolean doesGenerateEncasedFan(){
         return encasedFan;
+    }
+    public boolean doesGenerateHarvester(){
+        return harvester;
+    }
+    public boolean doesGenerateSaw(){
+        return saw;
+    }
+    public boolean doesGenerateDrill(){
+        return drill;
+    }
+    public boolean doesGeneratePlough(){
+        return plough;
+    }
+    public boolean doesGenerateRoller(){
+        return roller;
     }
     public boolean doesGenerateEncasedWoodenShaft(){
         return encasedWoodenShaft;
@@ -390,7 +427,55 @@ public class CasingSet {
         return encasedFanBlock == null ? null : encasedFanBlock.get();
     }
 
+    @Nullable
+    public Supplier<? extends Block> getHarvesterSupplier() {
+        return harvesterBlock;
+    }
 
+    @Nullable
+    public Block getHarvester() {
+        return harvesterBlock == null ? null : harvesterBlock.get();
+    }
+
+    @Nullable
+    public Supplier<? extends Block> getSawSupplier() {
+        return sawBlock;
+    }
+
+    @Nullable
+    public Block getSaw() {
+        return sawBlock == null ? null : sawBlock.get();
+    }
+
+    @Nullable
+    public Supplier<? extends Block> getDrillSupplier() {
+        return drillBlock;
+    }
+
+    @Nullable
+    public Block getDrill() {
+        return drillBlock == null ? null : drillBlock.get();
+    }
+
+    @Nullable
+    public Supplier<? extends Block> getPloughSupplier() {
+        return ploughBlock;
+    }
+
+    @Nullable
+    public Block getPlough() {
+        return ploughBlock == null ? null : ploughBlock.get();
+    }
+
+    @Nullable
+    public Supplier<? extends Block> getRollerSupplier() {
+        return rollerBlock;
+    }
+
+    @Nullable
+    public Block getRoller() {
+        return rollerBlock == null ? null : rollerBlock.get();
+    }
 
     @Nullable
     public BeltBlockEntity.CasingType getBeltCasingType() {
@@ -517,6 +602,36 @@ public class CasingSet {
         encasedFanBlock = fan;
     }
 
+    public void setHarvester(@Nonnull Supplier<? extends Block> harvester){
+        if (getHarvesterSupplier() != null)
+            throw new UnsupportedOperationException("You cannot modify a harvester that has already been referenced");
+        harvesterBlock = harvester;
+    }
+
+    public void setSaw(@Nonnull Supplier<? extends Block> saw){
+        if (getSawSupplier() != null)
+            throw new UnsupportedOperationException("You cannot modify a saw that has already been referenced");
+        sawBlock = saw;
+    }
+
+    public void setDrill(@Nonnull Supplier<? extends Block> drill){
+        if (getDrillSupplier() != null)
+            throw new UnsupportedOperationException("You cannot modify a drill that has already been referenced");
+        drillBlock = drill;
+    }
+
+    public void setPlough(@Nonnull Supplier<? extends Block> plough){
+        if (getPloughSupplier() != null)
+            throw new UnsupportedOperationException("You cannot modify a plough that has already been referenced");
+        ploughBlock = plough;
+    }
+
+    public void setRoller(@Nonnull Supplier<? extends Block> roller){
+        if (getRollerSupplier() != null)
+            throw new UnsupportedOperationException("You cannot modify a roller that has already been referenced");
+        rollerBlock = roller;
+    }
+
 
     @Nullable
     public CTSpriteShiftEntry getConnectedTextureSprite() {
@@ -562,12 +677,17 @@ public class CasingSet {
         return mixerHeadModel != null ? mixerHeadModel.get() : null;
     }
 
+    public PartialModel getDrillHeadModel() {
+        return drillHeadModel != null ? drillHeadModel.get() : null;
+    }
+
     public boolean isInSet(Block block){
         return block.equals(getCasing()) || block.equals(getShaft()) || block.equals(getCogwheel()) || block.equals(getLargeCogwheel()) || block.equals(getFluidPipe())
                 || block.equals(getGearbox()) || block.equals(getPress()) || block.equals(getMixer()) || block.equals(getDepot())
                 || block.equals(getChainDrive()) || block.equals(getChainGearshift()) || block.equals(getConfigurableGearbox()) || block.equals(getChainConveyor())
                 || block.equals(getGearshift()) || block.equals(getClutch()) || block.equals(getDeployer()) || block.equals(getStorageInterface())
-                || block.equals(getEncasedFan());
+                || block.equals(getEncasedFan()) || block.equals(getHarvester()) || block.equals(getSaw()) || block.equals(getDrill())
+                || block.equals(getPlough()) || block.equals(getRoller());
     }
 
 
@@ -596,6 +716,11 @@ public class CasingSet {
         private boolean deployer;
         private boolean storageInterface;
         private boolean encasedFan;
+        private boolean harvester;
+        private boolean saw;
+        private boolean drill;
+        private boolean plough;
+        private boolean roller;
         private boolean encasedWoodenShaft;
         private boolean encasedWoodenCogwheel;
         private boolean encasedWoodenLargeCogwheel;
@@ -606,6 +731,7 @@ public class CasingSet {
         private Supplier<PartialModel> chainConveyorGuardModel;
         private Supplier<PartialModel> chainConveyorShaftModel;
         private Supplier<PartialModel> mixerHeadModel;
+        private Supplier<PartialModel> drillHeadModel;
 
 
         private @Nullable Supplier<? extends Block> existingShaft;
@@ -625,6 +751,11 @@ public class CasingSet {
         private @Nullable Supplier<? extends Block> existingDeployer;
         private @Nullable Supplier<? extends Block> existingStorageInterface;
         private @Nullable Supplier<? extends Block> existingEncasedFan;
+        private @Nullable Supplier<? extends Block> existingHarvester;
+        private @Nullable Supplier<? extends Block> existingSaw;
+        private @Nullable Supplier<? extends Block> existingDrill;
+        private @Nullable Supplier<? extends Block> existingPlough;
+        private @Nullable Supplier<? extends Block> existingRoller;
 
         public Options() {
             ctSprite = null;
@@ -753,6 +884,32 @@ public class CasingSet {
             return this;
         }
 
+        public Options harvester(){
+            this.harvester = true;
+            return this;
+        }
+
+        public Options saw(){
+            this.saw = true;
+            return this;
+        }
+
+        public Options drill(Supplier<PartialModel> headModel){
+            this.drill = true;
+            this.drillHeadModel = headModel;
+            return this;
+        }
+
+        public Options plough(){
+            this.plough = true;
+            return this;
+        }
+
+        public Options roller(){
+            this.roller = true;
+            return this;
+        }
+
         public Options encasedWoodenShaft(){
             this.encasedWoodenShaft = true;
             return this;
@@ -791,20 +948,20 @@ public class CasingSet {
             return encasedWoodenShaft().encasedWoodenCogwheel().encasedWoodenLargeCogwheel();
         }
 
-        public Options contraptionBlocks(){
-            return portableStorageInterface();
+        public Options contraptionBlocks(Supplier<PartialModel> headModel){
+            return portableStorageInterface().harvester().saw().drill(headModel).plough().roller();
         }
 
         public Options fluids(){
             return fluidPipe();
         }
 
-        public Options everythingExceptCasing(Supplier<CTSpriteShiftEntry> ctSprite,@Nonnull Supplier<SpriteShiftEntry> beltSprite,Supplier<PartialModel> alongXBeltModel,Supplier<PartialModel> alongZBeltModel,@Nullable Supplier<CTSpriteShiftEntry> cogwheelSideSprite,@Nullable Supplier<CTSpriteShiftEntry> cogwheelOtherSideSprite,Supplier<PartialModel> conveyorGuard,Supplier<PartialModel> conveyorWheel,Supplier<PartialModel> conveyorShaft,Supplier<PartialModel> mixerHeadModel){
-            return ctSprite(ctSprite).contraptionBlocks().encasedCustomTransmissionBlocks().simpleTransmissions(cogwheelSideSprite,cogwheelOtherSideSprite).belt(beltSprite,alongXBeltModel,alongZBeltModel).processingBlocks(mixerHeadModel).complexTransmissionBlocks(conveyorGuard,conveyorWheel,conveyorShaft).fluids();
+        public Options everythingExceptCasing(Supplier<CTSpriteShiftEntry> ctSprite,@Nonnull Supplier<SpriteShiftEntry> beltSprite,Supplier<PartialModel> alongXBeltModel,Supplier<PartialModel> alongZBeltModel,@Nullable Supplier<CTSpriteShiftEntry> cogwheelSideSprite,@Nullable Supplier<CTSpriteShiftEntry> cogwheelOtherSideSprite,Supplier<PartialModel> conveyorGuard,Supplier<PartialModel> conveyorWheel,Supplier<PartialModel> conveyorShaft,Supplier<PartialModel> mixerHeadModel,Supplier<PartialModel> drillHeadModel){
+            return ctSprite(ctSprite).contraptionBlocks(drillHeadModel).encasedCustomTransmissionBlocks().simpleTransmissions(cogwheelSideSprite,cogwheelOtherSideSprite).belt(beltSprite,alongXBeltModel,alongZBeltModel).processingBlocks(mixerHeadModel).complexTransmissionBlocks(conveyorGuard,conveyorWheel,conveyorShaft).fluids();
         }
 
-        public Options everything(Supplier<CTSpriteShiftEntry> ctSprite,@Nonnull Supplier<SpriteShiftEntry> beltSprite,Supplier<PartialModel> alongXBeltModel,Supplier<PartialModel> alongZBeltModel,@Nullable Supplier<CTSpriteShiftEntry> cogwheelSideSprite,@Nullable Supplier<CTSpriteShiftEntry> cogwheelOtherSideSprite,Supplier<PartialModel> conveyorGuard,Supplier<PartialModel> conveyorWheel,Supplier<PartialModel> conveyorShaft,Supplier<PartialModel> mixerHeadModel){
-            return casing().everythingExceptCasing(ctSprite, beltSprite, alongXBeltModel, alongZBeltModel, cogwheelSideSprite, cogwheelOtherSideSprite,conveyorGuard,conveyorWheel,conveyorShaft,mixerHeadModel);
+        public Options everything(Supplier<CTSpriteShiftEntry> ctSprite,@Nonnull Supplier<SpriteShiftEntry> beltSprite,Supplier<PartialModel> alongXBeltModel,Supplier<PartialModel> alongZBeltModel,@Nullable Supplier<CTSpriteShiftEntry> cogwheelSideSprite,@Nullable Supplier<CTSpriteShiftEntry> cogwheelOtherSideSprite,Supplier<PartialModel> conveyorGuard,Supplier<PartialModel> conveyorWheel,Supplier<PartialModel> conveyorShaft,Supplier<PartialModel> mixerHeadModel,Supplier<PartialModel> drillHeadModel){
+            return casing().everythingExceptCasing(ctSprite, beltSprite, alongXBeltModel, alongZBeltModel, cogwheelSideSprite, cogwheelOtherSideSprite,conveyorGuard,conveyorWheel,conveyorShaft,mixerHeadModel,drillHeadModel);
         }
 
         Options existingShaft(Supplier<? extends Block> shaft) {
@@ -901,6 +1058,36 @@ public class CasingSet {
         Options existingEncasedFan(Supplier<? extends Block> fan) {
             this.existingEncasedFan = fan;
             this.encasedFan = false;
+            return this;
+        }
+
+        Options existingHarvester(Supplier<? extends Block> harvester) {
+            this.existingHarvester = harvester;
+            this.harvester = false;
+            return this;
+        }
+
+        Options existingSaw(Supplier<? extends Block> saw) {
+            this.existingSaw = saw;
+            this.saw = false;
+            return this;
+        }
+
+        Options existingDrill(Supplier<? extends Block> drill) {
+            this.existingDrill = drill;
+            this.drill = false;
+            return this;
+        }
+
+        Options existingPlough(Supplier<? extends Block> plough) {
+            this.existingPlough = plough;
+            this.plough = false;
+            return this;
+        }
+
+        Options existingRoller(Supplier<? extends Block> roller) {
+            this.existingRoller = roller;
+            this.roller = false;
             return this;
         }
     }

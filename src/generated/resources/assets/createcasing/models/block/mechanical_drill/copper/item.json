@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/mechanical_drill/item",
+  "textures": {
+    "10": "createcasing:block/casing_very_short/copper",
+    "8": "createcasing:block/mechanical_drill_top/copper",
+    "gearbox": "createcasing:block/gearbox/copper",
+    "gearbox_top": "createcasing:block/gearbox_top/copper",
+    "particle": "createcasing:block/gearbox/copper"
+  }
+}

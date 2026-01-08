@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/mechanical_roller/block",
+  "textures": {
+    "0": "createcasing:block/roller_casing/shadow_steel",
+    "particle": "create:block/shadow_steel_casing"
+  }
+}

@@ -70,6 +70,25 @@ public class CasingPonderScenes {
 				.addStoryBoard(Create.asResource("portable_interface/transfer"), MovementActorScenes::psiTransfer, AllCreatePonderTags.CONTRAPTION_ACTOR)
 				.addStoryBoard(Create.asResource("portable_interface/redstone"), MovementActorScenes::psiRedstone);
 
+		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateEncasedFan).map(CasingSet::getEncasedFan).toList())
+				.addStoryBoard(Create.asResource("fan/direction"), FanScenes::direction, AllCreatePonderTags.KINETIC_APPLIANCES)
+				.addStoryBoard(Create.asResource("fan/processing"), FanScenes::processing);
+
+		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateHarvester).map(CasingSet::getHarvester).toList())
+				.addStoryBoard(Create.asResource("harvester"), MovementActorScenes::harvester);
+		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGeneratePlough).map(CasingSet::getPlough).toList())
+				.addStoryBoard(Create.asResource("plough"), MovementActorScenes::plough);
+		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateRoller).map(CasingSet::getRoller).toList())
+				.addStoryBoard(Create.asResource("mechanical_roller/clear_and_pave"), RollerScenes::clearAndPave)
+				.addStoryBoard(Create.asResource("mechanical_roller/fill"), RollerScenes::fill);
+		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateSaw).map(CasingSet::getSaw).toList())
+				.addStoryBoard(Create.asResource("mechanical_saw/processing"), MechanicalSawScenes::processing, AllCreatePonderTags.KINETIC_APPLIANCES)
+				.addStoryBoard(Create.asResource("mechanical_saw/breaker"), MechanicalSawScenes::treeCutting)
+				.addStoryBoard(Create.asResource("mechanical_saw/contraption"), MechanicalSawScenes::contraption, AllCreatePonderTags.CONTRAPTION_ACTOR);
+		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateDrill).map(CasingSet::getDrill).toList())
+				.addStoryBoard(Create.asResource("mechanical_drill/breaker"), MechanicalDrillScenes::breaker, AllCreatePonderTags.KINETIC_APPLIANCES)
+				.addStoryBoard(Create.asResource("mechanical_drill/contraption"), MechanicalDrillScenes::contraption,
+						AllCreatePonderTags.CONTRAPTION_ACTOR);
 	}
 
 

@@ -2,11 +2,13 @@ package fr.iglee42.createcasing.registries;
 
 import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllPartialModels;
+import com.simibubi.create.content.contraptions.actors.harvester.HarvesterBlockEntity;
+import com.simibubi.create.content.contraptions.actors.harvester.HarvesterRenderer;
+import com.simibubi.create.content.contraptions.actors.roller.RollerBlockEntity;
+import com.simibubi.create.content.contraptions.actors.roller.RollerRenderer;
 import com.simibubi.create.content.fluids.pipes.FluidPipeBlockEntity;
-import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
-import com.simibubi.create.content.kinetics.base.ShaftRenderer;
-import com.simibubi.create.content.kinetics.base.ShaftVisual;
-import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
+import com.simibubi.create.content.kinetics.base.*;
 import com.simibubi.create.content.kinetics.chainConveyor.ChainConveyorBlockEntity;
 import com.simibubi.create.content.kinetics.chainConveyor.ChainConveyorRenderer;
 import com.simibubi.create.content.kinetics.chainConveyor.ChainConveyorVisual;
@@ -14,6 +16,8 @@ import com.simibubi.create.content.kinetics.chainDrive.ChainGearshiftBlockEntity
 import com.simibubi.create.content.kinetics.deployer.DeployerBlockEntity;
 import com.simibubi.create.content.kinetics.deployer.DeployerRenderer;
 import com.simibubi.create.content.kinetics.deployer.DeployerVisual;
+import com.simibubi.create.content.kinetics.drill.DrillBlockEntity;
+import com.simibubi.create.content.kinetics.drill.DrillRenderer;
 import com.simibubi.create.content.kinetics.fan.EncasedFanBlockEntity;
 import com.simibubi.create.content.kinetics.fan.EncasedFanRenderer;
 import com.simibubi.create.content.kinetics.fan.FanVisual;
@@ -26,6 +30,9 @@ import com.simibubi.create.content.kinetics.mixer.MixerVisual;
 import com.simibubi.create.content.kinetics.press.MechanicalPressBlockEntity;
 import com.simibubi.create.content.kinetics.press.MechanicalPressRenderer;
 import com.simibubi.create.content.kinetics.press.PressVisual;
+import com.simibubi.create.content.kinetics.saw.SawBlockEntity;
+import com.simibubi.create.content.kinetics.saw.SawRenderer;
+import com.simibubi.create.content.kinetics.saw.SawVisual;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntityRenderer;
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
@@ -49,9 +56,11 @@ import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
 import fr.iglee42.createcasing.transmissions.TransmissionSet;
 import fr.iglee42.createcasing.transmissions.TransmissionSets;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
@@ -224,9 +233,35 @@ public class EncasedBlockEntities {
     public static final BlockEntityEntry<EncasedFanBlockEntity> ENCASED_FAN = REGISTRATE
             .blockEntity("encased_fan", EncasedFanBlockEntity::new)
             .visual(() -> FanVisual::new, false)
-            .validBlocks(AllBlocks.ENCASED_FAN)
             .renderer(() -> EncasedFanRenderer::new)
             .register();
+
+    public static final BlockEntityEntry<HarvesterBlockEntity> HARVESTER = REGISTRATE
+            .blockEntity("harvester", HarvesterBlockEntity::new)
+            .renderer(() -> HarvesterRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<RollerBlockEntity> MECHANICAL_ROLLER = REGISTRATE
+            .blockEntity("mechanical_roller", RollerBlockEntity::new)
+            .renderer(() -> RollerRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<SawBlockEntity> SAW = REGISTRATE
+            .blockEntity("saw", SawBlockEntity::new)
+            .visual(() -> SawVisual::new)
+            .renderer(() -> SawRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<DrillBlockEntity> DRILL = REGISTRATE
+            .blockEntity("drill", DrillBlockEntity::new)
+            .visual(() -> (context, blockEntity, partialTick) -> {
+                Direction facing = blockEntity.getBlockState()
+                        .getValue(BlockStateProperties.FACING);
+                return new OrientedRotatingVisual<>(context, blockEntity, partialTick, Direction.SOUTH, facing, Models.partial(EncasedPartialModels.getDrillHead(blockEntity.getBlockState())));
+            }, false)
+            .renderer(() -> DrillRenderer::new)
+            .register();
+
 
     public static void register() {}
 
@@ -249,6 +284,10 @@ public class EncasedBlockEntities {
         register(event,DEPLOYER.get(),CasingSet::getDeployer,CasingSet::doesGenerateDeployer);
         register(event,AllBlockEntityTypes.PORTABLE_STORAGE_INTERFACE.get(),CasingSet::getStorageInterface,CasingSet::doesGenerateStorageInterface);
         register(event,ENCASED_FAN.get(),CasingSet::getEncasedFan,CasingSet::doesGenerateEncasedFan);
+        register(event,HARVESTER.get(),CasingSet::getHarvester,CasingSet::doesGenerateHarvester);
+        register(event,DRILL.get(),CasingSet::getDrill,CasingSet::doesGenerateDrill);
+        register(event,SAW.get(),CasingSet::getSaw,CasingSet::doesGenerateSaw);
+        register(event,MECHANICAL_ROLLER.get(),CasingSet::getRoller,CasingSet::doesGenerateRoller);
 
         registerTransmission(event, CUSTOM_SHAFT.get(), TransmissionSet::getShaft, TransmissionSet::doesGenerateShaft, TransmissionSet::getShaftBlockEntityType);
         registerTransmission(event, CUSTOM_COGWHEELS.get(), TransmissionSet::getCogwheel, TransmissionSet::doesGenerateCogwheel, TransmissionSet::getCogwheelBlockEntityType);

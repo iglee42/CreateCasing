@@ -1,0 +1,11 @@
+{
+  "parent": "create:block/mechanical_saw/item",
+  "textures": {
+    "andesite_casing_short": "createcasing:block/casing_short/weathered_iron",
+    "encased_belt": "createcasing:block/encased_chain_drive/weathered_iron",
+    "gearbox": "createcasing:block/gearbox/weathered_iron",
+    "gearbox_top": "createcasing:block/gearbox_top/weathered_iron",
+    "particle": "createcasing:block/gearbox_top/weathered_iron",
+    "slit": "createcasing:block/mechanical_saw_top_no_slot/weathered_iron"
+  }
+}

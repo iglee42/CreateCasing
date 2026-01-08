@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/mechanical_saw/vertical",
+  "textures": {
+    "andesite_casing_short": "createcasing:block/casing_short/railway",
+    "gearbox": "createcasing:block/gearbox/railway",
+    "gearbox_top": "createcasing:block/gearbox_top/railway",
+    "mechanical_saw_top": "createcasing:block/mechanical_saw_top/railway",
+    "particle": "createcasing:block/mechanical_saw_top/railway"
+  }
+}

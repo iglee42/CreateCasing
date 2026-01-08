@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/mechanical_harvester/block",
+  "textures": {
+    "andesite_casing_short": "createcasing:block/casing_short/refined_radiance",
+    "particle": "createcasing:block/casing_short/refined_radiance"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/mechanical_drill/block",
+  "textures": {
+    "10": "createcasing:block/casing_very_short/shadow_steel",
+    "4": "createcasing:block/mechanical_drill_top/shadow_steel",
+    "gearbox": "createcasing:block/gearbox/shadow_steel",
+    "gearbox_top": "createcasing:block/gearbox_top/shadow_steel",
+    "particle": "createcasing:block/gearbox/shadow_steel"
+  }
+}

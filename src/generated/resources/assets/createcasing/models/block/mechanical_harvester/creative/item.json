@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/mechanical_harvester/item",
+  "textures": {
+    "andesite_casing_short": "createcasing:block/casing_short/creative",
+    "particle": "createcasing:block/casing_short/creative"
+  }
+}

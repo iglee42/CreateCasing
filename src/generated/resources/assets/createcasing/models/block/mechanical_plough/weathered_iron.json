@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/mechanical_plough",
+  "textures": {
+    "andesite_casing_short": "createcasing:block/casing_short/weathered_iron",
+    "particle": "createcasing:block/casing_short/weathered_iron"
+  }
+}
