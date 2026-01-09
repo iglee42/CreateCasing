@@ -6,6 +6,7 @@ import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
 
 import java.util.*;
@@ -96,6 +97,14 @@ public class EncasedPartialModels {
 
     public static PartialModel block(String path) {
         PartialModel model = PartialModel.of(CreateCasing.asResource("block/" + path));
+        if (ALL_ENCASED_MODELS != null) {
+            ALL_ENCASED_MODELS.add(model);
+        }
+        return model;
+    }
+
+    public static PartialModel block(ResourceLocation path) {
+        PartialModel model = PartialModel.of(path.withPrefix("block/"));
         if (ALL_ENCASED_MODELS != null) {
             ALL_ENCASED_MODELS.add(model);
         }

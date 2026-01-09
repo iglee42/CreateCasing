@@ -517,6 +517,9 @@ public class EncasedBlocks {
     }
 
     public static void register() {
+
+        CreateCasing.KJS_HANDLER.dispatchRegisterEvent();
+
         CasingSets.getSets().forEach(set->{
             if (set.doesGenerateCasing()){
                 set.setCasing(createCasing(set.getName(),set.getConnectedTextureSprite()));

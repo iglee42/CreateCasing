@@ -125,7 +125,20 @@ repositories {
     }
     maven { url "https://maven.shedaniel.me/" }
 
+    maven {
+        url "https://maven.latvian.dev/releases"
+        content {
+            includeGroup "dev.latvian.mods"
+            includeGroup "dev.latvian.apps"
+        }
+    }
 
+    maven {
+        url 'https://jitpack.io'
+        content {
+            includeGroup "com.github.rtyley"
+        }
+    }
 }
 
 dependencies {
@@ -151,6 +164,8 @@ dependencies {
 
     runtimeOnly "curse.maven:irisshaders-455508:6213632"
     runtimeOnly "curse.maven:sodium-394468:6382651"
+
+    api("dev.latvian.mods:kubejs-neoforge:2101.+")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }

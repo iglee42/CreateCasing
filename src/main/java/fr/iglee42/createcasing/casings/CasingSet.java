@@ -85,6 +85,8 @@ public class CasingSet {
     private final boolean encasedWoodenCogwheel;
     private final boolean encasedWoodenLargeCogwheel;
 
+    private final boolean isKJSGenerated;
+
     protected CasingSet(String name, Options options) {
         this.name = name;
         Preconditions.checkNotNull(options.ctSprite,"Connected Texture Sprite Supplier can't be null");
@@ -126,6 +128,7 @@ public class CasingSet {
         chainConveyorShaftModel = options.chainConveyorShaftModel;
         mixerHeadModel = options.mixerHeadModel;
         drillHeadModel = options.drillHeadModel;
+        isKJSGenerated = options.kjsGenerated;
 
         if (options.existingShaft != null) shaftBlock = options.existingShaft;
         if (options.existingCogwheel != null) cogwheelBlock = options.existingCogwheel;
@@ -690,6 +693,9 @@ public class CasingSet {
                 || block.equals(getPlough()) || block.equals(getRoller());
     }
 
+    public boolean isKJSGenerated() {
+        return isKJSGenerated;
+    }
 
     public static class Options {
         private @Nullable Supplier<CTSpriteShiftEntry> ctSprite;
@@ -721,6 +727,7 @@ public class CasingSet {
         private boolean drill;
         private boolean plough;
         private boolean roller;
+        private boolean kjsGenerated = false;
         private boolean encasedWoodenShaft;
         private boolean encasedWoodenCogwheel;
         private boolean encasedWoodenLargeCogwheel;
@@ -1088,6 +1095,11 @@ public class CasingSet {
         Options existingRoller(Supplier<? extends Block> roller) {
             this.existingRoller = roller;
             this.roller = false;
+            return this;
+        }
+
+        public Options kjsGenerated(){
+            this.kjsGenerated = true;
             return this;
         }
     }

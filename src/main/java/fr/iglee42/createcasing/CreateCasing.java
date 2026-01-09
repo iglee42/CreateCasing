@@ -10,6 +10,7 @@ import com.tterrag.registrate.providers.RegistrateDataProvider;
 import com.tterrag.registrate.util.RegistrateDistExecutor;
 import fr.iglee42.createcasing.commands.CreateCasingCommand;
 import fr.iglee42.createcasing.config.ModConfigs;
+import fr.iglee42.createcasing.kubejs.KJSExternalHandler;
 import fr.iglee42.createcasing.mixins.create.DeployerBlockEntityAccessor;
 import fr.iglee42.createcasing.registries.*;
 import net.createmod.catnip.lang.FontHelper;
@@ -46,6 +47,8 @@ public class CreateCasing {
     public static final CreateRegistrate REGISTRATE = CreateRegistrate.create(MODID)
             .defaultCreativeTab((ResourceKey<CreativeModeTab>) null);
     public static List<ItemLike> hidedItems = new ArrayList<>();
+
+    public static KJSExternalHandler KJS_HANDLER = () -> {};
 
     static {
         REGISTRATE.setTooltipModifierFactory(item -> new ItemDescription.Modifier(item, FontHelper.Palette.STANDARD_CREATE)
@@ -121,5 +124,6 @@ public class CreateCasing {
 
     private void gatherData(GatherDataEvent event) {
         //event.getGenerator().addProvider(true, REGISTRATE.setDataProvider(new RegistrateDataProvider(REGISTRATE, MODID, event)));
+        event.getGenerator().addProvider(event.includeServer(),new EncasedRecipeGens(event.getGenerator().getPackOutput(),event.getLookupProvider()));
     }
 }
