@@ -455,7 +455,6 @@ public class EncasedBlockStateGens {
                     .texture("10",getVeryShortCasingTexture(casing));
             return Objects.requireNonNull(createModelInBlock(p,"mechanical_drill/"+casing+"/"+(item ? "item" :"block")))
                     .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_drill/"+(item ? "item" :"block")))
-                    .texture(item?"8":"4",getDrillTopTexture(casing))
                     .texture("10",getVeryShortCasingTexture(casing))
                     .texture("gearbox_top",getGearboxTopTexture(casing))
                     .texture("particle",getGearboxTexture(casing))
@@ -772,11 +771,6 @@ public class EncasedBlockStateGens {
     public static String getRollerCasingTexture(String casing){
         if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/roller_casing";
         return CreateCasing.MODID + ":block/roller_casing/" + casing;
-    }
-
-    public static String getDrillTopTexture(String casing){
-        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/mechanical_drill_top";
-        return CreateCasing.MODID + ":block/mechanical_drill_top/" + casing;
     }
 
 

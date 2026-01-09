@@ -2,7 +2,6 @@
   "parent": "create:block/mechanical_drill/block",
   "textures": {
     "10": "createcasing:block/casing_very_short/brass",
-    "4": "createcasing:block/mechanical_drill_top/brass",
     "gearbox": "create:block/brass_gearbox",
     "gearbox_top": "createcasing:block/gearbox_top/brass",
     "particle": "create:block/brass_gearbox"

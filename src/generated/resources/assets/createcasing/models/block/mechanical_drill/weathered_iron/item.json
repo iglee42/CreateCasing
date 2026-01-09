@@ -2,7 +2,6 @@
   "parent": "create:block/mechanical_drill/item",
   "textures": {
     "10": "createcasing:block/casing_very_short/weathered_iron",
-    "8": "createcasing:block/mechanical_drill_top/weathered_iron",
     "gearbox": "createcasing:block/gearbox/weathered_iron",
     "gearbox_top": "createcasing:block/gearbox_top/weathered_iron",
     "particle": "createcasing:block/gearbox/weathered_iron"
