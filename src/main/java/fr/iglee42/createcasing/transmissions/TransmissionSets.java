@@ -49,9 +49,7 @@ public class TransmissionSets {
 
 
     static {
-        List<WoodType> types = new ArrayList<>(WoodType.values().toList());
-        types.remove(WoodType.SPRUCE);
-        for (WoodType woodType : types) {
+        for (WoodType woodType : new WoodType[]{WoodType.ACACIA,WoodType.BIRCH,WoodType.BAMBOO,WoodType.CHERRY,WoodType.CRIMSON,WoodType.DARK_OAK,WoodType.OAK,WoodType.JUNGLE,WoodType.MANGROVE,WoodType.WARPED}) {
             TransmissionSet set = register(woodType.name().toLowerCase(Locale.ROOT), new TransmissionSet.Options()
                     .shaftConstructor(()-> WoodenShaftBlock::new)
                     .cogwheelConstructor(()-> (props,bool)-> bool ? WoodenCogwheelBlock.large(props) : WoodenCogwheelBlock.small(props))

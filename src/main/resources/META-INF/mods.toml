@@ -4,7 +4,7 @@ license = "MIT"
 
 [[mods]]
 modId = "createcasing"
-version = "1.8"
+version = "1.8-ht1"
 displayName = "Create Encased"
 updateJSONURL="https://api.modrinth.com/updates/create-encased/forge_updates.json"
 displayURL="https://iglee.fr/"
