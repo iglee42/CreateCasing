@@ -36,7 +36,7 @@ file="META-INF/accesstransformer.cfg"
    side="BOTH"
 [[dependencies.${mod_id}]]
    modId = "kubejs"
-   mandatory = false
+   type = "optional"
    versionRange = "[2101,)"
    ordering = "AFTER"
    side = "BOTH"
