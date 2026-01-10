@@ -55,6 +55,7 @@ public class CasingSet {
     private final @Nullable Supplier<PartialModel> chainConveyorShaftModel;
     private final @Nullable Supplier<PartialModel> mixerHeadModel;
     private final @Nullable Supplier<PartialModel> drillHeadModel;
+    private final @Nullable Supplier<PartialModel> rollerFrameModel;
 
 
     private final boolean casing;
@@ -128,6 +129,7 @@ public class CasingSet {
         chainConveyorShaftModel = options.chainConveyorShaftModel;
         mixerHeadModel = options.mixerHeadModel;
         drillHeadModel = options.drillHeadModel;
+        rollerFrameModel = options.rollerFrameModel;
         isKJSGenerated = options.kjsGenerated;
 
         if (options.existingShaft != null) shaftBlock = options.existingShaft;
@@ -684,6 +686,10 @@ public class CasingSet {
         return drillHeadModel != null ? drillHeadModel.get() : null;
     }
 
+    public PartialModel getRollerFrameModel() {
+        return rollerFrameModel != null ? rollerFrameModel.get() : null;
+    }
+
     public boolean isInSet(Block block){
         return block.equals(getCasing()) || block.equals(getShaft()) || block.equals(getCogwheel()) || block.equals(getLargeCogwheel()) || block.equals(getFluidPipe())
                 || block.equals(getGearbox()) || block.equals(getPress()) || block.equals(getMixer()) || block.equals(getDepot())
@@ -739,6 +745,7 @@ public class CasingSet {
         private Supplier<PartialModel> chainConveyorShaftModel;
         private Supplier<PartialModel> mixerHeadModel;
         private Supplier<PartialModel> drillHeadModel;
+        private Supplier<PartialModel> rollerFrameModel;
 
 
         private @Nullable Supplier<? extends Block> existingShaft;
@@ -912,8 +919,9 @@ public class CasingSet {
             return this;
         }
 
-        public Options roller(){
+        public Options roller(Supplier<PartialModel> frameModel){
             this.roller = true;
+            this.rollerFrameModel = frameModel;
             return this;
         }
 
@@ -955,20 +963,20 @@ public class CasingSet {
             return encasedWoodenShaft().encasedWoodenCogwheel().encasedWoodenLargeCogwheel();
         }
 
-        public Options contraptionBlocks(Supplier<PartialModel> headModel){
-            return portableStorageInterface().harvester().saw().drill(headModel).plough().roller();
+        public Options contraptionBlocks(Supplier<PartialModel> headModel,Supplier<PartialModel> rollerFrameModel){
+            return portableStorageInterface().harvester().saw().drill(headModel).plough().roller(rollerFrameModel);
         }
 
         public Options fluids(){
             return fluidPipe();
         }
 
-        public Options everythingExceptCasing(Supplier<CTSpriteShiftEntry> ctSprite,@Nonnull Supplier<SpriteShiftEntry> beltSprite,Supplier<PartialModel> alongXBeltModel,Supplier<PartialModel> alongZBeltModel,@Nullable Supplier<CTSpriteShiftEntry> cogwheelSideSprite,@Nullable Supplier<CTSpriteShiftEntry> cogwheelOtherSideSprite,Supplier<PartialModel> conveyorGuard,Supplier<PartialModel> conveyorWheel,Supplier<PartialModel> conveyorShaft,Supplier<PartialModel> mixerHeadModel,Supplier<PartialModel> drillHeadModel){
-            return ctSprite(ctSprite).contraptionBlocks(drillHeadModel).encasedCustomTransmissionBlocks().simpleTransmissions(cogwheelSideSprite,cogwheelOtherSideSprite).belt(beltSprite,alongXBeltModel,alongZBeltModel).processingBlocks(mixerHeadModel).complexTransmissionBlocks(conveyorGuard,conveyorWheel,conveyorShaft).fluids();
+        public Options everythingExceptCasing(Supplier<CTSpriteShiftEntry> ctSprite,@Nonnull Supplier<SpriteShiftEntry> beltSprite,Supplier<PartialModel> alongXBeltModel,Supplier<PartialModel> alongZBeltModel,@Nullable Supplier<CTSpriteShiftEntry> cogwheelSideSprite,@Nullable Supplier<CTSpriteShiftEntry> cogwheelOtherSideSprite,Supplier<PartialModel> conveyorGuard,Supplier<PartialModel> conveyorWheel,Supplier<PartialModel> conveyorShaft,Supplier<PartialModel> mixerHeadModel,Supplier<PartialModel> drillHeadModel,Supplier<PartialModel> rollerFrameModel){
+            return ctSprite(ctSprite).contraptionBlocks(drillHeadModel,rollerFrameModel).encasedCustomTransmissionBlocks().simpleTransmissions(cogwheelSideSprite,cogwheelOtherSideSprite).belt(beltSprite,alongXBeltModel,alongZBeltModel).processingBlocks(mixerHeadModel).complexTransmissionBlocks(conveyorGuard,conveyorWheel,conveyorShaft).fluids();
         }
 
-        public Options everything(Supplier<CTSpriteShiftEntry> ctSprite,@Nonnull Supplier<SpriteShiftEntry> beltSprite,Supplier<PartialModel> alongXBeltModel,Supplier<PartialModel> alongZBeltModel,@Nullable Supplier<CTSpriteShiftEntry> cogwheelSideSprite,@Nullable Supplier<CTSpriteShiftEntry> cogwheelOtherSideSprite,Supplier<PartialModel> conveyorGuard,Supplier<PartialModel> conveyorWheel,Supplier<PartialModel> conveyorShaft,Supplier<PartialModel> mixerHeadModel,Supplier<PartialModel> drillHeadModel){
-            return casing().everythingExceptCasing(ctSprite, beltSprite, alongXBeltModel, alongZBeltModel, cogwheelSideSprite, cogwheelOtherSideSprite,conveyorGuard,conveyorWheel,conveyorShaft,mixerHeadModel,drillHeadModel);
+        public Options everything(Supplier<CTSpriteShiftEntry> ctSprite,@Nonnull Supplier<SpriteShiftEntry> beltSprite,Supplier<PartialModel> alongXBeltModel,Supplier<PartialModel> alongZBeltModel,@Nullable Supplier<CTSpriteShiftEntry> cogwheelSideSprite,@Nullable Supplier<CTSpriteShiftEntry> cogwheelOtherSideSprite,Supplier<PartialModel> conveyorGuard,Supplier<PartialModel> conveyorWheel,Supplier<PartialModel> conveyorShaft,Supplier<PartialModel> mixerHeadModel,Supplier<PartialModel> drillHeadModel,Supplier<PartialModel> rollerFrameModel){
+            return casing().everythingExceptCasing(ctSprite, beltSprite, alongXBeltModel, alongZBeltModel, cogwheelSideSprite, cogwheelOtherSideSprite,conveyorGuard,conveyorWheel,conveyorShaft,mixerHeadModel,drillHeadModel,rollerFrameModel);
         }
 
         Options existingShaft(Supplier<? extends Block> shaft) {

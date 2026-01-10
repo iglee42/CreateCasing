@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/mechanical_roller/frame",
+  "textures": {
+    "1": "createcasing:block/roller_metal/weathered_iron",
+    "particle": "createcasing:block/roller_casing/weathered_iron"
+  }
+}

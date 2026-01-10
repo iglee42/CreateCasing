@@ -440,11 +440,17 @@ public class EncasedBlockStateGens {
     }
 
     public static ModelFile rollerModel(RegistrateProvider p, String casing,boolean item){
-        if (isValidProvider(p))
-            return Objects.requireNonNull(createModelInBlock(p,"mechanical_roller/"+casing+"/"+(item ? "item" :"block")))
-                    .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_roller/"+(item ? "item" :"block")))
-                    .texture(item?"casing":"0", getRollerCasingTexture(casing))
-                    .texture("particle",getCasingTexture(casing));
+        if (isValidProvider(p)) {
+            if (!item)Objects.requireNonNull(createModelInBlock(p, "mechanical_roller/" + casing + "/frame"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_roller/frame"))
+                    .texture("1", getRollerMetalTexture(casing))
+                    .texture("particle", getRollerCasingTexture(casing));
+            return Objects.requireNonNull(createModelInBlock(p, "mechanical_roller/" + casing + "/" + (item ? "item" : "block")))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_roller/" + (item ? "item" : "block")))
+                    .texture(item ? "casing" : "0", getRollerCasingTexture(casing))
+                    .texture(item ? "metal" : "unused", getRollerMetalTexture(casing))
+                    .texture("particle", getCasingTexture(casing));
+        }
         return null;
     }
 
@@ -771,6 +777,10 @@ public class EncasedBlockStateGens {
     public static String getRollerCasingTexture(String casing){
         if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/roller_casing";
         return CreateCasing.MODID + ":block/roller_casing/" + casing;
+    }
+    public static String getRollerMetalTexture(String casing){
+        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/roller_metal";
+        return CreateCasing.MODID + ":block/roller_metal/" + casing;
     }
 
 

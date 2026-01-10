@@ -166,8 +166,9 @@ public class CasingSetBuilder {
         return this;
     }
 
-    public CasingSetBuilder roller(){
-        this.options.roller();
+    public CasingSetBuilder roller(ResourceLocation frameModel){
+        PartialModel frame = EncasedPartialModels.block(frameModel);
+        this.options.roller(()->frame);
         return this;
     }
 
@@ -206,19 +207,19 @@ public class CasingSetBuilder {
         return encasedWoodenShaft().encasedWoodenCogwheel().encasedWoodenLargeCogwheel();
     }
 
-    public CasingSetBuilder contraptionBlocks(ResourceLocation drillHeadModel){
-        return portableStorageInterface().harvester().saw().drill(drillHeadModel).plough().roller();
+    public CasingSetBuilder contraptionBlocks(ResourceLocation drillHeadModel,ResourceLocation rollerFrameModel){
+        return portableStorageInterface().harvester().saw().drill(drillHeadModel).plough().roller(rollerFrameModel);
     }
 
     public CasingSetBuilder fluids(){
         return fluidPipe();
     }
 
-    public CasingSetBuilder everythingExceptCasing(Supplier<CTSpriteShiftEntry> ctSprite, @Nonnull Supplier<SpriteShiftEntry> beltSprite, ResourceLocation alongXBeltModel, ResourceLocation alongZBeltModel, @Nullable Supplier<CTSpriteShiftEntry> cogwheelSideSprite, @Nullable Supplier<CTSpriteShiftEntry> cogwheelOtherSideSprite, Supplier<PartialModel> conveyorGuard, Supplier<PartialModel> conveyorWheel, Supplier<PartialModel> conveyorShaft, ResourceLocation mixerHeadModel, ResourceLocation drillHeadModel){
-        return ctSprite(ctSprite).contraptionBlocks(drillHeadModel).encasedCustomTransmissionBlocks().simpleTransmissions(cogwheelSideSprite,cogwheelOtherSideSprite).belt(beltSprite,alongXBeltModel,alongZBeltModel).processingBlocks(mixerHeadModel).complexTransmissionBlocks(conveyorGuard,conveyorWheel,conveyorShaft).fluids();
+    public CasingSetBuilder everythingExceptCasing(Supplier<CTSpriteShiftEntry> ctSprite, @Nonnull Supplier<SpriteShiftEntry> beltSprite, ResourceLocation alongXBeltModel, ResourceLocation alongZBeltModel, @Nullable Supplier<CTSpriteShiftEntry> cogwheelSideSprite, @Nullable Supplier<CTSpriteShiftEntry> cogwheelOtherSideSprite, Supplier<PartialModel> conveyorGuard, Supplier<PartialModel> conveyorWheel, Supplier<PartialModel> conveyorShaft, ResourceLocation mixerHeadModel, ResourceLocation drillHeadModel,ResourceLocation rollerFrameModel){
+        return ctSprite(ctSprite).contraptionBlocks(drillHeadModel,rollerFrameModel).encasedCustomTransmissionBlocks().simpleTransmissions(cogwheelSideSprite,cogwheelOtherSideSprite).belt(beltSprite,alongXBeltModel,alongZBeltModel).processingBlocks(mixerHeadModel).complexTransmissionBlocks(conveyorGuard,conveyorWheel,conveyorShaft).fluids();
     }
 
-    public CasingSetBuilder everything(Supplier<CTSpriteShiftEntry> ctSprite, @Nonnull Supplier<SpriteShiftEntry> beltSprite, ResourceLocation alongXBeltModel, ResourceLocation alongZBeltModel, @Nullable Supplier<CTSpriteShiftEntry> cogwheelSideSprite, @Nullable Supplier<CTSpriteShiftEntry> cogwheelOtherSideSprite, Supplier<PartialModel> conveyorGuard, Supplier<PartialModel> conveyorWheel, Supplier<PartialModel> conveyorShaft, ResourceLocation mixerHeadModel, ResourceLocation drillHeadModel){
-        return casing().everythingExceptCasing(ctSprite, beltSprite, alongXBeltModel, alongZBeltModel, cogwheelSideSprite, cogwheelOtherSideSprite,conveyorGuard,conveyorWheel,conveyorShaft,mixerHeadModel,drillHeadModel);
+    public CasingSetBuilder everything(Supplier<CTSpriteShiftEntry> ctSprite, @Nonnull Supplier<SpriteShiftEntry> beltSprite, ResourceLocation alongXBeltModel, ResourceLocation alongZBeltModel, @Nullable Supplier<CTSpriteShiftEntry> cogwheelSideSprite, @Nullable Supplier<CTSpriteShiftEntry> cogwheelOtherSideSprite, Supplier<PartialModel> conveyorGuard, Supplier<PartialModel> conveyorWheel, Supplier<PartialModel> conveyorShaft, ResourceLocation mixerHeadModel, ResourceLocation drillHeadModel,ResourceLocation rollerFrameModel){
+        return casing().everythingExceptCasing(ctSprite, beltSprite, alongXBeltModel, alongZBeltModel, cogwheelSideSprite, cogwheelOtherSideSprite,conveyorGuard,conveyorWheel,conveyorShaft,mixerHeadModel,drillHeadModel,rollerFrameModel);
     }
 }

@@ -70,7 +70,16 @@ public class EncasedPartialModels {
     WEATHERED_IRON_DRILL_HEAD = block("mechanical_drill/weathered_iron/head"),
     CREATIVE_DRILL_HEAD = block("mechanical_drill/creative/head"),
     REFINED_RADIANCE_DRILL_HEAD = block("mechanical_drill/refined_radiance/head"),
-    SHADOW_STEEL_DRILL_HEAD = block("mechanical_drill/shadow_steel/head")
+    SHADOW_STEEL_DRILL_HEAD = block("mechanical_drill/shadow_steel/head"),
+
+    BRASS_ROLLER_FRAME = block("mechanical_roller/brass/frame"),
+            COPPER_ROLLER_FRAME = block("mechanical_roller/copper/frame"),
+            RAILWAY_ROLLER_FRAME = block("mechanical_roller/railway/frame"),
+            INDUSTRIAL_IRON_ROLLER_FRAME = block("mechanical_roller/industrial_iron/frame"),
+            WEATHERED_IRON_ROLLER_FRAME = block("mechanical_roller/weathered_iron/frame"),
+            CREATIVE_ROLLER_FRAME = block("mechanical_roller/creative/frame"),
+            REFINED_RADIANCE_ROLLER_FRAME = block("mechanical_roller/refined_radiance/frame"),
+            SHADOW_STEEL_ROLLER_FRAME = block("mechanical_roller/shadow_steel/frame")
 
             ;
 
@@ -163,6 +172,16 @@ public class EncasedPartialModels {
                 .filter(s->Objects.nonNull(s.getDrillHeadModel()))
                 .findFirst()
                 .ifPresent(set->toReturn.set(set.getDrillHeadModel()));
+        return toReturn.get();
+    }
+
+    public static PartialModel getRollerFrame(BlockState state){
+        AtomicReference<PartialModel> toReturn = new AtomicReference<>(AllPartialModels.ROLLER_FRAME);
+        CasingSets.getSets().stream().filter(s->s.isInSet(state.getBlock()))
+                .filter(CasingSet::doesGenerateRoller)
+                .filter(s->Objects.nonNull(s.getRollerFrameModel()))
+                .findFirst()
+                .ifPresent(set->toReturn.set(set.getRollerFrameModel()));
         return toReturn.get();
     }
 }
