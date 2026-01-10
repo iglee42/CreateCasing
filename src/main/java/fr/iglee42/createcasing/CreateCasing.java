@@ -60,10 +60,6 @@ public class CreateCasing {
 
         REGISTRATE.registerEventListeners(modEventBus);
 
-        //if (isExtendedCogsLoaded())CreateExtendedCogwheelsCompat.REGISTRATE.registerEventListeners(FMLJavaModLoadingContext.get().getModEventBus());
-
-        //if (isExtendedCogsLoaded()) ExtendedCogwheels.registrate().addRegisterCallback(Registry.BLOCK_REGISTRY, CreateExtendedCogwheelsCompat::register);
-        
         EncasedSounds.prepare();
         EncasedBlocks.register();
         EncasedItems.register();

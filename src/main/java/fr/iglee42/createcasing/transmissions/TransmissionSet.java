@@ -38,6 +38,7 @@ public class TransmissionSet {
     private final boolean cogwheel;
     private final boolean largeCogwheel;
     private final boolean notEncasable;
+    private final boolean isKJSGenerated;
 
 
     protected TransmissionSet(String name, Options options) {
@@ -48,6 +49,7 @@ public class TransmissionSet {
         largeCogwheel = options.largeCogwheel;
 
         this.notEncasable = options.notEncasable;
+        isKJSGenerated = options.isKJSGenerated;
 
         this.shaftConstructor = options.shaftConstructor;
         this.cogwheelConstructor = options.cogwheelConstructor;
@@ -159,12 +161,17 @@ public class TransmissionSet {
         return notEncasable;
     }
 
+    public boolean isKJSGenerated() {
+        return isKJSGenerated;
+    }
+
     public static class Options {
         private Supplier<? extends Item> item;
         private boolean shaft;
         private boolean cogwheel;
         private boolean largeCogwheel;
         private boolean notEncasable;
+        private boolean isKJSGenerated;
 
         private @Nullable BlockEntry<? extends ShaftBlock> existingShaft;
         private @Nullable BlockEntry<? extends CogWheelBlock> existingCogwheel;
@@ -256,6 +263,11 @@ public class TransmissionSet {
         Options existingLargeCogwheel(BlockEntry<? extends CogWheelBlock> largeCogwheel) {
             this.existingLargeCogwheel = largeCogwheel;
             this.largeCogwheel = false;
+            return this;
+        }
+
+        public Options kjsGenerated(){
+            this.isKJSGenerated = true;
             return this;
         }
 

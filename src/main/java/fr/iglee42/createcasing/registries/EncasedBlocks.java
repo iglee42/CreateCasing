@@ -46,6 +46,7 @@ import com.tterrag.registrate.util.nullness.NonNullBiFunction;
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.blocks.ConfigurableGearboxBlock;
 import fr.iglee42.createcasing.blocks.CreativeCogwheelBlock;
+import fr.iglee42.createcasing.blocks.cogwheels.CustomCogwheelBlock;
 import fr.iglee42.createcasing.blocks.cogwheels.WoodenCogwheelBlock;
 import fr.iglee42.createcasing.blocks.customs.*;
 import fr.iglee42.createcasing.blocks.publics.PublicChainConveyorBlock;
@@ -253,7 +254,7 @@ public class EncasedBlocks {
 
 
     private static BlockEntry<? extends CogWheelBlock> createCogwheel(String name, BiFunction<BlockBehaviour.Properties,Boolean, ? extends CogWheelBlock> factory){
-        return REGISTRATE.block(name+"_cogwheel", p->factory != null ? factory.apply(p,false) : WoodenCogwheelBlock.small(p))
+        return REGISTRATE.block(name+"_cogwheel", p->factory != null ? factory.apply(p,false) : CustomCogwheelBlock.small(p))
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.sound(SoundType.WOOD).mapColor(MapColor.DIRT))
                 .transform(CCStress.setNoImpact())
@@ -267,7 +268,7 @@ public class EncasedBlocks {
     }
 
     private static BlockEntry<? extends CogWheelBlock> createLargeCogwheel(String name, BiFunction<BlockBehaviour.Properties,Boolean, ? extends CogWheelBlock> factory) {
-        return REGISTRATE.block(name+"_large_cogwheel", p->factory != null ? factory.apply(p,true) : WoodenCogwheelBlock.large(p))
+        return REGISTRATE.block(name+"_large_cogwheel", p->factory != null ? factory.apply(p,true) : CustomCogwheelBlock.large(p))
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.sound(SoundType.WOOD).mapColor(MapColor.DIRT))
                 .transform(axeOnly())
