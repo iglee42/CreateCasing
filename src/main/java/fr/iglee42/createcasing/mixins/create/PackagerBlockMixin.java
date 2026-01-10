@@ -9,7 +9,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.Redirect;
 
-@Mixin(value = PackagerBlock.class,remap = false)
+@Mixin(value = PackagerBlock.class,remap = true)
 public class PackagerBlockMixin {
 
     @Redirect(method = "getStateForPlacement",at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;has(Lnet/minecraft/world/level/block/state/BlockState;)Z"))

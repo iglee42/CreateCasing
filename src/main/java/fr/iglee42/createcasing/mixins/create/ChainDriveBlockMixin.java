@@ -11,7 +11,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(value = ChainDriveBlock.class,remap = false)
+@Mixin(value = ChainDriveBlock.class,remap = true)
 public class ChainDriveBlockMixin {
 
     @Inject(method = "updateShape",at=@At("HEAD"),cancellable = true)

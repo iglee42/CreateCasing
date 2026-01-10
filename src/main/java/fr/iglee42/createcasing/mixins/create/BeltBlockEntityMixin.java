@@ -30,7 +30,7 @@ public abstract class BeltBlockEntityMixin {
         createCasing$newCasing = type;
     }
 
-    @ModifyArg(method = "setCasingType",remap = false,at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;levelEvent(ILnet/minecraft/core/BlockPos;I)V"),index = 2)
+    @ModifyArg(method = "setCasingType", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/Level;levelEvent(ILnet/minecraft/core/BlockPos;I)V"),index = 2)
     private int encased$changeParticle(int old) {
         AtomicInteger returnValue = new AtomicInteger(old);
         CasingSets.getSets().stream().filter(CasingSet::doesGenerateBelt)
