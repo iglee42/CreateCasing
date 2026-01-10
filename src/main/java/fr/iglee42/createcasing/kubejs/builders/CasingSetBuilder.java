@@ -3,14 +3,12 @@ package fr.iglee42.createcasing.kubejs.builders;
 import com.google.common.base.Preconditions;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
-import dev.latvian.mods.kubejs.script.SourceLine;
 import dev.latvian.mods.rhino.util.HideFromJS;
 import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.registries.EncasedPartialModels;
 import net.createmod.catnip.render.SpriteShiftEntry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -19,13 +17,11 @@ import java.util.function.Supplier;
 public class CasingSetBuilder {
 
     private final String name;
-    public SourceLine sourceLine;
     private CasingSet.Options options;
 
 
     public CasingSetBuilder(String name) {
         this.name = name;
-        this.sourceLine = SourceLine.UNKNOWN;
         this.options = new CasingSet.Options().kjsGenerated();
     }
 

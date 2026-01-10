@@ -1,16 +1,20 @@
 package fr.iglee42.createcasing.registries;
 
 import com.google.common.base.Supplier;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
+import com.simibubi.create.Create;
 import com.simibubi.create.api.data.recipe.BaseRecipeProvider;
 import com.simibubi.create.foundation.data.recipe.CommonMetal;
+import com.simibubi.create.foundation.data.recipe.CreateStandardRecipeGen;
 import com.tterrag.registrate.util.entry.ItemProviderEntry;
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
 import fr.iglee42.createcasing.transmissions.TransmissionSets;
-import net.createmod.catnip.registry.RegisteredObjectsHelper;
+import net.createmod.catnip.platform.CatnipServices;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.data.PackOutput;
@@ -23,18 +27,17 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.properties.WoodType;
-import net.neoforged.neoforge.common.Tags;
-import net.neoforged.neoforge.common.conditions.ICondition;
-import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
-import net.neoforged.neoforge.common.conditions.NotCondition;
+import net.minecraftforge.common.Tags;
+import net.minecraftforge.common.crafting.CraftingHelper;
+import net.minecraftforge.common.crafting.conditions.ICondition;
+import net.minecraftforge.common.crafting.conditions.ModLoadedCondition;
+import net.minecraftforge.common.crafting.conditions.NotCondition;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CompletableFuture;
-import java.util.function.BiFunction;
-import java.util.function.Function;
-import java.util.function.Predicate;
-import java.util.function.UnaryOperator;
+import java.util.function.*;
 
 public class EncasedRecipeGens extends BaseRecipeProvider{
 
@@ -66,15 +69,15 @@ public class EncasedRecipeGens extends BaseRecipeProvider{
     }
 
 
-    GeneratedRecipeBuilder create(ItemProviderEntry<? extends ItemLike, ? extends ItemLike> result) {
+    GeneratedRecipeBuilder create(ItemProviderEntry<? extends ItemLike> result) {
         return create(result::get);
     }
 
-    BaseRecipeProvider.GeneratedRecipe createSpecial(Function<CraftingBookCategory, Recipe<?>> builder, String recipeType,
-                                                     String path) {
+    GeneratedRecipe createSpecial(Supplier<? extends SimpleCraftingRecipeSerializer<?>> serializer, String recipeType,
+                                  String path) {
         ResourceLocation location = CreateCasing.asResource(recipeType + "/" + currentFolder + "/" + path);
         return register(consumer -> {
-            SpecialRecipeBuilder b = SpecialRecipeBuilder.special(builder);
+            SpecialRecipeBuilder b = SpecialRecipeBuilder.special(serializer.get());
             b.save(consumer, location.toString());
         });
     }
@@ -82,8 +85,8 @@ public class EncasedRecipeGens extends BaseRecipeProvider{
 
 
     @Override
-    public void buildRecipes(RecipeOutput output) {
-        all.forEach(c -> c.register(output));
+    protected void buildRecipes(Consumer<FinishedRecipe> p_200404_1_) {
+        all.forEach(c -> c.register(p_200404_1_));
         CreateCasing.LOGGER.info("{} registered {} recipe{}", getName(), all.size(), all.size() == 1 ? "" : "s");
     }
 
@@ -164,15 +167,17 @@ public class EncasedRecipeGens extends BaseRecipeProvider{
         }
 
         BaseRecipeProvider.GeneratedRecipe viaShapeless(UnaryOperator<ShapelessRecipeBuilder> builder) {
-            return register(recipeOutput -> {
+            return register(consumer -> {
                 ShapelessRecipeBuilder b =
                         builder.apply(ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result.get(), amount));
                 if (unlockedBy != null)
                     b.unlockedBy("has_item", inventoryTrigger(unlockedBy.get()));
 
-                RecipeOutput conditionalOutput = recipeOutput.withConditions(recipeConditions.toArray(new ICondition[0]));
-
-                b.save(recipeOutput, createLocation("crafting"));
+                b.save(result -> {
+                    consumer.accept(!recipeConditions.isEmpty()
+                            ? new ConditionSupportingShapelessRecipeResult(result, recipeConditions)
+                            : result);
+                }, createLocation("crafting"));
             });
         }
 
@@ -195,12 +200,12 @@ public class EncasedRecipeGens extends BaseRecipeProvider{
 
         private ResourceLocation createLocation(String recipeType) {
             if (path.isEmpty())
-                return CreateCasing.asResource(RegisteredObjectsHelper.getKeyOrThrow(result.get()) + suffix);
+                return CreateCasing.asResource(CatnipServices.REGISTRIES.getKeyOrThrow(result.get()) + suffix);
             return CreateCasing.asResource( path + suffix);
         }
 
         private ResourceLocation getRegistryName() {
-            return RegisteredObjectsHelper.getKeyOrThrow(result.get()
+            return CatnipServices.REGISTRIES.getKeyOrThrow(result.get()
                     .asItem());
         }
 
@@ -243,7 +248,7 @@ public class EncasedRecipeGens extends BaseRecipeProvider{
             }
 
             BaseRecipeProvider.GeneratedRecipe inFurnace(UnaryOperator<SimpleCookingRecipeBuilder> builder) {
-                return create(RecipeSerializer.SMELTING_RECIPE, builder, SmeltingRecipe::new, 1);
+                return create(RecipeSerializer.SMELTING_RECIPE, builder,  1);
             }
 
             BaseRecipeProvider.GeneratedRecipe inSmoker() {
@@ -251,9 +256,9 @@ public class EncasedRecipeGens extends BaseRecipeProvider{
             }
 
             BaseRecipeProvider.GeneratedRecipe inSmoker(UnaryOperator<SimpleCookingRecipeBuilder> builder) {
-                create(RecipeSerializer.SMELTING_RECIPE, builder, SmeltingRecipe::new, 1);
-                create(RecipeSerializer.CAMPFIRE_COOKING_RECIPE, builder, CampfireCookingRecipe::new, 3);
-                return create(RecipeSerializer.SMOKING_RECIPE, builder, SmokingRecipe::new, .5f);
+                create(RecipeSerializer.SMELTING_RECIPE, builder,  1);
+                create(RecipeSerializer.CAMPFIRE_COOKING_RECIPE, builder,  3);
+                return create(RecipeSerializer.SMOKING_RECIPE, builder, .5f);
             }
 
             BaseRecipeProvider.GeneratedRecipe inBlastFurnace() {
@@ -261,34 +266,33 @@ public class EncasedRecipeGens extends BaseRecipeProvider{
             }
 
             BaseRecipeProvider.GeneratedRecipe inBlastFurnace(UnaryOperator<SimpleCookingRecipeBuilder> builder) {
-                create(RecipeSerializer.SMELTING_RECIPE, builder, SmeltingRecipe::new, 1);
-                return create(RecipeSerializer.BLASTING_RECIPE, builder, BlastingRecipe::new, .5f);
+                create(RecipeSerializer.SMELTING_RECIPE, builder,  1);
+                return create(RecipeSerializer.BLASTING_RECIPE, builder,  .5f);
             }
 
             private <T extends AbstractCookingRecipe> BaseRecipeProvider.GeneratedRecipe create(RecipeSerializer<T> serializer,
-                                                                                                UnaryOperator<SimpleCookingRecipeBuilder> builder, AbstractCookingRecipe.Factory<T> factory, float cookingTimeModifier) {
-                return register(recipeOutput -> {
+                                                                                                UnaryOperator<SimpleCookingRecipeBuilder> builder, float cookingTimeModifier) {
+                return register(consumer -> {
 
                     SimpleCookingRecipeBuilder b = builder.apply(SimpleCookingRecipeBuilder.generic(ingredient.get(),
-                            RecipeCategory.MISC, result.get(), exp,
-                            (int) (cookingTime * cookingTimeModifier), serializer, factory));
+                            RecipeCategory.MISC,  result.get(), exp,
+                            (int) (cookingTime * cookingTimeModifier), serializer));
+
                     if (unlockedBy != null)
                         b.unlockedBy("has_item", inventoryTrigger(unlockedBy.get()));
 
-                    RecipeOutput conditionalOutput = recipeOutput.withConditions(recipeConditions.toArray(new ICondition[0]));
-
-                    b.save(
-                            conditionalOutput,
-                            createSimpleLocation(RegisteredObjectsHelper.getKeyOrThrow(serializer).getPath())
-                    );
+                    b.save(result -> {
+                        consumer.accept(result);
+                    }, createSimpleLocation(CatnipServices.REGISTRIES.getKeyOrThrow(serializer)
+                            .getPath()));
                 });
             }
         }
     }
 
 
-    public EncasedRecipeGens(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
-        super(output, registries, CreateCasing.MODID);
+    public EncasedRecipeGens(PackOutput output) {
+        super(output, CreateCasing.MODID);
         enterFolder("crafting");
         createForSetElement("adjustable_chain_drive",CasingSet::doesGenerateChainGearshift,CasingSet::getChainGearshift,(builder,set)->builder.viaShapeless(sh->sh.requires(set.getChainDrive()).requires(AllItems.ELECTRON_TUBE)));
         createForSetElement("chain_conveyor",CasingSet::doesGenerateChainConveyor,CasingSet::getChainConveyor,(builder,set)->builder.viaShaped(sh->
@@ -438,5 +442,37 @@ public class EncasedRecipeGens extends BaseRecipeProvider{
             recipeGenerator.apply(create(set.getName(),()->block.apply(set)).unlockedBy(set::getCasing),set);
         });
         leftLastFolder();
+    }
+
+    private record ConditionSupportingShapelessRecipeResult(FinishedRecipe wrapped, List<ICondition> conditions)
+            implements FinishedRecipe {
+        @Override
+        public ResourceLocation getId() {
+            return wrapped.getId();
+        }
+
+        @Override
+        public RecipeSerializer<?> getType() {
+            return wrapped.getType();
+        }
+
+        @Override
+        public JsonObject serializeAdvancement() {
+            return wrapped.serializeAdvancement();
+        }
+
+        @Override
+        public ResourceLocation getAdvancementId() {
+            return wrapped.getAdvancementId();
+        }
+
+        @Override
+        public void serializeRecipeData(@NotNull JsonObject pJson) {
+            wrapped.serializeRecipeData(pJson);
+
+            JsonArray conds = new JsonArray();
+            conditions.forEach(c -> conds.add(CraftingHelper.serialize(c)));
+            pJson.add("conditions", conds);
+        }
     }
 }

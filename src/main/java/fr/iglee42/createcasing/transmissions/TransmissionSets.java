@@ -58,7 +58,7 @@ public class TransmissionSets {
                     .shaftBlockEntityType(()-> EncasedBlockEntities.WOODEN_SHAFT.get())
                     .cogwheelBlockEntityType(()-> EncasedBlockEntities.WOODEN_COGWHEELS.get())
                     .largeCogwheelBlockEntityType(()-> EncasedBlockEntities.WOODEN_COGWHEELS.get())
-                    .everything(()-> BuiltInRegistries.ITEM.get(ResourceLocation.withDefaultNamespace(woodType.name().toLowerCase(Locale.ROOT) + "_planks")))
+                    .everything(()-> BuiltInRegistries.ITEM.get(new ResourceLocation(woodType.name().toLowerCase(Locale.ROOT) + "_planks")))
             );
             woodSets.put(woodType, set);
         }

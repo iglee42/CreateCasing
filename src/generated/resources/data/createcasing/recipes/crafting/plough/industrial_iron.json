@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "tag": "forge:plates/iron"
+    },
+    "C": {
+      "item": "create:industrial_iron_block"
+    },
+    "I": {
+      "item": "create:andesite_alloy"
+    }
+  },
+  "pattern": [
+    "BBB",
+    "III",
+    " C "
+  ],
+  "result": {
+    "item": "createcasing:industrial_iron_mechanical_plough"
+  },
+  "show_notification": true
+}

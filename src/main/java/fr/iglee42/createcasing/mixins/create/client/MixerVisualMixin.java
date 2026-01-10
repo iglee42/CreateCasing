@@ -20,24 +20,29 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(value = MixerVisual.class,remap = false)
-public class MixerVisualMixin extends SingleAxisRotatingVisual<MechanicalMixerBlockEntity> {
+public abstract class MixerVisualMixin extends SingleAxisRotatingVisual<MechanicalMixerBlockEntity> {
 
     @Mutable
     @Shadow
     @Final
     private RotatingInstance mixerHead;
 
+    @Shadow
+    protected abstract void animate(float pt);
+
     public MixerVisualMixin(VisualizationContext context, MechanicalMixerBlockEntity blockEntity, float partialTick, Model model) {
         super(context, blockEntity, partialTick, model);
     }
 
 
-    @Inject(method = "<init>",at = @At(value = "INVOKE", target = "Lcom/simibubi/create/content/kinetics/mixer/MixerVisual;animate(F)V"))
+    @Inject(method = "<init>",at = @At(value = "RETURN"))
     private void encased$modifyHead(VisualizationContext context, MechanicalMixerBlockEntity blockEntity, float partialTick, CallbackInfo ci){
         mixerHead = instancerProvider().instancer(AllInstanceTypes.ROTATING, Models.partial(EncasedPartialModels.getMixerHead(blockEntity.getBlockState())))
                 .createInstance();
 
         mixerHead.setRotationAxis(Direction.Axis.Y);
+
+        animate(partialTick);
     }
 
 }

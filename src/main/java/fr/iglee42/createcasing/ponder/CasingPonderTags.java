@@ -6,7 +6,7 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.casings.CasingSets;
 import fr.iglee42.createcasing.registries.EncasedBlocks;
-import net.createmod.catnip.registry.RegisteredObjectsHelper;
+import net.createmod.catnip.platform.CatnipServices;
 import net.createmod.ponder.api.registration.PonderTagRegistrationHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
@@ -26,9 +26,9 @@ public class CasingPonderTags {
 
 
 	public static void register(PonderTagRegistrationHelper<ResourceLocation> helper) {
-		PonderTagRegistrationHelper<RegistryEntry<?,?>> HELPER = helper.withKeyFunction(RegistryEntry::getId);
+		PonderTagRegistrationHelper<RegistryEntry<?>> HELPER = helper.withKeyFunction(RegistryEntry::getId);
 		PonderTagRegistrationHelper<ItemLike> itemHelper = helper.withKeyFunction(
-				RegisteredObjectsHelper::getKeyOrThrow);
+				CatnipServices.REGISTRIES::getKeyOrThrow);
 
 		helper.registerTag(ENCASED_BLOCKS).item(()-> CasingSets.BRASS.getGearbox().asItem(),true,false)
 				.title("Create Encased")

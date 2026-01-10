@@ -4,15 +4,13 @@ import fr.iglee42.createcasing.ponder.CasingPonderPlugin;
 import fr.iglee42.createcasing.registries.EncasedPartialModels;
 import net.createmod.ponder.foundation.PonderIndex;
 import net.minecraft.client.resources.model.ModelResourceLocation;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
-import net.neoforged.neoforge.client.event.ModelEvent;
-import net.neoforged.neoforge.common.NeoForge;
+import net.minecraftforge.client.event.ModelEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 
 public class CreateCasingClient {
 
     public static void onCtorClient(IEventBus modEventBus) {
-        IEventBus neoEventBus = NeoForge.EVENT_BUS;
 
         //if (CreateCasing.isExtendedCogsLoaded())CreateExtendedCogwheelsPartials.init();
 
@@ -31,6 +29,6 @@ public class CreateCasingClient {
     }
 
     public static void onRegisterAdditionalModels(ModelEvent.RegisterAdditional event){
-        EncasedPartialModels.ALL_ENCASED_MODELS.forEach(m->event.register(ModelResourceLocation.standalone(m.modelLocation())));
+        EncasedPartialModels.ALL_ENCASED_MODELS.forEach(m->event.register(m.modelLocation()));
     }
 }

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "tag": "forge:ingots/iron"
+    },
+    "C": {
+      "item": "create:brass_casing"
+    },
+    "I": {
+      "item": "create:andesite_alloy"
+    }
+  },
+  "pattern": [
+    " I ",
+    "IBI",
+    " C "
+  ],
+  "result": {
+    "item": "createcasing:brass_mechanical_drill"
+  },
+  "show_notification": true
+}

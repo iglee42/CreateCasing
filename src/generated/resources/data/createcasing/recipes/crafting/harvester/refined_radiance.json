@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "tag": "forge:plates/iron"
+    },
+    "C": {
+      "item": "create:refined_radiance_casing"
+    },
+    "I": {
+      "item": "create:andesite_alloy"
+    }
+  },
+  "pattern": [
+    "IBI",
+    "IBI",
+    " C "
+  ],
+  "result": {
+    "item": "createcasing:refined_radiance_mechanical_harvester"
+  },
+  "show_notification": true
+}

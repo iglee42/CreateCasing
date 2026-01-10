@@ -9,8 +9,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import org.jetbrains.annotations.NotNull;
 
 public class CustomRollerBlock extends RollerBlock {
-    public static final MapCodec<CustomRollerBlock> CODEC = simpleCodec(CustomRollerBlock::new);
-
 
     public CustomRollerBlock(Properties p_i48377_1_) {
         super(p_i48377_1_);
@@ -21,8 +19,4 @@ public class CustomRollerBlock extends RollerBlock {
         return EncasedBlockEntities.MECHANICAL_ROLLER.get();
     }
 
-    @Override
-    protected @NotNull MapCodec<? extends HorizontalDirectionalBlock> codec() {
-        return CODEC;
-    }
 }

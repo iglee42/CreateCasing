@@ -7,7 +7,7 @@ import net.createmod.catnip.placement.IPlacementHelper;
 import net.createmod.catnip.placement.PlacementHelpers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.ItemInteractionResult;
+import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.ItemStack;
@@ -26,17 +26,13 @@ public class CustomShaftBlock extends ShaftBlock {
         return EncasedBlockEntities.CUSTOM_SHAFT.get();
     }
 
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult) {
-        if (!player.isShiftKeyDown() && player.mayBuild()) {
-            ItemInteractionResult result = this.tryEncase(state, level, pos, stack, player, hand, hitResult);
-            if (result.consumesAction()) {
-                return result;
-            } else {
-                IPlacementHelper helper = PlacementHelpers.get(placementHelperId);
-                return helper.matchesItem(stack) ? helper.getOffset(player, level, state, pos, hitResult).placeInWorld(level, (BlockItem)stack.getItem(), player, hand, hitResult) : ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-            }
-        } else {
-            return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-        }
+    @Override
+    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult ray) {
+        IPlacementHelper helper = PlacementHelpers.get(WoodenShaftBlock.placementHelperId);
+        ItemStack heldItem = player.getItemInHand(hand);
+        if (helper.matchesItem(heldItem))
+            return helper.getOffset(player, world, state, pos, ray)
+                    .placeInWorld(world, (BlockItem) heldItem.getItem(), player, hand, ray);
+        return super.use(state, world, pos, player, hand, ray);
     }
 }

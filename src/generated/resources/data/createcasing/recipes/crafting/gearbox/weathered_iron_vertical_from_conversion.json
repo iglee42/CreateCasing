@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "createcasing:weathered_iron_gearbox"
+    }
+  ],
+  "result": {
+    "item": "createcasing:vertical_weathered_iron_gearbox"
+  }
+}

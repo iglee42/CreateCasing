@@ -20,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.Redirect;
 public class RollerActorVisualMixin {
 
     @Redirect(method = "<init>",at= @At(value = "INVOKE", target = "Ldev/engine_room/flywheel/lib/model/Models;partial(Ldev/engine_room/flywheel/lib/model/baked/PartialModel;)Ldev/engine_room/flywheel/api/model/Model;",ordinal = 0))
-    private static Model encased$replaceShaftModel(PartialModel partial, @Local(argsOnly = true) MovementContext movementContext){
+    private Model encased$replaceShaftModel(PartialModel partial, @Local(argsOnly = true) MovementContext movementContext){
         return Models.partial(EncasedPartialModels.getChainConveyorShaft(movementContext.state));
     }
 

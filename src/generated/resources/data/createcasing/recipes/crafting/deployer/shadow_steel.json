@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "create:electron_tube"
+    },
+    "C": {
+      "item": "create:shadow_steel_casing"
+    },
+    "I": {
+      "item": "create:brass_hand"
+    }
+  },
+  "pattern": [
+    "B",
+    "C",
+    "I"
+  ],
+  "result": {
+    "item": "createcasing:shadow_steel_deployer"
+  },
+  "show_notification": true
+}

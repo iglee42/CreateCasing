@@ -1,0 +1,28 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+license = "MIT"
+
+[[mods]]
+modId = "createcasing"
+version = "1.8"
+displayName = "Create Encased"
+updateJSONURL="https://api.modrinth.com/updates/create-encased/forge_updates.json"
+displayURL="https://iglee.fr/"
+logoFile="logo.png"
+authors = "iglee42"
+description = '''
+Encased Your World !
+'''
+
+[[dependencies.createcasing]]
+modId = "forge"
+mandatory = true
+versionRange = "[47,)"
+ordering = "NONE"
+side = "BOTH"
+[[dependencies.createcasing]]
+modId = "create"
+mandatory = true
+versionRange = "[6.0.8,)"
+ordering = "AFTER"
+side = "BOTH"

@@ -54,6 +54,7 @@ import fr.iglee42.createcasing.blocks.customs.EncasedCustomCogwheelBlock;
 import fr.iglee42.createcasing.blocks.shafts.EncasedCustomShaftBlock;
 import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
+import fr.iglee42.createcasing.mixins.minecraft.BlockEntityTypeAccessor;
 import fr.iglee42.createcasing.transmissions.TransmissionSet;
 import fr.iglee42.createcasing.transmissions.TransmissionSets;
 import net.minecraft.core.Direction;
@@ -61,17 +62,17 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.neoforged.bus.api.SubscribeEvent;
-import net.neoforged.fml.common.EventBusSubscriber;
-import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
 import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 
-@EventBusSubscriber(modid = CreateCasing.MODID)
 public class EncasedBlockEntities {
 
 
@@ -265,48 +266,65 @@ public class EncasedBlockEntities {
 
     public static void register() {}
 
-    @SubscribeEvent
-    public static void modifyBlockEntity(BlockEntityTypeAddBlocksEvent event){
-        register(event,ENCASED_SHAFT.get(), CasingSet::getShaft,CasingSet::doesGenerateShaft);
-        register(event,ENCASED_COGWHEEL.get(), CasingSet::getCogwheel, CasingSet::doesGenerateCogwheel);
-        register(event,ENCASED_COGWHEEL_LARGE.get(), CasingSet::getLargeCogwheel,CasingSet::doesGenerateLargeCogwheel);
-        register(event,ENCASED_FLUID_PIPE.get(), CasingSet::getFluidPipe,CasingSet::doesGenerateFluidPipe);
-        register(event,GEARBOX.get(), CasingSet::getGearbox,CasingSet::doesGenerateGearbox);
-        register(event,PRESS.get(), CasingSet::getPress,CasingSet::doesGeneratePress);
-        register(event,MIXER.get(), CasingSet::getMixer,CasingSet::doesGenerateMixer);
-        register(event,DEPOT.get(), CasingSet::getDepot,CasingSet::doesGenerateDepot);
-        register(event, CHAIN_DRIVE.get(), CasingSet::getChainDrive,CasingSet::doesGenerateChainDrive);
-        register(event, CHAIN_GEARSHIFT.get(),CasingSet::getChainGearshift,CasingSet::doesGenerateChainGearshift);
-        register(event,CONFIGURABLE_GEARBOX.get(),CasingSet::getConfigurableGearbox,CasingSet::doesGenerateConfigurableGearbox);
-        register(event,CHAIN_CONVEYOR.get(),CasingSet::getChainConveyor,CasingSet::doesGenerateChainConveyor);
-        register(event, GEARSHIFT.get(),CasingSet::getGearshift,CasingSet::doesGenerateGearshift);
-        register(event,CLUTCH.get(),CasingSet::getClutch,CasingSet::doesGenerateClutch);
-        register(event,DEPLOYER.get(),CasingSet::getDeployer,CasingSet::doesGenerateDeployer);
-        register(event,AllBlockEntityTypes.PORTABLE_STORAGE_INTERFACE.get(),CasingSet::getStorageInterface,CasingSet::doesGenerateStorageInterface);
-        register(event,ENCASED_FAN.get(),CasingSet::getEncasedFan,CasingSet::doesGenerateEncasedFan);
-        register(event,HARVESTER.get(),CasingSet::getHarvester,CasingSet::doesGenerateHarvester);
-        register(event,DRILL.get(),CasingSet::getDrill,CasingSet::doesGenerateDrill);
-        register(event,SAW.get(),CasingSet::getSaw,CasingSet::doesGenerateSaw);
-        register(event,MECHANICAL_ROLLER.get(),CasingSet::getRoller,CasingSet::doesGenerateRoller);
+    public static void modifyBlockEntity(){
+        register(ENCASED_SHAFT.get(), CasingSet::getShaft,CasingSet::doesGenerateShaft);
+        register(ENCASED_COGWHEEL.get(), CasingSet::getCogwheel, CasingSet::doesGenerateCogwheel);
+        register(ENCASED_COGWHEEL_LARGE.get(), CasingSet::getLargeCogwheel,CasingSet::doesGenerateLargeCogwheel);
+        register(ENCASED_FLUID_PIPE.get(), CasingSet::getFluidPipe,CasingSet::doesGenerateFluidPipe);
+        register(GEARBOX.get(), CasingSet::getGearbox,CasingSet::doesGenerateGearbox);
+        register(PRESS.get(), CasingSet::getPress,CasingSet::doesGeneratePress);
+        register(MIXER.get(), CasingSet::getMixer,CasingSet::doesGenerateMixer);
+        register(DEPOT.get(), CasingSet::getDepot,CasingSet::doesGenerateDepot);
+        register( CHAIN_DRIVE.get(), CasingSet::getChainDrive,CasingSet::doesGenerateChainDrive);
+        register( CHAIN_GEARSHIFT.get(),CasingSet::getChainGearshift,CasingSet::doesGenerateChainGearshift);
+        register(CONFIGURABLE_GEARBOX.get(),CasingSet::getConfigurableGearbox,CasingSet::doesGenerateConfigurableGearbox);
+        register(CHAIN_CONVEYOR.get(),CasingSet::getChainConveyor,CasingSet::doesGenerateChainConveyor);
+        register( GEARSHIFT.get(),CasingSet::getGearshift,CasingSet::doesGenerateGearshift);
+        register(CLUTCH.get(),CasingSet::getClutch,CasingSet::doesGenerateClutch);
+        register(DEPLOYER.get(),CasingSet::getDeployer,CasingSet::doesGenerateDeployer);
+        register(AllBlockEntityTypes.PORTABLE_STORAGE_INTERFACE.get(),CasingSet::getStorageInterface,CasingSet::doesGenerateStorageInterface);
+        register(ENCASED_FAN.get(),CasingSet::getEncasedFan,CasingSet::doesGenerateEncasedFan);
+        register(HARVESTER.get(),CasingSet::getHarvester,CasingSet::doesGenerateHarvester);
+        register(DRILL.get(),CasingSet::getDrill,CasingSet::doesGenerateDrill);
+        register(SAW.get(),CasingSet::getSaw,CasingSet::doesGenerateSaw);
+        register(MECHANICAL_ROLLER.get(),CasingSet::getRoller,CasingSet::doesGenerateRoller);
 
-        registerTransmission(event, CUSTOM_SHAFT.get(), TransmissionSet::getShaft, TransmissionSet::doesGenerateShaft, TransmissionSet::getShaftBlockEntityType);
-        registerTransmission(event, CUSTOM_COGWHEELS.get(), TransmissionSet::getCogwheel, TransmissionSet::doesGenerateCogwheel, TransmissionSet::getCogwheelBlockEntityType);
-        registerTransmission(event, CUSTOM_COGWHEELS.get(), TransmissionSet::getLargeCogwheel, TransmissionSet::doesGenerateLargeCogwheel, TransmissionSet::getLargeCogwheelBlockEntityType);
+        registerTransmission(CUSTOM_SHAFT.get(), TransmissionSet::getShaft, TransmissionSet::doesGenerateShaft, TransmissionSet::getShaftBlockEntityType);
+        registerTransmission(CUSTOM_COGWHEELS.get(), TransmissionSet::getCogwheel, TransmissionSet::doesGenerateCogwheel, TransmissionSet::getCogwheelBlockEntityType);
+        registerTransmission(CUSTOM_COGWHEELS.get(), TransmissionSet::getLargeCogwheel, TransmissionSet::doesGenerateLargeCogwheel, TransmissionSet::getLargeCogwheelBlockEntityType);
 
         REGISTRATE.getAll(Registries.BLOCK).forEach(e->{
             if (e.get() instanceof EncasedCustomShaftBlock block)
-                event.modify(ENCASED_CUSTOM_SHAFT.get(),block);
+                modify(ENCASED_CUSTOM_SHAFT.get(),block);
 
             if (e.get() instanceof EncasedCustomCogwheelBlock block)
-                event.modify(block.isLargeCog() ? ENCASED_CUSTOM_LARGE_COGWHEEL.get() : ENCASED_CUSTOM_COGWHEEL.get(),block);
+                modify(block.isLargeCog() ? ENCASED_CUSTOM_LARGE_COGWHEEL.get() : ENCASED_CUSTOM_COGWHEEL.get(),block);
         });
     }
 
-    private static void register(BlockEntityTypeAddBlocksEvent event, BlockEntityType<?> type, Function<CasingSet, Block> blockFunction, Predicate<CasingSet> validateFunction){
-        CasingSets.getSets().stream().filter(set-> Objects.nonNull(blockFunction.apply(set))).filter(validateFunction).map(blockFunction).forEach(b->event.modify(type,b));
+    private static void register( BlockEntityType<?> type, Function<CasingSet, Block> blockFunction, Predicate<CasingSet> validateFunction){
+        CasingSets.getSets().stream().filter(set-> Objects.nonNull(blockFunction.apply(set))).filter(validateFunction).map(blockFunction).forEach(b->modify(type,b));
     }
 
-    private static void registerTransmission(BlockEntityTypeAddBlocksEvent event, BlockEntityType<?> type, Function<TransmissionSet, Block> blockFunction, Predicate<TransmissionSet> validateFunction,Function<TransmissionSet,BlockEntityType<?>> typeFunction){
-        TransmissionSets.getSets().stream().filter(set-> Objects.nonNull(blockFunction.apply(set))).filter(validateFunction).forEach(b->event.modify(typeFunction.apply(b) == null ? type : typeFunction.apply(b),blockFunction.apply(b)));
+    private static void registerTransmission(BlockEntityType<?> type, Function<TransmissionSet, Block> blockFunction, Predicate<TransmissionSet> validateFunction,Function<TransmissionSet,BlockEntityType<?>> typeFunction){
+        TransmissionSets.getSets().stream().filter(set-> Objects.nonNull(blockFunction.apply(set))).filter(validateFunction).forEach(b->modify(typeFunction.apply(b) == null ? type : typeFunction.apply(b),blockFunction.apply(b)));
+    }
+
+    /**
+     * Code from Neoforge 1.21.1
+     * <a href="https://github.com/neoforged/NeoForge/blob/9ee39352d66bddfbc1aad225bb43908316602d6c/src/main/java/net/neoforged/neoforge/event/BlockEntityTypeAddBlocksEvent.java#L47-L60">...</a>
+     */
+    private static void modify(BlockEntityType<?> type, Block... blocksToAdd){
+        if (blocksToAdd.length == 0) {
+            return;
+        }
+
+        Set<Block> currentValidBlocks = new HashSet<>(((BlockEntityTypeAccessor)type).getValidBlocks());
+
+        for (Block block : blocksToAdd) {
+            currentValidBlocks.add(block);
+        }
+
+        ((BlockEntityTypeAccessor)type).setValidBlocks(currentValidBlocks);
     }
 }

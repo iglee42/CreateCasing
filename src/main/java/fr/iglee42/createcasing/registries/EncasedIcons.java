@@ -11,8 +11,8 @@ import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 import org.joml.Matrix4f;
 
 import static fr.iglee42.createcasing.CreateCasing.MODID;
@@ -20,7 +20,7 @@ import static fr.iglee42.createcasing.CreateCasing.MODID;
 
 public class EncasedIcons extends AllIcons {
 
-	public static final ResourceLocation ICON_ATLAS =ResourceLocation.fromNamespaceAndPath(MODID,"textures/gui/icons.png");
+	public static final ResourceLocation ICON_ATLAS = new ResourceLocation(MODID,"textures/gui/icons.png");
 	public static final int ICON_ATLAS_SIZE = 256;
 
 	private static int x = 0, y = -1;
@@ -29,7 +29,7 @@ public class EncasedIcons extends AllIcons {
 
 
 	public static final EncasedIcons
-		I_EQUALS = newRow();
+			I_EQUALS = newRow();
 
 	public EncasedIcons(int x, int y) {
 		super(x,y);
@@ -77,7 +77,7 @@ public class EncasedIcons extends AllIcons {
 
 	@OnlyIn(Dist.CLIENT)
 	private void vertex(VertexConsumer builder, Matrix4f matrix, Vec3 vec, Color rgb, float u, float v, int light) {
-		builder.addVertex(matrix, (float)vec.x, (float)vec.y, (float)vec.z).setColor(rgb.getRed(), rgb.getGreen(), rgb.getBlue(), 255).setUv(u, v).setLight(light);
+		builder.vertex(matrix, (float)vec.x, (float)vec.y, (float)vec.z).color(rgb.getRed(), rgb.getGreen(), rgb.getBlue(), 255).uv(u, v).uv2(light).endVertex();
 	}
 
 	@OnlyIn(Dist.CLIENT)

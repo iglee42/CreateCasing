@@ -7,7 +7,6 @@ import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
 import com.tterrag.registrate.providers.RegistrateDataProvider;
-import com.tterrag.registrate.util.RegistrateDistExecutor;
 import fr.iglee42.createcasing.commands.CreateCasingCommand;
 import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.kubejs.KJSExternalHandler;
@@ -18,19 +17,18 @@ import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.level.ItemLike;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.bus.api.EventPriority;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.ModContainer;
-import net.neoforged.fml.ModLoadingContext;
-import net.neoforged.fml.common.Mod;
-import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.neoforged.fml.loading.FMLEnvironment;
-import net.neoforged.neoforge.capabilities.Capabilities;
-import net.neoforged.neoforge.capabilities.RegisterCapabilitiesEvent;
-import net.neoforged.neoforge.common.NeoForge;
-import net.neoforged.neoforge.data.event.GatherDataEvent;
-import net.neoforged.neoforge.event.RegisterCommandsEvent;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.data.event.GatherDataEvent;
+import net.minecraftforge.event.RegisterCommandsEvent;
+import net.minecraftforge.eventbus.api.EventPriority;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.fml.loading.FMLEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -54,8 +52,10 @@ public class CreateCasing {
         REGISTRATE.setTooltipModifierFactory(item -> new ItemDescription.Modifier(item, FontHelper.Palette.STANDARD_CREATE)
                 .andThen(TooltipModifier.mapNull(KineticStats.create(item))));
     }
-    public CreateCasing(IEventBus modEventBus, ModContainer container) {
-        IEventBus neoForgeEventBus = NeoForge.EVENT_BUS;
+    public CreateCasing() {
+        IEventBus modEventBus = FMLJavaModLoadingContext.get()
+                .getModEventBus();
+        IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
 
 
         REGISTRATE.registerEventListeners(modEventBus);
@@ -65,26 +65,25 @@ public class CreateCasing {
         EncasedItems.register();
         EncasedBlockEntities.register();
         EncasedCreativeModeTabs.register(modEventBus);
-        EncasedPackets.register();
+        EncasedPackets.registerPackets();
 
-        ModConfigs.register(ModLoadingContext.get(),container);
-
-
+        ModConfigs.register(ModLoadingContext.get());
 
 
-        RegistrateDistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> CreateCasingClient.onCtorClient(modEventBus));
 
-        neoForgeEventBus.addListener(this::registerCommands);
+
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> CreateCasingClient.onCtorClient(modEventBus));
+
+        forgeEventBus.addListener(this::registerCommands);
         modEventBus.addListener(this::setup);
         modEventBus.addListener(EncasedSounds::register);
-        modEventBus.addListener(this::registerCapabilities);
         modEventBus.addListener(EventPriority.LOWEST, this::gatherData);
 
 
     }
 
     public static ResourceLocation asResource(String path) {
-        return ResourceLocation.fromNamespaceAndPath(MODID, path);
+        return new ResourceLocation(MODID, path);
     }
 
 
@@ -99,27 +98,8 @@ public class CreateCasing {
         if (!FMLEnvironment.production) new CreateCasingCommand(event.getDispatcher());
     }
 
-    private void registerCapabilities(RegisterCapabilitiesEvent event){
-        event.registerBlockEntity(
-                Capabilities.ItemHandler.BLOCK,
-                EncasedBlockEntities.DEPOT.get(),
-                (be, context) -> be.getBehaviour(DepotBehaviour.TYPE).itemHandler
-        );
-
-        event.registerBlockEntity(
-                Capabilities.ItemHandler.BLOCK,
-                EncasedBlockEntities.DEPLOYER.get(),
-                (be, context) ->  {
-                    DeployerBlockEntityAccessor accessor = (DeployerBlockEntityAccessor) be;
-                    if (accessor.getInvHandler() == null)
-                        accessor.invokeInitHandler();
-                    return accessor.getInvHandler();
-                }
-        );
-    }
-
     private void gatherData(GatherDataEvent event) {
         //event.getGenerator().addProvider(true, REGISTRATE.setDataProvider(new RegistrateDataProvider(REGISTRATE, MODID, event)));
-        event.getGenerator().addProvider(event.includeServer(),new EncasedRecipeGens(event.getGenerator().getPackOutput(),event.getLookupProvider()));
+        event.getGenerator().addProvider(event.includeServer(),new EncasedRecipeGens(event.getGenerator().getPackOutput()));
     }
 }

@@ -21,7 +21,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.WoodType;
-import net.neoforged.neoforge.client.model.generators.*;
+import net.minecraftforge.client.model.generators.*;
 
 import java.util.Objects;
 import java.util.function.BiFunction;

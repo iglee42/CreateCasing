@@ -8,6 +8,7 @@ import fr.iglee42.createcasing.blockEntities.BrassShaftBlockEntity;
 import fr.iglee42.createcasing.packets.ConfigureBrassShaftPacket;
 import fr.iglee42.createcasing.registries.EncasedGuiTextures;
 import fr.iglee42.createcasing.registries.EncasedIcons;
+import fr.iglee42.createcasing.registries.EncasedPackets;
 import net.createmod.catnip.gui.AbstractSimiScreen;
 import net.createmod.catnip.gui.element.GuiGameElement;
 import net.createmod.catnip.gui.widget.AbstractSimiWidget;
@@ -15,9 +16,8 @@ import net.createmod.catnip.gui.widget.ElementWidget;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.network.chat.Component;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
-import net.neoforged.neoforge.network.PacketDistributor;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -87,7 +87,7 @@ public class BrassShaftScreen extends AbstractSimiScreen {
             IconButton operationButton = new IconButton(x + 33 + i * 18, y + background.getHeight() - 24, icons.get(i));
             int operation = i;
             operationButton.withCallback(() -> {
-                PacketDistributor.sendToServer(new ConfigureBrassShaftPacket(be.getBlockPos(), maxStressWidget.getState(),scrollInput.getState(),operation));
+                EncasedPackets.getChannel().sendToServer(new ConfigureBrassShaftPacket(be.getBlockPos(), maxStressWidget.getState(),scrollInput.getState(),operation));
             });
             operationButton.setToolTip(BrassShaftBlockEntity.Operation.getComponents().get(i));
             operationButtons.add(operationButton);
@@ -136,6 +136,6 @@ public class BrassShaftScreen extends AbstractSimiScreen {
 
     @Override
     public void removed() {
-        PacketDistributor.sendToServer(new ConfigureBrassShaftPacket(be.getBlockPos(), maxStressWidget.getState(),scrollInput.getState(),be.getOperation().ordinal()));
+        EncasedPackets.getChannel().sendToServer(new ConfigureBrassShaftPacket(be.getBlockPos(), maxStressWidget.getState(),scrollInput.getState(),be.getOperation().ordinal()));
     }
 }

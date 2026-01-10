@@ -7,8 +7,8 @@ import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
 import fr.iglee42.createcasing.registries.EncasedBlockStateGens;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
-import net.neoforged.neoforge.client.model.generators.ModelBuilder;
-import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.minecraftforge.client.model.generators.ModelBuilder;
+import net.minecraftforge.client.model.generators.ModelFile;
 
 import java.util.Objects;
 

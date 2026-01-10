@@ -1,9 +1,10 @@
 package fr.iglee42.createcasing.blockEntities;
 
 import com.simibubi.create.content.kinetics.RotationPropagator;
+import com.simibubi.create.content.kinetics.base.IRotate;
+import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import fr.iglee42.createcasing.CreateCasing;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.util.StringRepresentable;
@@ -71,19 +72,19 @@ public class BrassShaftBlockEntity extends CustomShaftBlockEntity {
     }
 
     @Override
-    protected void write(CompoundTag compound, HolderLookup.Provider provider, boolean clientPacket) {
+    protected void write(CompoundTag compound, boolean clientPacket) {
         compound.putInt("configuredStress", configuredStress);
         compound.putString("mode", mode.getSerializedName());
         compound.putString("operation", operation.getSerializedName());
-        super.write(compound,provider, clientPacket);
+        super.write(compound, clientPacket);
     }
 
     @Override
-    protected void read(CompoundTag compound, HolderLookup.Provider provider, boolean clientPacket) {
+    protected void read(CompoundTag compound, boolean clientPacket) {
         configuredStress = compound.getInt("configuredStress");
         mode = Mode.byName(compound.getString("mode"));
         operation = Operation.byName(compound.getString("operation"));
-        super.read(compound, provider, clientPacket);
+        super.read(compound, clientPacket);
     }
 
     public Operation getOperation() {

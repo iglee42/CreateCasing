@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "createcasing:copper_gearbox"
+    }
+  ],
+  "result": {
+    "item": "createcasing:vertical_copper_gearbox"
+  }
+}

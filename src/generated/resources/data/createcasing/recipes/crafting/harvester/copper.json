@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "tag": "forge:plates/iron"
+    },
+    "C": {
+      "item": "create:copper_casing"
+    },
+    "I": {
+      "item": "create:andesite_alloy"
+    }
+  },
+  "pattern": [
+    "IBI",
+    "IBI",
+    " C "
+  ],
+  "result": {
+    "item": "createcasing:copper_mechanical_harvester"
+  },
+  "show_notification": true
+}

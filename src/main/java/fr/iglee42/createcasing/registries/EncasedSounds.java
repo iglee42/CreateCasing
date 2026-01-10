@@ -2,6 +2,7 @@ package fr.iglee42.createcasing.registries;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.simibubi.create.AllSoundEvents;
 import fr.iglee42.createcasing.CreateCasing;
 import net.minecraft.core.Holder;
 import net.minecraft.core.Vec3i;
@@ -18,8 +19,9 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.RegisterEvent;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegisterEvent;
+import net.minecraftforge.registries.RegistryObject;
 
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -34,6 +36,7 @@ public class EncasedSounds {
 
     public static final Map<ResourceLocation, SoundEntry> ALL = new HashMap<>();
 
+
     public static final SoundEntry
 
             MLDEG = create("mldeg").subtitle("Gnee Drakonic")
@@ -46,7 +49,6 @@ public class EncasedSounds {
     private static SoundEntryBuilder create(String name) {
         return create(CreateCasing.asResource(name));
     }
-
     public static SoundEntryBuilder create(ResourceLocation id) {
         return new SoundEntryBuilder(id);
     }
@@ -108,7 +110,7 @@ public class EncasedSounds {
         }
 
         public CompletableFuture<?> generate(Path path, CachedOutput cache) {
-            path = path.resolve("assets/create");
+            path = path.resolve("assets/createcasing");
             JsonObject json = new JsonObject();
             ALL.entrySet()
                     .stream()
@@ -122,7 +124,8 @@ public class EncasedSounds {
 
     }
 
-    public record ConfiguredSoundEvent(Supplier<SoundEvent> event, float volume, float pitch) {}
+    public record ConfiguredSoundEvent(Supplier<SoundEvent> event, float volume, float pitch) {
+    }
 
     public static class SoundEntryBuilder {
 
@@ -182,8 +185,9 @@ public class EncasedSounds {
         }
 
         public SoundEntryBuilder playExisting(Holder<SoundEvent> event) {
-            return playExisting(event::value, 1, 1);
+            return playExisting(event::get, 1, 1);
         }
+
 
         public SoundEntry build() {
             SoundEntry entry =
@@ -214,8 +218,6 @@ public class EncasedSounds {
         public abstract void register(RegisterEvent.RegisterHelper<SoundEvent> registry);
 
         public abstract void write(JsonObject json);
-
-        public abstract Holder<SoundEvent> getMainEventHolder();
 
         public abstract SoundEvent getMainEvent();
 
@@ -295,7 +297,7 @@ public class EncasedSounds {
             for (int i = 0; i < wrappedEvents.size(); i++) {
                 ConfiguredSoundEvent wrapped = wrappedEvents.get(i);
                 ResourceLocation location = getIdOf(i);
-                DeferredHolder<SoundEvent, SoundEvent> event = DeferredHolder.create(Registries.SOUND_EVENT, location);
+                RegistryObject<SoundEvent> event = RegistryObject.create(location, ForgeRegistries.SOUND_EVENTS);
                 compiledEvents.add(new CompiledSoundEvent(event, wrapped.volume(), wrapped.pitch()));
             }
         }
@@ -309,17 +311,13 @@ public class EncasedSounds {
         }
 
         @Override
-        public Holder<SoundEvent> getMainEventHolder() {
-            return compiledEvents.getFirst().event();
-        }
-
-        @Override
         public SoundEvent getMainEvent() {
-            return compiledEvents.getFirst().event().get();
+            return compiledEvents.get(0)
+                    .event().get();
         }
 
         protected ResourceLocation getIdOf(int i) {
-            return ResourceLocation.fromNamespaceAndPath(id.getNamespace(), i == 0 ? id.getPath() : id.getPath() + "_compounded_" + i);
+            return new ResourceLocation(id.getNamespace(), i == 0 ? id.getPath() : id.getPath() + "_compounded_" + i);
         }
 
         @Override
@@ -360,7 +358,7 @@ public class EncasedSounds {
             }
         }
 
-        private record CompiledSoundEvent(DeferredHolder<SoundEvent, SoundEvent> event, float volume, float pitch) {
+        private record CompiledSoundEvent(RegistryObject<SoundEvent> event, float volume, float pitch) {
         }
 
     }
@@ -368,7 +366,7 @@ public class EncasedSounds {
     private static class CustomSoundEntry extends SoundEntry {
 
         protected List<ResourceLocation> variants;
-        protected DeferredHolder<SoundEvent, SoundEvent> event;
+        protected RegistryObject<SoundEvent> event;
 
         public CustomSoundEntry(ResourceLocation id, List<ResourceLocation> variants, String subtitle,
                                 SoundSource category, int attenuationDistance) {
@@ -378,18 +376,13 @@ public class EncasedSounds {
 
         @Override
         public void prepare() {
-            event = DeferredHolder.create(Registries.SOUND_EVENT, id);
+            event = RegistryObject.create(id, ForgeRegistries.SOUND_EVENTS);
         }
 
         @Override
         public void register(RegisterEvent.RegisterHelper<SoundEvent> helper) {
             ResourceLocation location = event.getId();
             helper.register(location, SoundEvent.createVariableRangeEvent(location));
-        }
-
-        @Override
-        public Holder<SoundEvent> getMainEventHolder() {
-            return event;
         }
 
         @Override

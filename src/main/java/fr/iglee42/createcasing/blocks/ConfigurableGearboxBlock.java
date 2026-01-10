@@ -12,7 +12,6 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.ItemInteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
@@ -97,13 +96,15 @@ public class ConfigurableGearboxBlock extends KineticBlock implements IBE<Gearbo
     }
 
     @Override
-    protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-        if (level.isClientSide) return ItemInteractionResult.sidedSuccess(true);
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
+        if (level.isClientSide) return InteractionResult.sidedSuccess(true);
+        if (player.getItemInHand(hand).isEmpty()) return InteractionResult.PASS;
+        ItemStack stack = player.getItemInHand(hand);
         Direction face = result.getDirection();
-        if (!stack.is(AllBlocks.SHAFT.asItem())) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        if (!stack.is(AllBlocks.SHAFT.asItem())) return InteractionResult.PASS;
         if (player.isCrouching()) face = face.getOpposite();
         if (!state.getValue(getPropertyByDirection(face))) {
-            if (!ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get()) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            if (!ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get()) return InteractionResult.PASS;
             state = state.setValue(getPropertyByDirection(face), true);
             if (ModConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get())
                 state = state.setValue(getPropertyByDirection(face.getOpposite()), true);
@@ -111,7 +112,7 @@ public class ConfigurableGearboxBlock extends KineticBlock implements IBE<Gearbo
             if (!player.isCreative())
                 stack.shrink(1);
         }
-        return ItemInteractionResult.SUCCESS;
+        return InteractionResult.SUCCESS;
     }
 
     @Override
@@ -130,9 +131,8 @@ public class ConfigurableGearboxBlock extends KineticBlock implements IBE<Gearbo
         return super.areStatesKineticallyEquivalent(oldState, newState) && oldState.getValues().equals(newState.getValues());
     }
 
-
     @Override
-    protected List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
+    public List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
         List<ItemStack> stacks = super.getDrops(state, builder);
         if (!ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get()) return stacks;
         int shaftCount = 0;

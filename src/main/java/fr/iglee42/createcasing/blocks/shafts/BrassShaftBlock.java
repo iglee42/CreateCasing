@@ -2,13 +2,13 @@ package fr.iglee42.createcasing.blocks.shafts;
 
 import com.simibubi.create.content.kinetics.RotationPropagator;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
-import com.tterrag.registrate.util.RegistrateDistExecutor;
 import fr.iglee42.createcasing.blockEntities.BrassShaftBlockEntity;
 import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import fr.iglee42.createcasing.screen.BrassShaftScreen;
 import net.createmod.catnip.gui.ScreenOpener;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -16,8 +16,9 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.fml.DistExecutor;
 
 public class BrassShaftBlock extends CustomShaftBlock {
     public BrassShaftBlock(Properties properties) {
@@ -30,8 +31,8 @@ public class BrassShaftBlock extends CustomShaftBlock {
     }
 
     @Override
-    protected InteractionResult useWithoutItem(BlockState p_60503_, Level world, BlockPos pos, Player player, BlockHitResult p_60508_) {
-        RegistrateDistExecutor.unsafeRunWhenOn(Dist.CLIENT,
+    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult ray) {
+        DistExecutor.unsafeRunWhenOn(Dist.CLIENT,
                 () -> () -> withBlockEntityDo(world, pos, be -> openScreen((BrassShaftBlockEntity) be,player)));
         return InteractionResult.SUCCESS;
     }

@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "item": "create:electron_tube"
+    },
+    "C": {
+      "item": "create:refined_radiance_casing"
+    },
+    "I": {
+      "item": "create:crushing_wheel"
+    }
+  },
+  "pattern": [
+    "B",
+    "C",
+    "I"
+  ],
+  "result": {
+    "item": "createcasing:refined_radiance_mechanical_roller"
+  },
+  "show_notification": true
+}

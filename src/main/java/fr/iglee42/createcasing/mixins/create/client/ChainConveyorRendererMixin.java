@@ -19,7 +19,7 @@ public class ChainConveyorRendererMixin {
 
 
     @Redirect(method = "renderSafe(Lcom/simibubi/create/content/kinetics/chainConveyor/ChainConveyorBlockEntity;FLcom/mojang/blaze3d/vertex/PoseStack;Lnet/minecraft/client/renderer/MultiBufferSource;II)V",at= @At(value = "INVOKE", target = "Lnet/createmod/catnip/render/CachedBuffers;partial(Ldev/engine_room/flywheel/lib/model/baked/PartialModel;Lnet/minecraft/world/level/block/state/BlockState;)Lnet/createmod/catnip/render/SuperByteBuffer;",ordinal = 0))
-    private static SuperByteBuffer encased$replaceWheelModel(PartialModel partial, BlockState referenceState){
+    private SuperByteBuffer encased$replaceWheelModel(PartialModel partial, BlockState referenceState){
         return CachedBuffers.partial(EncasedPartialModels.getChainConveyorWheel(referenceState),referenceState);
     }
 

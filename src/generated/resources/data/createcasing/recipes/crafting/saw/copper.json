@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "B": {
+      "tag": "forge:plates/iron"
+    },
+    "C": {
+      "item": "create:copper_casing"
+    },
+    "I": {
+      "tag": "forge:ingots/iron"
+    }
+  },
+  "pattern": [
+    " B ",
+    "BIB",
+    " C "
+  ],
+  "result": {
+    "item": "createcasing:copper_mechanical_saw"
+  },
+  "show_notification": true
+}

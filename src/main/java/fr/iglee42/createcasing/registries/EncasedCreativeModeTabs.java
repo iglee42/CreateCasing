@@ -19,13 +19,13 @@ import net.minecraft.world.item.*;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 
-import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
-import net.neoforged.bus.api.IEventBus;
-import net.neoforged.fml.loading.FMLEnvironment;
-import net.neoforged.fml.util.thread.EffectiveSide;
-import net.neoforged.neoforge.registries.DeferredHolder;
-import net.neoforged.neoforge.registries.DeferredRegister;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.api.distmarker.OnlyIn;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.loading.FMLEnvironment;
+import net.minecraftforge.fml.util.thread.EffectiveSide;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.RegistryObject;
 import org.apache.commons.lang3.mutable.MutableObject;
 
 import java.util.*;
@@ -38,7 +38,7 @@ public class EncasedCreativeModeTabs {
     private static final DeferredRegister<CreativeModeTab> TAB_REGISTER =
             DeferredRegister.create(Registries.CREATIVE_MODE_TAB, CreateCasing.MODID);
 
-    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> MAIN_TAB = TAB_REGISTER.register("tab",
+    public static final RegistryObject<CreativeModeTab> MAIN_TAB = TAB_REGISTER.register("tab",
             () -> CreativeModeTab.builder()
                     .title(Component.translatable("itemGroup."+CreateCasing.MODID+".base"))
                     .withTabsBefore(AllCreativeModeTabs.BASE_CREATIVE_TAB.getKey())
@@ -66,9 +66,8 @@ public class EncasedCreativeModeTabs {
         }
 
         private final boolean addItems;
-        private final DeferredHolder<CreativeModeTab, CreativeModeTab> tabFilter;
-
-        public RegistrateDisplayItemsGenerator(boolean addItems, DeferredHolder<CreativeModeTab, CreativeModeTab> tabFilter) {
+        private final RegistryObject<CreativeModeTab> tabFilter;
+        public RegistrateDisplayItemsGenerator(boolean addItems, RegistryObject<CreativeModeTab> tabFilter) {
             this.addItems = addItems;
             this.tabFilter = tabFilter;
         }
@@ -93,7 +92,7 @@ public class EncasedCreativeModeTabs {
         private static List<RegistrateDisplayItemsGenerator.ItemOrdering> makeOrderings() {
             List<RegistrateDisplayItemsGenerator.ItemOrdering> orderings = new ReferenceArrayList<>();
 
-            Map<ItemProviderEntry<?, ?>, ItemProviderEntry<?, ?>> simpleBeforeOrderings = Map.of(
+            Map<ItemProviderEntry<?>, ItemProviderEntry<?>> simpleBeforeOrderings = Map.of(
 
             );
 
@@ -116,7 +115,7 @@ public class EncasedCreativeModeTabs {
         private static Function<Item, ItemStack> makeStackFunc() {
             Map<Item, Function<Item, ItemStack>> factories = new Reference2ReferenceOpenHashMap<>();
 
-            Map<ItemProviderEntry<?, ?>, Function<Item, ItemStack>> simpleFactories = Map.of(
+            Map<ItemProviderEntry<?>, Function<Item, ItemStack>> simpleFactories = Map.of(
 
             );
 
@@ -136,7 +135,7 @@ public class EncasedCreativeModeTabs {
         private static Function<Item, CreativeModeTab.TabVisibility> makeVisibilityFunc() {
             Map<Item, CreativeModeTab.TabVisibility> visibilities = new Reference2ObjectOpenHashMap<>();
 
-            Map<ItemProviderEntry<?, ?>, CreativeModeTab.TabVisibility> simpleVisibilities = Map.of(
+            Map<ItemProviderEntry<?>, CreativeModeTab.TabVisibility> simpleVisibilities = Map.of(
             );
 
             simpleVisibilities.forEach((entry, factory) -> {
@@ -188,7 +187,7 @@ public class EncasedCreativeModeTabs {
             List<RegistrateDisplayItemsGenerator.ItemOrdering> orderings = makeOrderings();
             Function<Item, ItemStack> stackFunc = makeStackFunc();
             Function<Item, CreativeModeTab.TabVisibility> visibilityFunc = makeVisibilityFunc();
-            DeferredHolder<CreativeModeTab, CreativeModeTab> tab = MAIN_TAB;
+            RegistryObject<CreativeModeTab> tab = MAIN_TAB;
 
 
             List<Item> items = new LinkedList<>();
@@ -206,7 +205,7 @@ public class EncasedCreativeModeTabs {
 
         private List<Item> collectBlocks(Predicate<Item> exclusionPredicate) {
             List<Item> items = new ReferenceArrayList<>();
-            for (RegistryEntry<Block, Block> entry : CreateCasing.REGISTRATE.getAll(Registries.BLOCK)) {
+            for (RegistryEntry<Block> entry : CreateCasing.REGISTRATE.getAll(Registries.BLOCK)) {
                 if (!CreateRegistrate.isInCreativeTab(entry, tabFilter))
                     continue;
                 Item item = entry.get()
@@ -222,7 +221,7 @@ public class EncasedCreativeModeTabs {
 
         private List<Item> collectItems(Predicate<Item> exclusionPredicate) {
             List<Item> items = new ReferenceArrayList<>();
-            for (RegistryEntry<Item, Item> entry : CreateCasing.REGISTRATE.getAll(Registries.ITEM)) {
+            for (RegistryEntry<Item> entry : CreateCasing.REGISTRATE.getAll(Registries.ITEM)) {
                 if (!CreateRegistrate.isInCreativeTab(entry, tabFilter))
                     continue;
                 Item item = entry.get();

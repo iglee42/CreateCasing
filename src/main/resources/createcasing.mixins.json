@@ -31,6 +31,8 @@
     "create.client.MixerVisualMixin",
     "create.client.RollerActorVisualMixin",
     "create.client.RollerRendererMixin",
+    "forge.GameDataMixin",
+    "minecraft.BlockEntityTypeAccessor",
     "minecraft.IItemExtensionMixin"
   ],
   "client": [

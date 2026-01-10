@@ -10,7 +10,6 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import org.jetbrains.annotations.NotNull;
 
 public class CustomHarvesterBlock extends HarvesterBlock {
-    public static final MapCodec<CustomHarvesterBlock> CODEC = simpleCodec(CustomHarvesterBlock::new);
 
     public CustomHarvesterBlock(Properties p_i48377_1_) {
         super(p_i48377_1_);
@@ -21,8 +20,4 @@ public class CustomHarvesterBlock extends HarvesterBlock {
         return EncasedBlockEntities.HARVESTER.get();
     }
 
-    @Override
-    protected @NotNull MapCodec<? extends HorizontalDirectionalBlock> codec() {
-        return CODEC;
-    }
 }

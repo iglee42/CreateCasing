@@ -1,0 +1,15 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "create:copper_casing"
+    },
+    {
+      "item": "create:chute"
+    }
+  ],
+  "result": {
+    "item": "createcasing:copper_portable_storage_interface"
+  }
+}
