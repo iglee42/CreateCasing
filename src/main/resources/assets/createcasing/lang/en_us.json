@@ -601,6 +601,8 @@
   "createcasing.ponder.shared.rpm16_source": "Source: 16 RPM",
   "createcasing.ponder.shared.rpm32": "32 RPM",
   "createcasing.ponder.shared.rpm8": "8 RPM",
+  "createcasing.ponder.shared.storage_on_contraption": "Inventories attached to the Contraption will pick up their drops automatically",
+
   "createcasing.ponder.chain_conveyor.header": "Relaying rotational force using Chain Conveyors",
   "createcasing.ponder.chain_conveyor.text_1": "Right-click two conveyors with chains to connect them",
   "createcasing.ponder.chain_conveyor.text_2": "Chain conveyors relay rotational power between each other..",
