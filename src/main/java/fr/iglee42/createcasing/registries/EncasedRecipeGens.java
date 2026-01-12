@@ -355,6 +355,14 @@ public class EncasedRecipeGens extends BaseRecipeProvider{
                 sh.requires(set.getVerticalGearboxItem())
         ));
 
+        createForSetElement("gearbox",CasingSet::doesGenerateGearbox,CasingSet::getVerticalGearboxItem,(builder,set)->builder.suffix("_vertical").viaShaped(sh->
+                sh.pattern("B B")
+                        .pattern(" C ")
+                        .pattern("B B")
+                        .define('B', AllBlocks.COGWHEEL)
+                        .define('C',set.getCasing())
+        ));
+
         createForSetElement("gearbox",CasingSet::doesGenerateGearbox,CasingSet::getVerticalGearboxItem,(builder,set)->builder.suffix("_vertical_from_conversion").viaShapeless(sh->
                 sh.requires(set.getGearbox())
         ));
