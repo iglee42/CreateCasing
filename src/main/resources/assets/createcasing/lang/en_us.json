@@ -652,7 +652,7 @@
   "createcasing.ponder.portable_storage_interface.header": "Contraption Storage Exchange",
   "createcasing.ponder.portable_storage_interface.text_1": "Moving inventories can be tricky to access with automation.",
   "createcasing.ponder.portable_storage_interface.text_2": "This component can interact with storage without the need to stop the contraption.",
-  "createcasing.ponder.portable_storage_interface.text_3": "Place a second one with a gap of 1 or 2 blocks inbetween",
+  "createcasing.ponder.portable_storage_interface.text_3": "Place a second one with a gap of 1 or 2 blocks in between",
   "createcasing.ponder.portable_storage_interface.text_4": "Whenever they pass by each other, they will engage in a connection",
   "createcasing.ponder.portable_storage_interface.text_5": "While engaged, the stationary interface will represent ALL inventories on the contraption",
   "createcasing.ponder.portable_storage_interface.text_6": "Items can now be inserted...",
