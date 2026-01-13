@@ -7,8 +7,10 @@ import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.block.connected.CTSpriteShifter;
 import com.simibubi.create.foundation.block.connected.CTType;
 import fr.iglee42.createcasing.CreateCasing;
+import net.createmod.catnip.platform.CatnipServices;
 import net.createmod.catnip.render.SpriteShiftEntry;
 import net.createmod.catnip.render.SpriteShifter;
+import net.minecraft.resources.ResourceLocation;
 
 
 public class EncasedSprites {
@@ -49,18 +51,18 @@ public class EncasedSprites {
     }
 
     private static SpriteShiftEntry get(String originalLocation, String targetLocation) {
-        return SpriteShifter.get(CreateCasing.asResource(originalLocation), CreateCasing.asResource(targetLocation));
+        return get(CreateCasing.asResource(originalLocation), CreateCasing.asResource(targetLocation));
     }
 
     private static SpriteShiftEntry getFromCreate(String originalLocation, String targetLocation) {
-        return SpriteShifter.get(Create.asResource(originalLocation), CreateCasing.asResource(targetLocation));
+        return get(Create.asResource(originalLocation), CreateCasing.asResource(targetLocation));
     }
     private static SpriteShiftEntry getFromCreate(String location) {
-        return SpriteShifter.get(Create.asResource(location), CreateCasing.asResource(location));
+        return get(Create.asResource(location), CreateCasing.asResource(location));
     }
 
     private static CTSpriteShiftEntry getCT(CTType type, String blockTextureName, String connectedTextureName) {
-        return CTSpriteShifter.getCT(type, CreateCasing.asResource("block/" + blockTextureName), CreateCasing.asResource("block/" + connectedTextureName + "_connected"));
+        return getCT(type, CreateCasing.asResource("block/" + blockTextureName), CreateCasing.asResource("block/" + connectedTextureName + "_connected"));
     }
 
     private static CTSpriteShiftEntry getCT(CTType type, String blockTextureName) {
@@ -120,4 +122,16 @@ public class EncasedSprites {
         CREATIVE_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheel/creative");
     }
 
+    private static CTSpriteShiftEntry getCT(CTType type, ResourceLocation blockTexture, ResourceLocation connectedTexture){
+        CTSpriteShiftEntry entry = new CTSpriteShiftEntry(type);
+        if (CatnipServices.PLATFORM.getEnv().isClient())
+            entry.set(blockTexture, connectedTexture);
+        return entry;
+    }
+
+    public static SpriteShiftEntry get(ResourceLocation originalLocation, ResourceLocation targetLocation) {
+        SpriteShiftEntry entry = new SpriteShiftEntry();
+        CatnipServices.PLATFORM.executeOnClientOnly(() -> () -> entry.set(originalLocation, targetLocation));
+        return entry;
+    }
 }
