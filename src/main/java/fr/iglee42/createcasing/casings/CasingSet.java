@@ -124,6 +124,8 @@ public class CasingSet {
         encasedWoodenCogwheel = options.encasedWoodenCogwheel;
         encasedWoodenLargeCogwheel = options.encasedWoodenLargeCogwheel;
 
+        alongXBeltModel = options.alongXBeltModel;
+        alongZBeltModel = options.alongZBeltModel;
         chainConveyorGuardModel = options.chainConveyorGuardModel;
         chainConveyorWheelModel = options.chainConveyorWheelModel;
         chainConveyorShaftModel = options.chainConveyorShaftModel;
