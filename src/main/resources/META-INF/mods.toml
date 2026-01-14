@@ -4,7 +4,7 @@ license = "MIT"
 
 [[mods]]
 modId = "createcasing"
-version = "1.8-ht1"
+version = "1.8-ht2"
 displayName = "Create Encased"
 updateJSONURL="https://api.modrinth.com/updates/create-encased/forge_updates.json"
 displayURL="https://iglee.fr/"
@@ -25,4 +25,10 @@ modId = "create"
 mandatory = true
 versionRange = "[6.0.8,)"
 ordering = "AFTER"
+side = "BOTH"
+[[dependencies.createcasing]]
+modId = "kubejs"
+mandatory = false
+versionRange = "[2001,)"
+ordering = "BEFORE"
 side = "BOTH"

@@ -21,7 +21,7 @@ public class RegisterSetsEvent extends StartupEventJS {
         this.transmissionSets = new LinkedList<>();
     }
 
-    public CasingSetBuilder createCasing(Context cx, String name) {
+    public CasingSetBuilder createCasing(String name) {
         var b = new CasingSetBuilder(name);
         ConsoleJS.STARTUP.warn("[Create Encased] You're using an experimental KubeJS Plugin ! BlockStates and models are not generated. Crash may appears !");
 
@@ -30,7 +30,7 @@ public class RegisterSetsEvent extends StartupEventJS {
         return b;
     }
 
-    public TransmissionSetBuilder createTransmission(Context cx, String name) {
+    public TransmissionSetBuilder createTransmission(String name) {
         var b = new TransmissionSetBuilder(name);
         ConsoleJS.STARTUP.warn("[Create Encased] You're using an experimental KubeJS Plugin ! BlockStates and models are not generated. Crash may appears !");
 
