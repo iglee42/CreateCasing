@@ -1,10 +1,7 @@
 package fr.iglee42.createcasing.mixins.create;
 
 import com.simibubi.create.compat.jei.CreateJEI;
-import com.simibubi.create.compat.jei.category.CreateRecipeCategory;
-import com.simibubi.create.compat.jei.category.DeployingCategory;
-import com.simibubi.create.compat.jei.category.MixingCategory;
-import com.simibubi.create.compat.jei.category.PressingCategory;
+import com.simibubi.create.compat.jei.category.*;
 import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
 import fr.iglee42.createcasing.registries.EncasedBlocks;
@@ -39,6 +36,14 @@ public class CreateJeiMixin {
             if (c instanceof DeployingCategory)
                 CasingSets.getSets().stream().filter(set-> Objects.nonNull(set.getDeployer())).filter(CasingSet::doesGenerateDeployer)
                         .forEach(set->registration.addRecipeCatalyst(set.getDeployer(),c.getRecipeType()));
+
+            if (c instanceof SawingCategory || c instanceof BlockCuttingCategory)
+                CasingSets.getSets().stream().filter(set-> Objects.nonNull(set.getSaw())).filter(CasingSet::doesGenerateSaw)
+                        .forEach(set->registration.addRecipeCatalyst(set.getSaw(),c.getRecipeType()));
+
+            if (c instanceof ProcessingViaFanCategory)
+                CasingSets.getSets().stream().filter(set-> Objects.nonNull(set.getEncasedFan())).filter(CasingSet::doesGenerateEncasedFan)
+                        .forEach(set->registration.addRecipeCatalyst(set.getEncasedFan(),c.getRecipeType()));
         }
     }
 
