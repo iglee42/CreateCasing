@@ -10,7 +10,6 @@
     "create.BeltBlockEntityMixin",
     "create.BeltBlockMixin",
     "create.BeltCasingTypeMixin",
-    "create.BeltModelMixin",
     "create.BlockMovementChecksImplMixin",
     "create.ChainConveyorConnectionHandlerMixin",
     "create.ChainDriveBlockMixin",
@@ -24,16 +23,17 @@
     "create.arm_interactions.DeployerMixin",
     "create.arm_interactions.DepotMixin",
     "create.arm_interactions.SawMixin",
+    "minecraft.IItemExtensionMixin"
+  ],
+  "client": [
+    "create.BeltModelMixin",
     "create.client.ChainConveyorRendererMixin",
     "create.client.ChainConveyorVisualMixin",
     "create.client.DrillRendererMixin",
     "create.client.MechanicalMixerRendererMixin",
     "create.client.MixerVisualMixin",
     "create.client.RollerActorVisualMixin",
-    "create.client.RollerRendererMixin",
-    "minecraft.IItemExtensionMixin"
-  ],
-  "client": [
+    "create.client.RollerRendererMixin"
   ],
   "injectors": {
     "defaultRequire": 1
