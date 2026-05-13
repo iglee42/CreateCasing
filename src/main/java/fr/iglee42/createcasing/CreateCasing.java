@@ -14,6 +14,7 @@ import fr.iglee42.createcasing.kubejs.KJSExternalHandler;
 import fr.iglee42.createcasing.mixins.create.DeployerBlockEntityAccessor;
 import fr.iglee42.createcasing.registries.*;
 import net.createmod.catnip.lang.FontHelper;
+import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -114,6 +115,16 @@ public class CreateCasing {
                     if (accessor.getInvHandler() == null)
                         accessor.invokeInitHandler();
                     return accessor.getInvHandler();
+                }
+        );
+
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                EncasedBlockEntities.SAW.get(),
+                (be, context) -> {
+                    if (context != Direction.DOWN)
+                        return be.inventory;
+                    return null;
                 }
         );
     }
