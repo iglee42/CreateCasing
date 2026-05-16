@@ -10,8 +10,8 @@ public class CCKinetics extends ConfigBase {
     public ConfigBool configurableGearboxRequiresShaft = b(true,"configurableGearboxRequiresShaft",Comments.configurableGearboxRequiresShaft);
     public ConfigBool configurableGearboxChangeTwoFaces = b(false,"configurableGearboxChangeTwoFaces",Comments.configurableGearboxChangeTwoFaces);
 
-    public ConfigBool shouldWoodenShaftBreak = b(true,"shouldWoodenShaftBreak", Comments.shouldWoodenShaftBreak);
-    public ConfigBool shouldGlassShaftBreak = b(true,"shouldGlassShaftBreak", Comments.shouldGlassShaftBreak);
+    public ConfigBool shouldWoodenShaftBreak = b(false,"shouldWoodenShaftBreak", Comments.shouldWoodenShaftBreak);
+    public ConfigBool shouldGlassShaftBreak = b(false,"shouldGlassShaftBreak", Comments.shouldGlassShaftBreak);
 
     public ConfigInt maxSpeedWoodenShaft = i(32,2, 256,"maxSpeedWoodenShaft",Comments.maxSpeedWoodenShaft);
     //public final CCStress stressValues = nested(1, CCStress::new, Comments.stress);
