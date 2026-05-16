@@ -12,6 +12,7 @@ import com.tterrag.registrate.providers.RegistrateItemModelProvider;
 import com.tterrag.registrate.providers.RegistrateProvider;
 import com.tterrag.registrate.util.nullness.NonNullBiConsumer;
 import fr.iglee42.createcasing.CreateCasing;
+import fr.iglee42.createcasing.blocks.AutoClutchBlock;
 import fr.iglee42.createcasing.blocks.ConfigurableGearboxBlock;
 import fr.iglee42.createcasing.blocks.customs.CustomChainDriveBlock;
 import fr.iglee42.createcasing.blocks.customs.CustomChainGearshiftBlock;
@@ -368,6 +369,29 @@ public class EncasedBlockStateGens {
                 .texture("1",getGearboxTexture(casing))
                 .texture("4",getFunnelFrameTexture(casing))
                 .texture("particle",getClutchTexture(casing,false));
+    }
+
+    public static <T> Function<BlockState,ModelFile> autoClutchModel(RegistrateProvider p, String casing){
+        if (isValidProvider(p))
+            return state ->{
+                boolean active = state.getValue(AutoClutchBlock.ACTIVE);
+                return Objects.requireNonNull(createModelInBlock(p,"auto_clutch/"+casing+"/block" + (active?"_active":"")))
+                        .parent(new ModelFile.UncheckedModelFile("create:block/clutch/block" + (active?"_powered":"")))
+                        .texture("0",getAutoClutchTexture(casing,active))
+                        .texture("1",getGearboxTexture(casing))
+                        .texture("2",getFunnelFrameTexture(casing))
+                        .texture("particle",getAutoClutchTexture(casing,active));
+            };
+        return null;
+    }
+
+    public static ModelFile autoClutchItemModel(RegistrateProvider p, String casing){
+        return Objects.requireNonNull(createModelInBlock(p,"auto_clutch/"+casing+"/item"))
+                .parent(new ModelFile.UncheckedModelFile("create:block/clutch/item"))
+                .texture("0",getAutoClutchTexture(casing,false))
+                .texture("1",getGearboxTexture(casing))
+                .texture("4",getFunnelFrameTexture(casing))
+                .texture("particle",getAutoClutchTexture(casing,false));
     }
 
     public static BiFunction<BlockState,Boolean,ModelFile> deployerModel(RegistrateProvider p, String casing){
@@ -737,8 +761,12 @@ public class EncasedBlockStateGens {
         return CreateCasing.MODID + ":block/clutch_"+(powered ? "on" : "off")+"/"+casing;
     }
 
+    public static String getAutoClutchTexture(String casing,boolean powered) {
+        return CreateCasing.MODID + ":block/automatic_clutch_"+(powered ? "on" : "off")+"/"+casing;
+    }
+
     public static String getFunnelFrameTexture(String casing) {
-        if (casing.equals("normal")) return Create.ID + ":block/funnel/andesite_funnel_frame";
+        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID + ":block/funnel/andesite_funnel_frame";
         if (casing.equals("brass")) return Create.ID + ":block/funnel/brass_funnel_frame";
         if (casing.equals("copper")) return Create.ID + ":block/funnel/copper_funnel_frame";
         return CreateCasing.MODID + ":block/funnel_frame/"+casing;

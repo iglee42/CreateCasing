@@ -44,6 +44,7 @@ import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiFunction;
 import fr.iglee42.createcasing.CreateCasing;
+import fr.iglee42.createcasing.blocks.AutoClutchBlock;
 import fr.iglee42.createcasing.blocks.ConfigurableGearboxBlock;
 import fr.iglee42.createcasing.blocks.CreativeCogwheelBlock;
 import fr.iglee42.createcasing.blocks.cogwheels.CustomCogwheelBlock;
@@ -509,6 +510,22 @@ public class EncasedBlocks {
                 .register();
     }
 
+    public static BlockEntry<AutoClutchBlock> createAutoClutch(String name) {
+        return REGISTRATE.block(name+"_automatic_clutch", AutoClutchBlock::new)
+                .initialProperties(SharedProperties::stone)
+                .properties(p -> p.noOcclusion()
+                        .mapColor(MapColor.PODZOL))
+                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(CCStress.setNoImpact())
+                .transform(axeOrPickaxe())
+                .blockstate((c, p) ->EncasedBlockStateGens.axisBlock(c,p,autoClutchModel(p,name),false))
+                .item()
+                .model((c,p)->p.getBuilder(c.getName()).parent(autoClutchItemModel(p,name)))
+                .build()
+                .register();
+    }
+
+
     private static <T extends Block> BlockBuilder<T,CreateRegistrate> connectedTexture( BlockBuilder<T, CreateRegistrate> entry,CTSpriteShiftEntry sprite,BiConsumer<T, CasingConnectivity> consumer){
         if (sprite != null){
             return entry.onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(sprite)))
@@ -569,6 +586,9 @@ public class EncasedBlocks {
 
             if (set.doesGenerateClutch())
                 set.setClutch(createClutch(set.getName()));
+
+            if (set.doesGenerateAutoClutch())
+                set.setAutoClutch(createAutoClutch(set.getName()));
 
             if (set.doesGenerateDeployer())
                 set.setDeployer(createDeployer(set.getName()));

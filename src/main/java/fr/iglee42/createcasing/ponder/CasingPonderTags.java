@@ -40,8 +40,8 @@ public class CasingPonderTags {
 		HELPER.addToTag(AllCreatePonderTags.CREATIVE)
 						.add(EncasedBlocks.CREATIVE_COGWHEEL);
 		HELPER.addToTag(ENCASED_BLOCKS).add(EncasedBlocks.CREATIVE_COGWHEEL);
-		itemHelper.addToTag(ENCASED_BLOCKS).add(CasingSets.ANDESITE.getConfigurableGearbox());
-		itemHelper.addToTag(AllCreatePonderTags.KINETIC_RELAYS).add(CasingSets.ANDESITE.getConfigurableGearbox());
+		itemHelper.addToTag(ENCASED_BLOCKS).add(CasingSets.ANDESITE.getConfigurableGearbox()).add(CasingSets.ANDESITE.getAutoClutch());
+		itemHelper.addToTag(AllCreatePonderTags.KINETIC_RELAYS).add(CasingSets.ANDESITE.getConfigurableGearbox()).add(CasingSets.ANDESITE.getAutoClutch());
 
 
 	}

@@ -11,6 +11,7 @@ import net.createmod.catnip.math.Pointing;
 import net.createmod.ponder.api.PonderPalette;
 import net.createmod.ponder.api.scene.SceneBuilder;
 import net.createmod.ponder.api.scene.SceneBuildingUtil;
+import net.createmod.ponder.api.scene.Selection;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.phys.Vec3;
@@ -165,5 +166,76 @@ public class CustomPonderScenes {
 
         scene.idle(90);
 
+    }
+
+    public static void autoClutch(SceneBuilder builder, SceneBuildingUtil util) {
+        CreateSceneBuilder scene = new CreateSceneBuilder(builder);
+        scene.title("auto_clutch", "Automatically stopping a contraption");
+        scene.configureBasePlate(0, 0, 5);
+        scene.world().showSection(util.select().layer(0), Direction.UP);
+
+        BlockPos gaugePos = util.grid().at(0, 1, 2);
+        Selection gauge = util.select().position(gaugePos);
+        scene.world().showSection(gauge, Direction.UP);
+        scene.world().setKineticSpeed(gauge, 0);
+
+        scene.idle(5);
+        scene.world().showSection(util.select().position(5, 2, 1), Direction.DOWN);
+        scene.idle(10);
+        scene.world().showSection(util.select().position(4, 2, 1), Direction.DOWN);
+        scene.idle(10);
+        scene.world().showSection(util.select().position(4, 1, 1), Direction.SOUTH);
+        scene.idle(10);
+
+        for (int i = 4; i >= 1; i--) {
+            scene.idle(5);
+            scene.world().showSection(util.select().position(i, 1, 2), Direction.DOWN);
+        }
+
+        BlockPos clutch = util.grid().at(2, 1, 2);
+
+        scene.world().setKineticSpeed(gauge, 32);
+        scene.effects().indicateSuccess(gaugePos);
+        scene.idle(10);
+        scene.overlay().showText(50)
+                .text("Automatic Clutches will relay rotation in a straight line")
+                .placeNearTarget()
+                .attachKeyFrame()
+                .pointAt(util.vector().topOf(clutch));
+        scene.idle(60);
+
+        Vec3 inputVec = util.vector().of(4, 1.75 - 1 / 16f, 1.5);
+        scene.overlay().showControls(inputVec, Pointing.UP, 40).rightClick();
+        scene.idle(15);
+
+        scene.world().setKineticSpeed(util.select().fromTo(4,1,1,4,1,2), 64);
+        scene.world().setKineticSpeed(util.select().position(3,1,2), -64);
+        scene.effects().rotationSpeedIndicator(util.grid().at(3,1,2));
+        scene.world().setKineticSpeed(util.select().fromTo(0, 1, 2, 2, 1, 2), 0);
+        scene.effects().indicateSuccess(clutch);
+        scene.idle(40);
+        scene.overlay().showText(50)
+                .colored(PonderPalette.RED)
+                .text("It breaks the connection when a condition is fulfilled")
+                .placeNearTarget()
+                .attachKeyFrame()
+                .pointAt(util.vector().topOf(clutch));
+        scene.idle(70);
+
+        scene.overlay().showControls(util.vector().topOf(clutch), Pointing.DOWN, 40).rightClick();
+        scene.idle(7);
+        scene.overlay().showOutlineWithText(util.select().position(clutch), 50)
+                .colored(PonderPalette.BLUE)
+                .text("Right-click it to open the Configuration UI")
+                .pointAt(util.vector().topOf(clutch))
+                .attachKeyFrame()
+                .placeNearTarget();
+        scene.idle(70);
+
+        scene.world().setKineticSpeed(util.select().fromTo(4,1,1,4,1,2), 64);
+        scene.world().setKineticSpeed(util.select().fromTo(0, 1, 2, 3, 1, 2), -64);
+        scene.effects().rotationSpeedIndicator(util.grid().at(1,1,2));
+        scene.effects().indicateSuccess(gaugePos);
+        scene.idle(35);
     }
 }

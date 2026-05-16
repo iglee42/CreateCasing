@@ -1,0 +1,30 @@
+{
+  "variants": {
+    "active=false,axis=x": {
+      "model": "createcasing:block/auto_clutch/shadow_steel/block",
+      "x": 90,
+      "y": 90
+    },
+    "active=false,axis=y": {
+      "model": "createcasing:block/auto_clutch/shadow_steel/block"
+    },
+    "active=false,axis=z": {
+      "model": "createcasing:block/auto_clutch/shadow_steel/block",
+      "x": 90,
+      "y": 180
+    },
+    "active=true,axis=x": {
+      "model": "createcasing:block/auto_clutch/shadow_steel/block_active",
+      "x": 90,
+      "y": 90
+    },
+    "active=true,axis=y": {
+      "model": "createcasing:block/auto_clutch/shadow_steel/block_active"
+    },
+    "active=true,axis=z": {
+      "model": "createcasing:block/auto_clutch/shadow_steel/block_active",
+      "x": 90,
+      "y": 180
+    }
+  }
+}

@@ -1,15 +1,12 @@
 package fr.iglee42.createcasing.utils;
 
-import com.simibubi.create.AllBlocks;
-import com.simibubi.create.content.kinetics.base.DirectionalKineticBlock;
-import com.simibubi.create.content.kinetics.base.HorizontalKineticBlock;
 import com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock;
 import com.simibubi.create.content.kinetics.saw.SawBlock;
 import fr.iglee42.createcasing.CreateCasing;
+import fr.iglee42.createcasing.blockEntities.AutoClutchBlockEntity;
 import fr.iglee42.createcasing.blocks.ConfigurableGearboxBlock;
 import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
-import fr.iglee42.createcasing.config.CCKinetics;
 import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.transmissions.TransmissionSet;
 import fr.iglee42.createcasing.transmissions.TransmissionSets;
@@ -25,11 +22,8 @@ import net.neoforged.bus.api.SubscribeEvent;
 import net.neoforged.fml.common.EventBusSubscriber;
 import net.neoforged.neoforge.event.entity.player.PlayerInteractEvent;
 
-import java.util.Collection;
-import java.util.Collections;
 import java.util.Optional;
 import java.util.function.Function;
-import java.util.stream.Collectors;
 
 import static com.simibubi.create.content.kinetics.base.RotatedPillarKineticBlock.AXIS;
 import static net.minecraft.world.level.block.state.properties.BlockStateProperties.FACING;
@@ -76,6 +70,22 @@ public class ItemChangeBlockManager {
             }
             if (isElementInSet(state,CasingSet::getClutch) && casingSet.getClutch() != null){
                 changeAxisBlock(event,state,level, casingSet.getClutch().defaultBlockState());
+            }
+            if (isElementInSet(state,CasingSet::getAutoClutch) && casingSet.getAutoClutch() != null){
+                Optional<Integer> configuredValue = Optional.empty();
+                Optional<AutoClutchBlockEntity.Mode> mode = Optional.empty();
+                Optional<AutoClutchBlockEntity.Operation> operation = Optional.empty();
+                if (level.getBlockEntity(event.getPos()) instanceof AutoClutchBlockEntity be){
+                    configuredValue = Optional.of(be.getConfiguredValue());
+                    mode = Optional.of(be.getMode());
+                    operation = Optional.of(be.getOperation());
+                }
+                changeAxisBlock(event,state,level, casingSet.getAutoClutch().defaultBlockState());
+                if (level.getBlockEntity(event.getPos()) instanceof AutoClutchBlockEntity be){
+                    configuredValue.ifPresent(be::setConfiguredValue);
+                    mode.ifPresent(be::setMode);
+                    operation.ifPresent(be::setOperation);
+                }
             }
             if (isElementInSet(state,CasingSet::getDeployer) && casingSet.getDeployer() != null){
                 changeFacingBlock(event,state,level, casingSet.getDeployer().defaultBlockState());

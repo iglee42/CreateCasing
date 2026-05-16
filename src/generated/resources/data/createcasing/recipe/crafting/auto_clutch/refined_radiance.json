@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "create:refined_radiance_casing"
+    },
+    {
+      "item": "create:shaft"
+    },
+    {
+      "item": "minecraft:compass"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:refined_radiance_automatic_clutch"
+  }
+}

@@ -311,6 +311,13 @@ public class EncasedRecipeGens extends BaseRecipeProvider{
                         .requires(Tags.Items.DUSTS_REDSTONE)
         ));
 
+        createForSetElement("auto_clutch",CasingSet::doesGenerateAutoClutch,CasingSet::getAutoClutch,(builder,set)->builder.viaShapeless(sh->
+                sh.requires(set.getCasing())
+                        .requires(AllBlocks.SHAFT)
+                        .requires(Items.COMPASS)
+        ));
+
+
         createForSetElement("configurable_gearbox",CasingSet::doesGenerateConfigurableGearbox,CasingSet::getConfigurableGearbox,(builder,set)->builder.viaShaped(sh->
                 sh.pattern(" C ")
                         .pattern("CAC")

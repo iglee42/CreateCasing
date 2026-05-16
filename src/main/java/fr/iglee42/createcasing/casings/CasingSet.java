@@ -41,6 +41,7 @@ public class CasingSet {
     private @Nullable Supplier<? extends Block> chainConveyorBlock;
     private @Nullable Supplier<? extends Block> gearshiftBlock;
     private @Nullable Supplier<? extends Block> clutchBlock;
+    private @Nullable Supplier<? extends Block> autoClutchBlock;
     private @Nullable Supplier<? extends Block> deployerBlock;
     private @Nullable Supplier<? extends Block> storageInterfaceBlock;
     private @Nullable Supplier<? extends Block> encasedFanBlock;
@@ -74,6 +75,7 @@ public class CasingSet {
     private final boolean chainConveyor;
     private final boolean gearshift;
     private final boolean clutch;
+    private final boolean autoClutch;
     private final boolean deployer;
     private final boolean storageInterface;
     private final boolean encasedFan;
@@ -112,6 +114,7 @@ public class CasingSet {
         chainConveyor = options.chainConveyor;
         gearshift = options.gearshift;
         clutch = options.clutch;
+        autoClutch = options.autoClutch;
         deployer = options.deployer;
         storageInterface = options.storageInterface;
         encasedFan = options.encasedFan;
@@ -209,6 +212,9 @@ public class CasingSet {
     }
     public boolean doesGenerateClutch(){
         return clutch;
+    }
+    public boolean doesGenerateAutoClutch(){
+        return autoClutch;
     }
     public boolean doesGenerateDeployer(){
         return deployer;
@@ -405,6 +411,16 @@ public class CasingSet {
     }
 
     @Nullable
+    public Supplier<? extends Block> getAutoClutchSupplier() {
+        return autoClutchBlock;
+    }
+
+    @Nullable
+    public Block getAutoClutch() {
+        return autoClutchBlock == null ? null : autoClutchBlock.get();
+    }
+
+    @Nullable
     public Supplier<? extends Block> getDeployerSupplier() {
         return deployerBlock;
     }
@@ -591,6 +607,12 @@ public class CasingSet {
         clutchBlock = clutch;
     }
 
+    public void setAutoClutch(@Nonnull Supplier<? extends Block> autoClutch){
+        if (getAutoClutch() != null)
+            throw new UnsupportedOperationException("You cannot modify an auto clutch that has already been referenced");
+        autoClutchBlock = autoClutch;
+    }
+
     public void setDeployer(@Nonnull Supplier<? extends Block> deployer){
         if (getDeployerSupplier() != null)
             throw new UnsupportedOperationException("You cannot modify a deployer that has already been referenced");
@@ -727,6 +749,7 @@ public class CasingSet {
         private boolean chainConveyor;
         private boolean gearshift;
         private boolean clutch;
+        private boolean autoClutch;
         private boolean deployer;
         private boolean storageInterface;
         private boolean encasedFan;
@@ -895,6 +918,11 @@ public class CasingSet {
             return this;
         }
 
+        public Options autoClutch(){
+            this.autoClutch = true;
+            return this;
+        }
+
         public Options encasedFan(){
             this.encasedFan = true;
             return this;
@@ -954,7 +982,7 @@ public class CasingSet {
         }
 
         public Options complexTransmissionBlocks(Supplier<PartialModel> conveyorGuard,Supplier<PartialModel> conveyorWheel,Supplier<PartialModel> conveyorShaft){
-            return gearbox().chainDrive().chainGearshift().configurableGearbox().chainConveyor(conveyorGuard,conveyorWheel,conveyorShaft).gearshift().clutch();
+            return gearbox().chainDrive().chainGearshift().configurableGearbox().chainConveyor(conveyorGuard,conveyorWheel,conveyorShaft).gearshift().clutch().autoClutch();
         }
 
         public Options simpleTransmissions(@Nullable Supplier<CTSpriteShiftEntry> cogwheelSideSprite,@Nullable Supplier<CTSpriteShiftEntry> cogwheelOtherSideSprite){

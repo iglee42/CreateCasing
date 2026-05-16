@@ -711,5 +711,11 @@
   "createcasing.ponder.mechanical_plough.text_1": "Whenever Ploughs are moved as part of an animated Contraption...",
   "createcasing.ponder.mechanical_plough.text_2": "...they will break blocks without a solid collision hitbox",
   "createcasing.ponder.mechanical_plough.text_3": "Additionally, ploughs can create farmland",
-  "createcasing.ponder.mechanical_plough.text_4": "...they can also launch entities without hurting them"
+  "createcasing.ponder.mechanical_plough.text_4": "...they can also launch entities without hurting them",
+
+  "createcasing.ponder.auto_clutch.header": "Automatically stopping a contraption",
+  "createcasing.ponder.auto_clutch.text_1": "Automatic Clutches will relay rotation in a straight line",
+  "createcasing.ponder.auto_clutch.text_2": "It breaks the connection when a condition is fulfilled",
+  "createcasing.ponder.auto_clutch.text_3": "Right-click it to open the Configuration UI"
+
 }

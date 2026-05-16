@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/clutch/block",
+  "textures": {
+    "0": "createcasing:block/automatic_clutch_off/andesite",
+    "1": "create:block/gearbox",
+    "2": "create:block/funnel/andesite_funnel_frame",
+    "particle": "createcasing:block/automatic_clutch_off/andesite"
+  }
+}

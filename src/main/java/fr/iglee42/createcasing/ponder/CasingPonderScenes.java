@@ -89,6 +89,9 @@ public class CasingPonderScenes {
 				.addStoryBoard(Create.asResource("mechanical_drill/breaker"), MechanicalDrillScenes::breaker, AllCreatePonderTags.KINETIC_APPLIANCES)
 				.addStoryBoard(Create.asResource("mechanical_drill/contraption"), MechanicalDrillScenes::contraption,
 						AllCreatePonderTags.CONTRAPTION_ACTOR);
+
+		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateAutoClutch).map(CasingSet::getAutoClutch).toList())
+				.addStoryBoard(CreateCasing.asResource("auto_clutch"), CustomPonderScenes::autoClutch);
 	}
 
 

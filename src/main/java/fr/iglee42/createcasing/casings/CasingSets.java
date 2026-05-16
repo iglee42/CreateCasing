@@ -40,6 +40,7 @@ public class CasingSets {
             .fluids()
             .encasedCustomTransmissionBlocks()
             .configurableGearbox()
+            .autoClutch()
             .existingPortableStorageInterface(()-> AllBlocks.PORTABLE_STORAGE_INTERFACE.get())
     );
     public static final CasingSet BRASS = register("brass",new CasingSet.Options()

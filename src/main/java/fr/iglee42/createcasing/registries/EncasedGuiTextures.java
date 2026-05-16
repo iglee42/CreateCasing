@@ -12,7 +12,7 @@ import net.neoforged.api.distmarker.OnlyIn;
 
 public enum EncasedGuiTextures implements ScreenElement, TextureSheetSegment {
 
-	BRASS_SHAFT("brass_shaft", 254, 104);
+	AUTOMATIC_CLUTCH("automatic_clutch", 254, 104);
 
 	;
 

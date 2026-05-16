@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/clutch/block",
+  "textures": {
+    "0": "createcasing:block/automatic_clutch_off/industrial_iron",
+    "1": "createcasing:block/gearbox/industrial_iron",
+    "2": "createcasing:block/funnel_frame/industrial_iron",
+    "particle": "createcasing:block/automatic_clutch_off/industrial_iron"
+  }
+}

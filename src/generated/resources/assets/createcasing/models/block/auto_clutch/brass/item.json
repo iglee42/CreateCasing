@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/clutch/item",
+  "textures": {
+    "0": "createcasing:block/automatic_clutch_off/brass",
+    "1": "create:block/brass_gearbox",
+    "4": "create:block/funnel/brass_funnel_frame",
+    "particle": "createcasing:block/automatic_clutch_off/brass"
+  }
+}
