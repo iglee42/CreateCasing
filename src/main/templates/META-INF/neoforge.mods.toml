@@ -18,21 +18,18 @@ file="META-INF/accesstransformer.cfg"
 
 [[dependencies.${mod_id}]]
    modId="neoforge"
-   mandatory=true
    versionRange="${neo_version_range}"
    ordering="NONE"
    side="BOTH"
 [[dependencies.${mod_id}]]
    modId="minecraft"
-   mandatory=true
    versionRange="${minecraft_version_range}"
    ordering="NONE"
    side="BOTH"
 [[dependencies.${mod_id}]]
    modId="create"
-   mandatory=true
    versionRange="${create_version_range}"
-   ordering="NONE"
+   ordering="AFTER"
    side="BOTH"
 [[dependencies.${mod_id}]]
    modId = "kubejs"
