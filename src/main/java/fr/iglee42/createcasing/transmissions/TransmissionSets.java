@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import fr.iglee42.createcasing.blocks.cogwheels.WoodenCogwheelBlock;
-import fr.iglee42.createcasing.blocks.shafts.BrassShaftBlock;
 import fr.iglee42.createcasing.blocks.shafts.GlassShaftBlock;
 import fr.iglee42.createcasing.blocks.shafts.WoodenShaftBlock;
 import fr.iglee42.createcasing.registries.EncasedBlockEntities;
@@ -28,9 +27,6 @@ public class TransmissionSets {
     public static final TransmissionSet BRASS = register("brass",new TransmissionSet.Options()
             .item(()-> AllItems.BRASS_INGOT.get())
             .shaft()
-            .notEncasable()
-            .shaftConstructor(()-> BrassShaftBlock::new)
-            .shaftBlockEntityType(()->EncasedBlockEntities.BRASS_SHAFT.get())
     );
 
     public static final TransmissionSet MLDEG = register("mldeg",new TransmissionSet.Options()

@@ -1,0 +1,21 @@
+package fr.iglee42.createcasing.blockEntities.visuals;
+
+import com.simibubi.create.AllPartialModels;
+import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
+import com.simibubi.create.content.kinetics.base.SingleAxisRotatingVisual;
+import dev.engine_room.flywheel.api.visualization.VisualizationContext;
+import dev.engine_room.flywheel.lib.model.Models;
+import fr.iglee42.createcasing.blocks.shafts.EncasedCustomShaftBlock;
+import fr.iglee42.createcasing.registries.EncasedPartialModels;
+import net.minecraft.core.registries.BuiltInRegistries;
+
+public class CustomShaftVisual extends SingleAxisRotatingVisual<KineticBlockEntity> {
+
+
+    public CustomShaftVisual(VisualizationContext context, KineticBlockEntity blockEntity, float partialTick) {
+        super(context, blockEntity, partialTick,
+                Models.partial(
+                        EncasedPartialModels.SHAFT_MODELS.getOrDefault(BuiltInRegistries.BLOCK.getKey(blockEntity.getBlockState().getBlock()).getPath().replace("_shaft",""), AllPartialModels.SHAFT)
+                ));
+    }
+}

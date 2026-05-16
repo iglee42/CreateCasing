@@ -2,7 +2,6 @@ package fr.iglee42.createcasing.registries;
 
 import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.AllBlocks;
-import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.contraptions.actors.harvester.HarvesterBlockEntity;
 import com.simibubi.create.content.contraptions.actors.harvester.HarvesterRenderer;
 import com.simibubi.create.content.contraptions.actors.roller.RollerBlockEntity;
@@ -134,15 +133,15 @@ public class EncasedBlockEntities {
 
     public static final BlockEntityEntry<CustomShaftBlockEntity> CUSTOM_SHAFT = REGISTRATE
             .blockEntity("custom_shaft", CustomShaftBlockEntity::new)
-            .visual(() -> (ctx,be,pt)->new SingleAxisRotatingVisual<>(ctx,be,pt,Models.partial(EncasedPartialModels.MLDEG_SHAFT)), false)
+            .visual(() -> CustomShaftVisual::new, false)
             //.validBlocks(EncasedBlocks.MLDEG_SHAFT)
             .renderer(() -> BracketedKineticBlockEntityRenderer::new)
             .register();
-    public static final BlockEntityEntry<BrassShaftBlockEntity> BRASS_SHAFT = REGISTRATE
-            .blockEntity("brass_shaft", BrassShaftBlockEntity::new)
-            .visual(() -> (visualizationContext, be, pt) ->new SingleAxisRotatingVisual<>(visualizationContext,be,pt, Models.partial(EncasedPartialModels.BRASS_SHAFT)), false)
+    public static final BlockEntityEntry<AutoClutchBlockEntity> AUTOMATIC_CLUTCH = REGISTRATE
+            .blockEntity("automatic_clutch", AutoClutchBlockEntity::new)
+            .visual(() ->SplitShaftVisual::new, false)
             //.validBlocks(EncasedBlocks.BRASS_SHAFT)
-            .renderer(() -> BracketedKineticBlockEntityRenderer::new)
+            .renderer(() -> SplitShaftRenderer::new)
             .register();
 
     public static final BlockEntityEntry<CreativeCogwheelBlockEntity> CREATIVE_COGWHEEL = REGISTRATE
@@ -281,6 +280,7 @@ public class EncasedBlockEntities {
         register(event,CHAIN_CONVEYOR.get(),CasingSet::getChainConveyor,CasingSet::doesGenerateChainConveyor);
         register(event, GEARSHIFT.get(),CasingSet::getGearshift,CasingSet::doesGenerateGearshift);
         register(event,CLUTCH.get(),CasingSet::getClutch,CasingSet::doesGenerateClutch);
+        register(event,AUTOMATIC_CLUTCH.get(),CasingSet::getAutoClutch,CasingSet::doesGenerateAutoClutch);
         register(event,DEPLOYER.get(),CasingSet::getDeployer,CasingSet::doesGenerateDeployer);
         register(event,AllBlockEntityTypes.PORTABLE_STORAGE_INTERFACE.get(),CasingSet::getStorageInterface,CasingSet::doesGenerateStorageInterface);
         register(event,ENCASED_FAN.get(),CasingSet::getEncasedFan,CasingSet::doesGenerateEncasedFan);

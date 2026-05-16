@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/encased_shaft/item",
+  "textures": {
+    "1_0": "createcasing:block/shaft/brass",
+    "1_1": "createcasing:block/shaft/brass_top",
+    "casing": "create:block/industrial_iron_block",
+    "opening": "createcasing:block/gearbox/industrial_iron",
+    "particle": "create:block/industrial_iron_block"
+  }
+}

@@ -100,8 +100,9 @@ public class EncasedPartialModels {
         }
 
         SHAFT_MODELS.put("spruce", EncasedPartialModels.block("shaft/spruce"));
-        SHAFT_MODELS.put("mldeg", EncasedPartialModels.block("shaft/mldeg"));
-        SHAFT_MODELS.put("glass", EncasedPartialModels.block("shaft/glass"));
+        SHAFT_MODELS.put("mldeg", MLDEG_SHAFT);
+        SHAFT_MODELS.put("brass", BRASS_SHAFT);
+        SHAFT_MODELS.put("glass", GLASS_SHAFT);
     }
 
     public static PartialModel block(String path) {
