@@ -23,6 +23,7 @@
     "create.arm_interactions.DeployerMixin",
     "create.arm_interactions.DepotMixin",
     "create.arm_interactions.SawMixin",
+    "create.catnip.StitchedSpriteMixin",
     "minecraft.IItemExtensionMixin"
   ],
   "client": [
