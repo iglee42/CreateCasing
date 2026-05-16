@@ -18,7 +18,6 @@
     "create.DeployerBlockEntityAccessor",
     "create.DeployerBlockEntityMixin",
     "create.PackagerBlockMixin",
-    "create.RotationPropagatorMixin",
     "create.SchematicHandlerMixin",
     "create.arm_interactions.DeployerMixin",
     "create.arm_interactions.DepotMixin",
