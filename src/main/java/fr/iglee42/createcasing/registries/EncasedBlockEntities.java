@@ -302,7 +302,7 @@ public class EncasedBlockEntities {
         });
     }
 
-    private static void register(BlockEntityTypeAddBlocksEvent event, BlockEntityType<?> type, Function<CasingSet, Block> blockFunction, Predicate<CasingSet> validateFunction){
+    public static void register(BlockEntityTypeAddBlocksEvent event, BlockEntityType<?> type, Function<CasingSet, Block> blockFunction, Predicate<CasingSet> validateFunction){
         CasingSets.getSets().stream().filter(set-> Objects.nonNull(blockFunction.apply(set))).filter(validateFunction).map(blockFunction).forEach(b->event.modify(type,b));
     }
 

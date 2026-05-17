@@ -140,6 +140,11 @@ public class CasingSetBuilder {
         return this;
     }
 
+    public CasingSetBuilder autoClutch(){
+        this.options.autoClutch();
+        return this;
+    }
+
     public CasingSetBuilder encasedFan(){
         this.options.encasedFan();
         return this;
@@ -172,6 +177,11 @@ public class CasingSetBuilder {
         return this;
     }
 
+    public CasingSetBuilder slicer(){
+        this.options.slicer();
+        return this;
+    }
+
     public CasingSetBuilder encasedWoodenShaft(){
         this.options.encasedWoodenShaft();
         return this;
@@ -192,11 +202,11 @@ public class CasingSetBuilder {
     }
 
     public CasingSetBuilder processingBlocks(ResourceLocation mixerHeadModel){
-        return press().mixer(mixerHeadModel).depot().deployer().encasedFan();
+        return press().mixer(mixerHeadModel).depot().deployer().encasedFan().slicer();
     }
 
     public CasingSetBuilder complexTransmissionBlocks(Supplier<PartialModel> conveyorGuard, Supplier<PartialModel> conveyorWheel, Supplier<PartialModel> conveyorShaft){
-        return gearbox().chainDrive().chainGearshift().configurableGearbox().chainConveyor(conveyorGuard,conveyorWheel,conveyorShaft).gearshift().clutch();
+        return gearbox().chainDrive().chainGearshift().configurableGearbox().chainConveyor(conveyorGuard,conveyorWheel,conveyorShaft).gearshift().clutch().autoClutch();
     }
 
     public CasingSetBuilder simpleTransmissions(@Nullable Supplier<CTSpriteShiftEntry> cogwheelSideSprite, @Nullable Supplier<CTSpriteShiftEntry> cogwheelOtherSideSprite){

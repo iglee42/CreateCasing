@@ -1,0 +1,9 @@
+{
+  "parent": "sliceanddice:block/slicer/item",
+  "textures": {
+    "11": "createcasing:block/press_top/copper",
+    "2": "create:block/copper_casing",
+    "4": "createcasing:block/mixer_side/copper",
+    "particle": "create:block/copper_casing"
+  }
+}

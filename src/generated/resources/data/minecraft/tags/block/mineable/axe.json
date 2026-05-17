@@ -523,6 +523,38 @@
     "createcasing:weathered_iron_encased_oak_large_cogwheel",
     "createcasing:weathered_iron_encased_jungle_large_cogwheel",
     "createcasing:weathered_iron_encased_mangrove_large_cogwheel",
-    "createcasing:weathered_iron_encased_warped_large_cogwheel"
+    "createcasing:weathered_iron_encased_warped_large_cogwheel",
+    {
+      "id": "createcasing:brass_slicer",
+      "required": false
+    },
+    {
+      "id": "createcasing:copper_slicer",
+      "required": false
+    },
+    {
+      "id": "createcasing:railway_slicer",
+      "required": false
+    },
+    {
+      "id": "createcasing:shadow_steel_slicer",
+      "required": false
+    },
+    {
+      "id": "createcasing:refined_radiance_slicer",
+      "required": false
+    },
+    {
+      "id": "createcasing:creative_slicer",
+      "required": false
+    },
+    {
+      "id": "createcasing:industrial_iron_slicer",
+      "required": false
+    },
+    {
+      "id": "createcasing:weathered_iron_slicer",
+      "required": false
+    }
   ]
 }

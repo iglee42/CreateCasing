@@ -10,6 +10,7 @@ import com.tterrag.registrate.util.entry.RegistryEntry;
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
+import fr.iglee42.createcasing.compat.sliceanddice.EncasedSliceAndDiceCompat;
 import fr.iglee42.createcasing.registries.EncasedBlocks;
 import fr.iglee42.createcasing.registries.EncasedItems;
 import net.createmod.ponder.api.registration.PonderSceneRegistrationHelper;
@@ -18,6 +19,7 @@ import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
+import net.neoforged.fml.ModList;
 
 public class CasingPonderScenes {
 
@@ -92,6 +94,9 @@ public class CasingPonderScenes {
 
 		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateAutoClutch).map(CasingSet::getAutoClutch).toList())
 				.addStoryBoard(CreateCasing.asResource("auto_clutch"), CustomPonderScenes::autoClutch);
+
+		if (ModList.get().isLoaded("sliceanddice"))
+			EncasedSliceAndDiceCompat.registerPonderScenes(HELPER);
 	}
 
 

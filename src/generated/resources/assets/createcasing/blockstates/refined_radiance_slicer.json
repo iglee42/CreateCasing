@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "createcasing:block/slicer/refined_radiance/block"
+    }
+  }
+}

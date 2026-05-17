@@ -165,6 +165,10 @@ dependencies {
     runtimeOnly "curse.maven:irisshaders-455508:6213632"
     runtimeOnly "curse.maven:sodium-394468:6382651"
 
+    runtimeOnly "curse.maven:kotlin-for-forge-351264:7471280"
+    implementation "curse.maven:slice-and-dice-659674:7738176"
+    implementation "curse.maven:farmers-delight-398521:8083481"
+
     api("dev.latvian.mods:kubejs-neoforge:2101.+")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'

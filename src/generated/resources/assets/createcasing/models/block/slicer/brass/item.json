@@ -1,0 +1,9 @@
+{
+  "parent": "sliceanddice:block/slicer/item",
+  "textures": {
+    "11": "createcasing:block/press_top/brass",
+    "2": "create:block/brass_casing",
+    "4": "createcasing:block/mixer_side/brass",
+    "particle": "create:block/brass_casing"
+  }
+}

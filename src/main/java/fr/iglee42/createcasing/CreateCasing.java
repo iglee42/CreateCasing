@@ -9,6 +9,7 @@ import com.simibubi.create.foundation.item.TooltipModifier;
 import com.tterrag.registrate.providers.RegistrateDataProvider;
 import com.tterrag.registrate.util.RegistrateDistExecutor;
 import fr.iglee42.createcasing.commands.CreateCasingCommand;
+import fr.iglee42.createcasing.compat.sliceanddice.EncasedSliceAndDiceCompat;
 import fr.iglee42.createcasing.config.ModConfigs;
 import fr.iglee42.createcasing.kubejs.KJSExternalHandler;
 import fr.iglee42.createcasing.mixins.create.DeployerBlockEntityAccessor;
@@ -23,6 +24,7 @@ import net.neoforged.api.distmarker.Dist;
 import net.neoforged.bus.api.EventPriority;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.ModContainer;
+import net.neoforged.fml.ModList;
 import net.neoforged.fml.ModLoadingContext;
 import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -70,6 +72,8 @@ public class CreateCasing {
 
         ModConfigs.register(ModLoadingContext.get(),container);
 
+        if (ModList.get().isLoaded("sliceanddice"))
+            EncasedSliceAndDiceCompat.register(modEventBus);
 
 
 

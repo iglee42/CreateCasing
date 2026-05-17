@@ -50,6 +50,7 @@ public class CasingSet {
     private @Nullable Supplier<? extends Block> drillBlock;
     private @Nullable Supplier<? extends Block> ploughBlock;
     private @Nullable Supplier<? extends Block> rollerBlock;
+    private @Nullable Supplier<? extends Block> slicerBlock;
 
     private final @Nullable Supplier<PartialModel> chainConveyorWheelModel;
     private final @Nullable Supplier<PartialModel> chainConveyorGuardModel;
@@ -84,6 +85,7 @@ public class CasingSet {
     private final boolean drill;
     private final boolean plough;
     private final boolean roller;
+    private final boolean slicer;
     private final boolean encasedWoodenShaft;
     private final boolean encasedWoodenCogwheel;
     private final boolean encasedWoodenLargeCogwheel;
@@ -123,6 +125,7 @@ public class CasingSet {
         drill = options.drill;
         plough = options.plough;
         roller = options.roller;
+        slicer = options.slicer;
         encasedWoodenShaft = options.encasedWoodenShaft;
         encasedWoodenCogwheel = options.encasedWoodenCogwheel;
         encasedWoodenLargeCogwheel = options.encasedWoodenLargeCogwheel;
@@ -159,6 +162,7 @@ public class CasingSet {
         if (options.existingDrill != null) drillBlock = options.existingDrill;
         if (options.existingPlough != null) ploughBlock = options.existingPlough;
         if (options.existingRoller != null) rollerBlock = options.existingRoller;
+        if (options.existingSlicer != null) slicerBlock = options.existingSlicer;
     }
 
     public String getName() {
@@ -239,6 +243,9 @@ public class CasingSet {
     }
     public boolean doesGenerateRoller(){
         return roller;
+    }
+    public boolean doesGenerateSlicer(){
+        return slicer;
     }
     public boolean doesGenerateEncasedWoodenShaft(){
         return encasedWoodenShaft;
@@ -501,6 +508,16 @@ public class CasingSet {
     }
 
     @Nullable
+    public Supplier<? extends Block> getSlicerSupplier() {
+        return slicerBlock;
+    }
+
+    @Nullable
+    public Block getSlicer() {
+        return slicerBlock == null ? null : slicerBlock.get();
+    }
+
+    @Nullable
     public BeltBlockEntity.CasingType getBeltCasingType() {
         return beltCasingType;
     }
@@ -661,6 +678,12 @@ public class CasingSet {
         rollerBlock = roller;
     }
 
+    public void setSlicer(@Nonnull Supplier<? extends Block> slicer){
+        if (getSlicerSupplier() != null)
+            throw new UnsupportedOperationException("You cannot modify a slicer that has already been referenced");
+        slicerBlock = slicer;
+    }
+
 
     @Nullable
     public CTSpriteShiftEntry getConnectedTextureSprite() {
@@ -720,7 +743,7 @@ public class CasingSet {
                 || block.equals(getChainDrive()) || block.equals(getChainGearshift()) || block.equals(getConfigurableGearbox()) || block.equals(getChainConveyor())
                 || block.equals(getGearshift()) || block.equals(getClutch()) || block.equals(getDeployer()) || block.equals(getStorageInterface())
                 || block.equals(getEncasedFan()) || block.equals(getHarvester()) || block.equals(getSaw()) || block.equals(getDrill())
-                || block.equals(getPlough()) || block.equals(getRoller());
+                || block.equals(getPlough()) || block.equals(getRoller()) || block.equals(getSlicer());
     }
 
     public boolean isKJSGenerated() {
@@ -758,6 +781,7 @@ public class CasingSet {
         private boolean drill;
         private boolean plough;
         private boolean roller;
+        private boolean slicer;
         private boolean kjsGenerated = false;
         private boolean encasedWoodenShaft;
         private boolean encasedWoodenCogwheel;
@@ -795,6 +819,7 @@ public class CasingSet {
         private @Nullable Supplier<? extends Block> existingDrill;
         private @Nullable Supplier<? extends Block> existingPlough;
         private @Nullable Supplier<? extends Block> existingRoller;
+        private @Nullable Supplier<? extends Block> existingSlicer;
 
         public Options() {
             ctSprite = null;
@@ -955,6 +980,11 @@ public class CasingSet {
             return this;
         }
 
+        public Options slicer(){
+            this.slicer = true;
+            return this;
+        }
+
         public Options encasedWoodenShaft(){
             this.encasedWoodenShaft = true;
             return this;
@@ -978,7 +1008,7 @@ public class CasingSet {
         }
 
         public Options processingBlocks(Supplier<PartialModel> mixerHeadModel){
-            return press().mixer(mixerHeadModel).depot().deployer().encasedFan();
+            return press().mixer(mixerHeadModel).depot().deployer().encasedFan().slicer();
         }
 
         public Options complexTransmissionBlocks(Supplier<PartialModel> conveyorGuard,Supplier<PartialModel> conveyorWheel,Supplier<PartialModel> conveyorShaft){
@@ -1133,6 +1163,12 @@ public class CasingSet {
         Options existingRoller(Supplier<? extends Block> roller) {
             this.existingRoller = roller;
             this.roller = false;
+            return this;
+        }
+
+        Options existingSlicer(Supplier<? extends Block> slicer) {
+            this.existingSlicer = slicer;
+            this.slicer = false;
             return this;
         }
 

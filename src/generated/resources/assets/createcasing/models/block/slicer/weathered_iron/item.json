@@ -1,0 +1,9 @@
+{
+  "parent": "sliceanddice:block/slicer/item",
+  "textures": {
+    "11": "createcasing:block/press_top/weathered_iron",
+    "2": "create:block/weathered_iron_block",
+    "4": "createcasing:block/mixer_side/weathered_iron",
+    "particle": "create:block/weathered_iron_block"
+  }
+}

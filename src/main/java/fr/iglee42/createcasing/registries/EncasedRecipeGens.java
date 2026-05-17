@@ -154,12 +154,14 @@ public class EncasedRecipeGens extends BaseRecipeProvider{
 
         // FIXME 5.1 refactor - recipe categories as markers instead of sections?
         BaseRecipeProvider.GeneratedRecipe viaShaped(UnaryOperator<ShapedRecipeBuilder> builder) {
-            return register(consumer -> {
+            return register(recipeOutput -> {
                 ShapedRecipeBuilder b =
                         builder.apply(ShapedRecipeBuilder.shaped(RecipeCategory.MISC, result.get(), amount));
                 if (unlockedBy != null)
                     b.unlockedBy("has_item", inventoryTrigger(unlockedBy.get()));
-                b.save(consumer, createLocation("crafting"));
+                RecipeOutput conditionalOutput = recipeOutput.withConditions(recipeConditions.toArray(new ICondition[0]));
+
+                b.save(conditionalOutput, createLocation("crafting"));
             });
         }
 
@@ -172,7 +174,7 @@ public class EncasedRecipeGens extends BaseRecipeProvider{
 
                 RecipeOutput conditionalOutput = recipeOutput.withConditions(recipeConditions.toArray(new ICondition[0]));
 
-                b.save(recipeOutput, createLocation("crafting"));
+                b.save(conditionalOutput, createLocation("crafting"));
             });
         }
 
@@ -442,6 +444,15 @@ public class EncasedRecipeGens extends BaseRecipeProvider{
                         .define('C',set.getCasing())
                         .define('I',AllItems.ANDESITE_ALLOY)
         ));
+
+        createForSetElement("slicer",CasingSet::doesGenerateSlicer,CasingSet::getSlicer,(builder,set)-> builder.withCondition(new ModLoadedCondition("sliceanddice")).viaShaped(sh->
+                sh.pattern("A")
+                        .pattern("B")
+                        .pattern("C")
+                        .define('A',AllBlocks.COGWHEEL)
+                        .define('B',set.getCasing())
+                        .define('C',AllBlocks.TURNTABLE)
+                ));
 
 
 

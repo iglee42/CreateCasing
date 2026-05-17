@@ -113,6 +113,8 @@ public class ItemChangeBlockManager {
             if (isElementInSet(state,CasingSet::getRoller) && casingSet.getRoller() != null){
                 changeHorizontalDirectionBlock(event,state,level,casingSet.getRoller().defaultBlockState());
             }
+            if (isElementInSet(state,CasingSet::getSlicer) && casingSet.getSlicer() != null)
+                changeBlock(event, state, level, casingSet.getSlicer().defaultBlockState());
         }
         TransmissionSet transmissionSet;
 
