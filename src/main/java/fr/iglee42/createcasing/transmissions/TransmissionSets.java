@@ -22,18 +22,26 @@ public class TransmissionSets {
     public static final TransmissionSet ANDESITE = register("andesite",new TransmissionSet.Options()
             .item(()-> AllItems.ANDESITE_ALLOY.get())
             .existingShaft(AllBlocks.SHAFT)
+            .cogwheel()
+            .largeCogwheel()
     );
 
     public static final TransmissionSet BRASS = register("brass",new TransmissionSet.Options()
-            .item(()-> AllItems.BRASS_INGOT.get())
-            .shaft()
+            .everything(()-> AllItems.BRASS_INGOT.get())
+    );
+
+    public static final TransmissionSet COPPER = register("copper",new TransmissionSet.Options()
+            .everything(()-> Items.COPPER_INGOT)
+    );
+
+    public static final TransmissionSet ZINC = register("zinc",new TransmissionSet.Options()
+            .everything(()-> AllItems.ZINC_INGOT.get())
     );
 
     public static final TransmissionSet MLDEG = register("mldeg",new TransmissionSet.Options()
             .item(()-> Items.BLACKSTONE)
             .shaft()
     );
-
 
     public static final TransmissionSet GLASS = register("glass",new TransmissionSet.Options()
             .item(()-> Items.GLASS)

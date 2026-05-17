@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/shaft",
+  "textures": {
+    "0": "createcasing:block/shaft/zinc",
+    "1": "createcasing:block/shaft/zinc_top",
+    "particle": "createcasing:block/shaft/zinc"
+  }
+}

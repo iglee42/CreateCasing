@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/cogwheel",
+  "textures": {
+    "1_2": "createcasing:block/cogwheel/zinc",
+    "particle": "createcasing:block/shaft/zinc"
+  }
+}

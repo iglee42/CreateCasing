@@ -1,0 +1,17 @@
+{
+  "variants": {
+    "axis=x": {
+      "model": "createcasing:block/shaft/zinc",
+      "x": 90,
+      "y": 90
+    },
+    "axis=y": {
+      "model": "createcasing:block/shaft/zinc"
+    },
+    "axis=z": {
+      "model": "createcasing:block/shaft/zinc",
+      "x": 90,
+      "y": 180
+    }
+  }
+}

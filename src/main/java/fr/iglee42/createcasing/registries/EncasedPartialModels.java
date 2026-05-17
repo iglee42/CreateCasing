@@ -26,7 +26,6 @@ public class EncasedPartialModels {
             SHADOW_STEEL_MIXER_HEAD = block("mixer/shadow_steel/head"),
 
     GLASS_SHAFT = block("shaft/glass"),
-            BRASS_SHAFT = block("shaft/brass"),
             MLDEG_SHAFT = block("shaft/mldeg"),
 
     COPPER_BELT_COVER_X = block("belt_cover/copper_belt_cover_x"), COPPER_BELT_COVER_Z = block("belt_cover/copper_belt_cover_z"),
@@ -101,8 +100,15 @@ public class EncasedPartialModels {
 
         SHAFT_MODELS.put("spruce", EncasedPartialModels.block("shaft/spruce"));
         SHAFT_MODELS.put("mldeg", MLDEG_SHAFT);
-        SHAFT_MODELS.put("brass", BRASS_SHAFT);
         SHAFT_MODELS.put("glass", GLASS_SHAFT);
+
+        for (String w : new String[]{"brass", "copper", "zinc", "andesite"}){
+            SHAFT_MODELS.put(w, EncasedPartialModels.block("shaft/" + w));
+            COGS_MODELS.put(w, EncasedPartialModels.block("cogwheel/" + w));
+            SHAFTLESS_COGS_MODELS.put(w, EncasedPartialModels.block("cogwheel_shaftless/" + w));
+            LARGE_COGS_MODELS.put(w, EncasedPartialModels.block("large_cogwheel/" + w));
+            SHAFTLESS_LARGE_COGS_MODELS.put(w, EncasedPartialModels.block("large_cogwheel_shaftless/" + w));
+        }
     }
 
     public static PartialModel block(String path) {

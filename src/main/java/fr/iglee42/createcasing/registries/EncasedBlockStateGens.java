@@ -671,7 +671,7 @@ public class EncasedBlockStateGens {
 
 
     public static String getShaftTexture(String shaft){
-        if (shaft.equals("normal")) return Create.ID + ":block/axis";
+        if (shaft.equals("normal") || shaft.equals("andesite")) return Create.ID + ":block/axis";
         if (shaft.equals("bamboo")) return "minecraft:block/stripped_bamboo_block";
         if (isWoodenShaft(shaft)) return "minecraft:block/stripped_"+shaft+"_" + (shaft.equals("crimson") || shaft.equals("warped") ? "stem": "log");
         return CreateCasing.MODID + ":block/shaft/"+shaft;

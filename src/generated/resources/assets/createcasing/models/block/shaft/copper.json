@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/shaft",
+  "textures": {
+    "0": "createcasing:block/shaft/copper",
+    "1": "createcasing:block/shaft/copper_top",
+    "particle": "createcasing:block/shaft/copper"
+  }
+}
