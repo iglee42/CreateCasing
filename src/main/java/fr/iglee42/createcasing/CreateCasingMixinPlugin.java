@@ -19,7 +19,6 @@ public class CreateCasingMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (mixinClassName.contains("FarmersDelight")) return LoadingModList.get().getModFileById("jei") != null && LoadingModList.get().getModFileById("sliceanddice") != null && LoadingModList.get().getModFileById("farmersdelight") != null;
         if (mixinClassName.contains("sliceanddice")) return LoadingModList.get().getModFileById("sliceanddice") != null;
         return true;
     }

@@ -1,11 +1,12 @@
 package fr.iglee42.createcasing.compat.sliceanddice;
 
-import com.possible_triangle.sliceanddice.Content;
 import com.possible_triangle.sliceanddice.block.slicer.SlicerBlock;
 import com.possible_triangle.sliceanddice.block.slicer.SlicerBlockEntity;
 import com.possible_triangle.sliceanddice.block.slicer.SlicerRenderer;
 import com.possible_triangle.sliceanddice.block.slicer.SlicerVisual;
 import com.possible_triangle.sliceanddice.compat.ModCompat;
+import com.possible_triangle.sliceanddice.index.SDBlockEntities;
+import com.possible_triangle.sliceanddice.index.SDBlocks;
 import com.simibubi.create.content.kinetics.press.PressingBehaviour;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
 import com.simibubi.create.foundation.data.SharedProperties;
@@ -24,6 +25,7 @@ import fr.iglee42.createcasing.ponder.CustomPonderScenes;
 import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import fr.iglee42.createcasing.registries.EncasedBlockStateGens;
 import fr.iglee42.createcasing.registries.EncasedCreativeModeTabs;
+import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import net.createmod.catnip.math.Pointing;
 import net.createmod.catnip.math.VecHelper;
 import net.createmod.ponder.api.registration.PonderSceneRegistrationHelper;
@@ -53,7 +55,7 @@ public class EncasedSliceAndDiceCompat {
                 set.setSlicer(createSlicer(set.getName()));
         }
         bus.addListener(EncasedSliceAndDiceCompat::modifyBeTypes);
-        CasingSets.ANDESITE.setSlicer(()->Content.INSTANCE.getSLICER_BLOCK().get());
+        CasingSets.ANDESITE.setSlicer(()-> SDBlocks.SLICER.get());
         REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS,EncasedSliceAndDiceCompat::blockTag);
     }
 
@@ -68,7 +70,7 @@ public class EncasedSliceAndDiceCompat {
     }
 
     private static void modifyBeTypes(BlockEntityTypeAddBlocksEvent event){
-        EncasedBlockEntities.register(event, Content.INSTANCE.getSLICER_BLOCK_ENTITY().get(), CasingSet::getSlicer,CasingSet::doesGenerateSlicer);
+        EncasedBlockEntities.register(event, SDBlockEntities.SLICER.get(), CasingSet::getSlicer,CasingSet::doesGenerateSlicer);
     }
 
 

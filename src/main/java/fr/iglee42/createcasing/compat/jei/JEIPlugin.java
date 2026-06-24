@@ -1,14 +1,16 @@
 package fr.iglee42.createcasing.compat.jei;
 
 import fr.iglee42.createcasing.CreateCasing;
+import fr.iglee42.createcasing.compat.sliceanddice.EncasedFarmersDelightCompat;
 import mezz.jei.api.IModPlugin;
 import mezz.jei.api.JeiPlugin;
 import mezz.jei.api.constants.VanillaTypes;
-import mezz.jei.api.registration.IModIngredientRegistration;
+import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import mezz.jei.api.registration.IRecipeRegistration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
+import net.neoforged.fml.ModList;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,5 +31,12 @@ public class JEIPlugin implements IModPlugin {
                 stacks.add(stack);
         });
         registration.getIngredientManager().removeIngredientsAtRuntime(VanillaTypes.ITEM_STACK,stacks);
+    }
+
+    @Override
+    public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
+        if (ModList.get().isLoaded("sliceanddice") && ModList.get().isLoaded("farmersdelight")) {
+            EncasedFarmersDelightCompat.registerCatalysts(registration);
+        }
     }
 }

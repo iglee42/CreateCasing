@@ -25,7 +25,6 @@
     "create.arm_interactions.SawMixin",
     "create.catnip.StitchedSpriteMixin",
     "minecraft.IItemExtensionMixin",
-    "sliceanddice.FarmersDelightCompatMixin",
     "sliceanddice.SlicerMixin"
   ],
   "client": [

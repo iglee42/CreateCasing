@@ -139,6 +139,9 @@ repositories {
             includeGroup "com.github.rtyley"
         }
     }
+    maven {
+        url 'https://registry.somethingcatchy.net/repository/maven-public'
+    }
 }
 
 dependencies {
@@ -166,7 +169,8 @@ dependencies {
     runtimeOnly "curse.maven:sodium-394468:6382651"
 
     runtimeOnly "curse.maven:kotlin-for-forge-351264:7471280"
-    implementation "curse.maven:slice-and-dice-659674:7738176"
+    implementation("com.possible-triangle:sliceanddice-neoforge:${sd_version}") { transitive = false }
+    runtimeOnly "com.possible-triangle:atmosphere-1.21.1-neoforge:1.0.13"
     implementation "curse.maven:farmers-delight-398521:8083481"
 
     api("dev.latvian.mods:kubejs-neoforge:2101.+")
