@@ -139,6 +139,26 @@ repositories {
             includeGroup "com.github.rtyley"
         }
     }
+    maven {
+        url = uri("https://thedarkcolour.github.io/KotlinForForge/")
+        content {
+            includeGroup("thedarkcolour")
+        }
+    }
+
+    maven {
+        url = uri("https://maven.ryanhcode.dev/releases")
+        content {
+            includeGroupAndSubgroups("dev.ryanhcode")
+        }
+    }
+
+    maven {
+        url = uri("https://registry.somethingcatchy.net/repository/maven-public/")
+        content {
+            includeGroup("com.possible-triangle")
+        }
+    }
 }
 
 dependencies {
@@ -165,9 +185,8 @@ dependencies {
     runtimeOnly "curse.maven:irisshaders-455508:6213632"
     runtimeOnly "curse.maven:sodium-394468:6382651"
 
-    runtimeOnly "curse.maven:kotlin-for-forge-351264:7471280"
-    implementation "curse.maven:slice-and-dice-659674:7738176"
     implementation "curse.maven:farmers-delight-398521:8083481"
+    implementation("com.possible-triangle:sliceanddice-neoforge:$sd_version")
 
     api("dev.latvian.mods:kubejs-neoforge:2101.+")
 
