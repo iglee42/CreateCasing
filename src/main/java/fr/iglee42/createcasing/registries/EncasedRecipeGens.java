@@ -395,7 +395,7 @@ public class EncasedRecipeGens extends BaseRecipeProvider{
                 sh.pattern("B")
                         .pattern("C")
                         .pattern("I")
-                        .define('B', AllBlocks.COGWHEEL)
+                        .define('B', AllBlocks.SHAFT)
                         .define('C',set.getCasing())
                         .define('I',Tags.Items.STORAGE_BLOCKS_IRON)
         ));
