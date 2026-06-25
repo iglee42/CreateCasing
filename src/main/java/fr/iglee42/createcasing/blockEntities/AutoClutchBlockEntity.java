@@ -10,6 +10,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.Mth;
 import net.minecraft.util.StringRepresentable;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -54,7 +55,7 @@ public class AutoClutchBlockEntity extends SplitShaftBlockEntity {
             case USED_STRESS -> operation.isValid((int) stress, configuredValue);
             case REMAINING_STRESS -> operation.isValid((int) (capacity - stress), configuredValue);
             case MAX_STRESS -> operation.isValid((int) capacity, configuredValue);
-            case SPEED -> operation.isValid((int) speed, configuredValue);
+            case SPEED -> operation.isValid((int) Mth.abs(speed), configuredValue);
         };
 
         if (active != previousActive || getBlockState().getValue(AutoClutchBlock.ACTIVE) != active){
@@ -102,20 +103,20 @@ public class AutoClutchBlockEntity extends SplitShaftBlockEntity {
 
     @Override
     protected void write(CompoundTag compound, HolderLookup.Provider provider, boolean clientPacket) {
+        super.write(compound,provider, clientPacket);
         compound.putInt("configuredValue", configuredValue);
         compound.putString("mode", mode.getSerializedName());
         compound.putString("operation", operation.getSerializedName());
         if (clientPacket) compound.putBoolean("active", active);
-        super.write(compound,provider, clientPacket);
     }
 
     @Override
     protected void read(CompoundTag compound, HolderLookup.Provider provider, boolean clientPacket) {
+        super.read(compound, provider, clientPacket);
         configuredValue = compound.getInt("configuredValue");
         mode = Mode.byName(compound.getString("mode"));
         operation = Operation.byName(compound.getString("operation"));
         if (compound.contains("active")) active = compound.getBoolean("active");
-        super.read(compound, provider, clientPacket);
     }
 
     public Operation getOperation() {
