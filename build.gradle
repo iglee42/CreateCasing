@@ -253,6 +253,9 @@ publishMods {
         style {
             link = "BUTTON"
             look = "MODERN"
+            thumbnailUrl = "https://cdn.modrinth.com/data/hSSqdyU1/e7229e03d0795915092cdab361ee4406e0b27153_96.webp"
+            color = "curseforge"
+
         }
     }
 
