@@ -19,6 +19,7 @@ plugins {
 }
 
 String gitHash = calculateGitHash()
+String changelogText = silk.getChangelog()
 
 group = mod_group_id
 version = minecraft_version + "-" +mod_version
@@ -246,7 +247,7 @@ publishMods {
         content = """
                 # $mod_name | $mod_version
                 
-                ${if (silk.changelog.length() > 4000) "Changelog is too long, check it on [Modrinth](https://modrinth.com/mod/autowhitelist/changelog)" else silk.changelog}
+                ${if (changelogText.length() > 4000) "Changelog is too long, check it on [Modrinth](https://modrinth.com/mod/autowhitelist/changelog)" else changelogText}
             """.trimIndent()
 
         style {
