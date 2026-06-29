@@ -247,8 +247,8 @@ publishMods {
         content = """
                 # $mod_name | $mod_version
                 
-                ${if (changelogText.length() > 4000) "Changelog is too long, check it on [Modrinth](https://modrinth.com/mod/autowhitelist/changelog)" else changelogText}
-            """.trimIndent()
+                ${if (changelogText.length() > 4000) "Changelog is too long, check it on [Modrinth](https://modrinth.com/mod/create-encased/changelog)" else changelogText}
+            """.stripIndent()
 
         style {
             link = "BUTTON"
