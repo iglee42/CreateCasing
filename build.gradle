@@ -246,7 +246,7 @@ publishMods {
         content = """
                 # $mod_name | $mod_version
                 
-                ${if (changelogText.length > 4000) "Changelog is too long, check it on [Modrinth](https://modrinth.com/mod/autowhitelist/changelog)" else changelogText}
+                ${if (changelog.length > 4000) "Changelog is too long, check it on [Modrinth](https://modrinth.com/mod/autowhitelist/changelog)" else changelog}
             """.trimIndent()
 
         style {
