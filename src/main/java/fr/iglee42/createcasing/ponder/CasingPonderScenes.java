@@ -4,6 +4,7 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.Create;
 import com.simibubi.create.infrastructure.ponder.AllCreatePonderTags;
 import com.simibubi.create.infrastructure.ponder.scenes.*;
+import com.simibubi.create.infrastructure.ponder.scenes.fluid.*;
 import com.simibubi.create.infrastructure.ponder.scenes.highLogistics.FrogAndConveyorScenes;
 import com.tterrag.registrate.util.entry.ItemProviderEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
@@ -11,6 +12,8 @@ import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
 import fr.iglee42.createcasing.compat.sliceanddice.EncasedSliceAndDiceCompat;
+import fr.iglee42.createcasing.fluids.FluidSet;
+import fr.iglee42.createcasing.fluids.FluidSets;
 import fr.iglee42.createcasing.registries.EncasedBlocks;
 import fr.iglee42.createcasing.registries.EncasedItems;
 import net.createmod.ponder.api.registration.PonderSceneRegistrationHelper;
@@ -38,8 +41,6 @@ public class CasingPonderScenes {
 				.addStoryBoard(Create.asResource("mechanical_press/pressing"), ProcessingScenes::pressing)
 				.addStoryBoard(Create.asResource("mechanical_press/compacting"), ProcessingScenes::compacting);
 
-		HELPER.forComponents(EncasedBlocks.CREATIVE_COGWHEEL).addStoryBoard("creative_cogwheel",CustomPonderScenes::creativeCogwheel,AllCreatePonderTags.KINETIC_SOURCES);
-
 		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateDepot).map(CasingSet::getDepot).toList()).addStoryBoard("depot", BeltScenes::depot);
 
 
@@ -48,9 +49,6 @@ public class CasingPonderScenes {
 				.addStoryBoard(Create.asResource("chain_drive/gearshift"), ChainDriveScenes::adjustableChainGearshift);
 		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateChainDrive).map(CasingSet::getChainDrive).toList())
 				.addStoryBoard(Create.asResource("chain_drive/gearshift"), ChainDriveScenes::adjustableChainGearshift);
-
-		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateConfigurableGearbox).map(CasingSet::getConfigurableGearbox).toList())
-				.addStoryBoard(CreateCasing.asResource("configurable_gearbox"), CustomPonderScenes::configurableGearbox);
 
 		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateConfigurableGearbox).map(CasingSet::getChainConveyor).toList())
 				.addStoryBoard(Create.asResource("high_logistics/chain_conveyor"), FrogAndConveyorScenes::conveyor);
@@ -91,6 +89,55 @@ public class CasingPonderScenes {
 				.addStoryBoard(Create.asResource("mechanical_drill/breaker"), MechanicalDrillScenes::breaker, AllCreatePonderTags.KINETIC_APPLIANCES)
 				.addStoryBoard(Create.asResource("mechanical_drill/contraption"), MechanicalDrillScenes::contraption,
 						AllCreatePonderTags.CONTRAPTION_ACTOR);
+
+		// Fluids
+		HELPER.forComponents(FluidSets.getSets().stream().filter(FluidSet::doesGenerateFluidPipe).map(FluidSet::getFluidPipe).toList())
+				.addStoryBoard("fluid_pipe/flow", PipeScenes::flow, AllCreatePonderTags.FLUIDS)
+				.addStoryBoard("fluid_pipe/interaction", PipeScenes::interaction)
+				.addStoryBoard("fluid_pipe/encasing", PipeScenes::encasing);
+		HELPER.forComponents(FluidSets.getSets().stream().filter(FluidSet::doesGeneratePump).map(FluidSet::getPump).toList())
+				.addStoryBoard("mechanical_pump/flow", PumpScenes::flow, AllCreatePonderTags.FLUIDS, AllCreatePonderTags.KINETIC_APPLIANCES)
+				.addStoryBoard("mechanical_pump/speed", PumpScenes::speed);
+		HELPER.forComponents(FluidSets.getSets().stream().filter(FluidSet::doesGenerateFluidValve).map(FluidSet::getFluidValve).toList())
+				.addStoryBoard("fluid_valve", PipeScenes::valve, AllCreatePonderTags.FLUIDS, AllCreatePonderTags.KINETIC_APPLIANCES);
+		HELPER.forComponents(FluidSets.getSets().stream().filter(FluidSet::doesGenerateSmartFluidPipe).map(FluidSet::getSmartFluidPipe).toList())
+				.addStoryBoard("smart_pipe", PipeScenes::smart, AllCreatePonderTags.FLUIDS);
+		HELPER.forComponents(FluidSets.getSets().stream().filter(FluidSet::doesGenerateFluidTank).map(FluidSet::getFluidTank).toList())
+				.addStoryBoard("fluid_tank/storage", FluidTankScenes::storage, AllCreatePonderTags.FLUIDS)
+				.addStoryBoard("fluid_tank/sizes", FluidTankScenes::sizes);
+		HELPER.forComponents(FluidSets.getSets().stream().filter(FluidSet::doesGenerateHosePulley).map(FluidSet::getHosePulley).toList())
+				.addStoryBoard("hose_pulley/intro", HosePulleyScenes::intro, AllCreatePonderTags.FLUIDS, AllCreatePonderTags.KINETIC_APPLIANCES)
+				.addStoryBoard("hose_pulley/level", HosePulleyScenes::level)
+				.addStoryBoard("hose_pulley/infinite", HosePulleyScenes::infinite);
+		HELPER.forComponents(FluidSets.getSets().stream().filter(FluidSet::doesGenerateSpout).map(FluidSet::getSpout).toList())
+				.addStoryBoard("spout", SpoutScenes::filling, AllCreatePonderTags.FLUIDS);
+		HELPER.forComponents(FluidSets.getSets().stream().filter(FluidSet::doesGenerateItemDrain).map(FluidSet::getItemDrain).toList())
+				.addStoryBoard("item_drain", DrainScenes::emptying, AllCreatePonderTags.FLUIDS);
+		HELPER.forComponents(FluidSets.getSets().stream().filter(FluidSet::doesGeneratePortableFluidInterface).map(FluidSet::getPortableFluidInterface).toList())
+				.addStoryBoard("portable_interface/transfer_fluid", FluidMovementActorScenes::transfer, AllCreatePonderTags.FLUIDS,
+						AllCreatePonderTags.CONTRAPTION_ACTOR)
+				.addStoryBoard("portable_interface/redstone_fluid", MovementActorScenes::psiRedstone);
+
+		// Steam
+		HELPER.forComponents(FluidSets.getSets().stream().filter(FluidSet::doesGenerateWhistle).map(FluidSet::getWhistle).toList())
+				.addStoryBoard("steam_whistle", SteamScenes::whistle);
+		HELPER.forComponents(FluidSets.getSets().stream().filter(FluidSet::doesGenerateSteamEngine).map(FluidSet::getSteamEngine).toList())
+				.addStoryBoard("steam_engine", SteamScenes::engine);
+
+		HELPER.forComponents(FluidSets.getSets().stream().filter(FluidSet::doesGenerateValveHandle).map(FluidSet::getValveHandle).toList()).addStoryBoard("valve_handle", KineticsScenes::valveHandle,
+				AllCreatePonderTags.KINETIC_SOURCES);
+
+
+	}
+
+	public static void registerCustom(PonderSceneRegistrationHelper<ResourceLocation> helper) {
+
+		PonderSceneRegistrationHelper<ItemLike> HELPER = helper.withKeyFunction(like->BuiltInRegistries.ITEM.getKey(like.asItem()));
+
+		HELPER.forComponents(EncasedBlocks.CREATIVE_COGWHEEL).addStoryBoard("creative_cogwheel",CustomPonderScenes::creativeCogwheel,AllCreatePonderTags.KINETIC_SOURCES);
+
+		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateConfigurableGearbox).map(CasingSet::getConfigurableGearbox).toList())
+				.addStoryBoard(CreateCasing.asResource("configurable_gearbox"), CustomPonderScenes::configurableGearbox);
 
 		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateAutoClutch).map(CasingSet::getAutoClutch).toList())
 				.addStoryBoard(CreateCasing.asResource("auto_clutch"), CustomPonderScenes::autoClutch);

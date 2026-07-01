@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/smart_fluid_pipe/block",
+  "textures": {
+    "2": "createcasing:block/smart_pipe_1/andesite",
+    "3": "createcasing:block/smart_pipe_2/andesite",
+    "4": "createcasing:block/pipes/andesite",
+    "particle": "createcasing:block/underside/andesite"
+  }
+}

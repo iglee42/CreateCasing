@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "tag": "c:ingots/brass"
+    },
+    "S": {
+      "tag": "c:plates/brass"
+    }
+  },
+  "pattern": [
+    "S",
+    "I",
+    "S"
+  ],
+  "result": {
+    "count": 6,
+    "id": "createcasing:brass_fluid_pipe"
+  }
+}

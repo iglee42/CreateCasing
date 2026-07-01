@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/smart_fluid_pipe/block",
+  "textures": {
+    "2": "createcasing:block/smart_pipe_1/zinc",
+    "3": "createcasing:block/smart_pipe_2/zinc",
+    "4": "createcasing:block/pipes/zinc",
+    "particle": "createcasing:block/underside/zinc"
+  }
+}

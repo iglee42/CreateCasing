@@ -55,6 +55,9 @@
     "createcasing:weathered_iron_mechanical_saw",
     "createcasing:weathered_iron_mechanical_drill",
     "createcasing:weathered_iron_mechanical_plough",
-    "createcasing:weathered_iron_mechanical_roller"
+    "createcasing:weathered_iron_mechanical_roller",
+    "createcasing:andesite_portable_fluid_interface",
+    "createcasing:brass_portable_fluid_interface",
+    "createcasing:zinc_portable_fluid_interface"
   ]
 }

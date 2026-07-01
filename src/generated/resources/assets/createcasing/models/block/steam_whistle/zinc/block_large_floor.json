@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/steam_whistle/block_large_floor",
+  "textures": {
+    "1": "createcasing:block/engine/zinc",
+    "2": "createcasing:block/redstone_plate/zinc"
+  }
+}

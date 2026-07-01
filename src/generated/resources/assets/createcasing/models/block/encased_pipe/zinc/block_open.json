@@ -1,0 +1,7 @@
+{
+  "parent": "createcasing:block/templates/pipe_block_open",
+  "textures": {
+    "1": "createcasing:block/casing/zinc",
+    "particle": "createcasing:block/casing/zinc"
+  }
+}

@@ -15,17 +15,21 @@ import net.minecraft.resources.ResourceLocation;
 
 public class EncasedSprites {
 
-    public static final CTSpriteShiftEntry RAILWAY_ENCASED_COGWHEEL_SIDE;
-    public static final CTSpriteShiftEntry RAILWAY_ENCASED_COGWHEEL_OTHERSIDE;
-    public static final CTSpriteShiftEntry COPPER_ENCASED_COGWHEEL_SIDE;
-    public static final CTSpriteShiftEntry COPPER_ENCASED_COGWHEEL_OTHERSIDE;
-    public static final CTSpriteShiftEntry SHADOW_STEEL_ENCASED_COGWHEEL_SIDE;
-    public static final CTSpriteShiftEntry SHADOW_STEEL_ENCASED_COGWHEEL_OTHERSIDE;
-    public static final CTSpriteShiftEntry REFINED_RADIANCE_ENCASED_COGWHEEL_SIDE;
-    public static final CTSpriteShiftEntry REFINED_RADIANCE_ENCASED_COGWHEEL_OTHERSIDE;
+    public static final CTSpriteShiftEntry RAILWAY_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheel/railway");
+    public static final CTSpriteShiftEntry RAILWAY_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheel/railway");
+    public static final CTSpriteShiftEntry COPPER_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheel/copper");
+    public static final CTSpriteShiftEntry COPPER_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheel/copper");
+    public static final CTSpriteShiftEntry SHADOW_STEEL_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheel/shadow");
+    public static final CTSpriteShiftEntry SHADOW_STEEL_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheel/shadow");
+    public static final CTSpriteShiftEntry REFINED_RADIANCE_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheel/radiance");
+    public static final CTSpriteShiftEntry REFINED_RADIANCE_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheel/radiance");
+    public static final CTSpriteShiftEntry CREATIVE_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheel/creative");
+    public static final CTSpriteShiftEntry CREATIVE_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheel/creative");
+    public static final CTSpriteShiftEntry ZINC_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheel/zinc");
+    public static final CTSpriteShiftEntry ZINC_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheel/zinc");
     //public static final CTSpriteShiftEntry CREATIVE_CASING;
-    public static final CTSpriteShiftEntry CREATIVE_ENCASED_COGWHEEL_SIDE;
-    public static final CTSpriteShiftEntry CREATIVE_ENCASED_COGWHEEL_OTHERSIDE;
+    public static final CTSpriteShiftEntry ZINC_CASING = omni("casing/zinc");
+
 
     public static final SpriteShiftEntry COPPER_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casing/copper");
     public static final SpriteShiftEntry RAILWAY_BELT_CASING = getFromCreate("block/belt/brass_belt_casing", "block/belt_casing/railway");
@@ -37,6 +41,18 @@ public class EncasedSprites {
 
     public static final SpriteShiftEntry INDUSTRIAL_IRON = getFromCreate("block/industrial_iron_block");
     public static final SpriteShiftEntry WEATHERED_IRON = getFromCreate("block/weathered_iron_block");
+
+    public static final CTSpriteShiftEntry ANDESITE_FLUID_TANK = getCT(AllCTTypes.RECTANGLE, "fluid_tank/andesite");
+    public static final CTSpriteShiftEntry ANDESITE_FLUID_TANK_TOP = getCT(AllCTTypes.RECTANGLE, "fluid_tank_top/andesite");
+    public static final CTSpriteShiftEntry ANDESITE_FLUID_TANK_INNER = getCT(AllCTTypes.RECTANGLE, "fluid_tank_inner/andesite");
+
+    public static final CTSpriteShiftEntry BRASS_FLUID_TANK = getCT(AllCTTypes.RECTANGLE, "fluid_tank/brass");
+    public static final CTSpriteShiftEntry BRASS_FLUID_TANK_TOP = getCT(AllCTTypes.RECTANGLE, "fluid_tank_top/brass");
+    public static final CTSpriteShiftEntry BRASS_FLUID_TANK_INNER = getCT(AllCTTypes.RECTANGLE, "fluid_tank_inner/brass");
+
+    public static final CTSpriteShiftEntry ZINC_FLUID_TANK = getCT(AllCTTypes.RECTANGLE, "fluid_tank/zinc");
+    public static final CTSpriteShiftEntry ZINC_FLUID_TANK_TOP = getCT(AllCTTypes.RECTANGLE, "fluid_tank_top/zinc");
+    public static final CTSpriteShiftEntry ZINC_FLUID_TANK_INNER = getCT(AllCTTypes.RECTANGLE, "fluid_tank_inner/zinc");
 
 
     private static CTSpriteShiftEntry horizontal(String name) {
@@ -67,59 +83,6 @@ public class EncasedSprites {
 
     private static CTSpriteShiftEntry getCT(CTType type, String blockTextureName) {
         return getCT(type, blockTextureName, blockTextureName);
-    }
-
-
-    public static CTSpriteShiftEntry getEntryForCasing(String casing){
-        return switch (casing){
-            case "andesite"-> AllSpriteShifts.ANDESITE_CASING;
-            case "brass"-> AllSpriteShifts.BRASS_CASING;
-            case "copper"-> AllSpriteShifts.COPPER_CASING;
-            case "railway"-> AllSpriteShifts.RAILWAY_CASING;
-            case "creative"-> AllSpriteShifts.CREATIVE_CASING;
-            case "shadow_steel"-> AllSpriteShifts.SHADOW_STEEL_CASING;
-            case "refined_radiance"-> AllSpriteShifts.REFINED_RADIANCE_CASING;
-            default -> null;
-        };
-    }
-
-    public static CTSpriteShiftEntry getEntryForSide(String casing){
-        return switch (casing){
-            case "andesite"-> AllSpriteShifts.ANDESITE_ENCASED_COGWHEEL_SIDE;
-            case "brass"-> AllSpriteShifts.BRASS_ENCASED_COGWHEEL_SIDE;
-            case "copper"-> EncasedSprites.COPPER_ENCASED_COGWHEEL_SIDE;
-            case "railway"-> EncasedSprites.RAILWAY_ENCASED_COGWHEEL_SIDE;
-            case "creative"-> EncasedSprites.CREATIVE_ENCASED_COGWHEEL_SIDE;
-            case "shadow_steel"-> EncasedSprites.SHADOW_STEEL_ENCASED_COGWHEEL_SIDE;
-            case "refined_radiance"-> EncasedSprites.REFINED_RADIANCE_ENCASED_COGWHEEL_SIDE;
-            default -> null;
-        };
-    }
-
-    public static CTSpriteShiftEntry getEntryForOtherSide(String casing){
-        return switch (casing){
-            case "andesite"-> AllSpriteShifts.ANDESITE_ENCASED_COGWHEEL_OTHERSIDE;
-            case "brass"-> AllSpriteShifts.BRASS_ENCASED_COGWHEEL_OTHERSIDE;
-            case "copper"-> EncasedSprites.COPPER_ENCASED_COGWHEEL_OTHERSIDE;
-            case "railway"-> EncasedSprites.RAILWAY_ENCASED_COGWHEEL_OTHERSIDE;
-            case "creative"-> EncasedSprites.CREATIVE_ENCASED_COGWHEEL_OTHERSIDE;
-            case "shadow_steel"-> EncasedSprites.SHADOW_STEEL_ENCASED_COGWHEEL_OTHERSIDE;
-            case "refined_radiance"-> EncasedSprites.REFINED_RADIANCE_ENCASED_COGWHEEL_OTHERSIDE;
-            default -> null;
-        };
-    }
-    static {
-        RAILWAY_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheel/railway");
-        RAILWAY_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheel/railway");
-        COPPER_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheel/copper");
-        COPPER_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheel/copper");
-        SHADOW_STEEL_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheel/shadow");
-        SHADOW_STEEL_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheel/shadow");
-        REFINED_RADIANCE_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheel/radiance");
-        REFINED_RADIANCE_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheel/radiance");
-        //CREATIVE_CASING = omni("creative_casing");
-        CREATIVE_ENCASED_COGWHEEL_SIDE = vertical("encased_cogwheel/creative");
-        CREATIVE_ENCASED_COGWHEEL_OTHERSIDE = horizontal("encased_cogwheel/creative");
     }
 
     private static CTSpriteShiftEntry getCT(CTType type, ResourceLocation blockTexture, ResourceLocation connectedTexture){

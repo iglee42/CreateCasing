@@ -14,7 +14,7 @@ public class CasingPonderPlugin implements PonderPlugin {
 
     @Override
     public void registerScenes(PonderSceneRegistrationHelper<ResourceLocation> helper) {
-        CasingPonderScenes.register(helper);
+        CasingPonderScenes.registerCustom(helper);
     }
 
     @Override

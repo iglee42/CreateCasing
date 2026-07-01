@@ -1,0 +1,11 @@
+{
+  "parent": "create:block/fluid_tank/block_bottom_window_ne",
+  "textures": {
+    "0": "createcasing:block/fluid_tank_top/zinc",
+    "1": "createcasing:block/fluid_tank/zinc",
+    "3": "createcasing:block/fluid_tank_window/zinc",
+    "4": "createcasing:block/fluid_tank_inner/zinc",
+    "5": "createcasing:block/fluid_tank_window_single/zinc",
+    "particle": "createcasing:block/fluid_tank/zinc"
+  }
+}

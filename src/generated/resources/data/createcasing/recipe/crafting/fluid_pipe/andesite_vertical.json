@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "tag": "c:ingots/andesite_alloy"
+    },
+    "S": {
+      "tag": "c:plates/andesite_alloy"
+    }
+  },
+  "pattern": [
+    "S",
+    "I",
+    "S"
+  ],
+  "result": {
+    "count": 6,
+    "id": "createcasing:andesite_fluid_pipe"
+  }
+}

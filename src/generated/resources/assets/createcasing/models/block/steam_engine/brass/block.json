@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/steam_engine/block",
+  "textures": {
+    "1": "createcasing:block/engine/brass",
+    "particle": "createcasing:block/underside/brass"
+  }
+}

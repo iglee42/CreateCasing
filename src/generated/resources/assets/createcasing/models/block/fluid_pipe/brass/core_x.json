@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/fluid_pipe/core_x",
+  "textures": {
+    "0": "createcasing:block/pipes/brass_connected",
+    "particle": "createcasing:block/underside/brass"
+  }
+}

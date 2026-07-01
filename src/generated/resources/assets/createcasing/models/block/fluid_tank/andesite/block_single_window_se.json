@@ -1,0 +1,11 @@
+{
+  "parent": "create:block/fluid_tank/block_single_window_se",
+  "textures": {
+    "0": "createcasing:block/fluid_tank_top/andesite",
+    "1": "createcasing:block/fluid_tank/andesite",
+    "3": "createcasing:block/fluid_tank_window/andesite",
+    "4": "createcasing:block/fluid_tank_inner/andesite",
+    "5": "createcasing:block/fluid_tank_window_single/andesite",
+    "particle": "createcasing:block/fluid_tank/andesite"
+  }
+}

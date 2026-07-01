@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "create:brass_casing"
+    },
+    "I": {
+      "item": "minecraft:dried_kelp_block"
+    },
+    "S": {
+      "tag": "c:plates/brass"
+    }
+  },
+  "pattern": [
+    "C",
+    "I",
+    "S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:brass_hose_pulley"
+  }
+}

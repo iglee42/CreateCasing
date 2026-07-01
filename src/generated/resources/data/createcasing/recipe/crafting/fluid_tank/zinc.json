@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "tag": "c:barrels/wooden"
+    },
+    "S": {
+      "tag": "c:plates/zinc"
+    }
+  },
+  "pattern": [
+    "S",
+    "I",
+    "S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:zinc_fluid_tank"
+  }
+}

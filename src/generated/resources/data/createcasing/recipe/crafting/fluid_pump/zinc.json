@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "create:cogwheel"
+    },
+    {
+      "item": "createcasing:zinc_fluid_pipe"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:zinc_mechanical_pump"
+  }
+}

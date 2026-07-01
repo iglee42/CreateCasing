@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "tag": "c:plates/gold"
+    },
+    "I": {
+      "item": "create:andesite_alloy"
+    },
+    "S": {
+      "tag": "c:storage_blocks/zinc"
+    }
+  },
+  "pattern": [
+    "C",
+    "I",
+    "S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:zinc_steam_engine"
+  }
+}

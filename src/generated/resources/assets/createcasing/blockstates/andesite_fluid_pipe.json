@@ -1,0 +1,334 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/lu_x"
+      },
+      "when": {
+        "down": "false",
+        "north": "false",
+        "south": "true",
+        "up": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/ru_x"
+      },
+      "when": {
+        "down": "false",
+        "north": "true",
+        "south": "false",
+        "up": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/ld_x"
+      },
+      "when": {
+        "down": "true",
+        "north": "false",
+        "south": "true",
+        "up": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/rd_x"
+      },
+      "when": {
+        "down": "true",
+        "north": "true",
+        "south": "false",
+        "up": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/ud_x"
+      },
+      "when": {
+        "down": "true",
+        "north": "false",
+        "south": "false",
+        "up": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/u_x"
+      },
+      "when": {
+        "down": "false",
+        "north": "false",
+        "south": "false",
+        "up": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/d_x"
+      },
+      "when": {
+        "down": "true",
+        "north": "false",
+        "south": "false",
+        "up": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/lr_x"
+      },
+      "when": {
+        "down": "false",
+        "north": "true",
+        "south": "true",
+        "up": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/l_x"
+      },
+      "when": {
+        "down": "false",
+        "north": "false",
+        "south": "true",
+        "up": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/r_x"
+      },
+      "when": {
+        "down": "false",
+        "north": "true",
+        "south": "false",
+        "up": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/lu_y"
+      },
+      "when": {
+        "east": "true",
+        "north": "false",
+        "south": "true",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/ru_y"
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "true",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/ld_y"
+      },
+      "when": {
+        "east": "true",
+        "north": "true",
+        "south": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/rd_y"
+      },
+      "when": {
+        "east": "false",
+        "north": "true",
+        "south": "false",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/ud_y"
+      },
+      "when": {
+        "east": "false",
+        "north": "true",
+        "south": "true",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/u_y"
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "true",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/d_y"
+      },
+      "when": {
+        "east": "false",
+        "north": "true",
+        "south": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/lr_y"
+      },
+      "when": {
+        "east": "true",
+        "north": "false",
+        "south": "false",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/l_y"
+      },
+      "when": {
+        "east": "true",
+        "north": "false",
+        "south": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/r_y"
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/lu_z"
+      },
+      "when": {
+        "down": "false",
+        "east": "true",
+        "up": "true",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/ru_z"
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "up": "true",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/ld_z"
+      },
+      "when": {
+        "down": "true",
+        "east": "true",
+        "up": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/rd_z"
+      },
+      "when": {
+        "down": "true",
+        "east": "false",
+        "up": "false",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/ud_z"
+      },
+      "when": {
+        "down": "true",
+        "east": "false",
+        "up": "true",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/u_z"
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "up": "true",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/d_z"
+      },
+      "when": {
+        "down": "true",
+        "east": "false",
+        "up": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/lr_z"
+      },
+      "when": {
+        "down": "false",
+        "east": "true",
+        "up": "false",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/l_z"
+      },
+      "when": {
+        "down": "false",
+        "east": "true",
+        "up": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/andesite/r_z"
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "up": "false",
+        "west": "true"
+      }
+    }
+  ]
+}

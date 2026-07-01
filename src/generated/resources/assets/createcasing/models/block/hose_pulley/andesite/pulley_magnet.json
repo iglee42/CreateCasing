@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/hose_pulley/pulley_magnet",
+  "textures": {
+    "0": "createcasing:block/hose/andesite",
+    "particle": "createcasing:block/underside/andesite"
+  }
+}

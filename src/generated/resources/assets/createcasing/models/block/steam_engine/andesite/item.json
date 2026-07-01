@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/steam_engine/item",
+  "textures": {
+    "1": "createcasing:block/engine/andesite",
+    "particle": "createcasing:block/underside/andesite"
+  }
+}

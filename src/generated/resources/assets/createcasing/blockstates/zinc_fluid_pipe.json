@@ -1,0 +1,334 @@
+{
+  "multipart": [
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/lu_x"
+      },
+      "when": {
+        "down": "false",
+        "north": "false",
+        "south": "true",
+        "up": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/ru_x"
+      },
+      "when": {
+        "down": "false",
+        "north": "true",
+        "south": "false",
+        "up": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/ld_x"
+      },
+      "when": {
+        "down": "true",
+        "north": "false",
+        "south": "true",
+        "up": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/rd_x"
+      },
+      "when": {
+        "down": "true",
+        "north": "true",
+        "south": "false",
+        "up": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/ud_x"
+      },
+      "when": {
+        "down": "true",
+        "north": "false",
+        "south": "false",
+        "up": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/u_x"
+      },
+      "when": {
+        "down": "false",
+        "north": "false",
+        "south": "false",
+        "up": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/d_x"
+      },
+      "when": {
+        "down": "true",
+        "north": "false",
+        "south": "false",
+        "up": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/lr_x"
+      },
+      "when": {
+        "down": "false",
+        "north": "true",
+        "south": "true",
+        "up": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/l_x"
+      },
+      "when": {
+        "down": "false",
+        "north": "false",
+        "south": "true",
+        "up": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/r_x"
+      },
+      "when": {
+        "down": "false",
+        "north": "true",
+        "south": "false",
+        "up": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/lu_y"
+      },
+      "when": {
+        "east": "true",
+        "north": "false",
+        "south": "true",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/ru_y"
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "true",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/ld_y"
+      },
+      "when": {
+        "east": "true",
+        "north": "true",
+        "south": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/rd_y"
+      },
+      "when": {
+        "east": "false",
+        "north": "true",
+        "south": "false",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/ud_y"
+      },
+      "when": {
+        "east": "false",
+        "north": "true",
+        "south": "true",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/u_y"
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "true",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/d_y"
+      },
+      "when": {
+        "east": "false",
+        "north": "true",
+        "south": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/lr_y"
+      },
+      "when": {
+        "east": "true",
+        "north": "false",
+        "south": "false",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/l_y"
+      },
+      "when": {
+        "east": "true",
+        "north": "false",
+        "south": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/r_y"
+      },
+      "when": {
+        "east": "false",
+        "north": "false",
+        "south": "false",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/lu_z"
+      },
+      "when": {
+        "down": "false",
+        "east": "true",
+        "up": "true",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/ru_z"
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "up": "true",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/ld_z"
+      },
+      "when": {
+        "down": "true",
+        "east": "true",
+        "up": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/rd_z"
+      },
+      "when": {
+        "down": "true",
+        "east": "false",
+        "up": "false",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/ud_z"
+      },
+      "when": {
+        "down": "true",
+        "east": "false",
+        "up": "true",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/u_z"
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "up": "true",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/d_z"
+      },
+      "when": {
+        "down": "true",
+        "east": "false",
+        "up": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/lr_z"
+      },
+      "when": {
+        "down": "false",
+        "east": "true",
+        "up": "false",
+        "west": "true"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/l_z"
+      },
+      "when": {
+        "down": "false",
+        "east": "true",
+        "up": "false",
+        "west": "false"
+      }
+    },
+    {
+      "apply": {
+        "model": "createcasing:block/fluid_pipe/zinc/r_z"
+      },
+      "when": {
+        "down": "false",
+        "east": "false",
+        "up": "false",
+        "west": "true"
+      }
+    }
+  ]
+}

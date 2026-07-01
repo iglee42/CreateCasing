@@ -4,6 +4,8 @@ import com.simibubi.create.compat.jei.CreateJEI;
 import com.simibubi.create.compat.jei.category.*;
 import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
+import fr.iglee42.createcasing.fluids.FluidSet;
+import fr.iglee42.createcasing.fluids.FluidSets;
 import fr.iglee42.createcasing.registries.EncasedBlocks;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import org.spongepowered.asm.mixin.Final;
@@ -44,6 +46,14 @@ public class CreateJeiMixin {
             if (c instanceof ProcessingViaFanCategory)
                 CasingSets.getSets().stream().filter(set-> Objects.nonNull(set.getEncasedFan())).filter(CasingSet::doesGenerateEncasedFan)
                         .forEach(set->registration.addRecipeCatalyst(set.getEncasedFan(),c.getRecipeType()));
+
+            if (c instanceof ItemDrainCategory)
+                FluidSets.getSets().stream().filter(set-> Objects.nonNull(set.getItemDrain())).filter(FluidSet::doesGenerateItemDrain)
+                        .forEach(set->registration.addRecipeCatalyst(set.getItemDrain(),c.getRecipeType()));
+
+            if (c instanceof SpoutCategory)
+                FluidSets.getSets().stream().filter(set-> Objects.nonNull(set.getSpout())).filter(FluidSet::doesGenerateSpout)
+                        .forEach(set->registration.addRecipeCatalyst(set.getSpout(),c.getRecipeType()));
         }
     }
 

@@ -7,7 +7,7 @@ import fr.iglee42.createcasing.blockEntities.AutoClutchBlockEntity;
 import fr.iglee42.createcasing.blocks.ConfigurableGearboxBlock;
 import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
-import fr.iglee42.createcasing.config.ModConfigs;
+import fr.iglee42.createcasing.config.EncasedConfigs;
 import fr.iglee42.createcasing.transmissions.TransmissionSet;
 import fr.iglee42.createcasing.transmissions.TransmissionSets;
 import net.createmod.catnip.data.Iterate;
@@ -39,7 +39,7 @@ public class ItemChangeBlockManager {
         if (level.getBlockState(event.getPos()).isAir()) return;
         BlockState state = level.getBlockState(event.getPos());
         CasingSet casingSet;
-        if ((casingSet = getSetForCasing(event.getItemStack().getItem())) != null && ModConfigs.common().kinetics.casingBlockSwappable.get()) {
+        if ((casingSet = getSetForCasing(event.getItemStack().getItem())) != null && EncasedConfigs.common().kinetics.casingBlockSwappable.get()) {
             if (casingSet.isInSet(state.getBlock())) return;
             if (isElementInSet(state,CasingSet::getGearbox) && casingSet.getGearbox() != null)
                 changeAxisBlock(event, state, level, casingSet.getGearbox().defaultBlockState());
@@ -118,7 +118,7 @@ public class ItemChangeBlockManager {
         }
         TransmissionSet transmissionSet;
 
-        if ((transmissionSet = getSetForItem(event.getItemStack().getItem())) != null && ModConfigs.common().kinetics.shaftCogwheelsSwappable.get()){
+        if ((transmissionSet = getSetForItem(event.getItemStack().getItem())) != null && EncasedConfigs.common().kinetics.shaftCogwheelsSwappable.get()){
             if (transmissionSet.isInSet(state.getBlock())) return;
             if (isShaft(state) && transmissionSet.getShaft() != null)
                 changeAxisBlock(event,state,level, transmissionSet.getShaft().defaultBlockState());

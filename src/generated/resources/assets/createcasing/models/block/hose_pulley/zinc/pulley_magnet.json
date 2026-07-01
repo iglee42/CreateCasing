@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/hose_pulley/pulley_magnet",
+  "textures": {
+    "0": "createcasing:block/hose/zinc",
+    "particle": "createcasing:block/underside/zinc"
+  }
+}

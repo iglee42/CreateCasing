@@ -1,18 +1,19 @@
 package fr.iglee42.createcasing;
 
-import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.content.logistics.depot.DepotBehaviour;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
 import com.simibubi.create.foundation.item.KineticStats;
 import com.simibubi.create.foundation.item.TooltipModifier;
-import com.tterrag.registrate.providers.RegistrateDataProvider;
 import com.tterrag.registrate.util.RegistrateDistExecutor;
 import fr.iglee42.createcasing.commands.CreateCasingCommand;
 import fr.iglee42.createcasing.compat.sliceanddice.EncasedSliceAndDiceCompat;
-import fr.iglee42.createcasing.config.ModConfigs;
+import fr.iglee42.createcasing.config.EncasedConfigs;
 import fr.iglee42.createcasing.kubejs.KJSExternalHandler;
 import fr.iglee42.createcasing.mixins.create.DeployerBlockEntityAccessor;
+import fr.iglee42.createcasing.mixins.create.fluids.FluidTankBlockEntityAccessor;
+import fr.iglee42.createcasing.mixins.create.fluids.ItemDrainBlockEntityAccessor;
+import fr.iglee42.createcasing.mixins.create.fluids.SpoutBlockEntityAccessor;
 import fr.iglee42.createcasing.registries.*;
 import net.createmod.catnip.lang.FontHelper;
 import net.minecraft.core.Direction;
@@ -70,7 +71,7 @@ public class CreateCasing {
         EncasedCreativeModeTabs.register(modEventBus);
         EncasedPackets.register();
 
-        ModConfigs.register(ModLoadingContext.get(),container);
+        EncasedConfigs.register(ModLoadingContext.get(),container);
 
         if (ModList.get().isLoaded("sliceanddice"))
             EncasedSliceAndDiceCompat.register(modEventBus);
@@ -128,6 +129,47 @@ public class CreateCasing {
                 (be, context) -> {
                     if (context != Direction.DOWN)
                         return be.inventory;
+                    return null;
+                }
+        );
+
+        event.registerBlockEntity(
+                Capabilities.FluidHandler.BLOCK,
+                EncasedBlockEntities.FLUID_TANK.get(),
+                (be, context) -> {
+                    FluidTankBlockEntityAccessor accessor = (FluidTankBlockEntityAccessor) be;
+                    if (accessor.encased$getFluidCapability() == null)
+                        accessor.encased$refreshCapability();
+                    return accessor.encased$getFluidCapability();
+                }
+        );
+
+        event.registerBlockEntity(
+                Capabilities.ItemHandler.BLOCK,
+                EncasedBlockEntities.ITEM_DRAIN.get(),
+                (be, context) -> {
+                    if (context != null && context.getAxis().isHorizontal())
+                        return ((ItemDrainBlockEntityAccessor)be).encased$getItemHandlers().get(context);
+                    return null;
+                }
+        );
+
+        event.registerBlockEntity(
+                Capabilities.FluidHandler.BLOCK,
+                EncasedBlockEntities.ITEM_DRAIN.get(),
+                (be, context) -> {
+                    if (context != Direction.UP)
+                        return ((ItemDrainBlockEntityAccessor)be).encased$getInternalTank().getCapability();
+                    return null;
+                }
+        );
+
+        event.registerBlockEntity(
+                Capabilities.FluidHandler.BLOCK,
+                EncasedBlockEntities.SPOUT.get(),
+                (be, context) -> {
+                    if (context != Direction.DOWN)
+                        return ((SpoutBlockEntityAccessor)be).encased$getTank().getCapability();
                     return null;
                 }
         );

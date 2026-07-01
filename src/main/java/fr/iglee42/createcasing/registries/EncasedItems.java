@@ -1,12 +1,16 @@
 package fr.iglee42.createcasing.registries;
 
+import com.simibubi.create.AllTags;
 import com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem;
+import com.simibubi.create.foundation.data.recipe.CommonMetal;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.casings.CasingSets;
 import fr.iglee42.createcasing.items.CustomVerticalGearboxItem;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
 
@@ -38,6 +42,19 @@ public class EncasedItems {
                     .properties(p->p.rarity(Rarity.EPIC))
                     .onRegisterAfter(Registries.ITEM, CreateCasing::hideItem)
                     .register();
+
+    public static final ItemEntry<Item> ANDESITE_SHEET =
+            REGISTRATE.item("andesite_sheet", Item::new)
+                    .tag(EncasedTags.EItemTags.ANDESITE_PLATES.tag)
+                    .tag(AllTags.AllItemTags.PLATES.tag)
+                    .register();
+
+    public static final ItemEntry<Item> ZINC_SHEET =
+            REGISTRATE.item("zinc_sheet", Item::new)
+                    .tag(CommonMetal.ZINC.plates)
+                    .tag(AllTags.AllItemTags.PLATES.tag)
+                    .register();
+
 
     public static void register(){
         CasingSets.getSets().forEach(set->{

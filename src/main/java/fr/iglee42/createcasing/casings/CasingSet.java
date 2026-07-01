@@ -10,7 +10,11 @@ import net.minecraft.world.level.block.Block;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Objects;
 import java.util.function.Supplier;
+import java.util.stream.Stream;
 
 public class CasingSet {
 
@@ -86,9 +90,10 @@ public class CasingSet {
     private final boolean plough;
     private final boolean roller;
     private final boolean slicer;
-    private final boolean encasedWoodenShaft;
-    private final boolean encasedWoodenCogwheel;
-    private final boolean encasedWoodenLargeCogwheel;
+    private final boolean encasedCustomShaft;
+    private final boolean encasedCustomCogwheel;
+    private final boolean encasedCustomLargeCogwheel;
+    private final boolean encasedCustomPipe;
 
     private final boolean isKJSGenerated;
 
@@ -126,9 +131,10 @@ public class CasingSet {
         plough = options.plough;
         roller = options.roller;
         slicer = options.slicer;
-        encasedWoodenShaft = options.encasedWoodenShaft;
-        encasedWoodenCogwheel = options.encasedWoodenCogwheel;
-        encasedWoodenLargeCogwheel = options.encasedWoodenLargeCogwheel;
+        encasedCustomShaft = options.encasedCustomShaft;
+        encasedCustomCogwheel = options.encasedCustomCogwheel;
+        encasedCustomLargeCogwheel = options.encasedCustomLargeCogwheel;
+        encasedCustomPipe = options.encasedCustomPipe;
 
         alongXBeltModel = options.alongXBeltModel;
         alongZBeltModel = options.alongZBeltModel;
@@ -247,14 +253,17 @@ public class CasingSet {
     public boolean doesGenerateSlicer(){
         return slicer;
     }
-    public boolean doesGenerateEncasedWoodenShaft(){
-        return encasedWoodenShaft;
+    public boolean doesGenerateEncasedCustomShaft(){
+        return encasedCustomShaft;
     }
-    public boolean doesGenerateEncasedWoodenCogwheel(){
-        return encasedWoodenCogwheel;
+    public boolean doesGenerateEncasedCustomCogwheel(){
+        return encasedCustomCogwheel;
     }
-    public boolean doesGenerateEncasedWoodenLargeCogwheel(){
-        return encasedWoodenLargeCogwheel;
+    public boolean doesGenerateEncasedCustomLargeCogwheel(){
+        return encasedCustomLargeCogwheel;
+    }
+    public boolean doesGenerateEncasedCustomPipe(){
+        return encasedCustomPipe;
     }
 
     @Nullable
@@ -746,6 +755,35 @@ public class CasingSet {
                 || block.equals(getPlough()) || block.equals(getRoller()) || block.equals(getSlicer());
     }
 
+    public List<Block> getAllBlocks(){
+        return Stream.of(
+                getCasing(),
+                getShaft(),
+                getCogwheel(),
+                getLargeCogwheel(),
+                getFluidPipe(),
+                getGearbox(),
+                getPress(),
+                getMixer(),
+                getDepot(),
+                getChainDrive(),
+                getChainGearshift(),
+                getConfigurableGearbox(),
+                getChainConveyor(),
+                getGearshift(),
+                getClutch(),
+                getDeployer(),
+                getStorageInterface(),
+                getEncasedFan(),
+                getHarvester(),
+                getSaw(),
+                getDrill(),
+                getPlough(),
+                getRoller(),
+                getSlicer()
+        ).filter(Objects::nonNull).toList();
+    }
+
     public boolean isKJSGenerated() {
         return isKJSGenerated;
     }
@@ -783,9 +821,10 @@ public class CasingSet {
         private boolean roller;
         private boolean slicer;
         private boolean kjsGenerated = false;
-        private boolean encasedWoodenShaft;
-        private boolean encasedWoodenCogwheel;
-        private boolean encasedWoodenLargeCogwheel;
+        private boolean encasedCustomShaft;
+        private boolean encasedCustomCogwheel;
+        private boolean encasedCustomLargeCogwheel;
+        private boolean encasedCustomPipe;
         private Supplier<PartialModel> alongXBeltModel;
         private Supplier<PartialModel> alongZBeltModel;
 
@@ -985,17 +1024,22 @@ public class CasingSet {
             return this;
         }
 
-        public Options encasedWoodenShaft(){
-            this.encasedWoodenShaft = true;
+        public Options encasedCustomShaft(){
+            this.encasedCustomShaft = true;
             return this;
         }
 
-        public Options encasedWoodenCogwheel(){
-            this.encasedWoodenCogwheel = true;
+        public Options encasedCustomCogwheel(){
+            this.encasedCustomCogwheel = true;
             return this;
         }
-        public Options encasedWoodenLargeCogwheel(){
-            this.encasedWoodenLargeCogwheel = true;
+        public Options encasedCustomLargeCogwheel(){
+            this.encasedCustomLargeCogwheel = true;
+            return this;
+        }
+
+        public Options encasedCustomPipe(){
+            this.encasedCustomPipe = true;
             return this;
         }
 
@@ -1020,7 +1064,7 @@ public class CasingSet {
         }
 
         public Options encasedCustomTransmissionBlocks(){
-            return encasedWoodenShaft().encasedWoodenCogwheel().encasedWoodenLargeCogwheel();
+            return encasedCustomShaft().encasedCustomCogwheel().encasedCustomLargeCogwheel();
         }
 
         public Options contraptionBlocks(Supplier<PartialModel> headModel,Supplier<PartialModel> rollerFrameModel){
@@ -1028,7 +1072,7 @@ public class CasingSet {
         }
 
         public Options fluids(){
-            return fluidPipe();
+            return fluidPipe().encasedCustomPipe();
         }
 
         public Options everythingExceptCasing(Supplier<CTSpriteShiftEntry> ctSprite,@Nonnull Supplier<SpriteShiftEntry> beltSprite,Supplier<PartialModel> alongXBeltModel,Supplier<PartialModel> alongZBeltModel,@Nullable Supplier<CTSpriteShiftEntry> cogwheelSideSprite,@Nullable Supplier<CTSpriteShiftEntry> cogwheelOtherSideSprite,Supplier<PartialModel> conveyorGuard,Supplier<PartialModel> conveyorWheel,Supplier<PartialModel> conveyorShaft,Supplier<PartialModel> mixerHeadModel,Supplier<PartialModel> drillHeadModel,Supplier<PartialModel> rollerFrameModel){

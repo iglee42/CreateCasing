@@ -1,0 +1,8 @@
+{
+  "parent": "createcasing:block/templates/pipe_block_open",
+  "textures": {
+    "1": "create:block/copper_casing",
+    "2": "createcasing:block/pipes/andesite",
+    "particle": "create:block/copper_casing"
+  }
+}

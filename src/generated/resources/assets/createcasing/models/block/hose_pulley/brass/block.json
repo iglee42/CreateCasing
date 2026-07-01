@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/hose_pulley/block",
+  "textures": {
+    "1": "createcasing:block/hose_pulley/brass",
+    "3": "createcasing:block/pump/brass",
+    "particle": "createcasing:block/underside/brass"
+  }
+}

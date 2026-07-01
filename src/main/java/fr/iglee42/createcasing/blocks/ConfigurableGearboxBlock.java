@@ -1,12 +1,11 @@
 package fr.iglee42.createcasing.blocks;
 
 import com.simibubi.create.AllBlocks;
-import com.simibubi.create.AllItems;
 import com.simibubi.create.content.kinetics.base.KineticBlock;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlockEntity;
 import com.simibubi.create.foundation.block.IBE;
-import fr.iglee42.createcasing.config.ModConfigs;
+import fr.iglee42.createcasing.config.EncasedConfigs;
 import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -59,14 +58,14 @@ public class ConfigurableGearboxBlock extends KineticBlock implements IBE<Gearbo
     public InteractionResult onWrenched(BlockState state, UseOnContext context) {
         Direction face = context.getClickedFace();
         if (!state.getValue(getPropertyByDirection(face))) {
-            if (ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get()) return super.onSneakWrenched(state, context);
+            if (EncasedConfigs.common().kinetics.configurableGearboxRequiresShaft.get()) return super.onSneakWrenched(state, context);
             state = state.setValue(getPropertyByDirection(face), true);
-            if (ModConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get())
+            if (EncasedConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get())
                 state = state.setValue(getPropertyByDirection(face.getOpposite()), true);
         } else {
             state = state.setValue(getPropertyByDirection(face),false);
-            if (ModConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get())state = state.setValue(getPropertyByDirection(face.getOpposite()),false);
-            if (ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get()){
+            if (EncasedConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get())state = state.setValue(getPropertyByDirection(face.getOpposite()),false);
+            if (EncasedConfigs.common().kinetics.configurableGearboxRequiresShaft.get()){
                 if (context.getPlayer() != null && !context.getPlayer().isCreative())
                     context.getPlayer().addItem(AllBlocks.SHAFT.asStack());
             }
@@ -80,14 +79,14 @@ public class ConfigurableGearboxBlock extends KineticBlock implements IBE<Gearbo
         if (context.getLevel().isClientSide) return InteractionResult.sidedSuccess(true);
         Direction face = context.getClickedFace().getOpposite();
         if (!state.getValue(getPropertyByDirection(face))) {
-            if (ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get()) return super.onSneakWrenched(state, context);
+            if (EncasedConfigs.common().kinetics.configurableGearboxRequiresShaft.get()) return super.onSneakWrenched(state, context);
             state = state.setValue(getPropertyByDirection(face), true);
-            if (ModConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get())
+            if (EncasedConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get())
                 state = state.setValue(getPropertyByDirection(face.getOpposite()), true);
         } else {
             state = state.setValue(getPropertyByDirection(face),false);
-            if (ModConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get())state = state.setValue(getPropertyByDirection(face.getOpposite()),false);
-            if (ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get()){
+            if (EncasedConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get())state = state.setValue(getPropertyByDirection(face.getOpposite()),false);
+            if (EncasedConfigs.common().kinetics.configurableGearboxRequiresShaft.get()){
                 if (context.getPlayer() != null && !context.getPlayer().isCreative())
                     context.getPlayer().addItem(AllBlocks.SHAFT.asStack());
             }
@@ -103,9 +102,9 @@ public class ConfigurableGearboxBlock extends KineticBlock implements IBE<Gearbo
         if (!stack.is(AllBlocks.SHAFT.asItem())) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         if (player.isCrouching()) face = face.getOpposite();
         if (!state.getValue(getPropertyByDirection(face))) {
-            if (!ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get()) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+            if (!EncasedConfigs.common().kinetics.configurableGearboxRequiresShaft.get()) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
             state = state.setValue(getPropertyByDirection(face), true);
-            if (ModConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get())
+            if (EncasedConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get())
                 state = state.setValue(getPropertyByDirection(face.getOpposite()), true);
             KineticBlockEntity.switchToBlockState(level, pos, state);
             if (!player.isCreative())
@@ -134,9 +133,9 @@ public class ConfigurableGearboxBlock extends KineticBlock implements IBE<Gearbo
     @Override
     protected List<ItemStack> getDrops(BlockState state, LootParams.Builder builder) {
         List<ItemStack> stacks = super.getDrops(state, builder);
-        if (!ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get()) return stacks;
+        if (!EncasedConfigs.common().kinetics.configurableGearboxRequiresShaft.get()) return stacks;
         int shaftCount = 0;
-        if (ModConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get()){
+        if (EncasedConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get()){
             if (state.getValue(UP)) shaftCount++;
             if (state.getValue(NORTH)) shaftCount++;
             if (state.getValue(WEST)) shaftCount++;

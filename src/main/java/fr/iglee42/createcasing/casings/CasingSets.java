@@ -63,6 +63,7 @@ public class CasingSets {
             .largeCogwheel()
             .encasedCustomTransmissionBlocks()
             .existingFluidPipe(()->AllBlocks.ENCASED_FLUID_PIPE.get())
+            .encasedCustomPipe()
             .belt(()->EncasedSprites.COPPER_BELT_CASING,()-> EncasedPartialModels.COPPER_BELT_COVER_X,()->EncasedPartialModels.COPPER_BELT_COVER_Z)
             .complexTransmissionBlocks(()->EncasedPartialModels.COPPER_CONVEYOR_GUARD,()->EncasedPartialModels.COPPER_CONVEYOR_WHEEL,()->EncasedPartialModels.COPPER_CONVEYOR_SHAFT)
             .processingBlocks(()->EncasedPartialModels.COPPER_MIXER_HEAD)
@@ -92,6 +93,13 @@ public class CasingSets {
             .existingCasing(()->AllBlocks.WEATHERED_IRON_BLOCK.get())
             .everythingExceptCasing(()->null,()->EncasedSprites.WEATHERED_IRON_BELT_CASING,()-> EncasedPartialModels.WEATHERED_IRON_BELT_COVER_X,()->EncasedPartialModels.WEATHERED_IRON_BELT_COVER_Z,()->null,()->null,()->EncasedPartialModels.WEATHERED_IRON_CONVEYOR_GUARD,()->EncasedPartialModels.WEATHERED_IRON_CONVEYOR_WHEEL,()->EncasedPartialModels.WEATHERED_IRON_CONVEYOR_SHAFT,()->EncasedPartialModels.WEATHERED_IRON_MIXER_HEAD,()->EncasedPartialModels.WEATHERED_IRON_DRILL_HEAD,()->EncasedPartialModels.WEATHERED_IRON_ROLLER_FRAME)
     );
+
+    public static final CasingSet ZINC = register("zinc", new CasingSet.Options()
+            .ctSprite(()->EncasedSprites.ZINC_CASING)
+            .simpleTransmissions(()->EncasedSprites.ZINC_ENCASED_COGWHEEL_SIDE,()->EncasedSprites.ZINC_ENCASED_COGWHEEL_OTHERSIDE)
+            .encasedCustomTransmissionBlocks()
+            .fluids()
+            .casing());
 
     public static CasingSet register(String id, CasingSet.Options options){
         String name = id.toLowerCase(Locale.ROOT);

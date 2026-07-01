@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "item": "createcasing:zinc_fluid_pipe"
+    },
+    {
+      "tag": "c:plates/iron"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:zinc_fluid_valve"
+  }
+}

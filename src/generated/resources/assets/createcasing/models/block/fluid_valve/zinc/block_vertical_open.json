@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/fluid_valve/block_vertical_open",
+  "textures": {
+    "2": "createcasing:block/fluid_valve/zinc",
+    "4": "createcasing:block/valve_open/zinc",
+    "particle": "createcasing:block/underside/zinc"
+  }
+}

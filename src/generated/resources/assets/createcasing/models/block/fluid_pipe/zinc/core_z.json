@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/fluid_pipe/core_z",
+  "textures": {
+    "0": "createcasing:block/pipes/zinc_connected",
+    "particle": "createcasing:block/underside/zinc"
+  }
+}

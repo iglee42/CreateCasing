@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/item_drain",
+  "textures": {
+    "0": "createcasing:block/item_drain_side/zinc",
+    "3": "createcasing:block/pump/zinc",
+    "4": "createcasing:block/underside/zinc",
+    "particle": "createcasing:block/underside/zinc"
+  }
+}

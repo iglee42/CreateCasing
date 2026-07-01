@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/item_drain",
+  "textures": {
+    "0": "createcasing:block/item_drain_side/brass",
+    "3": "createcasing:block/pump/brass",
+    "4": "createcasing:block/underside/brass",
+    "particle": "createcasing:block/underside/brass"
+  }
+}

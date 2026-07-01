@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/portable_fluid_interface/item",
+  "textures": {
+    "0": "createcasing:block/portable_fluid_interface/andesite",
+    "2": "createcasing:block/underside/andesite",
+    "particle": "createcasing:block/underside/andesite"
+  }
+}

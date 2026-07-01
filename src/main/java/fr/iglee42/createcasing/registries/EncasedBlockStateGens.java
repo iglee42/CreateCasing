@@ -1,8 +1,12 @@
 package fr.iglee42.createcasing.registries;
 
 import com.google.common.base.Function;
+import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.simibubi.create.Create;
+import com.simibubi.create.content.fluids.FluidTransportBehaviour;
 import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
+import com.simibubi.create.content.fluids.pipes.FluidPipeBlock;
 import com.simibubi.create.content.kinetics.base.DirectionalAxisKineticBlock;
 import com.simibubi.create.content.kinetics.chainDrive.ChainDriveBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogwheelBlock;
@@ -17,135 +21,143 @@ import fr.iglee42.createcasing.blocks.ConfigurableGearboxBlock;
 import fr.iglee42.createcasing.blocks.customs.CustomChainDriveBlock;
 import fr.iglee42.createcasing.blocks.customs.CustomChainGearshiftBlock;
 import net.createmod.catnip.data.Iterate;
+import net.createmod.catnip.lang.Lang;
+import net.createmod.catnip.math.Pointing;
 import net.minecraft.core.Direction;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.WoodType;
-import net.neoforged.neoforge.client.model.generators.*;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
+import net.neoforged.neoforge.client.model.generators.ModelBuilder;
+import net.neoforged.neoforge.client.model.generators.ModelFile;
+import net.neoforged.neoforge.client.model.generators.MultiPartBlockStateBuilder;
+import org.apache.commons.lang3.tuple.Pair;
 
-import java.util.Objects;
+import java.util.*;
 import java.util.function.BiFunction;
 
 public class EncasedBlockStateGens {
 
-    public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> encasedShaft(String shaft,String casing){
-        return (ctx,prov)->axisBlock(ctx,prov,encasedShaftModel(prov,shaft,casing,false));
+    public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> encasedShaft(String shaft, String casing) {
+        return (ctx, prov) -> axisBlock(ctx, prov, encasedShaftModel(prov, shaft, casing, false));
     }
 
     public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> gearbox(String casing) {
-        return (ctx,prov)->axisBlock(ctx,prov,gearboxModel(prov,casing,"block"));
+        return (ctx, prov) -> axisBlock(ctx, prov, gearboxModel(prov, casing, "block"));
     }
 
 
     public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> shaft(String shaft) {
-        return (ctx,prov)->axisBlock(ctx,prov,shaftModel(prov,shaft),false);
+        return (ctx, prov) -> axisBlock(ctx, prov, shaftModel(prov, shaft), false);
     }
 
     public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> cogwheel(String cogwheel) {
-        return (ctx,prov)-> {
+        return (ctx, prov) -> {
             axisBlock(ctx, prov, cogwheelModel(prov, cogwheel, true));
             cogwheelModel(prov, cogwheel, false);
         };
     }
 
     public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> largeCogwheel(String cogwheel) {
-        return (ctx,prov)-> {
+        return (ctx, prov) -> {
             axisBlock(ctx, prov, largeCogwheelModel(prov, cogwheel, true));
             largeCogwheelModel(prov, cogwheel, false);
         };
     }
 
-    public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> encasedCogwheel(String cogwheel,String casing) {
-        return (ctx,prov)->axisBlock(ctx, prov, blockState -> encasedCogwheelModel(prov,casing,cogwheel,blockState,false),false);
+    public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> encasedCogwheel(String cogwheel, String casing) {
+        return (ctx, prov) -> axisBlock(ctx, prov, blockState -> encasedCogwheelModel(prov, casing, cogwheel, blockState, false), false);
     }
 
-    public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> encasedLargeCogwheel(String cogwheel,String casing) {
-        return (ctx,prov)->axisBlock(ctx, prov, blockState -> encasedCogwheelModel(prov,casing,cogwheel,blockState,true),false);
+    public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> encasedLargeCogwheel(String cogwheel, String casing) {
+        return (ctx, prov) -> axisBlock(ctx, prov, blockState -> encasedCogwheelModel(prov, casing, cogwheel, blockState, true), false);
     }
 
     public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> encasedChainDrive(String casing) {
-        return (ctx,prov)->{
+        return (ctx, prov) -> {
             prov.getVariantBuilder(ctx.getEntry())
                     .forAllStatesExcept(state -> {
                         int rotationX = getChainDriveXRot(state);
                         int rotationY = getChainDriveYRot(state);
                         String suffix = getChainDriveModelSuffix(state);
-                        return ConfiguredModel.builder().modelFile(createChainDriveModel(prov,casing,false,suffix)).rotationX(rotationX).rotationY(rotationY).build();
+                        return ConfiguredModel.builder().modelFile(createChainDriveModel(prov, casing, false, suffix)).rotationX(rotationX).rotationY(rotationY).build();
                     });
         };
     }
 
     public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> adjustableChainGearshift(String casing) {
-        return (ctx,prov)->{
+        return (ctx, prov) -> {
             prov.getVariantBuilder(ctx.getEntry())
                     .forAllStatesExcept(state -> {
                         int rotationX = getChainDriveXRot(state);
                         int rotationY = getChainDriveYRot(state);
                         String suffix = getChainDriveModelSuffix(state);
-                        return ConfiguredModel.builder().modelFile(createAdjustableChainGearshiftModel(prov,casing,false,suffix,state.getValue(CustomChainGearshiftBlock.POWERED))).rotationX(rotationX).rotationY(rotationY).build();
+                        return ConfiguredModel.builder().modelFile(createAdjustableChainGearshiftModel(prov, casing, false, suffix, state.getValue(CustomChainGearshiftBlock.POWERED))).rotationX(rotationX).rotationY(rotationY).build();
                     });
         };
     }
 
     public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> chainConveyor(String casing) {
-        return (ctx,prov)->{
-            prov.simpleBlock(ctx.get(),createConveyorModel(prov,casing,false));
-            texturesChainConveyor(Objects.requireNonNull(createModelInBlock(prov, "chain_conveyor/" + casing + "/wheel")).parent(new ModelFile.UncheckedModelFile("create:block/chain_conveyor/wheel")),casing);
-            texturesChainConveyor(Objects.requireNonNull(createModelInBlock(prov, "chain_conveyor/" + casing + "/guard")).parent(new ModelFile.UncheckedModelFile("create:block/chain_conveyor/guard")),casing);
-            texturesChainConveyor(Objects.requireNonNull(createModelInBlock(prov, "chain_conveyor/" + casing + "/shaft")).parent(new ModelFile.UncheckedModelFile("create:block/chain_conveyor/shaft")),casing);
+        return (ctx, prov) -> {
+            prov.simpleBlock(ctx.get(), createConveyorModel(prov, casing, false));
+            texturesChainConveyor(Objects.requireNonNull(createModelInBlock(prov, "chain_conveyor/" + casing + "/wheel")).parent(new ModelFile.UncheckedModelFile("create:block/chain_conveyor/wheel")), casing);
+            texturesChainConveyor(Objects.requireNonNull(createModelInBlock(prov, "chain_conveyor/" + casing + "/guard")).parent(new ModelFile.UncheckedModelFile("create:block/chain_conveyor/guard")), casing);
+            texturesChainConveyor(Objects.requireNonNull(createModelInBlock(prov, "chain_conveyor/" + casing + "/shaft")).parent(new ModelFile.UncheckedModelFile("create:block/chain_conveyor/shaft")), casing);
         };
     }
 
     public static ModelFile createConveyorModel(RegistrateProvider prov, String casing, boolean item) {
-        if (!item){
+        if (!item) {
             return Objects.requireNonNull(createModelInBlock(prov, "chain_conveyor/" + casing + "/block"))
                     .parent(new ModelFile.UncheckedModelFile("create:block/chain_conveyor/block"))
-                    .texture("0",getConveyorCasingTexture(casing))
-                    .texture("particle",getCasingTexture(casing));
+                    .texture("0", getConveyorCasingTexture(casing))
+                    .texture("particle", getCasingTexture(casing));
         } else {
             return texturesChainConveyor(Objects.requireNonNull(createModelInBlock(prov, "chain_conveyor/" + casing + "/item"))
-                    .parent(new ModelFile.UncheckedModelFile("create:block/chain_conveyor/item")),casing);
+                    .parent(new ModelFile.UncheckedModelFile("create:block/chain_conveyor/item")), casing);
         }
     }
 
-    private static ModelBuilder<? extends ModelBuilder<?>> texturesChainConveyor(ModelBuilder<? extends ModelBuilder<?>> builder,String casing){
+    private static ModelBuilder<? extends ModelBuilder<?>> texturesChainConveyor(ModelBuilder<? extends ModelBuilder<?>> builder, String casing) {
         return builder
-                .texture("conveyor_casing",getConveyorCasingTexture(casing))
+                .texture("conveyor_casing", getConveyorCasingTexture(casing))
                 .texture("conveyor_port", getConveyorPortTexture(casing))
                 .texture("bullwheel", getBullWheelTexture(casing))
-                .texture("particle",getCasingTexture(casing));
+                .texture("particle", getCasingTexture(casing));
     }
 
-    public static ModelFile createAdjustableChainGearshiftModel(RegistrateProvider provider, String casing, boolean item, String suffix, boolean powered){
-        ModelFile file = createChainDriveModel(provider,casing,item,suffix);
+    public static ModelFile createAdjustableChainGearshiftModel(RegistrateProvider provider, String casing, boolean item, String suffix, boolean powered) {
+        ModelFile file = createChainDriveModel(provider, casing, item, suffix);
         if (!isValidProvider(provider)) return file;
         return Objects.requireNonNull(createModelInBlock(provider, "adjustable_chain_gearshift/" + casing + "/" + suffix + (powered ? "_powered" : "")))
                 .parent(file)
-                .texture("side",getAdjustableChainGearshiftTexture(casing,powered))
-                .texture("particle",getCasingTexture(casing));
+                .texture("side", getAdjustableChainGearshiftTexture(casing, powered))
+                .texture("particle", getCasingTexture(casing));
     }
 
 
-    public static ModelFile createChainDriveModel(RegistrateProvider provider,String casing,boolean item,String suffix){
-        if (!item){
+    public static ModelFile createChainDriveModel(RegistrateProvider provider, String casing, boolean item, String suffix) {
+        if (!item) {
             String partKey = suffix.startsWith("end") ? "2" : "1";
             return Objects.requireNonNull(createModelInBlock(provider, "encased_chain_drive/" + casing + "/" + suffix))
-                    .parent(new ModelFile.UncheckedModelFile("create:block/encased_chain_drive/"+suffix))
-                    .texture(partKey,suffix.equals("single") ? getGearboxTexture(casing) : getChainDrivePart(casing,partKey))
-                    .texture("side",getChainDriveSideTexture(casing))
-                    .texture("particle",getCasingTexture(casing));
+                    .parent(new ModelFile.UncheckedModelFile("create:block/encased_chain_drive/" + suffix))
+                    .texture(partKey, suffix.equals("single") ? getGearboxTexture(casing) : getChainDrivePart(casing, partKey))
+                    .texture("side", getChainDriveSideTexture(casing))
+                    .texture("particle", getCasingTexture(casing));
 
         } else {
             return Objects.requireNonNull(createModelInBlock(provider, "encased_chain_drive/" + casing + "/item"))
                     .parent(new ModelFile.UncheckedModelFile("create:block/encased_chain_drive/item"))
-                    .texture("1",getGearboxTexture(casing))
-                    .texture("side",getChainDriveSideTexture(casing))
-                    .texture("particle",getCasingTexture(casing));
+                    .texture("1", getGearboxTexture(casing))
+                    .texture("side", getChainDriveSideTexture(casing))
+                    .texture("particle", getCasingTexture(casing));
         }
     }
 
-    private static int getChainDriveXRot(BlockState state){
+    private static int getChainDriveXRot(BlockState state) {
         ChainDriveBlock.Part part = state.getValue(CustomChainDriveBlock.PART);
         boolean connectedAlongFirst = state.getValue(CustomChainDriveBlock.CONNECTED_ALONG_FIRST_COORDINATE);
         Direction.Axis axis = state.getValue(CustomChainDriveBlock.AXIS);
@@ -158,7 +170,8 @@ public class EncasedBlockStateGens {
             return (connectedAlongFirst ? 0 : (part == ChainDriveBlock.Part.START ? 270 : 90));
         return 0;
     }
-    private static int getChainDriveYRot(BlockState state){
+
+    private static int getChainDriveYRot(BlockState state) {
         ChainDriveBlock.Part part = state.getValue(CustomChainDriveBlock.PART);
         boolean connectedAlongFirst = state.getValue(CustomChainDriveBlock.CONNECTED_ALONG_FIRST_COORDINATE);
         Direction.Axis axis = state.getValue(CustomChainDriveBlock.AXIS);
@@ -188,8 +201,28 @@ public class EncasedBlockStateGens {
 
     public static <P extends EncasedPipeBlock> NonNullBiConsumer<DataGenContext<Block, P>, RegistrateBlockstateProvider> encasedPipe(String casing) {
         return (c, p) -> {
-            ModelFile open = Objects.requireNonNull(createModelInBlock(p, "encased_pipe/" + casing + "/block_open")).parent(new ModelFile.UncheckedModelFile(CreateCasing.asResource("block/templates/pipe_block_open"))).texture("1",getCasingTexture(casing)).texture("particle",getCasingTexture(casing));
-            ModelFile flat = Objects.requireNonNull(createModelInBlock(p, "encased_pipe/" + casing + "/block_flat")).parent(new ModelFile.UncheckedModelFile(Create.ID + ":block/encased_fluid_pipe/block_flat")).texture("0",getCasingTexture(casing)).texture("particle",getCasingTexture(casing));
+            ModelFile open = Objects.requireNonNull(createModelInBlock(p, "encased_pipe/" + casing + "/block_open")).parent(new ModelFile.UncheckedModelFile(CreateCasing.asResource("block/templates/pipe_block_open"))).texture("1", getCasingTexture(casing)).texture("particle", getCasingTexture(casing));
+            ModelFile flat = Objects.requireNonNull(createModelInBlock(p, "encased_pipe/" + casing + "/block_flat")).parent(new ModelFile.UncheckedModelFile(Create.ID + ":block/encased_fluid_pipe/block_flat")).texture("0", getCasingTexture(casing)).texture("particle", getCasingTexture(casing));
+            MultiPartBlockStateBuilder builder = p.getMultipartBuilder(c.get());
+            for (boolean flatPass : Iterate.trueAndFalse)
+                for (Direction d : Iterate.directions) {
+                    int verticalAngle = d == Direction.UP ? 90 : d == Direction.DOWN ? -90 : 0;
+                    builder.part()
+                            .modelFile(flatPass ? flat : open)
+                            .rotationX(verticalAngle)
+                            .rotationY((int) (d.toYRot() + (d.getAxis()
+                                    .isVertical() ? 90 : 0)) % 360)
+                            .addModel()
+                            .condition(EncasedPipeBlock.FACING_TO_PROPERTY_MAP.get(d), !flatPass)
+                            .end();
+                }
+        };
+    }
+
+    public static <P extends EncasedPipeBlock> NonNullBiConsumer<DataGenContext<Block, P>, RegistrateBlockstateProvider> encasedCustomPipe(String name,String casing) {
+        return (c, p) -> {
+            ModelFile open = Objects.requireNonNull(createModelInBlock(p, "fluid_pipe/" + name + "/encased/"+ casing + "/block_open")).parent(new ModelFile.UncheckedModelFile(CreateCasing.asResource("block/templates/pipe_block_open"))).texture("2",getPipesTexture(name)).texture("1", getCasingTexture(casing)).texture("particle", getCasingTexture(casing));
+            ModelFile flat = Objects.requireNonNull(createModelInBlock(p, "fluid_pipe/" + name + "/encased/"+ casing + "/block_flat")).parent(new ModelFile.UncheckedModelFile(Create.ID + ":block/encased_fluid_pipe/block_flat")).texture("0", getCasingTexture(casing)).texture("particle", getCasingTexture(casing));
             MultiPartBlockStateBuilder builder = p.getMultipartBuilder(c.get());
             for (boolean flatPass : Iterate.trueAndFalse)
                 for (Direction d : Iterate.directions) {
@@ -210,46 +243,47 @@ public class EncasedBlockStateGens {
         return (c, p) -> {
             ModelFile block = Objects.requireNonNull(createModelInBlock(p, "configurable_gearbox/" + casing + "/block"))
                     .parent(new ModelFile.UncheckedModelFile(CreateCasing.asResource("block/templates/configurable_gearbox/block")))
-                    .texture("0",getCasingTexture(casing))
-                    .texture("1",getGearboxTexture(casing))
-                    .texture("particle",getCasingTexture(casing));
+                    .texture("0", getCasingTexture(casing))
+                    .texture("1", getGearboxTexture(casing))
+                    .texture("particle", getCasingTexture(casing));
             ModelFile face = Objects.requireNonNull(createModelInBlock(p, "configurable_gearbox/" + casing + "/face"))
                     .parent(new ModelFile.UncheckedModelFile(CreateCasing.asResource("block/templates/configurable_gearbox/face")))
-                    .texture("0",getCasingTexture(casing))
-                    .texture("particle",getCasingTexture(casing));
+                    .texture("0", getCasingTexture(casing))
+                    .texture("particle", getCasingTexture(casing));
             MultiPartBlockStateBuilder builder = p.getMultipartBuilder(c.get());
             builder.part().modelFile(block).addModel().end();
-                for (Direction d : Iterate.directions) {
-                    int verticalAngle = d == Direction.UP ? -90 : d == Direction.DOWN ? 90 : 0;
-                    builder.part()
-                            .modelFile(face)
-                            .rotationX(verticalAngle)
-                            .rotationY((int) (d.getOpposite().toYRot() + (d.getAxis()
-                                    .isVertical() ? 90 : 0)) % 360)
-                            .addModel()
-                            .condition(ConfigurableGearboxBlock.getPropertyByDirection(d), false)
-                            .end();
-                }
+            for (Direction d : Iterate.directions) {
+                int verticalAngle = d == Direction.UP ? -90 : d == Direction.DOWN ? 90 : 0;
+                builder.part()
+                        .modelFile(face)
+                        .rotationX(verticalAngle)
+                        .rotationY((int) (d.getOpposite().toYRot() + (d.getAxis()
+                                .isVertical() ? 90 : 0)) % 360)
+                        .addModel()
+                        .condition(ConfigurableGearboxBlock.getPropertyByDirection(d), false)
+                        .end();
+            }
         };
     }
 
-    public static ModelFile createConfigurableGearboxItemModel(RegistrateItemModelProvider p,String casing){
+    public static ModelFile createConfigurableGearboxItemModel(RegistrateItemModelProvider p, String casing) {
         return Objects.requireNonNull(createModelInBlock(p, "configurable_gearbox/" + casing + "/item"))
                 .parent(new ModelFile.UncheckedModelFile(CreateCasing.asResource("block/templates/configurable_gearbox/item")))
-                .texture("0",getCasingTexture(casing))
-                .texture("1",getGearboxTexture(casing))
-                .texture("particle",getCasingTexture(casing));
+                .texture("0", getCasingTexture(casing))
+                .texture("1", getGearboxTexture(casing))
+                .texture("particle", getCasingTexture(casing));
     }
 
     public static <P extends Block> NonNullBiConsumer<DataGenContext<Block, P>, RegistrateBlockstateProvider> press(String casing) {
         return (c, p) -> {
-            p.horizontalBlock(c.get(),pressModel(p,casing,false));
+            p.horizontalBlock(c.get(), pressModel(p, casing, false));
         };
     }
+
     public static <P extends Block> NonNullBiConsumer<DataGenContext<Block, P>, RegistrateBlockstateProvider> mixer(String casing) {
         return (c, p) -> {
-            p.simpleBlock(c.get(),mixerModel(p,casing,false));
-            Objects.requireNonNull(createModelInBlock(p, "mixer/" + casing + "/head")).parent(new ModelFile.UncheckedModelFile("create:block/mechanical_mixer/head")).texture("6",getMixerPart(casing,"head"));
+            p.simpleBlock(c.get(), mixerModel(p, casing, false));
+            Objects.requireNonNull(createModelInBlock(p, "mixer/" + casing + "/head")).parent(new ModelFile.UncheckedModelFile("create:block/mechanical_mixer/head")).texture("6", getMixerPart(casing, "head"));
         };
     }
 
@@ -258,214 +292,217 @@ public class EncasedBlockStateGens {
             p.simpleBlock(c.get(), Objects.requireNonNull(depotModel(p, casing)));
         };
     }
-    public static <T> ModelFile encasedCogwheelModel(RegistrateProvider p, String casing, String cogwheel, BlockState state,boolean large){
+
+    public static <T> ModelFile encasedCogwheelModel(RegistrateProvider p, String casing, String cogwheel, BlockState state, boolean large) {
         boolean top = state != null ? state.getValue(EncasedCogwheelBlock.TOP_SHAFT) : false;
         boolean bottom = state != null ? state.getValue(EncasedCogwheelBlock.BOTTOM_SHAFT) : false;
-        String suffix = (top ? "_top" : "" ) + (bottom ? "_bottom":"");
+        String suffix = (top ? "_top" : "") + (bottom ? "_bottom" : "");
         if (isValidProvider(p)) {
-            ModelBuilder<? extends ModelBuilder<?>> file = Objects.requireNonNull(createModelInBlock(p, "encased"+(large? "_large": "")+"_cogwheel/" + casing + "/" + (state == null ? "item" : "block"+ suffix)))
-                    .parent(new ModelFile.UncheckedModelFile("create:block/encased"+(large? "_large": "")+"_cogwheel/block" + suffix))
+            ModelBuilder<? extends ModelBuilder<?>> file = Objects.requireNonNull(createModelInBlock(p, "encased" + (large ? "_large" : "") + "_cogwheel/" + casing + "/" + (state == null ? "item" : "block" + suffix)))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/encased" + (large ? "_large" : "") + "_cogwheel/block" + suffix))
                     .texture("1", getCasingTexture(casing))
                     .texture("casing", getCasingTexture(casing))
-                    .texture("particle",getCasingTexture(casing))
+                    .texture("particle", getCasingTexture(casing))
                     .texture("4", getGearboxTexture(casing))
                     .texture("side", large ? getLargeCogwheelSideTexture(casing) : getCogwheelSideTexture(casing));
-            if (state == null) file = file.parent(new ModelFile.UncheckedModelFile("create:block/encased"+(large? "_large": "")+"_cogwheel/item"));
+            if (state == null)
+                file = file.parent(new ModelFile.UncheckedModelFile("create:block/encased" + (large ? "_large" : "") + "_cogwheel/item"));
             return file;
         }
 
         return null;
     }
-    public static <T> ModelFile pressModel(RegistrateProvider p, String casing,boolean item){
+
+    public static <T> ModelFile pressModel(RegistrateProvider p, String casing, boolean item) {
         if (!item)
-            return Objects.requireNonNull(createModelInBlock(p, "press/" + casing+"/block"))
+            return Objects.requireNonNull(createModelInBlock(p, "press/" + casing + "/block"))
                     .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_press/block"))
-                    .texture("gearbox_top",getCasingTexture(casing))
-                    .texture("gearbox",getGearboxTexture(casing))
-                    .texture("mechanical_press_top",getPressPart(casing,"top"))
-                    .texture("4",getPressPart(casing,"side"))
-                    .texture("mechanical_press_bottom",getPressPart(casing,"bottom"))
-                    .texture("particle",getCasingTexture(casing));
+                    .texture("gearbox_top", getCasingTexture(casing))
+                    .texture("gearbox", getGearboxTexture(casing))
+                    .texture("mechanical_press_top", getPressPart(casing, "top"))
+                    .texture("4", getPressPart(casing, "side"))
+                    .texture("mechanical_press_bottom", getPressPart(casing, "bottom"))
+                    .texture("particle", getCasingTexture(casing));
         else
-            return Objects.requireNonNull(createModelInBlock(p, "press/" + casing+"/item"))
+            return Objects.requireNonNull(createModelInBlock(p, "press/" + casing + "/item"))
                     .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_press/item"))
-                    .texture("gearbox_top",getCasingTexture(casing))
-                    .texture("gearbox",getGearboxTexture(casing))
-                    .texture("mechanical_press_top",getPressPart(casing,"top"))
-                    .texture("8",getPressPart(casing,"side"))
-                    .texture("mechanical_press_bottom",getPressPart(casing,"bottom"))
-                    .texture("particle",getCasingTexture(casing));
+                    .texture("gearbox_top", getCasingTexture(casing))
+                    .texture("gearbox", getGearboxTexture(casing))
+                    .texture("mechanical_press_top", getPressPart(casing, "top"))
+                    .texture("8", getPressPart(casing, "side"))
+                    .texture("mechanical_press_bottom", getPressPart(casing, "bottom"))
+                    .texture("particle", getCasingTexture(casing));
     }
 
-    public static <T> ModelFile depotModel(RegistrateProvider p, String casing){
+    public static <T> ModelFile depotModel(RegistrateProvider p, String casing) {
         if (isValidProvider(p))
-            return Objects.requireNonNull(createModelInBlock(p, "depot/" + casing+"/block"))
+            return Objects.requireNonNull(createModelInBlock(p, "depot/" + casing + "/block"))
                     .parent(new ModelFile.UncheckedModelFile("create:block/depot/block"))
-                    .texture("3",getCasingTexture(casing))
-                    .texture("2",getDepotPart(casing,"top"))
-                    .texture("1",getDepotPart(casing,"side"))
-                    .texture("particle",getCasingTexture(casing));
+                    .texture("3", getCasingTexture(casing))
+                    .texture("2", getDepotPart(casing, "top"))
+                    .texture("1", getDepotPart(casing, "side"))
+                    .texture("particle", getCasingTexture(casing));
         return null;
     }
 
-    public static <T> ModelFile mixerModel(RegistrateProvider p, String casing,boolean item){
+    public static <T> ModelFile mixerModel(RegistrateProvider p, String casing, boolean item) {
         if (!item)
-            return Objects.requireNonNull(createModelInBlock(p, "mixer/" + casing+"/block"))
+            return Objects.requireNonNull(createModelInBlock(p, "mixer/" + casing + "/block"))
                     .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_mixer/block"))
-                    .texture("2",getCasingTexture(casing))
-                    .texture("11",getPressPart(casing,"top"))
-                    .texture("4",getMixerPart(casing,"side"))
-                    .texture("particle",getCasingTexture(casing));
+                    .texture("2", getCasingTexture(casing))
+                    .texture("11", getPressPart(casing, "top"))
+                    .texture("4", getMixerPart(casing, "side"))
+                    .texture("particle", getCasingTexture(casing));
         else
-            return Objects.requireNonNull(createModelInBlock(p, "mixer/" + casing+"/item"))
+            return Objects.requireNonNull(createModelInBlock(p, "mixer/" + casing + "/item"))
                     .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_mixer/item"))
-                    .texture("2",getCasingTexture(casing))
-                    .texture("11",getPressPart(casing,"top"))
-                    .texture("4",getMixerPart(casing,"side"))
-                    .texture("6",getMixerPart(casing,"head"))
-                    .texture("particle",getCasingTexture(casing));
+                    .texture("2", getCasingTexture(casing))
+                    .texture("11", getPressPart(casing, "top"))
+                    .texture("4", getMixerPart(casing, "side"))
+                    .texture("6", getMixerPart(casing, "head"))
+                    .texture("particle", getCasingTexture(casing));
     }
 
-    public static <T> Function<BlockState,ModelFile> gearshiftModel(RegistrateProvider p, String casing){
+    public static <T> Function<BlockState, ModelFile> gearshiftModel(RegistrateProvider p, String casing) {
         if (isValidProvider(p))
-           return state ->{
-            boolean powered = state.getValue(BlockStateProperties.POWERED);
-            return Objects.requireNonNull(createModelInBlock(p,"gearshift/"+casing+"/block" + (powered?"_powered":"")))
-                    .parent(new ModelFile.UncheckedModelFile("create:block/gearshift/block" + (powered?"_powered":"")))
-                    .texture("0",getGearshiftTexture(casing,powered))
-                    .texture("1",getGearboxTexture(casing))
-                    .texture("2",getFunnelFrameTexture(casing))
-                    .texture("particle",getGearshiftTexture(casing,powered));
-           };
-        return null;
-    }
-
-    public static ModelFile gearshiftItemModel(RegistrateProvider p, String casing){
-        return Objects.requireNonNull(createModelInBlock(p,"gearshift/"+casing+"/item"))
-                .parent(new ModelFile.UncheckedModelFile("create:block/gearshift/item"))
-                .texture("0",getGearshiftTexture(casing,false))
-                .texture("1",getGearboxTexture(casing))
-                .texture("particle",getGearshiftTexture(casing,false));
-    }
-
-    public static <T> Function<BlockState,ModelFile> clutchModel(RegistrateProvider p, String casing){
-        if (isValidProvider(p))
-            return state ->{
+            return state -> {
                 boolean powered = state.getValue(BlockStateProperties.POWERED);
-                return Objects.requireNonNull(createModelInBlock(p,"clutch/"+casing+"/block" + (powered?"_powered":"")))
-                        .parent(new ModelFile.UncheckedModelFile("create:block/clutch/block" + (powered?"_powered":"")))
-                        .texture("0",getClutchTexture(casing,powered))
-                        .texture("1",getGearboxTexture(casing))
-                        .texture("2",getFunnelFrameTexture(casing))
-                        .texture("particle",getClutchTexture(casing,powered));
+                return Objects.requireNonNull(createModelInBlock(p, "gearshift/" + casing + "/block" + (powered ? "_powered" : "")))
+                        .parent(new ModelFile.UncheckedModelFile("create:block/gearshift/block" + (powered ? "_powered" : "")))
+                        .texture("0", getGearshiftTexture(casing, powered))
+                        .texture("1", getGearboxTexture(casing))
+                        .texture("2", getFunnelFrameTexture(casing))
+                        .texture("particle", getGearshiftTexture(casing, powered));
             };
         return null;
     }
 
-    public static ModelFile clutchItemModel(RegistrateProvider p, String casing){
-        return Objects.requireNonNull(createModelInBlock(p,"clutch/"+casing+"/item"))
-                .parent(new ModelFile.UncheckedModelFile("create:block/clutch/item"))
-                .texture("0",getClutchTexture(casing,false))
-                .texture("1",getGearboxTexture(casing))
-                .texture("4",getFunnelFrameTexture(casing))
-                .texture("particle",getClutchTexture(casing,false));
+    public static ModelFile gearshiftItemModel(RegistrateProvider p, String casing) {
+        return Objects.requireNonNull(createModelInBlock(p, "gearshift/" + casing + "/item"))
+                .parent(new ModelFile.UncheckedModelFile("create:block/gearshift/item"))
+                .texture("0", getGearshiftTexture(casing, false))
+                .texture("1", getGearboxTexture(casing))
+                .texture("particle", getGearshiftTexture(casing, false));
     }
 
-    public static <T> Function<BlockState,ModelFile> autoClutchModel(RegistrateProvider p, String casing){
+    public static <T> Function<BlockState, ModelFile> clutchModel(RegistrateProvider p, String casing) {
         if (isValidProvider(p))
-            return state ->{
+            return state -> {
+                boolean powered = state.getValue(BlockStateProperties.POWERED);
+                return Objects.requireNonNull(createModelInBlock(p, "clutch/" + casing + "/block" + (powered ? "_powered" : "")))
+                        .parent(new ModelFile.UncheckedModelFile("create:block/clutch/block" + (powered ? "_powered" : "")))
+                        .texture("0", getClutchTexture(casing, powered))
+                        .texture("1", getGearboxTexture(casing))
+                        .texture("2", getFunnelFrameTexture(casing))
+                        .texture("particle", getClutchTexture(casing, powered));
+            };
+        return null;
+    }
+
+    public static ModelFile clutchItemModel(RegistrateProvider p, String casing) {
+        return Objects.requireNonNull(createModelInBlock(p, "clutch/" + casing + "/item"))
+                .parent(new ModelFile.UncheckedModelFile("create:block/clutch/item"))
+                .texture("0", getClutchTexture(casing, false))
+                .texture("1", getGearboxTexture(casing))
+                .texture("4", getFunnelFrameTexture(casing))
+                .texture("particle", getClutchTexture(casing, false));
+    }
+
+    public static <T> Function<BlockState, ModelFile> autoClutchModel(RegistrateProvider p, String casing) {
+        if (isValidProvider(p))
+            return state -> {
                 boolean active = state.getValue(AutoClutchBlock.ACTIVE);
-                return Objects.requireNonNull(createModelInBlock(p,"auto_clutch/"+casing+"/block" + (active?"_active":"")))
-                        .parent(new ModelFile.UncheckedModelFile("create:block/clutch/block" + (active?"_powered":"")))
-                        .texture("0",getAutoClutchTexture(casing,active))
-                        .texture("1",getGearboxTexture(casing))
-                        .texture("2",getFunnelFrameTexture(casing))
-                        .texture("particle",getAutoClutchTexture(casing,active));
+                return Objects.requireNonNull(createModelInBlock(p, "auto_clutch/" + casing + "/block" + (active ? "_active" : "")))
+                        .parent(new ModelFile.UncheckedModelFile("create:block/clutch/block" + (active ? "_powered" : "")))
+                        .texture("0", getAutoClutchTexture(casing, active))
+                        .texture("1", getGearboxTexture(casing))
+                        .texture("2", getFunnelFrameTexture(casing))
+                        .texture("particle", getAutoClutchTexture(casing, active));
             };
         return null;
     }
 
-    public static ModelFile autoClutchItemModel(RegistrateProvider p, String casing){
-        return Objects.requireNonNull(createModelInBlock(p,"auto_clutch/"+casing+"/item"))
+    public static ModelFile autoClutchItemModel(RegistrateProvider p, String casing) {
+        return Objects.requireNonNull(createModelInBlock(p, "auto_clutch/" + casing + "/item"))
                 .parent(new ModelFile.UncheckedModelFile("create:block/clutch/item"))
-                .texture("0",getAutoClutchTexture(casing,false))
-                .texture("1",getGearboxTexture(casing))
-                .texture("4",getFunnelFrameTexture(casing))
-                .texture("particle",getAutoClutchTexture(casing,false));
+                .texture("0", getAutoClutchTexture(casing, false))
+                .texture("1", getGearboxTexture(casing))
+                .texture("4", getFunnelFrameTexture(casing))
+                .texture("particle", getAutoClutchTexture(casing, false));
     }
 
-    public static BiFunction<BlockState,Boolean,ModelFile> deployerModel(RegistrateProvider p, String casing){
+    public static BiFunction<BlockState, Boolean, ModelFile> deployerModel(RegistrateProvider p, String casing) {
         if (isValidProvider(p))
-            return ($,vertical) ->{
-                return Objects.requireNonNull(createModelInBlock(p,"deployer/"+casing+"/" + (vertical?"vertical":"horizontal")))
-                        .parent(new ModelFile.UncheckedModelFile("create:block/deployer/" + (vertical?"vertical":"horizontal")))
-                        .texture("5",getPistonCasingTexture(casing))
-                        .texture("6",getPistonBottomTexture(casing))
-                        .texture("7",getPistonInnerTexture(casing))
-                        .texture("particle",getGearboxTopTexture(casing))
-                        .texture("gearbox",getGearboxTexture(casing))
-                        .texture("gearbox_top",getGearboxTopTexture(casing))
-                        .texture("andesite_casing_short",getShortCasingTexture(casing));
+            return ($, vertical) -> {
+                return Objects.requireNonNull(createModelInBlock(p, "deployer/" + casing + "/" + (vertical ? "vertical" : "horizontal")))
+                        .parent(new ModelFile.UncheckedModelFile("create:block/deployer/" + (vertical ? "vertical" : "horizontal")))
+                        .texture("5", getPistonCasingTexture(casing))
+                        .texture("6", getPistonBottomTexture(casing))
+                        .texture("7", getPistonInnerTexture(casing))
+                        .texture("particle", getGearboxTopTexture(casing))
+                        .texture("gearbox", getGearboxTexture(casing))
+                        .texture("gearbox_top", getGearboxTopTexture(casing))
+                        .texture("andesite_casing_short", getShortCasingTexture(casing));
             };
         return null;
     }
 
-    public static ModelFile deployerItemModel(RegistrateProvider p, String casing){
-        return Objects.requireNonNull(createModelInBlock(p,"deployer/"+casing+"/item"))
+    public static ModelFile deployerItemModel(RegistrateProvider p, String casing) {
+        return Objects.requireNonNull(createModelInBlock(p, "deployer/" + casing + "/item"))
                 .parent(new ModelFile.UncheckedModelFile("create:block/deployer/item"))
-                .texture("10",getPistonCasingTexture(casing))
-                .texture("6",getPistonBottomTexture(casing))
-                .texture("7",getPistonInnerTexture(casing))
-                .texture("particle",getGearboxTopTexture(casing))
-                .texture("gearbox",getGearboxTexture(casing))
-                .texture("gearbox_top",getGearboxTopTexture(casing))
-                .texture("andesite_casing_short",getShortCasingTexture(casing));
+                .texture("10", getPistonCasingTexture(casing))
+                .texture("6", getPistonBottomTexture(casing))
+                .texture("7", getPistonInnerTexture(casing))
+                .texture("particle", getGearboxTopTexture(casing))
+                .texture("gearbox", getGearboxTexture(casing))
+                .texture("gearbox_top", getGearboxTopTexture(casing))
+                .texture("andesite_casing_short", getShortCasingTexture(casing));
     }
 
-    public static ModelFile storageInterfaceModel(RegistrateProvider p, String casing,boolean item){
+    public static ModelFile storageInterfaceModel(RegistrateProvider p, String casing, boolean item) {
         if (isValidProvider(p))
-            return Objects.requireNonNull(createModelInBlock(p,"portable_storage_interface/"+casing+"/"+(item ? "item" :"block")))
-                    .parent(new ModelFile.UncheckedModelFile("create:block/portable_storage_interface/"+(item ? "item" :"block")))
-                    .texture("0",getPortableStorageInterfaceTexture(casing))
-                    .texture("1",getCasingTexture(casing))
-                    .texture("particle",getCasingTexture(casing));
+            return Objects.requireNonNull(createModelInBlock(p, "portable_storage_interface/" + casing + "/" + (item ? "item" : "block")))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/portable_storage_interface/" + (item ? "item" : "block")))
+                    .texture("0", getPortableStorageInterfaceTexture(casing))
+                    .texture("1", getCasingTexture(casing))
+                    .texture("particle", getCasingTexture(casing));
         return null;
     }
 
-    public static ModelFile fanModel(RegistrateProvider p, String casing){
+    public static ModelFile fanModel(RegistrateProvider p, String casing) {
         if (isValidProvider(p))
-            return Objects.requireNonNull(createModelInBlock(p,"encased_fan/"+casing+"/block"))
+            return Objects.requireNonNull(createModelInBlock(p, "encased_fan/" + casing + "/block"))
                     .parent(new ModelFile.UncheckedModelFile("create:block/encased_fan/block"))
-                    .texture("3",getFunnelFrameTexture(casing))
-                    .texture("back",getGearboxTexture(casing))
-                    .texture("fan_casing",getFanPart(casing,"casing"))
-                    .texture("particle",getFanPart(casing,"side"))
-                    .texture("fan_side",getFanPart(casing,"side"));
+                    .texture("3", getFunnelFrameTexture(casing))
+                    .texture("back", getGearboxTexture(casing))
+                    .texture("fan_casing", getFanPart(casing, "casing"))
+                    .texture("particle", getFanPart(casing, "side"))
+                    .texture("fan_side", getFanPart(casing, "side"));
         return null;
     }
 
-    public static ModelFile fanItemModel(RegistrateProvider p, String casing){
-        return Objects.requireNonNull(createModelInBlock(p,"encased_fan/"+casing+"/item"))
+    public static ModelFile fanItemModel(RegistrateProvider p, String casing) {
+        return Objects.requireNonNull(createModelInBlock(p, "encased_fan/" + casing + "/item"))
                 .parent(new ModelFile.UncheckedModelFile("create:block/encased_fan/item"))
-                .texture("2",getGearboxTexture(casing))
-                .texture("fan_casing",getFanPart(casing,"casing"))
-                .texture("particle",getFanPart(casing,"side"))
-                .texture("fan_side",getFanPart(casing,"side"));
+                .texture("2", getGearboxTexture(casing))
+                .texture("fan_casing", getFanPart(casing, "casing"))
+                .texture("particle", getFanPart(casing, "side"))
+                .texture("fan_side", getFanPart(casing, "side"));
     }
 
 
-    public static ModelFile harvesterModel(RegistrateProvider p, String casing,boolean item){
+    public static ModelFile harvesterModel(RegistrateProvider p, String casing, boolean item) {
         if (isValidProvider(p))
-            return Objects.requireNonNull(createModelInBlock(p,"mechanical_harvester/"+casing+"/"+(item ? "item" :"block")))
-                    .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_harvester/"+(item ? "item" :"block")))
-                    .texture("andesite_casing_short",getShortCasingTexture(casing))
-                    .texture("particle",getShortCasingTexture(casing));
+            return Objects.requireNonNull(createModelInBlock(p, "mechanical_harvester/" + casing + "/" + (item ? "item" : "block")))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_harvester/" + (item ? "item" : "block")))
+                    .texture("andesite_casing_short", getShortCasingTexture(casing))
+                    .texture("particle", getShortCasingTexture(casing));
         return null;
     }
 
-    public static ModelFile rollerModel(RegistrateProvider p, String casing,boolean item){
+    public static ModelFile rollerModel(RegistrateProvider p, String casing, boolean item) {
         if (isValidProvider(p)) {
-            if (!item)Objects.requireNonNull(createModelInBlock(p, "mechanical_roller/" + casing + "/frame"))
+            if (!item) Objects.requireNonNull(createModelInBlock(p, "mechanical_roller/" + casing + "/frame"))
                     .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_roller/frame"))
                     .texture("1", getRollerMetalTexture(casing))
                     .texture("particle", getRollerCasingTexture(casing));
@@ -478,55 +515,54 @@ public class EncasedBlockStateGens {
         return null;
     }
 
-    public static ModelFile drillModel(RegistrateProvider p, String casing,boolean item){
-        if (isValidProvider(p)){
-            Objects.requireNonNull(createModelInBlock(p,"mechanical_drill/"+casing+"/head"))
+    public static ModelFile drillModel(RegistrateProvider p, String casing, boolean item) {
+        if (isValidProvider(p)) {
+            Objects.requireNonNull(createModelInBlock(p, "mechanical_drill/" + casing + "/head"))
                     .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_drill/head"))
-                    .texture("10",getVeryShortCasingTexture(casing));
-            return Objects.requireNonNull(createModelInBlock(p,"mechanical_drill/"+casing+"/"+(item ? "item" :"block")))
-                    .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_drill/"+(item ? "item" :"block")))
-                    .texture("10",getVeryShortCasingTexture(casing))
-                    .texture("gearbox_top",getGearboxTopTexture(casing))
-                    .texture("particle",getGearboxTexture(casing))
-                    .texture("gearbox",getGearboxTexture(casing));
+                    .texture("10", getVeryShortCasingTexture(casing));
+            return Objects.requireNonNull(createModelInBlock(p, "mechanical_drill/" + casing + "/" + (item ? "item" : "block")))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_drill/" + (item ? "item" : "block")))
+                    .texture("10", getVeryShortCasingTexture(casing))
+                    .texture("gearbox_top", getGearboxTopTexture(casing))
+                    .texture("particle", getGearboxTexture(casing))
+                    .texture("gearbox", getGearboxTexture(casing));
         }
 
         return null;
     }
 
-    public static ModelFile ploughModel(RegistrateProvider p, String casing){
+    public static ModelFile ploughModel(RegistrateProvider p, String casing) {
         if (isValidProvider(p))
-            return Objects.requireNonNull(createModelInBlock(p,"mechanical_plough/"+casing))
-                .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_plough"))
-                .texture("andesite_casing_short",getShortCasingTexture(casing))
-                .texture("particle",getShortCasingTexture(casing));
+            return Objects.requireNonNull(createModelInBlock(p, "mechanical_plough/" + casing))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_plough"))
+                    .texture("andesite_casing_short", getShortCasingTexture(casing))
+                    .texture("particle", getShortCasingTexture(casing));
         return null;
     }
 
-    public static ModelFile sawItemModel(RegistrateProvider p, String casing){
-        return Objects.requireNonNull(createModelInBlock(p,"mechanical_saw/"+casing+"/item"))
+    public static ModelFile sawItemModel(RegistrateProvider p, String casing) {
+        return Objects.requireNonNull(createModelInBlock(p, "mechanical_saw/" + casing + "/item"))
                 .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_saw/item"))
-                .texture("slit",getSawTexture(casing,"_top_no_slot"))
-                .texture("gearbox",getGearboxTexture(casing))
-                .texture("particle",getGearboxTopTexture(casing))
-                .texture("gearbox_top",getGearboxTopTexture(casing))
-                .texture("encased_belt",getChainDriveSideTexture(casing))
-                .texture("andesite_casing_short",getShortCasingTexture(casing));
+                .texture("slit", getSawTexture(casing, "_top_no_slot"))
+                .texture("gearbox", getGearboxTexture(casing))
+                .texture("particle", getGearboxTopTexture(casing))
+                .texture("gearbox_top", getGearboxTopTexture(casing))
+                .texture("encased_belt", getChainDriveSideTexture(casing))
+                .texture("andesite_casing_short", getShortCasingTexture(casing));
     }
 
 
-
-
-    public static <T extends Block> void axisBlock(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov,ModelFile model){
-        axisBlock(ctx,prov,model,true);
+    public static <T extends Block> void axisBlock(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov, ModelFile model) {
+        axisBlock(ctx, prov, model, true);
     }
 
-    public static <T extends Block> void axisBlock(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov,ModelFile model, boolean uvLock){
-        axisBlock(ctx,prov,bs->model,uvLock);
+    public static <T extends Block> void axisBlock(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov, ModelFile model, boolean uvLock) {
+        axisBlock(ctx, prov, bs -> model, uvLock);
     }
-    public static <T extends Block> void axisBlock(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov, Function<BlockState,ModelFile> model, boolean uvLock){
+
+    public static <T extends Block> void axisBlock(DataGenContext<Block, T> ctx, RegistrateBlockstateProvider prov, Function<BlockState, ModelFile> model, boolean uvLock) {
         if (model == null) {
-            prov.simpleBlock(ctx.get(),new ModelFile.UncheckedModelFile("block/dirt"));
+            prov.simpleBlock(ctx.get(), new ModelFile.UncheckedModelFile("block/dirt"));
             return;
         }
         prov.getVariantBuilder(ctx.getEntry())
@@ -544,7 +580,7 @@ public class EncasedBlockStateGens {
     public static <T extends DirectionalAxisKineticBlock> void directionalAxisBlock(DataGenContext<Block, T> ctx,
                                                                                     RegistrateBlockstateProvider prov, BiFunction<BlockState, Boolean, ModelFile> modelFunc) {
         if (modelFunc == null) {
-            prov.simpleBlock(ctx.get(),new ModelFile.UncheckedModelFile("block/dirt"));
+            prov.simpleBlock(ctx.get(), new ModelFile.UncheckedModelFile("block/dirt"));
             return;
         }
         prov.getVariantBuilder(ctx.getEntry())
@@ -566,256 +602,682 @@ public class EncasedBlockStateGens {
                 });
     }
 
-    public static <T> ModelFile gearboxModel(RegistrateProvider p, String casing, String type){
+    public static <T> ModelFile gearboxModel(RegistrateProvider p, String casing, String type) {
         String casingKey = type.equals("item_vertical") ? "gearbox" : "1";
         String topKey = type.equals("item_vertical") ? "gearbox_top" : "0";
         if (isValidProvider(p))
-          return  Objects.requireNonNull(createModelInBlock(p, "gearbox/" + casing + "/" + type))
-                    .parent(new ModelFile.UncheckedModelFile("create:block/gearbox/"+type))
-                    .texture(topKey,getCasingTexture(casing))
-                    .texture(casingKey,getGearboxTexture(casing))
-                  .texture("particle",getCasingTexture(casing));
+            return Objects.requireNonNull(createModelInBlock(p, "gearbox/" + casing + "/" + type))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/gearbox/" + type))
+                    .texture(topKey, getCasingTexture(casing))
+                    .texture(casingKey, getGearboxTexture(casing))
+                    .texture("particle", getCasingTexture(casing));
 
         return null;
     }
 
-    public static <T> ModelFile shaftModel(RegistrateProvider p,String shaft){
+    public static <T> ModelFile shaftModel(RegistrateProvider p, String shaft) {
         if (isValidProvider(p)) {
             ModelBuilder<? extends ModelBuilder<?>> file = Objects.requireNonNull(createModelInBlock(p, "shaft/" + shaft))
                     .parent(new ModelFile.UncheckedModelFile("create:block/shaft"))
                     .texture("0", getShaftTexture(shaft))
                     .texture("1", getShaftTexture(shaft) + (!shaft.equals("mldeg") ? "_top" : ""))
-                    .texture("particle",getShaftTexture(shaft));
+                    .texture("particle", getShaftTexture(shaft));
             if (shaft.equals("glass")) file = file.renderType("cutout_mipped");
             return file;
         }
         return null;
     }
 
-    public static <T> ModelFile cogwheelModel(RegistrateProvider p,String cogwheel,boolean shaft){
+    public static <T> ModelFile cogwheelModel(RegistrateProvider p, String cogwheel, boolean shaft) {
         if (isValidProvider(p))
-            return Objects.requireNonNull(createModelInBlock(p, "cogwheel"+(shaft?"":"_shaftless")+"/" + cogwheel))
-                    .parent(new ModelFile.UncheckedModelFile("create:block/cogwheel"+(shaft?"":"_shaftless")))
-                    .texture("1_2",getCogwheelTexture(cogwheel))
-                    .texture("particle",getShaftTexture(cogwheel));
+            return Objects.requireNonNull(createModelInBlock(p, "cogwheel" + (shaft ? "" : "_shaftless") + "/" + cogwheel))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/cogwheel" + (shaft ? "" : "_shaftless")))
+                    .texture("1_2", getCogwheelTexture(cogwheel))
+                    .texture("particle", getShaftTexture(cogwheel));
         return null;
     }
 
-    public static <T> ModelFile largeCogwheelModel(RegistrateProvider p,String cogwheel,boolean shaft){
+    public static <T> ModelFile largeCogwheelModel(RegistrateProvider p, String cogwheel, boolean shaft) {
         if (isValidProvider(p))
-            return Objects.requireNonNull(createModelInBlock(p, "large_cogwheel"+(shaft?"":"_shaftless")+"/" + cogwheel))
-                    .parent(new ModelFile.UncheckedModelFile("create:block/large_cogwheel"+(shaft?"":"_shaftless")))
-                    .texture("4",getLargeCogwheelTexture(cogwheel))
-                    .texture("particle",getShaftTexture(cogwheel));
+            return Objects.requireNonNull(createModelInBlock(p, "large_cogwheel" + (shaft ? "" : "_shaftless") + "/" + cogwheel))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/large_cogwheel" + (shaft ? "" : "_shaftless")))
+                    .texture("4", getLargeCogwheelTexture(cogwheel))
+                    .texture("particle", getShaftTexture(cogwheel));
         return null;
     }
-
-
-
 
 
     //For the block, the model is only the casing block so we don't need to have a block per shaft type
-    public static <T> ModelFile encasedShaftModel(RegistrateProvider p,String shaft, String casing, boolean item){
+    public static <T> ModelFile encasedShaftModel(RegistrateProvider p, String shaft, String casing, boolean item) {
         if (!item)
             return Objects.requireNonNull(createModelInBlock(p, "encased_shaft/" + casing))
                     .parent(new ModelFile.UncheckedModelFile("create:block/encased_shaft/block"))
-                    .texture("casing",getCasingTexture(casing))
-                    .texture("opening",getGearboxTexture(casing))
-                    .texture("particle",getCasingTexture(casing));
+                    .texture("casing", getCasingTexture(casing))
+                    .texture("opening", getGearboxTexture(casing))
+                    .texture("particle", getCasingTexture(casing));
         else
             return Objects.requireNonNull(createModelInBlock(p, "encased_shaft/items/" + shaft + "/" + casing))
                     .parent(new ModelFile.UncheckedModelFile("create:block/encased_shaft/item"))
-                    .texture("casing",getCasingTexture(casing))
-                    .texture("opening",getGearboxTexture(casing))
-                    .texture("1_0",getShaftTexture(shaft))
-                    .texture("1_1", getShaftTexture(shaft) + (!shaft.equals("mldeg") ? "_top": ""))
-                    .texture("particle",getCasingTexture(casing));
+                    .texture("casing", getCasingTexture(casing))
+                    .texture("opening", getGearboxTexture(casing))
+                    .texture("1_0", getShaftTexture(shaft))
+                    .texture("1_1", getShaftTexture(shaft) + (!shaft.equals("mldeg") ? "_top" : ""))
+                    .texture("particle", getCasingTexture(casing));
     }
 
-    public static ModelBuilder<? extends ModelBuilder<?>> createModelInBlock(RegistrateProvider p, String path){
+    public static <P extends FluidPipeBlock> NonNullBiConsumer<DataGenContext<Block, P>, RegistrateBlockstateProvider> pipe(String name) {
+        return (c, p) -> {
+            String path = "block/fluid_pipe/" + name;
+
+            createModelInBlock(p, "fluid_pipe/" + name + "/item")
+                    .parent(new ModelFile.UncheckedModelFile(Create.asResource("block/fluid_pipe/item")))
+                    .texture("1", getPipesTexture(name))
+                    .texture("particle", getUndersideTexture(name));
+            createModelInBlock(p, "fluid_pipe/" + name + "/window")
+                    .parent(new ModelFile.UncheckedModelFile(Create.asResource("block/fluid_pipe/window")))
+                    .texture("0", getGlassPipeTexture(name))
+                    .texture("particle", getUndersideTexture(name));
+            createModelInBlock(p, "fluid_pipe/" + name + "/casing")
+                    .parent(new ModelFile.UncheckedModelFile(Create.asResource("block/fluid_pipe/casing")))
+                    .texture("0", getPipesTexture(name))
+                    .texture("particle", getUndersideTexture(name));
+
+            for (FluidTransportBehaviour.AttachmentTypes.ComponentPartials type : FluidTransportBehaviour.AttachmentTypes.ComponentPartials
+                    .values()) {
+                for (Direction d : Iterate.directions) {
+                    String asId = Lang.asId(type.name());
+                    createModelInBlock(p, "fluid_pipe/" + name + "/" + asId + "/" + Lang.asId(d.getSerializedName()))
+                            .parent(new ModelFile.UncheckedModelFile(Create.asResource("block/fluid_pipe/" + asId + "/" + Lang.asId(d.getSerializedName()))))
+                            .texture("0", getPipesTexture(name))
+                            .texture("particle", getUndersideTexture(name));
+                }
+            }
+
+
+            String LU = "lu";
+            String RU = "ru";
+            String LD = "ld";
+            String RD = "rd";
+            String LR = "lr";
+            String UD = "ud";
+            String U = "u";
+            String D = "d";
+            String L = "l";
+            String R = "r";
+
+            List<String> orientations = ImmutableList.of(LU, RU, LD, RD, LR, UD, U, D, L, R);
+            Map<String, Pair<Integer, Integer>> uvs = ImmutableMap.<String, Pair<Integer, Integer>>builder()
+                    .put(LU, Pair.of(12, 4))
+                    .put(RU, Pair.of(8, 4))
+                    .put(LD, Pair.of(12, 0))
+                    .put(RD, Pair.of(8, 0))
+                    .put(LR, Pair.of(4, 8))
+                    .put(UD, Pair.of(0, 8))
+                    .put(U, Pair.of(4, 4))
+                    .put(D, Pair.of(0, 0))
+                    .put(L, Pair.of(4, 0))
+                    .put(R, Pair.of(0, 4))
+                    .build();
+
+            Map<Direction.Axis, ResourceLocation> coreTemplates = new IdentityHashMap<>();
+            Map<Pair<String, Direction.Axis>, ModelFile> coreModels = new HashMap<>();
+
+            for (Direction.Axis axis : Iterate.axes) {
+                ResourceLocation core = p.modLoc(path + "/core_" + axis.getSerializedName());
+                createModelInBlock(p, "fluid_pipe/" + name + "/core_" + axis.getSerializedName())
+                        .parent(new ModelFile.UncheckedModelFile(Create.asResource("block/fluid_pipe/core_" + axis.getSerializedName())))
+                        .texture("0", getPipesConnectedTexture(name))
+                        .texture("particle", getUndersideTexture(name));
+                coreTemplates.put(axis, core);
+            }
+
+            for (Direction.Axis axis : Iterate.axes) {
+                ResourceLocation parent = coreTemplates.get(axis);
+                for (String s : orientations) {
+                    Pair<String, Direction.Axis> key = Pair.of(s, axis);
+                    String modelName = path + "/" + s + "_" + axis.getSerializedName();
+                    coreModels.put(key, p.models()
+                            .withExistingParent(modelName, parent)
+                            .element()
+                            .from(4, 4, 4)
+                            .to(12, 12, 12)
+                            .face(Direction.get(Direction.AxisDirection.POSITIVE, axis))
+                            .end()
+                            .face(Direction.get(Direction.AxisDirection.NEGATIVE, axis))
+                            .end()
+                            .faces((d, builder) -> {
+                                Pair<Integer, Integer> pair = uvs.get(s);
+                                float u = pair.getKey();
+                                float v = pair.getValue();
+                                if (d == Direction.UP)
+                                    builder.uvs(u + 4, v + 4, u, v);
+                                if (d == Direction.DOWN)
+                                    builder.uvs(u + 4, v, u, v + 4);
+                                if (d == Direction.NORTH)
+                                    builder.uvs(u, v, u + 4, v + 4);
+                                if (d == Direction.SOUTH)
+                                    builder.uvs(u + 4, v, u, v + 4);
+                                if (d == Direction.EAST)
+                                    builder.uvs(u, v, u + 4, v + 4);
+                                if (d == Direction.WEST)
+                                    builder.uvs(u + 4, v, u, v + 4);
+                                builder.texture("#0");
+                            })
+                            .end());
+                }
+            }
+
+            MultiPartBlockStateBuilder builder = p.getMultipartBuilder(c.get());
+            for (Direction.Axis axis : Iterate.axes) {
+                putPart(coreModels, builder, axis, LU, true, false, true, false);
+                putPart(coreModels, builder, axis, RU, true, false, false, true);
+                putPart(coreModels, builder, axis, LD, false, true, true, false);
+                putPart(coreModels, builder, axis, RD, false, true, false, true);
+                putPart(coreModels, builder, axis, UD, true, true, false, false);
+                putPart(coreModels, builder, axis, U, true, false, false, false);
+                putPart(coreModels, builder, axis, D, false, true, false, false);
+                putPart(coreModels, builder, axis, LR, false, false, true, true);
+                putPart(coreModels, builder, axis, L, false, false, true, false);
+                putPart(coreModels, builder, axis, R, false, false, false, true);
+            }
+        };
+    }
+
+    private static void putPart(Map<Pair<String, Direction.Axis>, ModelFile> coreModels, MultiPartBlockStateBuilder builder,
+                                Direction.Axis axis, String s, boolean up, boolean down, boolean left, boolean right) {
+        Direction positiveAxis = Direction.get(Direction.AxisDirection.POSITIVE, axis);
+        Map<Direction, BooleanProperty> propertyMap = FluidPipeBlock.PROPERTY_BY_DIRECTION;
+
+        Direction upD = Pointing.UP.getCombinedDirection(positiveAxis);
+        Direction leftD = Pointing.LEFT.getCombinedDirection(positiveAxis);
+        Direction rightD = Pointing.RIGHT.getCombinedDirection(positiveAxis);
+        Direction downD = Pointing.DOWN.getCombinedDirection(positiveAxis);
+
+        if (axis == Direction.Axis.Y || axis == Direction.Axis.X) {
+            leftD = leftD.getOpposite();
+            rightD = rightD.getOpposite();
+        }
+
+        builder.part()
+                .modelFile(coreModels.get(Pair.of(s, axis)))
+                .addModel()
+                .condition(propertyMap.get(upD), up)
+                .condition(propertyMap.get(leftD), left)
+                .condition(propertyMap.get(rightD), right)
+                .condition(propertyMap.get(downD), down)
+                .end();
+    }
+
+
+    public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> pump(String name) {
+        return (c, p) -> directionalBlockIgnoresWaterlogged(c, p, bs -> pumpModel(p, name, false));
+    }
+
+    public static <T> ModelFile pumpModel(RegistrateProvider p, String name, boolean item) {
+        if (!item)
+            return Objects.requireNonNull(createModelInBlock(p, "mechanical_pump/" + name + "/block"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_pump/block"))
+                    .texture("4", getPumpTexture(name))
+                    .texture("particle", getUndersideTexture(name));
+        else
+            return Objects.requireNonNull(createModelInBlock(p, "mechanical_pump/" + name + "/item"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/mechanical_pump/item"))
+                    .texture("4", getPumpTexture(name))
+                    .texture("particle", getUndersideTexture(name));
+    }
+
+    public static <T> ModelFile smartPipeModel(RegistrateProvider p, String name, boolean item) {
+        if (!item)
+            return Objects.requireNonNull(createModelInBlock(p, "smart_fluid_pipe/" + name + "/block"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/smart_fluid_pipe/block"))
+                    .texture("2", getSmartPipeTexture(1, name))
+                    .texture("3", getSmartPipeTexture(2, name))
+                    .texture("4", getPipesTexture(name))
+                    .texture("particle", getUndersideTexture(name));
+        else
+            return Objects.requireNonNull(createModelInBlock(p, "smart_fluid_pipe/" + name + "/item"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/smart_fluid_pipe/item"))
+                    .texture("1", getPipesTexture(name))
+                    .texture("2", getSmartPipeTexture(1, name))
+                    .texture("3", getSmartPipeTexture(2, name));
+    }
+
+    public static <T> ModelFile steamEngineModel(RegistrateProvider p, String name, boolean item) {
+        if (!item) {
+            createModelInBlock(p, "steam_engine/" + name + "/gauge")
+                    .parent(new ModelFile.UncheckedModelFile("create:block/steam_engine/gauge"))
+                    .texture("0", getBoilerGaugeTexture(name))
+                    .texture("particle", getBoilerGaugeTexture(name));
+
+            createModelInBlock(p, "steam_engine/" + name + "/gauge_dial")
+                    .parent(new ModelFile.UncheckedModelFile("create:block/steam_engine/gauge_dial"))
+                    .texture("0", getBoilerGaugeTexture(name))
+                    .texture("particle", getBoilerGaugeTexture(name));
+
+            return Objects.requireNonNull(createModelInBlock(p, "steam_engine/" + name + "/block"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/steam_engine/block"))
+                    .texture("1", getEngineTexture(name))
+                    .texture("particle", getUndersideTexture(name));
+        } else
+            return Objects.requireNonNull(createModelInBlock(p, "steam_engine/" + name + "/item"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/steam_engine/item"))
+                    .texture("1", getEngineTexture(name))
+                    .texture("particle", getUndersideTexture(name));
+    }
+
+    public static <T> ModelFile itemDrainModel(RegistrateProvider p, String name) {
+        return Objects.requireNonNull(createModelInBlock(p, "item_drain/" + name))
+                .parent(new ModelFile.UncheckedModelFile("create:block/item_drain"))
+                .texture("0", getItemDrainSideTexture(name))
+                .texture("3", getPumpTexture(name))
+                .texture("4", getUndersideTexture(name))
+                .texture("particle", getUndersideTexture(name));
+    }
+
+    public static <T> ModelFile fluidValveModel(RegistrateProvider p, String name, boolean item, boolean vertical, boolean open) {
+        if (!item) {
+
+            String dir = vertical ? "vertical" : "horizontal";
+            String state = open ? "open" : "closed";
+            return Objects.requireNonNull(createModelInBlock(p, "fluid_valve/" + name + "/block_" + dir + "_" + state))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/fluid_valve/block_" + dir + "_" + state))
+                    .texture("2", getValveTexture(name))
+                    .texture(vertical ? "4" : "3", getValveInteriorTexture(name, open))
+                    .texture("particle", getUndersideTexture(name));
+        } else
+            return Objects.requireNonNull(createModelInBlock(p, "fluid_valve/" + name + "/item"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/fluid_valve/item"))
+                    .texture("2", getValveTexture(name))
+                    .texture("4", getValveInteriorTexture(name, true))
+                    .texture("particle", getValveInteriorTexture(name, false));
+    }
+
+    public static <P extends Block> NonNullBiConsumer<DataGenContext<Block, P>, RegistrateBlockstateProvider> hosePulley(String name) {
+        return (c, p) -> {
+            p.horizontalBlock(c.get(), hosePulleyModel(p, name, false));
+        };
+    }
+
+    public static <T> ModelFile hosePulleyModel(RegistrateProvider p, String name, boolean item) {
+        if (!item) {
+
+            Objects.requireNonNull(createModelInBlock(p, "hose_pulley/" + name + "/pulley_magnet"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/hose_pulley/pulley_magnet"))
+                    .texture("0", getHoseTexture(name))
+                    .texture("particle", getUndersideTexture(name));
+
+            Objects.requireNonNull(createModelInBlock(p, "hose_pulley/" + name + "/rope_half_magnet"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/hose_pulley/rope_half_magnet"))
+                    .texture("0", getHoseTexture(name))
+                    .texture("particle", getUndersideTexture(name));
+
+            return Objects.requireNonNull(createModelInBlock(p, "hose_pulley/" + name + "/block"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/hose_pulley/block"))
+                    .texture("1", getHosePulleyTexture(name))
+                    .texture("3", getPumpTexture(name))
+                    .texture("particle", getUndersideTexture(name));
+        } else
+            return Objects.requireNonNull(createModelInBlock(p, "hose_pulley/" + name + "/item"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/hose_pulley/item"))
+                    .texture("1", getHosePulleyTexture(name))
+                    .texture("3", getPumpTexture(name))
+                    .texture("particle", getUndersideTexture(name));
+    }
+
+
+    public static <T extends Block> void directionalBlockIgnoresWaterlogged(DataGenContext<Block, T> ctx,
+                                                                            RegistrateBlockstateProvider prov, java.util.function.Function<BlockState, ModelFile> modelFunc) {
+        prov.getVariantBuilder(ctx.getEntry())
+                .forAllStatesExcept(state -> {
+                    Direction dir = state.getValue(BlockStateProperties.FACING);
+                    return ConfiguredModel.builder()
+                            .modelFile(modelFunc.apply(state))
+                            .rotationX(dir == Direction.DOWN ? 180
+                                    : dir.getAxis()
+                                    .isHorizontal() ? 90 : 0)
+                            .rotationY(dir.getAxis()
+                                    .isVertical() ? 0 : (((int) dir.toYRot()) + 180) % 360)
+                            .build();
+                }, BlockStateProperties.WATERLOGGED);
+    }
+
+    public static ModelFile fluidInterfaceModel(RegistrateProvider p, String name, boolean item) {
+        if (!item) {
+            Objects.requireNonNull(createModelInBlock(p, "portable_fluid_interface/" + name + "/block_top"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/portable_fluid_interface/block_top"))
+                    .texture("0", getPortableFluidInterfaceTexture(name))
+                    .texture("particle", getUndersideTexture(name));
+        }
+        return Objects.requireNonNull(createModelInBlock(p, "portable_fluid_interface/" + name + "/" + (item ? "item" : "block")))
+                .parent(new ModelFile.UncheckedModelFile("create:block/portable_fluid_interface/" + (item ? "item" : "block")))
+                .texture("0", getPortableFluidInterfaceTexture(name))
+                .texture("2", getUndersideTexture(name))
+                .texture("particle", getUndersideTexture(name));
+    }
+
+    public static ModelFile spoutModel(RegistrateProvider p, String name, boolean item) {
+        if (!item) {
+
+            Objects.requireNonNull(createModelInBlock(p, "spout/" + name + "/bottom"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/spout/bottom"))
+                    .texture("2", getSpoutNozzleTexture(name));
+
+            return Objects.requireNonNull(createModelInBlock(p, "spout/" + name + "/block"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/spout/block"))
+                    .texture("0", getSpoutTexture(name))
+                    .texture("3", getEncasedPipeTexture(name))
+                    .texture("particle", getUndersideTexture(name));
+        } else {
+            return Objects.requireNonNull(createModelInBlock(p, "spout/" + name + "/item"))
+                    .parent(new ModelFile.UncheckedModelFile("create:block/spout/item"))
+                    .texture("0", getSpoutTexture(name))
+                    .texture("3", getSpoutNozzleTexture(name))
+                    .texture("4", getEncasedPipeTexture(name))
+                    .texture("particle", getUndersideTexture(name));
+        }
+    }
+
+    public static <T> ModelFile whistleItemModel(RegistrateProvider p, String name) {
+        return Objects.requireNonNull(createModelInBlock(p, "steam_whistle/" + name + "/item"))
+                .parent(new ModelFile.UncheckedModelFile("create:block/steam_whistle/item"))
+                .texture("1", getEngineTexture(name))
+                .texture("2", getRedstonePlate(name, false));
+    }
+
+    public static ModelBuilder<? extends ModelBuilder<?>> createModelInBlock(RegistrateProvider p, String path) {
         if (p instanceof RegistrateBlockstateProvider provider)
             return provider.models()
-                    .getBuilder("block/"+path);
+                    .getBuilder("block/" + path);
         else if (p instanceof RegistrateItemModelProvider provider)
-            return provider.getBuilder("block/"+path);
+            return provider.getBuilder("block/" + path);
         return null;
     }
 
-    public static boolean isValidProvider(RegistrateProvider p){
+    public static boolean isValidProvider(RegistrateProvider p) {
         return p instanceof RegistrateBlockstateProvider || p instanceof RegistrateItemModelProvider;
     }
 
 
-    public static String getCasingTexture(String casing){
-        if (casing.equals("normal")) return Create.ID+":block/andesite_casing";
+    public static String getCasingTexture(String casing) {
+        if (casing.equals("normal")) return Create.ID + ":block/andesite_casing";
         String modid = getModForCasing(casing);
-        if (casing.equals("industrial_iron") || casing.equals("weathered_iron")) return modid + ":block/"+casing+"_block";
-        return modid + ":block/"+casing+"_casing";
+        if (casing.equals("industrial_iron") || casing.equals("weathered_iron"))
+            return modid + ":block/" + casing + "_block";
+        if (modid.equals(CreateCasing.MODID))
+            return modid + ":block/casing/" + casing;
+        return modid + ":block/" + casing + "_casing";
     }
 
-    public static String getModForCasing(String casing){
-        if (casing.equals("brass") || casing.equals("andesite") || casing.equals("copper") || casing.equals("railway") || casing.equals("industrial_iron") || casing.equals("creative") || casing.equals("weathered_iron") || casing.equals("shadow_steel") || casing.equals("refined_radiance")) return Create.ID;
+    public static String getModForCasing(String casing) {
+        if (casing.equals("brass") || casing.equals("andesite") || casing.equals("copper") || casing.equals("railway") || casing.equals("industrial_iron") || casing.equals("creative") || casing.equals("weathered_iron") || casing.equals("shadow_steel") || casing.equals("refined_radiance"))
+            return Create.ID;
         return CreateCasing.MODID;
     }
 
-    public static String getGearboxTexture(String casing){
-        if (casing.equals("andesite") || casing.equals("normal")) return Create.ID+":block/gearbox";
-        if (casing.equals("brass")) return Create.ID + ":block/"+casing+"_gearbox";
-        return CreateCasing.MODID + ":block/gearbox/"+casing;
+    public static String getGearboxTexture(String casing) {
+        if (casing.equals("andesite") || casing.equals("normal")) return Create.ID + ":block/gearbox";
+        if (casing.equals("brass")) return Create.ID + ":block/" + casing + "_gearbox";
+        return CreateCasing.MODID + ":block/gearbox/" + casing;
     }
 
-    public static String getGearboxTopTexture(String casing){
-        if (casing.equals("andesite") || casing.equals("normal")) return Create.ID+":block/gearbox_top";
-        return CreateCasing.MODID + ":block/gearbox_top/"+casing;
+    public static String getGearboxTopTexture(String casing) {
+        if (casing.equals("andesite") || casing.equals("normal")) return Create.ID + ":block/gearbox_top";
+        return CreateCasing.MODID + ":block/gearbox_top/" + casing;
     }
 
 
-    public static String getShaftTexture(String shaft){
+    public static String getShaftTexture(String shaft) {
         if (shaft.equals("normal") || shaft.equals("andesite")) return Create.ID + ":block/axis";
         if (shaft.equals("bamboo")) return "minecraft:block/stripped_bamboo_block";
-        if (isWoodenShaft(shaft)) return "minecraft:block/stripped_"+shaft+"_" + (shaft.equals("crimson") || shaft.equals("warped") ? "stem": "log");
-        return CreateCasing.MODID + ":block/shaft/"+shaft;
+        if (isWoodenShaft(shaft))
+            return "minecraft:block/stripped_" + shaft + "_" + (shaft.equals("crimson") || shaft.equals("warped") ? "stem" : "log");
+        return CreateCasing.MODID + ":block/shaft/" + shaft;
     }
 
 
     public static String getCogwheelTexture(String cogwheel) {
         if (cogwheel.equals("normal")) return Create.ID + ":block/cogwheel";
-        return CreateCasing.MODID + ":block/cogwheel/"+cogwheel;
+        return CreateCasing.MODID + ":block/cogwheel/" + cogwheel;
     }
 
     public static String getLargeCogwheelTexture(String cogwheel) {
         if (cogwheel.equals("normal")) return Create.ID + ":block/large_cogwheel";
-        return CreateCasing.MODID + ":block/large_cogwheel/"+cogwheel;
+        return CreateCasing.MODID + ":block/large_cogwheel/" + cogwheel;
     }
 
     public static String getCogwheelSideTexture(String casing) {
-        if (casing.equals("andesite") || casing.equals("brass")) return Create.ID + ":block/"+casing+"_encased_cogwheel_side";
-        return CreateCasing.MODID + ":block/encased_cogwheel/"+casing;
+        if (casing.equals("andesite") || casing.equals("brass"))
+            return Create.ID + ":block/" + casing + "_encased_cogwheel_side";
+        return CreateCasing.MODID + ":block/encased_cogwheel/" + casing;
     }
 
     public static String getLargeCogwheelSideTexture(String casing) {
         return getCogwheelSideTexture(casing) + "_connected";
     }
 
-    public static String getPressPart(String casing,String part) {
-        if (casing.equals("normal")) return Create.ID + ":block/mechanical_press_"+part;
-        return CreateCasing.MODID + ":block/press_"+part+"/"+casing;
+    public static String getPressPart(String casing, String part) {
+        if (casing.equals("normal")) return Create.ID + ":block/mechanical_press_" + part;
+        return CreateCasing.MODID + ":block/press_" + part + "/" + casing;
     }
 
-    public static String getMixerPart(String casing,String part) {
-        if (casing.equals("normal")) return Create.ID + ":block/mixer_base_"+part;
-        return CreateCasing.MODID + ":block/mixer_"+part+"/"+casing;
+    public static String getMixerPart(String casing, String part) {
+        if (casing.equals("normal")) return Create.ID + ":block/mixer_base_" + part;
+        return CreateCasing.MODID + ":block/mixer_" + part + "/" + casing;
     }
 
-    public static String getSawTexture(String casing,String part) {
-        if (casing.equals("normal")) return Create.ID + ":block/mechanical_saw"+part;
-        return CreateCasing.MODID + ":block/mechanical_saw"+part+"/"+casing;
+    public static String getSawTexture(String casing, String part) {
+        if (casing.equals("normal")) return Create.ID + ":block/mechanical_saw" + part;
+        return CreateCasing.MODID + ":block/mechanical_saw" + part + "/" + casing;
     }
 
 
-    public static String getFanPart(String casing,String part) {
-        if (casing.equals("normal")) return Create.ID + ":block/fan_"+part;
-        return CreateCasing.MODID + ":block/fan_"+part+"/"+casing;
+    public static String getFanPart(String casing, String part) {
+        if (casing.equals("normal")) return Create.ID + ":block/fan_" + part;
+        return CreateCasing.MODID + ":block/fan_" + part + "/" + casing;
     }
 
-    public static String getDepotPart(String casing,String part) {
-        if (casing.equals("normal")) return Create.ID + ":block/depot_"+part;
-        return CreateCasing.MODID + ":block/depot_"+part+"/"+casing;
+    public static String getDepotPart(String casing, String part) {
+        if (casing.equals("normal")) return Create.ID + ":block/depot_" + part;
+        return CreateCasing.MODID + ":block/depot_" + part + "/" + casing;
     }
 
-    public static String getChainDrivePart(String casing,String partSuffix) {
+    public static String getChainDrivePart(String casing, String partSuffix) {
         String part = partSuffix.equals("2") ? "end" : "middle";
-        if (casing.equals("normal")) return Create.ID + ":block/encased_chain_drive"+part;
-        return CreateCasing.MODID + ":block/encased_chain_drive_"+part+"/"+casing;
+        if (casing.equals("normal")) return Create.ID + ":block/encased_chain_drive" + part;
+        return CreateCasing.MODID + ":block/encased_chain_drive_" + part + "/" + casing;
     }
+
     public static String getChainDriveSideTexture(String casing) {
         if (casing.equals("normal")) return Create.ID + ":block/encased_chain_drive_side";
-        return CreateCasing.MODID + ":block/encased_chain_drive/"+casing;
+        return CreateCasing.MODID + ":block/encased_chain_drive/" + casing;
     }
-    public static String getAdjustableChainGearshiftTexture(String casing,boolean powered) {
-        if (casing.equals("normal")) return Create.ID + ":block/adjustable_chain_gearshift"+(powered ? "_powered":"");
-        return CreateCasing.MODID + ":block/adjustable_chain_gearshift"+(powered ? "_powered":"")+"/"+casing;
+
+    public static String getAdjustableChainGearshiftTexture(String casing, boolean powered) {
+        if (casing.equals("normal"))
+            return Create.ID + ":block/adjustable_chain_gearshift" + (powered ? "_powered" : "");
+        return CreateCasing.MODID + ":block/adjustable_chain_gearshift" + (powered ? "_powered" : "") + "/" + casing;
     }
+
     public static String getConveyorPortTexture(String casing) {
         if (casing.equals("normal")) return Create.ID + ":block/conveyor_port";
-        return CreateCasing.MODID + ":block/conveyor_port/"+casing;
+        return CreateCasing.MODID + ":block/conveyor_port/" + casing;
     }
 
     public static String getConveyorCasingTexture(String casing) {
         if (casing.equals("normal")) return Create.ID + ":block/conveyor_casing";
-        return CreateCasing.MODID + ":block/conveyor_casing/"+casing;
+        return CreateCasing.MODID + ":block/conveyor_casing/" + casing;
     }
 
     public static String getBullWheelTexture(String casing) {
         if (casing.equals("normal")) return Create.ID + ":block/bullwheel";
-        return CreateCasing.MODID + ":block/bullwheel/"+casing;
+        return CreateCasing.MODID + ":block/bullwheel/" + casing;
     }
 
-    public static String getGearshiftTexture(String casing,boolean powered) {
-        if (casing.equals("normal")) return Create.ID + ":block/gearshift_"+(powered ? "on" : "off");
-        return CreateCasing.MODID + ":block/gearshift_"+(powered ? "on" : "off")+"/"+casing;
+    public static String getGearshiftTexture(String casing, boolean powered) {
+        if (casing.equals("normal")) return Create.ID + ":block/gearshift_" + (powered ? "on" : "off");
+        return CreateCasing.MODID + ":block/gearshift_" + (powered ? "on" : "off") + "/" + casing;
     }
 
-    public static String getClutchTexture(String casing,boolean powered) {
-        if (casing.equals("normal")) return Create.ID + ":block/clutch_"+(powered ? "on" : "off");
-        return CreateCasing.MODID + ":block/clutch_"+(powered ? "on" : "off")+"/"+casing;
+    public static String getClutchTexture(String casing, boolean powered) {
+        if (casing.equals("normal")) return Create.ID + ":block/clutch_" + (powered ? "on" : "off");
+        return CreateCasing.MODID + ":block/clutch_" + (powered ? "on" : "off") + "/" + casing;
     }
 
-    public static String getAutoClutchTexture(String casing,boolean powered) {
-        return CreateCasing.MODID + ":block/automatic_clutch_"+(powered ? "on" : "off")+"/"+casing;
+    public static String getAutoClutchTexture(String casing, boolean powered) {
+        return CreateCasing.MODID + ":block/automatic_clutch_" + (powered ? "on" : "off") + "/" + casing;
     }
 
     public static String getFunnelFrameTexture(String casing) {
-        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID + ":block/funnel/andesite_funnel_frame";
+        if (casing.equals("normal") || casing.equals("andesite"))
+            return Create.ID + ":block/funnel/andesite_funnel_frame";
         if (casing.equals("brass")) return Create.ID + ":block/funnel/brass_funnel_frame";
         if (casing.equals("copper")) return Create.ID + ":block/funnel/copper_funnel_frame";
-        return CreateCasing.MODID + ":block/funnel_frame/"+casing;
+        return CreateCasing.MODID + ":block/funnel_frame/" + casing;
     }
 
-    public static String getShortCasingTexture(String casing){
-        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/andesite_casing_short";
+    public static String getShortCasingTexture(String casing) {
+        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID + ":block/andesite_casing_short";
         return CreateCasing.MODID + ":block/casing_short/" + casing;
     }
 
-    public static String getVeryShortCasingTexture(String casing){
-        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/andesite_casing_very_short";
+    public static String getVeryShortCasingTexture(String casing) {
+        if (casing.equals("normal") || casing.equals("andesite"))
+            return Create.ID + ":block/andesite_casing_very_short";
         return CreateCasing.MODID + ":block/casing_very_short/" + casing;
     }
 
-    public static String getPistonCasingTexture(String casing){
-        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/andesite_casing_piston";
+    public static String getPistonCasingTexture(String casing) {
+        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID + ":block/andesite_casing_piston";
         return CreateCasing.MODID + ":block/casing_piston/" + casing;
     }
 
-    public static String getPortableStorageInterfaceTexture(String casing){
-        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/portable_storage_interface";
+    public static String getPortableStorageInterfaceTexture(String casing) {
+        if (casing.equals("normal") || casing.equals("andesite"))
+            return Create.ID + ":block/portable_storage_interface";
         return CreateCasing.MODID + ":block/portable_storage_interface/" + casing;
     }
 
-    public static String getPistonBottomTexture(String casing){
-        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/piston_bottom";
+    public static String getPistonBottomTexture(String casing) {
+        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID + ":block/piston_bottom";
         return CreateCasing.MODID + ":block/piston_bottom/" + casing;
     }
 
-    public static String getPistonInnerTexture(String casing){
-        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/piston_inner";
+    public static String getPistonInnerTexture(String casing) {
+        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID + ":block/piston_inner";
         return CreateCasing.MODID + ":block/piston_inner/" + casing;
     }
 
-    public static String getRollerCasingTexture(String casing){
-        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/roller_casing";
+    public static String getRollerCasingTexture(String casing) {
+        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID + ":block/roller_casing";
         return CreateCasing.MODID + ":block/roller_casing/" + casing;
     }
-    public static String getRollerMetalTexture(String casing){
-        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID+":block/roller_metal";
+
+    public static String getRollerMetalTexture(String casing) {
+        if (casing.equals("normal") || casing.equals("andesite")) return Create.ID + ":block/roller_metal";
         return CreateCasing.MODID + ":block/roller_metal/" + casing;
     }
 
+    public static String getPipesTexture(String type) {
+        if (type.equals("normal") || type.equals("copper")) return Create.ID + ":block/pipes";
+        return CreateCasing.MODID + ":block/pipes/" + type;
+    }
+
+    public static String getPipesConnectedTexture(String type) {
+        if (type.equals("normal") || type.equals("copper")) return Create.ID + ":block/pipes_connected";
+        return CreateCasing.MODID + ":block/pipes/" + type + "_connected";
+    }
+
+    public static String getGlassPipeTexture(String type) {
+        if (type.equals("normal") || type.equals("copper")) return Create.ID + ":block/glass_fluid_pipe";
+        return CreateCasing.MODID + ":block/glass_fluid_pipe/" + type;
+    }
+
+    public static String getPumpTexture(String type) {
+        if (type.equals("normal") || type.equals("copper")) return Create.ID + ":block/pump";
+        return CreateCasing.MODID + ":block/pump/" + type;
+    }
+
+    public static String getSmartPipeTexture(int index, String type) {
+        if (type.equals("normal") || type.equals("copper")) return Create.ID + ":block/smart_pipe_" + index;
+        return CreateCasing.MODID + ":block/smart_pipe_" + index + "/" + type;
+    }
+
+    public static String getEngineTexture(String type) {
+        if (type.equals("normal") || type.equals("copper")) return Create.ID + ":block/engine";
+        return CreateCasing.MODID + ":block/engine/" + type;
+    }
+
+    public static String getUndersideTexture(String type) {
+        if (type.equals("normal") || type.equals("copper")) return Create.ID + ":block/copper_underside";
+        return CreateCasing.MODID + ":block/underside/" + type;
+    }
+
+    public static String getBoilerGaugeTexture(String type) {
+        if (type.equals("normal") || type.equals("copper")) return Create.ID + ":block/boiler_gauge";
+        return CreateCasing.MODID + ":block/boiler_gauge/" + type;
+    }
+
+    public static String getItemDrainSideTexture(String type) {
+        if (type.equals("normal") || type.equals("copper")) return Create.ID + ":block/item_drain_side";
+        return CreateCasing.MODID + ":block/item_drain_side/" + type;
+    }
+
+
+    public static String getValveTexture(String type) {
+        if (type.equals("normal") || type.equals("copper")) return Create.ID + ":block/fluid_valve";
+        return CreateCasing.MODID + ":block/fluid_valve/" + type;
+    }
+
+    public static String getValveInteriorTexture(String type, boolean open) {
+        if (type.equals("normal") || type.equals("copper"))
+            return Create.ID + ":block/valve_" + (open ? "open" : "closed");
+        return CreateCasing.MODID + ":block/valve_" + (open ? "open" : "closed") + "/" + type;
+    }
+
+    public static String getHosePulleyTexture(String type) {
+        if (type.equals("normal") || type.equals("copper")) return Create.ID + ":block/hose_pulley";
+        return CreateCasing.MODID + ":block/hose_pulley/" + type;
+    }
+
+    public static String getHoseTexture(String type) {
+        if (type.equals("normal") || type.equals("copper")) return Create.ID + ":block/hose";
+        return CreateCasing.MODID + ":block/hose/" + type;
+    }
+
+    public static String getPortableFluidInterfaceTexture(String casing) {
+        if (casing.equals("normal") || casing.equals("copper"))
+            return Create.ID + ":block/portable_fluid_interface";
+        return CreateCasing.MODID + ":block/portable_fluid_interface/" + casing;
+    }
+
+    public static String getRedstonePlate(String type, boolean powered) {
+        if (type.equals("normal") || type.equals("copper"))
+            return Create.ID + ":block/redstone_plate" + (powered ? "_powered" : "");
+        return CreateCasing.MODID + ":block/redstone_plate" + (powered ? "_powered" : "") + "/" + type;
+    }
+
+    public static String getSpoutTexture(String type) {
+        if (type.equals("normal") || type.equals("copper"))
+            return Create.ID + ":block/spout";
+        return CreateCasing.MODID + ":block/spout/" + type;
+    }
+
+    public static String getSpoutNozzleTexture(String type) {
+        if (type.equals("normal") || type.equals("copper"))
+            return Create.ID + ":block/spout_nozzle";
+        return CreateCasing.MODID + ":block/spout_nozzle/" + type;
+    }
+
+    public static String getEncasedPipeTexture(String type) {
+        if (type.equals("normal") || type.equals("copper"))
+            return Create.ID + ":block/encased_pipe";
+        return CreateCasing.MODID + ":block/encased_pipe/" + type;
+    }
 
 
 
-    private static boolean isWoodenShaft(String shaft){
-        return WoodType.values().anyMatch(w->w.name().toLowerCase().equalsIgnoreCase(shaft));
+    private static boolean isWoodenShaft(String shaft) {
+        return WoodType.values().anyMatch(w -> w.name().toLowerCase().equalsIgnoreCase(shaft));
     }
 
 }

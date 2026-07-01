@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/fluid_pipe/window",
+  "textures": {
+    "0": "createcasing:block/glass_fluid_pipe/brass",
+    "particle": "createcasing:block/underside/brass"
+  }
+}

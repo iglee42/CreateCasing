@@ -2,7 +2,6 @@ package fr.iglee42.createcasing.registries;
 
 import com.simibubi.create.*;
 import com.simibubi.create.api.stress.BlockStressValues;
-import com.simibubi.create.content.contraptions.actors.harvester.HarvesterBlock;
 import com.simibubi.create.content.contraptions.actors.harvester.HarvesterMovementBehaviour;
 import com.simibubi.create.content.contraptions.actors.plough.PloughBlock;
 import com.simibubi.create.content.contraptions.actors.plough.PloughMovementBehaviour;
@@ -12,16 +11,14 @@ import com.simibubi.create.content.contraptions.actors.roller.RollerBlockItem;
 import com.simibubi.create.content.contraptions.actors.roller.RollerMovementBehaviour;
 import com.simibubi.create.content.decoration.encasing.*;
 import com.simibubi.create.content.fluids.PipeAttachmentModel;
-import com.simibubi.create.content.fluids.pipes.EncasedPipeBlock;
-import com.simibubi.create.content.kinetics.deployer.DeployerBlock;
+import com.simibubi.create.content.fluids.pipes.*;
+import com.simibubi.create.content.fluids.pipes.valve.FluidValveBlock;
+import com.simibubi.create.content.fluids.tank.*;
+import com.simibubi.create.content.kinetics.crank.ValveHandleBlock;
 import com.simibubi.create.content.kinetics.deployer.DeployerMovementBehaviour;
 import com.simibubi.create.content.kinetics.deployer.DeployerMovingInteraction;
-import com.simibubi.create.content.kinetics.drill.DrillBlock;
 import com.simibubi.create.content.kinetics.drill.DrillMovementBehaviour;
-import com.simibubi.create.content.kinetics.fan.EncasedFanBlock;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlock;
-import com.simibubi.create.content.kinetics.saw.SawBlock;
-import com.simibubi.create.content.kinetics.saw.SawGenerator;
 import com.simibubi.create.content.kinetics.saw.SawMovementBehaviour;
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockModel;
 import com.simibubi.create.content.kinetics.simpleRelays.CogWheelBlock;
@@ -29,27 +26,22 @@ import com.simibubi.create.content.kinetics.simpleRelays.ShaftBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogCTBehaviour;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogwheelBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedShaftBlock;
-import com.simibubi.create.content.kinetics.transmission.ClutchBlock;
-import com.simibubi.create.content.kinetics.transmission.GearshiftBlock;
 import com.simibubi.create.content.logistics.depot.MountedDepotInteractionBehaviour;
 import com.simibubi.create.content.processing.AssemblyOperatorBlockItem;
+import com.simibubi.create.foundation.block.ItemUseOverrides;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
-import com.simibubi.create.foundation.data.AssetLookup;
-import com.simibubi.create.foundation.data.BlockStateGen;
-import com.simibubi.create.foundation.data.CreateRegistrate;
-import com.simibubi.create.foundation.data.SharedProperties;
-import com.simibubi.create.foundation.item.ItemDescription;
-import com.simibubi.create.infrastructure.config.CStress;
+import com.simibubi.create.foundation.data.*;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullBiFunction;
+import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.blocks.AutoClutchBlock;
 import fr.iglee42.createcasing.blocks.ConfigurableGearboxBlock;
 import fr.iglee42.createcasing.blocks.CreativeCogwheelBlock;
 import fr.iglee42.createcasing.blocks.cogwheels.CustomCogwheelBlock;
-import fr.iglee42.createcasing.blocks.cogwheels.WoodenCogwheelBlock;
 import fr.iglee42.createcasing.blocks.customs.*;
+import fr.iglee42.createcasing.blocks.fluids.*;
 import fr.iglee42.createcasing.blocks.publics.PublicChainConveyorBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedCogwheelBlock;
 import fr.iglee42.createcasing.blocks.publics.PublicEncasedPipeBlock;
@@ -58,14 +50,21 @@ import fr.iglee42.createcasing.blocks.shafts.*;
 import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
 import fr.iglee42.createcasing.config.CCStress;
+import fr.iglee42.createcasing.fluids.EncasedFluidTankModel;
+import fr.iglee42.createcasing.fluids.EncasedPipeAttachmentModel;
+import fr.iglee42.createcasing.fluids.FluidSet;
+import fr.iglee42.createcasing.fluids.FluidSets;
 import fr.iglee42.createcasing.items.WoodenCogwheelBlockItem;
+import fr.iglee42.createcasing.registries.generators.CustomFluidTankGenerator;
 import fr.iglee42.createcasing.registries.generators.CustomSawGenerator;
+import fr.iglee42.createcasing.registries.generators.CustomSmartFluidPipeGenerator;
+import fr.iglee42.createcasing.registries.generators.CustomWhistleGenerator;
 import fr.iglee42.createcasing.transmissions.TransmissionSet;
 import fr.iglee42.createcasing.transmissions.TransmissionSets;
 import fr.iglee42.createcasing.utils.CasingBuilderTransformers;
 import net.createmod.catnip.data.Couple;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Rarity;
@@ -73,23 +72,21 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MapColor;
-import net.neoforged.fml.ModList;
+import net.neoforged.neoforge.client.model.generators.ConfiguredModel;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
-import net.neoforged.neoforge.registries.DeferredRegister;
 
-import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 import java.util.function.*;
 
 import static com.simibubi.create.api.behaviour.display.DisplaySource.displaySource;
 import static com.simibubi.create.api.behaviour.interaction.MovingInteractionBehaviour.interactionBehaviour;
 import static com.simibubi.create.api.behaviour.movement.MovementBehaviour.movementBehaviour;
+import static com.simibubi.create.api.contraption.storage.fluid.MountedFluidStorageType.mountedFluidStorage;
 import static com.simibubi.create.api.contraption.storage.item.MountedItemStorageType.mountedItemStorage;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
 import static com.simibubi.create.foundation.data.TagGen.*;
-import static fr.iglee42.createcasing.CreateCasing.MODID;
 import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
 import static fr.iglee42.createcasing.registries.EncasedBlockStateGens.*;
 
@@ -123,7 +120,7 @@ public class EncasedBlocks {
         return REGISTRATE.block(name+"_casing", CasingBlock::new)
                 .properties(p -> p.mapColor(MapColor.PODZOL))
                 .transform(CasingBuilderTransformers.casing(() -> connectedTexturesSprite))
-                .blockstate((c,p)->p.simpleBlock(c.get(),p.models().cubeAll(c.getName(),Create.asResource("block/"+c.getId().getPath()))))
+                .blockstate((c,p)->p.simpleBlock(c.get(),p.models().cubeAll(c.getName(),name.equalsIgnoreCase("creative") ? Create.asResource("block/"+c.getId().getPath()) : CreateCasing.asResource("block/casing/"+name))))
                 .simpleItem()
                 .register();
     }
@@ -625,8 +622,8 @@ public class EncasedBlocks {
             if (set.doesGenerateLargeCogwheel())
                 set.setLargeCogwheel(createLargeCogwheel(set.getName(), set.getCogwheelConstructor()));
         });
-
-        CasingSets.getSets().stream().filter(CasingSet::doesGenerateEncasedWoodenShaft).forEach(set->{
+        registerFluidSets();
+        CasingSets.getSets().stream().filter(CasingSet::doesGenerateEncasedCustomShaft).forEach(set->{
             TransmissionSets.getSets().stream().filter(Predicate.not(TransmissionSet::isNotEncasable)).filter(TransmissionSet::doesGenerateShaft).forEach(tset->{
                 if (tset.getShaftSupplier() != null){
                     createEncasedShaft(tset.getShaftSupplier(),set.getName(), ()->set.getCasing(),set.getConnectedTextureSprite(),(p, s)->new EncasedCustomShaftBlock(p,s,tset.getShaftSupplier()));
@@ -634,7 +631,7 @@ public class EncasedBlocks {
             });
         });
 
-        CasingSets.getSets().stream().filter(CasingSet::doesGenerateEncasedWoodenCogwheel).forEach(set->{
+        CasingSets.getSets().stream().filter(CasingSet::doesGenerateEncasedCustomCogwheel).forEach(set->{
             TransmissionSets.getSets().stream().filter(Predicate.not(TransmissionSet::isNotEncasable)).filter(TransmissionSet::doesGenerateCogwheel).forEach(tset->{
                 if (tset.getCogwheelSupplier() != null){
                     createEncasedCogwheel(tset.getCogwheelSupplier(),set.getName(), ()->set.getCasing(),set.getConnectedTextureSprite(),set.getCogSideSprite(),set.getCogOtherSideSprite(),(p,s)->new EncasedCustomCogwheelBlock(p,false,s,tset.getCogwheelSupplier()));
@@ -642,7 +639,7 @@ public class EncasedBlocks {
             });
         });
 
-        CasingSets.getSets().stream().filter(CasingSet::doesGenerateEncasedWoodenLargeCogwheel).forEach(set->{
+        CasingSets.getSets().stream().filter(CasingSet::doesGenerateEncasedCustomLargeCogwheel).forEach(set->{
             TransmissionSets.getSets().stream().filter(Predicate.not(TransmissionSet::isNotEncasable)).filter(TransmissionSet::doesGenerateLargeCogwheel).forEach(tset->{
                 if (tset.getLargeCogwheelSupplier() != null){
                     createEncasedLargeCogwheel(tset.getLargeCogwheelSupplier(),set.getName(), ()->set.getCasing(),set.getConnectedTextureSprite(),(p,s)->new EncasedCustomCogwheelBlock(p,true,s,tset.getLargeCogwheelSupplier()));
@@ -663,12 +660,280 @@ public class EncasedBlocks {
 
     public static void forEachCogwheel(Consumer<BlockEntry<? extends CogWheelBlock>> action){
         TransmissionSets.getSets().stream().filter(TransmissionSet::doesGenerateCogwheel).forEach(set->action.accept(set.getCogwheelSupplier()));
-
     }
 
     public static void forEachLargeCogwheel(Consumer<BlockEntry<? extends CogWheelBlock>> action){
         TransmissionSets.getSets().stream().filter(TransmissionSet::doesGenerateLargeCogwheel).forEach(set->action.accept(set.getLargeCogwheelSupplier()));
-
     }
+
+    private static void registerFluidSets(){
+        FluidSets.getSets().forEach(set->{
+            if (set.doesGenerateFluidPipe()) {
+                BlockEntry<CustomFluidPipeBlock> pipe = createFluidPipe(set.getName());
+                set.setFluidPipe(pipe,createGlassFluidPipe(set.getName(),pipe));
+            }
+            if (set.doesGeneratePump())
+                set.setPump(createFluidPump(set.getName()));
+
+            if (set.doesGenerateSmartFluidPipe())
+                set.setSmartFluidPipe(createSmartFluidPipe(set.getName()));
+
+            if (set.doesGenerateFluidTank())
+                set.setFluidTank(createFluidTank(set.getName(),set.getTankSideSprite(),set.getTankTopSprite(),set.getTankInnerSprite()));
+
+            if (set.doesGenerateSteamEngine())
+                set.setSteamEngine(createSteamEngine(set.getName()));
+
+            if (set.doesGenerateItemDrain())
+                set.setItemDrain(createItemDrain(set.getName()));
+
+            if (set.doesGenerateFluidValve())
+                set.setFluidValve(createFluidValve(set.getName()));
+
+            if (set.doesGenerateValveHandle())
+                set.setValveHandle(createValveHandle(set.getName()));
+
+            if (set.doesGenerateHosePulley())
+                set.setHosePulley(createHosePulley(set.getName()));
+
+            if (set.doesGeneratePortableFluidInterface())
+                set.setPortableFluidInterface(createPortableFluidInterface(set.getName()));
+
+            if (set.doesGenerateWhistle())
+                set.setWhistle(createSteamWhistle(set.getName()));
+
+            if (set.doesGenerateSpout())
+                set.setSpout(createSpout(set.getName()));
+        });
+
+        CasingSets.getSets().stream().filter(CasingSet::doesGenerateEncasedCustomPipe).forEach(set->{
+            FluidSets.getSets().stream().filter(Predicate.not(FluidSet::isNotEncasable)).filter(FluidSet::doesGenerateFluidPipe).forEach(fset->{
+                if (fset.getFluidPipeSupplier() != null){
+                    createEncasedCustomPipe(fset.getName(),set.getName(), ()->set.getCasing(),fset.getFluidPipeSupplier(),set.getConnectedTextureSprite());
+                }
+            });
+        });
+    }
+
+
+    public static BlockEntry<CustomFluidPipeBlock> createFluidPipe(String name) {
+        return REGISTRATE.block(name+"_fluid_pipe", CustomFluidPipeBlock::new)
+                .initialProperties(SharedProperties::copperMetal)
+                .properties(p -> p.forceSolidOff())
+                .transform(pickaxeOnly())
+                .blockstate(EncasedBlockStateGens.pipe(name))
+                .onRegister(CreateRegistrate.blockModel(() -> model-> EncasedPipeAttachmentModel.withAO(model, name)))
+                .item()
+                .model((c,p)->p.getBuilder(c.getName()).parent(new ModelFile.UncheckedModelFile(CreateCasing.asResource("block/fluid_pipe/"+name+"/item"))))
+                .build()
+                .register();
+    }
+
+
+    public static BlockEntry<CustomGlassFluidPipeBlock> createGlassFluidPipe(String name, BlockEntry<? extends FluidPipeBlock> pipe){
+            return REGISTRATE.block(name+"_glass_fluid_pipe", CustomGlassFluidPipeBlock::new)
+                    .initialProperties(SharedProperties::copperMetal)
+                    .properties(p -> p.noOcclusion())
+                    .addLayer(() -> RenderType::cutoutMipped)
+                    .transform(pickaxeOnly())
+                    .blockstate((c, p) -> {
+                        p.getVariantBuilder(c.getEntry())
+                                .forAllStatesExcept(state -> {
+                                    Direction.Axis axis = state.getValue(BlockStateProperties.AXIS);
+                                    return ConfiguredModel.builder()
+                                            .modelFile(p.models()
+                                                    .getExistingFile(p.modLoc("block/fluid_pipe/"+name+"/window")))
+                                            .uvLock(false)
+                                            .rotationX(axis == Direction.Axis.Y ? 0 : 90)
+                                            .rotationY(axis == Direction.Axis.X ? 90 : 0)
+                                            .build();
+                                }, BlockStateProperties.WATERLOGGED);
+                    })
+                    .onRegister(CreateRegistrate.blockModel(() -> model-> EncasedPipeAttachmentModel.withAO(model, name)))
+                    .loot((p, b) -> p.dropOther(b, pipe.get()))
+                    .register();
+    }
+
+    public static BlockEntry<CustomPumpBlock> createFluidPump(String name) {
+        return REGISTRATE.block(name+"_mechanical_pump", CustomPumpBlock::new)
+                .initialProperties(SharedProperties::copperMetal)
+                .properties(p -> p.mapColor(MapColor.STONE))
+                .transform(pickaxeOnly())
+                .blockstate(pump(name))
+                .onRegister(CreateRegistrate.blockModel(() -> model-> EncasedPipeAttachmentModel.withAO(model, name)))
+                .transform(CCStress.setImpact(4.0))
+                .item()
+                .model((c,p)->p.getBuilder(c.getName()).parent(pumpModel(p,name,true)))
+                .build()
+                .register();
+    }
+
+    public static BlockEntry<CustomSmartFluidPipeBlock> createSmartFluidPipe(String name) {
+        return REGISTRATE.block(name+"_smart_fluid_pipe", CustomSmartFluidPipeBlock::new)
+                .initialProperties(SharedProperties::copperMetal)
+                .properties(p -> p.mapColor(MapColor.TERRACOTTA_YELLOW))
+                .transform(pickaxeOnly())
+                .blockstate(new CustomSmartFluidPipeGenerator(name)::generate)
+                .onRegister(CreateRegistrate.blockModel(() -> model-> EncasedPipeAttachmentModel.withAO(model, name)))
+                .item()
+                .model((c,p)->p.getBuilder(c.getName()).parent(smartPipeModel(p,name,true)))
+                .build()
+                .register();
+    }
+
+    public static BlockEntry<CustomFluidTankBlock> createFluidTank(String name,CTSpriteShiftEntry sideSprite, CTSpriteShiftEntry topSprite, CTSpriteShiftEntry innerSprite) {
+        return REGISTRATE.block(name+"_fluid_tank", CustomFluidTankBlock::new)
+                .initialProperties(SharedProperties::copperMetal)
+                .properties(p -> p.noOcclusion()
+                        .isRedstoneConductor((p1, p2, p3) -> true))
+                .transform(pickaxeOnly())
+                .blockstate(new CustomFluidTankGenerator(name)::generate)
+                .onRegister(CreateRegistrate.blockModel(() -> model->new EncasedFluidTankModel(model,sideSprite,topSprite,innerSprite)))
+                .transform(displaySource(AllDisplaySources.BOILER))
+                .transform(mountedFluidStorage(AllMountedStorageTypes.FLUID_TANK))
+                .onRegister(movementBehaviour(new FluidTankMovementBehavior()))
+                .addLayer(() -> RenderType::cutoutMipped)
+                .item(FluidTankItem::new)
+                .model(AssetLookup.customBlockItemModel("fluid_tank",name, "block_single_window"))
+                .build()
+                .register();
+    }
+
+    public static BlockEntry<CustomSteamEngineBlock> createSteamEngine(String name) {
+        return REGISTRATE.block(name+"_steam_engine", CustomSteamEngineBlock::new)
+                .initialProperties(SharedProperties::copperMetal)
+                .transform(pickaxeOnly())
+                .blockstate((c, p) -> p.horizontalFaceBlock(c.get(), steamEngineModel(p,name,false)))
+                .transform(CCStress.setCapacity(1024.0))
+                .onRegister(BlockStressValues.setGeneratorSpeed(64, true))
+                .item()
+                .model((c,p)->p.getBuilder(c.getName()).parent(steamEngineModel(p,name,true)))
+                .build()
+                .register();
+    }
+
+    public static BlockEntry<CustomItemDrainBlock> createItemDrain(String name) {
+        return REGISTRATE.block(name+"_item_drain", CustomItemDrainBlock::new)
+                .initialProperties(SharedProperties::copperMetal)
+                .transform(pickaxeOnly())
+                .addLayer(() -> RenderType::cutoutMipped)
+                .blockstate((c, p) -> p.simpleBlock(c.get(), itemDrainModel(p,name)))
+                .item()
+                .model(AssetLookup.customBlockItemModel("item_drain",name))
+                .build()
+                .register();
+    }
+
+    public static BlockEntry<CustomFluidValveBlock> createFluidValve(String name) {
+       return REGISTRATE.block(name+"_fluid_valve", CustomFluidValveBlock::new)
+                .initialProperties(SharedProperties::copperMetal)
+                .transform(pickaxeOnly())
+                .addLayer(() -> RenderType::cutoutMipped)
+                .blockstate((c, p) -> BlockStateGen.directionalAxisBlock(c, p,
+                        (state, vertical) -> fluidValveModel(p, name, false,vertical,state.getValue(FluidValveBlock.ENABLED))))
+                .onRegister(CreateRegistrate.blockModel(() -> model->EncasedPipeAttachmentModel.withAO(model, name)))
+                .item()
+                .model((c,p)->p.getBuilder(c.getName()).parent(fluidValveModel(p,name,true,false,true)))
+                .build()
+                .register();
+    }
+
+    public static BlockEntry<ValveHandleBlock> createValveHandle(String name) {
+        return REGISTRATE.block(name+"_valve_handle", ValveHandleBlock::copper)
+                .transform(pickaxeOnly())
+                .transform(valveHandle(name))
+                .transform(CCStress.setCapacity(8.0))
+                .register();
+    }
+
+    public static BlockEntry<CustomHosePulleyBlock> createHosePulley(String name) {
+        return REGISTRATE.block(name+"_hose_pulley", CustomHosePulleyBlock::new)
+                .initialProperties(SharedProperties::copperMetal)
+                .properties(BlockBehaviour.Properties::noOcclusion)
+                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(pickaxeOnly())
+                .blockstate(hosePulley(name))
+                .transform(CCStress.setImpact(4.0))
+                .item()
+                .model((c,p)->p.getBuilder(c.getName()).parent(hosePulleyModel(p,name,true)))
+                .build()
+                .register();
+    }
+
+    public static BlockEntry<PortableStorageInterfaceBlock> createPortableFluidInterface(String name) {
+        return REGISTRATE.block(name+"_portable_fluid_interface", PortableStorageInterfaceBlock::forFluids)
+                .initialProperties(SharedProperties::copperMetal)
+                .properties(p -> p.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY))
+                .transform(axeOrPickaxe())
+                .blockstate((c, p) -> p.directionalBlock(c.get(), fluidInterfaceModel(p,name,false)))
+                .onRegister(movementBehaviour(new PortableStorageInterfaceMovement()))
+                .item()
+                .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
+                .model((c,p)->p.getBuilder(c.getName()).parent(fluidInterfaceModel(p,name,true)))
+                .build()
+                .register();
+    }
+
+
+    private static <B extends ValveHandleBlock> NonNullUnaryOperator<BlockBuilder<B, CreateRegistrate>> valveHandle(
+           String name) {
+        return b -> b.initialProperties(SharedProperties::copperMetal)
+                .blockstate((c, p) -> {
+                    p.directionalBlock(c.get(), p.models()
+                            .withExistingParent(name + "_valve_handle", Create.asResource("block/valve_handle"))
+                            .texture("3", p.modLoc("block/valve_handle/" + name)));
+                })
+                .tag(AllTags.AllBlockTags.BRITTLE.tag, AllTags.AllBlockTags.VALVE_HANDLES.tag)
+                .onRegister(BlockStressValues.setGeneratorSpeed(32))
+                .onRegister(ItemUseOverrides::addBlock)
+                .item()
+                .tag(AllTags.AllItemTags.VALVE_HANDLES.tag)
+                .build();
+    }
+
+
+    public static BlockEntry<CustomWhistleBlock> createSteamWhistle(String name){
+        return REGISTRATE.block(name+"_steam_whistle", CustomWhistleBlock::new)
+                .initialProperties(SharedProperties::copperMetal)
+                .properties(p -> p.mapColor(MapColor.GOLD))
+                .transform(pickaxeOnly())
+                .blockstate(new CustomWhistleGenerator(name)::generate)
+                .item()
+                .model((c,p)->p.getBuilder(c.getName()).parent(whistleItemModel(p,name)))
+                .build()
+                .register();
+    }
+
+    public static BlockEntry<CustomSpoutBlock> createSpout(String name) {
+        return REGISTRATE.block(name +"_spout", CustomSpoutBlock::new)
+                .initialProperties(SharedProperties::copperMetal)
+                .transform(pickaxeOnly())
+                .blockstate((ctx, prov) -> prov.simpleBlock(ctx.getEntry(), spoutModel(prov,name,false)))
+                .addLayer(() -> RenderType::cutoutMipped)
+                .item(AssemblyOperatorBlockItem::new)
+                .model((c,p)->p.getBuilder(c.getName()).parent(spoutModel(p,name,true)))
+                .build()
+                .register();
+    }
+
+    private static BlockEntry<EncasedCustomPipeBlock> createEncasedCustomPipe(String name, String casingName, Supplier<Block> casing,Supplier<? extends FluidPipeBlock> pipe, CTSpriteShiftEntry sprite){;
+        BlockBuilder<EncasedCustomPipeBlock,CreateRegistrate> builder = REGISTRATE.block(casingName+"_encased_"+name+"_fluid_pipe", p -> new EncasedCustomPipeBlock(p, casing,pipe))
+                .initialProperties(SharedProperties::copperMetal)
+                .properties(p -> p.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY))
+                .properties(BlockBehaviour.Properties::noOcclusion)
+                .transform(axeOrPickaxe())
+                .blockstate(EncasedBlockStateGens.encasedCustomPipe(name,casingName))
+                .onRegister(CreateRegistrate.blockModel(() -> model-> EncasedPipeAttachmentModel.withAO(model, name)))
+                .loot((p, b) -> p.dropOther(b, pipe.get()))
+                .transform(EncasingRegistry.addVariantTo(pipe))
+                .onRegisterAfter(Registries.ITEM, CreateCasing::hideItem);
+        builder = connectedTexture(builder,sprite,(block,cc)->cc.make(block, sprite,
+                (s, f) -> !s.getValue(EncasedPipeBlock.FACING_TO_PROPERTY_MAP.get(f))));
+        return builder.register();
+    }
+
+
+
+
 
 }

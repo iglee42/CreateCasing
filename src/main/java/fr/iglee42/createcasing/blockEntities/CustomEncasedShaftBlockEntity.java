@@ -2,7 +2,7 @@ package fr.iglee42.createcasing.blockEntities;
 
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
 import fr.iglee42.createcasing.blocks.shafts.EncasedCustomShaftBlock;
-import fr.iglee42.createcasing.config.ModConfigs;
+import fr.iglee42.createcasing.config.EncasedConfigs;
 import fr.iglee42.createcasing.registries.EncasedBlocks;
 import fr.iglee42.createcasing.transmissions.TransmissionSets;
 import net.minecraft.core.BlockPos;
@@ -19,7 +19,7 @@ public class CustomEncasedShaftBlockEntity extends SimpleKineticBlockEntity {
         super.tick();
 
         if (TransmissionSets.GLASS.getShaft() != null && ((EncasedCustomShaftBlock) getBlockState().getBlock()).getShaft().get().defaultBlockState().is(TransmissionSets.GLASS.getShaft())) {
-            if (ModConfigs.common().kinetics.shouldGlassShaftBreak.get()) {
+            if (EncasedConfigs.common().kinetics.shouldGlassShaftBreak.get()) {
                 if (isOverStressed()) {
                     if (source != null) {
                         if (!(getLevel().getBlockState(source).is(TransmissionSets.GLASS.getShaft())) || (getLevel().getBlockState(source).getBlock() instanceof EncasedCustomShaftBlock sh &&sh.getShaft().get().defaultBlockState().is(TransmissionSets.GLASS.getShaft()))) {
@@ -31,8 +31,8 @@ public class CustomEncasedShaftBlockEntity extends SimpleKineticBlockEntity {
         }
 
         if (EncasedBlocks.isWoodenShaftHasState(((EncasedCustomShaftBlock) getBlockState().getBlock()).getShaft().get().defaultBlockState())) {
-            if (ModConfigs.common().kinetics.shouldWoodenShaftBreak.get()) {
-                if ((getSpeed() > ModConfigs.common().kinetics.maxSpeedWoodenShaft.get() || getSpeed() < -ModConfigs.common().kinetics.maxSpeedWoodenShaft.get()))
+            if (EncasedConfigs.common().kinetics.shouldWoodenShaftBreak.get()) {
+                if ((getSpeed() > EncasedConfigs.common().kinetics.maxSpeedWoodenShaft.get() || getSpeed() < -EncasedConfigs.common().kinetics.maxSpeedWoodenShaft.get()))
                     if (source != null) {
                         if (!(EncasedBlocks.isWoodenShaftHasState(getLevel().getBlockState(source))) || (getLevel().getBlockState(source).getBlock() instanceof EncasedCustomShaftBlock sh && EncasedBlocks.isWoodenShaftHasState(sh.getShaft().get().defaultBlockState())))
                             getLevel().destroyBlock(worldPosition, false);

@@ -1,0 +1,6 @@
+{
+  "parent": "createcasing:block/steam_whistle/zinc/block_small_floor",
+  "textures": {
+    "2": "createcasing:block/redstone_plate_powered/zinc"
+  }
+}

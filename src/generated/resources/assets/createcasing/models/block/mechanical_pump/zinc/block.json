@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/mechanical_pump/block",
+  "textures": {
+    "4": "createcasing:block/pump/zinc",
+    "particle": "createcasing:block/underside/zinc"
+  }
+}

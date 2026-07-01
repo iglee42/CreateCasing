@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=east": {
+      "model": "createcasing:block/hose_pulley/andesite/block",
+      "y": 90
+    },
+    "facing=north": {
+      "model": "createcasing:block/hose_pulley/andesite/block"
+    },
+    "facing=south": {
+      "model": "createcasing:block/hose_pulley/andesite/block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "createcasing:block/hose_pulley/andesite/block",
+      "y": 270
+    }
+  }
+}

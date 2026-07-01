@@ -2,10 +2,16 @@ package fr.iglee42.createcasing.registries;
 
 
 import com.simibubi.create.AllPartialModels;
+import com.simibubi.create.content.fluids.FluidTransportBehaviour;
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
+import fr.iglee42.createcasing.fluids.FluidSet;
+import fr.iglee42.createcasing.fluids.FluidSets;
+import net.createmod.catnip.data.Iterate;
+import net.createmod.catnip.lang.Lang;
+import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.state.BlockState;
 
@@ -78,15 +84,42 @@ public class EncasedPartialModels {
             WEATHERED_IRON_ROLLER_FRAME = block("mechanical_roller/weathered_iron/frame"),
             CREATIVE_ROLLER_FRAME = block("mechanical_roller/creative/frame"),
             REFINED_RADIANCE_ROLLER_FRAME = block("mechanical_roller/refined_radiance/frame"),
-            SHADOW_STEEL_ROLLER_FRAME = block("mechanical_roller/shadow_steel/frame")
+            SHADOW_STEEL_ROLLER_FRAME = block("mechanical_roller/shadow_steel/frame"),
 
-            ;
+    ANDESITE_GAUGE = block("steam_engine/andesite/gauge"), ANDESITE_GAUGE_DIAL = block("steam_engine/andesite/gauge_dial"),
+            BRASS_GAUGE = block("steam_engine/brass/gauge"), BRASS_GAUGE_DIAL = block("steam_engine/brass/gauge_dial"),
+            ZINC_GAUGE = block("steam_engine/zinc/gauge"), ZINC_GAUGE_DIAL = block("steam_engine/zinc/gauge_dial"),
+
+
+    ANDESITE_VALVE_HANDLE = block("andesite_valve_handle"),
+            BRASS_VALVE_HANDLE = block("brass_valve_handle"),
+            ZINC_VALVE_HANDLE = block("zinc_valve_handle"),
+
+    ANDESITE_HOSE_PULLEY_MAGNET = block("hose_pulley/andesite/pulley_magnet"),ANDESITE_HOSE_PULLEY_HALF_MAGNET = block("hose_pulley/andesite/rope_half_magnet"),
+            BRASS_HOSE_PULLEY_MAGNET = block("hose_pulley/brass/pulley_magnet"),BRASS_HOSE_PULLEY_HALF_MAGNET = block("hose_pulley/brass/rope_half_magnet"),
+            ZINC_HOSE_PULLEY_MAGNET = block("hose_pulley/zinc/pulley_magnet"),ZINC_HOSE_PULLEY_HALF_MAGNET = block("hose_pulley/zinc/rope_half_magnet"),
+
+    ANDESITE_FLUID_INTERFACE_TOP = block("portable_fluid_interface/andesite/block_top"),
+    BRASS_FLUID_INTERFACE_TOP = block("portable_fluid_interface/brass/block_top"),
+    ZINC_FLUID_INTERFACE_TOP = block("portable_fluid_interface/zinc/block_top"),
+
+    ANDESITE_SPOUT_BOTTOM = block("spout/andesite/bottom"),
+    BRASS_SPOUT_BOTTOM = block("spout/brass/bottom"),
+    ZINC_SPOUT_BOTTOM = block("spout/zinc/bottom")
+
+
+    ;
 
     public static final Map<String, PartialModel> SHAFT_MODELS = new HashMap<>();
     public static final Map<String, PartialModel> COGS_MODELS = new HashMap<>();
     public static final Map<String, PartialModel> SHAFTLESS_COGS_MODELS = new HashMap<>();
     public static final Map<String, PartialModel> LARGE_COGS_MODELS = new HashMap<>();
     public static final Map<String, PartialModel> SHAFTLESS_LARGE_COGS_MODELS = new HashMap<>();
+
+    public static final Map<String,Map<FluidTransportBehaviour.AttachmentTypes.ComponentPartials, Map<Direction, PartialModel>>> PIPE_ATTACHMENTS =
+            new HashMap<>();
+    public static final Map<String,PartialModel> PIPE_CASINGS =
+            new HashMap<>();
 
     static {
         String[] woods = new String[]{"oak", "birch", "acacia", "jungle", "warped", "dark_oak", "crimson", "mangrove", "cherry", "bamboo"};
@@ -109,6 +142,23 @@ public class EncasedPartialModels {
             LARGE_COGS_MODELS.put(w, EncasedPartialModels.block("large_cogwheel/" + w));
             SHAFTLESS_LARGE_COGS_MODELS.put(w, EncasedPartialModels.block("large_cogwheel_shaftless/" + w));
         }
+
+        for (FluidSet set : FluidSets.getSets()) {
+            if (!set.doesGenerateFluidPipe()) continue;
+            Map<FluidTransportBehaviour.AttachmentTypes.ComponentPartials,Map<Direction,PartialModel>> partialMap = new EnumMap<>(FluidTransportBehaviour.AttachmentTypes.ComponentPartials.class);
+            for (FluidTransportBehaviour.AttachmentTypes.ComponentPartials type : FluidTransportBehaviour.AttachmentTypes.ComponentPartials
+                    .values()) {
+                Map<Direction, PartialModel> map = new HashMap<>();
+                for (Direction d : Iterate.directions) {
+                    String asId = Lang.asId(type.name());
+                    map.put(d, block("fluid_pipe/"+set.getName()+"/" + asId + "/" + Lang.asId(d.getSerializedName())));
+                }
+                partialMap.put(type, map);
+            }
+            PIPE_ATTACHMENTS.put(set.getName(), partialMap);
+            PIPE_CASINGS.put(set.getName(), block("fluid_pipe/"+set.getName()+"/casing"));
+        }
+
     }
 
     public static PartialModel block(String path) {

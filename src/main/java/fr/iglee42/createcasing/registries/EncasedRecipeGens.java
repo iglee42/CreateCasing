@@ -1,14 +1,18 @@
 package fr.iglee42.createcasing.registries;
 
+import com.google.common.base.Predicates;
 import com.google.common.base.Supplier;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
+import com.simibubi.create.AllTags;
 import com.simibubi.create.api.data.recipe.BaseRecipeProvider;
 import com.simibubi.create.foundation.data.recipe.CommonMetal;
 import com.tterrag.registrate.util.entry.ItemProviderEntry;
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
+import fr.iglee42.createcasing.fluids.FluidSet;
+import fr.iglee42.createcasing.fluids.FluidSets;
 import fr.iglee42.createcasing.transmissions.TransmissionSets;
 import net.createmod.catnip.registry.RegisteredObjectsHelper;
 import net.minecraft.advancements.critereon.ItemPredicate;
@@ -386,10 +390,18 @@ public class EncasedRecipeGens extends BaseRecipeProvider{
                         .define('I',AllItems.WHISK)
         ));
 
-        createForSetElement("portable_storage_interface",CasingSet::doesGenerateStorageInterface,CasingSet::getStorageInterface,(builder,set)->builder.viaShapeless(sh->
+        createForSetElement("portable_storage_interface",Predicates.and(CasingSet::doesGenerateStorageInterface, set->!set.equals(CasingSets.COPPER)),CasingSet::getStorageInterface,(builder,set)->builder.viaShapeless(sh->
                 sh.requires(set.getCasing())
                         .requires(AllBlocks.CHUTE)
         ));
+
+        createForSetElement("portable_storage_interface",Predicates.and(CasingSet::doesGenerateStorageInterface, set->set.equals(CasingSets.COPPER)),CasingSet::getStorageInterface,(builder,set)->builder.returns(2).viaShaped(sh->
+                sh.pattern("IC")
+                        .pattern("IC")
+                        .define('C',AllBlocks.CHUTE)
+                        .define('I',set.getCasing())
+        ));
+
 
         createForSetElement("press",CasingSet::doesGeneratePress,CasingSet::getPress,(builder,set)->builder.viaShaped(sh->
                 sh.pattern("B")
@@ -454,13 +466,113 @@ public class EncasedRecipeGens extends BaseRecipeProvider{
                         .define('C',AllBlocks.TURNTABLE)
                 ));
 
+        createForFluidSetElement("fluid_pipe",FluidSet::doesGenerateFluidPipe,FluidSet::getFluidPipe,(builder,set)->builder.returns(6).viaShaped(sh->
+                sh.pattern("SIS")
+                        .define('S',set.getSheet())
+                        .define('I',set.getItem())
+        ));
 
+        createForFluidSetElement("fluid_pipe",FluidSet::doesGenerateFluidPipe,FluidSet::getFluidPipe,(builder,set)->builder.returns(6).suffix("_vertical").viaShaped(sh->
+                sh.pattern("S")
+                        .pattern("I")
+                        .pattern("S")
+                        .define('S',set.getSheet())
+                        .define('I',set.getItem())
+        ));
+
+        createForFluidSetElement("smart_fluid_pipe", Predicates.and(FluidSet::doesGenerateFluidPipe,FluidSet::doesGenerateSmartFluidPipe),FluidSet::getSmartFluidPipe,(builder, set)->builder.viaShaped(sh->
+                sh.pattern("B")
+                        .pattern("I")
+                        .pattern("S")
+                        .define('B', CommonMetal.BRASS.plates)
+                        .define('S',AllItems.ELECTRON_TUBE)
+                        .define('I',set.getFluidPipe())
+        ));
+
+        createForFluidSetElement("fluid_valve", Predicates.and(FluidSet::doesGenerateFluidPipe,FluidSet::doesGenerateFluidValve),FluidSet::getFluidValve,(builder, set)->builder.viaShapeless(sh->
+                sh.requires(set.getFluidPipe())
+                        .requires(CommonMetal.IRON.plates)
+        ));
+
+        createForFluidSetElement("valve_handle",FluidSet::doesGenerateValveHandle,FluidSet::getValveHandle,(builder,set)->builder.viaShaped(sh->
+                sh.pattern("SSS")
+                        .pattern(" I ")
+                        .define('S',set.getSheet())
+                        .define('I',AllItems.ANDESITE_ALLOY)
+        ));
+
+        createForFluidSetElement("fluid_tank",FluidSet::doesGenerateFluidTank,FluidSet::getFluidTank,(builder,set)->builder.viaShaped(sh->
+                sh.pattern("S")
+                        .pattern("I")
+                        .pattern("S")
+                        .define('S',set.getSheet())
+                        .define('I',Tags.Items.BARRELS_WOODEN)
+        ));
+
+        createForFluidSetElement("hose_pulley",FluidSet::doesGenerateHosePulley,FluidSet::getHosePulley,(builder,set)->builder.viaShaped(sh->
+                sh.pattern("C")
+                        .pattern("I")
+                        .pattern("S")
+                        .define('S',set.getSheet())
+                        .define('I',Items.DRIED_KELP_BLOCK)
+                        .define('C',set.getCasing())
+        ));
+
+        createForFluidSetElement("item_drain",FluidSet::doesGenerateItemDrain,FluidSet::getItemDrain,(builder,set)->builder.viaShaped(sh->
+                sh.pattern("I")
+                        .pattern("C")
+                        .define('I',Items.IRON_BARS)
+                        .define('C',set.getCasing())
+        ));
+
+        createForFluidSetElement("portable_fluid_interface",FluidSet::doesGeneratePortableFluidInterface,FluidSet::getPortableFluidInterface,(builder,set)->builder.returns(2).viaShaped(sh->
+                sh.pattern("IC")
+                        .pattern("IC")
+                        .define('C',AllBlocks.CHUTE)
+                        .define('I',set.getCasing())
+        ));
+
+        createForFluidSetElement("steam_engine",FluidSet::doesGenerateSteamEngine,FluidSet::getSteamEngine,(builder,set)->builder.viaShaped(sh->
+                sh.pattern("C")
+                        .pattern("I")
+                        .pattern("S")
+                        .define('S',set.getBlock())
+                        .define('I', AllItems.ANDESITE_ALLOY)
+                        .define('C',CommonMetal.GOLD.plates)
+        ));
+
+        createForFluidSetElement("steam_whistle",FluidSet::doesGenerateWhistle,FluidSet::getWhistle,(builder,set)->builder.viaShaped(sh->
+                sh.pattern("I")
+                        .pattern("C")
+                        .define('I',CommonMetal.GOLD.plates)
+                        .define('C',set.getItem())
+        ));
+
+        createForFluidSetElement("fluid_pump", Predicates.and(FluidSet::doesGenerateFluidPipe,FluidSet::doesGeneratePump),FluidSet::getPump,(builder, set)->builder.viaShapeless(sh->
+                sh.requires(AllBlocks.COGWHEEL)
+                        .requires(set.getFluidPipe())
+        ));
+
+        createForFluidSetElement("spout",FluidSet::doesGenerateSpout,FluidSet::getSpout,(builder,set)->builder.viaShaped(sh->
+                sh.pattern("I")
+                        .pattern("C")
+                        .define('I',set.getCasing())
+                        .define('C',Items.DRIED_KELP)
+        ));
 
     }
 
     private void createForSetElement(String folderName,Predicate<CasingSet> exists, Function<CasingSet,? extends ItemLike> block, BiFunction<GeneratedRecipeBuilder,CasingSet,GeneratedRecipe> recipeGenerator){
         enterFolder(folderName);
         CasingSets.getSets().stream().filter(exists).forEach(set->{
+            recipeGenerator.apply(create(set.getName(),()->block.apply(set)).unlockedBy(set::getCasing),set);
+        });
+        leftLastFolder();
+    }
+
+    private void createForFluidSetElement(String folderName, Predicate<FluidSet> exists, Function<FluidSet,? extends ItemLike> block, BiFunction<GeneratedRecipeBuilder,FluidSet,GeneratedRecipe> recipeGenerator){
+        enterFolder(folderName);
+        FluidSets.getSets().stream().filter(exists).forEach(set->{
             recipeGenerator.apply(create(set.getName(),()->block.apply(set)).unlockedBy(set::getCasing),set);
         });
         leftLastFolder();

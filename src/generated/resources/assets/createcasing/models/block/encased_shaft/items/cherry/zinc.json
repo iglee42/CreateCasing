@@ -1,0 +1,10 @@
+{
+  "parent": "create:block/encased_shaft/item",
+  "textures": {
+    "1_0": "minecraft:block/stripped_cherry_log",
+    "1_1": "minecraft:block/stripped_cherry_log_top",
+    "casing": "createcasing:block/casing/zinc",
+    "opening": "createcasing:block/gearbox/zinc",
+    "particle": "createcasing:block/casing/zinc"
+  }
+}

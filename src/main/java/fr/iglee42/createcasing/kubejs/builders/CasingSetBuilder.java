@@ -10,7 +10,6 @@ import fr.iglee42.createcasing.registries.EncasedPartialModels;
 import net.createmod.catnip.render.SpriteShiftEntry;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.level.block.Block;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -182,17 +181,22 @@ public class CasingSetBuilder {
         return this;
     }
 
-    public CasingSetBuilder encasedWoodenShaft(){
-        this.options.encasedWoodenShaft();
+    public CasingSetBuilder encasedCustomShaft(){
+        this.options.encasedCustomShaft();
         return this;
     }
 
-    public CasingSetBuilder encasedWoodenCogwheel(){
-        this.options.encasedWoodenCogwheel();
+    public CasingSetBuilder encasedCustomCogwheel(){
+        this.options.encasedCustomCogwheel();
         return this;
     }
-    public CasingSetBuilder encasedWoodenLargeCogwheel(){
-        this.options.encasedWoodenLargeCogwheel();
+    public CasingSetBuilder encasedCustomLargeCogwheel(){
+        this.options.encasedCustomLargeCogwheel();
+        return this;
+    }
+
+    public CasingSetBuilder encasedCustomPipe(){
+        this.options.encasedCustomPipe();
         return this;
     }
 
@@ -214,7 +218,7 @@ public class CasingSetBuilder {
     }
 
     public CasingSetBuilder encasedCustomTransmissionBlocks(){
-        return encasedWoodenShaft().encasedWoodenCogwheel().encasedWoodenLargeCogwheel();
+        return encasedCustomShaft().encasedCustomCogwheel().encasedCustomLargeCogwheel();
     }
 
     public CasingSetBuilder contraptionBlocks(ResourceLocation drillHeadModel,ResourceLocation rollerFrameModel){
@@ -222,7 +226,7 @@ public class CasingSetBuilder {
     }
 
     public CasingSetBuilder fluids(){
-        return fluidPipe();
+        return fluidPipe().encasedCustomPipe();
     }
 
     public CasingSetBuilder everythingExceptCasing(Supplier<CTSpriteShiftEntry> ctSprite, @Nonnull Supplier<SpriteShiftEntry> beltSprite, ResourceLocation alongXBeltModel, ResourceLocation alongZBeltModel, @Nullable Supplier<CTSpriteShiftEntry> cogwheelSideSprite, @Nullable Supplier<CTSpriteShiftEntry> cogwheelOtherSideSprite, Supplier<PartialModel> conveyorGuard, Supplier<PartialModel> conveyorWheel, Supplier<PartialModel> conveyorShaft, ResourceLocation mixerHeadModel, ResourceLocation drillHeadModel,ResourceLocation rollerFrameModel){

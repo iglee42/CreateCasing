@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/fluid_pipe/rim/north",
+  "textures": {
+    "0": "createcasing:block/pipes/zinc",
+    "particle": "createcasing:block/underside/zinc"
+  }
+}

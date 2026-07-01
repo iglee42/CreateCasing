@@ -1,5 +1,6 @@
 package fr.iglee42.createcasing;
 
+import fr.iglee42.createcasing.ponder.CasingCreatePonderPlugin;
 import fr.iglee42.createcasing.ponder.CasingPonderPlugin;
 import fr.iglee42.createcasing.registries.EncasedPartialModels;
 import net.createmod.ponder.foundation.PonderIndex;
@@ -28,6 +29,7 @@ public class CreateCasingClient {
         //CasingPonderScenes.register();
 
         PonderIndex.addPlugin(new CasingPonderPlugin());
+        PonderIndex.addPlugin(new CasingCreatePonderPlugin());
     }
 
     public static void onRegisterAdditionalModels(ModelEvent.RegisterAdditional event){

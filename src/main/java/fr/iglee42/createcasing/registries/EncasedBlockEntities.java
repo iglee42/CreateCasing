@@ -2,11 +2,28 @@ package fr.iglee42.createcasing.registries;
 
 import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.contraptions.actors.harvester.HarvesterBlockEntity;
 import com.simibubi.create.content.contraptions.actors.harvester.HarvesterRenderer;
 import com.simibubi.create.content.contraptions.actors.roller.RollerBlockEntity;
 import com.simibubi.create.content.contraptions.actors.roller.RollerRenderer;
-import com.simibubi.create.content.fluids.pipes.FluidPipeBlockEntity;
+import com.simibubi.create.content.contraptions.pulley.HosePulleyVisual;
+import com.simibubi.create.content.decoration.steamWhistle.WhistleBlockEntity;
+import com.simibubi.create.content.decoration.steamWhistle.WhistleRenderer;
+import com.simibubi.create.content.fluids.drain.ItemDrainBlockEntity;
+import com.simibubi.create.content.fluids.drain.ItemDrainRenderer;
+import com.simibubi.create.content.fluids.hosePulley.HosePulleyBlockEntity;
+import com.simibubi.create.content.fluids.hosePulley.HosePulleyRenderer;
+import com.simibubi.create.content.fluids.pipes.*;
+import com.simibubi.create.content.fluids.pipes.valve.FluidValveBlockEntity;
+import com.simibubi.create.content.fluids.pipes.valve.FluidValveRenderer;
+import com.simibubi.create.content.fluids.pipes.valve.FluidValveVisual;
+import com.simibubi.create.content.fluids.pump.PumpBlockEntity;
+import com.simibubi.create.content.fluids.pump.PumpRenderer;
+import com.simibubi.create.content.fluids.spout.SpoutBlockEntity;
+import com.simibubi.create.content.fluids.spout.SpoutRenderer;
+import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
+import com.simibubi.create.content.fluids.tank.FluidTankRenderer;
 import com.simibubi.create.content.kinetics.base.*;
 import com.simibubi.create.content.kinetics.chainConveyor.ChainConveyorBlockEntity;
 import com.simibubi.create.content.kinetics.chainConveyor.ChainConveyorRenderer;
@@ -37,12 +54,16 @@ import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEn
 import com.simibubi.create.content.kinetics.simpleRelays.SimpleKineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogRenderer;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogVisual;
+import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlockEntity;
+import com.simibubi.create.content.kinetics.steamEngine.SteamEngineRenderer;
+import com.simibubi.create.content.kinetics.steamEngine.SteamEngineVisual;
 import com.simibubi.create.content.kinetics.transmission.ClutchBlockEntity;
 import com.simibubi.create.content.kinetics.transmission.GearshiftBlockEntity;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftRenderer;
 import com.simibubi.create.content.kinetics.transmission.SplitShaftVisual;
 import com.simibubi.create.content.logistics.depot.DepotBlockEntity;
 import com.simibubi.create.content.logistics.depot.DepotRenderer;
+import com.simibubi.create.foundation.blockEntity.renderer.SmartBlockEntityRenderer;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import dev.engine_room.flywheel.lib.model.Models;
 import fr.iglee42.createcasing.CreateCasing;
@@ -50,9 +71,12 @@ import fr.iglee42.createcasing.blockEntities.*;
 import fr.iglee42.createcasing.blockEntities.renderers.*;
 import fr.iglee42.createcasing.blockEntities.visuals.*;
 import fr.iglee42.createcasing.blocks.customs.EncasedCustomCogwheelBlock;
+import fr.iglee42.createcasing.blocks.fluids.EncasedCustomPipeBlock;
 import fr.iglee42.createcasing.blocks.shafts.EncasedCustomShaftBlock;
 import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
+import fr.iglee42.createcasing.fluids.FluidSet;
+import fr.iglee42.createcasing.fluids.FluidSets;
 import fr.iglee42.createcasing.transmissions.TransmissionSet;
 import fr.iglee42.createcasing.transmissions.TransmissionSets;
 import net.minecraft.core.Direction;
@@ -261,6 +285,68 @@ public class EncasedBlockEntities {
             .renderer(() -> DrillRenderer::new)
             .register();
 
+    public static final BlockEntityEntry<SmartFluidPipeBlockEntity> SMART_FLUID_PIPE = REGISTRATE
+            .blockEntity("smart_fluid_pipe", SmartFluidPipeBlockEntity::new)
+            .renderer(() -> SmartBlockEntityRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<FluidPipeBlockEntity> FLUID_PIPE = REGISTRATE
+            .blockEntity("fluid_pipe", FluidPipeBlockEntity::new)
+            .register();
+
+    public static final BlockEntityEntry<StraightPipeBlockEntity> GLASS_FLUID_PIPE = REGISTRATE
+            .blockEntity("glass_fluid_pipe", StraightPipeBlockEntity::new)
+            .visual(() -> GlassPipeVisual::new, false)
+            .renderer(() -> TransparentStraightPipeRenderer::new)
+            .register();
+    public static final BlockEntityEntry<PumpBlockEntity> MECHANICAL_PUMP = REGISTRATE
+            .blockEntity("mechanical_pump", PumpBlockEntity::new)
+            .visual(() -> SingleAxisRotatingVisual.ofZ(AllPartialModels.MECHANICAL_PUMP_COG))
+            .renderer(() -> PumpRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<FluidTankBlockEntity> FLUID_TANK = REGISTRATE
+            .blockEntity("fluid_tank", FluidTankBlockEntity::new)
+            .renderer(() -> FluidTankRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<SteamEngineBlockEntity> STEAM_ENGINE = REGISTRATE
+            .blockEntity("steam_engine", SteamEngineBlockEntity::new)
+            .visual(() -> SteamEngineVisual::new, false)
+            .renderer(() -> SteamEngineRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<ItemDrainBlockEntity> ITEM_DRAIN = REGISTRATE
+            .blockEntity("item_drain", ItemDrainBlockEntity::new)
+            .renderer(() -> ItemDrainRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<FluidValveBlockEntity> FLUID_VALVE = REGISTRATE
+            .blockEntity("fluid_valve", FluidValveBlockEntity::new)
+            .visual(() -> FluidValveVisual::new)
+            .renderer(() -> FluidValveRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<HosePulleyBlockEntity> HOSE_PULLEY = REGISTRATE
+            .blockEntity("hose_pulley", HosePulleyBlockEntity::new)
+            .visual(() -> CustomHosePulleyVisual::new)
+            .renderer(() -> CustomHosePulleyRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<WhistleBlockEntity> STEAM_WHISTLE = REGISTRATE
+            .blockEntity("steam_whistle", WhistleBlockEntity::new)
+            .renderer(() -> WhistleRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<SpoutBlockEntity> SPOUT = REGISTRATE
+            .blockEntity("spout", SpoutBlockEntity::new)
+            .renderer(() -> SpoutRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<FluidPipeBlockEntity> ENCASED_CUSTOM_FLUID_PIPE = REGISTRATE
+            .blockEntity("encased_custom_fluid_pipe", FluidPipeBlockEntity::new)
+            .register();
+
 
     public static void register() {}
 
@@ -293,17 +379,38 @@ public class EncasedBlockEntities {
         registerTransmission(event, CUSTOM_COGWHEELS.get(), TransmissionSet::getCogwheel, TransmissionSet::doesGenerateCogwheel, TransmissionSet::getCogwheelBlockEntityType);
         registerTransmission(event, CUSTOM_COGWHEELS.get(), TransmissionSet::getLargeCogwheel, TransmissionSet::doesGenerateLargeCogwheel, TransmissionSet::getLargeCogwheelBlockEntityType);
 
+        registerFluidSet(event, FLUID_PIPE.get(), FluidSet::getFluidPipe, FluidSet::doesGenerateFluidPipe);
+        registerFluidSet(event, GLASS_FLUID_PIPE.get(), FluidSet::getGlassFluidPipe, FluidSet::doesGenerateFluidPipe);
+        registerFluidSet(event, MECHANICAL_PUMP.get(), FluidSet::getPump, FluidSet::doesGeneratePump);
+        registerFluidSet(event, SMART_FLUID_PIPE.get(), FluidSet::getSmartFluidPipe, FluidSet::doesGenerateSmartFluidPipe);
+        registerFluidSet(event, FLUID_TANK.get(), FluidSet::getFluidTank, FluidSet::doesGenerateFluidTank);
+        registerFluidSet(event, STEAM_ENGINE.get(), FluidSet::getSteamEngine, FluidSet::doesGenerateSteamEngine);
+        registerFluidSet(event, ITEM_DRAIN.get(), FluidSet::getItemDrain, FluidSet::doesGenerateItemDrain);
+        registerFluidSet(event, FLUID_VALVE.get(), FluidSet::getFluidValve, FluidSet::doesGenerateFluidValve);
+        registerFluidSet(event, AllBlockEntityTypes.VALVE_HANDLE.get(), FluidSet::getValveHandle, FluidSet::doesGenerateValveHandle);
+        registerFluidSet(event, HOSE_PULLEY.get(), FluidSet::getHosePulley, FluidSet::doesGenerateHosePulley);
+        registerFluidSet(event, AllBlockEntityTypes.PORTABLE_FLUID_INTERFACE.get(), FluidSet::getPortableFluidInterface, FluidSet::doesGeneratePortableFluidInterface);
+        registerFluidSet(event, STEAM_WHISTLE.get(), FluidSet::getWhistle, FluidSet::doesGenerateWhistle);
+        registerFluidSet(event, SPOUT.get(), FluidSet::getSpout, FluidSet::doesGenerateSpout);
+
         REGISTRATE.getAll(Registries.BLOCK).forEach(e->{
             if (e.get() instanceof EncasedCustomShaftBlock block)
                 event.modify(ENCASED_CUSTOM_SHAFT.get(),block);
 
             if (e.get() instanceof EncasedCustomCogwheelBlock block)
                 event.modify(block.isLargeCog() ? ENCASED_CUSTOM_LARGE_COGWHEEL.get() : ENCASED_CUSTOM_COGWHEEL.get(),block);
+
+            if (e.get() instanceof EncasedCustomPipeBlock block)
+                event.modify(ENCASED_CUSTOM_FLUID_PIPE.get(),block);
         });
     }
 
     public static void register(BlockEntityTypeAddBlocksEvent event, BlockEntityType<?> type, Function<CasingSet, Block> blockFunction, Predicate<CasingSet> validateFunction){
         CasingSets.getSets().stream().filter(set-> Objects.nonNull(blockFunction.apply(set))).filter(validateFunction).map(blockFunction).forEach(b->event.modify(type,b));
+    }
+
+    public static void registerFluidSet(BlockEntityTypeAddBlocksEvent event, BlockEntityType<?> type, Function<FluidSet, Block> blockFunction, Predicate<FluidSet> validateFunction){
+        FluidSets.getSets().stream().filter(set-> Objects.nonNull(blockFunction.apply(set))).filter(validateFunction).map(blockFunction).forEach(b->event.modify(type,b));
     }
 
     private static void registerTransmission(BlockEntityTypeAddBlocksEvent event, BlockEntityType<?> type, Function<TransmissionSet, Block> blockFunction, Predicate<TransmissionSet> validateFunction,Function<TransmissionSet,BlockEntityType<?>> typeFunction){

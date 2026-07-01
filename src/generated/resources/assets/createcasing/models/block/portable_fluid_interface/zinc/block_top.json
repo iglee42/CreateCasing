@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/portable_fluid_interface/block_top",
+  "textures": {
+    "0": "createcasing:block/portable_fluid_interface/zinc",
+    "particle": "createcasing:block/underside/zinc"
+  }
+}

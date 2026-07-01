@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/hose_pulley/rope_half_magnet",
+  "textures": {
+    "0": "createcasing:block/hose/brass",
+    "particle": "createcasing:block/underside/brass"
+  }
+}

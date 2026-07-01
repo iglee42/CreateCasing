@@ -1,0 +1,11 @@
+{
+  "parent": "create:block/fluid_tank/block_bottom_window_nw",
+  "textures": {
+    "0": "createcasing:block/fluid_tank_top/brass",
+    "1": "createcasing:block/fluid_tank/brass",
+    "3": "createcasing:block/fluid_tank_window/brass",
+    "4": "createcasing:block/fluid_tank_inner/brass",
+    "5": "createcasing:block/fluid_tank_window_single/brass",
+    "particle": "createcasing:block/fluid_tank/brass"
+  }
+}

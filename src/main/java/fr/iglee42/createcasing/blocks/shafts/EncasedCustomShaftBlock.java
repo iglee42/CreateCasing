@@ -1,7 +1,9 @@
 package fr.iglee42.createcasing.blocks.shafts;
 
+import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedShaftBlock;
+import com.simibubi.create.content.schematics.requirement.ItemRequirement;
 import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionResult;
@@ -10,6 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
@@ -53,5 +56,10 @@ public class EncasedCustomShaftBlock extends EncasedShaftBlock   {
             return ((BlockHitResult) target).getDirection()
                     .getAxis() == getRotationAxis(state) ? new ItemStack(shaft.get()) : getCasing().asItem().getDefaultInstance();
         return super.getCloneItemStack(state, target, world, pos, player);
+    }
+
+    @Override
+    public ItemRequirement getRequiredItems(BlockState state, BlockEntity be) {
+        return ItemRequirement.of(shaft.get().defaultBlockState(), be);
     }
 }

@@ -3,7 +3,7 @@
   "minVersion": "0.8",
   "plugin": "fr.iglee42.createcasing.CreateCasingMixinPlugin",
   "package": "fr.iglee42.createcasing.mixins",
-  "compatibilityLevel": "JAVA_17",
+  "compatibilityLevel": "JAVA_21",
   "refmap": "createcasing.refmap.json",
   "mixins": [
     "create.AllSpriteShiftsMixin",
@@ -18,12 +18,21 @@
     "create.CreateJeiMixin",
     "create.DeployerBlockEntityAccessor",
     "create.DeployerBlockEntityMixin",
+    "create.BlockStressValuesMixin",
     "create.PackagerBlockMixin",
     "create.SchematicHandlerMixin",
     "create.arm_interactions.DeployerMixin",
     "create.arm_interactions.DepotMixin",
     "create.arm_interactions.SawMixin",
     "create.catnip.StitchedSpriteMixin",
+    "create.fluids.BoilerDataMixin",
+    "create.fluids.FluidTankBlockEntityAccessor",
+    "create.fluids.FluidTankItemMixin",
+    "create.fluids.FluidTransportBehaviourMixin",
+    "create.fluids.ItemDrainBlockEntityAccessor",
+    "create.fluids.SpoutBlockEntityAccessor",
+    "create.fluids.SteamEngineBlockEntityMixin",
+    "create.fluids.WhistleExtenderBlockMixin",
     "minecraft.IItemExtensionMixin",
     "sliceanddice.SlicerMixin"
   ],
@@ -35,7 +44,13 @@
     "create.client.MechanicalMixerRendererMixin",
     "create.client.MixerVisualMixin",
     "create.client.RollerActorVisualMixin",
-    "create.client.RollerRendererMixin"
+    "create.client.RollerRendererMixin",
+    "create.fluids.client.AbstractPulleyRendererMixin",
+    "create.fluids.client.FluidTankRendererMixin",
+    "create.fluids.client.PortableStorageInterfaceRendererMixin",
+    "create.fluids.client.SpoutRendererMixin",
+    "create.fluids.client.SteamEngineBlockEntityClientMixin",
+    "create.fluids.client.ValveHandleVisualMixin"
   ],
   "injectors": {
     "defaultRequire": 1

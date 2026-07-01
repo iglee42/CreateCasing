@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "I": {
+      "tag": "c:ingots/zinc"
+    },
+    "S": {
+      "tag": "c:plates/zinc"
+    }
+  },
+  "pattern": [
+    "S",
+    "I",
+    "S"
+  ],
+  "result": {
+    "count": 6,
+    "id": "createcasing:zinc_fluid_pipe"
+  }
+}

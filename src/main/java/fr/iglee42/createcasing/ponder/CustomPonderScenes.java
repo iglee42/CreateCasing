@@ -5,8 +5,7 @@ import com.simibubi.create.AllItems;
 import com.simibubi.create.foundation.ponder.CreateSceneBuilder;
 import fr.iglee42.createcasing.blocks.ConfigurableGearboxBlock;
 import fr.iglee42.createcasing.casings.CasingSets;
-import fr.iglee42.createcasing.config.ModConfigs;
-import fr.iglee42.createcasing.registries.EncasedBlocks;
+import fr.iglee42.createcasing.config.EncasedConfigs;
 import net.createmod.catnip.math.Pointing;
 import net.createmod.ponder.api.PonderPalette;
 import net.createmod.ponder.api.scene.SceneBuilder;
@@ -131,19 +130,19 @@ public class CustomPonderScenes {
         scene.idle(90);
 
         scene.overlay().showControls(util.vector().topOf(gearbox),Pointing.DOWN,40)
-                .rightClick().withItem(ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get() ? AllBlocks.SHAFT.asStack() : AllItems.WRENCH.asStack());
+                .rightClick().withItem(EncasedConfigs.common().kinetics.configurableGearboxRequiresShaft.get() ? AllBlocks.SHAFT.asStack() : AllItems.WRENCH.asStack());
         scene.world().cycleBlockProperty(gearbox,ConfigurableGearboxBlock.UP);
         scene.world().modifyKineticSpeed(util.select().fromTo(3,3,3,3,4,3),(f)->32f);
         scene.idle(50);
 
-        scene.overlay().showText(ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get() ? 60 : -10)
+        scene.overlay().showText(EncasedConfigs.common().kinetics.configurableGearboxRequiresShaft.get() ? 60 : -10)
                 .colored(PonderPalette.GREEN)
                 .pointAt(util.vector().blockSurface(util.grid().at(3, 2, 3),Direction.WEST))
                 .placeNearTarget()
                 .attachKeyFrame()
                 .text("You can add a shaft to this gearbox by right clicking on a face with a shaft");
 
-        scene.overlay().showText(!ModConfigs.common().kinetics.configurableGearboxRequiresShaft.get() ? 60 : -10)
+        scene.overlay().showText(!EncasedConfigs.common().kinetics.configurableGearboxRequiresShaft.get() ? 60 : -10)
                 .colored(PonderPalette.GREEN)
                 .pointAt(util.vector().blockSurface(util.grid().at(3, 2, 3),Direction.WEST))
                 .placeNearTarget()

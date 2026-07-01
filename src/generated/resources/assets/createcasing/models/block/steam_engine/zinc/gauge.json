@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/steam_engine/gauge",
+  "textures": {
+    "0": "createcasing:block/boiler_gauge/zinc",
+    "particle": "createcasing:block/boiler_gauge/zinc"
+  }
+}

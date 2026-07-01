@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/spout/item",
+  "textures": {
+    "0": "createcasing:block/spout/brass",
+    "3": "createcasing:block/spout_nozzle/brass",
+    "4": "createcasing:block/encased_pipe/brass",
+    "particle": "createcasing:block/underside/brass"
+  }
+}

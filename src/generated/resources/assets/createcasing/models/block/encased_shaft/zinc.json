@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/encased_shaft/block",
+  "textures": {
+    "casing": "createcasing:block/casing/zinc",
+    "opening": "createcasing:block/gearbox/zinc",
+    "particle": "createcasing:block/casing/zinc"
+  }
+}

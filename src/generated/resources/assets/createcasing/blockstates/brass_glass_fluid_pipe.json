@@ -1,0 +1,28 @@
+{
+  "variants": {
+    "alt=false,axis=x": {
+      "model": "createcasing:block/fluid_pipe/brass/window",
+      "x": 90,
+      "y": 90
+    },
+    "alt=false,axis=y": {
+      "model": "createcasing:block/fluid_pipe/brass/window"
+    },
+    "alt=false,axis=z": {
+      "model": "createcasing:block/fluid_pipe/brass/window",
+      "x": 90
+    },
+    "alt=true,axis=x": {
+      "model": "createcasing:block/fluid_pipe/brass/window",
+      "x": 90,
+      "y": 90
+    },
+    "alt=true,axis=y": {
+      "model": "createcasing:block/fluid_pipe/brass/window"
+    },
+    "alt=true,axis=z": {
+      "model": "createcasing:block/fluid_pipe/brass/window",
+      "x": 90
+    }
+  }
+}

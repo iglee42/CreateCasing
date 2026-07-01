@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/item_drain",
+  "textures": {
+    "0": "createcasing:block/item_drain_side/andesite",
+    "3": "createcasing:block/pump/andesite",
+    "4": "createcasing:block/underside/andesite",
+    "particle": "createcasing:block/underside/andesite"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "create:block/steam_whistle/block_medium_floor",
+  "textures": {
+    "1": "createcasing:block/engine/andesite",
+    "2": "createcasing:block/redstone_plate/andesite"
+  }
+}

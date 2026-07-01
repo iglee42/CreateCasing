@@ -1,0 +1,24 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "create:andesite_casing"
+    },
+    "I": {
+      "item": "minecraft:dried_kelp_block"
+    },
+    "S": {
+      "tag": "c:plates/andesite_alloy"
+    }
+  },
+  "pattern": [
+    "C",
+    "I",
+    "S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:andesite_hose_pulley"
+  }
+}

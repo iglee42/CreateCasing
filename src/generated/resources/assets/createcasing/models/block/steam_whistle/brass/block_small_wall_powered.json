@@ -1,0 +1,6 @@
+{
+  "parent": "createcasing:block/steam_whistle/brass/block_small_wall",
+  "textures": {
+    "2": "createcasing:block/redstone_plate_powered/brass"
+  }
+}
