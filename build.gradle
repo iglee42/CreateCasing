@@ -228,6 +228,21 @@ publishMods {
         accessToken = providers.environmentVariable("MODRINTH_TOKEN")
         projectId = "hSSqdyU1"
         minecraftVersions.add(minecraft_version)
+
+        requires {
+            slug = "create"
+            version="UjX6dr61"
+        }
+        optional {
+            slug = "jei"
+        }
+        optional {
+            slug = "kubejs"
+        }
+        optional {
+            slug = "slice-and-dice"
+            version="cV2GZBSJ"
+        }
     }
 
     github {
