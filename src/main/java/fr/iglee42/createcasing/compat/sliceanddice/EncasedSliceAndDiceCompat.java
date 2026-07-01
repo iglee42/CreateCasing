@@ -2,8 +2,6 @@ package fr.iglee42.createcasing.compat.sliceanddice;
 
 import com.possible_triangle.sliceanddice.block.slicer.SlicerBlock;
 import com.possible_triangle.sliceanddice.block.slicer.SlicerBlockEntity;
-import com.possible_triangle.sliceanddice.block.slicer.SlicerRenderer;
-import com.possible_triangle.sliceanddice.block.slicer.SlicerVisual;
 import com.possible_triangle.sliceanddice.compat.ModCompat;
 import com.possible_triangle.sliceanddice.index.SDBlockEntities;
 import com.possible_triangle.sliceanddice.index.SDBlocks;
@@ -21,15 +19,12 @@ import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
 import fr.iglee42.createcasing.config.CCStress;
-import fr.iglee42.createcasing.ponder.CustomPonderScenes;
 import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import fr.iglee42.createcasing.registries.EncasedBlockStateGens;
-import fr.iglee42.createcasing.registries.EncasedCreativeModeTabs;
-import mezz.jei.api.registration.IRecipeCatalystRegistration;
+import fr.iglee42.createcasing.utils.CasingBuilderTransformers;
 import net.createmod.catnip.math.Pointing;
 import net.createmod.catnip.math.VecHelper;
 import net.createmod.ponder.api.registration.PonderSceneRegistrationHelper;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -79,7 +74,7 @@ public class EncasedSliceAndDiceCompat {
                 .initialProperties(SharedProperties::stone)
                 .properties(BlockBehaviour.Properties::noOcclusion)
                 .blockstate((c,p)->p.simpleBlock(c.get(),slicerModel(p,name,false)))
-                .addLayer(()->RenderType::cutoutMipped)
+                .transform(CasingBuilderTransformers.cutoutMipped())
                 .transform(CCStress.setImpact(4.0))
                 .item(AssemblyOperatorBlockItem::new)
                 .model((c,p)->p.getBuilder(c.getName()).parent(slicerModel(p,name,true)))

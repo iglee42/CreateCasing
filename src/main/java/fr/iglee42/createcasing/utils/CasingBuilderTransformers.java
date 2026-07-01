@@ -17,9 +17,9 @@ import com.simibubi.create.foundation.data.SharedProperties;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
+import fr.iglee42.createcasing.client.ClientRenderTypes;
 import fr.iglee42.createcasing.config.CCStress;
 import fr.iglee42.createcasing.registries.EncasedBlockStateGens;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
@@ -37,6 +37,11 @@ import static com.simibubi.create.foundation.data.TagGen.axeOrPickaxe;
 import static fr.iglee42.createcasing.registries.EncasedBlockStateGens.*;
 
 public class CasingBuilderTransformers {
+
+    @SuppressWarnings({"deprecation", "removal"})
+    public static <B extends Block, P> NonNullUnaryOperator<BlockBuilder<B, P>> cutoutMipped() {
+        return builder -> builder.addLayer(() -> ClientRenderTypes.cutoutMipped());
+    }
 
     public static <B extends EncasedShaftBlock, P,E extends Block & EncasableBlock>  NonNullUnaryOperator<BlockBuilder<B, P>> encasedShaft(BlockEntry<E> shaft, String casing, Supplier<CTSpriteShiftEntry> casingShift) {
         String sId = shaft.getId().getPath().replace("_shaft","");
@@ -92,7 +97,7 @@ public class CasingBuilderTransformers {
 
     private static <B extends EncasedCogwheelBlock, P> BlockBuilder<B, P> encasedCogwheelBase(BlockBuilder<B, P> b,
                                                                                               String cogwheel, String casing, Supplier<CTSpriteShiftEntry> casingShift, Supplier<ItemLike> drop, boolean large) {
-        BlockBuilder<B,P> builder = encasedBase(b, drop).addLayer(() -> RenderType::cutoutMipped)
+        BlockBuilder<B,P> builder = encasedBase(b, drop).transform(cutoutMipped())
 
                .blockstate(large ? EncasedBlockStateGens.encasedLargeCogwheel(cogwheel,casing) : EncasedBlockStateGens.encasedCogwheel(cogwheel,casing))
                 .item()
