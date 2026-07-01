@@ -36,4 +36,7 @@ file="META-INF/accesstransformer.cfg"
    type = "optional"
    versionRange = "[2101,)"
    ordering = "AFTER"
-   side = "BOTH"
+[[dependencies.${mod_id}]]
+   modId = "sliceanddice"
+   type = "optional"
+   versionRange = "[4.3.0,)"
