@@ -34,6 +34,13 @@ jobs:
       - name: Build
         run: ./gradlew build
 
+      - name: Maven Release
+        if: ${{ inputs.is-release }}
+        env:
+          MAVEN_USERNAME: ${{ secrets.MAVEN_USERNAME }}
+          MAVEN_PASSWORD: ${{ secrets.MAVEN_PASSWORD }}
+        run: ./gradlew publish
+
       - name: Publish
         if: ${{ inputs.is-release }}
         env:

@@ -202,10 +202,10 @@ publishing {
     repositories {
         maven {
             name = 'igleeRepo'
-            url = "https://${System.getenv("MAVEN_IP")}/releases"
+            url = "https://maven.iglee.fr/releases"
             credentials {
-                username = System.getenv("MAVEN_USER")
-                password = System.getenv("MAVEN_PASS")
+                username = providers.environmentVariable("MAVEN_USER")
+                password = providers.environmentVariable("MAVEN_PASSWORD")
             }
         }
     }
