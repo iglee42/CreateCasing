@@ -19,7 +19,7 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import fr.iglee42.createcasing.config.CCStress;
 import fr.iglee42.createcasing.registries.EncasedBlockStateGens;
-import net.minecraft.client.renderer.RenderType;
+import fr.iglee42.createcasing.registries.EncasedBlockRegistrationHelpers;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
@@ -92,7 +92,7 @@ public class CasingBuilderTransformers {
 
     private static <B extends EncasedCogwheelBlock, P> BlockBuilder<B, P> encasedCogwheelBase(BlockBuilder<B, P> b,
                                                                                               String cogwheel, String casing, Supplier<CTSpriteShiftEntry> casingShift, Supplier<ItemLike> drop, boolean large) {
-        BlockBuilder<B,P> builder = encasedBase(b, drop).addLayer(() -> RenderType::cutoutMipped)
+        BlockBuilder<B,P> builder = encasedBase(b, drop).transform(EncasedBlockRegistrationHelpers::cutoutMipped)
 
                .blockstate(large ? EncasedBlockStateGens.encasedLargeCogwheel(cogwheel,casing) : EncasedBlockStateGens.encasedCogwheel(cogwheel,casing))
                 .item()
