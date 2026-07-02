@@ -1,6 +1,8 @@
 package fr.iglee42.createcasing;
 
+import net.neoforged.api.distmarker.Dist;
 import net.neoforged.fml.loading.LoadingModList;
+import net.neoforged.fml.loading.FMLEnvironment;
 import org.objectweb.asm.tree.ClassNode;
 import org.spongepowered.asm.mixin.extensibility.IMixinConfigPlugin;
 import org.spongepowered.asm.mixin.extensibility.IMixinInfo;
@@ -19,8 +21,17 @@ public class CreateCasingMixinPlugin implements IMixinConfigPlugin {
 
     @Override
     public boolean shouldApplyMixin(String targetClassName, String mixinClassName) {
-        if (mixinClassName.contains("sliceanddice")) return LoadingModList.get().getModFileById("sliceanddice") != null;
+        if (mixinClassName.contains("sliceanddice"))
+            return isModLoaded("sliceanddice");
+        if (mixinClassName.endsWith("CreateJeiMixin"))
+            return FMLEnvironment.dist == Dist.CLIENT && isModLoaded("jei");
+        if (mixinClassName.endsWith("SchematicHandlerMixin"))
+            return FMLEnvironment.dist == Dist.CLIENT;
         return true;
+    }
+
+    private static boolean isModLoaded(String modId) {
+        return LoadingModList.get().getModFileById(modId) != null;
     }
 
     @Override

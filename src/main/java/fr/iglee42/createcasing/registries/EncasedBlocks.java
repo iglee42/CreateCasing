@@ -49,9 +49,8 @@ import fr.iglee42.createcasing.blocks.publics.PublicEncasedShaftBlock;
 import fr.iglee42.createcasing.blocks.shafts.*;
 import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
+import fr.iglee42.createcasing.client.ClientModelWrappers;
 import fr.iglee42.createcasing.config.CCStress;
-import fr.iglee42.createcasing.fluids.EncasedFluidTankModel;
-import fr.iglee42.createcasing.fluids.EncasedPipeAttachmentModel;
 import fr.iglee42.createcasing.fluids.FluidSet;
 import fr.iglee42.createcasing.fluids.FluidSets;
 import fr.iglee42.createcasing.items.WoodenCogwheelBlockItem;
@@ -63,7 +62,6 @@ import fr.iglee42.createcasing.transmissions.TransmissionSet;
 import fr.iglee42.createcasing.transmissions.TransmissionSets;
 import fr.iglee42.createcasing.utils.CasingBuilderTransformers;
 import net.createmod.catnip.data.Couple;
-import net.minecraft.client.renderer.RenderType;
 import net.minecraft.core.Direction;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.world.item.BlockItem;
@@ -107,7 +105,7 @@ public class EncasedBlocks {
                     .blockstate((c,p)->EncasedBlockStateGens.axisBlock(c,p,b->new ModelFile.UncheckedModelFile(CreateCasing.asResource("block/creative_cogwheel/block")),false))
                     .transform(CCStress.setCapacity(16384.0))
                     .onRegister(BlockStressValues.setGeneratorSpeed(256,true))
-                    .addLayer(()-> RenderType::cutoutMipped)
+                    .transform(CasingBuilderTransformers.cutoutMipped())
                     .item()
                     .properties(p -> p.rarity(Rarity.EPIC))
                     .transform(customItemModel())
@@ -214,7 +212,7 @@ public class EncasedBlocks {
                 .properties(BlockBehaviour.Properties::noOcclusion)
                 .transform(axeOrPickaxe())
                 .blockstate(EncasedBlockStateGens.mixer(name))
-                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(CasingBuilderTransformers.cutoutMipped())
                 .transform(CCStress.setImpact(4.0))
                 .item(AssemblyOperatorBlockItem::new)
                 .model((c,p)->p.getBuilder(c.getName()).parent(mixerModel(p,name,true)))
@@ -360,7 +358,7 @@ public class EncasedBlocks {
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.noOcclusion()
                         .mapColor(MapColor.PODZOL))
-                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(CasingBuilderTransformers.cutoutMipped())
                 .transform(CCStress.setNoImpact())
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) -> EncasedBlockStateGens.axisBlock(c,p,gearshiftModel(p,name),false))
@@ -375,7 +373,7 @@ public class EncasedBlocks {
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.noOcclusion()
                         .mapColor(MapColor.PODZOL))
-                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(CasingBuilderTransformers.cutoutMipped())
                 .transform(CCStress.setNoImpact())
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) ->EncasedBlockStateGens.axisBlock(c,p,clutchModel(p,name),false))
@@ -420,7 +418,7 @@ public class EncasedBlocks {
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.mapColor(MapColor.PODZOL))
                 .blockstate((c,p)->p.directionalBlock(c.get(),fanModel(p,name)))
-                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(CasingBuilderTransformers.cutoutMipped())
                 .transform(axeOrPickaxe())
                 .transform(CCStress.setImpact(2.0))
                 .item()
@@ -437,7 +435,7 @@ public class EncasedBlocks {
                 .transform(axeOrPickaxe())
                 .onRegister(movementBehaviour(new HarvesterMovementBehaviour()))
                 .blockstate((c,p)->p.horizontalBlock(c.get(),harvesterModel(p,name,false)))
-                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(CasingBuilderTransformers.cutoutMipped())
                 .item()
                 .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(harvesterModel(p,name,true)))
@@ -467,7 +465,7 @@ public class EncasedBlocks {
 			.transform(axeOrPickaxe())
 			.onRegister(movementBehaviour(new RollerMovementBehaviour()))
 			.blockstate((c,p)->p.horizontalBlock(c.get(),rollerModel(p,name,false)))
-			.addLayer(() -> RenderType::cutoutMipped)
+			.transform(CasingBuilderTransformers.cutoutMipped())
 			.item(RollerBlockItem::new)
 			.tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
             .model((c,p)->p.getBuilder(c.getName()).parent(rollerModel(p,name,true)))
@@ -478,13 +476,13 @@ public class EncasedBlocks {
     public static BlockEntry<CustomSawBlock> createSaw(String name){
         return REGISTRATE.block(name+"_mechanical_saw", CustomSawBlock::new)
                 .initialProperties(SharedProperties::stone)
-                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(CasingBuilderTransformers.cutoutMipped())
                 .properties(p -> p.mapColor(MapColor.PODZOL))
                 .transform(axeOrPickaxe())
                 .blockstate(new CustomSawGenerator(name)::generate)
                 .transform(CCStress.setImpact(4.0))
                 .onRegister(movementBehaviour(new SawMovementBehaviour()))
-                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(CasingBuilderTransformers.cutoutMipped())
                 .item()
                 .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(sawItemModel(p,name)))
@@ -512,7 +510,7 @@ public class EncasedBlocks {
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.noOcclusion()
                         .mapColor(MapColor.PODZOL))
-                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(CasingBuilderTransformers.cutoutMipped())
                 .transform(CCStress.setNoImpact())
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) ->EncasedBlockStateGens.axisBlock(c,p,autoClutchModel(p,name),false))
@@ -722,7 +720,7 @@ public class EncasedBlocks {
                 .properties(p -> p.forceSolidOff())
                 .transform(pickaxeOnly())
                 .blockstate(EncasedBlockStateGens.pipe(name))
-                .onRegister(CreateRegistrate.blockModel(() -> model-> EncasedPipeAttachmentModel.withAO(model, name)))
+                .onRegister(CreateRegistrate.blockModel(() -> ClientModelWrappers.encasedPipeAttachment(name)))
                 .item()
                 .model((c,p)->p.getBuilder(c.getName()).parent(new ModelFile.UncheckedModelFile(CreateCasing.asResource("block/fluid_pipe/"+name+"/item"))))
                 .build()
@@ -734,7 +732,7 @@ public class EncasedBlocks {
             return REGISTRATE.block(name+"_glass_fluid_pipe", CustomGlassFluidPipeBlock::new)
                     .initialProperties(SharedProperties::copperMetal)
                     .properties(p -> p.noOcclusion())
-                    .addLayer(() -> RenderType::cutoutMipped)
+                    .transform(CasingBuilderTransformers.cutoutMipped())
                     .transform(pickaxeOnly())
                     .blockstate((c, p) -> {
                         p.getVariantBuilder(c.getEntry())
@@ -749,7 +747,7 @@ public class EncasedBlocks {
                                             .build();
                                 }, BlockStateProperties.WATERLOGGED);
                     })
-                    .onRegister(CreateRegistrate.blockModel(() -> model-> EncasedPipeAttachmentModel.withAO(model, name)))
+                    .onRegister(CreateRegistrate.blockModel(() -> ClientModelWrappers.encasedPipeAttachment(name)))
                     .loot((p, b) -> p.dropOther(b, pipe.get()))
                     .register();
     }
@@ -760,7 +758,7 @@ public class EncasedBlocks {
                 .properties(p -> p.mapColor(MapColor.STONE))
                 .transform(pickaxeOnly())
                 .blockstate(pump(name))
-                .onRegister(CreateRegistrate.blockModel(() -> model-> EncasedPipeAttachmentModel.withAO(model, name)))
+                .onRegister(CreateRegistrate.blockModel(() -> ClientModelWrappers.encasedPipeAttachment(name)))
                 .transform(CCStress.setImpact(4.0))
                 .item()
                 .model((c,p)->p.getBuilder(c.getName()).parent(pumpModel(p,name,true)))
@@ -774,7 +772,7 @@ public class EncasedBlocks {
                 .properties(p -> p.mapColor(MapColor.TERRACOTTA_YELLOW))
                 .transform(pickaxeOnly())
                 .blockstate(new CustomSmartFluidPipeGenerator(name)::generate)
-                .onRegister(CreateRegistrate.blockModel(() -> model-> EncasedPipeAttachmentModel.withAO(model, name)))
+                .onRegister(CreateRegistrate.blockModel(() -> ClientModelWrappers.encasedPipeAttachment(name)))
                 .item()
                 .model((c,p)->p.getBuilder(c.getName()).parent(smartPipeModel(p,name,true)))
                 .build()
@@ -788,11 +786,11 @@ public class EncasedBlocks {
                         .isRedstoneConductor((p1, p2, p3) -> true))
                 .transform(pickaxeOnly())
                 .blockstate(new CustomFluidTankGenerator(name)::generate)
-                .onRegister(CreateRegistrate.blockModel(() -> model->new EncasedFluidTankModel(model,sideSprite,topSprite,innerSprite)))
+                .onRegister(CreateRegistrate.blockModel(() -> ClientModelWrappers.encasedFluidTank(sideSprite, topSprite, innerSprite)))
                 .transform(displaySource(AllDisplaySources.BOILER))
                 .transform(mountedFluidStorage(AllMountedStorageTypes.FLUID_TANK))
                 .onRegister(movementBehaviour(new FluidTankMovementBehavior()))
-                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(CasingBuilderTransformers.cutoutMipped())
                 .item(FluidTankItem::new)
                 .model(AssetLookup.customBlockItemModel("fluid_tank",name, "block_single_window"))
                 .build()
@@ -816,7 +814,7 @@ public class EncasedBlocks {
         return REGISTRATE.block(name+"_item_drain", CustomItemDrainBlock::new)
                 .initialProperties(SharedProperties::copperMetal)
                 .transform(pickaxeOnly())
-                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(CasingBuilderTransformers.cutoutMipped())
                 .blockstate((c, p) -> p.simpleBlock(c.get(), itemDrainModel(p,name)))
                 .item()
                 .model(AssetLookup.customBlockItemModel("item_drain",name))
@@ -828,10 +826,10 @@ public class EncasedBlocks {
        return REGISTRATE.block(name+"_fluid_valve", CustomFluidValveBlock::new)
                 .initialProperties(SharedProperties::copperMetal)
                 .transform(pickaxeOnly())
-                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(CasingBuilderTransformers.cutoutMipped())
                 .blockstate((c, p) -> BlockStateGen.directionalAxisBlock(c, p,
                         (state, vertical) -> fluidValveModel(p, name, false,vertical,state.getValue(FluidValveBlock.ENABLED))))
-                .onRegister(CreateRegistrate.blockModel(() -> model->EncasedPipeAttachmentModel.withAO(model, name)))
+                .onRegister(CreateRegistrate.blockModel(() -> ClientModelWrappers.encasedPipeAttachment(name)))
                 .item()
                 .model((c,p)->p.getBuilder(c.getName()).parent(fluidValveModel(p,name,true,false,true)))
                 .build()
@@ -850,7 +848,7 @@ public class EncasedBlocks {
         return REGISTRATE.block(name+"_hose_pulley", CustomHosePulleyBlock::new)
                 .initialProperties(SharedProperties::copperMetal)
                 .properties(BlockBehaviour.Properties::noOcclusion)
-                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(CasingBuilderTransformers.cutoutMipped())
                 .transform(pickaxeOnly())
                 .blockstate(hosePulley(name))
                 .transform(CCStress.setImpact(4.0))
@@ -909,7 +907,7 @@ public class EncasedBlocks {
                 .initialProperties(SharedProperties::copperMetal)
                 .transform(pickaxeOnly())
                 .blockstate((ctx, prov) -> prov.simpleBlock(ctx.getEntry(), spoutModel(prov,name,false)))
-                .addLayer(() -> RenderType::cutoutMipped)
+                .transform(CasingBuilderTransformers.cutoutMipped())
                 .item(AssemblyOperatorBlockItem::new)
                 .model((c,p)->p.getBuilder(c.getName()).parent(spoutModel(p,name,true)))
                 .build()
@@ -923,7 +921,7 @@ public class EncasedBlocks {
                 .properties(BlockBehaviour.Properties::noOcclusion)
                 .transform(axeOrPickaxe())
                 .blockstate(EncasedBlockStateGens.encasedCustomPipe(name,casingName))
-                .onRegister(CreateRegistrate.blockModel(() -> model-> EncasedPipeAttachmentModel.withAO(model, name)))
+                .onRegister(CreateRegistrate.blockModel(() -> ClientModelWrappers.encasedPipeAttachment(name)))
                 .loot((p, b) -> p.dropOther(b, pipe.get()))
                 .transform(EncasingRegistry.addVariantTo(pipe))
                 .onRegisterAfter(Registries.ITEM, CreateCasing::hideItem);
