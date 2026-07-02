@@ -10,9 +10,6 @@ import fr.iglee42.createcasing.casings.CasingSets;
 import fr.iglee42.createcasing.transmissions.TransmissionSets;
 import it.unimi.dsi.fastutil.objects.*;
 import net.createmod.catnip.platform.CatnipServices;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.entity.ItemRenderer;
-import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.*;
@@ -20,7 +17,6 @@ import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 
 import net.neoforged.api.distmarker.Dist;
-import net.neoforged.api.distmarker.OnlyIn;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.fml.loading.FMLEnvironment;
 import net.neoforged.fml.util.thread.EffectiveSide;
@@ -61,7 +57,7 @@ public class EncasedCreativeModeTabs {
         static {
             MutableObject<Predicate<Item>> isItem3d = new MutableObject<>(item -> false);
             if (CatnipServices.PLATFORM.getEnv().isClient())
-                isItem3d.setValue(makeClient3dItemPredicate());
+                isItem3d.setValue(EncasedCreativeModeTabsClient.makeClient3dItemPredicate());
             IS_ITEM_3D_PREDICATE = isItem3d.getValue();
         }
 
@@ -71,16 +67,6 @@ public class EncasedCreativeModeTabs {
         public RegistrateDisplayItemsGenerator(boolean addItems, DeferredHolder<CreativeModeTab, CreativeModeTab> tabFilter) {
             this.addItems = addItems;
             this.tabFilter = tabFilter;
-        }
-
-        @OnlyIn(Dist.CLIENT)
-        private static Predicate<Item> makeClient3dItemPredicate() {
-            return item -> {
-                ItemRenderer itemRenderer = Minecraft.getInstance()
-                        .getItemRenderer();
-                BakedModel model = itemRenderer.getModel(new ItemStack(item), null, null, 0);
-                return model.isGui3d();
-            };
         }
 
         private static Predicate<Item> makeExclusionPredicate() {
