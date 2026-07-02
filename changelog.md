@@ -1,4 +1,17 @@
 ------------------------------------------------------
+CreateEncased 1.9.0-ht1
+------------------------------------------------------
+
+#### Gameplay Changes
+
+- Encased Slicers ponder now uses the Slice and Dice translations making them available in more languages
+
+#### Bug Fixes
+
+- Fix crashes with Create Colorful Pipes #191 #192
+- Fix crash on dedicated servers #193
+
+------------------------------------------------------
 CreateEncased 1.9.0 - The Fluid Update
 ------------------------------------------------------
 
