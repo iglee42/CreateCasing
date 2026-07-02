@@ -196,7 +196,7 @@ tasks.withType(JavaCompile).configureEach {
 publishing {
     publications {
         mavenJava(MavenPublication) {
-            artifact jar
+            from(components.java)
         }
     }
     repositories {
@@ -204,7 +204,7 @@ publishing {
             name = 'igleeRepo'
             url = "https://maven.iglee.fr/releases"
             credentials {
-                username = providers.environmentVariable("MAVEN_USER")
+                username = providers.environmentVariable("MAVEN_USERNAME")
                 password = providers.environmentVariable("MAVEN_PASSWORD")
             }
         }
