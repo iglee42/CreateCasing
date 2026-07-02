@@ -208,6 +208,9 @@ publishing {
                 username = providers.environmentVariable("MAVEN_USERNAME")
                 password = providers.environmentVariable("MAVEN_PASSWORD")
             }
+            authentication {
+                basic(BasicAuthentication)
+            }
         }
     }
 }
