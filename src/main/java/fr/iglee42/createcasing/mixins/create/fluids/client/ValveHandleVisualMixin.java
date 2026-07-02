@@ -1,5 +1,7 @@
 package fr.iglee42.createcasing.mixins.create.fluids.client;
 
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.llamalad7.mixinextras.sugar.Local;
 import com.simibubi.create.content.kinetics.crank.ValveHandleVisual;
 import dev.engine_room.flywheel.api.model.Model;
@@ -19,10 +21,11 @@ import java.util.Optional;
 public class ValveHandleVisualMixin {
 
 
-    @Redirect(method = "<init>",at= @At(value = "INVOKE", target = "Ldev/engine_room/flywheel/lib/model/Models;partial(Ldev/engine_room/flywheel/lib/model/baked/PartialModel;)Ldev/engine_room/flywheel/api/model/Model;",ordinal = 0))
-    private Model encased$replaceValve(PartialModel partial, @Local(name = "state") BlockState state){
+    @WrapOperation(method = "<init>",at= @At(value = "INVOKE", target = "Ldev/engine_room/flywheel/lib/model/Models;partial(Ldev/engine_room/flywheel/lib/model/baked/PartialModel;)Ldev/engine_room/flywheel/api/model/Model;",ordinal = 0))
+    private Model encased$replaceValve(PartialModel partial, Operation<Model> original, @Local(name = "state") BlockState state){
         Optional<FluidSet> set = FluidSets.getSets().stream().filter(FluidSet::doesGenerateValveHandle).filter(s->s.isInSet(state.getBlock())).findFirst();
-        return set.map(fluidSet -> Models.partial(fluidSet.getValveHandleModel())).orElseGet(() -> Models.partial(partial));
+        if(set.isPresent())return Models.partial(set.get().getValveHandleModel());
+        return original.call(partial);
     }
 
 

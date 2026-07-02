@@ -157,6 +157,8 @@ dependencies {
     runtimeOnly "com.possible-triangle:atmosphere-1.21.1-neoforge:1.0.13"
     implementation "curse.maven:farmers-delight-398521:8083481"
 
+    runtimeOnly "curse.maven:create-colorful-pipes-1487757:8277585"
+
     api("dev.latvian.mods:kubejs-neoforge:2101.+")
 
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'

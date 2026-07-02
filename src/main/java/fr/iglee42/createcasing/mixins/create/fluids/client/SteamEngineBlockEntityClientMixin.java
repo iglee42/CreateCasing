@@ -1,5 +1,8 @@
 package fr.iglee42.createcasing.mixins.create.fluids.client;
 
+import com.llamalad7.mixinextras.injector.wrapmethod.WrapMethod;
+import com.llamalad7.mixinextras.injector.wrapoperation.Operation;
+import com.llamalad7.mixinextras.injector.wrapoperation.WrapOperation;
 import com.simibubi.create.content.fluids.tank.FluidTankBlock;
 import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlock;
 import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlockEntity;
@@ -20,8 +23,9 @@ import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
 @Mixin(value = SteamEngineBlockEntity.class,remap = false)
 public class SteamEngineBlockEntityClientMixin{
 
-    @Redirect(method = "getTargetAngle", at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;has(Lnet/minecraft/world/level/block/state/BlockState;)Z"))
-    private boolean encased$allowAllEngineTick(BlockEntry<?> instance, BlockState state){
-        return state.getBlock() instanceof SteamEngineBlock;
+    @WrapOperation(method = "getTargetAngle", at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;has(Lnet/minecraft/world/level/block/state/BlockState;)Z"))
+    private boolean encased$allowAllEngineTick(BlockEntry<?> instance, BlockState state, Operation<Boolean> original){
+        if (state.getBlock() instanceof SteamEngineBlock) return true;
+        return original.call(instance,state);
     }
 }
