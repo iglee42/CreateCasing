@@ -205,10 +205,8 @@ publishing {
             name = 'igleeRepo'
             url = "https://maven.iglee.fr/releases"
             credentials {
-                username = providers.environmentVariable("MAVEN_USERNAME")
-                password = providers.environmentVariable("MAVEN_PASSWORD")
-                println(username)
-                println(password)
+                username = providers.environmentVariable("MAVEN_USERNAME").orNull
+                password = providers.environmentVariable("MAVEN_PASSWORD").orNull
             }
             authentication {
                 basic(BasicAuthentication)
