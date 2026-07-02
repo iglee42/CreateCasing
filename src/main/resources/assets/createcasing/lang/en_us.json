@@ -807,8 +807,5 @@
   "createcasing.ponder.auto_clutch.header": "Automatically stopping a contraption",
   "createcasing.ponder.auto_clutch.text_1": "Automatic Clutches will relay rotation in a straight line",
   "createcasing.ponder.auto_clutch.text_2": "It breaks the connection when a condition is fulfilled",
-  "createcasing.ponder.auto_clutch.text_3": "Right-click it to open the Configuration UI",
-  "createcasing.ponder.slicer.header": "Cutting with the slicer",
-  "createcasing.ponder.slicer.text_1": "Right-click it with a valid tool",
-  "createcasing.ponder.slicer.text_2": "The slicer can also operate on a basin"
+  "createcasing.ponder.auto_clutch.text_3": "Right-click it to open the Configuration UI"
 }

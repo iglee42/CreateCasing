@@ -141,9 +141,6 @@ public class CasingPonderScenes {
 
 		HELPER.forComponents(CasingSets.getSets().stream().filter(CasingSet::doesGenerateAutoClutch).map(CasingSet::getAutoClutch).toList())
 				.addStoryBoard(CreateCasing.asResource("auto_clutch"), CustomPonderScenes::autoClutch);
-
-		if (ModList.get().isLoaded("sliceanddice"))
-			EncasedSliceAndDiceCompat.registerPonderScenes(HELPER);
 	}
 
 

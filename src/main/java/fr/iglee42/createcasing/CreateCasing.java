@@ -75,8 +75,6 @@ public class CreateCasing {
         if (ModList.get().isLoaded("sliceanddice"))
             EncasedSliceAndDiceCompat.register(modEventBus);
 
-
-
         CatnipServices.PLATFORM.executeOnClientOnly(() -> () -> CreateCasingClient.onCtorClient(modEventBus));
 
         neoForgeEventBus.addListener(this::registerCommands);

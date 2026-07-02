@@ -16,6 +16,7 @@ import com.tterrag.registrate.providers.RegistrateTagsProvider;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import fr.iglee42.createcasing.CreateCasing;
+import fr.iglee42.createcasing.CreateCasingClient;
 import fr.iglee42.createcasing.casings.CasingSet;
 import fr.iglee42.createcasing.casings.CasingSets;
 import fr.iglee42.createcasing.config.CCStress;
@@ -24,7 +25,9 @@ import fr.iglee42.createcasing.registries.EncasedBlockStateGens;
 import fr.iglee42.createcasing.utils.CasingBuilderTransformers;
 import net.createmod.catnip.math.Pointing;
 import net.createmod.catnip.math.VecHelper;
+import net.createmod.catnip.platform.CatnipServices;
 import net.createmod.ponder.api.registration.PonderSceneRegistrationHelper;
+import net.createmod.ponder.foundation.PonderIndex;
 import net.minecraft.core.Direction;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
@@ -34,6 +37,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.neoforged.bus.api.IEventBus;
+import net.neoforged.fml.event.lifecycle.FMLClientSetupEvent;
 import net.neoforged.neoforge.client.model.generators.ModelFile;
 import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 
@@ -52,6 +56,11 @@ public class EncasedSliceAndDiceCompat {
         bus.addListener(EncasedSliceAndDiceCompat::modifyBeTypes);
         CasingSets.ANDESITE.setSlicer(()-> SDBlocks.SLICER.get());
         REGISTRATE.addDataGenerator(ProviderType.BLOCK_TAGS,EncasedSliceAndDiceCompat::blockTag);
+        CatnipServices.PLATFORM.executeOnClientOnly(() -> () -> bus.addListener(EncasedSliceAndDiceCompat::onClientInit));
+    }
+
+    private static void onClientInit(FMLClientSetupEvent event){
+        PonderIndex.addPlugin(new SliceAndDicePonders());
     }
 
     private static void blockTag(RegistrateTagsProvider<Block> provIn){
