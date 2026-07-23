@@ -6,9 +6,7 @@
   "loops": 4,
   "results": [
     {
-      "item":{
-        "id":"createcasing:chorium_ingot"
-      }
+      "id": "createcasing:chorium_ingot"
     }
   ],
   "sequence": [
@@ -26,9 +24,7 @@
       ],
       "results": [
         {
-          "item": {
-            "id": "createcasing:processing_chorium"
-          }
+          "id": "createcasing:processing_chorium"
         }
       ]
     },
@@ -44,9 +40,7 @@
       ],
       "results": [
         {
-          "item":{
-            "id":"createcasing:processing_chorium"
-          }
+          "id": "createcasing:processing_chorium"
         }
       ]
     },
@@ -59,16 +53,12 @@
       ],
       "results": [
         {
-          "item": {
-            "id":"createcasing:processing_chorium"
-          }
+          "id": "createcasing:processing_chorium"
         }
       ]
     }
   ],
   "transitional_item": {
-    "item":{
-      "id":"createcasing:processing_chorium"
-    }
+    "id": "createcasing:processing_chorium"
   }
 }

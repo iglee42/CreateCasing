@@ -5,6 +5,7 @@ CreateEncased 1.9.0-ht2
 #### Bug Fixes
 
 - Fix hose pulley not working #198
+- Fix unavailable recipes for some people #197
 
 ------------------------------------------------------
 CreateEncased 1.9.0-ht1
