@@ -228,6 +228,8 @@ publishMods {
         projectSlug = "create-encased"
         minecraftVersions.add(minecraft_version)
         changelogType = "markdown"
+        clientRequired = true
+        serverRequired = true
     }
 
     modrinth {
