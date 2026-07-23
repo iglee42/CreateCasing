@@ -1,5 +1,7 @@
 package fr.iglee42.createcasing;
 
+import com.simibubi.create.AllBlockEntityTypes;
+import com.simibubi.create.content.fluids.hosePulley.HosePulleyBlock;
 import com.simibubi.create.content.logistics.depot.DepotBehaviour;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.item.ItemDescription;
@@ -11,6 +13,7 @@ import fr.iglee42.createcasing.config.EncasedConfigs;
 import fr.iglee42.createcasing.kubejs.KJSExternalHandler;
 import fr.iglee42.createcasing.mixins.create.DeployerBlockEntityAccessor;
 import fr.iglee42.createcasing.mixins.create.fluids.FluidTankBlockEntityAccessor;
+import fr.iglee42.createcasing.mixins.create.fluids.HosePulleyBlockEntityAccessor;
 import fr.iglee42.createcasing.mixins.create.fluids.ItemDrainBlockEntityAccessor;
 import fr.iglee42.createcasing.mixins.create.fluids.SpoutBlockEntityAccessor;
 import fr.iglee42.createcasing.registries.*;
@@ -167,6 +170,16 @@ public class CreateCasing {
                 (be, context) -> {
                     if (context != Direction.DOWN)
                         return ((SpoutBlockEntityAccessor)be).encased$getTank().getCapability();
+                    return null;
+                }
+        );
+
+        event.registerBlockEntity(
+                Capabilities.FluidHandler.BLOCK,
+                EncasedBlockEntities.HOSE_PULLEY.get(),
+                (be, context) -> {
+                    if (context == null || HosePulleyBlock.hasPipeTowards(be.getLevel(), be.getBlockPos(), be.getBlockState(), context))
+                        return ((HosePulleyBlockEntityAccessor)be).encased$getHandler();
                     return null;
                 }
         );
