@@ -2,6 +2,9 @@
 CreateEncased 1.9.0-ht3
 ------------------------------------------------------
 
+#### Translation Changes
+- Update zh_cn translation #204
+
 #### Bug Fixes
 
 - Fix invalid chorium recipe #202 #203
