@@ -6,16 +6,16 @@ import com.simibubi.create.content.fluids.tank.FluidTankBlock;
 import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlock;
 import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlockEntity;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import fr.iglee42.createcasing.fluids.FluidSets;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Redirect;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(value = SteamEngineBlockEntity.class,remap = false)
 public class SteamEngineBlockEntityMixin extends BlockEntity {
@@ -24,10 +24,14 @@ public class SteamEngineBlockEntityMixin extends BlockEntity {
         super(p_155228_, p_155229_, p_155230_);
     }
 
-    @WrapOperation(method = "isValid", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/state/BlockState;is(Lnet/minecraft/world/level/block/Block;)Z"))
-    private boolean encased$allowAllTanks(BlockState instance, Block block, Operation<Boolean> original){
-        if (instance.getBlock() instanceof FluidTankBlock) return true;
-        return original.call(instance,block);
+    @Inject(method = "isValid", at = @At(value = "HEAD"),cancellable = true)
+    private void encased$allowAllTanks(CallbackInfoReturnable<Boolean> cir){
+        if (level == null) return;
+        Direction dir = SteamEngineBlock.getConnectedDirection(getBlockState()).getOpposite();
+        BlockState state = level.getBlockState(getBlockPos().relative(dir));
+
+        if (state.getBlock() instanceof FluidTankBlock && FluidSets.getSets().stream().anyMatch(set->set.isInSet(state.getBlock())))
+            cir.setReturnValue(true);
     }
 
     @WrapOperation(method = "tick", at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;has(Lnet/minecraft/world/level/block/state/BlockState;)Z"))

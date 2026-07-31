@@ -159,6 +159,7 @@ dependencies {
 
     runtimeOnly "curse.maven:create-colorful-pipes-1487757:8277585"
     runtimeOnly "curse.maven:create-connected-947914:8299240"
+    runtimeOnly "curse.maven:create-colored-1297736:7975563"
 
     api("dev.latvian.mods:kubejs-neoforge:2101.+")
 
