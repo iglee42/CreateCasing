@@ -1,4 +1,14 @@
 ------------------------------------------------------
+CreateEncased 1.9.0-ht3
+------------------------------------------------------
+
+#### Bug Fixes
+
+- Fix invalid chorium recipe #202 #203
+- Fix mixin crash with Create Colored #201
+- Fix shafts can be placed when clicking on the side of a configurable gearbox
+
+------------------------------------------------------
 CreateEncased 1.9.0-ht2
 ------------------------------------------------------
 
