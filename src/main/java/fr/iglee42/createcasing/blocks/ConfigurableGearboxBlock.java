@@ -97,19 +97,18 @@ public class ConfigurableGearboxBlock extends KineticBlock implements IBE<Gearbo
 
     @Override
     protected ItemInteractionResult useItemOn(ItemStack stack, BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-        if (level.isClientSide) return ItemInteractionResult.sidedSuccess(true);
         Direction face = result.getDirection();
         if (!stack.is(AllBlocks.SHAFT.asItem())) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
         if (player.isCrouching()) face = face.getOpposite();
-        if (!state.getValue(getPropertyByDirection(face))) {
-            if (!EncasedConfigs.common().kinetics.configurableGearboxRequiresShaft.get()) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
-            state = state.setValue(getPropertyByDirection(face), true);
-            if (EncasedConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get())
-                state = state.setValue(getPropertyByDirection(face.getOpposite()), true);
-            KineticBlockEntity.switchToBlockState(level, pos, state);
-            if (!player.isCreative())
-                stack.shrink(1);
-        }
+        if (state.getValue(getPropertyByDirection(face))) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        if (!EncasedConfigs.common().kinetics.configurableGearboxRequiresShaft.get()) return ItemInteractionResult.PASS_TO_DEFAULT_BLOCK_INTERACTION;
+        if (level.isClientSide) return ItemInteractionResult.sidedSuccess(true);
+        state = state.setValue(getPropertyByDirection(face), true);
+        if (EncasedConfigs.common().kinetics.configurableGearboxChangeTwoFaces.get())
+            state = state.setValue(getPropertyByDirection(face.getOpposite()), true);
+        KineticBlockEntity.switchToBlockState(level, pos, state);
+        if (!player.isCreative())
+            stack.shrink(1);
         return ItemInteractionResult.SUCCESS;
     }
 
