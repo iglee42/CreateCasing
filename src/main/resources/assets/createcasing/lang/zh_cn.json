@@ -762,9 +762,9 @@
   "createcasing.auto_clutch.mode.max_stress": "最大应力",
   "createcasing.auto_clutch.mode.speed": "旋转速度",
   "createcasing.auto_clutch.operation": "比较模式",
-  "createcasing.auto_clutch.operation.less": "少于",
+  "createcasing.auto_clutch.operation.less": "小于",
   "createcasing.auto_clutch.operation.equals": "等于",
-  "createcasing.auto_clutch.operation.greater": "多于",
+  "createcasing.auto_clutch.operation.greater": "大于",
 
   "block.createcasing.custom_press.tooltip": "自定义动力冲压机",
   "block.createcasing.custom_press.tooltip.summary": "像一个 _普通_ 动力冲压机那样 _工作_",
