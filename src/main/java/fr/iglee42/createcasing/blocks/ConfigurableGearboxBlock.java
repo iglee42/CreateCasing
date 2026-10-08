@@ -1,5 +1,7 @@
 package fr.iglee42.createcasing.blocks;
 
+import com.google.common.collect.ImmutableMap;
+import com.google.common.collect.Maps;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.kinetics.base.KineticBlock;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
@@ -7,6 +9,7 @@ import com.simibubi.create.content.kinetics.gearbox.GearboxBlockEntity;
 import com.simibubi.create.foundation.block.IBE;
 import fr.iglee42.createcasing.config.EncasedConfigs;
 import fr.iglee42.createcasing.registries.EncasedBlockEntities;
+import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -27,6 +30,7 @@ import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
 
 import java.util.List;
+import java.util.Map;
 
 public class ConfigurableGearboxBlock extends KineticBlock implements IBE<GearboxBlockEntity> {
 
@@ -36,6 +40,16 @@ public class ConfigurableGearboxBlock extends KineticBlock implements IBE<Gearbo
     public static final BooleanProperty WEST = BlockStateProperties.WEST;
     public static final BooleanProperty UP = BlockStateProperties.UP;
     public static final BooleanProperty DOWN = BlockStateProperties.DOWN;
+    public static final Map<Direction, BooleanProperty> PROPERTY_BY_DIRECTION = ImmutableMap.copyOf(
+            Util.make(Maps.newEnumMap(Direction.class), map->{
+                map.put(Direction.NORTH, NORTH);
+                map.put(Direction.EAST, EAST);
+                map.put(Direction.SOUTH, SOUTH);
+                map.put(Direction.WEST, WEST);
+                map.put(Direction.UP, UP);
+                map.put(Direction.DOWN, DOWN);
+            })
+    );
 
     public ConfigurableGearboxBlock(Properties properties) {
         super(properties);
@@ -152,14 +166,7 @@ public class ConfigurableGearboxBlock extends KineticBlock implements IBE<Gearbo
     }
 
     public static BooleanProperty getPropertyByDirection(Direction direction){
-        return switch (direction){
-            case DOWN -> DOWN;
-            case UP -> UP;
-            case NORTH -> NORTH;
-            case SOUTH -> SOUTH;
-            case WEST -> WEST;
-            case EAST -> EAST;
-        };
+        return PROPERTY_BY_DIRECTION.get(direction);
     }
 
     @Override

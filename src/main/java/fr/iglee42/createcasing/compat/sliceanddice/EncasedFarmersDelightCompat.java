@@ -1,7 +1,7 @@
 package fr.iglee42.createcasing.compat.sliceanddice;
 
-import fr.iglee42.createcasing.casings.CasingSet;
-import fr.iglee42.createcasing.casings.CasingSets;
+import fr.iglee42.createcasing.sets.casings.CasingSet;
+import fr.iglee42.createcasing.sets.casings.CasingSets;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import vectorwing.farmersdelight.integration.jei.FDRecipeTypes;
 

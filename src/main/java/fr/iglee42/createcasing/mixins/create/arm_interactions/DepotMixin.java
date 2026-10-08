@@ -1,7 +1,7 @@
 package fr.iglee42.createcasing.mixins.create.arm_interactions;
 
 import com.simibubi.create.content.kinetics.mechanicalArm.AllArmInteractionPointTypes;
-import fr.iglee42.createcasing.casings.CasingSets;
+import fr.iglee42.createcasing.sets.casings.CasingSets;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;

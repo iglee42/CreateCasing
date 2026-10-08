@@ -1,0 +1,9 @@
+{
+  "parent": "sliceanddice:block/slicer/item",
+  "textures": {
+    "11": "createcasing:block/press_top/zinc",
+    "2": "createcasing:block/casing/zinc",
+    "4": "createcasing:block/mixer_side/zinc",
+    "particle": "createcasing:block/casing/zinc"
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/chain_conveyor/item",
+  "textures": {
+    "bullwheel": "createcasing:block/bullwheel/zinc",
+    "conveyor_casing": "createcasing:block/conveyor_casing/zinc",
+    "conveyor_port": "createcasing:block/conveyor_port/zinc",
+    "particle": "createcasing:block/casing/zinc"
+  }
+}

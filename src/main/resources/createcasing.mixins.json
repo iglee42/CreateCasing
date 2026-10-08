@@ -27,6 +27,7 @@
     "create.fluids.FluidTankBlockEntityAccessor",
     "create.fluids.FluidTankItemMixin",
     "create.fluids.FluidTransportBehaviourMixin",
+    "create.fluids.FluidValveBlockEntityAccessor",
     "create.fluids.HosePulleyBlockEntityAccessor",
     "create.fluids.ItemDrainBlockEntityAccessor",
     "create.fluids.SpoutBlockEntityAccessor",

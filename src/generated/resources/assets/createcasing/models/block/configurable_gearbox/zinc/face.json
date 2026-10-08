@@ -1,0 +1,7 @@
+{
+  "parent": "createcasing:block/templates/configurable_gearbox/face",
+  "textures": {
+    "0": "createcasing:block/casing/zinc",
+    "particle": "createcasing:block/casing/zinc"
+  }
+}

@@ -1,0 +1,11 @@
+{
+  "parent": "create:block/mechanical_press/block",
+  "textures": {
+    "4": "createcasing:block/press_side/zinc",
+    "gearbox": "createcasing:block/gearbox/zinc",
+    "gearbox_top": "createcasing:block/casing/zinc",
+    "mechanical_press_bottom": "createcasing:block/press_bottom/zinc",
+    "mechanical_press_top": "createcasing:block/press_top/zinc",
+    "particle": "createcasing:block/casing/zinc"
+  }
+}

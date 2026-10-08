@@ -5,8 +5,7 @@ import com.simibubi.create.content.kinetics.base.KineticBlockEntityRenderer;
 
 import fr.iglee42.createcasing.blockEntities.GlassShaftBlockEntity;
 import fr.iglee42.createcasing.blocks.shafts.GlassShaftBlock;
-import fr.iglee42.createcasing.registries.EncasedBlocks;
-import fr.iglee42.createcasing.transmissions.TransmissionSets;
+import fr.iglee42.createcasing.sets.transmissions.TransmissionSets;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.world.level.block.state.BlockState;
 

@@ -1,0 +1,16 @@
+{
+  "type": "create:item_application",
+  "ingredients": [
+    {
+      "item": "minecraft:deepslate"
+    },
+    {
+      "tag": "c:ingots/zinc"
+    }
+  ],
+  "results":[
+    {
+      "id":"createcasing:zinc_casing"
+    }
+  ]
+}

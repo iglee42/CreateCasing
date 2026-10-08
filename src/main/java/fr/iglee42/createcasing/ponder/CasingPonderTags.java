@@ -1,18 +1,14 @@
 package fr.iglee42.createcasing.ponder;
 
 import com.simibubi.create.infrastructure.ponder.AllCreatePonderTags;
-import com.tterrag.registrate.util.entry.ItemProviderEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
 import fr.iglee42.createcasing.CreateCasing;
-import fr.iglee42.createcasing.casings.CasingSets;
+import fr.iglee42.createcasing.sets.casings.CasingSets;
 import fr.iglee42.createcasing.registries.EncasedBlocks;
 import net.createmod.catnip.registry.RegisteredObjectsHelper;
 import net.createmod.ponder.api.registration.PonderTagRegistrationHelper;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.ItemLike;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class CasingPonderTags {
 

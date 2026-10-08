@@ -64,7 +64,7 @@ neoForge {
         data {
             data()
 
-            taskBefore(cleanResources)
+            //taskBefore(cleanResources)
             programArguments.addAll '--mod', project.mod_id, '--all', '--output', file('src/generated/resources/').getAbsolutePath(), '--existing', file('src/main/resources/').getAbsolutePath(), '--existing-mod','create'
         }
 
