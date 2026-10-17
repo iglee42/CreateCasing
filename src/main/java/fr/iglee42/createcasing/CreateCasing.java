@@ -1,6 +1,5 @@
 package fr.iglee42.createcasing;
 
-import com.simibubi.create.AllBlockEntityTypes;
 import com.simibubi.create.content.fluids.hosePulley.HosePulleyBlock;
 import com.simibubi.create.content.logistics.depot.DepotBehaviour;
 import com.simibubi.create.foundation.data.CreateRegistrate;
@@ -10,13 +9,15 @@ import com.simibubi.create.foundation.item.TooltipModifier;
 import fr.iglee42.createcasing.commands.CreateCasingCommand;
 import fr.iglee42.createcasing.compat.sliceanddice.EncasedSliceAndDiceCompat;
 import fr.iglee42.createcasing.config.EncasedConfigs;
-import fr.iglee42.createcasing.kubejs.KJSExternalHandler;
+import fr.iglee42.createcasing.compat.kubejs.KJSExternalHandler;
 import fr.iglee42.createcasing.mixins.create.DeployerBlockEntityAccessor;
 import fr.iglee42.createcasing.mixins.create.fluids.FluidTankBlockEntityAccessor;
 import fr.iglee42.createcasing.mixins.create.fluids.HosePulleyBlockEntityAccessor;
 import fr.iglee42.createcasing.mixins.create.fluids.ItemDrainBlockEntityAccessor;
 import fr.iglee42.createcasing.mixins.create.fluids.SpoutBlockEntityAccessor;
 import fr.iglee42.createcasing.registries.*;
+import fr.iglee42.createcasing.registries.data.EncasedRecipeGens;
+import fr.iglee42.createcasing.registries.data.EncasedRegistrateTags;
 import net.createmod.catnip.lang.FontHelper;
 import net.createmod.catnip.platform.CatnipServices;
 import net.minecraft.core.Direction;
@@ -47,6 +48,8 @@ import java.util.List;
 public class CreateCasing {
 
     public static final String MODID = "createcasing";
+    public static final String NAME = "Create Encased";
+
 
     public static final Logger LOGGER = LoggerFactory.getLogger(MODID);
 
@@ -66,6 +69,7 @@ public class CreateCasing {
 
         REGISTRATE.registerEventListeners(modEventBus);
 
+        EncasedDataComponents.register(modEventBus);
         EncasedSounds.prepare();
         EncasedBlocks.register();
         EncasedItems.register();
@@ -84,6 +88,7 @@ public class CreateCasing {
         modEventBus.addListener(this::setup);
         modEventBus.addListener(EncasedSounds::register);
         modEventBus.addListener(this::registerCapabilities);
+        modEventBus.addListener(EventPriority.HIGHEST, this::gatherDataHighest);
         modEventBus.addListener(EventPriority.LOWEST, this::gatherData);
 
 
@@ -185,8 +190,12 @@ public class CreateCasing {
         );
     }
 
+    private void gatherDataHighest(GatherDataEvent event) {
+        if (event.getMods().contains(MODID))
+            EncasedRegistrateTags.addGenerators();
+    }
+
     private void gatherData(GatherDataEvent event) {
-        //event.getGenerator().addProvider(true, REGISTRATE.setDataProvider(new RegistrateDataProvider(REGISTRATE, MODID, event)));
         event.getGenerator().addProvider(event.includeServer(),new EncasedRecipeGens(event.getGenerator().getPackOutput(),event.getLookupProvider()));
     }
 }

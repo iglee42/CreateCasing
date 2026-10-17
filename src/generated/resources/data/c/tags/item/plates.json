@@ -1,6 +1,29 @@
 {
   "values": [
     "createcasing:andesite_sheet",
-    "createcasing:zinc_sheet"
+    {
+      "id": "#c:plates/andesite_alloy",
+      "required": false
+    },
+    {
+      "id": "#c:plates/shadow_steel",
+      "required": false
+    },
+    {
+      "id": "#c:plates/refined_radiance",
+      "required": false
+    },
+    {
+      "id": "#c:plates/industrial_iron",
+      "required": false
+    },
+    {
+      "id": "#c:plates/weathered_iron",
+      "required": false
+    },
+    {
+      "id": "#c:plates/chorium",
+      "required": false
+    }
   ]
 }

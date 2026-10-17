@@ -56,6 +56,13 @@
     "createcasing:weathered_iron_mechanical_drill",
     "createcasing:weathered_iron_mechanical_plough",
     "createcasing:weathered_iron_mechanical_roller",
+    "createcasing:zinc_deployer",
+    "createcasing:zinc_portable_storage_interface",
+    "createcasing:zinc_mechanical_harvester",
+    "createcasing:zinc_mechanical_saw",
+    "createcasing:zinc_mechanical_drill",
+    "createcasing:zinc_mechanical_plough",
+    "createcasing:zinc_mechanical_roller",
     "createcasing:andesite_portable_fluid_interface",
     "createcasing:brass_portable_fluid_interface",
     "createcasing:zinc_portable_fluid_interface"

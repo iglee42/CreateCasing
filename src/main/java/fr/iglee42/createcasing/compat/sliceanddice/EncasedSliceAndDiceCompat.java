@@ -13,12 +13,10 @@ import com.simibubi.create.foundation.ponder.CreateSceneBuilder;
 import com.tterrag.registrate.providers.ProviderType;
 import com.tterrag.registrate.providers.RegistrateProvider;
 import com.tterrag.registrate.providers.RegistrateTagsProvider;
-import com.tterrag.registrate.util.entry.BlockEntityEntry;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import fr.iglee42.createcasing.CreateCasing;
-import fr.iglee42.createcasing.CreateCasingClient;
-import fr.iglee42.createcasing.casings.CasingSet;
-import fr.iglee42.createcasing.casings.CasingSets;
+import fr.iglee42.createcasing.sets.casings.CasingSet;
+import fr.iglee42.createcasing.sets.casings.CasingSets;
 import fr.iglee42.createcasing.config.CCStress;
 import fr.iglee42.createcasing.registries.EncasedBlockEntities;
 import fr.iglee42.createcasing.registries.EncasedBlockStateGens;
@@ -44,7 +42,6 @@ import net.neoforged.neoforge.event.BlockEntityTypeAddBlocksEvent;
 import java.util.Objects;
 
 import static fr.iglee42.createcasing.CreateCasing.REGISTRATE;
-import static fr.iglee42.createcasing.registries.EncasedBlockStateGens.mixerModel;
 
 public class EncasedSliceAndDiceCompat {
 

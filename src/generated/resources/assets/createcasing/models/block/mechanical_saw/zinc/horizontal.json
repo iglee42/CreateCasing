@@ -1,0 +1,11 @@
+{
+  "parent": "create:block/mechanical_saw/horizontal",
+  "textures": {
+    "andesite_casing_short": "createcasing:block/casing_short/zinc",
+    "encased_belt": "createcasing:block/encased_chain_drive/zinc",
+    "gearbox": "createcasing:block/gearbox/zinc",
+    "gearbox_top": "createcasing:block/gearbox_top/zinc",
+    "particle": "createcasing:block/gearbox_top/zinc",
+    "slit": "createcasing:block/mechanical_saw_top_no_slot/zinc"
+  }
+}

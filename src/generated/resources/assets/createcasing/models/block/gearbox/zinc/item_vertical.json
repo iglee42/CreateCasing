@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/gearbox/item_vertical",
+  "textures": {
+    "gearbox": "createcasing:block/gearbox/zinc",
+    "gearbox_top": "createcasing:block/casing/zinc",
+    "particle": "createcasing:block/casing/zinc"
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "parent": "create:block/deployer/item",
+  "textures": {
+    "10": "createcasing:block/casing_piston/zinc",
+    "6": "createcasing:block/piston_bottom/zinc",
+    "7": "createcasing:block/piston_inner/zinc",
+    "andesite_casing_short": "createcasing:block/casing_short/zinc",
+    "gearbox": "createcasing:block/gearbox/zinc",
+    "gearbox_top": "createcasing:block/gearbox_top/zinc",
+    "particle": "createcasing:block/gearbox_top/zinc"
+  }
+}

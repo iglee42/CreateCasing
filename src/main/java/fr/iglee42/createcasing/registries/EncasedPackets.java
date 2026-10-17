@@ -2,6 +2,7 @@ package fr.iglee42.createcasing.registries;
 
 import fr.iglee42.createcasing.CreateCasing;
 import fr.iglee42.createcasing.packets.ConfigureAutoClutchPacket;
+import fr.iglee42.createcasing.packets.RadialRecaserMenuSubmitPacket;
 import net.createmod.catnip.net.base.BasePacketPayload;
 import net.createmod.catnip.net.base.CatnipPacketRegistry;
 import net.minecraft.network.RegistryFriendlyByteBuf;
@@ -14,6 +15,7 @@ public enum EncasedPackets implements BasePacketPayload.PacketTypeProvider {
 
 	// Client to Server
 	AUTO_CLUTCH_CONFIGURE(ConfigureAutoClutchPacket.class, ConfigureAutoClutchPacket.STREAM_CODEC),
+	RADIAL_RECASER_MENU_SUBMIT(RadialRecaserMenuSubmitPacket.class, RadialRecaserMenuSubmitPacket.STREAM_CODEC),
 
 	// Server to Client
 	//SYMMETRY_EFFECT(SymmetryEffectPacket.class, SymmetryEffectPacket::new, PLAY_TO_CLIENT),

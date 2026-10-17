@@ -73,7 +73,19 @@ public class EncasedTags {
 
 	public enum EItemTags {
 		ANDESITE_PLATES(COMMON,"plates/andesite_alloy"),
-		ANDESITE_ALLOY_INGOTS(COMMON,"ingots/andesite_alloy")
+		ANDESITE_ALLOY_INGOTS(COMMON,"ingots/andesite_alloy"),
+
+		SHADOW_STEEL_PLATES(COMMON,"plates/shadow_steel"),
+		SHADOW_STEEL_INGOTS(COMMON,"ingots/shadow_steel"),
+
+		REFINED_RADIANCE_PLATES(COMMON,"plates/refined_radiance"),
+		REFINED_RADIANCE_INGOTS(COMMON,"ingots/refined_radiance"),
+
+		INDUSTRIAL_IRON_PLATES(COMMON,"plates/industrial_iron"),
+		WEATHERED_IRON_PLATES(COMMON,"plates/weathered_iron"),
+
+		CHORIUM_PLATES(COMMON,"plates/chorium"),
+		CHORIUM_INGOTS(COMMON,"ingots/chorium"),
 		;
 
 		public final TagKey<Item> tag;

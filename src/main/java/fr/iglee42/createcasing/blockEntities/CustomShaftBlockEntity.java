@@ -1,9 +1,8 @@
 package fr.iglee42.createcasing.blockEntities;
 
 import com.simibubi.create.content.kinetics.simpleRelays.BracketedKineticBlockEntity;
-import fr.iglee42.createcasing.registries.EncasedBlocks;
 import fr.iglee42.createcasing.registries.EncasedSounds;
-import fr.iglee42.createcasing.transmissions.TransmissionSets;
+import fr.iglee42.createcasing.sets.transmissions.TransmissionSets;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;

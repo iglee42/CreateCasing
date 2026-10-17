@@ -1,8 +1,7 @@
 package fr.iglee42.createcasing.mixins.sliceanddice;
 
 import com.possible_triangle.sliceanddice.block.slicer.SlicerArmInteractionType;
-import com.simibubi.create.content.kinetics.mechanicalArm.AllArmInteractionPointTypes;
-import fr.iglee42.createcasing.casings.CasingSets;
+import fr.iglee42.createcasing.sets.casings.CasingSets;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;

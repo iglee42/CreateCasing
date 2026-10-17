@@ -2,7 +2,7 @@
   "type": "create:pressing",
   "ingredients": [
     {
-      "item": "create:andesite_alloy"
+      "tag": "c:ingots/andesite_alloy"
     }
   ],
   "results": [

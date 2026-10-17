@@ -1,8 +1,6 @@
 package fr.iglee42.createcasing.compat.sliceanddice;
 
 import com.possible_triangle.sliceanddice.SDConstantsKt;
-import fr.iglee42.createcasing.casings.CasingSet;
-import fr.iglee42.createcasing.casings.CasingSets;
 import net.createmod.ponder.api.registration.PonderPlugin;
 import net.createmod.ponder.api.registration.PonderSceneRegistrationHelper;
 import net.minecraft.core.registries.BuiltInRegistries;

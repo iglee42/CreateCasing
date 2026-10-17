@@ -2,9 +2,8 @@ package fr.iglee42.createcasing.mixins.create.fluids.client;
 
 import com.simibubi.create.content.contraptions.actors.psi.PortableStorageInterfaceRenderer;
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
-import fr.iglee42.createcasing.fluids.FluidSet;
-import fr.iglee42.createcasing.fluids.FluidSets;
-import net.createmod.catnip.render.CachedBuffers;
+import fr.iglee42.createcasing.sets.fluids.FluidSet;
+import fr.iglee42.createcasing.sets.fluids.FluidSets;
 import net.minecraft.world.level.block.state.BlockState;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "tag": "c:ingots/chorium"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:chorium_sheet"
+    }
+  ]
+}

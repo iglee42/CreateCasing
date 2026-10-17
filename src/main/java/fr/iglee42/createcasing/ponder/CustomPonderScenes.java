@@ -4,7 +4,7 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.foundation.ponder.CreateSceneBuilder;
 import fr.iglee42.createcasing.blocks.ConfigurableGearboxBlock;
-import fr.iglee42.createcasing.casings.CasingSets;
+import fr.iglee42.createcasing.sets.casings.CasingSets;
 import fr.iglee42.createcasing.config.EncasedConfigs;
 import net.createmod.catnip.math.Pointing;
 import net.createmod.ponder.api.PonderPalette;

@@ -1,0 +1,9 @@
+{
+  "parent": "create:block/clutch/block_powered",
+  "textures": {
+    "0": "createcasing:block/automatic_clutch_on/zinc",
+    "1": "createcasing:block/gearbox/zinc",
+    "2": "createcasing:block/funnel_frame/zinc",
+    "particle": "createcasing:block/automatic_clutch_on/zinc"
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "parent": "createcasing:block/encased_chain_drive/zinc/item",
+  "textures": {
+    "particle": "createcasing:block/casing/zinc",
+    "side": "createcasing:block/adjustable_chain_gearshift/zinc"
+  }
+}

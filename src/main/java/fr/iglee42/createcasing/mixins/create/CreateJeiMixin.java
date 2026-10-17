@@ -2,11 +2,10 @@ package fr.iglee42.createcasing.mixins.create;
 
 import com.simibubi.create.compat.jei.CreateJEI;
 import com.simibubi.create.compat.jei.category.*;
-import fr.iglee42.createcasing.casings.CasingSet;
-import fr.iglee42.createcasing.casings.CasingSets;
-import fr.iglee42.createcasing.fluids.FluidSet;
-import fr.iglee42.createcasing.fluids.FluidSets;
-import fr.iglee42.createcasing.registries.EncasedBlocks;
+import fr.iglee42.createcasing.sets.casings.CasingSet;
+import fr.iglee42.createcasing.sets.casings.CasingSets;
+import fr.iglee42.createcasing.sets.fluids.FluidSet;
+import fr.iglee42.createcasing.sets.fluids.FluidSets;
 import mezz.jei.api.registration.IRecipeCatalystRegistration;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;

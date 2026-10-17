@@ -2,18 +2,13 @@ package fr.iglee42.createcasing.utils;
 
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.api.registry.SimpleRegistry;
-import fr.iglee42.createcasing.casings.CasingSet;
-import fr.iglee42.createcasing.casings.CasingSets;
-import fr.iglee42.createcasing.config.EncasedConfigs;
-import fr.iglee42.createcasing.fluids.FluidSet;
-import fr.iglee42.createcasing.fluids.FluidSets;
-import fr.iglee42.createcasing.registries.EncasedBlocks;
+import fr.iglee42.createcasing.sets.casings.CasingSet;
+import fr.iglee42.createcasing.sets.casings.CasingSets;
+import fr.iglee42.createcasing.sets.fluids.FluidSet;
+import fr.iglee42.createcasing.sets.fluids.FluidSets;
 import net.minecraft.world.level.block.Block;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.function.Function;
 import java.util.function.Predicate;
 import java.util.function.Supplier;

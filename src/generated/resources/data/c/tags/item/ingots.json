@@ -1,0 +1,20 @@
+{
+  "values": [
+    {
+      "id": "#c:ingots/andesite_alloy",
+      "required": false
+    },
+    {
+      "id": "#c:ingots/refined_radiance",
+      "required": false
+    },
+    {
+      "id": "#c:ingots/shadow_steel",
+      "required": false
+    },
+    {
+      "id": "#c:ingots/chorium",
+      "required": false
+    }
+  ]
+}

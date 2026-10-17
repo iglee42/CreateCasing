@@ -1,1 +1,1 @@
-fr.iglee42.createcasing.kubejs.EncasedKJSPlugin create
+fr.iglee42.createcasing.compat.kubejs.EncasedKJSPlugin create

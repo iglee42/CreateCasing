@@ -190,6 +190,25 @@
     "createcasing:zinc_encased_cogwheel",
     "createcasing:zinc_encased_large_cogwheel",
     "createcasing:zinc_encased_fluid_pipe",
+    "createcasing:zinc_gearbox",
+    "createcasing:zinc_press",
+    "createcasing:zinc_mixer",
+    "createcasing:zinc_depot",
+    "createcasing:zinc_encased_chain_drive",
+    "createcasing:zinc_adjustable_chain_gearshift",
+    "createcasing:zinc_configurable_gearbox",
+    "createcasing:zinc_chain_conveyor",
+    "createcasing:zinc_gearshift",
+    "createcasing:zinc_clutch",
+    "createcasing:zinc_automatic_clutch",
+    "createcasing:zinc_deployer",
+    "createcasing:zinc_portable_storage_interface",
+    "createcasing:zinc_encased_fan",
+    "createcasing:zinc_mechanical_harvester",
+    "createcasing:zinc_mechanical_saw",
+    "createcasing:zinc_mechanical_drill",
+    "createcasing:zinc_mechanical_plough",
+    "createcasing:zinc_mechanical_roller",
     "createcasing:andesite_cogwheel",
     "createcasing:andesite_large_cogwheel",
     "createcasing:brass_shaft",
@@ -773,6 +792,10 @@
     },
     {
       "id": "createcasing:weathered_iron_slicer",
+      "required": false
+    },
+    {
+      "id": "createcasing:zinc_slicer",
       "required": false
     }
   ]

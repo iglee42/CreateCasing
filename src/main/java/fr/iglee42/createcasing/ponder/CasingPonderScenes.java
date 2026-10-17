@@ -1,28 +1,20 @@
 package fr.iglee42.createcasing.ponder;
 
-import com.simibubi.create.AllBlocks;
 import com.simibubi.create.Create;
 import com.simibubi.create.infrastructure.ponder.AllCreatePonderTags;
 import com.simibubi.create.infrastructure.ponder.scenes.*;
 import com.simibubi.create.infrastructure.ponder.scenes.fluid.*;
 import com.simibubi.create.infrastructure.ponder.scenes.highLogistics.FrogAndConveyorScenes;
-import com.tterrag.registrate.util.entry.ItemProviderEntry;
-import com.tterrag.registrate.util.entry.RegistryEntry;
 import fr.iglee42.createcasing.CreateCasing;
-import fr.iglee42.createcasing.casings.CasingSet;
-import fr.iglee42.createcasing.casings.CasingSets;
-import fr.iglee42.createcasing.compat.sliceanddice.EncasedSliceAndDiceCompat;
-import fr.iglee42.createcasing.fluids.FluidSet;
-import fr.iglee42.createcasing.fluids.FluidSets;
+import fr.iglee42.createcasing.sets.casings.CasingSet;
+import fr.iglee42.createcasing.sets.casings.CasingSets;
+import fr.iglee42.createcasing.sets.fluids.FluidSet;
+import fr.iglee42.createcasing.sets.fluids.FluidSets;
 import fr.iglee42.createcasing.registries.EncasedBlocks;
-import fr.iglee42.createcasing.registries.EncasedItems;
 import net.createmod.ponder.api.registration.PonderSceneRegistrationHelper;
 import net.minecraft.core.registries.BuiltInRegistries;
-import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.ItemLike;
-import net.neoforged.fml.ModList;
 
 public class CasingPonderScenes {
 

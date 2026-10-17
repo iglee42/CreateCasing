@@ -1,0 +1,13 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    {
+      "item": "create:weathered_iron_block"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:weathered_iron_sheet"
+    }
+  ]
+}

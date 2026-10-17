@@ -1,0 +1,8 @@
+{
+  "parent": "create:block/mechanical_roller/block",
+  "textures": {
+    "0": "createcasing:block/roller_casing/zinc",
+    "particle": "createcasing:block/casing/zinc",
+    "unused": "createcasing:block/roller_metal/zinc"
+  }
+}

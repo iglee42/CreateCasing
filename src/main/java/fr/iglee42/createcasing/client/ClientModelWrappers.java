@@ -2,8 +2,8 @@ package fr.iglee42.createcasing.client;
 
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
-import fr.iglee42.createcasing.fluids.EncasedFluidTankModel;
-import fr.iglee42.createcasing.fluids.EncasedPipeAttachmentModel;
+import fr.iglee42.createcasing.sets.fluids.EncasedFluidTankModel;
+import fr.iglee42.createcasing.sets.fluids.EncasedPipeAttachmentModel;
 import net.minecraft.client.resources.model.BakedModel;
 
 public final class ClientModelWrappers {

@@ -5,10 +5,10 @@ import com.simibubi.create.AllPartialModels;
 import com.simibubi.create.content.fluids.FluidTransportBehaviour;
 import dev.engine_room.flywheel.lib.model.baked.PartialModel;
 import fr.iglee42.createcasing.CreateCasing;
-import fr.iglee42.createcasing.casings.CasingSet;
-import fr.iglee42.createcasing.casings.CasingSets;
-import fr.iglee42.createcasing.fluids.FluidSet;
-import fr.iglee42.createcasing.fluids.FluidSets;
+import fr.iglee42.createcasing.sets.casings.CasingSet;
+import fr.iglee42.createcasing.sets.casings.CasingSets;
+import fr.iglee42.createcasing.sets.fluids.FluidSet;
+import fr.iglee42.createcasing.sets.fluids.FluidSets;
 import net.createmod.catnip.data.Iterate;
 import net.createmod.catnip.lang.Lang;
 import net.minecraft.core.Direction;
@@ -30,6 +30,7 @@ public class EncasedPartialModels {
             CREATIVE_MIXER_HEAD = block("mixer/creative/head"),
             REFINED_RADIANCE_MIXER_HEAD = block("mixer/refined_radiance/head"),
             SHADOW_STEEL_MIXER_HEAD = block("mixer/shadow_steel/head"),
+            ZINC_MIXER_HEAD = block("mixer/zinc/head"),
 
     GLASS_SHAFT = block("shaft/glass"),
             MLDEG_SHAFT = block("shaft/mldeg"),
@@ -41,6 +42,7 @@ public class EncasedPartialModels {
             WEATHERED_IRON_BELT_COVER_X = block("belt_cover/weathered_iron_belt_cover_x"), WEATHERED_IRON_BELT_COVER_Z = block("belt_cover/weathered_iron_belt_cover_z"),
             REFINED_RADIANCE_BELT_COVER_X = block("belt_cover/refined_radiance_belt_cover_x"), REFINED_RADIANCE_BELT_COVER_Z = block("belt_cover/refined_radiance_belt_cover_z"),
             SHADOW_STEEL_BELT_COVER_X = block("belt_cover/shadow_steel_belt_cover_x"), SHADOW_STEEL_BELT_COVER_Z = block("belt_cover/shadow_steel_belt_cover_z"),
+            ZINC_BELT_COVER_X = block("belt_cover/zinc_belt_cover_x"), ZINC_BELT_COVER_Z = block("belt_cover/zinc_belt_cover_z"),
 
     BRASS_CONVEYOR_WHEEL = block("chain_conveyor/brass/wheel"),
     COPPER_CONVEYOR_WHEEL = block("chain_conveyor/copper/wheel"),
@@ -50,6 +52,7 @@ public class EncasedPartialModels {
     CREATIVE_CONVEYOR_WHEEL = block("chain_conveyor/creative/wheel"),
     REFINED_RADIANCE_CONVEYOR_WHEEL = block("chain_conveyor/refined_radiance/wheel"),
     SHADOW_STEEL_CONVEYOR_WHEEL = block("chain_conveyor/shadow_steel/wheel"),
+    ZINC_CONVEYOR_WHEEL = block("chain_conveyor/zinc/wheel"),
 
     BRASS_CONVEYOR_SHAFT = block("chain_conveyor/brass/shaft"),
             COPPER_CONVEYOR_SHAFT = block("chain_conveyor/copper/shaft"),
@@ -59,6 +62,7 @@ public class EncasedPartialModels {
             CREATIVE_CONVEYOR_SHAFT = block("chain_conveyor/creative/shaft"),
             REFINED_RADIANCE_CONVEYOR_SHAFT = block("chain_conveyor/refined_radiance/shaft"),
             SHADOW_STEEL_CONVEYOR_SHAFT = block("chain_conveyor/shadow_steel/shaft"),
+            ZINC_CONVEYOR_SHAFT = block("chain_conveyor/zinc/shaft"),
             BRASS_CONVEYOR_GUARD = block("chain_conveyor/brass/guard"),
             COPPER_CONVEYOR_GUARD = block("chain_conveyor/copper/guard"),
             RAILWAY_CONVEYOR_GUARD = block("chain_conveyor/railway/guard"),
@@ -67,6 +71,7 @@ public class EncasedPartialModels {
             CREATIVE_CONVEYOR_GUARD = block("chain_conveyor/creative/guard"),
             REFINED_RADIANCE_CONVEYOR_GUARD = block("chain_conveyor/refined_radiance/guard"),
             SHADOW_STEEL_CONVEYOR_GUARD = block("chain_conveyor/shadow_steel/guard"),
+            ZINC_CONVEYOR_GUARD = block("chain_conveyor/zinc/guard"),
 
     BRASS_DRILL_HEAD = block("mechanical_drill/brass/head"),
     COPPER_DRILL_HEAD = block("mechanical_drill/copper/head"),
@@ -76,6 +81,7 @@ public class EncasedPartialModels {
     CREATIVE_DRILL_HEAD = block("mechanical_drill/creative/head"),
     REFINED_RADIANCE_DRILL_HEAD = block("mechanical_drill/refined_radiance/head"),
     SHADOW_STEEL_DRILL_HEAD = block("mechanical_drill/shadow_steel/head"),
+    ZINC_DRILL_HEAD = block("mechanical_drill/zinc/head"),
 
     BRASS_ROLLER_FRAME = block("mechanical_roller/brass/frame"),
             COPPER_ROLLER_FRAME = block("mechanical_roller/copper/frame"),
@@ -85,6 +91,7 @@ public class EncasedPartialModels {
             CREATIVE_ROLLER_FRAME = block("mechanical_roller/creative/frame"),
             REFINED_RADIANCE_ROLLER_FRAME = block("mechanical_roller/refined_radiance/frame"),
             SHADOW_STEEL_ROLLER_FRAME = block("mechanical_roller/shadow_steel/frame"),
+            ZINC_ROLLER_FRAME = block("mechanical_roller/zinc/frame"),
 
     ANDESITE_GAUGE = block("steam_engine/andesite/gauge"), ANDESITE_GAUGE_DIAL = block("steam_engine/andesite/gauge_dial"),
             BRASS_GAUGE = block("steam_engine/brass/gauge"), BRASS_GAUGE_DIAL = block("steam_engine/brass/gauge_dial"),
