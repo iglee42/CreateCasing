@@ -2,17 +2,14 @@
   "variants": {
     "axis=x": {
       "model": "createcasing:block/large_cogwheel/jungle",
-      "uvlock": true,
       "x": 90,
       "y": 90
     },
     "axis=y": {
-      "model": "createcasing:block/large_cogwheel/jungle",
-      "uvlock": true
+      "model": "createcasing:block/large_cogwheel/jungle"
     },
     "axis=z": {
       "model": "createcasing:block/large_cogwheel/jungle",
-      "uvlock": true,
       "x": 90,
       "y": 180
     }

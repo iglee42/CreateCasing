@@ -56,14 +56,14 @@ public class EncasedBlockStateGens {
 
     public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> cogwheel(String cogwheel) {
         return (ctx, prov) -> {
-            axisBlock(ctx, prov, cogwheelModel(prov, cogwheel, true));
+            axisBlock(ctx, prov, cogwheelModel(prov, cogwheel, true),false);
             cogwheelModel(prov, cogwheel, false);
         };
     }
 
     public static <T extends Block> NonNullBiConsumer<DataGenContext<Block, T>, RegistrateBlockstateProvider> largeCogwheel(String cogwheel) {
         return (ctx, prov) -> {
-            axisBlock(ctx, prov, largeCogwheelModel(prov, cogwheel, true));
+            axisBlock(ctx, prov, largeCogwheelModel(prov, cogwheel, true),false);
             largeCogwheelModel(prov, cogwheel, false);
         };
     }

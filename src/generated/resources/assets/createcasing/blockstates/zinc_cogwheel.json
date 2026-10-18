@@ -2,17 +2,14 @@
   "variants": {
     "axis=x": {
       "model": "createcasing:block/cogwheel/zinc",
-      "uvlock": true,
       "x": 90,
       "y": 90
     },
     "axis=y": {
-      "model": "createcasing:block/cogwheel/zinc",
-      "uvlock": true
+      "model": "createcasing:block/cogwheel/zinc"
     },
     "axis=z": {
       "model": "createcasing:block/cogwheel/zinc",
-      "uvlock": true,
       "x": 90,
       "y": 180
     }
