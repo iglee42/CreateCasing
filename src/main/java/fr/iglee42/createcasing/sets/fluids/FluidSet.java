@@ -111,6 +111,7 @@ public class FluidSet extends SetBase<FluidSet, FluidSet.Options> {
         if (options.existingPortableFluidInterface != null) portableFluidInterfaceBlock = options.existingPortableFluidInterface;
         if (options.existingSteamEngine != null) steamEngineBlock = options.existingSteamEngine;
         if (options.existingWhistle != null) whistleBlock = options.existingWhistle;
+        if (options.existingSpout != null) spoutBlock = options.existingSpout;
     }
 
     public boolean doesGenerateFluidPipe(){

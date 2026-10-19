@@ -51,6 +51,7 @@ public class FluidSets {
             .existingWhistle(AllBlocks.STEAM_WHISTLE)
             .existingValve(AllBlocks.FLUID_VALVE)
             .existingValveHandle(AllBlocks.COPPER_VALVE_HANDLE)
+            .existingSpout(AllBlocks.SPOUT)
     );
 
     public static final FluidSet ZINC = register("zinc", options -> options
