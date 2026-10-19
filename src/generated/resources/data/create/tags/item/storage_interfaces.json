@@ -1,0 +1,14 @@
+{
+  "values": [
+    "createcasing:brass_portable_storage_interface",
+    "createcasing:copper_portable_storage_interface",
+    "createcasing:railway_portable_storage_interface",
+    "createcasing:shadow_steel_portable_storage_interface",
+    "createcasing:refined_radiance_portable_storage_interface",
+    "createcasing:creative_portable_storage_interface",
+    "createcasing:industrial_iron_portable_storage_interface",
+    "createcasing:weathered_iron_portable_storage_interface",
+    "createcasing:zinc_portable_storage_interface",
+    "create:portable_storage_interface"
+  ]
+}

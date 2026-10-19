@@ -1,0 +1,8 @@
+{
+  "values": [
+    "createcasing:andesite_item_drain",
+    "createcasing:brass_item_drain",
+    "createcasing:zinc_item_drain",
+    "create:item_drain"
+  ]
+}

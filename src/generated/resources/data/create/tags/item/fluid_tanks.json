@@ -1,0 +1,8 @@
+{
+  "values": [
+    "createcasing:andesite_fluid_tank",
+    "createcasing:brass_fluid_tank",
+    "createcasing:zinc_fluid_tank",
+    "create:fluid_tank"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "values": [
+    "createcasing:brass_chain_conveyor",
+    "createcasing:copper_chain_conveyor",
+    "createcasing:railway_chain_conveyor",
+    "createcasing:shadow_steel_chain_conveyor",
+    "createcasing:refined_radiance_chain_conveyor",
+    "createcasing:creative_chain_conveyor",
+    "createcasing:industrial_iron_chain_conveyor",
+    "createcasing:weathered_iron_chain_conveyor",
+    "createcasing:zinc_chain_conveyor",
+    "create:chain_conveyor"
+  ]
+}

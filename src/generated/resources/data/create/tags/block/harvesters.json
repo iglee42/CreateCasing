@@ -1,0 +1,14 @@
+{
+  "values": [
+    "createcasing:brass_mechanical_harvester",
+    "createcasing:copper_mechanical_harvester",
+    "createcasing:railway_mechanical_harvester",
+    "createcasing:shadow_steel_mechanical_harvester",
+    "createcasing:refined_radiance_mechanical_harvester",
+    "createcasing:creative_mechanical_harvester",
+    "createcasing:industrial_iron_mechanical_harvester",
+    "createcasing:weathered_iron_mechanical_harvester",
+    "createcasing:zinc_mechanical_harvester",
+    "create:mechanical_harvester"
+  ]
+}

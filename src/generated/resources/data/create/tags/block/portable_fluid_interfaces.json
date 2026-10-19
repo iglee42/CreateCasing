@@ -1,0 +1,8 @@
+{
+  "values": [
+    "createcasing:andesite_portable_fluid_interface",
+    "createcasing:brass_portable_fluid_interface",
+    "createcasing:zinc_portable_fluid_interface",
+    "create:portable_fluid_interface"
+  ]
+}

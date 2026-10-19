@@ -1,0 +1,14 @@
+{
+  "values": [
+    "createcasing:brass_mechanical_drill",
+    "createcasing:copper_mechanical_drill",
+    "createcasing:railway_mechanical_drill",
+    "createcasing:shadow_steel_mechanical_drill",
+    "createcasing:refined_radiance_mechanical_drill",
+    "createcasing:creative_mechanical_drill",
+    "createcasing:industrial_iron_mechanical_drill",
+    "createcasing:weathered_iron_mechanical_drill",
+    "createcasing:zinc_mechanical_drill",
+    "create:mechanical_drill"
+  ]
+}

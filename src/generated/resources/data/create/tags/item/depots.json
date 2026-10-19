@@ -1,0 +1,14 @@
+{
+  "values": [
+    "createcasing:brass_depot",
+    "createcasing:copper_depot",
+    "createcasing:railway_depot",
+    "createcasing:shadow_steel_depot",
+    "createcasing:refined_radiance_depot",
+    "createcasing:creative_depot",
+    "createcasing:industrial_iron_depot",
+    "createcasing:weathered_iron_depot",
+    "createcasing:zinc_depot",
+    "create:depot"
+  ]
+}

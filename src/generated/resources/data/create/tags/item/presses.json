@@ -1,0 +1,14 @@
+{
+  "values": [
+    "createcasing:brass_press",
+    "createcasing:copper_press",
+    "createcasing:railway_press",
+    "createcasing:shadow_steel_press",
+    "createcasing:refined_radiance_press",
+    "createcasing:creative_press",
+    "createcasing:industrial_iron_press",
+    "createcasing:weathered_iron_press",
+    "createcasing:zinc_press",
+    "create:mechanical_press"
+  ]
+}

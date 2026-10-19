@@ -1,0 +1,14 @@
+{
+  "values": [
+    "createcasing:brass_encased_chain_drive",
+    "createcasing:copper_encased_chain_drive",
+    "createcasing:railway_encased_chain_drive",
+    "createcasing:shadow_steel_encased_chain_drive",
+    "createcasing:refined_radiance_encased_chain_drive",
+    "createcasing:creative_encased_chain_drive",
+    "createcasing:industrial_iron_encased_chain_drive",
+    "createcasing:weathered_iron_encased_chain_drive",
+    "createcasing:zinc_encased_chain_drive",
+    "create:encased_chain_drive"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "values": [
+    "createcasing:brass_mechanical_roller",
+    "createcasing:copper_mechanical_roller",
+    "createcasing:railway_mechanical_roller",
+    "createcasing:shadow_steel_mechanical_roller",
+    "createcasing:refined_radiance_mechanical_roller",
+    "createcasing:creative_mechanical_roller",
+    "createcasing:industrial_iron_mechanical_roller",
+    "createcasing:weathered_iron_mechanical_roller",
+    "createcasing:zinc_mechanical_roller",
+    "create:mechanical_roller"
+  ]
+}

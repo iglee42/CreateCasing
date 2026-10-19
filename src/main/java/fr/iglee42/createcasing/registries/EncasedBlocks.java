@@ -191,6 +191,7 @@ public class EncasedBlocks {
 
     private static BlockEntry<CustomGearboxBlock> createGearbox(String name, CTSpriteShiftEntry sprite, Supplier<BlockItem> item){
         BlockBuilder<CustomGearboxBlock,CreateRegistrate> entry = REGISTRATE.block(name+"_gearbox", (p)->new CustomGearboxBlock(p,item))
+                .tag(EncasedTags.EBlockTags.GEARBOXES.tag)
                 .initialProperties(SharedProperties::stone)
                 .properties(BlockBehaviour.Properties::noOcclusion)
                 .properties(p -> p.mapColor(MapColor.PODZOL))
@@ -200,6 +201,7 @@ public class EncasedBlocks {
         entry = connectedTexture(entry,sprite,(block, cc) -> cc.make(block, sprite,
                 (s, f) -> f.getAxis() == s.getValue(GearboxBlock.AXIS)));
         return entry.item()
+                .tag(EncasedTags.EItemTags.GEARBOXES.tag)
                 .model((ctx,prov)->prov.getBuilder(ctx.getName()).parent(Objects.requireNonNull(gearboxModel(prov, name, "item"))))
                 .build()
                 .register();
@@ -207,6 +209,7 @@ public class EncasedBlocks {
 
     private static BlockEntry<CustomMixerBlock> createMixer(String name){
         return REGISTRATE.block(name+"_mixer", CustomMixerBlock::new)
+                .tag(EncasedTags.EBlockTags.MIXERS.tag)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.mapColor(MapColor.STONE))
                 .properties(BlockBehaviour.Properties::noOcclusion)
@@ -215,6 +218,7 @@ public class EncasedBlocks {
                 .transform(CasingBuilderTransformers.cutoutMipped())
                 .transform(CCStress.setImpact(4.0))
                 .item(AssemblyOperatorBlockItem::new)
+                .tag(EncasedTags.EItemTags.MIXERS.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(mixerModel(p,name,true)))
                 .build()
                 .register();
@@ -222,6 +226,7 @@ public class EncasedBlocks {
 
     private static BlockEntry<CustomPressBlock> createPress(String name){
         return REGISTRATE.block(name+"_press", CustomPressBlock::new)
+                .tag(EncasedTags.EBlockTags.PRESSES.tag)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.mapColor(MapColor.PODZOL))
                 .properties(BlockBehaviour.Properties::noOcclusion)
@@ -229,6 +234,7 @@ public class EncasedBlocks {
                 .blockstate(EncasedBlockStateGens.press(name))
                 .transform(CCStress.setImpact(8.0))
                 .item(AssemblyOperatorBlockItem::new)
+                .tag(EncasedTags.EItemTags.PRESSES.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(pressModel(p,name,true)))
                 .build()
                 .register();
@@ -236,6 +242,7 @@ public class EncasedBlocks {
 
     private static BlockEntry<? extends ShaftBlock> createShaft(String name, Function<BlockBehaviour.Properties, ? extends ShaftBlock> factory){
         return REGISTRATE.block(name+"_shaft", (p)->factory != null ? factory.apply(p) : new CustomShaftBlock(p))
+                .tag(EncasedTags.EBlockTags.SHAFTS.tag)
                 .initialProperties(SharedProperties::wooden)
                 .properties(p -> p.mapColor(MapColor.METAL))
                 .transform(CCStress.setNoImpact())
@@ -243,6 +250,7 @@ public class EncasedBlocks {
                 .blockstate(EncasedBlockStateGens.shaft(name))
                 .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
                 .item()
+                .tag(EncasedTags.EItemTags.SHAFTS.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(Objects.requireNonNull(shaftModel(p, name))))
                 .build()
                 .register();
@@ -251,6 +259,7 @@ public class EncasedBlocks {
 
     private static BlockEntry<? extends CogWheelBlock> createCogwheel(String name, BiFunction<BlockBehaviour.Properties,Boolean, ? extends CogWheelBlock> factory){
         return REGISTRATE.block(name+"_cogwheel", p->factory != null ? factory.apply(p,false) : CustomCogwheelBlock.small(p))
+                .tag(EncasedTags.EBlockTags.COGWHEELS.tag)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.sound(SoundType.WOOD).mapColor(MapColor.DIRT))
                 .transform(CCStress.setNoImpact())
@@ -258,6 +267,7 @@ public class EncasedBlocks {
                 .blockstate(EncasedBlockStateGens.cogwheel(name))
                 .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
                 .item(WoodenCogwheelBlockItem::new)
+                .tag(EncasedTags.EItemTags.COGWHEELS.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(Objects.requireNonNull(cogwheelModel(p, name,true))))
                 .build()
                 .register();
@@ -265,6 +275,7 @@ public class EncasedBlocks {
 
     private static BlockEntry<? extends CogWheelBlock> createLargeCogwheel(String name, BiFunction<BlockBehaviour.Properties,Boolean, ? extends CogWheelBlock> factory) {
         return REGISTRATE.block(name+"_large_cogwheel", p->factory != null ? factory.apply(p,true) : CustomCogwheelBlock.large(p))
+                .tag(EncasedTags.EBlockTags.LARGE_COGWHEELS.tag)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.sound(SoundType.WOOD).mapColor(MapColor.DIRT))
                 .transform(axeOrPickaxe())
@@ -272,6 +283,7 @@ public class EncasedBlocks {
                 .blockstate(EncasedBlockStateGens.largeCogwheel(name))
                 .onRegister(CreateRegistrate.blockModel(() -> BracketedKineticBlockModel::new))
                 .item(WoodenCogwheelBlockItem::new)
+                .tag(EncasedTags.EItemTags.LARGE_COGWHEELS.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(Objects.requireNonNull(largeCogwheelModel(p, name,true))))
                 .build()
                 .register();
@@ -281,6 +293,7 @@ public class EncasedBlocks {
 
     public static BlockEntry<CustomDepotBlock> createDepot(String name){
         return REGISTRATE.block(name+"_depot", CustomDepotBlock::new)
+                .tag(EncasedTags.EBlockTags.DEPOTS.tag)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.mapColor(MapColor.COLOR_GRAY))
                 .transform(axeOrPickaxe())
@@ -289,6 +302,7 @@ public class EncasedBlocks {
                 .onRegister(interactionBehaviour(new MountedDepotInteractionBehaviour()))
                 .transform(mountedItemStorage(AllMountedStorageTypes.DEPOT))
                 .item()
+                .tag(EncasedTags.EItemTags.DEPOTS.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(Objects.requireNonNull(depotModel(p, name))))
                 .build()
                 .register();
@@ -296,12 +310,14 @@ public class EncasedBlocks {
 
     public static BlockEntry<CustomChainDriveBlock> createChainDrive(String name){
         return REGISTRATE.block(name+"_encased_chain_drive", p-> new CustomChainDriveBlock(p,name))
+                        .tag(EncasedTags.EBlockTags.CHAIN_DRIVES.tag)
                         .initialProperties(SharedProperties::stone)
                         .properties(p -> p.noOcclusion().mapColor(MapColor.PODZOL))
                         .transform(CCStress.setNoImpact())
                         .transform(axeOrPickaxe())
                         .blockstate( EncasedBlockStateGens.encasedChainDrive(name))
                         .item()
+                        .tag(EncasedTags.EItemTags.CHAIN_DRIVES.tag)
                         .model((c,p)->p.getBuilder(c.getName()).parent(Objects.requireNonNull(createChainDriveModel(p, name,true,"item"))))
                         .build()
                         .register();
@@ -310,12 +326,14 @@ public class EncasedBlocks {
 
     public static BlockEntry<CustomChainGearshiftBlock> createChainGearshift(String name){
         return REGISTRATE.block(name+ "_adjustable_chain_gearshift", p->new CustomChainGearshiftBlock(p,name))
+                .tag(EncasedTags.EBlockTags.CHAIN_GEARSHIFTS.tag)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.noOcclusion().mapColor(MapColor.NETHER))
                 .transform(CCStress.setNoImpact())
                 .transform(axeOrPickaxe())
                 .blockstate( EncasedBlockStateGens.adjustableChainGearshift(name))
                 .item()
+                .tag(EncasedTags.EItemTags.CHAIN_GEARSHIFTS.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(Objects.requireNonNull(createAdjustableChainGearshiftModel(p, name,true,"item",false))))
                 .build()
                 .register();
@@ -323,6 +341,7 @@ public class EncasedBlocks {
 
     public static BlockEntry<ConfigurableGearboxBlock> createConfigurableGearbox(String name, CTSpriteShiftEntry ct){
         BlockBuilder<ConfigurableGearboxBlock,CreateRegistrate> entry = REGISTRATE.block(name+"_configurable_gearbox", ConfigurableGearboxBlock::new)
+                .tag(EncasedTags.EBlockTags.CONFIGURABLE_GEARBOXES.tag)
                 .initialProperties(SharedProperties::stone)
                 .properties(BlockBehaviour.Properties::noOcclusion)
                 .properties(p -> p.mapColor(MapColor.PODZOL))
@@ -330,6 +349,7 @@ public class EncasedBlocks {
                 .transform(axeOrPickaxe())
                 .blockstate(EncasedBlockStateGens.configurableGearbox(name))
                 .item()
+                .tag(EncasedTags.EItemTags.CONFIGURABLE_GEARBOXES.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(createConfigurableGearboxItemModel(p,name)))
                 .build();
         if (ct != null)entry = entry
@@ -341,6 +361,7 @@ public class EncasedBlocks {
 
     public static BlockEntry<PublicChainConveyorBlock> createChainConveyor(String name){
         return REGISTRATE.block(name+"_chain_conveyor", PublicChainConveyorBlock::new)
+                .tag(EncasedTags.EBlockTags.CHAIN_CONVEYORS.tag)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.noOcclusion()
                 .mapColor(MapColor.PODZOL))
@@ -348,6 +369,7 @@ public class EncasedBlocks {
                 .transform(CCStress.setImpact(1))
                 .blockstate(chainConveyor(name))
                 .item()
+                .tag(EncasedTags.EItemTags.CHAIN_CONVEYORS.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(createConveyorModel(p,name,true)))
                 .build()
                 .register();
@@ -355,6 +377,7 @@ public class EncasedBlocks {
 
     public static BlockEntry<CustomGearshiftBlock> createGearshift(String name) {
         return REGISTRATE.block(name+"_gearshift", CustomGearshiftBlock::new)
+                .tag(EncasedTags.EBlockTags.GEARSHIFTS.tag)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.noOcclusion()
                         .mapColor(MapColor.PODZOL))
@@ -363,6 +386,7 @@ public class EncasedBlocks {
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) -> EncasedBlockStateGens.axisBlock(c,p,gearshiftModel(p,name),false))
                 .item()
+                .tag(EncasedTags.EItemTags.GEARSHIFTS.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(gearshiftItemModel(p,name)))
                 .build()
                 .register();
@@ -370,6 +394,7 @@ public class EncasedBlocks {
 
     public static BlockEntry<CustomClutchBlock> createClutch(String name) {
         return REGISTRATE.block(name+"_clutch", CustomClutchBlock::new)
+                .tag(EncasedTags.EBlockTags.CLUTCHES.tag)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.noOcclusion()
                         .mapColor(MapColor.PODZOL))
@@ -378,6 +403,7 @@ public class EncasedBlocks {
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) ->EncasedBlockStateGens.axisBlock(c,p,clutchModel(p,name),false))
                 .item()
+                .tag(EncasedTags.EItemTags.CLUTCHES.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(clutchItemModel(p,name)))
                 .build()
                 .register();
@@ -392,8 +418,10 @@ public class EncasedBlocks {
                 .transform(CCStress.setImpact(4.0))
                 .onRegister(movementBehaviour(new DeployerMovementBehaviour()))
                 .onRegister(interactionBehaviour(new DeployerMovingInteraction()))
+                .tag(EncasedTags.EBlockTags.DEPLOYERS.tag)
                 .item(AssemblyOperatorBlockItem::new)
                 .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
+                .tag(EncasedTags.EItemTags.DEPLOYERS.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(deployerItemModel(p,name)))
                 .build()
                 .register();
@@ -401,12 +429,14 @@ public class EncasedBlocks {
 
     public static BlockEntry<PortableStorageInterfaceBlock> createPortableStorageInterface(String name) {
         return REGISTRATE.block(name + "_portable_storage_interface", PortableStorageInterfaceBlock::forItems)
+                .tag(EncasedTags.EBlockTags.STORAGE_INTERFACES.tag)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.mapColor(MapColor.PODZOL))
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) -> p.directionalBlock(c.get(), storageInterfaceModel(p,name,false)))
                 .onRegister(movementBehaviour(new PortableStorageInterfaceMovement()))
                 .item()
+                .tag(EncasedTags.EItemTags.STORAGE_INTERFACES.tag)
                 .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(storageInterfaceModel(p,name,true)))
                 .build()
@@ -415,6 +445,7 @@ public class EncasedBlocks {
 
     public static BlockEntry<CustomEncasedFanBlock> createEncasedFan(String name) {
         return REGISTRATE.block(name + "_encased_fan", CustomEncasedFanBlock::new)
+                .tag(EncasedTags.EBlockTags.ENCASED_FANS.tag)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.mapColor(MapColor.PODZOL))
                 .blockstate((c,p)->p.directionalBlock(c.get(),fanModel(p,name)))
@@ -422,6 +453,7 @@ public class EncasedBlocks {
                 .transform(axeOrPickaxe())
                 .transform(CCStress.setImpact(2.0))
                 .item()
+                .tag(EncasedTags.EItemTags.ENCASED_FANS.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(fanItemModel(p,name)))
                 .build()
                 .register();
@@ -429,6 +461,7 @@ public class EncasedBlocks {
 
     public static BlockEntry<CustomHarvesterBlock> createHarvester(String name){
         return REGISTRATE.block(name + "_mechanical_harvester", CustomHarvesterBlock::new)
+                .tag(EncasedTags.EBlockTags.HARVESTERS.tag)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.mapColor(MapColor.METAL)
                         .forceSolidOn())
@@ -437,6 +470,7 @@ public class EncasedBlocks {
                 .blockstate((c,p)->p.horizontalBlock(c.get(),harvesterModel(p,name,false)))
                 .transform(CasingBuilderTransformers.cutoutMipped())
                 .item()
+                .tag(EncasedTags.EItemTags.HARVESTERS.tag)
                 .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(harvesterModel(p,name,true)))
                 .build()
@@ -445,6 +479,7 @@ public class EncasedBlocks {
 
     public static BlockEntry<PloughBlock> createPlough(String name){
         return REGISTRATE.block(name+"_mechanical_plough", PloughBlock::new)
+			.tag(EncasedTags.EBlockTags.PLOUGHS.tag)
 			.initialProperties(SharedProperties::stone)
 			.properties(p -> p.mapColor(MapColor.COLOR_GRAY)
 				.forceSolidOn())
@@ -452,13 +487,15 @@ public class EncasedBlocks {
 			.onRegister(movementBehaviour(new PloughMovementBehaviour()))
             .blockstate((c,p)->p.horizontalBlock(c.get(),ploughModel(p,name)))
 			.item()
-			.tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
+            .tag(EncasedTags.EItemTags.PLOUGHS.tag)
+            .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
             .model((c,p)->p.getBuilder(c.getName()).parent(new ModelFile.ExistingModelFile(CreateCasing.asResource("block/mechanical_plough/"+name),p.existingFileHelper)))
 			.build()
 			.register();
     }
     public static BlockEntry<CustomRollerBlock> createRoller(String name){
         return REGISTRATE.block(name+"_mechanical_roller", CustomRollerBlock::new)
+			.tag(EncasedTags.EBlockTags.ROLLERS.tag)
 			.initialProperties(SharedProperties::stone)
 			.properties(p -> p.mapColor(MapColor.COLOR_GRAY)
 				.noOcclusion())
@@ -467,6 +504,7 @@ public class EncasedBlocks {
 			.blockstate((c,p)->p.horizontalBlock(c.get(),rollerModel(p,name,false)))
 			.transform(CasingBuilderTransformers.cutoutMipped())
 			.item(RollerBlockItem::new)
+			.tag(EncasedTags.EItemTags.ROLLERS.tag)
 			.tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
             .model((c,p)->p.getBuilder(c.getName()).parent(rollerModel(p,name,true)))
             .build()
@@ -475,6 +513,7 @@ public class EncasedBlocks {
 
     public static BlockEntry<CustomSawBlock> createSaw(String name){
         return REGISTRATE.block(name+"_mechanical_saw", CustomSawBlock::new)
+                .tag(EncasedTags.EBlockTags.SAWS.tag)
                 .initialProperties(SharedProperties::stone)
                 .transform(CasingBuilderTransformers.cutoutMipped())
                 .properties(p -> p.mapColor(MapColor.PODZOL))
@@ -484,6 +523,7 @@ public class EncasedBlocks {
                 .onRegister(movementBehaviour(new SawMovementBehaviour()))
                 .transform(CasingBuilderTransformers.cutoutMipped())
                 .item()
+                .tag(EncasedTags.EItemTags.SAWS.tag)
                 .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(sawItemModel(p,name)))
                 .build()
@@ -492,6 +532,7 @@ public class EncasedBlocks {
 
     public static BlockEntry<CustomDrillBlock> createDrill(String name){
         return REGISTRATE.block(name+"_mechanical_drill", CustomDrillBlock::new)
+                .tag(EncasedTags.EBlockTags.DRILLS.tag)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.mapColor(MapColor.PODZOL))
                 .transform(axeOrPickaxe())
@@ -499,6 +540,7 @@ public class EncasedBlocks {
                 .transform(CCStress.setImpact(4.0))
                 .onRegister(movementBehaviour(new DrillMovementBehaviour()))
                 .item()
+                .tag(EncasedTags.EItemTags.DRILLS.tag)
                 .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(drillModel(p,name,true)))
                 .build()
@@ -507,6 +549,7 @@ public class EncasedBlocks {
 
     public static BlockEntry<AutoClutchBlock> createAutoClutch(String name) {
         return REGISTRATE.block(name+"_automatic_clutch", AutoClutchBlock::new)
+                .tag(EncasedTags.EBlockTags.AUTO_CLUTCHES.tag)
                 .initialProperties(SharedProperties::stone)
                 .properties(p -> p.noOcclusion()
                         .mapColor(MapColor.PODZOL))
@@ -515,6 +558,7 @@ public class EncasedBlocks {
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) ->EncasedBlockStateGens.axisBlock(c,p,autoClutchModel(p,name),false))
                 .item()
+                .tag(EncasedTags.EItemTags.AUTO_CLUTCHES.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(autoClutchItemModel(p,name)))
                 .build()
                 .register();
@@ -716,12 +760,14 @@ public class EncasedBlocks {
 
     public static BlockEntry<CustomFluidPipeBlock> createFluidPipe(String name) {
         return REGISTRATE.block(name+"_fluid_pipe", CustomFluidPipeBlock::new)
+                .tag(EncasedTags.EBlockTags.FLUID_PIPES.tag)
                 .initialProperties(SharedProperties::copperMetal)
                 .properties(p -> p.forceSolidOff())
                 .transform(pickaxeOnly())
                 .blockstate(EncasedBlockStateGens.pipe(name))
                 .onRegister(CreateRegistrate.blockModel(() -> ClientModelWrappers.encasedPipeAttachment(name)))
                 .item()
+                .tag(EncasedTags.EItemTags.FLUID_PIPES.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(new ModelFile.UncheckedModelFile(CreateCasing.asResource("block/fluid_pipe/"+name+"/item"))))
                 .build()
                 .register();
@@ -754,6 +800,7 @@ public class EncasedBlocks {
 
     public static BlockEntry<CustomPumpBlock> createFluidPump(String name) {
         return REGISTRATE.block(name+"_mechanical_pump", CustomPumpBlock::new)
+                .tag(EncasedTags.EBlockTags.MECHANICAL_PUMPS.tag)
                 .initialProperties(SharedProperties::copperMetal)
                 .properties(p -> p.mapColor(MapColor.STONE))
                 .transform(pickaxeOnly())
@@ -761,6 +808,7 @@ public class EncasedBlocks {
                 .onRegister(CreateRegistrate.blockModel(() -> ClientModelWrappers.encasedPipeAttachment(name)))
                 .transform(CCStress.setImpact(4.0))
                 .item()
+                .tag(EncasedTags.EItemTags.MECHANICAL_PUMPS.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(pumpModel(p,name,true)))
                 .build()
                 .register();
@@ -768,12 +816,14 @@ public class EncasedBlocks {
 
     public static BlockEntry<CustomSmartFluidPipeBlock> createSmartFluidPipe(String name) {
         return REGISTRATE.block(name+"_smart_fluid_pipe", CustomSmartFluidPipeBlock::new)
+                .tag(EncasedTags.EBlockTags.SMART_FLUID_PIPES.tag)
                 .initialProperties(SharedProperties::copperMetal)
                 .properties(p -> p.mapColor(MapColor.TERRACOTTA_YELLOW))
                 .transform(pickaxeOnly())
                 .blockstate(new CustomSmartFluidPipeGenerator(name)::generate)
                 .onRegister(CreateRegistrate.blockModel(() -> ClientModelWrappers.encasedPipeAttachment(name)))
                 .item()
+                .tag(EncasedTags.EItemTags.SMART_FLUID_PIPES.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(smartPipeModel(p,name,true)))
                 .build()
                 .register();
@@ -781,6 +831,7 @@ public class EncasedBlocks {
 
     public static BlockEntry<CustomFluidTankBlock> createFluidTank(String name,CTSpriteShiftEntry sideSprite, CTSpriteShiftEntry topSprite, CTSpriteShiftEntry innerSprite) {
         return REGISTRATE.block(name+"_fluid_tank", CustomFluidTankBlock::new)
+                .tag(EncasedTags.EBlockTags.FLUID_TANKS.tag)
                 .initialProperties(SharedProperties::copperMetal)
                 .properties(p -> p.noOcclusion()
                         .isRedstoneConductor((p1, p2, p3) -> true))
@@ -792,6 +843,7 @@ public class EncasedBlocks {
                 .onRegister(movementBehaviour(new FluidTankMovementBehavior()))
                 .transform(CasingBuilderTransformers.cutoutMipped())
                 .item(FluidTankItem::new)
+                .tag(EncasedTags.EItemTags.FLUID_TANKS.tag)
                 .model(AssetLookup.customBlockItemModel("fluid_tank",name, "block_single_window"))
                 .build()
                 .register();
@@ -799,12 +851,14 @@ public class EncasedBlocks {
 
     public static BlockEntry<CustomSteamEngineBlock> createSteamEngine(String name) {
         return REGISTRATE.block(name+"_steam_engine", CustomSteamEngineBlock::new)
+                .tag(EncasedTags.EBlockTags.STEAM_ENGINES.tag)
                 .initialProperties(SharedProperties::copperMetal)
                 .transform(pickaxeOnly())
                 .blockstate((c, p) -> p.horizontalFaceBlock(c.get(), steamEngineModel(p,name,false)))
                 .transform(CCStress.setCapacity(1024.0))
                 .onRegister(BlockStressValues.setGeneratorSpeed(64, true))
                 .item()
+                .tag(EncasedTags.EItemTags.STEAM_ENGINES.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(steamEngineModel(p,name,true)))
                 .build()
                 .register();
@@ -812,11 +866,13 @@ public class EncasedBlocks {
 
     public static BlockEntry<CustomItemDrainBlock> createItemDrain(String name) {
         return REGISTRATE.block(name+"_item_drain", CustomItemDrainBlock::new)
+                .tag(EncasedTags.EBlockTags.ITEM_DRAINS.tag)
                 .initialProperties(SharedProperties::copperMetal)
                 .transform(pickaxeOnly())
                 .transform(CasingBuilderTransformers.cutoutMipped())
                 .blockstate((c, p) -> p.simpleBlock(c.get(), itemDrainModel(p,name)))
                 .item()
+                .tag(EncasedTags.EItemTags.ITEM_DRAINS.tag)
                 .model(AssetLookup.customBlockItemModel("item_drain",name))
                 .build()
                 .register();
@@ -824,6 +880,7 @@ public class EncasedBlocks {
 
     public static BlockEntry<CustomFluidValveBlock> createFluidValve(String name) {
        return REGISTRATE.block(name+"_fluid_valve", CustomFluidValveBlock::new)
+                .tag(EncasedTags.EBlockTags.FLUID_VALVES.tag)
                 .initialProperties(SharedProperties::copperMetal)
                 .transform(pickaxeOnly())
                 .transform(CasingBuilderTransformers.cutoutMipped())
@@ -831,6 +888,7 @@ public class EncasedBlocks {
                         (state, vertical) -> fluidValveModel(p, name, false,vertical,state.getValue(FluidValveBlock.ENABLED))))
                 .onRegister(CreateRegistrate.blockModel(() -> ClientModelWrappers.encasedPipeAttachment(name)))
                 .item()
+                .tag(EncasedTags.EItemTags.FLUID_VALVES.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(fluidValveModel(p,name,true,false,true)))
                 .build()
                 .register();
@@ -846,6 +904,7 @@ public class EncasedBlocks {
 
     public static BlockEntry<CustomHosePulleyBlock> createHosePulley(String name) {
         return REGISTRATE.block(name+"_hose_pulley", CustomHosePulleyBlock::new)
+                .tag(EncasedTags.EBlockTags.HOSE_PULLEYS.tag)
                 .initialProperties(SharedProperties::copperMetal)
                 .properties(BlockBehaviour.Properties::noOcclusion)
                 .transform(CasingBuilderTransformers.cutoutMipped())
@@ -853,6 +912,7 @@ public class EncasedBlocks {
                 .blockstate(hosePulley(name))
                 .transform(CCStress.setImpact(4.0))
                 .item()
+                .tag(EncasedTags.EItemTags.HOSE_PULLEYS.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(hosePulleyModel(p,name,true)))
                 .build()
                 .register();
@@ -860,12 +920,14 @@ public class EncasedBlocks {
 
     public static BlockEntry<PortableStorageInterfaceBlock> createPortableFluidInterface(String name) {
         return REGISTRATE.block(name+"_portable_fluid_interface", PortableStorageInterfaceBlock::forFluids)
+                .tag(EncasedTags.EBlockTags.PORTABLE_FLUID_INTERFACES.tag)
                 .initialProperties(SharedProperties::copperMetal)
                 .properties(p -> p.mapColor(MapColor.TERRACOTTA_LIGHT_GRAY))
                 .transform(axeOrPickaxe())
                 .blockstate((c, p) -> p.directionalBlock(c.get(), fluidInterfaceModel(p,name,false)))
                 .onRegister(movementBehaviour(new PortableStorageInterfaceMovement()))
                 .item()
+                .tag(EncasedTags.EItemTags.PORTABLE_FLUID_INTERFACES.tag)
                 .tag(AllTags.AllItemTags.CONTRAPTION_CONTROLLED.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(fluidInterfaceModel(p,name,true)))
                 .build()
@@ -892,11 +954,13 @@ public class EncasedBlocks {
 
     public static BlockEntry<CustomWhistleBlock> createSteamWhistle(String name){
         return REGISTRATE.block(name+"_steam_whistle", CustomWhistleBlock::new)
+                .tag(EncasedTags.EBlockTags.STEAM_WHISTLES.tag)
                 .initialProperties(SharedProperties::copperMetal)
                 .properties(p -> p.mapColor(MapColor.GOLD))
                 .transform(pickaxeOnly())
                 .blockstate(new CustomWhistleGenerator(name)::generate)
                 .item()
+                .tag(EncasedTags.EItemTags.STEAM_WHISTLES.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(whistleItemModel(p,name)))
                 .build()
                 .register();
@@ -904,11 +968,13 @@ public class EncasedBlocks {
 
     public static BlockEntry<CustomSpoutBlock> createSpout(String name) {
         return REGISTRATE.block(name +"_spout", CustomSpoutBlock::new)
+                .tag(EncasedTags.EBlockTags.SPOUTS.tag)
                 .initialProperties(SharedProperties::copperMetal)
                 .transform(pickaxeOnly())
                 .blockstate((ctx, prov) -> prov.simpleBlock(ctx.getEntry(), spoutModel(prov,name,false)))
                 .transform(CasingBuilderTransformers.cutoutMipped())
                 .item(AssemblyOperatorBlockItem::new)
+                .tag(EncasedTags.EItemTags.SPOUTS.tag)
                 .model((c,p)->p.getBuilder(c.getName()).parent(spoutModel(p,name,true)))
                 .build()
                 .register();
