@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:chain_conveyors"
+    },
+    {
+      "tag": "c:plates/weathered_iron"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:weathered_iron_chain_conveyor"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:configurable_gearboxes"
+    },
+    {
+      "tag": "c:plates/weathered_iron"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:weathered_iron_configurable_gearbox"
+    }
+  ]
+}

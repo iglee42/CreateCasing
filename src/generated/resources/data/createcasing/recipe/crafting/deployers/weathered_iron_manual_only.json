@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "create:deployers"
+    },
+    {
+      "tag": "c:plates/weathered_iron"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:weathered_iron_deployer"
+  }
+}

@@ -1,565 +1,143 @@
 package fr.iglee42.createcasing.registries.data;
 
-import com.google.common.base.Supplier;
-import com.simibubi.create.api.data.recipe.BaseRecipeProvider;
-import com.tterrag.registrate.util.entry.ItemProviderEntry;
+import com.simibubi.create.AllBlocks;
+import com.simibubi.create.AllItems;
+import com.simibubi.create.api.data.recipe.DeployingRecipeGen;
 import fr.iglee42.createcasing.CreateCasing;
-import net.createmod.catnip.registry.RegisteredObjectsHelper;
+import fr.iglee42.createcasing.registries.EncasedTags;
+import fr.iglee42.createcasing.sets.SetBase;
+import fr.iglee42.createcasing.sets.casings.CasingSet;
+import fr.iglee42.createcasing.sets.casings.CasingSets;
+import fr.iglee42.createcasing.sets.fluids.FluidSet;
+import fr.iglee42.createcasing.sets.fluids.FluidSets;
+import fr.iglee42.createcasing.sets.transmissions.TransmissionSet;
+import fr.iglee42.createcasing.sets.transmissions.TransmissionSets;
 import net.minecraft.advancements.critereon.ItemPredicate;
 import net.minecraft.core.HolderLookup;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.PackOutput;
-import net.minecraft.data.recipes.*;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
+import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.*;
+import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
-import net.neoforged.neoforge.common.conditions.ICondition;
-import net.neoforged.neoforge.common.conditions.ModLoadedCondition;
-import net.neoforged.neoforge.common.conditions.NotCondition;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
-import java.util.function.UnaryOperator;
 
-public class EncasedRecipeGens extends BaseRecipeProvider{
+public class EncasedRecipeGens extends DeployingRecipeGen {
 
-    final List<GeneratedRecipe> all = new ArrayList<>();
-
-
-    /*
-     * End of recipe list
-     */
-
-    String currentFolder = "";
-    String lastFolder = "";
-
-    void enterFolder(String folder) {
-        currentFolder +=(currentFolder.isEmpty() ? "" : "/")+ folder;
-        lastFolder = folder;
-    }
-
-    void leftLastFolder(){
-        currentFolder = currentFolder.substring(0,currentFolder.length() - ("/"+lastFolder).length());
-    }
-
-    GeneratedRecipeBuilder create(Supplier<ItemLike> result) {
-        return new GeneratedRecipeBuilder("", result);
-    }
-
-    GeneratedRecipeBuilder create(String path,Supplier<ItemLike> result) {
-        return new GeneratedRecipeBuilder(currentFolder + "/" + path, result);
-    }
-
-
-    GeneratedRecipeBuilder create(ItemProviderEntry<? extends ItemLike, ? extends ItemLike> result) {
-        return create(result::get);
-    }
-
-    BaseRecipeProvider.GeneratedRecipe createSpecial(Function<CraftingBookCategory, Recipe<?>> builder, String recipeType,
-                                                     String path) {
-        ResourceLocation location = CreateCasing.asResource(recipeType + "/" + currentFolder + "/" + path);
-        return register(consumer -> {
-            SpecialRecipeBuilder b = SpecialRecipeBuilder.special(builder);
-            b.save(consumer, location.toString());
-        });
-    }
-
-
-
-    @Override
-    public void buildRecipes(RecipeOutput output) {
-        all.forEach(c -> c.register(output));
-        CreateCasing.LOGGER.info("{} registered {} recipe{}", getName(), all.size(), all.size() == 1 ? "" : "s");
-    }
-
-    protected BaseRecipeProvider.GeneratedRecipe register(BaseRecipeProvider.GeneratedRecipe recipe) {
-        all.add(recipe);
-        return recipe;
-    }
-
-    class GeneratedRecipeBuilder {
-
-        private String path;
-        private String suffix;
-        private Supplier<? extends ItemLike> result;
-        List<ICondition> recipeConditions;
-
-        private Supplier<ItemPredicate> unlockedBy;
-        private int amount;
-
-        private GeneratedRecipeBuilder(String path) {
-            this.path = path;
-            this.recipeConditions = new ArrayList<>();
-            this.amount = 1;
-            this.suffix = "";
-        }
-
-        public GeneratedRecipeBuilder(String path, Supplier<? extends ItemLike> result) {
-            this(path);
-            this.result = result;
-        }
-
-
-        GeneratedRecipeBuilder returns(int amount) {
-            this.amount = amount;
-            return this;
-        }
-
-        GeneratedRecipeBuilder unlockedBy(Supplier<? extends ItemLike> item) {
-            this.unlockedBy = () -> ItemPredicate.Builder.item()
-                    .of(item.get())
-                    .build();
-            return this;
-        }
-
-        GeneratedRecipeBuilder unlockedByTag(Supplier<TagKey<Item>> tag) {
-            this.unlockedBy = () -> ItemPredicate.Builder.item()
-                    .of(tag.get())
-                    .build();
-            return this;
-        }
-
-        GeneratedRecipeBuilder whenModLoaded(String modid) {
-            return withCondition(new ModLoadedCondition(modid));
-        }
-
-        GeneratedRecipeBuilder whenModMissing(String modid) {
-            return withCondition(new NotCondition(new ModLoadedCondition(modid)));
-        }
-
-        GeneratedRecipeBuilder withCondition(ICondition condition) {
-            recipeConditions.add(condition);
-            return this;
-        }
-
-        GeneratedRecipeBuilder suffix(String suffix) {
-            this.suffix = suffix;
-            return this;
-        }
-
-        // FIXME 5.1 refactor - recipe categories as markers instead of sections?
-        BaseRecipeProvider.GeneratedRecipe viaShaped(UnaryOperator<ShapedRecipeBuilder> builder) {
-            return register(recipeOutput -> {
-                ShapedRecipeBuilder b =
-                        builder.apply(ShapedRecipeBuilder.shaped(RecipeCategory.MISC, result.get(), amount));
-                if (unlockedBy != null)
-                    b.unlockedBy("has_item", inventoryTrigger(unlockedBy.get()));
-                RecipeOutput conditionalOutput = recipeOutput.withConditions(recipeConditions.toArray(new ICondition[0]));
-
-                b.save(conditionalOutput, createLocation("crafting"));
-            });
-        }
-
-        BaseRecipeProvider.GeneratedRecipe viaShapeless(UnaryOperator<ShapelessRecipeBuilder> builder) {
-            return register(recipeOutput -> {
-                ShapelessRecipeBuilder b =
-                        builder.apply(ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result.get(), amount));
-                if (unlockedBy != null)
-                    b.unlockedBy("has_item", inventoryTrigger(unlockedBy.get()));
-
-                RecipeOutput conditionalOutput = recipeOutput.withConditions(recipeConditions.toArray(new ICondition[0]));
-
-                b.save(conditionalOutput, createLocation("crafting"));
-            });
-        }
-
-        BaseRecipeProvider.GeneratedRecipe viaNetheriteSmithing(Supplier<? extends Item> base, Supplier<Ingredient> upgradeMaterial) {
-            return register(consumer -> {
-                SmithingTransformRecipeBuilder b =
-                        SmithingTransformRecipeBuilder.smithing(Ingredient.of(Items.NETHERITE_UPGRADE_SMITHING_TEMPLATE),
-                                Ingredient.of(base.get()), upgradeMaterial.get(), RecipeCategory.COMBAT, result.get()
-                                        .asItem());
-                b.unlocks("has_item", inventoryTrigger(ItemPredicate.Builder.item()
-                        .of(base.get())
-                        .build()));
-                b.save(consumer, createLocation("crafting"));
-            });
-        }
-
-        private ResourceLocation createSimpleLocation(String recipeType) {
-            return CreateCasing.asResource( path + suffix);
-        }
-
-        private ResourceLocation createLocation(String recipeType) {
-            if (path.isEmpty())
-                return CreateCasing.asResource(RegisteredObjectsHelper.getKeyOrThrow(result.get()) + suffix);
-            return CreateCasing.asResource( path + suffix);
-        }
-
-        private ResourceLocation getRegistryName() {
-            return RegisteredObjectsHelper.getKeyOrThrow(result.get()
-                    .asItem());
-        }
-
-        GeneratedRecipeBuilder.GeneratedCookingRecipeBuilder viaCooking(Supplier<? extends ItemLike> item) {
-            return unlockedBy(item).viaCookingIngredient(() -> Ingredient.of(item.get()));
-        }
-
-        GeneratedRecipeBuilder.GeneratedCookingRecipeBuilder viaCookingTag(Supplier<TagKey<Item>> tag) {
-            return unlockedByTag(tag).viaCookingIngredient(() -> Ingredient.of(tag.get()));
-        }
-
-        GeneratedRecipeBuilder.GeneratedCookingRecipeBuilder viaCookingIngredient(Supplier<Ingredient> ingredient) {
-            return new GeneratedRecipeBuilder.GeneratedCookingRecipeBuilder(ingredient);
-        }
-
-        class GeneratedCookingRecipeBuilder {
-
-            private Supplier<Ingredient> ingredient;
-            private float exp;
-            private int cookingTime;
-
-            GeneratedCookingRecipeBuilder(Supplier<Ingredient> ingredient) {
-                this.ingredient = ingredient;
-                cookingTime = 200;
-                exp = 0;
-            }
-
-            GeneratedRecipeBuilder.GeneratedCookingRecipeBuilder forDuration(int duration) {
-                cookingTime = duration;
-                return this;
-            }
-
-            GeneratedRecipeBuilder.GeneratedCookingRecipeBuilder rewardXP(float xp) {
-                exp = xp;
-                return this;
-            }
-
-            BaseRecipeProvider.GeneratedRecipe inFurnace() {
-                return inFurnace(b -> b);
-            }
-
-            BaseRecipeProvider.GeneratedRecipe inFurnace(UnaryOperator<SimpleCookingRecipeBuilder> builder) {
-                return create(RecipeSerializer.SMELTING_RECIPE, builder, SmeltingRecipe::new, 1);
-            }
-
-            BaseRecipeProvider.GeneratedRecipe inSmoker() {
-                return inSmoker(b -> b);
-            }
-
-            BaseRecipeProvider.GeneratedRecipe inSmoker(UnaryOperator<SimpleCookingRecipeBuilder> builder) {
-                create(RecipeSerializer.SMELTING_RECIPE, builder, SmeltingRecipe::new, 1);
-                create(RecipeSerializer.CAMPFIRE_COOKING_RECIPE, builder, CampfireCookingRecipe::new, 3);
-                return create(RecipeSerializer.SMOKING_RECIPE, builder, SmokingRecipe::new, .5f);
-            }
-
-            BaseRecipeProvider.GeneratedRecipe inBlastFurnace() {
-                return inBlastFurnace(b -> b);
-            }
-
-            BaseRecipeProvider.GeneratedRecipe inBlastFurnace(UnaryOperator<SimpleCookingRecipeBuilder> builder) {
-                create(RecipeSerializer.SMELTING_RECIPE, builder, SmeltingRecipe::new, 1);
-                return create(RecipeSerializer.BLASTING_RECIPE, builder, BlastingRecipe::new, .5f);
-            }
-
-            private <T extends AbstractCookingRecipe> BaseRecipeProvider.GeneratedRecipe create(RecipeSerializer<T> serializer,
-                                                                                                UnaryOperator<SimpleCookingRecipeBuilder> builder, AbstractCookingRecipe.Factory<T> factory, float cookingTimeModifier) {
-                return register(recipeOutput -> {
-
-                    SimpleCookingRecipeBuilder b = builder.apply(SimpleCookingRecipeBuilder.generic(ingredient.get(),
-                            RecipeCategory.MISC, result.get(), exp,
-                            (int) (cookingTime * cookingTimeModifier), serializer, factory));
-                    if (unlockedBy != null)
-                        b.unlockedBy("has_item", inventoryTrigger(unlockedBy.get()));
-
-                    RecipeOutput conditionalOutput = recipeOutput.withConditions(recipeConditions.toArray(new ICondition[0]));
-
-                    b.save(
-                            conditionalOutput,
-                            createSimpleLocation(RegisteredObjectsHelper.getKeyOrThrow(serializer).getPath())
-                    );
-                });
-            }
-        }
-    }
-
+    private final CompletableFuture<HolderLookup.Provider> registries;
 
     public EncasedRecipeGens(PackOutput output, CompletableFuture<HolderLookup.Provider> registries) {
         super(output, registries, CreateCasing.MODID);
-        /*enterFolder("crafting");
-        createForSetElement("adjustable_chain_drive",CasingSet::doesGenerateChainGearshift,CasingSet::getChainGearshift,(builder,set)->builder.viaShapeless(sh->sh.requires(set.getChainDrive()).requires(AllItems.ELECTRON_TUBE)));
-        createForSetElement("chain_conveyor",CasingSet::doesGenerateChainConveyor,CasingSet::getChainConveyor,(builder,set)->builder.viaShaped(sh->
-                sh.pattern(" C ")
-                        .pattern("CAC")
-                        .pattern(" C ")
-                        .define('A', AllBlocks.LARGE_COGWHEEL)
-                        .define('C',set.getCasing())));
+        this.registries = registries;
 
-        createForSetElement("chain_drive",CasingSet::doesGenerateChainDrive,CasingSet::getChainDrive,(builder,set)->builder.viaShapeless(sh->
-                sh.requires(set.getCasing())
-                        .requires(Tags.Items.NUGGETS_IRON)
-                        .requires(Tags.Items.NUGGETS_IRON)
-                        .requires(Tags.Items.NUGGETS_IRON)
-        ));
+        for (CasingSet set : CasingSets.getSets()) {
+            addRecipes(set, EncasedTags.EItemTags.GEARBOXES, CasingSet::getGearbox);
+            addRecipes(set, EncasedTags.EItemTags.MIXERS, CasingSet::getMixer);
+            addRecipes(set, EncasedTags.EItemTags.PRESSES, CasingSet::getPress);
+            addRecipes(set, EncasedTags.EItemTags.DEPOTS, CasingSet::getDepot);
+            addRecipes(set, EncasedTags.EItemTags.CHAIN_DRIVES, CasingSet::getChainDrive);
+            addRecipes(set, EncasedTags.EItemTags.CHAIN_GEARSHIFTS, CasingSet::getChainGearshift);
+            addRecipes(set, EncasedTags.EItemTags.CONFIGURABLE_GEARBOXES, CasingSet::getConfigurableGearbox);
+            addRecipes(set, EncasedTags.EItemTags.CHAIN_CONVEYORS, CasingSet::getChainConveyor);
+            addRecipes(set, EncasedTags.EItemTags.GEARSHIFTS, CasingSet::getGearshift);
+            addRecipes(set, EncasedTags.EItemTags.CLUTCHES, CasingSet::getClutch);
+            addRecipes(set, EncasedTags.EItemTags.AUTO_CLUTCHES, CasingSet::getAutoClutch);
+            addRecipes(set, EncasedTags.EItemTags.DEPLOYERS, CasingSet::getDeployer);
+            addRecipes(set, EncasedTags.EItemTags.STORAGE_INTERFACES, CasingSet::getStorageInterface);
+            addRecipes(set, EncasedTags.EItemTags.ENCASED_FANS, CasingSet::getEncasedFan);
+            addRecipes(set, EncasedTags.EItemTags.HARVESTERS, CasingSet::getHarvester);
+            addRecipes(set, EncasedTags.EItemTags.SAWS, CasingSet::getSaw);
+            addRecipes(set, EncasedTags.EItemTags.DRILLS, CasingSet::getDrill);
+            addRecipes(set, EncasedTags.EItemTags.PLOUGHS, CasingSet::getPlough);
+            addRecipes(set, EncasedTags.EItemTags.ROLLERS, CasingSet::getRoller);
+        }
 
-        createForSetElement("clutch",CasingSet::doesGenerateClutch,CasingSet::getClutch,(builder,set)->builder.viaShapeless(sh->
-                sh.requires(set.getCasing())
-                        .requires(AllBlocks.SHAFT)
-                        .requires(Tags.Items.DUSTS_REDSTONE)
-        ));
+        for (TransmissionSet set : TransmissionSets.getSets()) {
+            addRecipes(set, EncasedTags.EItemTags.SHAFTS, TransmissionSet::getShaft);
+            addRecipes(set, EncasedTags.EItemTags.COGWHEELS, TransmissionSet::getCogwheel);
+            addRecipes(set, EncasedTags.EItemTags.LARGE_COGWHEELS, TransmissionSet::getLargeCogwheel);
+        }
 
-        createForSetElement("auto_clutch",CasingSet::doesGenerateAutoClutch,CasingSet::getAutoClutch,(builder,set)->builder.viaShapeless(sh->
-                sh.requires(set.getCasing())
-                        .requires(AllBlocks.SHAFT)
-                        .requires(Items.COMPASS)
-        ));
+        for (FluidSet set : FluidSets.getSets()) {
+            addRecipes(set, EncasedTags.EItemTags.FLUID_PIPES, FluidSet::getFluidPipe);
+            addRecipes(set, EncasedTags.EItemTags.SMART_FLUID_PIPES, FluidSet::getSmartFluidPipe);
+            addRecipes(set, EncasedTags.EItemTags.MECHANICAL_PUMPS, FluidSet::getPump);
+            addRecipes(set, EncasedTags.EItemTags.FLUID_TANKS, FluidSet::getFluidTank);
+            addRecipes(set, EncasedTags.EItemTags.STEAM_ENGINES, FluidSet::getSteamEngine);
+            addRecipes(set, EncasedTags.EItemTags.ITEM_DRAINS, FluidSet::getItemDrain);
+            addRecipes(set, EncasedTags.EItemTags.FLUID_VALVES, FluidSet::getFluidValve);
+            addRecipes(set, EncasedTags.EItemTags.HOSE_PULLEYS, FluidSet::getHosePulley);
+            addRecipes(set, EncasedTags.EItemTags.PORTABLE_FLUID_INTERFACES, FluidSet::getPortableFluidInterface);
+            addRecipes(set, EncasedTags.EItemTags.STEAM_WHISTLES, FluidSet::getWhistle);
+            addRecipes(set, EncasedTags.EItemTags.SPOUTS, FluidSet::getSpout);
+        }
 
+        register(recipeOutput->{ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, CasingSets.ANDESITE.getAutoClutch())
+                .requires(AllBlocks.ANDESITE_CASING)
+                .requires(AllBlocks.SHAFT)
+                .requires(AllItems.ELECTRON_TUBE)
+                .unlockedBy("has_electron_tube", inventoryTrigger(ItemPredicate.Builder.item().of(AllItems.ELECTRON_TUBE.get()).build()))
+                .save(recipeOutput,CreateCasing.asResource("crafting/auto_clutch"));
+        });
 
-        createForSetElement("configurable_gearbox",CasingSet::doesGenerateConfigurableGearbox,CasingSet::getConfigurableGearbox,(builder,set)->builder.viaShaped(sh->
-                sh.pattern(" C ")
-                        .pattern("CAC")
-                        .pattern(" C ")
-                        .define('C', AllBlocks.LARGE_COGWHEEL)
-                        .define('A',set.getCasing())));
-
-        createForSetElement("deployer",CasingSet::doesGenerateDeployer,CasingSet::getDeployer,(builder,set)->builder.viaShaped(sh->
-                sh.pattern("B")
-                        .pattern("C")
-                        .pattern("I")
-                        .define('B', AllItems.ELECTRON_TUBE)
-                        .define('C',set.getCasing())
-                        .define('I',AllItems.BRASS_HAND)
-        ));
-        createForSetElement("depot",CasingSet::doesGenerateDepot,CasingSet::getDepot,(builder,set)->builder.viaShapeless(sh->
-                sh.requires(AllItems.ANDESITE_ALLOY)
-                        .requires(set.getCasing())
-        ));
-        createForSetElement("encased_fan",CasingSet::doesGenerateEncasedFan,CasingSet::getEncasedFan,(builder,set)->builder.viaShaped(sh->
-                sh.pattern("B")
-                        .pattern("C")
-                        .pattern("I")
-                        .define('B', AllBlocks.SHAFT)
-                        .define('C',set.getCasing())
-                        .define('I',AllItems.PROPELLER)
-        ));
-
-        createForSetElement("gearbox",CasingSet::doesGenerateGearbox,CasingSet::getGearbox,(builder,set)->builder.viaShaped(sh->
-                sh.pattern(" B ")
-                        .pattern("BCB")
-                        .pattern(" B ")
-                        .define('B', AllBlocks.COGWHEEL)
-                        .define('C',set.getCasing())
-        ));
-
-        createForSetElement("gearbox",CasingSet::doesGenerateGearbox,CasingSet::getGearbox,(builder,set)->builder.suffix("_from_conversion").viaShapeless(sh->
-                sh.requires(set.getVerticalGearboxItem())
-        ));
-
-        createForSetElement("gearbox",CasingSet::doesGenerateGearbox,CasingSet::getVerticalGearboxItem,(builder,set)->builder.suffix("_vertical").viaShaped(sh->
-                sh.pattern("B B")
-                        .pattern(" C ")
-                        .pattern("B B")
-                        .define('B', AllBlocks.COGWHEEL)
-                        .define('C',set.getCasing())
-        ));
-
-        createForSetElement("gearbox",CasingSet::doesGenerateGearbox,CasingSet::getVerticalGearboxItem,(builder,set)->builder.suffix("_vertical_from_conversion").viaShapeless(sh->
-                sh.requires(set.getGearbox())
-        ));
-        createForSetElement("gearshift",CasingSet::doesGenerateGearshift,CasingSet::getGearshift,(builder,set)->builder.viaShapeless(sh->
-                sh.requires(set.getCasing())
-                        .requires(AllBlocks.COGWHEEL)
-                        .requires(Tags.Items.DUSTS_REDSTONE)
-        ));
-
-        createForSetElement("mixer",CasingSet::doesGenerateMixer,CasingSet::getMixer,(builder,set)->builder.viaShaped(sh->
-                sh.pattern("B")
-                        .pattern("C")
-                        .pattern("I")
-                        .define('B', AllBlocks.COGWHEEL)
-                        .define('C',set.getCasing())
-                        .define('I',AllItems.WHISK)
-        ));
-
-        createForSetElement("portable_storage_interface",Predicates.and(CasingSet::doesGenerateStorageInterface, set->!set.equals(CasingSets.COPPER)),CasingSet::getStorageInterface,(builder,set)->builder.viaShapeless(sh->
-                sh.requires(set.getCasing())
-                        .requires(AllBlocks.CHUTE)
-        ));
-
-        createForSetElement("portable_storage_interface",Predicates.and(CasingSet::doesGenerateStorageInterface, set->set.equals(CasingSets.COPPER)),CasingSet::getStorageInterface,(builder,set)->builder.returns(2).viaShaped(sh->
-                sh.pattern("IC")
-                        .pattern("IC")
-                        .define('C',AllBlocks.CHUTE)
-                        .define('I',set.getCasing())
-        ));
-
-
-        createForSetElement("press",CasingSet::doesGeneratePress,CasingSet::getPress,(builder,set)->builder.viaShaped(sh->
-                sh.pattern("B")
-                        .pattern("C")
-                        .pattern("I")
-                        .define('B', AllBlocks.SHAFT)
-                        .define('C',set.getCasing())
-                        .define('I',Tags.Items.STORAGE_BLOCKS_IRON)
-        ));
-        createForSetElement("roller",CasingSet::doesGenerateRoller,CasingSet::getRoller,(builder,set)->builder.viaShaped(sh->
-                sh.pattern("B")
-                        .pattern("C")
-                        .pattern("I")
-                        .define('B', AllItems.ELECTRON_TUBE)
-                        .define('C',set.getCasing())
-                        .define('I',AllBlocks.CRUSHING_WHEEL)
-        ));
-
-        createForSetElement("saw",CasingSet::doesGenerateSaw,CasingSet::getSaw,(builder,set)->builder.viaShaped(sh->
-                sh.pattern(" B ")
-                        .pattern("BIB")
-                        .pattern(" C ")
-                        .define('B', CommonMetal.IRON.plates)
-                        .define('C',set.getCasing())
-                        .define('I',Tags.Items.INGOTS_IRON)
-        ));
-
-        createForSetElement("plough",CasingSet::doesGeneratePlough,CasingSet::getPlough,(builder,set)->builder.viaShaped(sh->
-                sh.pattern("BBB")
-                        .pattern("III")
-                        .pattern(" C ")
-                        .define('B', CommonMetal.IRON.plates)
-                        .define('C',set.getCasing())
-                        .define('I',AllItems.ANDESITE_ALLOY)
-        ));
-
-        createForSetElement("harvester",CasingSet::doesGenerateHarvester,CasingSet::getHarvester,(builder,set)->builder.viaShaped(sh->
-                sh.pattern("IBI")
-                        .pattern("IBI")
-                        .pattern(" C ")
-                        .define('B', CommonMetal.IRON.plates)
-                        .define('C',set.getCasing())
-                        .define('I',AllItems.ANDESITE_ALLOY)
-        ));
-
-
-        createForSetElement("drill",CasingSet::doesGenerateDrill,CasingSet::getDrill,(builder,set)->builder.viaShaped(sh->
-                sh.pattern(" I ")
-                        .pattern("IBI")
-                        .pattern(" C ")
-                        .define('B', Tags.Items.INGOTS_IRON)
-                        .define('C',set.getCasing())
-                        .define('I',AllItems.ANDESITE_ALLOY)
-        ));
-
-        createForSetElement("slicer",CasingSet::doesGenerateSlicer,CasingSet::getSlicer,(builder,set)-> builder.withCondition(new ModLoadedCondition("sliceanddice")).viaShaped(sh->
-                sh.pattern("A")
-                        .pattern("B")
-                        .pattern("C")
-                        .define('A',AllBlocks.COGWHEEL)
-                        .define('B',set.getCasing())
-                        .define('C',AllBlocks.TURNTABLE)
-                ));
-
-        createForFluidSetElement("fluid_pipe",FluidSet::doesGenerateFluidPipe,FluidSet::getFluidPipe,(builder,set)->builder.returns(6).viaShaped(sh->
-                sh.pattern("SIS")
-                        .define('S',set.getSheet())
-                        .define('I',set.getItem())
-        ));
-
-        createForFluidSetElement("fluid_pipe",FluidSet::doesGenerateFluidPipe,FluidSet::getFluidPipe,(builder,set)->builder.returns(6).suffix("_vertical").viaShaped(sh->
-                sh.pattern("S")
-                        .pattern("I")
-                        .pattern("S")
-                        .define('S',set.getSheet())
-                        .define('I',set.getItem())
-        ));
-
-        createForFluidSetElement("smart_fluid_pipe", Predicates.and(FluidSet::doesGenerateFluidPipe,FluidSet::doesGenerateSmartFluidPipe),FluidSet::getSmartFluidPipe,(builder, set)->builder.viaShaped(sh->
-                sh.pattern("B")
-                        .pattern("I")
-                        .pattern("S")
-                        .define('B', CommonMetal.BRASS.plates)
-                        .define('S',AllItems.ELECTRON_TUBE)
-                        .define('I',set.getFluidPipe())
-        ));
-
-        createForFluidSetElement("fluid_valve", Predicates.and(FluidSet::doesGenerateFluidPipe,FluidSet::doesGenerateFluidValve),FluidSet::getFluidValve,(builder, set)->builder.viaShapeless(sh->
-                sh.requires(set.getFluidPipe())
-                        .requires(CommonMetal.IRON.plates)
-        ));
-
-        createForFluidSetElement("valve_handle",FluidSet::doesGenerateValveHandle,FluidSet::getValveHandle,(builder,set)->builder.viaShaped(sh->
-                sh.pattern("SSS")
-                        .pattern(" I ")
-                        .define('S',set.getSheet())
-                        .define('I',AllItems.ANDESITE_ALLOY)
-        ));
-
-        createForFluidSetElement("fluid_tank",FluidSet::doesGenerateFluidTank,FluidSet::getFluidTank,(builder,set)->builder.viaShaped(sh->
-                sh.pattern("S")
-                        .pattern("I")
-                        .pattern("S")
-                        .define('S',set.getSheet())
-                        .define('I',Tags.Items.BARRELS_WOODEN)
-        ));
-
-        createForFluidSetElement("hose_pulley",FluidSet::doesGenerateHosePulley,FluidSet::getHosePulley,(builder,set)->builder.viaShaped(sh->
-                sh.pattern("C")
-                        .pattern("I")
-                        .pattern("S")
-                        .define('S',set.getSheet())
-                        .define('I',Items.DRIED_KELP_BLOCK)
-                        .define('C',set.getCasing())
-        ));
-
-        createForFluidSetElement("item_drain",FluidSet::doesGenerateItemDrain,FluidSet::getItemDrain,(builder,set)->builder.viaShaped(sh->
-                sh.pattern("I")
-                        .pattern("C")
-                        .define('I',Items.IRON_BARS)
-                        .define('C',set.getCasing())
-        ));
-
-        createForFluidSetElement("portable_fluid_interface",FluidSet::doesGeneratePortableFluidInterface,FluidSet::getPortableFluidInterface,(builder,set)->builder.returns(2).viaShaped(sh->
-                sh.pattern("IC")
-                        .pattern("IC")
-                        .define('C',AllBlocks.CHUTE)
-                        .define('I',set.getCasing())
-        ));
-
-        createForFluidSetElement("steam_engine",FluidSet::doesGenerateSteamEngine,FluidSet::getSteamEngine,(builder,set)->builder.viaShaped(sh->
-                sh.pattern("C")
-                        .pattern("I")
-                        .pattern("S")
-                        .define('S',set.getBlock())
-                        .define('I', AllItems.ANDESITE_ALLOY)
-                        .define('C',CommonMetal.GOLD.plates)
-        ));
-
-        createForFluidSetElement("steam_whistle",FluidSet::doesGenerateWhistle,FluidSet::getWhistle,(builder,set)->builder.viaShaped(sh->
-                sh.pattern("I")
-                        .pattern("C")
-                        .define('I',CommonMetal.GOLD.plates)
-                        .define('C',set.getItem())
-        ));
-
-        createForFluidSetElement("fluid_pump", Predicates.and(FluidSet::doesGenerateFluidPipe,FluidSet::doesGeneratePump),FluidSet::getPump,(builder, set)->builder.viaShapeless(sh->
-                sh.requires(AllBlocks.COGWHEEL)
-                        .requires(set.getFluidPipe())
-        ));
-
-        createForFluidSetElement("spout",FluidSet::doesGenerateSpout,FluidSet::getSpout,(builder,set)->builder.viaShaped(sh->
-                sh.pattern("I")
-                        .pattern("C")
-                        .define('I',set.getCasing())
-                        .define('C',Items.DRIED_KELP)
-        ));*/
-
+        register(recipeOutput-> ShapedRecipeBuilder.shaped(RecipeCategory.MISC, CasingSets.ANDESITE.getConfigurableGearbox())
+                .pattern(" S ")
+                .pattern("SCS")
+                .pattern(" S ")
+                .define('S', AllBlocks.LARGE_COGWHEEL)
+                .define('C', AllBlocks.GEARBOX)
+                .unlockedBy("has_gearbox", inventoryTrigger(ItemPredicate.Builder.item().of(AllBlocks.GEARBOX.get()).build()))
+                .save(recipeOutput,CreateCasing.asResource("crafting/configurable_gearbox")));
     }
 
-    /*private void createForSetElement(String folderName,Predicate<CasingSet> exists, Function<CasingSet,? extends ItemLike> block, BiFunction<GeneratedRecipeBuilder,CasingSet,GeneratedRecipe> recipeGenerator){
-        enterFolder(folderName);
-        CasingSets.getSets().stream().filter(exists).forEach(set->{
-            recipeGenerator.apply(create(set.getName(),()->block.apply(set)).unlockedBy(set::getCasing),set);
+    private <T extends SetBase<?, ?>> void addRecipes(T set, EncasedTags.EItemTags category,
+                                                      Function<T, ? extends ItemLike> resultGetter) {
+        ItemLike result = resultGetter.apply(set);
+        if (result == null || result.asItem() == Items.AIR)
+            return;
+
+        ResourceLocation recipeId = CreateCasing.asResource(category.name().toLowerCase() + "/" + set.getName());
+        Ingredient categoryIngredient = Ingredient.of(category.tag);
+        TagKey<Item> categoryTag = category.tag;
+
+        Optional<Ingredient> itemIngredient = getItemIngredient(set, recipeId.getPath());
+        if (itemIngredient.isEmpty())
+            return;
+
+        register(recipeOutput -> {
+            ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, result)
+                    .requires(categoryIngredient)
+                    .requires(itemIngredient.get())
+                    .unlockedBy("has_matching_block", inventoryTrigger(
+                            ItemPredicate.Builder.item()
+                                    .of(categoryTag)
+                                    .build()))
+                    .save(recipeOutput, recipeId.withPrefix("crafting/").withSuffix("_manual_only"));
         });
-        leftLastFolder();
+
+        register(recipeOutput -> {
+            getBuilder(recipeId)
+                    .require(categoryIngredient)
+                    .require(itemIngredient.get())
+                    .output(result)
+                    .build(recipeOutput);
+        });
     }
 
-    private void createForFluidSetElement(String folderName, Predicate<FluidSet> exists, Function<FluidSet,? extends ItemLike> block, BiFunction<GeneratedRecipeBuilder,FluidSet,GeneratedRecipe> recipeGenerator){
-        enterFolder(folderName);
-        FluidSets.getSets().stream().filter(exists).forEach(set->{
-            recipeGenerator.apply(create(set.getName(),()->block.apply(set)).unlockedBy(set::getCasing),set);
-        });
-        leftLastFolder();
-    }*/
+    private Optional<Ingredient> getItemIngredient(SetBase<?, ?> set, String recipePath) {
+        HolderLookup.Provider provider = registries.join();
+        Optional<Ingredient> ingredient = set.getItemIngredient(provider);
+        if (ingredient.isEmpty())
+            CreateCasing.LOGGER.warn("Skipping recipes for set {} because its item source cannot be represented as a recipe ingredient", recipePath);
+        return ingredient;
+    }
 }

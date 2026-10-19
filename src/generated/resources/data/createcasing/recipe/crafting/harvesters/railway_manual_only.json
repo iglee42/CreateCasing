@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "create:harvesters"
+    },
+    {
+      "tag": "c:plates/obsidian"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:railway_mechanical_harvester"
+  }
+}

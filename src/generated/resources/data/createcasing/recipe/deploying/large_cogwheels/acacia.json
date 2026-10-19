@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:large_cogwheels"
+    },
+    {
+      "item": "minecraft:acacia_planks"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:acacia_large_cogwheel"
+    }
+  ]
+}

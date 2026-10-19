@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "create:large_cogwheels"
+    },
+    {
+      "item": "minecraft:mangrove_planks"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:mangrove_large_cogwheel"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "create:ploughs"
+    },
+    {
+      "tag": "c:plates/brass"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:brass_mechanical_plough"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:mixers"
+    },
+    {
+      "tag": "c:plates/industrial_iron"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:industrial_iron_mixer"
+    }
+  ]
+}

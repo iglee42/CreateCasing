@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:steam_engines"
+    },
+    {
+      "tag": "c:plates/andesite_alloy"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:andesite_steam_engine"
+    }
+  ]
+}

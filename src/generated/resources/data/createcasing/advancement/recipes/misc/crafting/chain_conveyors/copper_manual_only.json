@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_matching_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#create:chain_conveyors"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "createcasing:crafting/chain_conveyors/copper_manual_only"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_matching_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "createcasing:crafting/chain_conveyors/copper_manual_only"
+    ]
+  }
+}

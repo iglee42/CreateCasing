@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:large_cogwheels"
+    },
+    {
+      "tag": "c:plates/andesite_alloy"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:andesite_large_cogwheel"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:chain_conveyors"
+    },
+    {
+      "tag": "c:plates/copper"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:copper_chain_conveyor"
+    }
+  ]
+}

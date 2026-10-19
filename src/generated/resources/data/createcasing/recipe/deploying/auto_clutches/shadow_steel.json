@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:auto_clutches"
+    },
+    {
+      "tag": "c:plates/shadow_steel"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:shadow_steel_automatic_clutch"
+    }
+  ]
+}

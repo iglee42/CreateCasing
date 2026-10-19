@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "create:presses"
+    },
+    {
+      "tag": "c:plates/chorium"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:creative_press"
+  }
+}

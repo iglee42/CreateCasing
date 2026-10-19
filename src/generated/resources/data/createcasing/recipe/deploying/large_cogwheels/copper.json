@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:large_cogwheels"
+    },
+    {
+      "tag": "c:plates/copper"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:copper_large_cogwheel"
+    }
+  ]
+}

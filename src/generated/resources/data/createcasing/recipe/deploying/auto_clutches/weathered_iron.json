@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:auto_clutches"
+    },
+    {
+      "tag": "c:plates/weathered_iron"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:weathered_iron_automatic_clutch"
+    }
+  ]
+}

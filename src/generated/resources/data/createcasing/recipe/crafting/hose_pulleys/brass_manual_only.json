@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "create:hose_pulleys"
+    },
+    {
+      "tag": "c:plates/brass"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:brass_hose_pulley"
+  }
+}

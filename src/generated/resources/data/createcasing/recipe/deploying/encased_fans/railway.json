@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:encased_fans"
+    },
+    {
+      "tag": "c:plates/obsidian"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:railway_encased_fan"
+    }
+  ]
+}

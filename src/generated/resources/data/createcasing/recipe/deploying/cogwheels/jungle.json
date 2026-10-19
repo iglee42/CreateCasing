@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:cogwheels"
+    },
+    {
+      "item": "minecraft:jungle_planks"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:jungle_cogwheel"
+    }
+  ]
+}

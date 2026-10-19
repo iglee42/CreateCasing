@@ -1,0 +1,27 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "C": {
+      "item": "create:cogwheel"
+    },
+    "G": {
+      "tag": "c:plates/gold"
+    },
+    "S": {
+      "tag": "c:rods/wooden"
+    },
+    "Z": {
+      "tag": "c:plates/andesite_alloy"
+    }
+  },
+  "pattern": [
+    "ZZ",
+    "GC",
+    " S"
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:recaser"
+  }
+}

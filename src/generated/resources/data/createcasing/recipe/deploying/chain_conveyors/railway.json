@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:chain_conveyors"
+    },
+    {
+      "tag": "c:plates/obsidian"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:railway_chain_conveyor"
+    }
+  ]
+}

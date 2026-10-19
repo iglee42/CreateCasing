@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "create:mechanical_pumps"
+    },
+    {
+      "tag": "c:plates/andesite_alloy"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:andesite_mechanical_pump"
+  }
+}

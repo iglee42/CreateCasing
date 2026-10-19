@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:shafts"
+    },
+    {
+      "item": "minecraft:oak_planks"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:oak_shaft"
+    }
+  ]
+}

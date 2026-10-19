@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:steam_whistles"
+    },
+    {
+      "tag": "c:plates/andesite_alloy"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:andesite_steam_whistle"
+    }
+  ]
+}

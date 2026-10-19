@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:shafts"
+    },
+    {
+      "item": "minecraft:bamboo_planks"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:bamboo_shaft"
+    }
+  ]
+}

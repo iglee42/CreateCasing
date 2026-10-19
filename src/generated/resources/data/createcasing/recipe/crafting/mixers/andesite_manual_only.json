@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "create:mixers"
+    },
+    {
+      "tag": "c:plates/andesite_alloy"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "create:mechanical_mixer"
+  }
+}

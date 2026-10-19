@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:chain_conveyors"
+    },
+    {
+      "tag": "c:plates/industrial_iron"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:industrial_iron_chain_conveyor"
+    }
+  ]
+}

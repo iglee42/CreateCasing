@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:chain_drives"
+    },
+    {
+      "tag": "c:plates/refined_radiance"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:refined_radiance_encased_chain_drive"
+    }
+  ]
+}

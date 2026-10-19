@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:drills"
+    },
+    {
+      "tag": "c:plates/refined_radiance"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:refined_radiance_mechanical_drill"
+    }
+  ]
+}

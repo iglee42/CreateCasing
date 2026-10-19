@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:deployers"
+    },
+    {
+      "tag": "c:plates/shadow_steel"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:shadow_steel_deployer"
+    }
+  ]
+}

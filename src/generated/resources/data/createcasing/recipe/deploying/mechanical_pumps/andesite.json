@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:mechanical_pumps"
+    },
+    {
+      "tag": "c:plates/andesite_alloy"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:andesite_mechanical_pump"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:shafts"
+    },
+    {
+      "tag": "c:glass_blocks/colorless"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:glass_shaft"
+    }
+  ]
+}

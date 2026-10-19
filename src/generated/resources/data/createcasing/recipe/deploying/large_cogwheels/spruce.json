@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:large_cogwheels"
+    },
+    {
+      "item": "minecraft:spruce_planks"
+    }
+  ],
+  "results": [
+    {
+      "id": "create:large_cogwheel"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:large_cogwheels"
+    },
+    {
+      "item": "minecraft:warped_planks"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:warped_large_cogwheel"
+    }
+  ]
+}

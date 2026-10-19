@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:shafts"
+    },
+    {
+      "item": "minecraft:birch_planks"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:birch_shaft"
+    }
+  ]
+}

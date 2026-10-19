@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:storage_interfaces"
+    },
+    {
+      "tag": "c:plates/obsidian"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:railway_portable_storage_interface"
+    }
+  ]
+}

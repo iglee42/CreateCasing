@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "create:gearshifts"
+    },
+    {
+      "tag": "c:plates/shadow_steel"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:shadow_steel_gearshift"
+  }
+}

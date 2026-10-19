@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "create:auto_clutches"
+    },
+    {
+      "tag": "c:plates/andesite_alloy"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:andesite_automatic_clutch"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "create:clutches"
+    },
+    {
+      "tag": "c:plates/refined_radiance"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:refined_radiance_clutch"
+  }
+}

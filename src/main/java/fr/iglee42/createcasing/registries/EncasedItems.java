@@ -1,11 +1,13 @@
 package fr.iglee42.createcasing.registries;
 
+import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.content.legacy.RefinedRadianceItem;
 import com.simibubi.create.content.legacy.ShadowSteelItem;
 import com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem;
 import com.simibubi.create.foundation.data.AssetLookup;
 import com.simibubi.create.foundation.data.recipe.CommonMetal;
+import com.tterrag.registrate.providers.RegistrateRecipeProvider;
 import com.tterrag.registrate.util.entry.ItemEntry;
 import com.tterrag.registrate.util.nullness.NonNullFunction;
 import fr.iglee42.createcasing.CreateCasing;
@@ -13,8 +15,11 @@ import fr.iglee42.createcasing.sets.casings.CasingSets;
 import fr.iglee42.createcasing.items.CustomVerticalGearboxItem;
 import fr.iglee42.createcasing.items.recaser.RecaserItem;
 import net.minecraft.core.registries.Registries;
+import net.minecraft.data.recipes.RecipeCategory;
+import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Rarity;
+import net.neoforged.neoforge.common.Tags;
 
 import java.util.Objects;
 
@@ -32,6 +37,18 @@ public class EncasedItems {
     public static final ItemEntry<RecaserItem> RECASER = REGISTRATE.item("recaser", RecaserItem::new)
             .properties(p -> p.stacksTo(1))
             .model(AssetLookup.itemModelWithPartials())
+            .tag(Tags.Items.TOOLS)
+            .recipe((ctx,prov)-> ShapedRecipeBuilder
+                    .shaped(RecipeCategory.MISC,ctx.get())
+                    .pattern("ZZ")
+                    .pattern("GC")
+                    .pattern(" S")
+                    .define('Z', EncasedTags.EItemTags.ANDESITE_PLATES.tag)
+                    .define('G', CommonMetal.GOLD.plates)
+                    .define('C', AllBlocks.COGWHEEL)
+                    .define('S', Tags.Items.RODS_WOODEN)
+                    .unlockedBy("has", RegistrateRecipeProvider.has(EncasedTags.EItemTags.ANDESITE_PLATES.tag))
+                    .save(prov, CreateCasing.asResource("crafting/recaser")))
             .register();
 
 

@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:shafts"
+    },
+    {
+      "item": "minecraft:cherry_planks"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:cherry_shaft"
+    }
+  ]
+}

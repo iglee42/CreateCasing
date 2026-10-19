@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    {
+      "tag": "create:encased_fans"
+    },
+    {
+      "tag": "c:plates/zinc"
+    }
+  ],
+  "result": {
+    "count": 1,
+    "id": "createcasing:zinc_encased_fan"
+  }
+}

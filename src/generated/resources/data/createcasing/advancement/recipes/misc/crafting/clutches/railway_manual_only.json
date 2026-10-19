@@ -1,0 +1,32 @@
+{
+  "parent": "minecraft:recipes/root",
+  "criteria": {
+    "has_matching_block": {
+      "conditions": {
+        "items": [
+          {
+            "items": "#create:clutches"
+          }
+        ]
+      },
+      "trigger": "minecraft:inventory_changed"
+    },
+    "has_the_recipe": {
+      "conditions": {
+        "recipe": "createcasing:crafting/clutches/railway_manual_only"
+      },
+      "trigger": "minecraft:recipe_unlocked"
+    }
+  },
+  "requirements": [
+    [
+      "has_the_recipe",
+      "has_matching_block"
+    ]
+  ],
+  "rewards": {
+    "recipes": [
+      "createcasing:crafting/clutches/railway_manual_only"
+    ]
+  }
+}

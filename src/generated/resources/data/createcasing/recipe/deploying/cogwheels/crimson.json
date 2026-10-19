@@ -1,0 +1,16 @@
+{
+  "type": "create:deploying",
+  "ingredients": [
+    {
+      "tag": "create:cogwheels"
+    },
+    {
+      "item": "minecraft:crimson_planks"
+    }
+  ],
+  "results": [
+    {
+      "id": "createcasing:crimson_cogwheel"
+    }
+  ]
+}
