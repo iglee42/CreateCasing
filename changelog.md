@@ -1,4 +1,30 @@
 ------------------------------------------------------
+CreateEncased 1.10.0 - The In-World Update
+------------------------------------------------------
+
+#### Gameplay Changes
+
+- Add Industrial Iron, Weathered Iron, Shadow Steel, Refined Radiance and Chorium Sheets for crafting
+- Encased Blocks are no longer changeable in-world with the casing or the ingot.
+- Add the Recaser, a new item that allows you to change the casing/material of encased blocks in-world. It uses the plate of the material you want to change to, and can be used on any encased block.
+- Recipes for encased blocks have been changed to only use the plates. Encased blocks no longer uses the recipe from the original Create block, but instead uses the plate of the material you want to use.
+- Encased blocks can now be crafted by using a deployer with the associated plate.
+- Add Zinc stuff + New Zinc casing texture
+- Zinc casing now uses deepslate to be crafted
+- Shadow Steel and Refined Radiance stuff is now hidden, if shadow steel and refined radiance are not in the Create's creative tab
+
+#### Translations
+- Update zh_cn translation #206
+
+#### Bug Fixes
+
+- Fix UV locking on custom cogwheels and large cogwheels #208
+- Custom Tanks can no longer connect together
+
+#### API Changes
+
+- Removed KubeJS Compat
+------------------------------------------------------
 CreateEncased 1.9.0-ht3
 ------------------------------------------------------
 
