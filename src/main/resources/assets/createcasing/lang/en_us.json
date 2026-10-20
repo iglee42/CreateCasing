@@ -1,5 +1,6 @@
 {
   "itemGroup.createcasing.base": "Create Encased",
+
   "block.createcasing.acacia_cogwheel": "Acacia Cogwheel",
   "block.createcasing.acacia_large_cogwheel": "Acacia Large Cogwheel",
   "block.createcasing.acacia_shaft": "Acacia Shaft",
@@ -802,6 +803,14 @@
   "item.createcasing.refined_radiance_sheet": "Refined Radiance Sheet",
   "item.createcasing.shadow_steel_sheet": "Shadow Steel Sheet",
   "item.createcasing.weathered_iron_sheet": "Weathered Iron Sheet",
+
+  "item.createcasing.recaser.tooltip.behaviour1": "_Changes_ the casing/material of the block. _Sneak_ while interacting on a tank to _change_ the _whole_ tank.",
+  "item.createcasing.recaser.tooltip.behaviour2": "_Opens_ an Interface to _change_ the selected _material_.",
+  "item.createcasing.recaser.tooltip.condition1": "When used on Blocks",
+  "item.createcasing.recaser.tooltip.condition2": "When pressing Recaser Material Selector key",
+  "item.createcasing.recaser.tooltip.summary": "Change the style of your blocks.",
+
+  "createcasing.keyinfo.material_selector": "Recaser Material Selector",
 
   "createcasing.ponder.tag.encased_blocks": "Create : Encased",
   "createcasing.ponder.tag.encased_blocks.description": "Components added by Create Encased",
