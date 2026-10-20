@@ -126,6 +126,14 @@ repositories {
     maven {
         url 'https://registry.somethingcatchy.net/repository/maven-public'
     }
+
+    maven {
+        url "https://maven.iglee.fr/releases"
+        content {
+            includeGroup "fr.iglee42"
+        }
+    }
+
 }
 
 dependencies {
@@ -160,6 +168,8 @@ dependencies {
     runtimeOnly "curse.maven:create-colorful-pipes-1487757:8277585"
     runtimeOnly "curse.maven:create-connected-947914:8299240"
     runtimeOnly "curse.maven:create-colored-1297736:7975563"
+
+    runtimeOnly "fr.iglee42:CreateQualityOfLife:${minecraft_version}-1.6.3"
 
     api("dev.latvian.mods:kubejs-neoforge:2101.+")
 

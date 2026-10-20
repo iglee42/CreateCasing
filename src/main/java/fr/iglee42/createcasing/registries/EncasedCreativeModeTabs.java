@@ -1,6 +1,7 @@
 package fr.iglee42.createcasing.registries;
 
 import com.simibubi.create.AllCreativeModeTabs;
+import com.simibubi.create.AllItems;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.util.entry.ItemProviderEntry;
 import com.tterrag.registrate.util.entry.RegistryEntry;
@@ -74,6 +75,18 @@ public class EncasedCreativeModeTabs {
             Set<Item> exclusions = new ReferenceOpenHashSet<>();
             exclusions.addAll(CreateCasing.hidedItems.stream().map(ItemLike::asItem).toList());
             exclusions.add(TransmissionSets.MLDEG.getShaft().asItem());
+            if (!AllCreativeModeTabs.BASE_CREATIVE_TAB.get().contains(AllItems.REFINED_RADIANCE.asStack())){
+                exclusions.add(EncasedItems.REFINED_RADIANCE_SHEET.get());
+                exclusions.addAll(CasingSets.REFINED_RADIANCE.getAllBlocks().stream().map(Block::asItem).toList());
+                if (CasingSets.REFINED_RADIANCE.getVerticalGearboxItem() != null) exclusions.add(CasingSets.REFINED_RADIANCE.getVerticalGearboxItem());
+            }
+
+            if (!AllCreativeModeTabs.BASE_CREATIVE_TAB.get().contains(AllItems.SHADOW_STEEL.asStack())){
+                exclusions.add(EncasedItems.SHADOW_STEEL_SHEET.get());
+                exclusions.addAll(CasingSets.SHADOW_STEEL.getAllBlocks().stream().map(Block::asItem).toList());
+                if (CasingSets.SHADOW_STEEL.getVerticalGearboxItem() != null) exclusions.add(CasingSets.SHADOW_STEEL.getVerticalGearboxItem());
+            }
+
             return exclusions::contains;
         }
 
