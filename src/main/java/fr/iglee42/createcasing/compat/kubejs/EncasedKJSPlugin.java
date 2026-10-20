@@ -16,13 +16,13 @@ public class EncasedKJSPlugin implements KubeJSPlugin {
 
     @Override
     public void registerEvents(EventGroupRegistry registry) {
-        registry.register(EncasedKJSEvents.GROUP);
+        //registry.register(EncasedKJSEvents.GROUP);
     }
 
     @Override
     public void registerBindings(BindingRegistry bindings) {
-        bindings.add("SpriteShifts", KJSSpriteShiftWrapper.class);
-        bindings.add("CTType", KJSCTTypeWrapper.class);
+        //bindings.add("SpriteShifts", KJSSpriteShiftWrapper.class);
+        //bindings.add("CTType", KJSCTTypeWrapper.class);
     }
 
     @Override
