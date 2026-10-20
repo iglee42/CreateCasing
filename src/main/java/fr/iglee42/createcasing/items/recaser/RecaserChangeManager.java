@@ -8,6 +8,9 @@ import com.simibubi.create.content.fluids.pipes.SmartFluidPipeBlockEntity;
 import com.simibubi.create.content.fluids.pipes.valve.FluidValveBlock;
 import com.simibubi.create.content.fluids.pipes.valve.FluidValveBlockEntity;
 import com.simibubi.create.content.fluids.tank.FluidTankBlock;
+import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
+import net.neoforged.neoforge.fluids.FluidStack;
+import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import com.simibubi.create.content.kinetics.saw.SawBlock;
 import com.simibubi.create.content.kinetics.simpleRelays.encased.EncasedCogwheelBlock;
 import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlock;
@@ -80,6 +83,7 @@ public class RecaserChangeManager {
             return InteractionResult.PASS;
 
         RecaserBlockChanger changer = new RecaserBlockChanger();
+        InteractionResult tankResult = null;
 
         if (newSet instanceof CasingSet newCSet && blockSet instanceof CasingSet oldCSet) {
             changer.replace(level,pos, oldCSet, newCSet, CasingSet::getShaft, AXIS);
@@ -148,7 +152,10 @@ public class RecaserChangeManager {
                     filteringBehaviour.setFilter(store.get(filter));
                 }
             }, HORIZONTAL_FACING, SmartFluidPipeBlock.FACE);
-            changer.replace(level,pos, oldFSet, newFSet, FluidSet::getFluidTank);
+            if (player.isShiftKeyDown() && newFSet.getFluidTank() != null && oldFSet.getFluidTank() != null && state.is(oldFSet.getFluidTank()))
+                tankResult = changeWholeTank(level, pos, newFSet.getFluidTank(), player, ammo);
+            else
+                changer.replace(level,pos, oldFSet, newFSet, FluidSet::getFluidTank);
             changer.replace(level,pos, oldFSet, newFSet, FluidSet::getSteamEngine, HORIZONTAL_FACING,SteamEngineBlock.FACE);
             changer.replace(level,pos, oldFSet, newFSet, FluidSet::getItemDrain);
             changer.<FluidSet, FluidValveBlockEntity>replace(level,pos, oldFSet, newFSet, FluidSet::getFluidValve, (lvl, blockPos, be, store)->{
@@ -162,9 +169,9 @@ public class RecaserChangeManager {
             changer.replace(level,pos, oldFSet, newFSet, FluidSet::getWhistle,HORIZONTAL_FACING, WhistleBlock.POWERED, WhistleBlock.SIZE, WhistleBlock.WALL);
         }
 
-        InteractionResult placementResult = changer.getPlacementResult();
+        InteractionResult placementResult = tankResult != null ? tankResult : changer.getPlacementResult();
         if (placementResult.consumesAction()){
-            if (!player.isCreative()) {
+            if (tankResult == null && !player.isCreative()) {
                 ammo.stack().shrink(1);
                 if (ammo.stack().isEmpty())
                     player.getInventory().removeItem(ammo.stack());
@@ -177,6 +184,59 @@ public class RecaserChangeManager {
     }
 
 
+
+    private static InteractionResult changeWholeTank(Level level, BlockPos pos,     FluidTankBlock newTank, Player player, RecaserItem.Ammo ammo) {
+        if (level.isClientSide)
+            return InteractionResult.SUCCESS;
+        ItemStack plates = ammo.stack();
+        if (!(level.getBlockEntity(pos) instanceof FluidTankBlockEntity clicked))
+            return InteractionResult.PASS;
+        FluidTankBlockEntity controller = clicked.getControllerBE();
+        if (controller == null)
+            return InteractionResult.PASS;
+
+        BlockPos origin = controller.getBlockPos();
+        int width = controller.getWidth();
+        int height = controller.getHeight();
+        FluidStack fluid = controller.getTankInventory().getFluid().copy();
+        boolean window = !(controller.getExtraData() instanceof Boolean b) || b;
+
+        outer:
+        for (int y = 0; y < height; y++)
+            for (int x = 0; x < width; x++)
+                for (int z = 0; z < width; z++) {
+                    BlockPos p = origin.offset(x, y, z);
+                    BlockState oldState = level.getBlockState(p);
+                    if (!(oldState.getBlock() instanceof FluidTankBlock) || oldState.is(newTank))
+                        continue;
+                    if (!player.isCreative()) {
+                        if (plates.isEmpty())
+                            break outer;
+                        plates.shrink(1);
+                    }
+                    BlockState newState = newTank.defaultBlockState();
+                    for (Property<?> prop : new Property<?>[]{FluidTankBlock.TOP, FluidTankBlock.BOTTOM, FluidTankBlock.SHAPE})
+                        newState = copyProperty(oldState, newState, prop);
+                    changeBlock(level, p, oldState, newState);
+                }
+
+        if (plates.isEmpty() && !player.isCreative())
+            player.getInventory().removeItem(plates);
+
+        if (level.getBlockEntity(origin) instanceof FluidTankBlockEntity newBe) {
+            FluidTankBlockEntity newController = newBe.getControllerBE();
+            if (newController != null) {
+                newController.setWindows(window);
+                if (!fluid.isEmpty())
+                    newController.getTankInventory().fill(fluid, IFluidHandler.FluidAction.EXECUTE);
+            }
+        }
+        return InteractionResult.SUCCESS;
+    }
+
+    private static <T extends Comparable<T>> BlockState copyProperty(BlockState from, BlockState to, Property<T> prop) {
+        return to.setValue(prop, from.getValue(prop));
+    }
 
     public static @Nullable SetBase<?, ?> getSetForBlock(Block block) {
         CasingSet cSet = getCasingSetForBlock(block);
