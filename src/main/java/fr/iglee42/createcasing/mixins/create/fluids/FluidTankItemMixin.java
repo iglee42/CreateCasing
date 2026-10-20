@@ -20,8 +20,8 @@ public class FluidTankItemMixin {
 
     @WrapOperation(method = "tryMultiPlace", at = @At(value = "INVOKE", target = "Lcom/simibubi/create/api/connectivity/ConnectivityHandler;partAt(Lnet/minecraft/world/level/block/entity/BlockEntityType;Lnet/minecraft/world/level/BlockGetter;Lnet/minecraft/core/BlockPos;)Lnet/minecraft/world/level/block/entity/BlockEntity;"))
     private <T extends BlockEntity & IMultiBlockEntityContainer> T encased$workWithCustomTanks(BlockEntityType<?> type, BlockGetter level, BlockPos pos, Operation<T> original) {
-        if (level.getBlockState(pos).getBlock() instanceof CustomFluidTankBlock)
-            return ConnectivityHandler.partAt(EncasedBlockEntities.FLUID_TANK.get(), level, pos);
+        if (level.getBlockState(pos).getBlock() instanceof CustomFluidTankBlock tank)
+            return ConnectivityHandler.partAt(tank.getBlockEntityType(), level, pos);
         return original.call(type, level, pos);
     }
 }

@@ -12,6 +12,8 @@ import fr.iglee42.createcasing.config.EncasedConfigs;
 import fr.iglee42.createcasing.compat.kubejs.KJSExternalHandler;
 import fr.iglee42.createcasing.mixins.create.DeployerBlockEntityAccessor;
 import fr.iglee42.createcasing.mixins.create.fluids.FluidTankBlockEntityAccessor;
+import fr.iglee42.createcasing.sets.fluids.FluidSet;
+import fr.iglee42.createcasing.sets.fluids.FluidSets;
 import fr.iglee42.createcasing.mixins.create.fluids.HosePulleyBlockEntityAccessor;
 import fr.iglee42.createcasing.mixins.create.fluids.ItemDrainBlockEntityAccessor;
 import fr.iglee42.createcasing.mixins.create.fluids.SpoutBlockEntityAccessor;
@@ -138,15 +140,17 @@ public class CreateCasing {
                 }
         );
 
-        event.registerBlockEntity(
-                Capabilities.FluidHandler.BLOCK,
-                EncasedBlockEntities.FLUID_TANK.get(),
-                (be, context) -> {
-                    FluidTankBlockEntityAccessor accessor = (FluidTankBlockEntityAccessor) be;
-                    if (accessor.encased$getFluidCapability() == null)
-                        accessor.encased$refreshCapability();
-                    return accessor.encased$getFluidCapability();
-                }
+        FluidSets.getSets().stream().filter(FluidSet::doesGenerateFluidTank).filter(s -> s.getFluidTankBlockEntityType() != null).forEach(set ->
+                event.registerBlockEntity(
+                        Capabilities.FluidHandler.BLOCK,
+                        set.getFluidTankBlockEntityType(),
+                        (be, context) -> {
+                            FluidTankBlockEntityAccessor accessor = (FluidTankBlockEntityAccessor) be;
+                            if (accessor.encased$getFluidCapability() == null)
+                                accessor.encased$refreshCapability();
+                            return accessor.encased$getFluidCapability();
+                        }
+                )
         );
 
         event.registerBlockEntity(

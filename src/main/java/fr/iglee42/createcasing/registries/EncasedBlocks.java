@@ -33,6 +33,8 @@ import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
 import com.simibubi.create.foundation.data.*;
 import com.tterrag.registrate.builders.BlockBuilder;
 import com.tterrag.registrate.util.entry.BlockEntry;
+import com.tterrag.registrate.util.entry.BlockEntityEntry;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import com.tterrag.registrate.util.nullness.NonNullBiFunction;
 import com.tterrag.registrate.util.nullness.NonNullUnaryOperator;
 import fr.iglee42.createcasing.CreateCasing;
@@ -720,8 +722,15 @@ public class EncasedBlocks {
             if (set.doesGenerateSmartFluidPipe())
                 set.setSmartFluidPipe(createSmartFluidPipe(set.getName()));
 
-            if (set.doesGenerateFluidTank())
-                set.setFluidTank(createFluidTank(set.getName(),set.getTankSideSprite(),set.getTankTopSprite(),set.getTankInnerSprite()));
+            if (set.doesGenerateFluidTank()) {
+                BlockEntityEntry<?>[] holder = new BlockEntityEntry<?>[1];
+                BlockEntry<CustomFluidTankBlock> tank = createFluidTank(set.getName(), set.getTankSideSprite(), set.getTankTopSprite(), set.getTankInnerSprite(),
+                        () -> (BlockEntityType<? extends FluidTankBlockEntity>) holder[0].get());
+                BlockEntityEntry<FluidTankBlockEntity> be = EncasedBlockEntities.createFluidTank(set.getName(), tank);
+                holder[0] = be;
+                set.setFluidTank(tank);
+                set.setFluidTankBlockEntity(be);
+            }
 
             if (set.doesGenerateSteamEngine())
                 set.setSteamEngine(createSteamEngine(set.getName()));
@@ -829,8 +838,8 @@ public class EncasedBlocks {
                 .register();
     }
 
-    public static BlockEntry<CustomFluidTankBlock> createFluidTank(String name,CTSpriteShiftEntry sideSprite, CTSpriteShiftEntry topSprite, CTSpriteShiftEntry innerSprite) {
-        return REGISTRATE.block(name+"_fluid_tank", CustomFluidTankBlock::new)
+    public static BlockEntry<CustomFluidTankBlock> createFluidTank(String name,CTSpriteShiftEntry sideSprite, CTSpriteShiftEntry topSprite, CTSpriteShiftEntry innerSprite, Supplier<BlockEntityType<? extends FluidTankBlockEntity>> beType) {
+        return REGISTRATE.block(name+"_fluid_tank", p -> new CustomFluidTankBlock(p, beType))
                 .tag(EncasedTags.EBlockTags.FLUID_TANKS.tag)
                 .initialProperties(SharedProperties::copperMetal)
                 .properties(p -> p.noOcclusion()

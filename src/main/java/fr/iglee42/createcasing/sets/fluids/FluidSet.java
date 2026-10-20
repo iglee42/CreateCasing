@@ -11,6 +11,9 @@ import com.simibubi.create.content.fluids.pipes.valve.FluidValveBlock;
 import com.simibubi.create.content.fluids.pump.PumpBlock;
 import com.simibubi.create.content.fluids.spout.SpoutBlock;
 import com.simibubi.create.content.fluids.tank.FluidTankBlock;
+import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
+import com.tterrag.registrate.util.entry.BlockEntityEntry;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import com.simibubi.create.content.kinetics.crank.ValveHandleBlock;
 import com.simibubi.create.content.kinetics.steamEngine.SteamEngineBlock;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
@@ -45,6 +48,7 @@ public class FluidSet extends SetBase<FluidSet, FluidSet.Options> {
     private @Nullable BlockEntry<? extends FluidValveBlock> fluidValveBlock;
     private @Nullable BlockEntry<? extends ValveHandleBlock> valveHandleBlock;
     private @Nullable BlockEntry<? extends FluidTankBlock> fluidTankBlock;
+    private @Nullable BlockEntityEntry<? extends FluidTankBlockEntity> fluidTankBlockEntity;
     private @Nullable BlockEntry<? extends HosePulleyBlock> hosePulleyBlock;
     private @Nullable BlockEntry<? extends ItemDrainBlock> itemDrainBlock;
     private @Nullable BlockEntry<? extends PortableStorageInterfaceBlock> portableFluidInterfaceBlock;
@@ -249,6 +253,22 @@ public class FluidSet extends SetBase<FluidSet, FluidSet.Options> {
     @Nullable
     public FluidTankBlock getFluidTank() {
         return fluidTankBlock == null ? null : fluidTankBlock.get();
+    }
+
+    @Nullable
+    public BlockEntityEntry<? extends FluidTankBlockEntity> getFluidTankBlockEntitySupplier() {
+        return fluidTankBlockEntity;
+    }
+
+    @Nullable
+    public BlockEntityType<? extends FluidTankBlockEntity> getFluidTankBlockEntityType() {
+        return fluidTankBlockEntity == null ? null : fluidTankBlockEntity.get();
+    }
+
+    public void setFluidTankBlockEntity(@Nonnull BlockEntityEntry<? extends FluidTankBlockEntity> type) {
+        if (fluidTankBlockEntity != null)
+            throw new UnsupportedOperationException("You cannot modify a fluid tank block entity that has already been referenced");
+        fluidTankBlockEntity = type;
     }
 
     public void setFluidTank(@Nonnull BlockEntry<? extends FluidTankBlock> tank) {

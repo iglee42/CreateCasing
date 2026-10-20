@@ -20,7 +20,9 @@ import com.simibubi.create.content.fluids.pump.PumpBlockEntity;
 import com.simibubi.create.content.fluids.pump.PumpRenderer;
 import com.simibubi.create.content.fluids.spout.SpoutBlockEntity;
 import com.simibubi.create.content.fluids.spout.SpoutRenderer;
+import com.simibubi.create.content.fluids.tank.FluidTankBlock;
 import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
+import com.tterrag.registrate.util.entry.BlockEntry;
 import com.simibubi.create.content.fluids.tank.FluidTankRenderer;
 import com.simibubi.create.content.kinetics.base.*;
 import com.simibubi.create.content.kinetics.chainConveyor.ChainConveyorBlockEntity;
@@ -303,10 +305,13 @@ public class EncasedBlockEntities {
             .renderer(() -> PumpRenderer::new)
             .register();
 
-    public static final BlockEntityEntry<FluidTankBlockEntity> FLUID_TANK = REGISTRATE
-            .blockEntity("fluid_tank", FluidTankBlockEntity::new)
-            .renderer(() -> FluidTankRenderer::new)
-            .register();
+    public static BlockEntityEntry<FluidTankBlockEntity> createFluidTank(String name, BlockEntry<? extends FluidTankBlock> block) {
+        return REGISTRATE
+                .blockEntity(name + "_fluid_tank", FluidTankBlockEntity::new)
+                .validBlock(block)
+                .renderer(() -> FluidTankRenderer::new)
+                .register();
+    }
 
     public static final BlockEntityEntry<SteamEngineBlockEntity> STEAM_ENGINE = REGISTRATE
             .blockEntity("steam_engine", SteamEngineBlockEntity::new)
@@ -381,7 +386,6 @@ public class EncasedBlockEntities {
         registerFluidSet(event, GLASS_FLUID_PIPE.get(), FluidSet::getGlassFluidPipe, FluidSet::doesGenerateFluidPipe);
         registerFluidSet(event, MECHANICAL_PUMP.get(), FluidSet::getPump, FluidSet::doesGeneratePump);
         registerFluidSet(event, SMART_FLUID_PIPE.get(), FluidSet::getSmartFluidPipe, FluidSet::doesGenerateSmartFluidPipe);
-        registerFluidSet(event, FLUID_TANK.get(), FluidSet::getFluidTank, FluidSet::doesGenerateFluidTank);
         registerFluidSet(event, STEAM_ENGINE.get(), FluidSet::getSteamEngine, FluidSet::doesGenerateSteamEngine);
         registerFluidSet(event, ITEM_DRAIN.get(), FluidSet::getItemDrain, FluidSet::doesGenerateItemDrain);
         registerFluidSet(event, FLUID_VALVE.get(), FluidSet::getFluidValve, FluidSet::doesGenerateFluidValve);
