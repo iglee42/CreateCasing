@@ -813,7 +813,7 @@
 	"createcasing.keyinfo.material_selector": "再封装器材料选择器",
 
 	"createcasing.ponder.tag.encased_blocks": "机械动力：封装工艺",
-	"createcasing.ponder.tag.encased_blocks.description": "由机械动力：封装工艺添加的元件",
+	"createcasing.ponder.tag.encased_blocks.description": "由机械动力：封装工艺添加的组件",
 
 	"createcasing.ponder.creative_cogwheel.header": "使用创造齿轮产生旋转力",
 	"createcasing.ponder.creative_cogwheel.text_1": "创造齿轮是一种紧凑且可配置的旋转力源",
