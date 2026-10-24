@@ -1,5 +1,6 @@
 {
 	"itemGroup.createcasing.base": "机械动力：封装工艺",
+
 	"block.createcasing.acacia_cogwheel": "金合欢木齿轮",
 	"block.createcasing.acacia_large_cogwheel": "金合欢木大齿轮",
 	"block.createcasing.acacia_shaft": "金合欢木传动杆",
@@ -802,6 +803,14 @@
 	"item.createcasing.refined_radiance_sheet": "光辉石板",
 	"item.createcasing.shadow_steel_sheet": "暗影钢板",
 	"item.createcasing.weathered_iron_sheet": "锈蚀的工业铁板",
+
+	"item.createcasing.recaser.tooltip.behaviour1": "_更改_方块或其机壳的材料。_潜行_时对储罐使用以_更改__整个_储罐。",
+	"item.createcasing.recaser.tooltip.behaviour2": "_打开_界面，以_更改_所选_材料_。",
+	"item.createcasing.recaser.tooltip.condition1": "对方块使用时",
+	"item.createcasing.recaser.tooltip.condition2": "按下再封装器材料选择器键时",
+	"item.createcasing.recaser.tooltip.summary": "更改方块的样式。",
+
+	"createcasing.keyinfo.material_selector": "再封装器材料选择器",
 
 	"createcasing.ponder.tag.encased_blocks": "机械动力：封装工艺",
 	"createcasing.ponder.tag.encased_blocks.description": "由机械动力：封装工艺添加的元件",
