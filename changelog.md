@@ -1,4 +1,13 @@
 ------------------------------------------------------
+CreateEncased 1.10.0-fix1
+------------------------------------------------------
+#### Translations
+- Update zh_cn translation #210
+
+#### Bug Fixes
+- Fix shafts and cogwheels recipe overriding #211
+- Fix chains can't be placed because of Chain conveyors #212
+------------------------------------------------------
 CreateEncased 1.10.0 - The In-World Update
 ------------------------------------------------------
 
