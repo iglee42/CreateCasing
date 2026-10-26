@@ -15,7 +15,7 @@ public class ChainConveyorConnectionHandlerMixin {
 
     @Redirect(method = "onItemUsedOnBlock" , at = @At(value = "INVOKE", target = "Lcom/tterrag/registrate/util/entry/BlockEntry;has(Lnet/minecraft/world/level/block/state/BlockState;)Z"))
     private static boolean encased$newTypes(BlockEntry<?> instance, BlockState state){
-        return CasingSets.getSets().stream().anyMatch(set-> Objects.equals(set.getChainConveyor(), instance.get()));
+        return CasingSets.getSets().stream().anyMatch(set-> Objects.equals(set.getChainConveyor(), state.getBlock()));
     }
 
 }
