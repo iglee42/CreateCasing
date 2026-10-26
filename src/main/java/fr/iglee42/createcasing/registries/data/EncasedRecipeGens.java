@@ -62,8 +62,29 @@ public class EncasedRecipeGens extends DeployingRecipeGen {
         }
 
         for (TransmissionSet set : TransmissionSets.getSets()) {
-            addRecipes(set, EncasedTags.EItemTags.SHAFTS, TransmissionSet::getShaft);
-            addRecipes(set, EncasedTags.EItemTags.COGWHEELS, TransmissionSet::getCogwheel);
+            if (!TransmissionSets.getWoodSets().contains(set))
+                addRecipes(set, EncasedTags.EItemTags.SHAFTS, TransmissionSet::getShaft);
+            else if (set.getShaft() != null) {
+                register(recipeOutput -> {
+                    getBuilder(CreateCasing.asResource("shafts/"+set.getName()))
+                            .require(Ingredient.of(EncasedTags.EItemTags.SHAFTS.tag))
+                            .require(getItemIngredient(set, "shafts/"+set.getName()).orElse(Ingredient.EMPTY))
+                            .output(set.getShaft())
+                            .build(recipeOutput);
+                });
+            }
+
+            if (!TransmissionSets.getWoodSets().contains(set))
+                addRecipes(set, EncasedTags.EItemTags.COGWHEELS, TransmissionSet::getCogwheel);
+            else if (set.getCogwheel() != null) {
+                register(recipeOutput -> {
+                    getBuilder(CreateCasing.asResource("cogwheels/"+set.getName()))
+                            .require(Ingredient.of(EncasedTags.EItemTags.COGWHEELS.tag))
+                            .require(getItemIngredient(set, "cogwheels/"+set.getName()).orElse(Ingredient.EMPTY))
+                            .output(set.getCogwheel())
+                            .build(recipeOutput);
+                });
+            }
             addRecipes(set, EncasedTags.EItemTags.LARGE_COGWHEELS, TransmissionSet::getLargeCogwheel);
         }
 
