@@ -9,6 +9,10 @@ import com.simibubi.create.content.fluids.pipes.valve.FluidValveBlock;
 import com.simibubi.create.content.fluids.pipes.valve.FluidValveBlockEntity;
 import com.simibubi.create.content.fluids.tank.FluidTankBlock;
 import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
+import com.simibubi.create.content.kinetics.base.DirectionalAxisKineticBlock;
+import com.simibubi.create.content.kinetics.deployer.DeployerBlockEntity;
+import net.minecraft.world.item.context.UseOnContext;
+import net.minecraft.world.phys.Vec3;
 import net.neoforged.neoforge.fluids.FluidStack;
 import net.neoforged.neoforge.fluids.capability.IFluidHandler;
 import com.simibubi.create.content.kinetics.saw.SawBlock;
@@ -27,10 +31,7 @@ import fr.iglee42.createcasing.sets.fluids.FluidSet;
 import fr.iglee42.createcasing.sets.fluids.FluidSets;
 import fr.iglee42.createcasing.sets.transmissions.TransmissionSet;
 import fr.iglee42.createcasing.sets.transmissions.TransmissionSets;
-import fr.iglee42.createcasing.items.recaser.RecaserBlockChanger.*;
 import fr.iglee42.createcasing.items.recaser.RecaserBlockChanger.ActionStore.*;
-import net.createmod.catnip.animation.LerpedFloat;
-import net.createmod.catnip.data.Iterate;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.RegistryAccess;
@@ -61,10 +62,10 @@ public class RecaserChangeManager {
     private static final Key<AutoClutchBlockEntity.Mode> autoClutchMode = new Key<>();
     private static final Key<AutoClutchBlockEntity.Operation> autoClutchOperation = new Key<>();
     private static final Key<ItemStack> filter = new Key<>();
-    private static final Key<ItemStack> depotItem = new Key<>();
+    private static final Key<ItemStack> heldItem = new Key<>();
     private static final Key<Float> fluidValvePointer = new Key<>();
 
-    public static InteractionResult tryChangeBlock(Level level, BlockPos pos, BlockState state, Direction clickedFace, Player player, RecaserItem.Ammo ammo) {
+    public static InteractionResult tryChangeBlock(Level level, BlockPos pos, BlockState state, Direction clickedFace, Player player, RecaserItem.Ammo ammo, UseOnContext context) {
         SetBase<?, ?> blockSet = getSetForBlock(state.getBlock());
 
         if (blockSet == null)
@@ -95,11 +96,26 @@ public class RecaserChangeManager {
             changer.replace(level,pos, oldCSet, newCSet, CasingSet::getPress, HORIZONTAL_FACING);
             if (clickedFace != Direction.UP)
                 changer.<CasingSet, DepotBlockEntity>replace(level,pos, oldCSet, newCSet, CasingSet::getDepot,(lvl,blockPos,be,store)->{
-                    store.set(depotItem, be.getHeldItem().copy());
+                    store.set(heldItem, be.getHeldItem().copy());
                     be.setHeldItem(ItemStack.EMPTY);
                 },(lvl,blockPos,be,store)->{
-                    be.setHeldItem(store.get(depotItem));
+                    be.setHeldItem(store.get(heldItem));
                 });
+
+            Vec3 normal = Vec3.atLowerCornerOf(state.getValue(FACING)
+                    .getNormal());
+            Vec3 location = context.getClickLocation()
+                    .subtract(Vec3.atCenterOf(context.getClickedPos())
+                            .subtract(normal.scale(.5)))
+                    .multiply(normal);
+            if (location.length() > .75f){
+                changer.<CasingSet, DeployerBlockEntity>replace(level,pos, oldCSet, newCSet, CasingSet::getDeployer, (lvl, blockPos, be, store)->{
+                    store.set(heldItem, be.getPlayer().getMainHandItem().copy());
+                    be.getPlayer().setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
+                },(lvl, blockPos, be, store)->{
+                    be.getPlayer().setItemInHand(InteractionHand.MAIN_HAND, store.get(heldItem));
+                }, FACING, DirectionalAxisKineticBlock.AXIS_ALONG_FIRST_COORDINATE);
+            }
 
             changer.replace(level,pos, oldCSet, newCSet, CasingSet::getChainDrive, AXIS);
             changer.replace(level,pos, oldCSet, newCSet, CasingSet::getChainGearshift, AXIS);

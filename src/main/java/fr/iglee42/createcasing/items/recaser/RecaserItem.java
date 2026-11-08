@@ -93,7 +93,7 @@ public class RecaserItem extends Item {
 		Level level = context.getLevel();
 		BlockPos pos = context.getClickedPos();
 		BlockState state = level.getBlockState(pos);
-        return RecaserChangeManager.tryChangeBlock(level, pos, state, context.getClickedFace(), player, ammo);
+        return RecaserChangeManager.tryChangeBlock(level, pos, state, context.getClickedFace(), player, ammo, context);
     }
 
 	@Override
