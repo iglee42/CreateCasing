@@ -108,13 +108,8 @@ public class RecaserChangeManager {
                     .subtract(Vec3.atCenterOf(context.getClickedPos())
                             .subtract(normal.scale(.5)))
                     .multiply(normal);
-            if (location.length() > .75f){
-                changer.<CasingSet, DeployerBlockEntity>replace(level,pos, oldCSet, newCSet, CasingSet::getDeployer, (lvl, blockPos, be, store)->{
-                    store.set(heldItem, be.getPlayer().getMainHandItem().copy());
-                    be.getPlayer().setItemInHand(InteractionHand.MAIN_HAND, ItemStack.EMPTY);
-                },(lvl, blockPos, be, store)->{
-                    be.getPlayer().setItemInHand(InteractionHand.MAIN_HAND, store.get(heldItem));
-                }, FACING, DirectionalAxisKineticBlock.AXIS_ALONG_FIRST_COORDINATE);
+            if (location.length() < .75f){
+                changer.<CasingSet, DeployerBlockEntity>replace(level,pos, oldCSet, newCSet, CasingSet::getDeployer, FACING, DirectionalAxisKineticBlock.AXIS_ALONG_FIRST_COORDINATE);
             }
 
             changer.replace(level,pos, oldCSet, newCSet, CasingSet::getChainDrive, AXIS);
