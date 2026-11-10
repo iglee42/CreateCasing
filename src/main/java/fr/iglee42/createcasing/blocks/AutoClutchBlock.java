@@ -61,4 +61,14 @@ public class AutoClutchBlock extends AbstractEncasedShaftBlock implements IBE<Au
             return;
         RotationPropagator.handleAdded(worldIn, pos, kte);
     }
+
+    @Override
+    protected boolean hasAnalogOutputSignal(BlockState p_60457_) {
+        return true;
+    }
+
+    @Override
+    protected int getAnalogOutputSignal(BlockState state, Level level, BlockPos blockPos) {
+        return getBlockEntityOptional(level, blockPos).map(AutoClutchBlockEntity::getComparatorOutput).orElse(0);
+    }
 }

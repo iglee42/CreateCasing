@@ -34,6 +34,7 @@ public class AutoClutchBlockEntity extends SplitShaftBlockEntity {
 
     private boolean active;
     private boolean previousActive;
+    private int previousComparatorOutput;
 
     public AutoClutchBlockEntity(BlockEntityType<?> type, BlockPos pos, BlockState state) {
         super(type, pos, state);
@@ -51,6 +52,12 @@ public class AutoClutchBlockEntity extends SplitShaftBlockEntity {
         super.tick();
         if (getLevel() == null) return;
         if (getLevel().isClientSide()) return;
+
+        if (getComparatorOutput() != previousComparatorOutput){
+            previousComparatorOutput = getComparatorOutput();
+            getLevel().updateNeighbourForOutputSignal(getBlockPos(), getBlockState().getBlock());
+        }
+
         active = switch (mode) {
             case USED_STRESS -> operation.isValid((int) stress, configuredValue);
             case REMAINING_STRESS -> operation.isValid((int) (capacity - stress), configuredValue);
@@ -99,6 +106,21 @@ public class AutoClutchBlockEntity extends SplitShaftBlockEntity {
 
     public float getStress(){
         return stress;
+    }
+
+    public int getComparatorOutput(){
+
+        return active ? 15 : (int) Mth.clamp(calculatePercentage() * 15, 0, 15);
+    }
+
+    public float calculatePercentage(){
+        int value = switch (mode) {
+            case USED_STRESS -> (int) stress;
+            case REMAINING_STRESS -> (int) (capacity - stress);
+            case MAX_STRESS -> (int) capacity;
+            case SPEED -> (int) Mth.abs(speed);
+        };
+        return (float) value / (float) configuredValue;
     }
 
     @Override

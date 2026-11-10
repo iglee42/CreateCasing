@@ -72,6 +72,7 @@ public class CreateCasing {
         REGISTRATE.registerEventListeners(modEventBus);
 
         EncasedDataComponents.register(modEventBus);
+        EncasedDisplaySources.register();
         EncasedSounds.prepare();
         EncasedBlocks.register();
         EncasedItems.register();

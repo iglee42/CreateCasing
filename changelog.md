@@ -1,6 +1,8 @@
 ------------------------------------------------------
 CreateEncased 1.10.1
 ------------------------------------------------------
+#### Additions
+- Auto Clutch now has a display source to show the current percentage of power it is receiving. It is also compatible with comparators
 
 #### Bug Fixes
 - Fix Configurable Gearbox not transforming properly when rotated (#215)

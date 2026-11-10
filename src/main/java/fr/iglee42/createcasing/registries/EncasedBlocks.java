@@ -558,6 +558,7 @@ public class EncasedBlocks {
                 .transform(CasingBuilderTransformers.cutoutMipped())
                 .transform(CCStress.setNoImpact())
                 .transform(axeOrPickaxe())
+                .transform(displaySource(EncasedDisplaySources.AUTO_CLUTCH))
                 .blockstate((c, p) ->EncasedBlockStateGens.axisBlock(c,p,autoClutchModel(p,name),false))
                 .item()
                 .tag(EncasedTags.EItemTags.AUTO_CLUTCHES.tag)
