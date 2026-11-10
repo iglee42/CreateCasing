@@ -7,6 +7,7 @@ CreateEncased 1.10.1
 #### Bug Fixes
 - Fix Configurable Gearbox not transforming properly when rotated (#215)
 - Removed deploying wooden shaft and cogwheels recipe because there were conflicts with the cogwheel recipes (#214)
+- Recaser not working on deployers (#213)
 ------------------------------------------------------
 CreateEncased 1.10.0-fix1
 ------------------------------------------------------
