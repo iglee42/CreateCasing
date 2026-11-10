@@ -3,6 +3,8 @@ package fr.iglee42.createcasing.blocks;
 import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.Maps;
 import com.simibubi.create.AllBlocks;
+import com.simibubi.create.api.contraption.transformable.TransformableBlock;
+import com.simibubi.create.content.contraptions.StructureTransform;
 import com.simibubi.create.content.kinetics.base.KineticBlock;
 import com.simibubi.create.content.kinetics.base.KineticBlockEntity;
 import com.simibubi.create.content.kinetics.gearbox.GearboxBlockEntity;
@@ -19,8 +21,11 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Mirror;
+import net.minecraft.world.level.block.Rotation;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
@@ -29,10 +34,11 @@ import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.phys.BlockHitResult;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ConfigurableGearboxBlock extends KineticBlock implements IBE<GearboxBlockEntity> {
+public class ConfigurableGearboxBlock extends KineticBlock implements IBE<GearboxBlockEntity>, TransformableBlock {
 
     public static final BooleanProperty NORTH = BlockStateProperties.NORTH;
     public static final BooleanProperty EAST = BlockStateProperties.EAST;
@@ -177,5 +183,35 @@ public class ConfigurableGearboxBlock extends KineticBlock implements IBE<Gearbo
     @Override
     public BlockEntityType<? extends GearboxBlockEntity> getBlockEntityType() {
         return EncasedBlockEntities.CONFIGURABLE_GEARBOX.get();
+    }
+
+    @Override
+    public BlockState transform(BlockState state, StructureTransform transform) {
+        Map<Direction, Boolean> newValues = new HashMap<>();
+        for (Direction d : Direction.values()) {
+            BooleanProperty property = getPropertyByDirection(d);
+            Direction transformed = transform.rotateFacing(d);
+            newValues.put(transformed, state.getValue(property));
+        }
+        for (Direction d : Direction.values()){
+            BooleanProperty property = getPropertyByDirection(d);
+            state = state.setValue(property, newValues.get(d));
+        }
+        return state;
+    }
+
+    @Override
+    protected BlockState rotate(BlockState state, Rotation rotation) {
+        Map<Direction, Boolean> newValues = new HashMap<>();
+        for (Direction d : Direction.values()) {
+            BooleanProperty property = getPropertyByDirection(d);
+            Direction transformed = rotation.rotate(d);
+            newValues.put(transformed, state.getValue(property));
+        }
+        for (Direction d : Direction.values()){
+            BooleanProperty property = getPropertyByDirection(d);
+            state = state.setValue(property, newValues.get(d));
+        }
+        return state;
     }
 }
