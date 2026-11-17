@@ -10,6 +10,7 @@ import com.simibubi.create.content.fluids.pipes.valve.FluidValveBlockEntity;
 import com.simibubi.create.content.fluids.tank.FluidTankBlock;
 import com.simibubi.create.content.fluids.tank.FluidTankBlockEntity;
 import com.simibubi.create.content.kinetics.base.DirectionalAxisKineticBlock;
+import com.simibubi.create.content.kinetics.deployer.DeployerBlock;
 import com.simibubi.create.content.kinetics.deployer.DeployerBlockEntity;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.phys.Vec3;
@@ -102,14 +103,16 @@ public class RecaserChangeManager {
                     be.setHeldItem(store.get(heldItem));
                 });
 
-            Vec3 normal = Vec3.atLowerCornerOf(state.getValue(FACING)
-                    .getNormal());
-            Vec3 location = context.getClickLocation()
-                    .subtract(Vec3.atCenterOf(context.getClickedPos())
-                            .subtract(normal.scale(.5)))
-                    .multiply(normal);
-            if (location.length() < .75f){
-                changer.<CasingSet, DeployerBlockEntity>replace(level,pos, oldCSet, newCSet, CasingSet::getDeployer, FACING, DirectionalAxisKineticBlock.AXIS_ALONG_FIRST_COORDINATE);
+            if (state.hasProperty(FACING) && state.getBlock() instanceof DeployerBlock) {
+                Vec3 normal = Vec3.atLowerCornerOf(state.getValue(FACING)
+                        .getNormal());
+                Vec3 location = context.getClickLocation()
+                        .subtract(Vec3.atCenterOf(context.getClickedPos())
+                                .subtract(normal.scale(.5)))
+                        .multiply(normal);
+                if (location.length() < .75f) {
+                    changer.<CasingSet, DeployerBlockEntity>replace(level, pos, oldCSet, newCSet, CasingSet::getDeployer, FACING, DirectionalAxisKineticBlock.AXIS_ALONG_FIRST_COORDINATE);
+                }
             }
 
             changer.replace(level,pos, oldCSet, newCSet, CasingSet::getChainDrive, AXIS);
