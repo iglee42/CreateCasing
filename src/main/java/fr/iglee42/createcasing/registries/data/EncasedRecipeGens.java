@@ -27,6 +27,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 
+import java.util.Locale;
 import java.util.Optional;
 import java.util.concurrent.CompletableFuture;
 import java.util.function.Function;
@@ -59,6 +60,26 @@ public class EncasedRecipeGens extends DeployingRecipeGen {
             addRecipes(set, EncasedTags.EItemTags.DRILLS, CasingSet::getDrill);
             addRecipes(set, EncasedTags.EItemTags.PLOUGHS, CasingSet::getPlough);
             addRecipes(set, EncasedTags.EItemTags.ROLLERS, CasingSet::getRoller);
+
+            if (set.getVerticalGearboxItem() != null && !set.equals(CasingSets.ANDESITE)) {
+                register(recipeOutput -> {
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, set.getVerticalGearboxItem())
+                            .requires(set.getGearbox())
+                            .unlockedBy("has_matching_block", inventoryTrigger(
+                                    ItemPredicate.Builder.item()
+                                            .of(set.getGearbox())
+                                            .build()))
+                            .save(recipeOutput, CreateCasing.asResource("crafting/gearboxes/"+set.getName()+ "_vertical"));
+                    ShapelessRecipeBuilder.shapeless(RecipeCategory.MISC, set.getGearbox())
+                            .requires(set.getVerticalGearboxItem())
+                            .unlockedBy("has_matching_block", inventoryTrigger(
+                                    ItemPredicate.Builder.item()
+                                            .of(set.getVerticalGearboxItem())
+                                            .build()))
+                            .save(recipeOutput, CreateCasing.asResource("crafting/gearboxes/"+set.getName()+ "_from_vertical"));
+                });
+            }
+
         }
 
         for (TransmissionSet set : TransmissionSets.getSets()) {

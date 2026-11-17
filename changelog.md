@@ -4,6 +4,7 @@ CreateEncased 1.10.1-fix1
 
 #### Bug Fixes
 - Fix Crash when using the Recaser on blocks that doesn't have Facing property (#219)
+- Fix missing gearbox recipes (#216, #218)
 ------------------------------------------------------
 CreateEncased 1.10.1
 ------------------------------------------------------
